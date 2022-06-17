@@ -61,4 +61,30 @@
         <tag>碎碎念</tag>
       </tags>
   </entry>
+  <entry>
+    <title>博客设置中的一次测试</title>
+    <url>/2022/06/18/Test/</url>
+    <content><![CDATA[<p>2022&#x2F;06&#x2F;18的01:49，目前完成的设置有：</p>
+<ul>
+<li>使用了NexT系列的Pisces主题，完成了基础设置</li>
+<li>网页图标改成了一直使用的头像</li>
+<li>添加了About和Tags</li>
+<li>添加了Github，Twitter，E-Mail和知乎的链接</li>
+<li>访客数和总文字数统计</li>
+<li>添加了浏览百分比和返回顶部键</li>
+<li>修改了一下About的内容</li>
+</ul>
+<p>目前需要解决的问题：</p>
+<ul>
+<li>或许是我的NexT版本不够新？按照网上的办法设置背景图片失败了</li>
+<li>赞赏码插入不了，再研究一下<del>（这功能又没用，谁给你打钱啊</del></li>
+<li>最大的问题是设置自动折叠的功能也不可用，主题设置下的-config文件里没有这一项…</li>
+<li>有一种需要重装NexT的不好的预感…</li>
+</ul>
+<p>起码它初具雏形了，也是一件好事。</p>
+]]></content>
+      <tags>
+        <tag>测试</tag>
+      </tags>
+  </entry>
 </search>
