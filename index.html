@@ -179,6 +179,153 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://chiyuru.github.io/2022/07/03/Physics-Lab2-Notes/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="驰雨Chiyuru">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="驰雨Chiyuru">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/07/03/Physics-Lab2-Notes/" class="post-title-link" itemprop="url">基础物理光学实验备忘录</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-07-03 21:24:07" itemprop="dateCreated datePublished" datetime="2022-07-03T21:24:07+08:00">2022-07-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-07-04 00:28:48" itemprop="dateModified" datetime="2022-07-04T00:28:48+08:00">2022-07-04</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>考虑到开学之后肯定没空每周研究基物实验怎么做，最近又很颓不想干活。于是一边补番一边写一份从零开始的实验备忘录，目的是将来做实验前快速阅读一遍，然后对着设计好的实验表和博文就能<del>优雅地</del>动手不动脑地做完实验，不懂原理也没事。<del>毕竟我下个学期也没选理论课</del></p>
+<p>这个操作是合理的，上个学期做实验的时候因为仓促，只在讲义上手写了一点要点，还是会不知所措。码个字可以详细一点。</p>
+<p><strong>注：未经授权禁止转载。一概不提供文中提到的实验表格，勿伸手。</strong></p>
+<h1 id="完整报告篇"><a href="#完整报告篇" class="headerlink" title="完整报告篇"></a>完整报告篇</h1><h2 id="用单色仪测定介质的吸收曲线"><a href="#用单色仪测定介质的吸收曲线" class="headerlink" title="用单色仪测定介质的吸收曲线"></a>用单色仪测定介质的吸收曲线</h2><h3 id="原理简述"><a href="#原理简述" class="headerlink" title="原理简述"></a>原理简述</h3><p>一束光入射到有一定厚度的介质上时，有一部分光被反射，另一部分被吸收，其余被透射——也即进入有厚度$d$的介质。根据各部分的光强，可以定义出介质板的光谱外透射率$T&#x3D;\frac{I_T}{I_0}$和光谱透射率$T_{i}&#x3D;\frac{I_2}{I_1}$。</p>
+<p>（此处应该有图，但是没有图。）</p>
+<p>光谱透射率同时与介质的性质和入射光的波长$\lambda$​相关。为什么这么说呢？因为忽略介质内散射的情况下$T_{i}&#x3D;e^{-\alpha d}$​，$\alpha$​称为介质的线性吸收系数，与介质的性质和入射光波长有关。</p>
+<p>经过若干次透射后，透射光的光强为一个等比数列的和，即为$I_T&#x3D;\frac{I_0(1-R)^2e^{-\alpha d}}{1-R^2e^{-2\alpha d}}$​。其中，$I_{0}$​为入射光强，$R$​为单一界面上的反射率。由此可以计算光谱外透射率$T&#x3D;\frac{I_T}{I_0}$​。</p>
+<p>在实际实验中，使用了两块仅厚度不同的试样，计算后近似得出光谱外透射率的比值，<strong>我们不加证明地给出吸收系数的近似：$\alpha&#x3D;\frac{lnT_{1}-lnT_{2}}{d_{2}-d_{1}}$</strong> 。实际实验中，**用微电流放大器的显示值$V_{1}$,$V_{2}$分别替换上式的$T_{1}$,$T_{2}$**。</p>
+<h3 id="应该做什么？在纸上记什么？"><a href="#应该做什么？在纸上记什么？" class="headerlink" title="应该做什么？在纸上记什么？"></a>应该做什么？在纸上记什么？</h3><p>你不懂仪器的构造，但是没关系，跟着做就行了。</p>
+<ul>
+<li>校对单色仪的波长示值</li>
+</ul>
+<p>单色仪长这个样子：</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/jGNzVO"><img src="https://s1.ax1x.com/2022/07/04/jGNzVO.png" alt="jGNzVO.png"></a></p>
+<p><strong>第一步</strong>，通过两个鼓轮调入射狭缝 S1 和出射狭缝 S2 的宽度，分别约为 1mm 和 2mm（目测即可）。</p>
+<p><strong>第二步</strong>，把汞灯放在 S1 前面，打开汞灯，把手轮转到 577.0~579.1nm 之间的某一位置（通过波长示数器观察）。</p>
+<p>显微镜目镜和物镜拧紧放在 S2 前面，调一调高度和与 S2 的距离，观察到像这样的图像。黄的叫谱线，黑的叫狭缝刃口。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/jGUpIe"><img src="https://s1.ax1x.com/2022/07/04/jGUpIe.png" alt="jGUpIe.png"></a></p>
+<blockquote>
+<p>关小入射狭缝 S1 使两条谱线分开，在谱线沿缝方向宽度基本均匀、亮度好的前提下， 使狭缝尽量窄，谱线尽量细。再关小出射狭缝 S2，同时微动手轮，使其中一条谱线始终在狭缝中央，直至狭缝宽度与谱线同宽（此时微动手轮，谱线即被遮挡，谱线消失）。</p>
+</blockquote>
+<p>纸上谈兵来说，如上操作可以得到单条谱线的波长示值（显示在波长计数器上）。按这个办法慢慢调波长，在标准值附近分别找两条黄线，一条紫线和一条绿线的示值，把它们记在第一个表里，<strong>差值的平均值就是单色仪波长示值的系统误差，之后要修约。</strong></p>
+<p>标准值是黄线 579.1nm， 黄线 577.0nm，绿线 546.1nm，紫线 435.8nm。</p>
+<ul>
+<li>用汞灯调狭缝宽度</li>
+</ul>
+<p><strong>第一步</strong>，将单色仪的波长读数装置转到示值在 577.0~579.1nm 之间的某一位置。将出射缝 S2 的宽度暂时调至约 2mm。用显微镜<strong>观察汞的两条黄谱线（577.0nm 和 579.1nm）</strong>。如果看不到谱线，增加 S2 缝宽或改变波长示值。</p>
+<p><strong>第二步</strong>，缓慢增加入射狭缝 S1 的宽度，使谱线变宽，<strong>直到两条黄谱线刚好碰上且不重叠为止</strong>，此时入射狭缝宽约0.8mm。再调节出射狭缝 S2 的宽度，同时微调手轮，<strong>使出缝宽度与其中一条谱线宽度大致相同</strong>，此时出缝与入缝同宽，约 0.8mm。</p>
+<p>此后不要再动单色仪，光强就能满足吸收系数测量的要求。此部分不需要记录数据。</p>
+<ul>
+<li>溴钨灯&#x2F;光路调节，而不是溴钨灯光&#x2F;路调节</li>
+</ul>
+<p><strong>第一步</strong>，溴钨灯按讲义上写的接三路输出电源，调整设置。</p>
+<p>然后，讲义上是这样写的：</p>
+<blockquote>
+<p>为了减少单色仪的光能损失，提高透光效率（充分利用单色仪的全孔径和相对孔径 <em>D</em>&#x2F;<em>f</em>），根据图 12 光路图，计算聚光镜和光源的位置。</p>
+<p>聚光(透)镜的参数见前面。单色仪焦距 <em>f</em>&#x3D;300mm (即图 12 的 <em>b</em>&#x3D;300mm)，单色仪球面镜（准直镜）的光栏宽度 <em>D</em>&#x3D;50mm。成像规律符合 Gauss 公式。</p>
+<p>使球面镜的孔径 <em>D</em> 充分照明，两个相似三角形应有下列关系：<em>d&#x2F;D</em>&#x3D;<em>a&#x2F;b</em>。</p>
+</blockquote>
+<p><strong>翻译成人话：聚光镜摆在狭缝前面 18cm 处，溴钨灯摆在聚光镜前面 9cm 处，注意共轴。</strong>当然，得在表格上画个图，装模作样算一下这两个数据。</p>
+<p><strong>第二步</strong>，手轮调到 610.0nm，调整各种位置。用眼睛靠近出射狭缝 S2 观察红色谱线。</p>
+<p>具体怎么调？<strong>先粗调后细调。</strong></p>
+<p>粗调：溴钨灯电流建议用 2.0A。微调光源的位置，用眼睛观察溴钨灯在入射狭缝 S1 处所成的清晰实像，粗略调节等高同轴。</p>
+<p>细调：溴钨灯电流建议用 1.50A。用眼睛靠近出射狭缝 S2 观察光谱，左右(共轴)调节聚光镜至合适位置，不管条纹亮度均匀否，只关注条纹上、下边缘的圆弧左右对称否，调至对称。</p>
+<p>再前后、左右微调溴钨灯，眼睛能看到亮度均匀的光谱(条纹)，差不多这样。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/jGUPGd"><img src="https://s1.ax1x.com/2022/07/04/jGUPGd.png" alt="jGUPGd.png"></a></p>
+<p>调节好透镜和溴钨灯位置后，固定好它们。</p>
+<ul>
+<li>最后的仪器安装</li>
+</ul>
+<p><strong>第一步</strong>，把样品装在 S2 上，先薄再厚，具体操作摘录如下：</p>
+<blockquote>
+<p>将装有钕玻璃吸收片的样品反面的红点对准S2 上红点，顺时针旋转样品，听到咔的声音，样品已锁定，往外拉一下，确认已安装好。</p>
+<p>取样品时侧面小螺钉往里轻推，逆时针旋转即可取下。</p>
+</blockquote>
+<p><strong>第二步</strong>，装硅光电二极管探头。</p>
+<blockquote>
+<p>将探头插入样品正面的圆柱孔内(插到底)，确认电缆接头处于拧紧状态。</p>
+</blockquote>
+<p>如果还是手笨接不好仪器，就求助一下旁边同学吧<del>，没救了</del>。</p>
+<ul>
+<li>测量环节</li>
+</ul>
+<p>对每一个样品，观察对各色光的吸收情况。</p>
+<p>从 610.0nm 到 550.0nm 转动手轮测定两个最大的吸收峰（光电探测器上的电压示值最小）的波长位置并记录。要求每隔 2nm 测一次示值，在吸收峰左右 4nm 范围内测量点更密，取整数每隔 0.5nm 测量一次，记录在最后一个表里。</p>
+<p>注意：测量要消空程，即只向一个方向转动手轮， 一次完成。</p>
+<h3 id="测完数据要分析计算什么？画哪些图？"><a href="#测完数据要分析计算什么？画哪些图？" class="headerlink" title="测完数据要分析计算什么？画哪些图？"></a>测完数据要分析计算什么？画哪些图？</h3><ul>
+<li>根据$\alpha&#x3D;\frac{lnV_{1}-lnV_{2}}{d_{2}-d_{1}}$，列表计算每个波长对应的$\alpha$</li>
+<li>画一个$\lambda-\alpha$图，是为吸收曲线。从中读出两个峰值的数值，然后按波长修正规则修一下。</li>
+<li>误差分析讨论和回答思考题，可参考祖传实验报告。</li>
+</ul>
+<h3 id="本文写作中用到的参考"><a href="#本文写作中用到的参考" class="headerlink" title="本文写作中用到的参考"></a>本文写作中用到的参考</h3><ul>
+<li><p>单色仪实验操作视频：</p>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV17A411L7mg?spm_id_from=333.337.search-card.all.click&amp;vd_source=6ae5c31a80120436d23cf7b7c7ceb3ba">https://www.bilibili.com/video/BV17A411L7mg?spm_id_from=333.337.search-card.all.click&amp;vd_source=6ae5c31a80120436d23cf7b7c7ceb3ba</a></p>
+</li>
+<li><p>清华大学2021秋基础物理实验(2)讲义</p>
+</li>
+</ul>
+<h2 id="偏振光学系列实验"><a href="#偏振光学系列实验" class="headerlink" title="偏振光学系列实验"></a>偏振光学系列实验</h2><p>待填坑。</p>
+<h2 id="弗兰克-赫兹实验"><a href="#弗兰克-赫兹实验" class="headerlink" title="弗兰克-赫兹实验"></a>弗兰克-赫兹实验</h2><p>待填坑。</p>
+<h1 id="简要报告篇"><a href="#简要报告篇" class="headerlink" title="简要报告篇"></a>简要报告篇</h1><h2 id="全息照相"><a href="#全息照相" class="headerlink" title="全息照相"></a>全息照相</h2><p>待填坑。</p>
+<h2 id="塞曼效应实验"><a href="#塞曼效应实验" class="headerlink" title="塞曼效应实验"></a>塞曼效应实验</h2><p>待填坑。</p>
+<h2 id="功函数的测量"><a href="#功函数的测量" class="headerlink" title="功函数的测量"></a>功函数的测量</h2><p>待填坑。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://chiyuru.github.io/2022/06/27/The-Second-Tsinghua-Logic-Summer-School/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -698,7 +845,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-count">6</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -769,7 +916,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共6k字</span>
+  <span class="post-count">博客全站共8.1k字</span>
 </div>
 
 
@@ -825,6 +972,61 @@
 
 
   
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 
