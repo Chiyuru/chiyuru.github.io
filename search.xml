@@ -70,7 +70,7 @@
 <p>（此处应该有图，但是没有图。）</p>
 <p>光谱透射率同时与介质的性质和入射光的波长$\lambda$​相关。为什么这么说呢？因为忽略介质内散射的情况下$T_{i}&#x3D;e^{-\alpha d}$​，$\alpha$​称为介质的线性吸收系数，与介质的性质和入射光波长有关。</p>
 <p>经过若干次透射后，透射光的光强为一个等比数列的和，即为$I_T&#x3D;\frac{I_0(1-R)^2e^{-\alpha d}}{1-R^2e^{-2\alpha d}}$​。其中，$I_{0}$​为入射光强，$R$​为单一界面上的反射率。由此可以计算光谱外透射率$T&#x3D;\frac{I_T}{I_0}$​。</p>
-<p>在实际实验中，使用了两块仅厚度不同的试样，计算后近似得出光谱外透射率的比值，<strong>我们不加证明地给出吸收系数的近似：$\alpha&#x3D;\frac{lnT_{1}-lnT_{2}}{d_{2}-d_{1}}$</strong> 。实际实验中，**用微电流放大器的显示值$V_{1}$,$V_{2}$分别替换上式的$T_{1}$,$T_{2}$**。</p>
+<p>在实际实验中，使用了两块仅厚度不同的试样，计算后近似得出光谱外透射率的比值，<strong>我们不加证明地给出吸收系数的近似：$\alpha&#x3D;\frac{lnT_{1}-lnT_{2}}{d_{2}-d_{1}}$</strong> 。实际实验中，<strong>用微电流放大器的显示值</strong>$V_{1}$,$V_{2}$<strong>分别替换上式的</strong>$T_{1}$,$T_{2}$。</p>
 <h3 id="应该做什么？在纸上记什么？"><a href="#应该做什么？在纸上记什么？" class="headerlink" title="应该做什么？在纸上记什么？"></a>应该做什么？在纸上记什么？</h3><p>你不懂仪器的构造，但是没关系，跟着做就行了。</p>
 <ul>
 <li>校对单色仪的波长示值</li>
@@ -141,11 +141,36 @@
 <li><p>清华大学2021秋基础物理实验(2)讲义</p>
 </li>
 </ul>
-<h2 id="偏振光学系列实验"><a href="#偏振光学系列实验" class="headerlink" title="偏振光学系列实验"></a>偏振光学系列实验</h2><p>待填坑。</p>
+<h2 id="偏振光学系列实验"><a href="#偏振光学系列实验" class="headerlink" title="偏振光学系列实验"></a>偏振光学系列实验</h2><h3 id="原理简述-1"><a href="#原理简述-1" class="headerlink" title="原理简述"></a>原理简述</h3><ul>
+<li>什么是偏振光？</li>
+</ul>
+<p>一个单色偏振光可以分解为两个互相垂直的线偏振光的叠加。表示如下：</p>
+<p>$$ \left{         \begin{aligned}         E_x &amp; &#x3D;  a_1\cos \omega t \         E_y &amp; &#x3D; a_2\cos (\omega t+\delta) \         \end{aligned} \right.$$</p>
+<p>其中的$\delta$被称为$x$方向偏振分量相对于$y$方向偏振分量的<strong>位相延迟量</strong>。显然，偏振光的“形状”由式中参数决定，主要探讨椭圆偏振光，圆偏振光和线偏振光的情况。引入<strong>偏振方向</strong>的概念：$\alpha&#x3D;arctan(\frac{a_2}{a_1} cos\delta)$</p>
+<p>我们不加证明地给出关于椭圆偏振光的参数求解式。其中定义$\psi$为<strong>椭圆的长轴方位角</strong>。</p>
+<p>$$ \left{         \begin{aligned}         \psi &amp; &#x3D; \frac{1}{2}arctan(tan2\beta cos\delta) \         \frac{b^2}{a^2} &amp; &#x3D; \frac{2}{1+\sqrt{1-(sin2\beta sin\delta)^2}}-1 \    \beta &amp;&#x3D;arctan(\frac{a_2}{a_1})                \end{aligned} \right.$$</p>
+<ul>
+<li>偏振片是干什么的？<del>我不到啊</del>看起来好像是用来产生线偏振光的。</li>
+</ul>
+<p><img src="C:\Users\85480\AppData\Roaming\Typora\typora-user-images\image-20220705010901836.png" alt="image-20220705010901836"></p>
+<p>首先，在这张图中，透射轴是偏振片上的那条轴，我们简称为$x$轴；消光轴是垂直于偏振片的轴，简称为$y$轴。沿$x$轴振动光波的光强透射率为$T_1$，它接近1；沿$y$轴振动光波的光强透射率为$T_2$，它接近$0$。二者小比大得到一个很小的值$e$，即为消光比。</p>
+<p>马吕斯定律：振动方向和x轴方向成$\theta$角的线偏振光经过偏振片后的透射率为$T_\theta&#x3D;(T_1-T_2)cos^2\theta+T2$。这是什么意思？<del>我也不知道</del></p>
+<p>实验中两个偏振片的组合（一个称为起偏器，一个称为检偏器）成为一组仪器。二者的$x$轴垂直则发生消光现象，二者的$x$轴平行则透射光强最大。</p>
+<ul>
+<li>反射和折射时的起偏现象</li>
+</ul>
+<p><del>我困了，下次再写</del></p>
 <h2 id="弗兰克-赫兹实验"><a href="#弗兰克-赫兹实验" class="headerlink" title="弗兰克-赫兹实验"></a>弗兰克-赫兹实验</h2><p>待填坑。</p>
-<h1 id="简要报告篇"><a href="#简要报告篇" class="headerlink" title="简要报告篇"></a>简要报告篇</h1><h2 id="全息照相"><a href="#全息照相" class="headerlink" title="全息照相"></a>全息照相</h2><p>待填坑。</p>
+<h2 id="光栅衍射实验"><a href="#光栅衍射实验" class="headerlink" title="光栅衍射实验"></a>光栅衍射实验</h2><p>待填坑。</p>
+<h1 id="简要报告篇"><a href="#简要报告篇" class="headerlink" title="简要报告篇"></a>简要报告篇</h1><h2 id="摩擦系数实验"><a href="#摩擦系数实验" class="headerlink" title="摩擦系数实验"></a>摩擦系数实验</h2><p>为什么这学期会有这么个实验…</p>
+<p>是新出的题目，未拿到讲义，可能不会写了。</p>
 <h2 id="塞曼效应实验"><a href="#塞曼效应实验" class="headerlink" title="塞曼效应实验"></a>塞曼效应实验</h2><p>待填坑。</p>
-<h2 id="功函数的测量"><a href="#功函数的测量" class="headerlink" title="功函数的测量"></a>功函数的测量</h2><p>待填坑。</p>
+<h2 id="几何光学系列实验"><a href="#几何光学系列实验" class="headerlink" title="几何光学系列实验"></a>几何光学系列实验</h2><p>待填坑。</p>
+<h1 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h1><p>我一向把物理实验当成“可以摆弄仪器的好玩的课”，高中学竞赛的时候就羡慕物化生竞赛的同学可以做实验<del>，我们只能一直待在教室里写题</del>。但是哪怕基物实验 1 拿了 A-，对于实验的原理仍然不甚了解。到最后每学期六次做实验三次写报告成为了生活中的调剂，不用太动脑子就能写出一大片东西，好像自己很努力一样。</p>
+<p>在 Overleaf 上无意间找到了<a href="https://www.overleaf.com/latex/templates/thu-emp-qing-hua-da-xue-jin-dai-wu-li-shi-yan-bao-gao-mo-ban/mbgqcryqhwqd">清华大学近代物理实验报告模板</a>。朱老师的要求和这个还是很不一样。发现也没有用于普通实验的模板，于是改了改我的自用模板，还行。</p>
+<p>GitHub 地址：<a href="https://github.com/Chiyuru/THU-Fundamental-Physics-Report">https://github.com/Chiyuru/THU-Fundamental-Physics-Report</a></p>
+<p><del>但是用 LaTeX 写实验报告的人哪个没有自己的模板啊</del></p>
+<p><del>您又在假装干活了是吗</del></p>
 ]]></content>
       <tags>
         <tag>课程实录</tag>
