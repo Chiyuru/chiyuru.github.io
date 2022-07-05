@@ -210,7 +210,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-07-05 01:17:34" itemprop="dateModified" datetime="2022-07-05T01:17:34+08:00">2022-07-05</time>
+                <time title="Modified: 2022-07-05 16:15:17" itemprop="dateModified" datetime="2022-07-05T16:15:17+08:00">2022-07-05</time>
               </span>
 
           
@@ -306,16 +306,17 @@
 <li>什么是偏振光？</li>
 </ul>
 <p>一个单色偏振光可以分解为两个互相垂直的线偏振光的叠加。表示如下：</p>
-<p>$$ \left{         \begin{aligned}         E_x &amp; &#x3D;  a_1\cos \omega t \         E_y &amp; &#x3D; a_2\cos (\omega t+\delta) \         \end{aligned} \right.$$</p>
-<p>其中的$\delta$被称为$x$方向偏振分量相对于$y$方向偏振分量的<strong>位相延迟量</strong>。显然，偏振光的“形状”由式中参数决定，主要探讨椭圆偏振光，圆偏振光和线偏振光的情况。引入<strong>偏振方向</strong>的概念：$\alpha&#x3D;arctan(\frac{a_2}{a_1} cos\delta)$</p>
+<p>$$ \begin{cases}{}   \  E_x &#x3D;  a_1\cos \omega t \\ E_y &#x3D; a_2\cos (\omega t+\delta) \     \end{cases} $$</p>
+<p>其中的$\delta$被称为$x$方向偏振分量相对于$y$方向偏振分量的<strong>位相延迟量</strong>。显然，偏振光的“形状”由式中参数决定，主要探讨椭圆偏振光，圆偏振光和线偏振光的情况。引入<strong>偏振方向</strong>的概念： $\alpha&#x3D;arctan(\frac{a_2}{a_1} cos\delta)$</p>
 <p>我们不加证明地给出关于椭圆偏振光的参数求解式。其中定义$\psi$为<strong>椭圆的长轴方位角</strong>。</p>
-<p>$$ \left{         \begin{aligned}         \psi &amp; &#x3D; \frac{1}{2}arctan(tan2\beta cos\delta) \         \frac{b^2}{a^2} &amp; &#x3D; \frac{2}{1+\sqrt{1-(sin2\beta sin\delta)^2}}-1 \    \beta &amp;&#x3D;arctan(\frac{a_2}{a_1})                \end{aligned} \right.$$</p>
+<p>$$ \begin{equation} \begin{cases}      \psi &amp;&#x3D; \frac{1}{2}arctan(tan2\beta cos\delta) \\         \frac{b^2}{a^2} &amp;&#x3D; \frac{2}{1+\sqrt{1-(sin2\beta sin\delta)^2}}-1 \\   \beta &amp;&#x3D;arctan(\frac{a_2}{a_1})  \\      \end{cases}     \end{equation} $$</p>
 <ul>
 <li>偏振片是干什么的？<del>我不到啊</del>看起来好像是用来产生线偏振光的。</li>
 </ul>
 <p><img src="C:\Users\85480\AppData\Roaming\Typora\typora-user-images\image-20220705010901836.png" alt="image-20220705010901836"></p>
+<p><u>这图目前应该看不见。下次一定放。</u></p>
 <p>首先，在这张图中，透射轴是偏振片上的那条轴，我们简称为$x$轴；消光轴是垂直于偏振片的轴，简称为$y$轴。沿$x$轴振动光波的光强透射率为$T_1$，它接近1；沿$y$轴振动光波的光强透射率为$T_2$，它接近$0$。二者小比大得到一个很小的值$e$，即为消光比。</p>
-<p>马吕斯定律：振动方向和x轴方向成$\theta$角的线偏振光经过偏振片后的透射率为$T_\theta&#x3D;(T_1-T_2)cos^2\theta+T2$。这是什么意思？<del>我也不知道</del></p>
+<p>马吕斯定律：振动方向和x轴方向成$\theta$角的线偏振光经过偏振片后的透射率为 $$T_\theta&#x3D;(T_1-T_2)cos^2\theta+T_2$$。 这是什么意思？<del>我也不知道</del></p>
 <p>实验中两个偏振片的组合（一个称为起偏器，一个称为检偏器）成为一组仪器。二者的$x$轴垂直则发生消光现象，二者的$x$轴平行则透射光强最大。</p>
 <ul>
 <li>反射和折射时的起偏现象</li>
