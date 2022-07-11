@@ -12,7 +12,7 @@
 
 <link rel="stylesheet" href="/css/main.css">
 
-
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
 <script id="hexo-configurations">
@@ -20,10 +20,12 @@
     var CONFIG = {"hostname":"chiyuru.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta property="og:type" content="website">
+  <meta name="description" content="被自己菜哭｡ﾟ(ﾟ´Д｀ﾟ)ﾟ｡">
+<meta property="og:type" content="website">
 <meta property="og:title" content="驰雨Chiyuru">
 <meta property="og:url" content="https://chiyuru.github.io/index.html">
 <meta property="og:site_name" content="驰雨Chiyuru">
+<meta property="og:description" content="被自己菜哭｡ﾟ(ﾟ´Д｀ﾟ)ﾟ｡">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="驰雨Chiyuru">
 <meta name="twitter:card" content="summary">
@@ -95,6 +97,7 @@
       <h1 class="site-title">驰雨Chiyuru</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
+      <p class="site-subtitle" itemprop="description">菜狗 汪汪汪</p>
   </div>
 
   <div class="site-nav-right">
@@ -184,7 +187,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
       <meta itemprop="name" content="驰雨Chiyuru">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="被自己菜哭｡ﾟ(ﾟ´Д｀ﾟ)ﾟ｡">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -210,7 +213,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-07-10 01:01:20" itemprop="dateModified" datetime="2022-07-10T01:01:20+08:00">2022-07-10</time>
+                <time title="Modified: 2022-07-11 15:35:48" itemprop="dateModified" datetime="2022-07-11T15:35:48+08:00">2022-07-11</time>
               </span>
 
           
@@ -225,243 +228,14 @@
 
       
           <p>考虑到开学之后肯定没空每周研究实验怎么做，最近又很颓不想干活。于是一边补番一边写一份从零开始的，<strong>讲人话的</strong>实验备忘录，目的是将来做实验前快速阅读一遍，然后对着设计好的实验表和博文就能<del>优雅地</del>动手不动脑地做完实验，还能从这篇备忘录里抄点东西去写实验报告。</p>
-<p>这个操作是合理的。<del>我和物理本来就不合适，</del>结合上学期的经验可以发现，无论有没有学过原理，我唯一的解决方案就是按计划一帧一帧地做实验，才不至于大脑空白。加之我秋季学期就没选理论课，理论水平也就是现在这样了，倘若现在不写，将来更写不出来。上学期因为仓促，只在讲义上手写了一些要点，有的时候记不清了就会不知所措，所以这次码个字可以详细一点。</p>
-<p>这样的话，物理实验就变成了<del>大猩猩也能做的</del>体力活罢了。我不否认这个想法，也无意论辩这门课是否有意义，将本文视作作者的救命手册即可。</p>
-<p><strong>注：未经授权禁止转载，本人不希望在院系里受到关注；所有提到的引用，包括图片，文字，数据信息等，著作权归原作者所有；一概不提供文中提到的自用实验表格，请自行阅读实验讲义，勿直接伸手。</strong></p>
-<h1 id="完整报告篇"><a href="#完整报告篇" class="headerlink" title="完整报告篇"></a>完整报告篇</h1><h2 id="用单色仪测定介质的吸收曲线"><a href="#用单色仪测定介质的吸收曲线" class="headerlink" title="用单色仪测定介质的吸收曲线"></a>用单色仪测定介质的吸收曲线</h2><h3 id="原理简述"><a href="#原理简述" class="headerlink" title="原理简述"></a>原理简述</h3><p>一束光入射到有一定厚度的介质上时，有一部分光被反射，另一部分被吸收，其余被透射——也即进入有厚度$d$的介质。根据各部分的光强，可以定义出介质板的光谱外透射率$T&#x3D;\frac{I_T}{I_0}$和光谱透射率$T_{i}&#x3D;\frac{I_2}{I_1}$。</p>
-<p>（此处应该有图，但是没有图。）</p>
-<p>光谱透射率同时与介质的性质和入射光的波长$\lambda$​相关。为什么这么说呢？因为忽略介质内散射的情况下$T_{i}&#x3D;e^{-\alpha d}$​，$\alpha$​称为介质的线性吸收系数，与介质的性质和入射光波长有关。</p>
-<p>经过若干次透射后，透射光的光强为一个等比数列的和，即为$I_T&#x3D;\frac{I_0(1-R)^2e^{-\alpha d}}{1-R^2e^{-2\alpha d}}$​。其中，$I_{0}$​为入射光强，$R$​为单一界面上的反射率。由此可以计算光谱外透射率$T&#x3D;\frac{I_T}{I_0}$​。</p>
-<p>在实际实验中，使用了两块仅厚度不同的试样，计算后近似得出光谱外透射率的比值，<strong>我们不加证明地给出吸收系数的近似：$\alpha&#x3D;\frac{lnT_{1}-lnT_{2}}{d_{2}-d_{1}}$</strong> 。实际实验中，<strong>用微电流放大器的显示值</strong>$V_{1}$,$V_{2}$<strong>分别替换上式的</strong>$T_{1}$,$T_{2}$。</p>
-<h3 id="应该做什么？在纸上记什么？"><a href="#应该做什么？在纸上记什么？" class="headerlink" title="应该做什么？在纸上记什么？"></a>应该做什么？在纸上记什么？</h3><p>你不懂仪器的构造，但是没关系，跟着做就行了。</p>
-<h4 id="校对单色仪的波长示值"><a href="#校对单色仪的波长示值" class="headerlink" title="校对单色仪的波长示值"></a>校对单色仪的波长示值</h4><p>单色仪长这个样子：</p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/jGNzVO"><img src="https://s1.ax1x.com/2022/07/04/jGNzVO.png" alt="jGNzVO.png"></a></p>
-<p><strong>第一步</strong>，通过两个鼓轮调入射狭缝 S1 和出射狭缝 S2 的宽度，分别约为 1mm 和 2mm（目测即可）。</p>
-<p><strong>第二步</strong>，把汞灯放在 S1 前面，打开汞灯，把手轮转到 577.0~579.1nm 之间的某一位置（通过波长示数器观察）。</p>
-<p>显微镜目镜和物镜拧紧放在 S2 前面，调一调高度和与 S2 的距离，观察到像这样的图像。黄的叫谱线，黑的叫狭缝刃口。</p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/jGUpIe"><img src="https://s1.ax1x.com/2022/07/04/jGUpIe.png" alt="jGUpIe.png"></a></p>
-<blockquote>
-<p>关小入射狭缝 S1 使两条谱线分开，在谱线沿缝方向宽度基本均匀、亮度好的前提下， 使狭缝尽量窄，谱线尽量细。再关小出射狭缝 S2，同时微动手轮，使其中一条谱线始终在狭缝中央，直至狭缝宽度与谱线同宽（此时微动手轮，谱线即被遮挡，谱线消失）。</p>
-</blockquote>
-<p>纸上谈兵来说，如上操作可以得到单条谱线的波长示值（显示在波长计数器上）。按这个办法慢慢调波长，在标准值附近分别找两条黄线，一条紫线和一条绿线的示值，把它们记在第一个表里，<strong>差值的平均值就是单色仪波长示值的系统误差，之后要修约。</strong></p>
-<p>标准值是黄线 579.1nm， 黄线 577.0nm，绿线 546.1nm，紫线 435.8nm。</p>
-<h4 id="用汞灯调狭缝宽度"><a href="#用汞灯调狭缝宽度" class="headerlink" title="用汞灯调狭缝宽度"></a>用汞灯调狭缝宽度</h4><p><strong>第一步</strong>，将单色仪的波长读数装置转到示值在 577.0~579.1nm 之间的某一位置。将出射缝 S2 的宽度暂时调至约 2mm。用显微镜<strong>观察汞的两条黄谱线（577.0nm 和 579.1nm）</strong>。如果看不到谱线，增加 S2 缝宽或改变波长示值。</p>
-<p><strong>第二步</strong>，缓慢增加入射狭缝 S1 的宽度，使谱线变宽，<strong>直到两条黄谱线刚好碰上且不重叠为止</strong>，此时入射狭缝宽约0.8mm。再调节出射狭缝 S2 的宽度，同时微调手轮，<strong>使出缝宽度与其中一条谱线宽度大致相同</strong>，此时出缝与入缝同宽，约 0.8mm。</p>
-<p>此后不要再动单色仪，光强就能满足吸收系数测量的要求。此部分不需要记录数据。</p>
-<h4 id="溴钨灯-x2F-光路调节，而不是溴钨灯光-x2F-路调节"><a href="#溴钨灯-x2F-光路调节，而不是溴钨灯光-x2F-路调节" class="headerlink" title="溴钨灯&#x2F;光路调节，而不是溴钨灯光&#x2F;路调节"></a>溴钨灯&#x2F;光路调节，而不是溴钨灯光&#x2F;路调节</h4><p><strong>第一步</strong>，溴钨灯按讲义上写的接三路输出电源，调整设置。</p>
-<p>然后，讲义上是这样写的：</p>
-<blockquote>
-<p>为了减少单色仪的光能损失，提高透光效率（充分利用单色仪的全孔径和相对孔径 <em>D</em>&#x2F;<em>f</em>），根据图 12 光路图，计算聚光镜和光源的位置。</p>
-<p>聚光(透)镜的参数见前面。单色仪焦距 <em>f</em>&#x3D;300mm (即图 12 的 <em>b</em>&#x3D;300mm)，单色仪球面镜（准直镜）的光栏宽度 <em>D</em>&#x3D;50mm。成像规律符合 Gauss 公式。</p>
-<p>使球面镜的孔径 <em>D</em> 充分照明，两个相似三角形应有下列关系：<em>d&#x2F;D</em>&#x3D;<em>a&#x2F;b</em>。</p>
-</blockquote>
-<p><strong>翻译成人话：聚光镜摆在狭缝前面 18cm 处，溴钨灯摆在聚光镜前面 9cm 处，注意共轴。</strong>当然，得在表格上画个图，装模作样算一下这两个数据。</p>
-<p><strong>第二步</strong>，手轮调到 610.0nm，调整各种位置。用眼睛靠近出射狭缝 S2 观察红色谱线。</p>
-<p>具体怎么调？<strong>先粗调后细调。</strong></p>
-<p>粗调：溴钨灯电流建议用 2.0A。微调光源的位置，用眼睛观察溴钨灯在入射狭缝 S1 处所成的清晰实像，粗略调节等高同轴。</p>
-<p>细调：溴钨灯电流建议用 1.50A。用眼睛靠近出射狭缝 S2 观察光谱，左右(共轴)调节聚光镜至合适位置，不管条纹亮度均匀否，只关注条纹上、下边缘的圆弧左右对称否，调至对称。</p>
-<p>再前后、左右微调溴钨灯，眼睛能看到亮度均匀的光谱(条纹)，差不多这样。</p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/jGUPGd"><img src="https://s1.ax1x.com/2022/07/04/jGUPGd.png" alt="jGUPGd.png"></a></p>
-<p>调节好透镜和溴钨灯位置后，固定好它们。</p>
-<h4 id="最后的仪器安装"><a href="#最后的仪器安装" class="headerlink" title="最后的仪器安装"></a>最后的仪器安装</h4><p><strong>第一步</strong>，把样品装在 S2 上，先薄再厚，具体操作摘录如下：</p>
-<blockquote>
-<p>将装有钕玻璃吸收片的样品反面的红点对准S2 上红点，顺时针旋转样品，听到咔的声音，样品已锁定，往外拉一下，确认已安装好。</p>
-<p>取样品时侧面小螺钉往里轻推，逆时针旋转即可取下。</p>
-</blockquote>
-<p><strong>第二步</strong>，装硅光电二极管探头。</p>
-<blockquote>
-<p>将探头插入样品正面的圆柱孔内(插到底)，确认电缆接头处于拧紧状态。</p>
-</blockquote>
-<p>如果还是手笨接不好仪器，就求助一下旁边同学吧<del>，没救了</del>。</p>
-<h4 id="测量环节"><a href="#测量环节" class="headerlink" title="测量环节"></a>测量环节</h4><p>对每一个样品，观察对各色光的吸收情况。</p>
-<p>从 610.0nm 到 550.0nm 转动手轮测定两个最大的吸收峰（光电探测器上的电压示值最小）的波长位置并记录。要求每隔 2nm 测一次示值，在吸收峰左右 4nm 范围内测量点更密，取整数每隔 0.5nm 测量一次，记录在最后一个表里。</p>
-<p>注意：测量要消空程，即只向一个方向转动手轮， 一次完成。</p>
-<h3 id="测完数据要分析计算什么？画哪些图？"><a href="#测完数据要分析计算什么？画哪些图？" class="headerlink" title="测完数据要分析计算什么？画哪些图？"></a>测完数据要分析计算什么？画哪些图？</h3><ul>
-<li>根据$\alpha&#x3D;\frac{lnV_{1}-lnV_{2}}{d_{2}-d_{1}}$，列表计算每个波长对应的$\alpha$</li>
-<li>画一个$\lambda-\alpha$图，是为吸收曲线。从中读出两个峰值的数值，然后按波长修正规则修一下。</li>
-<li>误差分析讨论和回答思考题，可参考祖传实验报告。</li>
-</ul>
-<h3 id="本文写作中用到的参考"><a href="#本文写作中用到的参考" class="headerlink" title="本文写作中用到的参考"></a>本文写作中用到的参考</h3><ul>
-<li><p>单色仪实验操作视频：</p>
-<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV17A411L7mg?spm_id_from=333.337.search-card.all.click&amp;vd_source=6ae5c31a80120436d23cf7b7c7ceb3ba">https://www.bilibili.com/video/BV17A411L7mg?spm_id_from=333.337.search-card.all.click&amp;vd_source=6ae5c31a80120436d23cf7b7c7ceb3ba</a></p>
-</li>
-<li><p>清华大学2021秋基础物理实验(2)讲义</p>
-</li>
-</ul>
-<h2 id="偏振光学系列实验"><a href="#偏振光学系列实验" class="headerlink" title="偏振光学系列实验"></a>偏振光学系列实验</h2><h3 id="原理简述-1"><a href="#原理简述-1" class="headerlink" title="原理简述"></a>原理简述</h3><ul>
-<li>什么是偏振光？<del>这不重要</del></li>
-</ul>
-<p>一个单色偏振光可以分解为两个互相垂直的线偏振光的叠加。表示如下：</p>
-<p>$$ \begin{cases}{}   \  E_x &#x3D;  a_1\cos \omega t \\ E_y &#x3D; a_2\cos (\omega t+\delta) \     \end{cases} $$</p>
-<p>其中的$\delta$被称为$x$方向偏振分量相对于$y$方向偏振分量的<strong>位相延迟量</strong>。显然，偏振光的“形状”由式中参数决定，主要探讨椭圆、圆和线偏振光的情况。引入<strong>偏振方向</strong>的概念： $\alpha&#x3D;arctan(\frac{a_2}{a_1} cos\delta)$</p>
-<p>我们不加证明地给出关于椭圆偏振光的参数求解式。其中定义$\psi$为<strong>椭圆的长轴方位角</strong><del>，我也不知道这个是什么意思</del>。</p>
-<p>$$ \begin{equation} \begin{cases}      \psi &amp;&#x3D; \frac{1}{2}arctan(tan2\beta cos\delta) \\         \frac{b^2}{a^2} &amp;&#x3D; \frac{2}{1+\sqrt{1-(sin2\beta sin\delta)^2}}-1 \\   \beta &amp;&#x3D;arctan(\frac{a_2}{a_1})  \     \end{cases}     \end{equation} $$</p>
-<ul>
-<li>偏振片是干什么的？好像是用来产生线偏振光的。</li>
-</ul>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/jdtZaq"><img src="https://s1.ax1x.com/2022/07/06/jdtZaq.png" alt="jdtZaq.png"></a></p>
-<p>首先，在这张图中，透射轴是偏振片上的那条轴，我们简称为$x$轴；消光轴是垂直于偏振片的轴，简称为$y$轴。沿$x$轴振动光波的光强透射率为$T_1$，它接近$1$；沿$y$轴振动光波的光强透射率为$T_2$，它接近$0$。二者小比大得到一个很小的值$e$，即为<strong>消光比</strong>。</p>
-<p>马吕斯定律：振动方向和$x$轴方向成$\theta$角的线偏振光，经过偏振片后的透射率为 $$T_\theta&#x3D;(T_1-T_2)cos^2\theta+T_2$$ 提出这个定律有什么意义？</p>
-<p>实验中两个偏振片的组合（一个称为起偏器，一个称为检偏器）成为一组仪器。起偏器产生的线偏振光经过检偏器。因此，由马吕斯定律，二者的$x$轴夹角即为$\theta$。从结论来看，二者的$x$轴垂直（$\cos \theta&#x3D;0$）则发生消光现象，二者的$x$轴平行（$\cos \theta&#x3D;1$）则透射光强最大。</p>
-<ul>
-<li>反射和折射时的起偏现象</li>
-</ul>
-<p>电矢量形式的菲涅耳公式我看不懂，也不知道是干嘛的（直球）。</p>
-<p>和实验相关的东西翻译成人话来说就是，偏振器的透射轴方向可以由布儒斯特角确定。具体如下：</p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/jdtuGT"><img src="https://s1.ax1x.com/2022/07/06/jdtuGT.png" alt="jdtuGT.png"></a></p>
-<p>预置光束在三棱镜上的入射角$\theta_i$为$arctan\text n$，其中$\text n$为玻璃的反射率，也即初入射角约为56°。旋转偏振片到某个角度可以发现白纸屏上的光点很暗。微调二者，使得光点达到最暗时的入射角为布儒斯特角$\theta_B$，且此时偏振片的透射轴（$x$轴）方向平行于三棱镜上的入射面。</p>
-<p><strong>以下与实验无关，可在实验前阅读中跳过。</strong>讲义上还有一段关于S分量反射率的叙述，目测是菲涅尔定律的推导：</p>
-<blockquote>
-<p>此时， <em>S</em> 分量的反射率为$R_{SB}&#x3D;\frac{(n^2-1)^2}{(n^2+1)^2}$。</p>
-</blockquote>
-<p>关于<del>反应堆</del>玻片堆：</p>
-<blockquote>
-<p>上式表示的反射率$R_{SB}$ 一般较小，反射光较弱。光束以$\theta_B$射入多块平行玻璃板以获得只有 <em>P</em> 分量的线偏振透射光，经过 <em>N</em> 块玻璃片的 2<em>N</em> 个表面后，<em>S</em> 分量的总透射率为$$(1-R_{SB})^{2N}&#x3D;[1+(n-1)^2&#x2F;2n]^{-4N}$$在$N$较大时，其值接近于$0$。这种起偏装置就叫做玻片堆。</p>
-</blockquote>
-<ul>
-<li>延迟器和波片</li>
-</ul>
-<p>一般来说，线偏振光入射延迟器后出射为椭圆偏振光。其他的我就一句都没看懂了…<strong>不过没关系，一样可以做实验。</strong></p>
-<p>实验中需要操作的是判断波片快慢轴，定出方向，做一些测量。我们直接在下一部分说明。</p>
-<h3 id="应该做什么？在附的实验表上记什么？"><a href="#应该做什么？在附的实验表上记什么？" class="headerlink" title="应该做什么？在附的实验表上记什么？"></a>应该做什么？在附的实验表上记什么？</h3><h4 id="组装仪器"><a href="#组装仪器" class="headerlink" title="组装仪器"></a>组装仪器</h4><p><a target="_blank" rel="noopener" href="https://imgtu.com/i/jdt1sJ"><img src="https://s1.ax1x.com/2022/07/06/jdt1sJ.png" alt="jdt1sJ.png"></a></p>
-<p>这是一个分光计改装的实验仪。</p>
-<p>打开激光器，粗调2,3的轴线，小平台基本水平且与分光计主轴垂直。激光光斑不要太靠近偏振片区域的边缘。</p>
-<p>电阻箱阻值100Ω，使得毫伏表示数大于1毫伏。</p>
-<h4 id="观测布儒斯特角和偏振器的特性"><a href="#观测布儒斯特角和偏振器的特性" class="headerlink" title="观测布儒斯特角和偏振器的特性"></a>观测布儒斯特角和偏振器的特性</h4><p>玻璃片放在平台上，反射面过平台中心点。以下的此为“x”指实验表中的部分填写。</p>
-<p><strong>第一步</strong>，确定光束正入射棱镜表面时平台方位角$\alpha_{i&#x3D;0}$。用小纸片扎一个小孔，放在激光器出射光束处，调整棱镜表面的反射光在纸屏上的亮点和小孔重合，记下此时的平台方位角即为$\alpha_{i&#x3D;0}$。<del>能不能搞点正常的下标啊</del></p>
-<p><strong>第二步</strong>，<strong>旋转棱镜</strong>使得光束的入射角$\theta_i$约为55°。旋转2到某个角度可以发现白纸屏上的光点很暗。微调入射角和起偏器，使得光点达到最暗时的平台方位角为$\alpha_B$。起偏器2的方向角为$P_{\leftrightarrow}$。<del>能不能搞点正常的下标啊</del></p>
-<p><strong>第二步要连做三次</strong>，得到一个平台方位角的平均值$\alpha_B$，然后布儒斯特角测量值就是$\alpha_{i&#x3D;0}-\alpha_B$，然后折射率就是布儒斯特角取一个正切值。此为“4”。</p>
-<p><strong>第三步</strong>，如上得到一个起偏器方向角的平均值$P_{\leftrightarrow}$，把2置于平均值位置。拿走玻璃片，转动3使得光强探测器上电压值最小，此时即为正交消光。在表格里记下3上度盘的度数为$a_\uparrow$，可以看一下$a_\uparrow$是否和$P_{\leftrightarrow}$大约相差$90°$作为验证，此为“5”。<del>能不能搞点正常的下标啊</del></p>
-<p><strong>第四步</strong>，保持偏振器2不动，将3的轮盘角多加$90$度，从而恢复到二者$x$轴平行的情况。在此基础上每次加上$0,15,30,45,60,75,80,84,87,90$度，得到二者$x$轴的夹角为以上数据。记下对应的电压值，注意夹角为$90$度时<strong>可以视作已经消光，示数为环境光光强</strong>。此为“6”。</p>
-<h4 id="波片的特性研究"><a href="#波片的特性研究" class="headerlink" title="波片的特性研究"></a>波片的特性研究</h4><p><strong>第一步</strong>，把3的轮盘角调回$a_\uparrow$，安装波片$C_0$到2盘的度盘上，使得$C_0$上白点处对应的直径大致竖直。微调$C_0$使得电压示数最小，记录下此时内圈的游标盘示数为$C_0$，此时有$C_0$的快轴竖直。此为“7”。</p>
-<p><strong>第二步</strong>，$C_0$不动，在小平台上放上$C_x$使得光束可以垂直透过。旋转$C_x$使得电压示数最小，此时$C_x$的某个轴已经垂直于2的透射轴，达到竖直方向。记下此时$C_x$的度盘数值，记为$C_x$。此为“8”。</p>
-<p><strong>第三步</strong>，此时二者都不要再动，就有$C_0$的快轴和$C_x$的某一个轴平行。保证偏振器2的轮盘角为$P_{\leftrightarrow}$，偏振器3的轮盘角为$a_\uparrow$。<strong>然后在此基础上给</strong>$P_{\leftrightarrow}$<strong>加上</strong>$15°$，转动3的轮盘角使得二者消光（表现为电压示数最小），记下此时的3度盘角度和转动的差值角度。<strong>每次测量结束后，将偏振器3的轮盘角归回$a_\uparrow$。</strong></p>
-<p>还要再做两次，分别给$P_{\leftrightarrow}$加上$30°$和$45°$，调节3的轮盘角。可以发现3的转动差值和给$P_{\leftrightarrow}$加上的角度差不多，作为验证。因为这组成了一个<strong>半波片</strong>。此为“9”。</p>
-<p><strong>第四步</strong>，转动$C_0$，给$C_0$加上90°使得$C_0$的快轴处于水平位置，和$C_x$的某一个轴垂直。与第三步类似地求出3的轮盘角增加差值。可以发现3的转动差值约等于给$P_{\leftrightarrow}$加上的角度取负，作为验证。因为这组成了一个<strong>全波片</strong>。此为“10”。</p>
-<p>这几步操作证明了$C_x$竖直的“某一个轴”其实是<strong>快轴</strong>。</p>
-<h4 id="单个-frac-1-4-波片的特性研究"><a href="#单个-frac-1-4-波片的特性研究" class="headerlink" title="单个$\frac{1}{4}$波片的特性研究"></a>单个$\frac{1}{4}$波片的特性研究</h4><p><strong>第一步</strong>，取下$C_x$，把2归回$P_{\leftrightarrow}$，把3归回$a_\uparrow$。将2的轮盘角多加$22.5°$，于是记录下$P&#x3D;P_{\leftrightarrow}+22.5°$。调节3使得偏振器3的透射轴与偏振器2的透射轴平行，记下此时的轮盘角$a_i$。然后转动$C_0$，分别记录最大的电压值和最小的电压值。</p>
-<p>然后，重复第一步，仅把其中的“$22.5°$”分别改为$45°,67.5°$实验两次即可。把此过程中的数据都记在表格里，下面的计算暂时先不用管。</p>
-<p><strong>第二步</strong>，把光源挡住，记一个系统误差电压值$I_0$，填在表格边上那个空里面。此为“11”。</p>
-<h3 id="测完数据要分析计算什么？画哪些图？-1"><a href="#测完数据要分析计算什么？画哪些图？-1" class="headerlink" title="测完数据要分析计算什么？画哪些图？"></a>测完数据要分析计算什么？画哪些图？</h3><ul>
-<li>计算实验元件玻璃的布儒斯特角和折射率。前文已体现。</li>
-<li>绘图验证马吕斯定律</li>
-</ul>
-<p>用表6的数据分析$\frac{I_m-I_{min}}{I_{max}-I_{min}}$和$(\cos x)^2$之间的线性关系（即二者相等），并绘制一个以$\theta$为自变量的图，体现$\frac{I_m-I_{min}}{I_{max}-I_{min}}$和$(\cos x)^2$两条曲线的变化。其中$I_{min}$和$I_{max}$分别代表$\theta$为$90°$和$0°$时的光强测量值。</p>
-<ul>
-<li>观测偏振光通过半波片和全波片的现象。前文已体现。</li>
-<li>线偏振光通过$\frac{1}{4}$波片</li>
-</ul>
-<p>其实就是把表格补满的过程。</p>
-<p>其中，计算波片相延可以使用$|sin\delta_r|&#x3D;\frac{2\sqrt{(I_{min}&#x2F;I_{max})}}{sin(2\beta)(1+I_{min}&#x2F;I_{max})}$来计算。三个值都略小于$90°$。理论值均为$90°$。</p>
-<p>用$\alpha$计算长轴方位角则有$\psi$和$\alpha$相差$90°$，但要把$\psi$调到$[-90°,90°]$的范围内。三个理论值分别为$0°,45°,90°$。</p>
-<p>用公式计算长轴方位角，则把$\psi&#x3D;\frac{1}{2}arctan(tan2\beta cos\delta)$代入算一下即可。理论值罗列同上，应该差距不大。</p>
-<p>其余分析参考祖传实验报告即可。</p>
-<h3 id="本文写作中用到的参考-1"><a href="#本文写作中用到的参考-1" class="headerlink" title="本文写作中用到的参考"></a>本文写作中用到的参考</h3><ul>
-<li><p>清华大学2021秋基础物理实验(2)讲义</p>
-</li>
-<li><p>清华大学2011级尚恩垚学长的大物实验报告《偏振光学实验》</p>
-</li>
-</ul>
-<p>（说来惭愧，我一个学基物的，看了别人的大物实验祖传报告，才学会了这个实验x）</p>
-<h2 id="塞曼效应实验"><a href="#塞曼效应实验" class="headerlink" title="塞曼效应实验"></a>塞曼效应实验</h2><p>待填坑。</p>
-<h2 id="光栅衍射实验"><a href="#光栅衍射实验" class="headerlink" title="光栅衍射实验"></a>光栅衍射实验</h2><p>待填坑。</p>
-<h1 id="简要报告篇"><a href="#简要报告篇" class="headerlink" title="简要报告篇"></a>简要报告篇</h1><h2 id="摩擦系数实验"><a href="#摩擦系数实验" class="headerlink" title="摩擦系数实验"></a>摩擦系数实验</h2><p>为什么这学期会有这么个实验…</p>
-<p>是新出的题目，暑假期间没有拿到讲义，可能不会写了。</p>
-<h2 id="弗兰克-赫兹实验"><a href="#弗兰克-赫兹实验" class="headerlink" title="弗兰克-赫兹实验"></a>弗兰克-赫兹实验</h2><h3 id="原理简述-2"><a href="#原理简述-2" class="headerlink" title="原理简述"></a>原理简述</h3><p>完全看不懂，拉倒吧。<del>总感觉也不影响实验</del></p>
-<h3 id="应该做什么？"><a href="#应该做什么？" class="headerlink" title="应该做什么？"></a>应该做什么？</h3><h4 id="第一次实验的接线"><a href="#第一次实验的接线" class="headerlink" title="第一次实验的接线"></a>第一次实验的接线</h4><p><a target="_blank" rel="noopener" href="https://imgtu.com/i/jrORQH"><img src="https://s1.ax1x.com/2022/07/10/jrORQH.png" alt="jrORQH.png"></a></p>
-<p>实验仪“放大倍数”档位选择“$×1$”档，“扫描选择”档位置于“手动”档。打开一体机电脑。参考讲义上的$10(a)$给实验管箱接线<del>（或者照抄上图）</del>，检查无误后准备通电。</p>
-<p>通电时先打开实验仪背后红色按钮，再按下实验仪前面的“灯丝电流开关”（若不按下此按钮，灯丝电流输出为 0A）。然后<strong>在实验仪上调整</strong>灯丝电流在$0.8A$附近，拒斥场电压在$7.5V$附近，控制栅电压在$1.5V$左右。</p>
-<h4 id="寻找实验条件"><a href="#寻找实验条件" class="headerlink" title="寻找实验条件"></a>寻找实验条件</h4><p>缓慢<strong>在实验仪上增加</strong>扫描电压$U_a$，观察<strong>板极电流$I_p$的变化情况</strong>。 当看到其起伏变化时，分别改变<strong>实验仪上</strong>的三个参数，定性观察每个参量对$I_p$的影响。如果随着$U_a$的增加在 $0 ∼ 85V$ 内能大致观察到$I_p$有 $6$ 个峰，峰与谷的差别相对比较明显，则达到最佳测试条件。此时把实验仪上的档位切成自动扫描，启动自动采集软件绘制曲线，获取峰值电压。</p>
-<p>太抽象了，所以我找了一份实验数据，来自刘丁菡学长，大概这样：</p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/jrOWyd"><img src="https://s1.ax1x.com/2022/07/10/jrOWyd.md.png" alt="jrOWyd.md.png"></a></p>
-<p>注意以下要点：</p>
-<ul>
-<li>实验仪上的灯丝电流不能一次改变很大，大概在$0.01∼0.02A$左右；调整灯丝电流后要等两三分钟再观察$I_p$的变化，有一个滞后。</li>
-<li>扫描电压$U_a$较大时尽量使用自动挡位测量，用完之后尽快调零。如果出现电流表指针打表，要尽快调小扫描电压，关闭灯丝电流的开关。</li>
-</ul>
-<h4 id="跟着FH软件教程操作"><a href="#跟着FH软件教程操作" class="headerlink" title="跟着FH软件教程操作"></a>跟着FH软件教程操作</h4><p>按照教程一直做到第三步，第四步校准仪器的时候<strong>输入自动扫描电压</strong>$U_a$的最大值为$90V$，扫描出完整的$6$个峰和谷。第五步数据采集模块中选择数据个数为$200$，点间延时为$100ms$为最佳。此后一直根据教程行动即可，得到第一份数据。</p>
-<h4 id="定性研究的操作"><a href="#定性研究的操作" class="headerlink" title="定性研究的操作"></a>定性研究的操作</h4><p>保持灯丝电流和拒斥电压不动，改变控制栅电压在$1.0V,1.5V,2.0V,2.5V,3.0V$这些值上变化，扫出曲线。</p>
-<p>保持灯丝电流和控制栅电压不动，改变拒斥电压在$5.0V,6.0V,7.0V,8.0V,9.0V$这些值上变化，扫出曲线。</p>
-<h4 id="氩原子更高激发态的情况"><a href="#氩原子更高激发态的情况" class="headerlink" title="氩原子更高激发态的情况"></a>氩原子更高激发态的情况</h4><p><del>这一次是两人一组，等待大佬救我</del></p>
-<p>类似的操作，把亚克力板接进电路，设定最佳实验条件。<strong>在软件上调整扫描电压最大值为$30V$<strong>​。</strong>在实验仪上调整</strong>灯丝电流在$0.78A$附近，控制栅电压在$1.5V$左右。拒斥场电压分别调整为$2.0V,2.5V,3.0V$。类似扫描出$I_p-U_a$的归一化和非归一化曲线。</p>
-<p>注意以下的要点：</p>
-<ul>
-<li>只需要图上有两个峰。第二个峰大约出现在$25V$左右，因此最大扫描电压只需要$30V$。而且$I_p$的最大峰值对应不超过$50\mu A$。</li>
-<li>祖传报告中指出这一步实验仪上的另两个参数保持不变即可，和讲义不是很一样。<strong>我倾向于相信祖传报告。</strong></li>
-</ul>
-<p>实验结束后可以断开其他元件的连接，整理仪器，处理自己的数据。</p>
-<h3 id="测完数据要分析计算什么？"><a href="#测完数据要分析计算什么？" class="headerlink" title="测完数据要分析计算什么？"></a>测完数据要分析计算什么？</h3><h4 id="测试-I-p-U-a-曲线，得到氩原子第一激发电位"><a href="#测试-I-p-U-a-曲线，得到氩原子第一激发电位" class="headerlink" title="测试$I_p-U_a$曲线，得到氩原子第一激发电位"></a>测试$I_p-U_a$曲线，得到氩原子第一激发电位</h4><p>找到第一部分数据的 Excel 表格 Data 页，取六个峰值的电压数据和测量次数（注意舍去一看就不对的值），到 Origin 里拟合数据。由于曲线上相邻两峰值之间的电位差就是氩原子的第一激发电$U_g$，因此处理得到的斜率就是第一激发电位。</p>
-<p>太抽象了，这是一张示例处理表格，来自刘丁菡学长，其中的 $Slope-Value$ 就是所需要的值。</p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/jrO2Se"><img src="https://s1.ax1x.com/2022/07/10/jrO2Se.png" alt="jrO2Se.png"></a></p>
-<p>关于不确定度的计算，公式都在下面了：</p>
-<p>$$\Delta_A&#x3D;S_b&#x3D;b\sqrt{\frac{2(1-R^2)}{n-2}}$$</p>
-<p>$$\Delta_B&#x3D;0.001×b+0.01$$</p>
-<p>$$U_g&#x3D;(b±\Delta_{U_g})$$</p>
-<p>其中$b$是斜率，$R^2$是拟合的最后一列方差，$n$是实验次数（即为$6$），$\Delta_{U_g}$是两个系差平方和的开方。</p>
-<h4 id="氩原子受击后回到基态辐射出的光波波长"><a href="#氩原子受击后回到基态辐射出的光波波长" class="headerlink" title="氩原子受击后回到基态辐射出的光波波长"></a>氩原子受击后回到基态辐射出的光波波长</h4><p>套下面两个公式：</p>
-<p>$$\lambda&#x3D;\frac{hc}{eU_g}$$</p>
-<p>$$\Delta_\lambda&#x3D;\lambda\frac{\Delta_{U_g}}{U_g}$$</p>
-<p>实验中观测不到发光是因为这是紫外波段而不是可见光波段，也因此用壳罩住了管子防止对人体造成伤害。</p>
-<h4 id="定性研究栅极电压和拒斥电压对-I-p-的影响"><a href="#定性研究栅极电压和拒斥电压对-I-p-的影响" class="headerlink" title="定性研究栅极电压和拒斥电压对$I_p$的影响"></a>定性研究栅极电压和拒斥电压对$I_p$的影响</h4><p>控制栅电压的影响：由图可知，从峰值对应的扫描电压上看，随着 $U_G$ 值的增大，曲线中峰 值所对应的扫描电压值稍向左偏移；从峰值的相对大小来看，随着 $U_G$ 值的增大，峰值先增大后减小，在  $U_G≈ 2.0V$ 附近能观测到峰值最大，说明此时单位时间到达极板的电子最多。 理论解释见祖传报告，反正我也写不出来。例图如下，来自刘丁菡学长：</p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/jrOcWD"><img src="https://s1.ax1x.com/2022/07/10/jrOcWD.md.png" alt="jrOcWD.md.png"></a></p>
-<p>拒斥电压的影响：由图可知，随着 $U_R$ 值的增大，曲线绝对值下移、峰谷值之间的差距变 大、曲线中峰值所对应的扫描电压值稍向右偏移。理论解释见祖传报告，反正我也写不出来。例图如下，来自刘丁菡学长：</p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/jrO6JO"><img src="https://s1.ax1x.com/2022/07/10/jrO6JO.md.png" alt="jrO6JO.md.png"></a></p>
-<h4 id="更高激发态的研究"><a href="#更高激发态的研究" class="headerlink" title="更高激发态的研究"></a>更高激发态的研究</h4><p>例图如下，来自刘丁菡学长。$U_R$ 整体对曲线的影响与第一激发态是类似的，即随着 $U_R$ 的增大，曲线整体下移，峰谷差值增大，峰值向右移动。但差别在于曲线的形状有所不同，即没有出现很明显的一个峰值，而是峰值附近有一个小平台。理论解释见祖传报告，反正我也写不出来。</p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/jrOfOA"><img src="https://s1.ax1x.com/2022/07/10/jrOfOA.md.png" alt="jrOfOA.md.png"></a></p>
-<h4 id="解答思考题"><a href="#解答思考题" class="headerlink" title="解答思考题"></a>解答思考题</h4><p>见祖传报告。</p>
-<h3 id="本文写作中用到的参考-2"><a href="#本文写作中用到的参考-2" class="headerlink" title="本文写作中用到的参考"></a>本文写作中用到的参考</h3><ul>
-<li>清华大学2020级刘丁菡学长的基物实验报告《弗兰克-赫兹实验》</li>
-</ul>
-<p>感谢学长的图救我老命，不然这个实验真的看不懂在干嘛…</p>
-<h2 id="几何光学系列实验"><a href="#几何光学系列实验" class="headerlink" title="几何光学系列实验"></a>几何光学系列实验</h2><p>不喜欢系列实验，真的好麻烦。</p>
-<h3 id="原理简述-3"><a href="#原理简述-3" class="headerlink" title="原理简述"></a>原理简述</h3><p><del>会算相似三角形就行</del></p>
-<ul>
-<li>薄透镜的成像规律</li>
-</ul>
-<p>经典公式：$\frac{1}{f}&#x3D;\frac{1}{p}+\frac{1}{q}$，其中 $p$,$q$ 分别代表物距和像距；$\beta&#x3D;-\frac{q}{p}$称为线放大率。</p>
-<p>它们有很多正负性质的要求：前三者实物&#x2F;实像&#x2F;凸透镜为正，虚物&#x2F;虚像&#x2F;凹透镜为负，$\beta$在实像时为负，虚像时为正。</p>
-<ul>
-<li>内调焦望远镜</li>
-</ul>
-<p>望远镜是由一个物镜一个目镜组成的。当我们用一组物镜组替代物镜时，不必移动物镜和目镜间的距离$l$，而是直接改变物镜组的焦距即可达到整体调焦的效果。这就叫做内调焦望远镜。</p>
-<p>实验中用到的物镜组是一个凸透镜$L_1$和一个凹透镜$L_2$组成的。这是一个最简单的变焦<del>物竞组</del>物镜组。原理是$L_2$的物方焦点在$L_1$的像方焦点右侧时，改变两个透镜的间距$d$就能达到内部调焦的效果。此时取二者的“正焦距”（我不太会描述）为$f_1’$和$f_2$，物镜的组合焦距即为$f_o’&#x3D;\frac{f_1’f_2}{d+f_2-f_1’}$。要求满足$f_1’-f_2&lt;d&lt;f_1’$才能如上调节。</p>
-<p>我们把目镜的焦距记作$f_e$。望远镜的视放大率即为$\Gamma_T&#x3D;-\frac{f_o}{f_e}$。这个数值的绝对值越大，观察到的像越大。比如说，观察远物的时候可以通过调小$d$来放大$f_o$，观察近物的时候不想改变物镜组和目镜组之间的距离，直接放大$d$即可。</p>
-<h3 id="应该做什么？-1"><a href="#应该做什么？-1" class="headerlink" title="应该做什么？"></a>应该做什么？</h3><h4 id="A0-薄透镜成像规律"><a href="#A0-薄透镜成像规律" class="headerlink" title="A0.薄透镜成像规律"></a>A0.薄透镜成像规律</h4><p>为了满足近轴光线条件，要进行共轴调节。</p>
-<p>粗调的时候，先把光源，物，透镜靠拢，调节到中心大约在一条平行于导轨的直线上。总之怎么看着舒服就怎么调。</p>
-<p>细调的原理是<del>大象追小象</del>大像追小像。当物与像的距离大于 $4f$ 时，凸透镜从物移到像的过程中会成两次清晰的像，一大一小。<strong>要做的就是</strong>移动像和透镜的位置，使得$B_1$追上$B_2$，也即两个像差不多大，这可以通过像屏上的坐标贴纸判断。此时像在透镜的主光轴上。</p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/jrwiY4"><img src="https://s1.ax1x.com/2022/07/09/jrwiY4.png" alt="jrwiY4.png"></a></p>
-<p>不要动平行光管，就是那个<del>挺长的不认识的东西。</del>此处无记录要求。</p>
-<h4 id="B1-物像距法测量薄凸透镜焦距"><a href="#B1-物像距法测量薄凸透镜焦距" class="headerlink" title="B1.物像距法测量薄凸透镜焦距"></a>B1.物像距法测量薄凸透镜焦距</h4><p>这很明示了，读个数据套公式就行。</p>
-<h4 id="B2-共轭法测量薄凸透镜焦距"><a href="#B2-共轭法测量薄凸透镜焦距" class="headerlink" title="B2.共轭法测量薄凸透镜焦距"></a>B2.共轭法测量薄凸透镜焦距</h4><p>读个数据套另一个公式：$f&#x3D;\frac{b^2-a^2}{4b}$，其中 $a$ 指两次透镜位置间距离。</p>
-<h4 id="B3-焦距仪法测薄凸透镜焦距"><a href="#B3-焦距仪法测薄凸透镜焦距" class="headerlink" title="B3.焦距仪法测薄凸透镜焦距"></a>B3.焦距仪法测薄凸透镜焦距</h4><p>读六组数据写在表格上，比较麻烦的是算不确定度。这一部分已经在讲义和实验表上详细手写了，照做即可，不再打一遍了。</p>
-<h4 id="C1-主面间距测量"><a href="#C1-主面间距测量" class="headerlink" title="C1.主面间距测量"></a>C1.主面间距测量</h4><p><a target="_blank" rel="noopener" href="https://imgtu.com/i/jrwAp9"><img src="https://s1.ax1x.com/2022/07/09/jrwAp9.md.png" alt="jrwAp9.md.png"></a></p>
-<p>5中的C.2应为B.3。不过我不太懂怎么通过这几个参数算主面间距，好怪。<strong>此处留坑。</strong></p>
-<h4 id="C2-修正共轭法系差"><a href="#C2-修正共轭法系差" class="headerlink" title="C2.修正共轭法系差"></a>C2.修正共轭法系差</h4><p>again，算就对了。</p>
-<h4 id="D-用焦距仪测凸透镜的焦距的附加透镜法"><a href="#D-用焦距仪测凸透镜的焦距的附加透镜法" class="headerlink" title="D.用焦距仪测凸透镜的焦距的附加透镜法"></a>D.用焦距仪测凸透镜的焦距的附加透镜法</h4><p>这个讲义上也说的挺清楚的。注意先给玻罗板取某一线对记录下来，第一步和第二步要用一样的线对<del>（废话）</del>。</p>
-<p>最后的凹透镜焦距是$f_2&#x3D;-\frac{f_1 y_0}{y’’}$，由于是凹透镜的原因，焦距记为负的。</p>
-<h4 id="E-内调焦望远镜的物镜组研究"><a href="#E-内调焦望远镜的物镜组研究" class="headerlink" title="E.内调焦望远镜的物镜组研究"></a>E.内调焦望远镜的物镜组研究</h4><p><strong>第一步</strong>，分别对物镜组中的凹凸透镜进行共轴调节，用焦距仪法测此组光具焦距值$f_o’$作为物镜焦距。反推得到此时凹凸透镜的距离$d&#x3D;\frac{f_2f_1’}{f_o’}+f_1’-f_2$。其中，由于凹凸透镜的焦距已经在B和D实验中测出，直接取用其值即可。</p>
-<p><strong>第二步</strong>，改变凹凸透镜距离使得长焦透镜$L_1$距离测微目镜约$10cm$。得到第二个测量值。</p>
-<p><strong>第三步</strong>，分别假设凹凸透镜的焦距，然后画一个类似下图的图。</p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/jrwFfJ"><img src="https://s1.ax1x.com/2022/07/09/jrwFfJ.md.png" alt="jrwFfJ.md.png"></a></p>
-<p>这张图的逻辑是：以纵轴表示自变量$d$，横轴表示四个因变量。其计算公式分别为：</p>
-<p>$$l_{L_1H}&#x3D;-\frac{f_1’d}{d+f_2-f_1’}$$</p>
-<p>$$l_{L_1H’}&#x3D;-\frac{d(d-f_1’)}{d+f_2-f_1’}$$</p>
-<p>$$F’&#x3D;l_{L_1H’}+f_o’$$</p>
-<p>$$F&#x3D;l_{L_1H}-f_o’$$</p>
-<p>其中，凸透镜$f_1’&#x3D;0.3m$,凹透镜$f_2&#x3D;0.2m$。<del>所以这个图是不是实验之前就能画出来</del></p>
-<h3 id="本文写作中用到的参考-3"><a href="#本文写作中用到的参考-3" class="headerlink" title="本文写作中用到的参考"></a>本文写作中用到的参考</h3><ul>
-<li>透镜焦距实验-仪器详解</li>
-</ul>
-<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV163411q7NP?spm_id_from=333.999.0.0&amp;vd_source=6ae5c31a80120436d23cf7b7c7ceb3ba">https://www.bilibili.com/video/BV163411q7NP?spm_id_from=333.999.0.0&amp;vd_source=6ae5c31a80120436d23cf7b7c7ceb3ba</a></p>
-<ul>
-<li>清华大学2011级耿强学长的大物实验报告《透镜焦距的测定》P181</li>
-</ul>
-<h1 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h1><p>我一向把物理实验当成“可以摆弄仪器的好玩的课”，高中学竞赛的时候就羡慕物化生竞赛的同学可以做实验<del>，我们只能一直待在教室里写题</del>。但是哪怕基物实验 1 拿了 A-，对于实验的原理仍然不甚了解。到最后每学期六次做实验三次写报告成为了生活中的调剂，不用太动脑子就能写出一大片东西，好像自己很努力一样。</p>
-<p>在 Overleaf 上无意间找到了<a target="_blank" rel="noopener" href="https://www.overleaf.com/latex/templates/thu-emp-qing-hua-da-xue-jin-dai-wu-li-shi-yan-bao-gao-mo-ban/mbgqcryqhwqd">清华大学近代物理实验报告模板</a>。朱老师的要求和这个还是很不一样。发现也没有用于普通实验的模板，于是改了改我的自用模板，还行。</p>
-<p>GitHub 地址：<a target="_blank" rel="noopener" href="https://github.com/Chiyuru/THU-Fundamental-Physics-Report">https://github.com/Chiyuru/THU-Fundamental-Physics-Report</a></p>
-<p><del>但是用 LaTeX 写实验报告的人哪个没有自己的模板啊</del></p>
-<p><del>您又在假装干活了是吗</del></p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/07/03/Physics-Lab2-Notes/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -485,7 +259,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
       <meta itemprop="name" content="驰雨Chiyuru">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="被自己菜哭｡ﾟ(ﾟ´Д｀ﾟ)ﾟ｡">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -511,7 +285,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-07-03 01:03:52" itemprop="dateModified" datetime="2022-07-03T01:03:52+08:00">2022-07-03</time>
+                <time title="Modified: 2022-07-11 15:38:54" itemprop="dateModified" datetime="2022-07-11T15:38:54+08:00">2022-07-11</time>
               </span>
 
           
@@ -527,40 +301,14 @@
       
           <p>第一次上前沿研究类的讲座课，本来是想像竞赛的时候按日写赛题评析一样，按照 DAY1~DAY5 的顺序每天上完课梳理一下思路，简单提一提觉得有趣的点。<del>结果到 DAY2 就被复杂度和计算理论知识直接干碎了。</del></p>
 <p>后面的课虽然很有意思但一涉及到相关问题就不太能完全理解，硬要写的话没太大意义，遂放弃，变成了日常吐槽（又在水 blog 了是吗</p>
-<h1 id="DAY-1"><a href="#DAY-1" class="headerlink" title="DAY 1"></a>DAY 1</h1><p><strong>注：第一天结束之后随手记的东西，这一天完全理解了是因为之前就学过一点，遂保留。</strong></p>
-<p>第一节课还是比较熟悉的内容。上学期刚在数据库课上学过 Relational Algebra，开课前一晚找了本离散补了一下 First Order Logic。上课的时候 wiki 查了一下什么是 Relational Calculus 之后对照着 PPT 看了一遍，就去摸鱼了。</p>
-<p>查作业题熬到半夜，关于证明 Relational Algebra 中 difference 的独立性。Google 出来<a target="_blank" rel="noopener" href="https://moodle2.cs.huji.ac.il/nu15/pluginfile.php/167868/mod_resource/content/3/relalgLect1.pdf">一个看起来像是泰国人写的课件</a>，细讲了一下怎么证明乘积、并、投影和选择的独立性，偏偏没有取差。然后给了一个 Monotonic Query 的定义，看了一大圈回来才意识到这好像是证明 difference 独立性的提示。想了亿会之后意识到的确是提示，用单调性举个反例就好了，<del>我好蠢！</del>太优雅啦！</p>
-<p>证明吸取过往教训没有口胡，而是<del>口胡加上</del>举了个反例。第一天没打 LaTeX，作业直接手写了个塑料英语交掉。句子丑到高三英语春考前的我自己都要跳出来骂人的程度。</p>
-<h1 id="Phokion-的塑料英语"><a href="#Phokion-的塑料英语" class="headerlink" title="Phokion 的塑料英语"></a>Phokion 的塑料英语</h1><p>DAY1 我还在怀疑自己是不是因为秋季学期法语二外的荼毒，已经不能辨别正常的英文读音了，但 Chrome 的字幕显示确实和老爷子的读音差别好大。于是下午又去听了一下 Hybrid Logic 主题，不用字幕的话也能听懂。得出结论不是我的问题（</p>
-<p>这几天啃 PPT 之余好奇的就是：Phokion 的母语真的是英语吗？还是法语或者某个与法语相近的语言，比如西班牙语？（不是很懂语言学的知识，关于语系什么的ww）</p>
-<p>听到了无数个法语读音的 -an，不发音的 h，只有 Chrome 字幕能明白的 “Query”， PPT 上关于 naive chase procedure 的描述中用的是有分音符的 naïve（也有可能是出于正式），读音也接近法语耶。感觉母语不是英语的可能性增加了！（x</p>
-<h1 id="Google-救大命"><a href="#Google-救大命" class="headerlink" title="Google 救大命"></a>Google 救大命</h1><p>我的数据结构选的是下学期自动化系的课，相比计算机系的课来说是3学分阉割版<del>（主要是为了保命）</del>，秋季学期才开课。于是此前关于时间复杂度问题的认识还只停留在符号层面，计算理论更是一窍不通。从 DAY2 开始类似的问题就没太懂，常见问题的规约全靠 Google 救命，最后作业做了个七七八八，还行吧。</p>
-<p>DAY3 的 Problem2 直接查出来一篇 Phokion 的 paper，在里面找某个结论的时候发现证明标了个引用符号，往前找文献又是给引理标了引用，最后找到了 Repair of Inconsistent Database 理论初建的论文。其他很多问题查文献往往也只有若干篇 Phokion 团队的 paper，只有您的实验室在做这个方向是吗.jpg</p>
-<p>什么叫逻辑学专题与<strong>前沿</strong>啊。我还是第一次上前沿专题讨论课形式的课程呢。想到春季学期的时候差点选了数学系的《现代数学前沿概览》，后来学长说目前本来就比数学系基础差一点，不如再学一年再去<del>挨打</del>上课，<del>而且这课是 647 开的，可能要慎重，</del>遂暂时放弃。</p>
-<h1 id="奇妙的作息时间"><a href="#奇妙的作息时间" class="headerlink" title="奇妙的作息时间"></a>奇妙的作息时间</h1><p>回家之后不用去教室，早十可以九点半起床了。形成了很怪的作息：</p>
-<ul>
-<li>早晨九点半起床洗漱恰饭。对着字幕和 PPT 听 Phokion 的塑料英语，一直到十二点一刻。</li>
-<li>早午饭间距有点近，可以先睡个午觉，一点半（甚至更晚）再起来吃午饭。</li>
-<li>睡醒，恰饭，写作业。有可能还要听一遍回放，我太菜了QAQ</li>
-<li>一边查文献一边摸鱼到深夜，两点半睡觉是基本操作<del>，甚至可以睡够七个小时，多好</del>。</li>
-</ul>
-<p>要是说没休息好，好像也不至于，加上午觉一天至少睡八个小时；要说没干活好像也没有，该做的都做了，起码不至于非常摸鱼。要说哪里很怪，可能就是午觉有点长，而且时区不太对了（</p>
-<p>在学校无论晚上睡多久，似乎也很少睡午觉。从早晨出门开始就漂泊在外一整天，中途回寝室睡感觉挺麻烦的；即使多骑几段路回寝室，说不定上床睡觉也不方便；在教室或者图书馆趴着睡觉醒来都会头晕好一阵，体验也不是很好，干脆撑住就不睡了；第二节和第三节都有课的话吃个饭就不错了，这哪有觉给你睡啊，你睡不睡吧（</p>
-<p>回家真好，松软的床就在两步之外，还不用爬梯子，累了就倒头睡觉qwq</p>
-<h1 id="到底学到了什么"><a href="#到底学到了什么" class="headerlink" title="到底学到了什么"></a>到底学到了什么</h1><p>真要说学到了多少 Database 理论知识，我自己都觉得愧疚：证明还要靠 Google，对着各种文献 Ctrl+F 然后剪刀手，DAY2 作业里不理解的题直接上手糊了<del>但是还拿了9&#x2F;10是为什么呢</del>，之类的摸鱼行为真挺多的。<del>当然也不能指望我五天迅速精通老爷子研究了二十年的东西对吧</del>，哪怕讲座上的只是一点皮毛。</p>
-<p>所以如果真的说学到了什么，大概之后回忆起来的还是 Phokion 在 PPT 上讲过的 target tgds&amp;egds 以电影数据为例的描述、总统选举不同规则下的结果等等，很有趣。</p>
-<blockquote>
-<p>举例是理解的试金石。</p>
-</blockquote>
-<p>学抽代和高代（选）的时候也是一样，正是因为有各式各样的例子和动手操作的空间，我才觉得初学数学相比初学其他很多东西来说更有趣。当然，哪怕很多时候最终目的还是回归抽象，“用做游戏的方式理解规则”的这个过程还是很乐在其中。</p>
-<p>另外就是很开心坚持到了最后，没有自闭退课跑路。DAY2 的计算理论看麻了的时候想过无非几种可能：后面的内容变轻松一点，顺利上完 or 后面还是侧重于计算理论，越来越不懂，退课跑路明年多学点计算机知识之后再来 or 头铁把课上完，1 学分绩点拉胯的话就当多上了一门体育课<del>，反正怎么样也卷不过院系里那群卷王</del>。</p>
-<p>还好后三天的内容很成体系也很有意思，也不是太需要基础，作业和 take-home exam 已经顺利搞定了。可能还有个原因就是有朋友（唔赛博朋友可以这样说吗，起码我认为是朋友的ww）也在上这门课，虽然也没鼓起勇气问 dalao 各种 trivial 的问题，但不知道为什么有很踏实的感觉，单人行动的话可能中途受不了跑路的概率也会增加一点吧（</p>
-<p>系里之前还有几个也选了课的同学<del>（但我其实并不认识，惭愧）</del>问我打不打算退课跑路，尤其是第二天的时候虽然很犹豫，但回答至少会把课跟完，认真看看作业。你院每个学期为了 GPA 3.9+ 退课退到 20 学分的人真的好多，第一学期的时候我的心态其实也一样，为了 GPA 而没有手选数分高代，而是去微 A 和线代<del>爆杀</del>了。当然我目前的考虑还是不保研直接留学，<del>就算保研也没什么地方可以去，</del>可能也没有资格居高临下一般议论他人为了维持 GPA 的努力。</p>
-<p>但我自己还是觉得学有趣的、有用的、对自己来说更有价值的东西，比保持一个毕业后就迅速贬值的数值更有意义；与此同时，培养方案只是顺便完成的东西而已<del>（其实是自己专业的培养方案太烂了）</del>。选一条更困难的道路，也是相当幸福的事情。（别中二了啊，以后再看到这句话肯定会尴尬的啊啊啊（</p>
-<h1 id="结课合影"><a href="#结课合影" class="headerlink" title="结课合影"></a>结课合影</h1><p>结课合影的时候发现没给 zoom 开摄像头权限，网页版打开权限后要刷新重进，重进之后大家都打开了摄像头于是直接卡爆，啥也显示不出来。好不容易把自己的摄像头打开，听到助教说已经截完图了，呜呜（</p>
-<p>事后去看了课程回放，想自己截一个合影，发现因为电脑卡住而看不到界面的我完全失去了表情管理，还给所有人表演了一个展示浓密的头发（在镜头前理了半天乱糟糟的头发（应该没人看我吧应该没人看我吧x</p>
-<p>是时候认真配一下另一台电脑的设置，然后把主力机换掉了。surface 中看不中用啊（但是真的很轻便呜呜</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/06/27/The-Second-Tsinghua-Logic-Summer-School/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -584,7 +332,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
       <meta itemprop="name" content="驰雨Chiyuru">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="被自己菜哭｡ﾟ(ﾟ´Д｀ﾟ)ﾟ｡">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -602,10 +350,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2022-06-25 02:52:42 / Modified: 03:02:26" itemprop="dateCreated datePublished" datetime="2022-06-25T02:52:42+08:00">2022-06-25</time>
+              <time title="Created: 2022-06-25 02:52:42" itemprop="dateCreated datePublished" datetime="2022-06-25T02:52:42+08:00">2022-06-25</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-07-11 15:34:33" itemprop="dateModified" datetime="2022-07-11T15:34:33+08:00">2022-07-11</time>
+              </span>
 
           
 
@@ -619,18 +373,14 @@
 
       
           <h1 id="偶然想起来的事"><a href="#偶然想起来的事" class="headerlink" title="偶然想起来的事"></a>偶然想起来的事</h1><p>今天网络学堂把 Spring Term 归档进了 Past Terms 。打开微信把已经很久没人发言的春季学术部群撤掉了置顶，它立刻就消失了。但实际上春季学期我还有一个没完成的任务，就是本该在 11 周交上的学术图表绘制推送。</p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/jFflHs"><img src="https://s1.ax1x.com/2022/06/25/jFflHs.jpg" alt="当初收到的任务描述"></a></p>
-<p>高代选期中前一天，日常缺席集体活动的我咕掉了学术部的部会早早睡觉，所以远程被安排了这个选题。“学术图表绘制”不是 R 语言，不是 Python ，甚至不是 Matlab 或者 Excel ，而是 PPT 绘图和 Visio 绘图简介。<del>而且咕了会议的情况下还不知道它是哪个离谱的人选的。</del></p>
-<p>出于糊弄精神，我确实还是选了 PPT 的部分浅学了一下然后写了一份稿子，但它始终是个没人肯去修改的初稿，堆满了不会有人细看的公众号文章该有的又生硬又生动的词句和插图。第十二周的时候组员问我要不要交给部长，我说算了吧，部长什么时候来要了我们再交。</p>
-<p>不过还好，部长好像每天都在忙于学业，早就忘记了这件事；科协主席是理学院八字班的学长，毕业换届成九字班电子系的另一位学长之后，谁还会记得我们这个小推文的任务呢？</p>
-<p>在科协的第一个学期是灰白色的，我什么令自己满意的东西都没有做。</p>
-<h1 id="另外的想法"><a href="#另外的想法" class="headerlink" title="另外的想法"></a>另外的想法</h1><p>三月初科协招新面试的时候，学术部的学长问我会不会写 LaTeX 和MarkDown ，用没用过 Git ，会写哪些编程语言。我能出现在科协，想来这些都没太大问题。最后一个问题是有没有运营过公众号，会不会用秀米。</p>
-<p>我还真没用过，也不是很会排版。与此同时也有点诧异，在看过计算机系学生科协维护的 <a target="_blank" rel="noopener" href="https://docs.net9.org/">SAST skill docs</a> 、于是很向往地来面试之前，我没想到未来的产出是先写在 word 文档里再发在公众号上，而不是至少采用写在 .md 里再同步到 .github.io 这种连我折腾一下都能会的粗粝形式。<del>（所以现在自己搞blog算不算一种单飞呢bushi</del></p>
-<p>后来在社恐地狱的部会上，我还是没能提出这个问题。和一位学长聊过一些，他并不认为是一个好的 idea 。给的几个原因是假如学术部不发推文、赛事部一年复活一次，那“未央科协公众号”恐怕会变成“未央科协从游部公众号”；哪怕写成花里胡哨的公众号文章目前都不会有人看，那做成 blog 形式更没人想看；目的是普及，暂时不是专精；部员水平其实也参差不齐，甚至不是所有人都会写 .md，也不是所有人都想抽出时间来学。</p>
-<p>但我始终以为我们本来应该做的是一个比 <a target="_blank" rel="noopener" href="https://docs.net9.org/">SAST skill docs</a> 更入门级的东西，没有基础也能看，甚至可以精细到从一帧一帧教学配环境开始；或许没必要教 C++ <del>从</del>入门<del>到放弃</del>，但从普及和院系实际的角度来说教一教用 Excel 处理实验数据的技巧，而不是又没用又无聊的东西，不也很好吗；它本来可以有更漂亮的形式，而不该只能在微信里显示代码的截图、一行只显示几个字、还混杂着公众号推文的特色；目标是普及技能的话，一位不会写 LaTeX 的同学来找科协的文章看，究竟是被引导到一个简单大方的网页上看分类好的教程舒服，还是在科协公众号铺天盖地的从游信息里找学术部推文、然后对着图片和莫名其妙的宋体字敲代码更不容易令人放弃呢？</p>
-<p>其实也经常会怀疑，我恐怕还是太傲慢了；不仅傲慢，实际上自己也是一个没多少本事的人，对很多事情都不通原理、掌握一些表面的应用技巧就耍开了。之前还想过两年后换届，假如我能够成为副部，是很希望把这件事做起来的。但我这样的性格，真的适合领导者的角色吗？我想利用领导者的身份来实现我的想法，但恐怕只想逃避日常管理的责任，最后只会因为各种原因半途而废、变得更糟。</p>
-<p>不知道这些想法是出于一直以来的自卑，还是事实如此，唔…还是先多学习吧。</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/06/25/lying-flat/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -654,7 +404,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
       <meta itemprop="name" content="驰雨Chiyuru">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="被自己菜哭｡ﾟ(ﾟ´Д｀ﾟ)ﾟ｡">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -680,7 +430,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-07-10 01:06:54" itemprop="dateModified" datetime="2022-07-10T01:06:54+08:00">2022-07-10</time>
+                <time title="Modified: 2022-07-11 15:35:11" itemprop="dateModified" datetime="2022-07-11T15:35:11+08:00">2022-07-11</time>
               </span>
 
           
@@ -695,25 +445,14 @@
 
       
           <p>前几天在思考一个问题：现在在上海，一个人最多可以多少天不做核酸？</p>
-<p>已知：</p>
-<ul>
-<li>乘坐公共交通需要72小时核酸证明。感谢华大<del>逼迫</del>让我学会了骑车，有需要大不了骑车出门。共享单车目前还不需要验核酸，挺好的。</li>
-<li>进出公共场所需要72小时核酸证明。反正不能堂食（除崇明、奉贤、金山区），去店里买吃的也只能打包蹲在路边吃bushi。好多店铺不开门，极端情况下需要买生活必需品可以叫外卖。</li>
-<li>所在区一周内有社会面新增，则周末有一天要封闭小区筛查核酸，筛查完毕后即刻放行。我的上一次核酸就是上周六（8天前）筛查时做的，这周是周日筛查但我睡过头了…解锁漏网之鱼.jpg</li>
-</ul>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/XjmIbt"><img src="https://s1.ax1x.com/2022/06/19/XjmIbt.jpg" alt="XjmIbt.jpg"></a></p>
-<p>额外的碎碎念之一：</p>
-<p>我妈：这样每周都筛查的话，我总感觉小区里没有阳性也能做出阳性来，迟早还要封。</p>
-<p>我：哇，贝叶斯公式！</p>
-<p>我妈：啥玩意，神神叨叨的（</p>
-<p>额外的碎碎念之二：</p>
-<p><code>hexo new &quot;nucleic acid test&quot;</code></p>
-<p>打出来这玩意新建.md的时候我还在想，到底是怎么能背出来这个词组的。往前追溯了一下好像是2020年网课的时候，英语老师讲课文之余<del>蹭热度</del>补充了一些新冠相关的词组。</p>
-<p>2020年底英语春考的前几天，我还问过英语老师（和前文已经不是同一位了）要不要背类似的词语，翻译会不会考到。她说不会，不属于3500词的话哪怕考到也会在括号里给出，还笑我说疫情都已经没什么影响了，这玩意2020秋考考到还算正常，2021春考不会再出了吧。啊这。</p>
-<p>来自2022&#x2F;07&#x2F;10的Update：</p>
-<p>期间我因为太久（大约两三周）没做核酸，被赋了一次黄码。后来为了去医院拔智齿，做了好几次核酸。</p>
-<p>然后才知道还有七天不做核酸赋黄码的规定…看来是用来限制我这种无业游民的，真的很麻烦。</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/06/19/nucleic-acid-test/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -737,7 +476,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
       <meta itemprop="name" content="驰雨Chiyuru">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="被自己菜哭｡ﾟ(ﾟ´Д｀ﾟ)ﾟ｡">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -755,10 +494,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2022-06-18 01:46:58 / Modified: 16:32:26" itemprop="dateCreated datePublished" datetime="2022-06-18T01:46:58+08:00">2022-06-18</time>
+              <time title="Created: 2022-06-18 01:46:58" itemprop="dateCreated datePublished" datetime="2022-06-18T01:46:58+08:00">2022-06-18</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-07-11 15:42:13" itemprop="dateModified" datetime="2022-07-11T15:42:13+08:00">2022-07-11</time>
+              </span>
 
           
 
@@ -771,45 +516,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>2022&#x2F;06&#x2F;18的01:49，目前完成的设置有：</p>
-<ul>
-<li>使用了NexT系列的Pisces主题，完成了基础设置</li>
-<li>网页图标改成了一直使用的头像</li>
-<li>添加了About和Tags</li>
-<li>添加了Github，Twitter，E-Mail和知乎的链接</li>
-<li>访客数和总文字数统计</li>
-<li>添加了浏览百分比和返回顶部键</li>
-<li>修改了一下About的内容</li>
-</ul>
-<p>目前需要解决的问题：</p>
-<ul>
-<li>或许是我的NexT版本不够新？按照网上的办法设置背景图片失败了</li>
-<li>赞赏码插入不了，再研究一下<del>（这功能又没用，谁给你打钱啊</del></li>
-<li>最大的问题是设置自动折叠的功能也不可用，主题设置下的-config文件里没有这一项…</li>
-<li>有一种需要重装NexT的不好的预感…</li>
-</ul>
-<p>起码它初具雏形了，也是一件好事。</p>
-<p>2022&#x2F;06&#x2F;18的16:15，目前新增的设置有：</p>
-<ul>
-<li>赞赏码和“我很可爱请给我钱”加好了<del>（谁给你打钱啊，不要急着加没用的功能吧！</del></li>
-<li>右下新增看板娘（x）看板猫猫</li>
-<li>用了一下Gitalk感觉实在是拉，用utterance加了评论功能</li>
-<li>Tags界面加了彩色标签云</li>
-</ul>
-<p>新的问题：</p>
-<ul>
-<li><p>浏览人数统计有点不稳定，有的时候显示不出来</p>
-</li>
-<li><p>Git Bash的报错…我不理解，但是好像也没啥影响</p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/XOVZ7D"><img src="https://s1.ax1x.com/2022/06/18/XOVZ7D.png" alt="XOVZ7D.png"></a></p>
-</li>
-</ul>
-<p>已经摆烂：</p>
-<ul>
-<li>正文折叠功能搞不出来，决定摆烂<del>甚至想删掉Home页</del></li>
-<li>背景也改不掉，感觉空白也不错</li>
-</ul>
-
+          <p>单纯是记录一下更新，以及激励我时不时来改一改。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/06/18/Test/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -833,7 +548,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
       <meta itemprop="name" content="驰雨Chiyuru">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="被自己菜哭｡ﾟ(ﾟ´Д｀ﾟ)ﾟ｡">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -859,7 +574,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-07-10 01:03:18" itemprop="dateModified" datetime="2022-07-10T01:03:18+08:00">2022-07-10</time>
+                <time title="Modified: 2022-07-11 15:33:51" itemprop="dateModified" datetime="2022-07-11T15:33:51+08:00">2022-07-11</time>
               </span>
 
           
@@ -873,58 +588,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>Hello, Chiyuru here! 欢迎来到我的blog。可以叫我驰雨&#x2F;Chiyuru，假如你在现实中认识我，或许会有更多奇奇怪怪的称呼，<del>比如马也老师</del></p>
-<h2 id="一些基本信息"><a href="#一些基本信息" class="headerlink" title="一些基本信息"></a>一些基本信息</h2><ul>
-<li><p>2021年9月在清华一字班入学，专业是强基计划下的数理基科，目前在院系科协学术部摸鱼。</p>
-</li>
-<li><p>作为名词党，对计算数学方向和统计学比较感兴趣，正在&#x2F;准备去修相关课程。</p>
-</li>
-<li><p>悄悄说一句，我完全不擅长物理，虽然数理基科专业是属于物理系的，培养方案也与物理更相近。<del>基物学不会头好秃啊后面还有量子力学</del></p>
-</li>
-<li><p>一些标签：18@<a target="_blank" rel="noopener" href="http://www.hsefz.cn/">HSEFZ</a>er，21@THUer，25Fall。成分相关的朋友可以捕捉~</p>
-</li>
-<li><p>MBTI人格测试结果非常不稳定，会在INTJ，INTP和INFJ之间横跳，三者出现的概率递减。个人认为测试题很多模糊不清，可能当天的心情或者经历就会影响选择<del>，不如图一乐</del>。自我认识更偏向于INTP人格。</p>
-</li>
-</ul>
-<h2 id="如果要讲关于我的故事，恐怕不能越过关于MO的一段。"><a href="#如果要讲关于我的故事，恐怕不能越过关于MO的一段。" class="headerlink" title="如果要讲关于我的故事，恐怕不能越过关于MO的一段。"></a>如果要讲关于我的故事，恐怕不能越过关于MO的一段。</h2><ul>
-<li><p>我曾经是一名初三才入坑的强省（上海市）蒟蒻MOer，最后也是竞赛落榜生。取得过的最高成绩是2020 CGMO Au，2020全国高中数学联赛省一，THU飞测&#x2F;金秋营营二。<del>不值一提</del></p>
-</li>
-<li><p>与此同时，CGMO的Cu，Ag，Au，联赛的省三省二省一我都拿过一遍，只不过是高一省二、高二省三，原因以后会说到时候再补链接吧bushi。插一张<del>看起来很厉害但其实</del>啥也不是的照片。</p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/XLpSU0"><img src="https://s1.ax1x.com/2022/06/17/XLpSU0.md.jpg" alt="XLpSU0.md.jpg"></a></p>
-</li>
-<li><p>连着两次比赛失误退役的时候赌气想再也不要学数学了，如今虽然<del>被清华坑了一把</del>没录取到数学系，却还是真香。</p>
-</li>
-<li><p>从高二上学期到高三的暑假，一共在<a target="_blank" rel="noopener" href="http://www.nsmath.cn/">NSMath</a>跟朋友一起投过三篇文章，主题分别为<a target="_blank" rel="noopener" href="https://closed.social/safeShare/17bwGCwZVBiO">第15届沙雷金几何奥林匹克试题解析</a>，<a target="_blank" rel="noopener" href="https://closed.social/safeShare/16XIRUEJGRVt">2020越南数学奥林匹克解析</a>和<a target="_blank" rel="noopener" href="https://closed.social/safeShare/18WyxnjcbIyp">第17届沙雷金几何数学奥林匹克解析</a>。<del>其实还有过一篇清北金秋营解析但是最后写了一半胎死腹中了</del></p>
-</li>
-<li><p>也是这个过程中第一次接触LaTeX，从而知道脱离纸笔勾画的数学竞赛的世界，还有很广阔的天地。</p>
-</li>
-<li><p>大一上学期想过直接转码，无奈小镇做题家一时连C++课都实在难以适应。如今想开了一些，或许的确喜欢自由造物的力量和不竭的创造力，也知道coding的能力对于其他的研究很重要，但未必非要开车之前先学造车嘛。</p>
-</li>
-</ul>
-<h2 id="搭建这个Blog的初衷"><a href="#搭建这个Blog的初衷" class="headerlink" title="搭建这个Blog的初衷"></a>搭建这个Blog的初衷</h2><p>主要是因为在现实生活中已经完全自闭了（x），总要再有一个能自由说话、能多说一些的地方。</p>
-<p>同时，从秋季学期开始要认真地学习能与真正的数学沾边的课程，比如抽代、数值分析和拓扑。统辅的课程也开了，希望在这里记下一些学习的过程，更专注一些。<del>你到底是什么专业的</del></p>
-<p>Blog在2022&#x2F;06&#x2F;17凌晨完成了一个雏形，可能会趁着小学期之前稍微空闲的几天，用我微薄的技术力美化一下。至于能不能做出来理想的形态，可能不是我能决定的了www。</p>
-<h2 id="你不会是二次元吧？"><a href="#你不会是二次元吧？" class="headerlink" title="你不会是二次元吧？"></a>你不会是二次元吧？</h2><p><del>在下正是！</del></p>
-<ul>
-<li><p>第一次看番有可能是小学二年级的时候看名柯，在贴吧上了解了很多同人二创，打开了新世界的大门（x）</p>
-</li>
-<li><p>初高中是高强度看番的一段时间，最喜欢的番剧当属《<a target="_blank" rel="noopener" href="https://zh.moegirl.org.cn/%E7%B4%AB%E7%BD%97%E5%85%B0%E6%B0%B8%E6%81%92%E8%8A%B1%E5%9B%AD">ヴァイオレット・エヴァーガーデン</a>》。</p>
-</li>
-<li><p>比较喜欢，会在无事的时候反复回看的有《<a target="_blank" rel="noopener" href="https://zh.moegirl.org.cn/%E9%9D%92%E6%98%A5%E7%8C%AA%E5%A4%B4%E5%B0%91%E5%B9%B4%E7%B3%BB%E5%88%97">青春ブタ野郎はゆめみる少女の夢を見ない</a>》，《<a target="_blank" rel="noopener" href="https://zh.moegirl.org.cn/Re:CREATORS">Re:Creators</a>》，《<a target="_blank" rel="noopener" href="https://zh.moegirl.org.cn/Fate/EXTRA_Last_Encore">Fate&#x2F;EXTRA Last Encore</a>》，《<a target="_blank" rel="noopener" href="https://zh.moegirl.org.cn/%E5%8D%AB%E5%AE%AB%E5%AE%B6%E4%BB%8A%E5%A4%A9%E7%9A%84%E9%A5%AD">衛宮さんちの今日のごはん</a>》，《<a target="_blank" rel="noopener" href="https://zh.moegirl.org.cn/3%E6%9C%88%E7%9A%84%E7%8B%AE%E5%AD%90">3月のライオン</a>》，《<a target="_blank" rel="noopener" href="https://zh.moegirl.org.cn/%E6%98%A8%E6%97%A5%E4%B9%8B%E6%AD%8C">イエスタデイをうたって</a>》。</p>
-</li>
-<li><p>比较喜欢的动画电影也有不少，不详细列出了。</p>
-</li>
-<li><p>最近不太看番了，尤其不是很想看主流大热的番剧<del>，可能是老年人了</del>。</p>
-</li>
-<li><p>是游戏《<a target="_blank" rel="noopener" href="https://zh.moegirl.org.cn/Fate/Grand_Order">Fate&#x2F;Grand Order</a>》的高强度玩家<del>，结合上方番剧列表可以发现是老月厨了</del>，但是时常会退坑三五个月再回去玩。常玩的游戏有FGO，<a target="_blank" rel="noopener" href="https://zh.moegirl.org.cn/%E6%98%8E%E6%97%A5%E6%96%B9%E8%88%9F">明日方舟</a>，<a target="_blank" rel="noopener" href="https://zh.moegirl.org.cn/Arcaea">Arcaea</a>，<a target="_blank" rel="noopener" href="https://zh.moegirl.org.cn/Lanota">Lanota</a>。偶尔会打<a target="_blank" rel="noopener" href="https://zh.moegirl.org.cn/%E9%9B%80%E9%AD%82">雀</a>。</p>
-</li>
-<li><p>如你所见是音游玩家。主玩Arcaea，其实也有一年多没打了。目前的ptt是11.07，相当于刚刚红框不久进入瓶颈期就退坑了。Lanota的歌很好听，但是没打过太多次。</p>
-</li>
-<li><p>最喜欢的歌手是<a target="_blank" rel="noopener" href="https://zh.moegirl.org.cn/Mili">Mili</a>和<a target="_blank" rel="noopener" href="https://zh.moegirl.org.cn/%E6%98%9F%E9%87%8E%E6%BA%90">星野源</a>，最喜欢的日剧是源参演的《<a target="_blank" rel="noopener" href="https://www.bilibili.com/bangumi/play/ss36349?spm_id_from=333.337.0.0">MIU404</a>》。<del>这和二次元有关吗</del>。很难说最喜欢的歌是哪一首，只能说当下最喜欢的歌是哪一首（</p>
-</li>
-</ul>
-<h2 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2><p>其实我是一个有些自卑和敏感的人，于是很担心有没有说错话<del>所以就不怎么想说话了</del>，大多时间里因为不善交际，总是呆在自己的世界里。也是一个内向害羞的人，有好几位非常喜欢的朋友，尽管不知道大家有没有把自己当成朋友，但希望是的。非常社恐。如果可以的话，一起愉快地玩耍吧~</p>
-
+          <p>Hello, Chiyuru here! 欢迎来到我的blog。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/06/16/Hello-World/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1000,7 +672,7 @@
     <img class="site-author-image" itemprop="image" alt="驰雨Chiyuru"
       src="/images/avatar.jpg">
   <p class="site-author-name" itemprop="name">驰雨Chiyuru</p>
-  <div class="site-description" itemprop="description"></div>
+  <div class="site-description" itemprop="description">被自己菜哭｡ﾟ(ﾟ´Д｀ﾟ)ﾟ｡</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
@@ -1078,7 +750,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共14.1k字</span>
+  <span class="post-count">博客全站共14.2k字</span>
 </div>
 
 

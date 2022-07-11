@@ -3,7 +3,10 @@
   <entry>
     <title>Hello World！</title>
     <url>/2022/06/16/Hello-World/</url>
-    <content><![CDATA[<p>Hello, Chiyuru here! 欢迎来到我的blog。可以叫我驰雨&#x2F;Chiyuru，假如你在现实中认识我，或许会有更多奇奇怪怪的称呼，<del>比如马也老师</del></p>
+    <content><![CDATA[<p>Hello, Chiyuru here! 欢迎来到我的blog。</p>
+<span id="more"></span>
+
+<p>可以叫我驰雨&#x2F;Chiyuru，假如你在现实中认识我，或许会有更多奇奇怪怪的称呼，<del>比如马也老师</del></p>
 <h2 id="一些基本信息"><a href="#一些基本信息" class="headerlink" title="一些基本信息"></a>一些基本信息</h2><ul>
 <li><p>2021年9月在清华一字班入学，专业是强基计划下的数理基科，目前在院系科协学术部摸鱼。</p>
 </li>
@@ -64,6 +67,8 @@
     <title>基础物理光学实验备忘录</title>
     <url>/2022/07/03/Physics-Lab2-Notes/</url>
     <content><![CDATA[<p>考虑到开学之后肯定没空每周研究实验怎么做，最近又很颓不想干活。于是一边补番一边写一份从零开始的，<strong>讲人话的</strong>实验备忘录，目的是将来做实验前快速阅读一遍，然后对着设计好的实验表和博文就能<del>优雅地</del>动手不动脑地做完实验，还能从这篇备忘录里抄点东西去写实验报告。</p>
+<span id="more"></span>
+
 <p>这个操作是合理的。<del>我和物理本来就不合适，</del>结合上学期的经验可以发现，无论有没有学过原理，我唯一的解决方案就是按计划一帧一帧地做实验，才不至于大脑空白。加之我秋季学期就没选理论课，理论水平也就是现在这样了，倘若现在不写，将来更写不出来。上学期因为仓促，只在讲义上手写了一些要点，有的时候记不清了就会不知所措，所以这次码个字可以详细一点。</p>
 <p>这样的话，物理实验就变成了<del>大猩猩也能做的</del>体力活罢了。我不否认这个想法，也无意论辩这门课是否有意义，将本文视作作者的救命手册即可。</p>
 <p><strong>注：未经授权禁止转载，本人不希望在院系里受到关注；所有提到的引用，包括图片，文字，数据信息等，著作权归原作者所有；一概不提供文中提到的自用实验表格，请自行阅读实验讲义，勿直接伸手。</strong></p>
@@ -308,22 +313,25 @@
   <entry>
     <title>博客设置中的一次测试</title>
     <url>/2022/06/18/Test/</url>
-    <content><![CDATA[<p>2022&#x2F;06&#x2F;18的01:49，目前完成的设置有：</p>
+    <content><![CDATA[<p>单纯是记录一下更新，以及激励我时不时来改一改。</p>
+<span id="more"></span>
+
+<p>2022&#x2F;06&#x2F;18的01:49，目前完成的设置有：</p>
 <ul>
-<li>使用了NexT系列的Pisces主题，完成了基础设置</li>
+<li>使用了 NexT 系列的 Pisces 主题，完成了基础设置</li>
 <li>网页图标改成了一直使用的头像</li>
-<li>添加了About和Tags</li>
-<li>添加了Github，Twitter，E-Mail和知乎的链接</li>
+<li>添加了 About 和 Tags</li>
+<li>添加了 Github，Twitter，E-Mail 和知乎的链接</li>
 <li>访客数和总文字数统计</li>
 <li>添加了浏览百分比和返回顶部键</li>
-<li>修改了一下About的内容</li>
+<li>修改了一下 About 的内容</li>
 </ul>
 <p>目前需要解决的问题：</p>
 <ul>
-<li>或许是我的NexT版本不够新？按照网上的办法设置背景图片失败了</li>
+<li>或许是我的 NexT 版本<del>不够新</del>过于新了？按照网上的办法设置背景图片失败了</li>
 <li>赞赏码插入不了，再研究一下<del>（这功能又没用，谁给你打钱啊</del></li>
-<li>最大的问题是设置自动折叠的功能也不可用，主题设置下的-config文件里没有这一项…</li>
-<li>有一种需要重装NexT的不好的预感…</li>
+<li>最大的问题是设置自动折叠的功能也不可用，主题设置下的 -config 文件里没有这一项…</li>
+<li>有一种需要重装 NexT 的不好的预感…</li>
 </ul>
 <p>起码它初具雏形了，也是一件好事。</p>
 <p>2022&#x2F;06&#x2F;18的16:15，目前新增的设置有：</p>
@@ -344,8 +352,11 @@
 <p>已经摆烂：</p>
 <ul>
 <li>正文折叠功能搞不出来，决定摆烂<del>甚至想删掉Home页</del></li>
-<li>背景也改不掉，感觉空白也不错</li>
+<li>背景也改不掉，感觉空白就挺好</li>
 </ul>
+<p>2022&#x2F;07&#x2F;11 Update</p>
+<p>终于想起来还有这么回事，搞完了阅读全文和字体。</p>
+<p>补 Subtitle 和 Description 的时候有点愣住，好像也有点不知道写什么ww。</p>
 ]]></content>
       <tags>
         <tag>测试</tag>
@@ -356,6 +367,8 @@
     <url>/2022/06/27/The-Second-Tsinghua-Logic-Summer-School/</url>
     <content><![CDATA[<p>第一次上前沿研究类的讲座课，本来是想像竞赛的时候按日写赛题评析一样，按照 DAY1~DAY5 的顺序每天上完课梳理一下思路，简单提一提觉得有趣的点。<del>结果到 DAY2 就被复杂度和计算理论知识直接干碎了。</del></p>
 <p>后面的课虽然很有意思但一涉及到相关问题就不太能完全理解，硬要写的话没太大意义，遂放弃，变成了日常吐槽（又在水 blog 了是吗</p>
+<span id="more"></span>
+
 <h1 id="DAY-1"><a href="#DAY-1" class="headerlink" title="DAY 1"></a>DAY 1</h1><p><strong>注：第一天结束之后随手记的东西，这一天完全理解了是因为之前就学过一点，遂保留。</strong></p>
 <p>第一节课还是比较熟悉的内容。上学期刚在数据库课上学过 Relational Algebra，开课前一晚找了本离散补了一下 First Order Logic。上课的时候 wiki 查了一下什么是 Relational Calculus 之后对照着 PPT 看了一遍，就去摸鱼了。</p>
 <p>查作业题熬到半夜，关于证明 Relational Algebra 中 difference 的独立性。Google 出来<a href="https://moodle2.cs.huji.ac.il/nu15/pluginfile.php/167868/mod_resource/content/3/relalgLect1.pdf">一个看起来像是泰国人写的课件</a>，细讲了一下怎么证明乘积、并、投影和选择的独立性，偏偏没有取差。然后给了一个 Monotonic Query 的定义，看了一大圈回来才意识到这好像是证明 difference 独立性的提示。想了亿会之后意识到的确是提示，用单调性举个反例就好了，<del>我好蠢！</del>太优雅啦！</p>
@@ -399,6 +412,8 @@
     <title>在科协躺平的第一学期</title>
     <url>/2022/06/25/lying-flat/</url>
     <content><![CDATA[<h1 id="偶然想起来的事"><a href="#偶然想起来的事" class="headerlink" title="偶然想起来的事"></a>偶然想起来的事</h1><p>今天网络学堂把 Spring Term 归档进了 Past Terms 。打开微信把已经很久没人发言的春季学术部群撤掉了置顶，它立刻就消失了。但实际上春季学期我还有一个没完成的任务，就是本该在 11 周交上的学术图表绘制推送。</p>
+<span id="more"></span>
+
 <p><a href="https://imgtu.com/i/jFflHs"><img src="https://s1.ax1x.com/2022/06/25/jFflHs.jpg" alt="当初收到的任务描述"></a></p>
 <p>高代选期中前一天，日常缺席集体活动的我咕掉了学术部的部会早早睡觉，所以远程被安排了这个选题。“学术图表绘制”不是 R 语言，不是 Python ，甚至不是 Matlab 或者 Excel ，而是 PPT 绘图和 Visio 绘图简介。<del>而且咕了会议的情况下还不知道它是哪个离谱的人选的。</del></p>
 <p>出于糊弄精神，我确实还是选了 PPT 的部分浅学了一下然后写了一份稿子，但它始终是个没人肯去修改的初稿，堆满了不会有人细看的公众号文章该有的又生硬又生动的词句和插图。第十二周的时候组员问我要不要交给部长，我说算了吧，部长什么时候来要了我们再交。</p>
@@ -420,6 +435,8 @@
     <title>核酸检测</title>
     <url>/2022/06/19/nucleic-acid-test/</url>
     <content><![CDATA[<p>前几天在思考一个问题：现在在上海，一个人最多可以多少天不做核酸？</p>
+<span id="more"></span>
+
 <p>已知：</p>
 <ul>
 <li>乘坐公共交通需要72小时核酸证明。感谢华大<del>逼迫</del>让我学会了骑车，有需要大不了骑车出门。共享单车目前还不需要验核酸，挺好的。</li>
