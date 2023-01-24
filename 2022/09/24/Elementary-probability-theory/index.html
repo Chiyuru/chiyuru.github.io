@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"chiyuru.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="虽然 dwl 老师确实很好，但是我感觉初概这课有点儿稀碎（个人意见，个人意见）。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="初等概率论与挣扎">
+<meta property="og:url" content="https://chiyuru.github.io/2022/09/24/Elementary-probability-theory/index.html">
+<meta property="og:site_name" content="『姑妄言之姑妄听之』">
+<meta property="og:description" content="虽然 dwl 老师确实很好，但是我感觉初概这课有点儿稀碎（个人意见，个人意见）。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2022/09/29/lAWLBo8TXMfaQCK.png">
+<meta property="article:published_time" content="2022-09-24T04:58:22.000Z">
+<meta property="article:modified_time" content="2022-10-06T12:52:35.000Z">
+<meta property="article:author" content="驰雨Chiyuru">
+<meta property="article:tag" content="刷书">
+<meta property="article:tag" content="数学">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2022/09/29/lAWLBo8TXMfaQCK.png">
+
+<link rel="canonical" href="https://chiyuru.github.io/2022/09/24/Elementary-probability-theory/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>初等概率论与挣扎 | 『姑妄言之姑妄听之』</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="『姑妄言之姑妄听之』" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">『姑妄言之姑妄听之』</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://chiyuru.github.io/2022/09/24/Elementary-probability-theory/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="驰雨Chiyuru">
+      <meta itemprop="description" content="おはよう、朝だよ">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="『姑妄言之姑妄听之』">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          初等概率论与挣扎
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-09-24 12:58:22" itemprop="dateCreated datePublished" datetime="2022-09-24T12:58:22+08:00">2022-09-24</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-10-06 20:52:35" itemprop="dateModified" datetime="2022-10-06T20:52:35+08:00">2022-10-06</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>虽然 dwl
+老师确实很好，但是我感觉初概这课有点儿稀碎（个人意见，个人意见）。</p>
+<span id="more"></span>
+<p>先前把统辅当做很有趣的数学分支，被转数环的学长泼了冷水说“统计中心的风格可能会不大适应”，另一位学长也说“统辅不是你期待的样子”，目前看中心开课的意思也好像有点当工科的辅助来学。我到底多大程度上能接受严谨的数学推导？又能走多远？统辅还是数辅<del>还是我全都要</del>，这是一个问题。</p>
+<p>初概这玩意儿前八周上完，约等于梦回高中月考，我定义呢我证明呢啊怎么直接拿来用了？在考虑下学期去数学系重新上概（1），甚至考虑跟实复分析，但是数分的空缺真的没问题吗。当然，没有退初概还是为了跟上统辅的进度，毕竟后八周还有统计推断，我也没完全放弃统辅，目前或许是我目光短浅了。</p>
+<p>这门课和教材也没什么映射关系（而且看老师的意思是也没有教材，草），直接按照
+Lecture n
+的顺序写吧。本来想放进茴香豆篇，但概率论这边举例比较多，放在一起又很冗长，还是算了。</p>
+<h1 id="lecture-1">Lecture 1</h1>
+<ul>
+<li>概率模型：概率模型由样本空间和概率构成。每一个概率模型都关联着一个试验。
+<ul>
+<li>样本空间是一个集合，概率模型对应的试验产生的所有可能结果形成样本空间，记作
+<span class="math inline">\(\Omega\)</span>。比如说，概率模型为抛硬币，样本空间即为
+<span class="math inline">\(\lbrace head,tail
+\rbrace\)</span>。样本空间可以是离散的，也可以是连续的。</li>
+<li>事件 <span class="math inline">\(A\)</span>
+是样本空间的子集，也就是某些试验结果的集合。概率 <span class="math inline">\(P(A)\)</span> 分配到事件 <span class="math inline">\(A\)</span> 上。</li>
+</ul></li>
+<li>概率公理：非负性，归一化，可加性。</li>
+<li>概率的性质：两个技巧，归纳法和取补集。</li>
+</ul>
+<h1 id="lecture-2">Lecture 2</h1>
+<ul>
+<li><p>事件域（或称为 <span class="math inline">\(\sigma-\)</span>域，<span class="math inline">\(\sigma-\)</span>代数）：对于样本空间 <span class="math inline">\(\Omega\)</span>，<span class="math inline">\(F\)</span> 表示 <span class="math inline">\(\Omega\)</span> 的某些子集构成的集合，如果 <span class="math inline">\(F\)</span> 满足以下三个条件：</p>
+<ul>
+<li><span class="math inline">\(\Omega \in F\)</span> ；</li>
+<li>对于任意的 <span class="math inline">\(A\in F\)</span>，有 <span class="math inline">\(A^c \in F\)</span>；</li>
+<li>如果 <span class="math inline">\(A_n \in F\)</span>，<span class="math inline">\(n=1,2,...\)</span>，则 <span class="math inline">\(\cup_{n=1}^\infty A_n \in F\)</span>。</li>
+</ul>
+<p>那么称 <span class="math inline">\(F\)</span> 为 <span class="math inline">\(\Omega\)</span> 上的事件域，称 <span class="math inline">\(F\)</span> 中的元素为事件，称 <span class="math inline">\((\Omega,F)\)</span> 为可测空间。</p>
+<p>从而，有且只有 <span class="math inline">\(F\)</span>
+中的每个事件都能分配概率，这就圈定了我们所关心的事件的范围。</p>
+<p>事件域的一些性质如下：</p>
+<ul>
+<li>两个事件域的并集不一定是事件域，但交集一定是。（Trivial）</li>
+<li>事件域对集合的任何计算都是封闭的，包括事件列的极限运算。</li>
+</ul></li>
+<li><p>概率，也称为概率测度：设 <span class="math inline">\((\Omega,F)\)</span>
+为<strong>可测空间</strong>，<span class="math inline">\(P\)</span>
+是定义在 <span class="math inline">\(F\)</span> 上的函数，如果 <span class="math inline">\(P\)</span> 满足以下三个条件：</p>
+<ul>
+<li>非负性，完全性（Trivial）</li>
+<li>可列可加性（<span class="math inline">\(\sigma-additivity\)</span>）：对于 <span class="math inline">\(F\)</span> 中互不相交的事件 <span class="math inline">\(A_1,A_2,...\)</span> ，有 <span class="math inline">\(P(\cup _{n=1} ^\infty A_n) = \Sigma _{n=1} ^\infty
+P(A_n)\)</span>。</li>
+</ul>
+<p>那么称 <span class="math inline">\(P\)</span> 为 <span class="math inline">\(F\)</span> 上的概率测度，简称概率。</p></li>
+<li><p>对于上述定义的样本空间，事件域和概率测度，我们称 <span class="math inline">\((\Omega,F,P)\)</span> 为概率空间。</p>
+<p>简单举个例子，在掷硬币的概率模型中，样本空间是 <span class="math inline">\(\lbrace Head,Tail \rbrace\)</span>，事件域是 <span class="math inline">\(\lbrace \lbrace Head,Tail \rbrace, \lbrace Head
+\rbrace, \lbrace Tail \rbrace, \emptyset
+\rbrace\)</span>，此时样本空间和事件域构成可测空间。事件域中的每一个元素都是事件，概率测度为
+<span class="math inline">\(P(\lbrace Head \rbrace) = p\)</span>, <span class="math inline">\(P(\lbrace Tail \rbrace)=1-p\)</span>。（这是考虑了
+<span class="math inline">\(biased\)</span> <span class="math inline">\(coin\)</span> 的情况）</p></li>
+<li><p>概率测度的一些性质：</p>
+<ul>
+<li>对于单调增序列，有 <span class="math inline">\(\lim_{n \to \infty}
+A_n = \cup_{i=1} ^\infty A_i\)</span>， <span class="math inline">\(P(\lim_{n \to \infty}A_n) = \lim_{x \to
+\infty}P(A_n)\)</span>。</li>
+<li>单调减序列同理。</li>
+</ul></li>
+<li><p>条件概率（定义略）的若干性质：</p>
+<ul>
+<li><p>对互不相容的事件列 $B_i $，有 <span class="math inline">\(P(\cup
+_{i=1}^\infty B_i|A) = \Sigma _{i=1} ^\infty P(B_i
+|A)\)</span>。</p></li>
+<li><p>用 <span class="math inline">\(P_A(·)=P(·|A)\)</span> 表示在事件
+<span class="math inline">\(A\)</span>
+发生条件下的条件概率，这仍然是一个概率测度，<span class="math inline">\((\Omega,F,P_A)\)</span> 仍然是一个概率空间。</p>
+<p>当然，此时我们可以把 <span class="math inline">\(A\)</span>
+之外的结果排除掉，记作 <span class="math inline">\((A,A\cap
+F,P_A)\)</span>。</p></li>
+</ul></li>
+<li><p>乘法公式：设 <span class="math inline">\((\Omega, F,P)\)</span>
+是概率空间，<span class="math inline">\(A_i \in F\)</span>，<span class="math inline">\(i = 1,2,...,n\)</span>，且 <span class="math inline">\(P(A_1 \cap A_2 \cap ... \cap
+A_{n-1})&gt;0\)</span>，于是有<span class="math inline">\(P(\cap_{i=1}^n
+A_i) = P(A_1) \Pi_{i=2}^n P(A_i|A_1\cap A_2 \cap ... \cap
+A_{i-1})\)</span>。</p>
+<p>举个例子：某人写了 <span class="math inline">\(n\)</span>
+封信，将其装入 <span class="math inline">\(n\)</span>
+个写有地址的信封，全部装错的概率 <span class="math inline">\(q_0\)</span> 为？恰有 <span class="math inline">\(r\)</span> 个信封装对的概率 <span class="math inline">\(q_r\)</span> 为？</p>
+<ul>
+<li>在第一个问题下面，我们考虑记事件 <span class="math inline">\(A_i\)</span> 为第 <span class="math inline">\(i\)</span>
+个信封装对的事件，利用容斥原理即可。</li>
+<li>在第二个问题下面，其实问题主要在于怎么考虑是哪 <span class="math inline">\(r\)</span> 个信封放对了的问题。“指定的某 <span class="math inline">\(r\)</span> 个信封放对了”这一事件的概率等于“从
+<span class="math inline">\(n\)</span> 个信封里无放回地取出 <span class="math inline">\(r\)</span> 个正好是前 <span class="math inline">\(r\)</span> 号”的概率。又因为从 <span class="math inline">\(n\)</span> 个信封里指定 <span class="math inline">\(r\)</span> 个有 <span class="math inline">\(C_n
+^r\)</span> 种方式，于是这一部分的概率为 <span class="math inline">\(\frac{1}{r!}\)</span>。</li>
+</ul></li>
+<li><p>全概率公式：将 <span class="math inline">\(\Omega\)</span>
+分割成事件 <span class="math inline">\(A_1,A_2,...,A_n\)</span>
+的并，另有其中的事件 <span class="math inline">\(B\)</span>，可以对每个
+<span class="math inline">\(i\)</span> 得到 <span class="math inline">\(P(B|A_i)\)</span>，于是 <span class="math inline">\(P(B) = \Sigma_{i=1}^n P(A_i)P(B|Ai) =
+\Sigma_{i=1}^n P(B \cap A_i)\)</span>。</p>
+<p>这个时候，我们称 <span class="math inline">\(\lbrace A_i
+\rbrace\)</span> 是 <span class="math inline">\(\Omega\)</span>
+的一个分割。同时，式中的 <span class="math inline">\(n\)</span> 可以用
+<span class="math inline">\(\infty\)</span> 代替。</p>
+<p>举个例子：一个袋子里有 <span class="math inline">\(n\)</span>
+个白球和 <span class="math inline">\(m\)</span> 个黑球，从中无放回地取出
+<span class="math inline">\(k\)</span> 个球，求第 <span class="math inline">\(k\)</span> 次取得黑球的概率。</p>
+<ul>
+<li>递归：第一次取黑球的概率影响第二次，第二次影响第三次...简单列个数列可以看出来取黑球的概率是定值，即为
+<span class="math inline">\(\frac{m}{m+n}\)</span>。</li>
+<li>排队：把 <span class="math inline">\(m+n\)</span> 个球排成一列，算第
+<span class="math inline">\(k\)</span> 个恰为黑球的概率即可。</li>
+</ul></li>
+<li><p><span class="math inline">\(Bayes\)</span> 准则：设 <span class="math inline">\((\Omega,F,P)\)</span> 是概率空间，<span class="math inline">\(B,A_i \in F\)</span>，<span class="math inline">\(i=1,2,...,n\)</span>，<span class="math inline">\(\lbrace A_i \rbrace\)</span> 是 <span class="math inline">\(\Omega\)</span> 的一个分割。我们要用 <span class="math inline">\(P(B|A_i)\)</span> 算 <span class="math inline">\(P(A_i|B)\)</span>，就可以使用 <span class="math inline">\(Bayes\)</span> 准则：<span class="math inline">\(P(A_i|B)=\frac{P(A_i)P(B|A_i)}{\Sigma_{j=1}^n
+P(A_j)P(B|A_j)}\)</span> 。</p></li>
+</ul>
+<h1 id="lecture-3">Lecture 3</h1>
+<ul>
+<li><p>（两两）独立性，条件独立性和一组事件的相互独立性</p>
+<ul>
+<li><p>对于概率空间 <span class="math inline">\((\Omega,F,P)\)</span>，<span class="math inline">\(A,B,C \in F\)</span>，独立性指的是 <span class="math inline">\(P(A\cap B) = P(A)P(B)\)</span>，条件独立性指的是
+<span class="math inline">\(P(A\cap B|C)=P(A|C)P(B|C)\)</span>。</p>
+<p>那么这二者有什么关系呢？答案是没有关系（</p>
+<p>简单举个反例：抛掷两次均匀的硬币，令 <span class="math inline">\(H_1=\lbrace\)</span>第一枚正面朝上<span class="math inline">\(\rbrace\)</span>，<span class="math inline">\(H_2=\lbrace\)</span>第二枚正面朝上<span class="math inline">\(\rbrace\)</span>，<span class="math inline">\(D=\lbrace\)</span>两枚硬币结果相反<span class="math inline">\(\rbrace\)</span>。于是有 <span class="math inline">\(P(H_1 \cap H_2) = P(H_1)P(H_2)\)</span>，但是
+<span class="math inline">\(P(H_1 \cap H_2 |D) = 0,P(H_1|D) =
+\frac{1}{2}，P(H_2|D) =
+\frac{1}{2}\)</span>。也就是说，独立性不能推出条件独立性。</p></li>
+<li><p>一组事件的相互独立性涉及到概率空间 <span class="math inline">\((\Omega,F,P)\)</span> 中的一组事件 <span class="math inline">\(A_1,A_2,...,A_n\)</span>，如果对于任意非空子集
+<span class="math inline">\(S\subset \lbrace 1,2,...,n
+\rbrace\)</span>，都有<span class="math inline">\(P(\cap_{i \in S}
+A_i)=\Pi_{i\in S} P(A_i)\)</span>，那么称这一组事件是相互独立的。</p>
+<p>根据 <span class="math inline">\(S\)</span>
+的完备性可以知道，两两独立性也不能推出一组事件的相互独立性。</p></li>
+<li><p>TODO：记得复习一下赌徒破产模型。</p></li>
+</ul></li>
+<li><p>随机变量何种情况下是良定义的？</p>
+<ul>
+<li>设 <span class="math inline">\((\Omega,F)\)</span> 为可测空间，如果
+<span class="math inline">\(\Omega\)</span> 上的函数 <span class="math inline">\(X(\omega)\)</span> 满足：对 <span class="math inline">\(\forall x \in R\)</span>，<span class="math inline">\(\lbrace \omega | X(\omega) \leq x\rbrace \in
+F\)</span>，则称 <span class="math inline">\(X(\omega)\)</span> 为 <span class="math inline">\((\Omega,F)\)</span> 上的随机变量。</li>
+</ul></li>
+</ul>
+<h1 id="lecture-4">Lecture 4</h1>
+<ul>
+<li><p>对于离散型随机变量 <span class="math inline">\(X\)</span>，称
+<span class="math inline">\(P(X=x_k) = p_k\)</span> 为 <span class="math inline">\(X\)</span> 的概率分布，称 <span class="math inline">\(\lbrace p_k \rbrace\)</span> 为概率分布列，简称为
+<span class="math inline">\(PMF\)</span>。当其规律不够明显时可以写成表格形式。</p>
+<ul>
+<li><p>两点（<span class="math inline">\(Bernoulli\)</span>）分布：掷硬币或正或反，<span class="math inline">\(P(X=0)=p,P(X=1)=1-p\)</span>。</p></li>
+<li><p>二项（<span class="math inline">\(Binomial\)</span>）分布：试验成功的概率为 <span class="math inline">\(p\)</span>，重复 <span class="math inline">\(n\)</span> 次试验成功 <span class="math inline">\(k\)</span> 次的概率，<span class="math inline">\(P(X=k) = C_n ^k p^k
+(1-p)^{n-k}\)</span>。它是二项式展开的其中一项，故名二项分布。</p>
+<p>二项分布的最大可能值（即中心项）的推断：考虑二项式展开。</p></li>
+<li><p>......这里空间不够大，别的写不下了（其实是不需要记忆离散型分布的名字，会讲故事就行。</p></li>
+<li><p>泊松（<span class="math inline">\(Poission\)</span>）分布：<span class="math inline">\(P(X=k)=\frac{\lambda ^k}{k!}
+e^{-\lambda}\)</span>。一般来说，记随机变量 <span class="math inline">\(Y\sim P(\lambda)\)</span> 表示 <span class="math inline">\(Y\)</span> 服从参数为 <span class="math inline">\(\lambda\)</span> 的泊松分布。</p>
+<p>放射粒子模型揭示了二项分布可以用泊松分布近似的事实。</p>
+<p>TODO：复习粒子模型，做书上习题 <span class="math inline">\(2.2\)</span>。</p></li>
+</ul></li>
+<li><p>对于连续型随机变量的定义如下：设随机变量 <span class="math inline">\(X\)</span>，如果存在非负函数 <span class="math inline">\(f(x)\)</span> 满足对任意的 <span class="math inline">\(a&lt;b\)</span>，<span class="math inline">\(P(a&lt;X\leq b)=\int _a ^b f(x) dx\)</span>，则称
+<span class="math inline">\(X\)</span> 为连续型随机变量。称 <span class="math inline">\(f(x)\)</span> 为 <span class="math inline">\(X\)</span>
+的概率密度函数，简称概率密度或者密度（<span class="math inline">\(PDF\)</span>）。</p>
+<p>这并不意味着 <span class="math inline">\(X(\omega)\)</span>
+是连续函数，因为样本空间可能没有任何的拓扑结构，谈不上连续性。</p>
+<ul>
+<li><p>均匀（<span class="math inline">\(Uniform\)</span>）分布：<span class="math inline">\(f(x) = \frac{1}{b-a},x \in (a,b)\)</span>，此时记
+<span class="math inline">\(X \sim U(a,b)\)</span>。</p></li>
+<li><p>指数（<span class="math inline">\(Exponential\)</span>）分布：<span class="math inline">\(f(x) = \lambda e^{-\lambda x},x\geq
+0\)</span>，此时记 <span class="math inline">\(X\sim
+\epsilon(\lambda)\)</span>。</p>
+<p>如果 <span class="math inline">\(X\)</span> 是连续型非负随机变量，则
+<span class="math inline">\(X\)</span> 服从指数分布的充要条件是 <span class="math inline">\(X\)</span> 没有记忆性，也就是说 <span class="math inline">\(P(X&gt;s+t|X&gt;s) =
+P(X&gt;t)\)</span>。（可以由条件概率公式证出，Trivial.）</p>
+<p><span class="math inline">\(X\)</span>
+的失效率就是单位长度时间内失效的概率，可推知即为 <span class="math inline">\(\lambda\)</span>。也称其为尺度参数（rate
+parameter）。</p>
+<p>TODO：再推一遍 <span class="math inline">\(X\sim
+\epsilon(\lambda)\)</span> 时，<span class="math inline">\(Y=\lambda
+X\)</span>，则 <span class="math inline">\(Y\sim \epsilon
+(1)\)</span>。</p></li>
+<li><p>正态分布（<span class="math inline">\(Normal\)</span> <span class="math inline">\(Distribution\)</span>）：<span class="math inline">\(f(x)=\frac{1}{\sigma \sqrt{2 \pi}}
+exp(-\frac{(x-\mu)^2}{2\sigma ^2}),x \in R\)</span>，此时记 <span class="math inline">\(X\sim N(\mu ,\sigma^2)\)</span>。</p>
+<p>正态分布的函数图像关于 <span class="math inline">\(x=\mu\)</span>
+对称，在此处取最大值 <span class="math inline">\(f(\mu) = (\sigma
+\sqrt{2\pi})^{-1}\)</span>。关于 <span class="math inline">\(x=\mu \pm
+\sigma\)</span> 处有拐点。</p></li>
+</ul></li>
+</ul>
+<h1 id="lecture-5">Lecture 5</h1>
+<ul>
+<li><p>概率分布函数（<span class="math inline">\(CDF\)</span>）：对随机变量 <span class="math inline">\(X\)</span>，称 <span class="math inline">\(x\)</span> 的函数 <span class="math inline">\(F(x)
+= P(X\leq x),x \in R\)</span> 为 <span class="math inline">\(X\)</span>
+的概率分布函数，也称为累积分布函数，分布函数。</p>
+<ul>
+<li><p>对一个 <span class="math inline">\(PMF\)</span> 书写 <span class="math inline">\(CDF\)</span>，它一般是一个分段函数。</p></li>
+<li><p>对一个 <span class="math inline">\(PDF\)</span> 书写 <span class="math inline">\(CDF\)</span>，记随机变量 <span class="math inline">\(X\)</span> 的概率密度为 <span class="math inline">\(f(x)\)</span>，则其分布函数为 <span class="math inline">\(F(x) = \int_{-\infty}^x f(t) dt,x \in R\)</span>。
+对于一个已知的 <span class="math inline">\(F(x)\)</span>，只能确定连续点
+<span class="math inline">\(x\)</span> 处的概率密度为 <span class="math inline">\(f(x) =
+F&#39;(x)\)</span>，显然在不连续点处是无法确定的。</p>
+<ul>
+<li>注：连续型随机变量的概率密度不必为连续函数，允许可列个单点断开。那它为什么叫连续型呢？这与
+<span class="math inline">\(F(x)\)</span>
+的形式有关。同时离散型这一形容也与 <span class="math inline">\(F(x)\)</span> 有关。</li>
+</ul></li>
+<li><p>举个例子：标准正态分布的概率密度为 <span class="math inline">\(\phi(x)=\frac{1}{\sqrt{2 \pi}}
+exp(-\frac{x^2}{2}),x \in R\)</span>。其分布函数记为 <span class="math inline">\(\Phi(x)\)</span>，其值需要查表，当然也可以丢进
+MATLAB 算，但是不要求（</p>
+<figure>
+<img src="https://s2.loli.net/2022/09/29/lAWLBo8TXMfaQCK.png" alt="image-20220928155241878.png">
+<figcaption aria-hidden="true">image-20220928155241878.png</figcaption>
+</figure></li>
+<li><p>再举个例子：正态分布函数的概率密度计算中，可以对 <span class="math inline">\(\frac{x-\mu}{\sigma}\)</span>
+进行换元，从而变为标准正态分布的情况。</p></li>
+<li><p>再再举个例子：指数分布的分布函数要注意分段，考虑 <span class="math inline">\(x&lt;0\)</span> 的情况。</p>
+<p>TODO：去看一下几何随机变量和指数随机变量的分布函数的逼近，这是利用
+<span class="math inline">\(CDF\)</span> 寻找 <span class="math inline">\(PMF,PDF\)</span> 之间关系的例子。</p></li>
+<li><p>分布函数对一切随机变量都适用，这是它相对 <span class="math inline">\(PMF,PDF\)</span> 的优势。</p></li>
+</ul></li>
+<li><p>对于一个随机变量 <span class="math inline">\(X\)</span> 的函数
+<span class="math inline">\(g(X)\)</span>，怎么去寻找 <span class="math inline">\(g(X)\)</span>
+的概率分布？（这一部分其实是做题方法）</p>
+<ul>
+<li><p>最简单的情形：<span class="math inline">\(X\)</span>
+是离散型随机变量，对每一个 <span class="math inline">\(X\)</span> 的取值
+<span class="math inline">\(x\)</span>，确定 <span class="math inline">\(Y=g(x)\)</span>
+时的概率分布列即可。有需要的话还可以化成 <span class="math inline">\(CDF\)</span>。</p></li>
+<li><p>曲线救国：考察 <span class="math inline">\(Y=g(X)\)</span>
+的分布，若 <span class="math inline">\(g(x)\)</span>
+是<strong>连续函数</strong>，那么可以先得到 <span class="math inline">\(Y\)</span> 的 <span class="math inline">\(CDF\)</span> 为 <span class="math inline">\(F_Y(y)=P(Y\leq y)\)</span>，再求导得到 <span class="math inline">\(f_Y(y)=F_Y&#39;(y)\)</span>。</p></li>
+<li><p>特殊情况 1：线性的 <span class="math inline">\(g(X)\)</span>
+可以直接从 <span class="math inline">\(f_X(x)\)</span> 得到 <span class="math inline">\(f_Y(y)\)</span> 而无需计算 <span class="math inline">\(CDF\)</span>。</p>
+<p>形如 <span class="math inline">\(Y=aX+b\)</span> ，有 <span class="math inline">\(f_Y(y)=\frac{1}{|a|}
+f_X(\frac{y-b}{a})\)</span>。（其实还是用 <span class="math inline">\(CDF\)</span> 证明的）</p></li>
+<li><p>特殊情况 2：对于严格单调的 <span class="math inline">\(g(x)\)</span>，考虑 <span class="math inline">\(Y=g(X)\)</span>。记 <span class="math inline">\(h(y)\)</span> 是 <span class="math inline">\(g(x)\)</span> 的逆映射，于是 <span class="math inline">\(f_Y(y)=f_X(h(y))|h&#39;(y)|\)</span>，这可以通过考虑事件
+<span class="math inline">\(\lbrace x&lt;X&lt;x+\delta \rbrace\)</span>
+来证明。</p></li>
+<li><p>特殊情况
+3：像正态分布这样的特殊分布，遇到的时候建议先考虑能不能在 <span class="math inline">\(\Phi(x)\)</span>
+的尺度先行利用对称性化简。</p></li>
+</ul></li>
+</ul>
+<h1 id="lecture-6">Lecture 6</h1>
+<ul>
+<li><p><span class="math inline">\(n\)</span> 维随机向量：如果 <span class="math inline">\(X_1,X_2,...,X_n\)</span> 都是概率空间 <span class="math inline">\((\Omega,F,P)\)</span> 上的随机变量，那么称 <span class="math inline">\(X=(X_1,X_2,...,X_n)\)</span> 为概率空间 <span class="math inline">\((\Omega,F,P)\)</span> 上的 <span class="math inline">\(n\)</span> 维随机向量。</p>
+<p>那么怎么从随机变量上迁移来诸多的概念呢？</p>
+<ul>
+<li><p>联合概率分布函数：设 <span class="math inline">\(X=(X_1,X_2,...,X_n)\)</span> 为随机向量，称 <span class="math inline">\(R^n\)</span> 上的 <span class="math inline">\(n\)</span> 元函数 <span class="math inline">\(F(x_1,x_2,...,x_n)=P(X_1&lt;x_1,...,X_n&lt;x_n)\)</span>
+为 <span class="math inline">\(X=(X_1,X_2,...,X_n)\)</span>
+的联合概率分布函数，简称为联合分布或者分布函数。</p></li>
+<li><p>有关离散型随机向量：如果 <span class="math inline">\(X_1,X_2,...,X_n\)</span> 都是离散型随机变量，则称
+<span class="math inline">\(X=(X_1,X_2,...,X_n)\)</span>
+为离散型随机向量。如果所有 <span class="math inline">\(X_i\)</span>
+的不同取值为 <span class="math inline">\(x(j_1,j_2,...,j_n)=(x_1(j_1),x_2(j_2),...,x_n(j_n))\)</span>，则称
+<span class="math inline">\(p_{j_1 j_2 ...
+j_n}=P(X=x(j_1,j_2,...,j_n))\)</span> 是 <span class="math inline">\(X\)</span> 的联合分布列。</p>
+<ul>
+<li><p>举个例子：设 <span class="math inline">\(F(x,y)\)</span> 是 <span class="math inline">\((X,Y)\)</span> 的联合分布，则 <span class="math inline">\(X,Y\)</span> 有概率分布：</p>
+<p><span class="math inline">\(F_X(x) = P(X \leq x,Y \leq \infty) =
+F(x,\infty)\)</span>，</p>
+<p><span class="math inline">\(F_Y(y) = P(X \leq \infty,Y \leq y) =
+F(\infty ,y)\)</span>。</p>
+<p>于是，对于矩形 <span class="math inline">\(D=\lbrace a&lt;X \leq b,c
+&lt; Y \leq d \rbrace\)</span>，有 <span class="math inline">\(P((X,Y)\in D) =
+F(b,d)-F(b,c)-F(a,d)+F(a,c)\)</span>。</p></li>
+</ul></li>
+<li><p>有关连续型随机向量：简单来说，考虑二维的情形，如果 <span class="math inline">\((X,Y)\)</span> 有联合密度 <span class="math inline">\(f(x,y)\)</span>，则 <span class="math inline">\(X\)</span> 和 <span class="math inline">\(Y\)</span> 分别有概率密度 <span class="math inline">\(f_X(x)=\int_{-\infty} ^{\infty}
+f(x,y)dy\)</span>，<span class="math inline">\(f_Y(y)=\int_{-\infty}^{\infty}
+f(x,y)dx\)</span>。</p>
+<p>延拓到 <span class="math inline">\(n\)</span> 维的情况，被积函数
+<span class="math inline">\(f_k(x_1,x_2,...,x_k)=\int_{R^{n-k}}
+f(x_1,x_2,...,x_k) dx_{k+1}...dx_n\)</span> 是为 <span class="math inline">\((X_1,...,X_n)\)</span>
+的联合密度，称之为边缘密度（Marginal PDF）。</p></li>
+<li><p>连续型随机向量的独立性：对每个 <span class="math inline">\(i(1\leq i \leq n)\)</span>，随机变量 <span class="math inline">\(X_i\)</span> 有概率密度 <span class="math inline">\(f_i(x_i)\)</span>，则 <span class="math inline">\(X_1,X_2,...,X_n\)</span>
+相互独立的充分必要条件为随机向量 <span class="math inline">\(X=(X_1,X_2,...,X_n)\)</span> 有联合密度 <span class="math inline">\(f_1(x_1)f_2(x_2)...f_n(x_n),(x_1,x_2,...,x_n)\in
+R^n\)</span>。</p></li>
+<li><p>经典连续型随机向量例：二元正态分布</p>
+<p>设 <span class="math inline">\(\mu_1,\mu_2\)</span> 为常数，<span class="math inline">\(\sigma_1,\sigma_2\)</span> 为正常数，<span class="math inline">\(\rho \in (-1,1)\)</span> 中的常数。如果随机向量
+<span class="math inline">\((X,Y)\)</span> 有概率密度</p>
+<p><span class="math inline">\(f(x,y)=\frac{1}{2\pi \sigma_1 \sigma_2
+\sqrt{1-\rho^2}}exp(-\frac{1} {2(1-\rho^2)} [\frac{(x-\mu_1)^2}{\sigma_1
+^2} + \frac{(y-\mu_2)^2}{\sigma_2 ^2} - \frac{2\rho
+(x-\mu_1)(y-\mu_2)}{\sigma_1 \sigma_2}])\)</span>，</p>
+<p>那么称 <span class="math inline">\((X,Y)\)</span>
+服从二元正态分布，记为 <span class="math inline">\((X,Y)\sim
+N(\mu_1,\mu_2,\sigma_1^2, \sigma_2^2, \rho)\)</span>。</p>
+<ul>
+<li>一些性质：<span class="math inline">\(X,Y\)</span> 独立的充要条件是
+<span class="math inline">\(\rho=0\)</span>。（Trivial）</li>
+</ul></li>
+<li><p>联合分布（Joint CDF）与联合密度（Joint PDF）：已知联合密度 <span class="math inline">\(f(x,y)\)</span>，于是有联合分布 <span class="math inline">\(F(x,y) = \int _{-\infty} ^x \int _{-\infty} ^y
+f(u,v)dudv\)</span>。</p>
+<p>当 <span class="math inline">\(f(x,y)\)</span> 连续时，有 <span class="math inline">\(f(x,y) = \frac{\partial^2 F(x,y)}{\partial x
+\partial y}\)</span>。更一般地，如果该混合偏导数不存在，那么 <span class="math inline">\(f(x,y)=0\)</span>。</p></li>
+<li><p>连续型条件概率分布：设随机向量 <span class="math inline">\((X,Y)\)</span> 有联合密度 <span class="math inline">\(f(x,y)\)</span>，<span class="math inline">\(Y\)</span> 有边缘密度 <span class="math inline">\(f_Y(y)\)</span>。若在确定的 <span class="math inline">\(y_0\)</span> 处 <span class="math inline">\(f_Y(y_0)&gt;0\)</span>，则称 <span class="math inline">\(P(X \leq x | Y=y_0) = \frac{\int_{-\infty} ^x
+f(s,y_0) ds}{f_Y(y_0)}\)</span> 为给定条件 <span class="math inline">\(Y=y_0\)</span> 下，<span class="math inline">\(X\)</span> 的条件分布函数（conditional CDF），记为
+<span class="math inline">\(F_{X|Y}(x|y_0)\)</span>。</p>
+<p>于是条件分布密度为 <span class="math inline">\(f_{X|Y}(x|y_0) =
+\frac{f(x,y_0)}{f_Y(y_0)}\)</span>。（conditional PDF）</p>
+<ul>
+<li><p>一些性质：</p>
+<p>$F_{X|Y}(x|y)=P(Xx|Y=y)=<em>{-} ^x f</em>{X|Y}(s|y)ds, x R $。</p>
+<p>如果 <span class="math inline">\(F_{X|Y}(x|y)\)</span> 关于 <span class="math inline">\(x\)</span>
+连续，且除去至少可列个点后有连续的导数，则在偏导数存在时，<span class="math inline">\(f_{X|Y}(x|y_0)=\frac{\partial
+F_{X|Y}(x|y)}{\partial x}\)</span>，否则为 <span class="math inline">\(0\)</span>。</p></li>
+</ul></li>
+</ul></li>
+</ul>
+<h1 id="期中插播提示">期中插播提示</h1>
+<ul>
+<li><p>关于连续型概率分布之前的误解：连续型的随机变量不能随便取单点的概率，因为单点处的概率就是
+<span class="math inline">\(0\)</span>，这就是为什么要定义一个概率密度的原因。概率密度的大小可以是任意的，不一定要小于
+<span class="math inline">\(1\)</span>，只要它的积分能够表示某一段（区域）的概率即可，这个在联合分布中有比较多的体现。</p>
+<p>总之，虽然 <span class="math inline">\(F(x,y) = \int_{-\infty}^x
+\int_{-\infty}^y f(u,v)dudv\)</span>，但是 <span class="math inline">\(f(u,v)\)</span> 不等同于 <span class="math inline">\(P(X=u,Y=v)\)</span>。同理，如果要算条件概率的话，可以用
+<span class="math inline">\(F_{X|Y}(x|y)=P(x_1\leq X\leq
+x_2|Y=y)=\int_{x_1}^{x_2} f_{X|Y} (s|y)ds\)</span>，也就是对 cond PDF
+来积分求解。</p>
+<p>（但是，出于记忆公式的方便考虑，我还是会把它当成单点处的概率来列写公式（</p></li>
+<li><p>关于随机变量的独立性，定义如下：设 <span class="math inline">\(X_1,X_2,...,X_n\)</span> 是 <span class="math inline">\((\Omega,F)\)</span> 上的随机变量，如果对任意的实数
+<span class="math inline">\(x_1,x_2,...,x_n\)</span> 有 <span class="math inline">\(P(X_1\leq x_1,X_2 \leq x_2,...,X_n \leq
+x_n)=P(X_1\leq x_1)...P(X_n\leq x_n)\)</span> 成立，则称随机变量 <span class="math inline">\(X_1,X_2,...,X_n\)</span> 相互独立。</p>
+<p>同时，设随机变量 <span class="math inline">\(X_1,X_2,...,X_n\)</span>
+相互独立，<span class="math inline">\(g_1(x),g_2(x),...,g_n(x)\)</span>
+是一元实可测函数，<span class="math inline">\(\phi(x_1,x_2,...,x_k)\)</span> 是 <span class="math inline">\(k\)</span> 元实可测函数，则：</p>
+<ul>
+<li>随机变量 <span class="math inline">\(g_1(X_1),...,g_n(X_n)\)</span>
+相互独立；</li>
+<li>随机变量 <span class="math inline">\(\phi(X_1,...,X_k),X_{k+1},...,X_n\)</span>
+相互独立。</li>
+</ul>
+<p>这在样题的某个判断题中，以离散型随机变量的形式出现了，于是我自己证明了一下。实际上是一个更一般的结论。</p></li>
+<li><p>单调事件列的概率极限问题：以单调增序列 <span class="math inline">\(\lbrace A_i\rbrace\)</span> 为例，有结论 <span class="math inline">\(lim_{n\to \infty} A_n=\cup _{i=1}^{\infty}
+A_i\)</span>，于是极限概率为：</p>
+<p><span class="math inline">\(P(\cup _{i=1}^{\infty} A_i) = P( lim
+_{n\to \infty} A_n) = lim _{n \to \infty} P(A_n)\)</span>。</p>
+<p>对于一些不单调的事件序列，可以用交并补构造一个单调序列，使得可以使用上述规律。</p></li>
+<li><p>事件列的上下极限的通俗说法：设 <span class="math inline">\(\lbrace A_i \rbrace\)</span> 是 <span class="math inline">\(\Omega\)</span>
+中的一个事件列，定义上下极限为：</p>
+<p><span class="math inline">\(lim_{n\to \infty} sup A _n = \cap
+_{n=1}^{\infty} \cup _{k=n}^{\infty} A_k =\lbrace \omega \in \Omega:
+\omega\)</span> 属于无穷多个 <span class="math inline">\(A_i\rbrace\)</span>。</p>
+<p><span class="math inline">\(lim_{n\to \infty} inf A _n = \cup
+_{n=1}^{\infty} \cap _{k=n}^{\infty} A_k =\lbrace \omega \in \Omega:
+\omega\)</span> 属于所有的 <span class="math inline">\(A_i\)</span>
+除去有限个<span class="math inline">\(\rbrace\)</span>。</p>
+<p>当上下极限相等时称 <span class="math inline">\(\lbrace A_i
+\rbrace\)</span> 的极限存在。</p></li>
+<li><p>条件概率中会忘记的常识：对互不相容的事件列 <span class="math inline">\(\lbrace B_i \rbrace\)</span>，有 <span class="math inline">\(P(\cup _{i=1}^{\infty} B_i | A) = \Sigma
+_{i=1}^{\infty} P(B_i | A)\)</span>。</p>
+<p>一个 insight：求条件概率时我们可以把 <span class="math inline">\(A\)</span> 之外的结果排除掉，记作 <span class="math inline">\((A,A\cap
+F,P_A)\)</span>，这个事件域上完全可以有概率分布，因此不必为折棒太郎题惊讶。</p></li>
+<li><p>注意一组事件“相互独立”所要求的完备性。</p></li>
+<li><p>复习指南：</p>
+<ul>
+<li><p>以上全部 TODO</p></li>
+<li><p>去看一下习题课中《一个有助于理解独立性的题目》和 Polya
+坛子问题第二问。</p></li>
+<li><p>Poisoner's Dilemma</p></li>
+<li><p>A family has two girls while at least one names Lilia</p></li>
+<li><p>记一下几个重要分布，以及二元正态</p></li>
+<li><p>过一遍离散型、连续型随机向量的独立性证明，二元正态分布的独立性证明。</p></li>
+<li><p><del>折棒太郎</del>折木棍问题的随机向量表述，Buffon 问题</p></li>
+</ul></li>
+<li><p>最后是一个我比较个人向的整理，根据考试重点和过往习题。<a target="_blank" rel="noopener" href="https://cloud.tsinghua.edu.cn/f/4a371e0b38d64e178bc8/">Click
+Here</a></p></li>
+<li><p>记得多用归纳！</p></li>
+</ul>
+<h1 id="lecture-7">Lecture 7</h1>
+<p>又是全新的一门课辣（自我洗脑）</p>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>我很可爱 请给我钱（？）</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.jpg" alt="驰雨Chiyuru 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.jpg" alt="驰雨Chiyuru 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>驰雨Chiyuru
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://chiyuru.github.io/2022/09/24/Elementary-probability-theory/" title="初等概率论与挣扎">https://chiyuru.github.io/2022/09/24/Elementary-probability-theory/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%88%B7%E4%B9%A6/" rel="tag"># 刷书</a>
+              <a href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag"># 数学</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/09/19/huixiangdou/" rel="prev" title="你知道茴字的四种写法吗？">
+      <i class="fa fa-chevron-left"></i> 你知道茴字的四种写法吗？
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/10/01/Diary-2022-10/" rel="next" title="日记·篇二·22年10月">
+      日记·篇二·22年10月 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  
+  <div class="comments">
+  <script src="https://utteranc.es/client.js" repo="Chiyuru/chiyuru.github.io" issue-term="pathname" theme="github-light" crossorigin="anonymous" async></script>
+  </div>
+  
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-1"><span class="nav-text">Lecture 1</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-2"><span class="nav-text">Lecture 2</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-3"><span class="nav-text">Lecture 3</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-4"><span class="nav-text">Lecture 4</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-5"><span class="nav-text">Lecture 5</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-6"><span class="nav-text">Lecture 6</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%9F%E4%B8%AD%E6%8F%92%E6%92%AD%E6%8F%90%E7%A4%BA"><span class="nav-text">期中插播提示</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-7"><span class="nav-text">Lecture 7</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="驰雨Chiyuru"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">驰雨Chiyuru</p>
+  <div class="site-description" itemprop="description">おはよう、朝だよ</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Chiyuru" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Chiyuru" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:mafy21@mails.tsinghua.edu.cn" title="E-Mail → mailto:mafy21@mails.tsinghua.edu.cn" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/Chiyuru_0417" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;Chiyuru_0417" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/ma-fei-yan-33" title="知乎 → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;ma-fei-yan-33" rel="noopener" target="_blank"><i class="fab fa-zhihu fa-fw"></i>知乎</a>
+      </span>
+  </div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">驰雨Chiyuru</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv1">
+  本站总访客数：<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共166.2k字</span>
+</div>
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300,"hOffset":-15,"vOffset":-15},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
+</html>

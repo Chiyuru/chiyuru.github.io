@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"chiyuru.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="今年是第三次写 Sharygin Geometry Olympic 题解，可能是最后一次。所以我又来水字数了 退役两年人员写几何题快裂开了，从来没觉得做题这么难过。但是蛮好玩的，什么叫思维体操啊（ 只做了一点微小的贡献，谢谢大家。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2022 Sharygin Geometry Olympic 题解小记">
+<meta property="og:url" content="https://chiyuru.github.io/2022/08/14/Sharygin-Geometry-Olympic/index.html">
+<meta property="og:site_name" content="『姑妄言之姑妄听之』">
+<meta property="og:description" content="今年是第三次写 Sharygin Geometry Olympic 题解，可能是最后一次。所以我又来水字数了 退役两年人员写几何题快裂开了，从来没觉得做题这么难过。但是蛮好玩的，什么叫思维体操啊（ 只做了一点微小的贡献，谢谢大家。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2022/08/14/1Uc97zNGbL3mwDF.png">
+<meta property="og:image" content="https://s2.loli.net/2022/08/14/mKqN7Euwn5oxD3h.png">
+<meta property="og:image" content="https://s2.loli.net/2022/08/14/yxTUP4rwhBmMbaA.png">
+<meta property="og:image" content="https://s2.loli.net/2022/08/15/PNSgcDOoFwTaYU4.png">
+<meta property="og:image" content="https://s2.loli.net/2022/08/15/lnuBYpK5otj8ChA.png">
+<meta property="og:image" content="https://s2.loli.net/2022/08/15/ysTVvjFzuHOapWi.png">
+<meta property="og:image" content="https://s2.loli.net/2022/08/15/Lpy3aAKCNsTvkcU.png">
+<meta property="og:image" content="https://s2.loli.net/2022/08/15/TFeBSaLlR3U7rxZ.png">
+<meta property="og:image" content="https://s2.loli.net/2022/08/15/oQWZ4YFVtvAgMpc.png">
+<meta property="og:image" content="https://s2.loli.net/2022/08/15/RmnEHUKYSu9zgO5.png">
+<meta property="og:image" content="https://s2.loli.net/2022/08/15/USGKwlcHkMpFr9x.png">
+<meta property="og:image" content="https://s2.loli.net/2022/08/15/XrtWVJ1iHUsNwEy.png">
+<meta property="og:image" content="https://s2.loli.net/2022/08/15/kN4LX1HRio6YB9h.png">
+<meta property="og:image" content="https://s2.loli.net/2022/08/20/aemiT9nd35gKrtG.png">
+<meta property="og:image" content="https://s2.loli.net/2022/08/20/feokWsvVIGJ6m3T.png">
+<meta property="article:published_time" content="2022-08-14T15:52:19.000Z">
+<meta property="article:modified_time" content="2022-08-20T15:42:35.000Z">
+<meta property="article:author" content="驰雨Chiyuru">
+<meta property="article:tag" content="碎碎念">
+<meta property="article:tag" content="这里面看起来很好玩">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2022/08/14/1Uc97zNGbL3mwDF.png">
+
+<link rel="canonical" href="https://chiyuru.github.io/2022/08/14/Sharygin-Geometry-Olympic/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>2022 Sharygin Geometry Olympic 题解小记 | 『姑妄言之姑妄听之』</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="『姑妄言之姑妄听之』" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">『姑妄言之姑妄听之』</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://chiyuru.github.io/2022/08/14/Sharygin-Geometry-Olympic/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="驰雨Chiyuru">
+      <meta itemprop="description" content="おはよう、朝だよ">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="『姑妄言之姑妄听之』">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          2022 Sharygin Geometry Olympic 题解小记
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-08-14 23:52:19" itemprop="dateCreated datePublished" datetime="2022-08-14T23:52:19+08:00">2022-08-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-08-20 23:42:35" itemprop="dateModified" datetime="2022-08-20T23:42:35+08:00">2022-08-20</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>今年是第三次写 Sharygin Geometry Olympic
+题解，可能是最后一次。<del>所以我又来水字数了</del></p>
+<p>退役两年人员写几何题快裂开了，从来没觉得做题这么难过。但是蛮好玩的，什么叫思维体操啊（</p>
+<p>只做了一点微小的贡献，谢谢大家。</p>
+<span id="more"></span>
+<figure>
+<img src="https://s2.loli.net/2022/08/14/1Uc97zNGbL3mwDF.png" alt="_B68C16QRPWR_OTA_22DPC2.png">
+<figcaption aria-hidden="true">_B68C16QRPWR_OTA_22DPC2.png</figcaption>
+</figure>
+<figure>
+<img src="https://s2.loli.net/2022/08/14/mKqN7Euwn5oxD3h.png" alt="img">
+<figcaption aria-hidden="true">img</figcaption>
+</figure>
+<figure>
+<img src="https://s2.loli.net/2022/08/14/yxTUP4rwhBmMbaA.png" alt="image-20220814144153170">
+<figcaption aria-hidden="true">image-20220814144153170</figcaption>
+</figure>
+<p>显然，本人不善几何。尤其是自己的通讯地址变成华子之后水平骤降，每次都是替大家扫水题，然后排最后一个。其实这次论数量论质量都应该是排第四的，但是为了给新成员让路所以还是排最后了...啊就这样吧
+XD，也不重要。<del>还是看看远处的 SRT 吧家人们</del></p>
+<p>在新星发文章的最高记录是二作，大概是 2020 Vietnam Mathmatics
+Olympic。成员们来来去去，最年轻的也马上高三了，或许是最后一次合作，起码我应该不会再参加了。</p>
+<p>第一次在电脑上用 Geogebra，之前都是在手机上用，电脑上用
+Sketchpad。Geogebra 上手莫名很快，手感也很熟悉，再一想发现快捷键和
+AutoCAD 一模一样，这下职业病了。然后也是第一次尝试用 tikz 在 LaTeX
+文档里插图，感觉还挺好用，赞美。</p>
+<p>另外，谁能想到我五个几何题做了一天呢（思维体操，思维体操.jpg</p>
+<h1 id="section">8-1</h1>
+<p>非常水，我甚至能 15 分钟解决（</p>
+<p>Sharygin2022.pdf（策划不给源代码，可恶（？</p>
+<figure>
+<img src="https://s2.loli.net/2022/08/15/PNSgcDOoFwTaYU4.png" alt="image-20220815015024256">
+<figcaption aria-hidden="true">image-20220815015024256</figcaption>
+</figure>
+<p>Sharygin-by-Chiyuru.tex</p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\textbf</span>&#123;8-1 证明:&#125;取<span class="built_in">$</span><span class="keyword">\triangle</span> BCD<span class="built_in">$</span>的外心为<span class="built_in">$</span>O<span class="built_in">$</span>.于是有<span class="built_in">$</span>OB=OD,AB=AD<span class="built_in">$</span>,由于</span><br><span class="line">	</span><br><span class="line"><span class="built_in">$</span><span class="keyword">\angle</span> DBO=90<span class="built_in">^</span><span class="keyword">\circ</span> -<span class="keyword">\angle</span> BCD=90<span class="built_in">^</span><span class="keyword">\circ</span> -<span class="keyword">\frac</span>&#123;1&#125;&#123;2&#125;<span class="keyword">\angle</span> BAD=<span class="keyword">\angle</span> ABD<span class="built_in">$</span>,</span><br><span class="line">	</span><br><span class="line">可知四边形<span class="built_in">$</span>ABOD<span class="built_in">$</span>为菱形.故有<span class="built_in">$</span>CP=AB=OD<span class="built_in">$</span>,且</span><br><span class="line">	</span><br><span class="line"><span class="built_in">$</span><span class="keyword">\angle</span> DCP=180<span class="built_in">^</span><span class="keyword">\circ</span> -<span class="keyword">\angle</span> ABC-<span class="keyword">\angle</span> BCD=180<span class="built_in">^</span><span class="keyword">\circ</span> -(<span class="keyword">\angle</span> ABD+<span class="keyword">\angle</span> BCD)-<span class="keyword">\angle</span> DBC=90<span class="built_in">^</span><span class="keyword">\circ</span> -<span class="keyword">\angle</span> DBC=<span class="keyword">\angle</span> ODC<span class="built_in">$</span></span><br><span class="line">	</span><br><span class="line">于是<span class="built_in">$</span>OD,CP<span class="built_in">$</span>互相平行且相等,则四边形<span class="built_in">$</span>OCPD<span class="built_in">$</span>为平行四边形,有<span class="built_in">$</span>CP=OD=OC=DP<span class="built_in">$</span>,得证.<span class="keyword">\qed</span></span><br><span class="line">	</span><br><span class="line"><span class="keyword">\textbf</span>&#123;评注:&#125;题目中的二倍角条件几乎明示了作圆心，连出辅助线后即得解。</span><br></pre></td></tr></table></figure>
+<p>8-1.ggb（tikz 看起来丑丑的？</p>
+<figure>
+<img src="https://s2.loli.net/2022/08/15/lnuBYpK5otj8ChA.png" alt="image-20220815014846845">
+<figcaption aria-hidden="true">image-20220815014846845</figcaption>
+</figure>
+<h1 id="section-1">8-2</h1>
+<p>稍微有点痛，但是也还好，还是水题。</p>
+<p>Sharygin2022.pdf</p>
+<figure>
+<img src="https://s2.loli.net/2022/08/15/ysTVvjFzuHOapWi.png" alt="image-20220815015121064">
+<figcaption aria-hidden="true">image-20220815015121064</figcaption>
+</figure>
+<p>Sharygin-by-Chiyuru.tex</p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\textbf</span>&#123;8-2 证明:&#125;取<span class="built_in">$</span><span class="keyword">\omega</span><span class="built_in">_</span>1<span class="built_in">$</span>与<span class="built_in">$</span>AB<span class="built_in">$</span>的交点为<span class="built_in">$</span>E&#x27;<span class="built_in">$</span>.</span><br><span class="line">    </span><br><span class="line">有<span class="built_in">$</span><span class="keyword">\angle</span> CME&#x27;=<span class="keyword">\angle</span> CBE&#x27;=<span class="keyword">\angle</span> ME&#x27;A=90<span class="built_in">^</span><span class="keyword">\circ</span><span class="built_in">$</span>.可知<span class="built_in">$</span>M,E&#x27;A,D<span class="built_in">$</span>四点共圆,<span class="built_in">$</span><span class="keyword">\omega</span><span class="built_in">_</span>1<span class="built_in">$</span>与<span class="built_in">$</span><span class="keyword">\omega</span><span class="built_in">_</span>2<span class="built_in">$</span>的交点<span class="built_in">$</span>E<span class="built_in">$</span>与<span class="built_in">$</span>E&#x27;<span class="built_in">$</span>重合,在<span class="built_in">$</span>AB<span class="built_in">$</span>上.</span><br><span class="line">    </span><br><span class="line">故<span class="built_in">$</span><span class="keyword">\angle</span> CFD=<span class="keyword">\angle</span> CBE=90<span class="built_in">^</span><span class="keyword">\circ</span><span class="built_in">$</span>,<span class="built_in">$</span>M<span class="built_in">$</span>为斜边<span class="built_in">$</span>CD<span class="built_in">$</span>中点,即<span class="built_in">$</span>MF=MD=CM<span class="built_in">$</span>.</span><br><span class="line">    </span><br><span class="line">又注意到<span class="built_in">$</span><span class="keyword">\angle</span> AGB=<span class="keyword">\angle</span> CBF=<span class="keyword">\angle</span> FMD<span class="built_in">$</span>,即得<span class="built_in">$</span>M,F,G,D<span class="built_in">$</span>四点共圆,则<span class="built_in">$</span><span class="keyword">\angle</span> BGM=<span class="keyword">\angle</span> MDF=<span class="keyword">\angle</span> MFD=<span class="keyword">\angle</span> MGD<span class="built_in">$</span>,得证.<span class="keyword">\qed</span></span><br><span class="line">	</span><br><span class="line"><span class="keyword">\textbf</span>&#123;评注:&#125;作图准确的话可以很快得到<span class="built_in">$</span>E<span class="built_in">$</span>在线段<span class="built_in">$</span>AB<span class="built_in">$</span>上的结论，倒角即得解。</span><br></pre></td></tr></table></figure>
+<p>8-2.ggb</p>
+<figure>
+<img src="https://s2.loli.net/2022/08/15/Lpy3aAKCNsTvkcU.png" alt="image-20220815015442452">
+<figcaption aria-hidden="true">image-20220815015442452</figcaption>
+</figure>
+<p>策划说他写了个脚本批量修改 tikz 的格式，我们只要交个 .ggb
+就好了。所以我前两张图的线粗细都不一样，测试一下（</p>
+<h1 id="section-2">8-4</h1>
+<p>这个题太痛了，我想了有一个多小时，然后发现自己好傻。</p>
+<p>Sharygin2022.pdf</p>
+<figure>
+<img src="https://s2.loli.net/2022/08/15/TFeBSaLlR3U7rxZ.png" alt="image-20220815015833700">
+<figcaption aria-hidden="true">image-20220815015833700</figcaption>
+</figure>
+<p>Sharygin-by-Chiyuru.tex</p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\textbf</span>&#123;8-4 证明:&#125;取<span class="built_in">$</span><span class="keyword">\astrosun</span> (OPN)<span class="built_in">$</span> 和<span class="built_in">$</span>CD<span class="built_in">$</span>的另一交点为<span class="built_in">$</span>S<span class="built_in">$</span>,<span class="built_in">$</span><span class="keyword">\astrosun</span> (OPM)<span class="built_in">$</span>和<span class="built_in">$</span>AB<span class="built_in">$</span>的另一交点为<span class="built_in">$</span>T<span class="built_in">$</span>.</span><br><span class="line">联结<span class="built_in">$</span>SC<span class="built_in">_</span>1,SD<span class="built_in">_</span>1,B<span class="built_in">_</span>1T,A<span class="built_in">_</span>1T,SP,PT,ON,OM<span class="built_in">$</span>.</span><br><span class="line">    </span><br><span class="line">由<span class="built_in">$</span><span class="keyword">\angle</span> SPO=<span class="keyword">\angle</span> OND=<span class="keyword">\angle</span> OMA=<span class="keyword">\angle</span> OPT=90<span class="built_in">^</span><span class="keyword">\circ</span><span class="built_in">$</span>,知<span class="built_in">$</span>S,P,T<span class="built_in">$</span>三点共线.</span><br><span class="line">    </span><br><span class="line">考虑到<span class="built_in">$</span><span class="keyword">\triangle</span> PDC<span class="built_in">$</span>和<span class="built_in">$</span><span class="keyword">\triangle</span> PAB<span class="built_in">$</span>为相似三角形,其顶点与中点连线<span class="built_in">$</span>PN,PM<span class="built_in">$</span>、对应边的中垂线<span class="built_in">$</span>ON,OM<span class="built_in">$</span>的夹角对应地相等.即<span class="built_in">$</span><span class="keyword">\angle</span> OSP=<span class="keyword">\angle</span> ONP=<span class="keyword">\angle</span> OMP=<span class="keyword">\angle</span> OTP<span class="built_in">$</span>.也即<span class="built_in">$</span><span class="keyword">\astrosun</span> (OPN)<span class="built_in">$</span> 和<span class="built_in">$</span><span class="keyword">\astrosun</span> (OPM)<span class="built_in">$</span>的半径相等.</span><br><span class="line">    </span><br><span class="line">由此可知<span class="built_in">$</span>SP=PT,SD<span class="built_in">_</span>1=B<span class="built_in">_</span>1T,SC<span class="built_in">_</span>1=A<span class="built_in">_</span>1T,A<span class="built_in">_</span>1B<span class="built_in">_</span>1=C<span class="built_in">_</span>1D<span class="built_in">_</span>1<span class="built_in">$</span>.故<span class="built_in">$</span><span class="keyword">\triangle</span> SD<span class="built_in">_</span>1C<span class="built_in">_</span>1 <span class="keyword">\cong</span> <span class="keyword">\triangle</span> TB<span class="built_in">_</span>1A<span class="built_in">_</span>1<span class="built_in">$</span>.</span><br><span class="line">    </span><br><span class="line">考虑到<span class="built_in">$</span><span class="keyword">\angle</span> OC<span class="built_in">_</span>1P=<span class="keyword">\angle</span> OA<span class="built_in">_</span>1P<span class="built_in">$</span>,从而有<span class="built_in">$</span>OC<span class="built_in">_</span>1=OA<span class="built_in">_</span>1<span class="built_in">$</span>.同时<span class="built_in">$</span>OC=OA<span class="built_in">$</span>,得到<span class="built_in">$</span>C<span class="built_in">_</span>1C=A<span class="built_in">_</span>1A<span class="built_in">$</span>.同理也有<span class="built_in">$</span>B<span class="built_in">_</span>1B=D<span class="built_in">_</span>1D<span class="built_in">$</span>.</span><br><span class="line">过<span class="built_in">$</span>T<span class="built_in">$</span>作<span class="built_in">$</span>TF <span class="keyword">\bot</span> CA<span class="built_in">$</span>,过<span class="built_in">$</span>S<span class="built_in">$</span>作<span class="built_in">$</span>SE <span class="keyword">\bot</span> CA<span class="built_in">$</span>.由<span class="built_in">$</span>SP=PT<span class="built_in">$</span>可知<span class="built_in">$</span>TF=SE<span class="built_in">$</span>,结合<span class="built_in">$</span>C<span class="built_in">_</span>1C=A<span class="built_in">_</span>1A<span class="built_in">$</span> 可知<span class="built_in">$</span><span class="keyword">\triangle</span> AA<span class="built_in">_</span>1T<span class="built_in">$</span>和<span class="built_in">$</span><span class="keyword">\triangle</span> CC<span class="built_in">_</span>1S<span class="built_in">$</span>面积相等,同理<span class="built_in">$</span><span class="keyword">\triangle</span> BB<span class="built_in">_</span>1T<span class="built_in">$</span>和<span class="built_in">$</span><span class="keyword">\triangle</span> DD<span class="built_in">_</span>1S<span class="built_in">$</span>面积相等.</span><br><span class="line">    </span><br><span class="line">结合<span class="built_in">$</span><span class="keyword">\triangle</span> SD<span class="built_in">_</span>1C<span class="built_in">_</span>1 <span class="keyword">\cong</span> <span class="keyword">\triangle</span> TB<span class="built_in">_</span>1A<span class="built_in">_</span>1<span class="built_in">$</span>可知,四边形<span class="built_in">$</span>AA<span class="built_in">_</span>1B<span class="built_in">_</span>1B<span class="built_in">$</span>与<span class="built_in">$</span>CC<span class="built_in">_</span>1D<span class="built_in">_</span>1D<span class="built_in">$</span>面积相等,得证.<span class="keyword">\qed</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">\textbf</span>&#123;评注:&#125;本题大量运用了对称性，需要一定的几何直觉。作图准确的话不难发现两圆半径相等，从而迎刃而解。</span><br></pre></td></tr></table></figure>
+<p>《迎 刃 而 解》</p>
+<p>8-4.ggb</p>
+<figure>
+<img src="https://s2.loli.net/2022/08/15/oQWZ4YFVtvAgMpc.png" alt="image-20220815020020232">
+<figcaption aria-hidden="true">image-20220815020020232</figcaption>
+</figure>
+<h1 id="section-3">8-7</h1>
+<p>这个最痛。组合几何，尤其是答案都出乎意料的组合几何，太痛了（</p>
+<p>Sharygin2022.pdf</p>
+<figure>
+<img src="https://s2.loli.net/2022/08/15/RmnEHUKYSu9zgO5.png" alt="image-20220815020103145">
+<figcaption aria-hidden="true">image-20220815020103145</figcaption>
+</figure>
+<p>Sharygin-by-Chiyuru.tex</p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\textbf</span>&#123;8-7 解:&#125;否。证明如下：</span><br><span class="line">	</span><br><span class="line">首先证明一个引理:对于共圆的四个点,它们一定位于某个正方形上.</span><br><span class="line">	</span><br><span class="line">不妨设共圆的四点为<span class="built_in">$</span>A,B,C,D<span class="built_in">$</span>,其中,四边形<span class="built_in">$</span>ABCD<span class="built_in">$</span>有至少两个角不是锐角，记为<span class="built_in">$</span><span class="keyword">\angle</span> B,<span class="keyword">\angle</span> C<span class="built_in">$</span>.</span><br><span class="line">两边延长<span class="built_in">$</span>BC<span class="built_in">$</span>,过<span class="built_in">$</span>A,D<span class="built_in">$</span>分别作<span class="built_in">$</span>BC<span class="built_in">$</span>的垂线<span class="built_in">$</span>AH,DF<span class="built_in">$</span>.不妨设<span class="built_in">$</span>AH≥DF<span class="built_in">$</span>,过<span class="built_in">$</span>A<span class="built_in">$</span>在<span class="built_in">$</span>FD<span class="built_in">$</span>的延长线上作垂线<span class="built_in">$</span>AG<span class="built_in">$</span>.从而四点<span class="built_in">$</span>A,B,C,D<span class="built_in">$</span>位于长方形<span class="built_in">$</span>HFGA<span class="built_in">$</span>上.若<span class="built_in">$</span>HFGA<span class="built_in">$</span>为正方形则引理已得证.</span><br><span class="line">	</span><br><span class="line">当<span class="built_in">$</span>HF&gt;FG<span class="built_in">$</span>时,分别延长<span class="built_in">$</span>HA,FG<span class="built_in">$</span>至<span class="built_in">$</span>A&#x27;,G&#x27;<span class="built_in">$</span>,使得<span class="built_in">$</span>HA&#x27;G&#x27;F<span class="built_in">$</span>为正方形,<span class="built_in">$</span>A,B,C,D<span class="built_in">$</span>在其上;当<span class="built_in">$</span>HF&lt;FG<span class="built_in">$</span>时,同理分别延长<span class="built_in">$</span>HF,GA<span class="built_in">$</span>至<span class="built_in">$</span>H&#x27;,A&#x27;<span class="built_in">$</span>即可.引理得证.</span><br><span class="line">	</span><br><span class="line">下面举出原命题的反例.取一个圆内接十边形的顶点,则它们不可能在同一个正方形上,这是因为一个正方形和圆最多有<span class="built_in">$</span>8<span class="built_in">$</span>个交点;同时,这<span class="built_in">$</span>10<span class="built_in">$</span>个点中的任意<span class="built_in">$</span>4<span class="built_in">$</span>个共圆,由引理知也即位于某一个正方形上.故原命题不一定成立,得证.</span><br><span class="line">	</span><br><span class="line"><span class="keyword">\textbf</span>&#123;评注:&#125;本题的举例非常巧妙，笔者写作过程中的最大困难在于判断命题的对错，因此走了一段弯路。</span><br></pre></td></tr></table></figure>
+<p>8-7.ggb</p>
+<figure>
+<img src="https://s2.loli.net/2022/08/15/USGKwlcHkMpFr9x.png" alt="image-20220815020229724">
+<figcaption aria-hidden="true">image-20220815020229724</figcaption>
+</figure>
+<h1 id="section-4">9-1</h1>
+<p>这不比前面的都简单太多了？.jpg</p>
+<p>Sharygin2022.pdf</p>
+<figure>
+<img src="https://s2.loli.net/2022/08/15/XrtWVJ1iHUsNwEy.png" alt="image-20220815020307265">
+<figcaption aria-hidden="true">image-20220815020307265</figcaption>
+</figure>
+<p>Sharygin-by-Chiyuru.tex</p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\textbf</span>&#123;9-1 证明:&#125;</span><br><span class="line">显然,<span class="built_in">$</span>BC<span class="built_in">_</span>1=<span class="keyword">\frac</span>&#123;1&#125;&#123;2&#125; (BH+HC+CB),BA<span class="built_in">_</span>1=<span class="keyword">\frac</span>&#123;1&#125;&#123;2&#125; (BA+AH+BH)<span class="built_in">$</span>.</span><br><span class="line">	</span><br><span class="line">于是<span class="built_in">$</span><span class="keyword">\frac</span>&#123;BC<span class="built_in">_</span>1&#125;&#123;BA<span class="built_in">_</span>1&#125;=<span class="keyword">\frac</span>&#123;BH+HC+CB&#125;&#123;BA+AH+BH&#125;=<span class="keyword">\frac</span>&#123;BC&#125;&#123;BA&#125;<span class="built_in">$</span>,从而<span class="built_in">$</span>AC<span class="keyword">\parallel</span> A<span class="built_in">_</span>1C<span class="built_in">_</span>1 <span class="built_in">$</span>,得证.<span class="keyword">\qed</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">\textbf</span>&#123;评注:&#125;非常基础的题目，熟知切点关于长度的结论即可。</span><br></pre></td></tr></table></figure>
+<p>9-1.ggb</p>
+<figure>
+<img src="https://s2.loli.net/2022/08/15/kN4LX1HRio6YB9h.png" alt="image-20220815020412523">
+<figcaption aria-hidden="true">image-20220815020412523</figcaption>
+</figure>
+<h1 id="后记与碎碎念">后记与碎碎念</h1>
+<p>等到发表了（可能会拖到十月、十一月？）再来补个后记。其实就是丢个链接和文档，权当记录了。</p>
+<p>看到行在清华公众号发的推文，才知道北京已经凉快些了，是初秋。上海还是每天都
+40°C 左右，热得好难受。</p>
+<p>这么说来，快要回去了。</p>
+<h1 id="后后记update-8-6">后后记：Update 8-6</h1>
+<p>这个锅甩来甩去又回到了我手上，不会做，晚上把它翻译好了。</p>
+<p>摸到了倒数第二作x。</p>
+<p>Sharygin2022.pdf</p>
+<figure>
+<img src="https://s2.loli.net/2022/08/20/aemiT9nd35gKrtG.png" alt="image-20220820231640822">
+<figcaption aria-hidden="true">image-20220820231640822</figcaption>
+</figure>
+<p>Sharygin-8-6-by-Chiyuru.tex</p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\textbf</span>&#123;8-6 解:&#125;我们首先给出作图方式：</span><br><span class="line">	</span><br><span class="line">联结两圆<span class="built_in">$</span><span class="keyword">\omega</span><span class="built_in">_</span>1、<span class="keyword">\omega</span><span class="built_in">_</span>2<span class="built_in">$</span>的圆心<span class="built_in">$</span>O<span class="built_in">_</span>1、O<span class="built_in">_</span>2<span class="built_in">$</span>,任取<span class="built_in">$</span><span class="keyword">\omega</span><span class="built_in">_</span>1<span class="built_in">$</span>上的点<span class="built_in">$</span>T<span class="built_in">$</span>并联结<span class="built_in">$</span>O<span class="built_in">_</span>2T<span class="built_in">$</span>,作直线<span class="built_in">$</span>O<span class="built_in">_</span>1S<span class="keyword">\parallel</span> O<span class="built_in">_</span>2T<span class="built_in">$</span>交<span class="built_in">$</span><span class="keyword">\omega</span><span class="built_in">_</span>2<span class="built_in">$</span>于<span class="built_in">$</span>S<span class="built_in">$</span>.取<span class="built_in">$</span>ST<span class="built_in">$</span>与<span class="built_in">$</span>O<span class="built_in">_</span>1O<span class="built_in">_</span>2<span class="built_in">$</span>的交点为<span class="built_in">$</span>I<span class="built_in">$</span>.</span><br><span class="line">作射线<span class="built_in">$</span>OI<span class="built_in">$</span>分别交<span class="built_in">$</span><span class="keyword">\omega</span><span class="built_in">_</span>1、<span class="keyword">\omega</span><span class="built_in">_</span>2<span class="built_in">$</span>于<span class="built_in">$</span>D,C<span class="built_in">$</span>,此即为<span class="built_in">$</span>OC:OD<span class="built_in">$</span>取最大值的情形.</span><br><span class="line">	</span><br><span class="line">证明:过<span class="built_in">$</span>O<span class="built_in">$</span>点以<span class="built_in">$</span>OC:OD<span class="built_in">$</span>为比例作<span class="built_in">$</span><span class="keyword">\omega</span><span class="built_in">_</span>1<span class="built_in">$</span>的外位似圆<span class="built_in">$</span><span class="keyword">\omega</span><span class="built_in">$</span>,</span><br><span class="line">易知<span class="built_in">$</span><span class="keyword">\omega</span><span class="built_in">$</span>过点<span class="built_in">$</span>C<span class="built_in">$</span>.当<span class="built_in">$</span>OC:OD<span class="built_in">$</span>取最大值时,过<span class="built_in">$</span>O<span class="built_in">$</span>点以系数<span class="built_in">$</span>k&gt;OC:OD<span class="built_in">$</span>为比例作<span class="built_in">$</span><span class="keyword">\omega</span><span class="built_in">_</span>1<span class="built_in">$</span>的外位似圆<span class="built_in">$</span><span class="keyword">\omega</span>&#x27;<span class="built_in">$</span>与<span class="built_in">$</span><span class="keyword">\omega</span><span class="built_in">_</span>2<span class="built_in">$</span>无交点.</span><br><span class="line">	</span><br><span class="line">因此<span class="built_in">$</span><span class="keyword">\omega</span><span class="built_in">$</span>和<span class="built_in">$</span><span class="keyword">\omega</span><span class="built_in">_</span>1<span class="built_in">$</span>相切于<span class="built_in">$</span>C<span class="built_in">$</span>点.取<span class="built_in">$</span><span class="keyword">\omega</span><span class="built_in">$</span>圆心为<span class="built_in">$</span>O<span class="built_in">_</span>3<span class="built_in">$</span>,有<span class="built_in">$</span>O<span class="built_in">_</span>2,C,O<span class="built_in">_</span>3<span class="built_in">$</span>共线,且<span class="built_in">$</span>O<span class="built_in">_</span>2O<span class="built_in">_</span>3<span class="keyword">\parallel</span> O<span class="built_in">_</span>1D<span class="built_in">$</span>.故射线<span class="built_in">$</span>ODC<span class="built_in">$</span>与线段<span class="built_in">$</span>O<span class="built_in">_</span>1O<span class="built_in">_</span>2<span class="built_in">$</span>交于<span class="built_in">$</span><span class="keyword">\omega</span><span class="built_in">_</span>1、<span class="keyword">\omega</span><span class="built_in">_</span>2<span class="built_in">$</span>的内位似中心，即为上述作出的<span class="built_in">$</span>I<span class="built_in">$</span>,得证.<span class="keyword">\qed</span></span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line"><span class="keyword">\textbf</span>&#123;评注:&#125;尺规作图题中常见的利用位似性质的题目，非常精妙。</span><br></pre></td></tr></table></figure>
+<p>8-6.ggb</p>
+<figure>
+<img src="https://s2.loli.net/2022/08/20/feokWsvVIGJ6m3T.png" alt="b.png">
+<figcaption aria-hidden="true">b.png</figcaption>
+</figure>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>我很可爱 请给我钱（？）</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.jpg" alt="驰雨Chiyuru 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.jpg" alt="驰雨Chiyuru 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>驰雨Chiyuru
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://chiyuru.github.io/2022/08/14/Sharygin-Geometry-Olympic/" title="2022 Sharygin Geometry Olympic 题解小记">https://chiyuru.github.io/2022/08/14/Sharygin-Geometry-Olympic/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%A2%8E%E7%A2%8E%E5%BF%B5/" rel="tag"># 碎碎念</a>
+              <a href="/tags/%E8%BF%99%E9%87%8C%E9%9D%A2%E7%9C%8B%E8%B5%B7%E6%9D%A5%E5%BE%88%E5%A5%BD%E7%8E%A9/" rel="tag"># 这里面看起来很好玩</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/08/01/Python-Crash-Course/" rel="prev" title="刷 Python Crash Course 然后还有酒井暑培 AI Track">
+      <i class="fa fa-chevron-left"></i> 刷 Python Crash Course 然后还有酒井暑培 AI Track
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/08/17/2022-photos-and-fragments/" rel="next" title="用相册细碎地回忆一下在 THU 的第一年">
+      用相册细碎地回忆一下在 THU 的第一年 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  
+  <div class="comments">
+  <script src="https://utteranc.es/client.js" repo="Chiyuru/chiyuru.github.io" issue-term="pathname" theme="github-light" crossorigin="anonymous" async></script>
+  </div>
+  
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#section"><span class="nav-text">8-1</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#section-1"><span class="nav-text">8-2</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#section-2"><span class="nav-text">8-4</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#section-3"><span class="nav-text">8-7</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#section-4"><span class="nav-text">9-1</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%90%8E%E8%AE%B0%E4%B8%8E%E7%A2%8E%E7%A2%8E%E5%BF%B5"><span class="nav-text">后记与碎碎念</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%90%8E%E5%90%8E%E8%AE%B0update-8-6"><span class="nav-text">后后记：Update 8-6</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="驰雨Chiyuru"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">驰雨Chiyuru</p>
+  <div class="site-description" itemprop="description">おはよう、朝だよ</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Chiyuru" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Chiyuru" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:mafy21@mails.tsinghua.edu.cn" title="E-Mail → mailto:mafy21@mails.tsinghua.edu.cn" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/Chiyuru_0417" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;Chiyuru_0417" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/ma-fei-yan-33" title="知乎 → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;ma-fei-yan-33" rel="noopener" target="_blank"><i class="fab fa-zhihu fa-fw"></i>知乎</a>
+      </span>
+  </div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">驰雨Chiyuru</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv1">
+  本站总访客数：<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共166.2k字</span>
+</div>
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300,"hOffset":-15,"vOffset":-15},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
+</html>

@@ -1,0 +1,1428 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"chiyuru.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="看到“满同态”还可以被叫做“映上同态”，并且后面的习题确实这么问了的时候，我的第一反应就是：你知道茴字的四种写法吗？ 以及，“映上同态”这个词听起来莫名很日式（">
+<meta property="og:type" content="article">
+<meta property="og:title" content="你知道茴字的四种写法吗？">
+<meta property="og:url" content="https://chiyuru.github.io/2022/09/19/huixiangdou/index.html">
+<meta property="og:site_name" content="『姑妄言之姑妄听之』">
+<meta property="og:description" content="看到“满同态”还可以被叫做“映上同态”，并且后面的习题确实这么问了的时候，我的第一反应就是：你知道茴字的四种写法吗？ 以及，“映上同态”这个词听起来莫名很日式（">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-09-19T12:52:08.000Z">
+<meta property="article:modified_time" content="2022-12-31T09:13:29.000Z">
+<meta property="article:author" content="驰雨Chiyuru">
+<meta property="article:tag" content="课程实录">
+<meta property="article:tag" content="刷书">
+<meta property="article:tag" content="数学">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://chiyuru.github.io/2022/09/19/huixiangdou/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>你知道茴字的四种写法吗？ | 『姑妄言之姑妄听之』</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="『姑妄言之姑妄听之』" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">『姑妄言之姑妄听之』</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://chiyuru.github.io/2022/09/19/huixiangdou/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="驰雨Chiyuru">
+      <meta itemprop="description" content="おはよう、朝だよ">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="『姑妄言之姑妄听之』">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          你知道茴字的四种写法吗？
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-09-19 20:52:08" itemprop="dateCreated datePublished" datetime="2022-09-19T20:52:08+08:00">2022-09-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-12-31 17:13:29" itemprop="dateModified" datetime="2022-12-31T17:13:29+08:00">2022-12-31</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>看到“满同态”还可以被叫做“映上同态”，并且后面的习题确实这么问了的时候，我的第一反应就是：你知道茴字的四种写法吗？</p>
+<p>以及，“映上同态”这个词听起来莫名很日式（</p>
+<span id="more"></span>
+<h1 id="群论">群论</h1>
+<p>群论还没过半我就被名词绕进去了，写作业难点不在题，而在于看完题干疯狂翻“某些定义并不复杂但不知道叫什么的名词”（现实世界没有
+Ctrl+F 真麻烦啊），所以开了个坑。</p>
+<p>平时给自己检索用，然后考前复看一下？</p>
+<h2 id="群的定义">群的定义</h2>
+<ul>
+<li><span class="math inline">\(GL_n(K)\)</span> 被称为域 <span class="math inline">\(K\)</span> 上的 <span class="math inline">\(n\)</span> 阶一般线性群。元素为 <span class="math inline">\(K\)</span> 上的 <span class="math inline">\(n\times n\)</span> 非异矩阵全体，运算为矩阵乘法。
+<ul>
+<li><span class="math inline">\(SL_n(K)\)</span> 称为域 <span class="math inline">\(K\)</span> 上的 <span class="math inline">\(n\)</span> 阶特殊线性群。相对 <span class="math inline">\(GL_n(K)\)</span> 来说，<span class="math inline">\(SL_n(K)\)</span> 对其元素多一个约束，即行列式值为
+<span class="math inline">\(1\)</span>。</li>
+</ul></li>
+<li><span class="math inline">\(Hamilton\)</span> 四元数群：<span class="math inline">\(H=\lbrace \pm 1, \pm i, \pm j, \pm k
+\rbrace\)</span>。</li>
+</ul>
+<h2 id="子群">子群</h2>
+<ul>
+<li>由 <span class="math inline">\(S\)</span> 生成的子群 $S $ ：<span class="math inline">\(S\)</span> 是群 <span class="math inline">\(G\)</span> 的子集，<span class="math inline">\(G\)</span> 中所有包含 <span class="math inline">\(S\)</span> 的子集的交称为 <span class="math inline">\(\langle S \rangle\)</span> ，其元素称为 <span class="math inline">\(\langle S \rangle\)</span> 的生成元。
+<ul>
+<li>如果 <span class="math inline">\(S\)</span> 是一个有限集，那么 <span class="math inline">\(\langle S \rangle\)</span>
+称为有限生成的子群；</li>
+<li>如果 <span class="math inline">\(G\)</span>
+可以被一个有限集生成，那么 <span class="math inline">\(G\)</span>
+被称为有限生成的群；</li>
+<li>循环群。</li>
+</ul></li>
+</ul>
+<h2 id="傍集正规群">傍集，正规群</h2>
+<ul>
+<li>右傍集也叫做右伴集。对于群 <span class="math inline">\(G\)</span>
+及其子群 <span class="math inline">\(H\)</span>，右傍集的个数称为子群
+<span class="math inline">\(H\)</span> 在 <span class="math inline">\(G\)</span> 中的<strong>指数</strong>，记为 <span class="math inline">\([G:H]\)</span>。</li>
+<li>单群：群 <span class="math inline">\(G\)</span> 只有 <span class="math inline">\(G,\lbrace e\rbrace\)</span>
+（此二者称为平凡正规子群）作为正规子群，则称 <span class="math inline">\(G\)</span> 为单群。</li>
+<li>正规化子：对于群 <span class="math inline">\(G\)</span> 及其子群
+<span class="math inline">\(H\)</span>，取 <span class="math inline">\(N(H)=\lbrace g\in G | gH=Hg \rbrace\)</span> 为
+<span class="math inline">\(H\)</span> 在 <span class="math inline">\(G\)</span> 中的正规化子，<span class="math inline">\(H\)</span> 是它的正规子群。</li>
+<li>换位子子群，换位子元：称 <span class="math inline">\([a,b]=a^{-1}
+b^{-1} ab\)</span> 为 <span class="math inline">\(a\)</span> 和 <span class="math inline">\(b\)</span> 的换位子元，<span class="math inline">\(G\)</span> 上所有换位子元生成的子群称为 <span class="math inline">\(G\)</span>
+的换位子子群，<strong>也叫做导群</strong>，记为 <span class="math inline">\([G,G]\)</span>。它是 <span class="math inline">\(G\)</span> 的正规子群。</li>
+<li>极大正规子群是<strong>非平凡的</strong>阶数最大的正规子群。</li>
+<li>注：虽然右傍集的等价关系耳熟能详，但是左傍集 <span class="math inline">\(aH=bH\)</span> 等价于 <span class="math inline">\(a^{-1}b \in H\)</span>。</li>
+</ul>
+<h2 id="同态">同态</h2>
+<ul>
+<li>对于 <span class="math inline">\(G_1\rightarrow G_2\)</span>
+上的同态 <span class="math inline">\(f\)</span>，单映射称为单同态，满映射称为满同态或<strong>映上同态</strong>。双射称为同构。
+<ul>
+<li>如果 <span class="math inline">\(G_1=G_2\)</span>，<span class="math inline">\(f\)</span> 称为自同态；如果 <span class="math inline">\(f\)</span> 同时还为同构，称为自同构。<span class="math inline">\(G\)</span> 上自同构组成的群为 <span class="math inline">\(Aut(G)\)</span>。</li>
+<li>平凡同态，就是把所有的 <span class="math inline">\(G_1\)</span>
+元素映射到 <span class="math inline">\(G_2\)</span>
+的幺元。（开始摆烂解释</li>
+<li><span class="math inline">\(G\rightarrow G\)</span> 上的恒等自同构
+<span class="math inline">\(Id_G\)</span>。</li>
+<li>内自同构：<span class="math inline">\(a\)</span> 是群 <span class="math inline">\(G\)</span> 上的一个元素，<span class="math inline">\(G\rightarrow G\)</span>上的映射 <span class="math inline">\(\phi_a:\phi_a(x)=axa^{-1}\)</span>
+称为内自同构。这样的同构组成的群为 <span class="math inline">\(Inn(G)\)</span>。</li>
+<li><span class="math inline">\(H\)</span> 是群 <span class="math inline">\(G\)</span> 的正规子群，<span class="math inline">\(G\)</span> 到商集 <span class="math inline">\(G /
+H\)</span> 上的自然映射称为<strong>自然同态</strong>。</li>
+</ul></li>
+<li>对于 <span class="math inline">\(G_1\rightarrow G_2\)</span>
+上的同态 <span class="math inline">\(f\)</span>，<span class="math inline">\(Im f\)</span> 称为 <span class="math inline">\(G_1\)</span> 在 <span class="math inline">\(f\)</span> 下的同态像。</li>
+<li>此处还有同态基本定理，对应定理，第一、二同构定理。<del>这里空间太小了写不下</del></li>
+</ul>
+<h2 id="循环群">循环群</h2>
+<ul>
+<li><span class="math inline">\(U_n\)</span> 由小于 <span class="math inline">\(n\)</span> 且与 <span class="math inline">\(n\)</span> 互素的正整数组成，<span class="math inline">\(G\)</span> 中元素的运算遵从 <span class="math inline">\(mk\equiv s(mod\; n)\)</span>。
+<ul>
+<li>这个定义可以用来证明欧拉公式，以及有结论 <span class="math inline">\(Aut(Z_n)\cong U_n\)</span>。</li>
+</ul></li>
+<li>插播一个吐槽：本节习题 <span class="math inline">\(6\)</span>
+的“两个”是在修饰“无限循环群”，而不是修饰“映上同态”（悲</li>
+</ul>
+<h2 id="置换群">置换群</h2>
+<ul>
+<li><p>集合（注意不必为群） <span class="math inline">\(S\)</span>
+上的变换群 <span class="math inline">\(A(S)\)</span>：<span class="math inline">\(S\)</span> 上所有一一对应组成 <span class="math inline">\(A(S)\)</span>。</p>
+<ul>
+<li><p>集合 <span class="math inline">\(S\)</span> 上的置换群：当 <span class="math inline">\(S\)</span> 是有限集时，<span class="math inline">\(A(S)\)</span> 的任一子群为 <span class="math inline">\(S\)</span> 上的置换群。</p></li>
+<li><p><span class="math inline">\(Cayley\)</span> 定理叙述了任一群
+<span class="math inline">\(G\)</span>
+必同构于某一集合（证明中给出的正是 <span class="math inline">\(G\)</span>）上的变换群。</p>
+<p>（碎碎念，总感觉 <span class="math inline">\(Cayley\)</span>
+定理这个名字好像数竞的时候也见过，但是完全忘记是什么了。不知道是不是特定群下的简化情况然后拿给高中生玩了，或者单纯是重名？）</p></li>
+<li><p>左平移：对于 <span class="math inline">\(g \in G\)</span>，定义
+<span class="math inline">\(G \rightarrow G\)</span> 上的映射 <span class="math inline">\(\tau _g (x) = gx,x\in G\)</span> 为由 <span class="math inline">\(g\)</span> 决定的 <span class="math inline">\(G\)</span> 的左平移。</p></li>
+<li><p>类似地可以定义右平移。</p></li>
+</ul></li>
+<li><p>任一置换可以表示为若干个对换的乘积，对换的个数决定了置换是奇置换还是偶置换。</p>
+<ul>
+<li><p>特殊的置换 <span class="math inline">\(k-\)</span>循环的奇偶性与
+<span class="math inline">\(k+1\)</span> 相同。</p>
+<p>（这是因为 <span class="math inline">\((i_1,i_2,...i_k) = (1, i_1)(1,
+i_2)...(1,i_k)(1,i_1)\)</span>.</p></li>
+<li><p>换一种观点，每一个置换群对应一个置换矩阵，其奇偶性和该矩阵的行列式的正负性统一。</p></li>
+</ul></li>
+<li><p><span class="math inline">\(n\)</span> 次对称群 <span class="math inline">\(S_n\)</span>：阶为 <span class="math inline">\(n\)</span> 的集合 <span class="math inline">\(X\)</span> 上的所有置换构成群 <span class="math inline">\(S(X)\)</span>，当我们把 <span class="math inline">\(X\)</span> 的所有元素抽象为带有下标的 <span class="math inline">\(x_1,...,x_n\)</span> 来研究置换时，就将 <span class="math inline">\(S(X)\)</span> 记为 <span class="math inline">\(S_n\)</span>。说人话的话，就是在集合 <span class="math inline">\(\lbrace 1,2,...,n \rbrace\)</span>
+上的所有置换构成的群，称为 <span class="math inline">\(n\)</span>
+次对称群 <span class="math inline">\(S_n\)</span>.</p>
+<ul>
+<li><span class="math inline">\(S_n\)</span> 上的全体偶置换构成的群
+<span class="math inline">\(A_n\)</span> 称为 <span class="math inline">\(n\)</span> 次交换群，其阶数为 <span class="math inline">\(S_n\)</span> 的一半，即 <span class="math inline">\(\frac{1}{2} n!\)</span>.</li>
+<li>一个特例：<span class="math inline">\(A_4\)</span> 上的特殊正规子群
+<span class="math inline">\(K = \lbrace
+(1),(1,2)(3,4),(1,3)(2,4),(1,4)(2,3) \rbrace\)</span> 称为 <span class="math inline">\(Klein\)</span> 四元群。<span class="math inline">\(Klein\)</span> 四元群还有正规子群 <span class="math inline">\(H=\lbrace (1),(1,2)(3,4)\rbrace\)</span>，但 <span class="math inline">\(H\)</span> 并不是 <span class="math inline">\(A_4\)</span>
+的正规子群，呼应了前面章节提过的正规子群不具有传递性。同时，<span class="math inline">\(A_4\)</span> 上并无 <span class="math inline">\(6\)</span> 阶正规子群（见习题）。</li>
+</ul></li>
+<li><p>真的搞清楚什么是置换群，什么是变换群，什么是对称群了吗？</p>
+<ul>
+<li><p><span class="math inline">\(S\)</span> 上的变换群记为 <span class="math inline">\(A(S)\)</span>，表示所有 <span class="math inline">\(S\)</span> 上的一一对应（<span class="math inline">\(S\)</span>
+未必是群，不能称自同构）。对称群的元素是 <span class="math inline">\(X\)</span> 上的所有置换，记为 <span class="math inline">\(S(X)\)</span> 也记作 <span class="math inline">\(S_n\)</span>。置换群是对称群的子群。</p>
+<p>注：此处按照 hx
+给出的讲义定义，目的是方便作业和考试。读者请在老师的说法或至少一本靠谱的教材（起码不是复旦绿皮）中得到定义。</p></li>
+<li><p>hx
+课上的讲法是为了不引起混淆，把置换群和对称群视作同一个东西。但是这让我更混淆了（</p></li>
+<li><p>书上的区别在于把置换群当做变换群的子群了。本质上我觉得变换群和对称群是同一个东西，至少可以同构，无非一个更抽象。所以也问题不大。</p></li>
+</ul></li>
+</ul>
+<h2 id="群作用">群作用</h2>
+<ul>
+<li><p>群对于集合的作用体现在元素和元素的层面，例如集合的置换群作用在该集合上的过程。</p></li>
+<li><p>定义好 <span class="math inline">\(G\times S \to S\)</span>
+的左作用后，我们可以称 <span class="math inline">\(G\)</span> 在 <span class="math inline">\(S\)</span> 上定义了一个左作用，集合 <span class="math inline">\(S\)</span> 称为一个 <span class="math inline">\(G-\)</span>集合。</p></li>
+<li><p>共轭作用：定义 <span class="math inline">\(G\times G \to
+G\)</span> 上的作用 <span class="math inline">\(a*x=a^{-1}xa,a\in G,x
+\in G\)</span> 为 <span class="math inline">\(G\)</span>
+对自身的共轭作用，<span class="math inline">\(a^{-1}xa\)</span> 称为
+<span class="math inline">\(x\)</span> 的共轭元。</p></li>
+<li><p>对于 <span class="math inline">\(G-\)</span>集合 <span class="math inline">\(S\)</span>，记 <span class="math inline">\(Stab\\;
+x =\lbrace g \in G | g*x=x\rbrace,x \in S\)</span> 为 <span class="math inline">\(x\)</span> 在 <span class="math inline">\(G\)</span> 中的稳定化子，也称 <span class="math inline">\(x\)</span> 的迷向子群。（什么迷神x</p>
+<ul>
+<li><p>请不要和子群的正规化子 <span class="math inline">\(N(H)\)</span>
+搞混了，尽管在某一个例子里我们得到了某群的稳定化子即为正规化子。</p></li>
+<li><p>于是对任意 <span class="math inline">\(x\in S\)</span>，有 <span class="math inline">\(|Gx|=[G:Stab \\; x]\)</span> （证明时考虑 <span class="math inline">\(G/Stab \\; x\)</span> 与 <span class="math inline">\(Gx\)</span>
+之间的群同构即可）。这得到了每个轨道中的元素个数。</p></li>
+<li><p>反过来，我们用轨道的元素个数统计 <span class="math inline">\(S\)</span> 的大小，有 <span class="math inline">\(|S|=\Sigma_{x\in C} \lbrace G:Stab \\;
+x\rbrace\)</span> ，<span class="math inline">\(C\)</span>
+是各个轨道中的代表元集。</p></li>
+</ul></li>
+<li><p>对于有限集 <span class="math inline">\(G\)</span>，<span class="math inline">\(C\)</span> 是它的中心，于是 <span class="math inline">\(|G|=|C|+\Sigma [G:C(y_i)]\)</span>，其中 <span class="math inline">\(C(y_i)\)</span> 代表 <span class="math inline">\(y_i\)</span> 在群 <span class="math inline">\(G\)</span> 中的中心化子，<span class="math inline">\(y_i\)</span> 跑遍 <span class="math inline">\(G\)</span>
+中含不止一个元素的共轭类的全体。（证明：利用 <span class="math inline">\(G\)</span> 在自身上的共轭作用）</p>
+<ul>
+<li>也不要把中心化子和稳定化子，正规化子搞混了。中心化子针对群的元素给出一些与其交换的元素，稳定化子针对
+<span class="math inline">\(G-\)</span>群的元素给出一些能构成 <span class="math inline">\(G\)</span>
+的子群的元素，而正规化子针对某个群的子群给出一些使其左右傍集相等的元素。（绕口令</li>
+</ul></li>
+<li><p>有限群的阶为 <span class="math inline">\(p^m\)</span>，其中 <span class="math inline">\(p\)</span> 为素数，则称该群为 <span class="math inline">\(p\)</span> 群。任意 <span class="math inline">\(p\)</span>
+群的中心含有不止一个元素。（证明：利用上一条结论）</p></li>
+<li><p><span class="math inline">\(p^2\)</span> 阶群是 <span class="math inline">\(Abel\)</span> 群。</p></li>
+<li><p>如果 <span class="math inline">\(S\)</span> 是一个 <span class="math inline">\(G-\)</span>集合且 <span class="math inline">\(S\)</span> 在 <span class="math inline">\(G\)</span> 的作用下的轨道只有一个，也即对任意
+<span class="math inline">\(x\in S\)</span> 有 <span class="math inline">\(Gx=S\)</span>，那么称 <span class="math inline">\(G\)</span> 在 <span class="math inline">\(S\)</span> 上的作用是可迁的，称 <span class="math inline">\(G\)</span> 是一个可迁群。</p>
+<ul>
+<li>举个例子：<span class="math inline">\(S_n\)</span> 是可迁群。</li>
+</ul></li>
+</ul>
+<h2 id="sylow-定理">Sylow 定理</h2>
+<p>其实这里也没什么好说的，做课后题就知道了（</p>
+<ul>
+<li>关于书后那一堆 <span class="math inline">\(k\)</span>
+阶群有无单群的分析，引用一段 Math StackExchange 一个问题下的<a target="_blank" rel="noopener" href="https://math.stackexchange.com/questions/843162/how-to-prove-a-group-g-of-order-72-cant-be-a-simple-group#comment1738903_843162">评论</a>：</li>
+</ul>
+<blockquote>
+<p>Most questions of this type (when you first see them) can be solved
+using one of the following three methods.</p>
+<ol type="1">
+<li>Show that, for some prime <span class="math inline">\(p\)</span>,
+<span class="math inline">\(G\)</span> must have a unique Sylow-<span class="math inline">\(p\)</span> subgroup.</li>
+<li>Show that if <span class="math inline">\(G\)</span> fails to have
+any normal Sylow subgroups, you end up accounting for more elements of
+Sylow subgroups then there are in your group.</li>
+<li>Show that, if <span class="math inline">\(G\)</span> has a
+Sylow-<span class="math inline">\(p\)</span> subgroup, then <span class="math inline">\(|G|\)</span> does not divide <span class="math inline">\(n_p(G)!\)</span>. This implies that <span class="math inline">\(G\)</span> is non-simple.</li>
+</ol>
+</blockquote>
+<ul>
+<li><p>还有一个证了 <span class="math inline">\(100\)</span>
+以内阶群只有 <span class="math inline">\(60\)</span>
+阶和素数阶可能是单群的问题，蛮有意思的：<a target="_blank" rel="noopener" href="https://math.stackexchange.com/questions/480558/g-is-non-abelian-simple-group-of-order-100-then-g-cong-a-5">Click
+Here</a></p>
+<p>我自己动手试过一次，比较难的就是证明 <span class="math inline">\(90\)</span> 阶群有正规子群，这和书上那个 <span class="math inline">\(108\)</span> 阶的例题思路完全一样。</p></li>
+<li><p>另一个有用的工具是书上那个证了 <span class="math inline">\(pq\)</span> 阶群最多有两种形态的例题。</p></li>
+</ul>
+<h2 id="群的直积">群的直积</h2>
+<ul>
+<li>内直积的三个判定法则，以及习题中（习题9）补充的一个。就，复习的时候记得证明一下。</li>
+</ul>
+<h2 id="有限生成-abel-群">有限生成 Abel 群</h2>
+<ul>
+<li><p><span class="math inline">\(G\)</span> 是有限生成 <span class="math inline">\(Abel\)</span> 群，可以分解为有限个循环群 <span class="math inline">\(C_i\)</span> 的直和：<span class="math inline">\(G=C_1\oplus C_2\oplus...\oplus
+C_k\)</span>，其中存在某个 <span class="math inline">\(j\leq k\)</span>
+使得 <span class="math inline">\(C_1,C_2,...,C_j\)</span>
+是有限循环群，<span class="math inline">\(C_{j+1},...,C_k\)</span>
+是无限循环群。称无限循环群的个数 <span class="math inline">\(k-j\)</span> 是 <span class="math inline">\(G\)</span> 的秩，称有限循环群的阶 <span class="math inline">\(m_1,m_2,...m_j\)</span> 是 <span class="math inline">\(G\)</span> 的不变因子组。</p>
+<ul>
+<li>由 <span class="math inline">\(G\)</span>
+直和分解的唯一性，知不变因子组和秩都是不变量。</li>
+<li>给定秩数和不变因子组，也唯一确定了有限生成 <span class="math inline">\(Abel\)</span> 群。</li>
+</ul></li>
+<li><p>如果有限生成 <span class="math inline">\(Abel\)</span> 群 <span class="math inline">\(G\)</span>
+可以分解为有限个无限循环群的直和，称其为有限生成的自由 <span class="math inline">\(Abel\)</span> 群。</p>
+<p>Dobby is a free <del>elf</del> abelian group!</p></li>
+<li><p>称数组 <span class="math inline">\((e_1,e_2,...,e_k)\)</span>
+是自然数 <span class="math inline">\(n\)</span> 的一个分划，如果 <span class="math inline">\(1\leq e_1\leq e_2\leq ...\leq
+e_k\)</span>，且<span class="math inline">\(n=e_1+e_2+...+e_k\)</span>。<span class="math inline">\(P(n)\)</span> 表示 <span class="math inline">\(n\)</span> 的分划数。</p>
+<ul>
+<li><p>当 <span class="math inline">\(p\)</span> 是一个素数时，阶为
+<span class="math inline">\(p^n\)</span> 的 <span class="math inline">\(Abel\)</span> 群同构类集与 <span class="math inline">\(n\)</span>
+的分划集之间存在一个一一对应。（Trivial</p></li>
+<li><p><span class="math inline">\(n=p_1^{f_1} p_2^{f_2}...
+p_k^{f_k}\)</span> 为其素因子分解，互不同构的 <span class="math inline">\(n\)</span> 阶 <span class="math inline">\(Abel\)</span> 群的个数等于 <span class="math inline">\(P(f_1)P(f_2)...P(f_k)\)</span>。（考虑每个 Sylow
+子群的再分解即可</p>
+<p>这样作出的分解与 <span class="math inline">\(G\)</span>
+的直和分解并不相同，需要再进行合并。</p></li>
+<li><p>取 <span class="math inline">\(n=p_1^{f_1} p_2^{f_2}...
+p_k^{f_k}\)</span> 的初等因子组（书上那个方阵），它和 <span class="math inline">\(n\)</span>
+阶群的不变因子组之间一一对应。（Trivial</p></li>
+</ul></li>
+<li><p>分解的时候先注意一下它是不是个 <span class="math inline">\(Abel\)</span> 群，别 sb 了（</p></li>
+</ul>
+<h2 id="正规群列与可解群">正规群列与可解群</h2>
+<ul>
+<li>合成群列是保证群列中的商因子 <span class="math inline">\(G_{i+1}/G_i\)</span> 均为单群，也即 <span class="math inline">\(G_i\)</span> 是 <span class="math inline">\(G_{i+1}\)</span>
+的极大正规子群的正规群列。不是所有的群都有合成群列，有限群一定有，无限群可能没有，例如整数加法群。</li>
+<li>可解群：记群 <span class="math inline">\(G\)</span> 的合成群列为
+<span class="math inline">\(\lbrace e\rbrace=G_0\triangleleft
+G_1\triangleleft ... \triangleleft G_r=G\)</span>，其商因子 <span class="math inline">\(G_{i+1}/G_{i}\)</span> 均为 <span class="math inline">\(Abel\)</span> 群时称 <span class="math inline">\(G\)</span>
+为可解群，否则称不可解（什么不可解，唱起来了（x
+<ul>
+<li>素数幂阶群是可解群。</li>
+<li>有限 <span class="math inline">\(Abel\)</span> 群是可解群。</li>
+<li>可解群的子群和同态像还是可解群；如果 <span class="math inline">\(G\)</span> 的正规子群 <span class="math inline">\(K\)</span> 满足 <span class="math inline">\(K\)</span> 和 <span class="math inline">\(G/K\)</span> 是可解群，则 <span class="math inline">\(G\)</span> 是可解群。</li>
+<li><span class="math inline">\(G\)</span> 是可解群等价于其 <span class="math inline">\(n\)</span> 次导群（换位子子群）为 <span class="math inline">\(\lbrace e \rbrace\)</span>。</li>
+<li><span class="math inline">\(G\)</span> 是可解群也等价于其商因子
+<span class="math inline">\(G_{i+1}/G_{i}\)</span>
+都是素数阶（循环）群。</li>
+</ul></li>
+<li>上中心列：<span class="math inline">\(G\)</span> 是一个群，其中心为
+<span class="math inline">\(C\)</span>，记为 <span class="math inline">\(C_1\)</span>。作 <span class="math inline">\(G/C_1\)</span> 的中心 <span class="math inline">\(C_2/C_1\)</span>，于是得到 <span class="math inline">\(C_1\triangleleft C_2 \triangleleft G\)</span> 且
+<span class="math inline">\(C_2\)</span> 唯一确定。依次得到 <span class="math inline">\(C_1,C_2,...,C_n\)</span>，它们形成一个 <span class="math inline">\(G\)</span> 的正规群列，称为上中心列。</li>
+<li>当 <span class="math inline">\(G\)</span> 的 <span class="math inline">\(n\)</span> 次中心 <span class="math inline">\(C_n=G\)</span> 时，称 <span class="math inline">\(G\)</span> 为幂零群。满足此条件的最小的 <span class="math inline">\(n\)</span> 称为 <span class="math inline">\(G\)</span> 的幂指数。
+<ul>
+<li><span class="math inline">\(G\)</span> 是幂零群还等价于 <span class="math inline">\(G\)</span> 有一个正规群列 <span class="math inline">\(\lbrace e\rbrace=G_0\triangleleft G_1\triangleleft
+... \triangleleft G_r=G\)</span>，使得 <span class="math inline">\(G_i/G_{i-1} \subseteq
+C(G/G_{i-1})\)</span>。这里要求每个 <span class="math inline">\(G_i
+\triangleleft G\)</span>，即使正规子群不存在传递性。</li>
+</ul></li>
+</ul>
+<h1 id="环论">环论</h1>
+<p>第六周第二节课，环论。（</p>
+<h2 id="环的定义">环的定义</h2>
+<ul>
+<li><p>非空集合 <span class="math inline">\(R\)</span>
+上定义了加法和乘法，且满足乘法分配率和结合律，<span class="math inline">\((R,+)\)</span> 是加法群时称 <span class="math inline">\(R\)</span> 为一个环，加法群的幺元 <span class="math inline">\(0\)</span> 称为零元素。如果 <span class="math inline">\(R\)</span> 上的乘法也有幺元，称其为恒等元，<span class="math inline">\(R\)</span> 称为带恒等元的环。</p></li>
+<li><p>一些有特殊名称的环：</p>
+<ul>
+<li>对模 <span class="math inline">\(n\)</span> 下的整数加法群 <span class="math inline">\(Z_n\)</span>，定义其上的乘法为模 <span class="math inline">\(n\)</span> 同余的乘法，则扩充为一环，称为模 <span class="math inline">\(n\)</span> 的整数环。</li>
+<li><span class="math inline">\(Hamilton\)</span> 四元数环：<span class="math inline">\(1,i,j,k\)</span>
+的线性组合构成此环，加法为线性加法，乘法与四元数群相同，满足结合律。</li>
+<li>用现有的环 <span class="math inline">\(R\)</span> 中元素构造出的
+<span class="math inline">\(n\times n\)</span> 矩阵全体称为 <span class="math inline">\(R\)</span> 上的 <span class="math inline">\(n\)</span> 阶矩阵环。运算服从普通矩阵。</li>
+<li>加法群 <span class="math inline">\(M\)</span>
+上的自同态全体构成的集合 <span class="math inline">\(EndM\)</span>
+称为加法群的自同态环，乘法即为同态的复合。</li>
+<li>对于现有的环 <span class="math inline">\(R\)</span>，在集合 <span class="math inline">\(R\)</span>
+上定义一个新的环结构，加法不变，乘法的结果改为 <span class="math inline">\(a*b=ba\)</span>，则称新的环为 <span class="math inline">\(R\)</span> 的反环，记为 <span class="math inline">\(R^o\)</span> 或者 <span class="math inline">\(R^{op}\)</span>。</li>
+<li>环 <span class="math inline">\(R\)</span> 上的形式幂级数环 <span class="math inline">\(R[[x]]\)</span>（上次见到双层中括号还是求期望）（这个我不是非常确信，等
+hx 讲了再写吧，但感觉就是作为两个多项式相乘 /
+相加得到的系数？）（Update：的确如此）</li>
+</ul></li>
+<li><p>环的不同类型：</p>
+<ul>
+<li><p>交换环。</p></li>
+<li><p>无零因子的环称为整环。通俗来说，整环上不存在两个不为零但乘积为零的元素。这样的元素称为零因子，按其在等式中的位置称为左零因子和右零因子。</p></li>
+<li><p>对于 <span class="math inline">\(R^*=R / \lbrace 0
+\rbrace\)</span>，若其中任意元素都是可逆元，则称 <span class="math inline">\(R\)</span>
+是一个除环。通俗来说，一个环除去零元素后每个元素都能找到逆元，也即构成一个群，则称为除环。</p>
+<p>环元素的逆元按位置称为左逆元和右逆元，有左逆元 /
+右逆元不保证存在右逆元 /
+左逆元。如果一个元素的左右逆元相等，则称其有唯一的逆元，此元素称为可逆元或单位。</p></li>
+<li><p>交换的除环称为域。也就是说，一个域去掉零元素后构成一个 <span class="math inline">\(Abel\)</span> 群。</p>
+<p>有理数环，实数环，复数环都是域。四元数环是除环，但不是域。（每个元素的逆元易求）</p>
+<p>域也可以是有限元素构成的。</p></li>
+</ul></li>
+</ul>
+<h2 id="子环理想与商环">子环，理想与商环</h2>
+<p>主要关心一些东西的定义过程，以及它们为什么是合理的。</p>
+<ul>
+<li><p>商环的定义过程：</p>
+<ul>
+<li>首先，找到一个等价关系来定义商群。<span class="math inline">\(I\)</span> 为环 <span class="math inline">\(R\)</span> 的一个理想，对 <span class="math inline">\(R\)</span> 中的元素 <span class="math inline">\(a,b\)</span>，称 <span class="math inline">\(a\sim
+b\)</span> 当且仅当 <span class="math inline">\(a-b \in
+I\)</span>。（验证其满足等价关系三性质）定义 <span class="math inline">\(R/I\)</span> 是商群。因为 <span class="math inline">\(R\)</span> 和 <span class="math inline">\(I\)</span> 都是加法群，则 <span class="math inline">\(R/I\)</span> 也是加法群，它的元素可以写成加法形式
+<span class="math inline">\(\overline{a}=a+I\)</span>。</li>
+<li>对于加法群 <span class="math inline">\(R/I\)</span>，在其上定义乘法让它成为一个环。定义
+<span class="math inline">\((a+I)(b+I)=ab+I\)</span>（验证乘法良定义），再证明乘法对结合律和分配律都成立，于是
+<span class="math inline">\(R/I\)</span> 是一个环，称为 <span class="math inline">\(R\)</span> 关于理想 <span class="math inline">\(I\)</span> 的商环。（有时也称为差环）</li>
+</ul>
+<p>比较遗憾的是，习题中商环内容基本没有出现。我对商群掌握的就不大好，所谓破碎的群知识（</p></li>
+<li><p>环理想的运算：</p>
+<ul>
+<li><p>定义加法。环 <span class="math inline">\(R\)</span> 上的理想
+<span class="math inline">\(I,J\)</span> 之间的所谓加法定义为 <span class="math inline">\(I+J=\lbrace a+b|a\in I,b\in
+J\rbrace\)</span>，容易验证 <span class="math inline">\(I+J\)</span>
+也是 <span class="math inline">\(R\)</span> 的理想，且可证明 <span class="math inline">\(I+J=(I \cup
+J)\)</span>。注意此处是对并集做了生成理想。</p>
+<p>若干个理想的加法定义类似。</p></li>
+<li><p>定义乘法。环 <span class="math inline">\(R\)</span> 上的理想
+<span class="math inline">\(I,J\)</span> 之间的所谓乘法定义为 <span class="math inline">\(IJ=\lbrace \Sigma a_ib_i | a_i\in I,b_i \in
+J\rbrace\)</span>，容易验证 <span class="math inline">\(IJ\)</span> 也是
+<span class="math inline">\(R\)</span> 的理想。且 <span class="math inline">\(I+J=R\)</span> 时，有 <span class="math inline">\(IJ=I\cap J\)</span>。（习题 <span class="math inline">\(15\)</span>）</p></li>
+<li><p>于是我们可以证明，环理想的乘法满足分配律和结合律（习题 <span class="math inline">\(4,5\)</span>）。因此环的理想构成的集合满足一切除了加法逆元外的环性质。（未经确认的个人观点，我觉得环理想不能定义减法吧）</p></li>
+</ul></li>
+<li><p>理想的一些定理：</p>
+<ul>
+<li><p>带恒等元的交换环 <span class="math inline">\(R\)</span>
+是域等价于 <span class="math inline">\(R\)</span>
+只有平凡理想。</p></li>
+<li><p>如果一个非交换环只有平凡理想而又不是除环，则称之为单环。</p>
+<p>设 <span class="math inline">\(R\)</span> 是除环，则 <span class="math inline">\(M_n(R)\)</span>
+是单环。（证明略复杂，见书）</p></li>
+<li><p>一个技巧：某个环只有平凡理想的时候，可以手搓出来一些理想（比如某个元素生成的主理想），利用它和环相等来推性质；对应地，如果要证明某个环只有平凡理想，可以证明任意搓出来的非零理想中有恒等元。上面两个定理分别应用了这两条技巧，习题中也有用到的。</p></li>
+<li><p>同时有非平凡的左理想和右理想不代表有非平凡理想。比如说，单环
+<span class="math inline">\(M_n(R)\)</span>
+有非平凡的左右理想。</p></li>
+</ul></li>
+</ul>
+<h2 id="环同态">环同态</h2>
+<p>和群同态基本一样，略（</p>
+<h2 id="整环分式域">整环，分式域</h2>
+<ul>
+<li><p><span class="math inline">\(R\)</span> 是一个整环， <span class="math inline">\(a\)</span>
+是其中的非零元，如果存在某个最小的正整数 <span class="math inline">\(m\)</span> 满足 <span class="math inline">\(ma=0\)</span>，则称其为 <span class="math inline">\(a\)</span> 的周期，<span class="math inline">\(a\)</span> 是周期元。</p>
+<ul>
+<li><p>如果 <span class="math inline">\(R\)</span>
+上至少有一个周期元，则存在素数 <span class="math inline">\(p\)</span>，使得对 <span class="math inline">\(R\)</span> 的一切非零元 <span class="math inline">\(r\)</span> 都有 <span class="math inline">\(pr=0\)</span>，称 <span class="math inline">\(p\)</span> 为 <span class="math inline">\(R\)</span> 的特征。</p></li>
+<li><p>如果 <span class="math inline">\(R\)</span>
+上没有周期元，称其特征为 <span class="math inline">\(0\)</span>。</p></li>
+</ul>
+<p>特征一般指的是整环的特征，如果不是整环的话可能有不同周期的元素。</p>
+<ul>
+<li>特征为 <span class="math inline">\(p\)</span>
+的任意域有一个最小子域，它同构于 <span class="math inline">\(Z_p\)</span>。称这个最小子域为素域。</li>
+<li>特征为 <span class="math inline">\(0\)</span>
+的任意域上也有素域的概念，记为 <span class="math inline">\(F_0=(1)\)</span>，它和有理数域同构。</li>
+</ul></li>
+<li><p>一个含有恒等元的交换整环称为整区。（叠
+buff：交换，有恒等元，没有零因子，相比域只差了逆元这一项）在整区上可以用等价关系定义分式域，过程如下。（这就回到了数分（1）的第一节课）</p>
+<ul>
+<li><p>记 <span class="math inline">\(R\times R^*\)</span>
+上的等价关系为 <span class="math inline">\((a,b)\sim (c,d)\)</span>
+当且仅当 <span class="math inline">\(ad=bc\)</span>，记 <span class="math inline">\((a,b)\)</span> 的等价类为 <span class="math inline">\(\frac{a}{b}\)</span>，<span class="math inline">\(F\)</span> 为所有等价类的集合，于是 <span class="math inline">\(F\)</span> 就是由整区 <span class="math inline">\(R\)</span> 定义出来的分式域。</p></li>
+<li><p>再在 <span class="math inline">\(F\)</span>
+上定义加法和乘法，分别验证它们是良好定义的。</p></li>
+<li><p>找出 <span class="math inline">\(F\)</span> 上的零元素 <span class="math inline">\(\frac{0}{a}\)</span> 和恒等元 <span class="math inline">\(\frac{a}{a}\)</span>。再验证 <span class="math inline">\(F\)</span>
+是一个环，满足每个元素有逆元、没有零因子、交换，于是 <span class="math inline">\(F\)</span> 是一个域，称其为分式域。</p></li>
+</ul>
+<p>还可以在整区 <span class="math inline">\(R\)</span>
+及其定义出的分式域 <span class="math inline">\(F\)</span> 上定义同态
+<span class="math inline">\(f(r)=\frac{r}{1}\)</span>，于是 <span class="math inline">\(f\)</span> 是一个单同态，也称为标准嵌入。在 <span class="math inline">\(F\)</span> 上定义的单同态都称为嵌入。</p></li>
+<li><p>定义得到标准嵌入后，我们还可以继续定义整区 <span class="math inline">\(R\)</span>，<span class="math inline">\(R\)</span>
+定义出的分式域 <span class="math inline">\(F\)</span> 和另一个域 <span class="math inline">\(F&#39;\)</span>之间的映射关系。由此证明第一点中提到的特征为
+<span class="math inline">\(0\)</span>
+的域的素域与有理数域同构。</p></li>
+</ul>
+<h2 id="唯一分解环">唯一分解环</h2>
+<p>以下讨论默认在整区中进行。</p>
+<ul>
+<li>真因子：若 <span class="math inline">\(b\)</span> 可以整除 <span class="math inline">\(a\)</span>，但 <span class="math inline">\(a\)</span> 不整除 <span class="math inline">\(b\)</span>，则称 <span class="math inline">\(b\)</span> 是 <span class="math inline">\(a\)</span> 的真因子。</li>
+<li>如果 <span class="math inline">\(a|b\)</span> 且 <span class="math inline">\(b|a\)</span> 则 <span class="math inline">\(a,b\)</span> 之间相差一个单位，记作 <span class="math inline">\(a\sim b\)</span>，称为 <span class="math inline">\(a\)</span> 和 <span class="math inline">\(b\)</span> 相伴。</li>
+<li>不可约元：整区中的元素 <span class="math inline">\(a\)</span>
+如果不是单位且不能分解成两个真因子的乘积，则称为不可约元（类比素数）。</li>
+<li>Gauss 整区，唯一分解环（Unique Factorization Domian）：<span class="math inline">\(R\)</span>
+中任意一个非零且不是单位的元素都可以分解为有限个不可约元的乘积，且这种分解在相伴条件下唯一。则称
+<span class="math inline">\(R\)</span> 是唯一分解环。
+<ul>
+<li>整区 <span class="math inline">\(R\)</span> 是唯一分解环等价于 <span class="math inline">\(R\)</span> 适合因子链条件和素性条件。</li>
+<li>整区 <span class="math inline">\(R\)</span> 是唯一分解环等价于 <span class="math inline">\(R\)</span> 适合因子链条件和最大公因子条件。</li>
+</ul></li>
+<li>素元：若 <span class="math inline">\(p\)</span> 不是 <span class="math inline">\(R\)</span> 的一个单位，对任意 <span class="math inline">\(ab\)</span>，从 <span class="math inline">\(p|ab\)</span> 可以推出 <span class="math inline">\(p|a\)</span> 或 <span class="math inline">\(p|b\)</span>，则 <span class="math inline">\(p\)</span> 称为素元。</li>
+<li>因子链条件：<span class="math inline">\(R\)</span>
+中不存在以下无限序列：<span class="math inline">\(a_1,a_2,...,a_i,a_{i+1},...\)</span> 使得 <span class="math inline">\(a_{i+1}\)</span> 是 <span class="math inline">\(a_i\)</span> 的真因子，则称 <span class="math inline">\(R\)</span> 适合因子链条件。</li>
+<li>素性条件：若 <span class="math inline">\(R\)</span>
+的任意不可约元都是素元，则称 <span class="math inline">\(R\)</span>
+适合素性条件。</li>
+<li>最大公因子条件：<span class="math inline">\(R\)</span>
+上任意两个元素都有最大公因子。</li>
+</ul>
+<h2 id="pid-与欧氏整区">PID 与欧氏整区</h2>
+<p>以下全部在整区中进行讨论。</p>
+<p>何宝好像分不清欧式和欧氏（？），差别很大的啊！（脑补一个欧式装潢的整区</p>
+<ul>
+<li><p>从另一个角度看整除问题，如果有 <span class="math inline">\(b|a\)</span> 说明 <span class="math inline">\(b\)</span> 在 <span class="math inline">\(a\)</span> 生成的主理想中，从而有 <span class="math inline">\((b)\subseteq (a)\)</span>；如果有 <span class="math inline">\(b|a\)</span> 且 <span class="math inline">\(a|b\)</span>，则有 <span class="math inline">\((a)=(b)\)</span>。因此，因子链条件也可以写作：环
+<span class="math inline">\(R\)</span> 中没有无限真升的主理想链
+$(a_1)(a_2)... $。这被称为主理想升链条件。</p></li>
+<li><p>设 <span class="math inline">\(R\)</span>
+是一个整区，若它的每个理想都可以由一个元素生成，则称 <span class="math inline">\(R\)</span> 为主理想整区，记为 PID（Principe Ideal
+Domain）。</p>
+<ul>
+<li>任一 PID 都是 UFD。</li>
+</ul></li>
+<li><p>欧氏整区：设 <span class="math inline">\(R\)</span>
+是一个整区且存在从 <span class="math inline">\(R^*\)</span> 到 <span class="math inline">\(N\)</span> 的映射 <span class="math inline">\(\delta\)</span>，满足：</p>
+<ul>
+<li>若 <span class="math inline">\(a,b\in R\)</span> 且 <span class="math inline">\(b\neq 0\)</span>，则存在 <span class="math inline">\(q,r \in R\)</span> 满足 <span class="math inline">\(a=bq+r\)</span>，且或者 <span class="math inline">\(r=0\)</span>，或者 <span class="math inline">\(\delta(r)&lt; \delta(b)\)</span>。</li>
+<li>对任意非零元 <span class="math inline">\(a\)</span>,<span class="math inline">\(b\)</span>，有 <span class="math inline">\(\delta(a)\leq \delta(ab)\)</span>。</li>
+</ul>
+<p>则称 <span class="math inline">\(R\)</span> 是一个欧氏整区。映射
+<span class="math inline">\(\delta\)</span> 称为欧氏赋值。</p></li>
+<li><p>欧氏整区都是 PID。</p></li>
+</ul>
+<h2 id="域上的一元多项式环">域上的一元多项式环</h2>
+<p>多项式的 degree 非常好用。</p>
+<ul>
+<li><span class="math inline">\(F\)</span> 是一个域，<span class="math inline">\(F[x]\)</span>
+是欧式整区，其上的欧氏赋值即为它的最高次项次数。
+<ul>
+<li>于是它也是 PID 和 UFD。</li>
+</ul></li>
+<li><span class="math inline">\(F[x]\)</span> 中多项式 <span class="math inline">\(f(x)\)</span> 不可约等价于 <span class="math inline">\(F[x]/(f(x))\)</span> 是一个域，也即 <span class="math inline">\((f(x))\)</span> 是 <span class="math inline">\(F[x]\)</span> 的极大理想。</li>
+<li>（余数定理）若 <span class="math inline">\(f(x)\in
+F[x]\)</span>，<span class="math inline">\(a\in F\)</span>，则存在唯一的
+<span class="math inline">\(q(x)\)</span> 使得 <span class="math inline">\(f(x)=(x-a)q(x)+f(a)\)</span>。
+<ul>
+<li>由此可知，<span class="math inline">\((x-a)|f(x)\)</span> 等价于
+<span class="math inline">\(a\)</span> 是 <span class="math inline">\(f(x)\)</span> 的根。</li>
+<li><span class="math inline">\(F[x]\)</span> 上的 <span class="math inline">\(n\)</span> 次多项式在 <span class="math inline">\(F\)</span> 上有至多 <span class="math inline">\(n\)</span> 个不同的根。（归纳）</li>
+</ul></li>
+<li>任何一个域的乘法群的有限子群是循环群。因此，有限域的乘法子群都是循环群。</li>
+</ul>
+<h2 id="交换环上的多项式环">交换环上的多项式环</h2>
+<p>说实话，总是代入 <span class="math inline">\(Z[x]\)</span>
+是我学习多项式环的最大困难...</p>
+<ul>
+<li>视 <span class="math inline">\(R[x_1,x_2,...,x_n] =
+R[x_1,x_2,...,x_{n-1}] [x_n]\)</span>
+，从而多项式环可以归纳地讨论。</li>
+<li>设 <span class="math inline">\(R\)</span> 是带恒等元的交换环，<span class="math inline">\(r\)</span> 是一个正整数，则 <span class="math inline">\(R[x_1,x_2,...,x_n]\)</span> 满足以下的泛性：<span class="math inline">\(S\)</span> 是任意一个带恒等元的交换环，<span class="math inline">\(\psi\)</span> 是 <span class="math inline">\(R\)</span> 到 <span class="math inline">\(S\)</span> 上的环同态，<span class="math inline">\(u_1,u_2,...,u_n\)</span> 是 <span class="math inline">\(S\)</span> 上 <span class="math inline">\(r\)</span> 个元素，则必存在从 <span class="math inline">\(R[x_1,x_2,...,x_r]\)</span> 到 <span class="math inline">\(S\)</span> 的唯一的环同态 <span class="math inline">\(\phi\)</span>，使得对一切 <span class="math inline">\(a\in R\)</span> 有 <span class="math inline">\(\phi(a)=\psi(a)\)</span>。且 <span class="math inline">\(\phi(x_i)=\psi(x_i)\)</span>，<span class="math inline">\(i=1,2,...,r\)</span>.
+<ul>
+<li>从而有 <span class="math inline">\(R\)</span> 上的任意两个 <span class="math inline">\(r\)</span> 元多项式环同构。</li>
+<li><span class="math inline">\(R[x_1,x_2,...,x_n]\)</span>
+中两个多项式相等的充要条件是每个单项式前的系数相等。（induction）</li>
+</ul></li>
+<li>代数无关元：<span class="math inline">\(R[x_1,x_2,...,x_n]
+\rightarrow R[u_1,u_2,...,u_n]\)</span> 上的泛性映射是同构时，称 <span class="math inline">\(x_1.x_2,...,x_n\)</span>
+是代数无关元，否则称为代数相关元。代数相关 / 无关元的性质类似于线性相关
+/ 无关。</li>
+<li><span class="math inline">\(F\)</span> 是有无数个元素的域，则对于
+<span class="math inline">\(F[x_1,x_2,...,x_n]\)</span>
+上的任意一个非零多项式 <span class="math inline">\(f(x_1,x_2,...,x_n)\)</span>，必存在一组元素 <span class="math inline">\(a_1,a_2,...,a_n \in F\)</span>，使得 <span class="math inline">\(F(a_1,a_2,...,a_n) \neq
+0\)</span>。（induction）</li>
+<li>本原多项式：<span class="math inline">\(R\)</span> 是 UFD，从而
+<span class="math inline">\(R\)</span>
+上任意多个元素都有最大公因数。对于<span class="math inline">\(R[x_1,x_2,...,x_n]\)</span> 上的元素 <span class="math inline">\(f(x)=a_nx^n+...+a_1x+a_0\)</span>，如果 <span class="math inline">\((a_n,a_{n-1},...,a_1,a_0)=1\)</span>，则称 <span class="math inline">\(f(x)\)</span> 是本原多项式。</li>
+<li><span class="math inline">\(R\)</span> 是一个 UFD，<span class="math inline">\(F\)</span> 是 <span class="math inline">\(R\)</span> 的分式域，如果 <span class="math inline">\(f(x)\)</span> 是 <span class="math inline">\(F[x]\)</span> 中的本原多项式，则 <span class="math inline">\(f(x)=rf_1(x)\)</span>，<span class="math inline">\(r\in F\)</span> 且 <span class="math inline">\(f_1(x)\)</span> 是 <span class="math inline">\(R[x]\)</span> 中的本原多项式。此分解除了差一个
+<span class="math inline">\(R\)</span> 的单位外是确定的。
+<ul>
+<li><span class="math inline">\(R\)</span> 是 UFD，若 <span class="math inline">\(f(x)\)</span> 和 <span class="math inline">\(g(x)\)</span> 是 <span class="math inline">\(F[x]\)</span> 中的本原多项式，且它们在 <span class="math inline">\(F[x]\)</span> 中是相伴元，则它们在 <span class="math inline">\(R[x]\)</span> 中也相伴。</li>
+</ul></li>
+<li>本原多项式的积还是本原多项式。</li>
+<li>如果 <span class="math inline">\(R\)</span> 是 UFD，则 <span class="math inline">\(R[x]\)</span> 也是 UFD。从而 <span class="math inline">\(R[x_1,x_2,...,x_n]\)</span> 也是 UFD。</li>
+</ul>
+<h2 id="素理想">素理想</h2>
+<p>本节在含恒等元的交换环上讨论。</p>
+<ul>
+<li><p>设 <span class="math inline">\(P\)</span> 是环 <span class="math inline">\(R\)</span> 的理想且 <span class="math inline">\(P\neq R\)</span>，若对 <span class="math inline">\(R\)</span> 中元素 <span class="math inline">\(a,b\)</span>，从 <span class="math inline">\(ab\in
+P\)</span> 可以推出 <span class="math inline">\(a\in P\)</span> 或者
+<span class="math inline">\(b\in P\)</span>，则称 <span class="math inline">\(P\)</span> 是环 <span class="math inline">\(R\)</span> 的素理想。</p>
+<p>这等价于 <span class="math inline">\(P/R\)</span>
+是整区。因此，环的极大理想一定是素理想。</p></li>
+<li><p>设 <span class="math inline">\(R\)</span>
+是含恒等元的交换环，<span class="math inline">\(I\)</span>
+是它的一个理想且 <span class="math inline">\(I\neq R\)</span>，则 <span class="math inline">\(I\)</span> 一定含在 <span class="math inline">\(R\)</span> 的某个极大理想中。</p>
+<p>任何一个含恒等元的环都有极大理想。</p></li>
+<li><p><span class="math inline">\(R\)</span>
+的任意不可逆元素都含在某个极大理想中。如果 <span class="math inline">\(R\)</span>
+只有这样的唯一一个极大理想，则称为局部环。</p></li>
+<li><p>交换环 <span class="math inline">\(R\)</span>
+所有素理想的交称为小根，等于 <span class="math inline">\(R\)</span>
+的所有幂零元和零元素组成的理想，称为诣零根。</p>
+<p>所有极大理想的交称为大根，等于 <span class="math inline">\(R\)</span>
+的全部满足 <span class="math inline">\(1-ar\)</span> 可逆对任意 <span class="math inline">\(r\)</span> 成立的 <span class="math inline">\(a\)</span> 的集合。</p></li>
+</ul>
+<h1 id="域与-galois-理论">域与 Galois 理论</h1>
+<p>蛞蝓好难！</p>
+<h2 id="域的扩张">域的扩张</h2>
+<ul>
+<li><p>假设 <span class="math inline">\(E\)</span> 是 <span class="math inline">\(F\)</span> 的扩域，<span class="math inline">\(S\)</span> 是 <span class="math inline">\(E\)</span> 的子集，记 <span class="math inline">\(F(S)\)</span> 是 <span class="math inline">\(E\)</span> 上由 <span class="math inline">\(F\)</span> 和 <span class="math inline">\(S\)</span> 生成的子域，表示所有包含 <span class="math inline">\(F\)</span> 和 <span class="math inline">\(S\)</span> 的子域之交。显然，<span class="math inline">\(F(S)(T)=F(S\cup T)\)</span>。</p>
+<p>如果 <span class="math inline">\(S\)</span> 是一个单点，则 <span class="math inline">\(F(u)\)</span> 称为 <span class="math inline">\(F\)</span> 的单扩张，元素 <span class="math inline">\(u\)</span>
+称为本原元。单扩张的代数扩张和超越扩张比较容易研究，这是因为 <span class="math inline">\(F(u)=F[u]\)</span>。</p>
+<p>若为代数扩张，<span class="math inline">\(F(u)\)</span>
+的元素可以写作小于 <span class="math inline">\(u\)</span>
+的极小多项式次数的多项式，如果是超越扩张则 $F(u)= | f(x),g(x) F[x],g
+$。</p></li>
+<li><p>另外一个角度的域扩张：<span class="math inline">\(E\)</span> 是
+<span class="math inline">\(F\)</span> 的扩域，<span class="math inline">\(E\)</span> 可以看做 <span class="math inline">\(F\)</span> 上的线性空间（不一定有限维度）。如果
+<span class="math inline">\([E:F]&lt;\infty\)</span>
+则成为有限扩张，否则为无限扩张。</p></li>
+<li><p><span class="math inline">\(E\)</span> 是 <span class="math inline">\(F\)</span> 的扩域，<span class="math inline">\(K\)</span> 是 <span class="math inline">\(E\)</span> 的扩域，此时 <span class="math inline">\([K:F]\)</span> 有限的充要条件是 <span class="math inline">\([K:E],[E:F]\)</span> 都有限，有 <span class="math inline">\([K:F]=[K:E][E:F]\)</span>。</p>
+<p>于是，当 <span class="math inline">\([K:F]\)</span>
+是素数时，二者之间没有其他子域。</p></li>
+<li><p>有限扩张一定是代数扩张，但代数扩张不一定有限。</p></li>
+<li><p>(Steinitz Theorem)：<span class="math inline">\(E\)</span> 是
+<span class="math inline">\(F\)</span> 的扩域且 <span class="math inline">\([E:F]\)</span> 有限，则 <span class="math inline">\(E=F[u]\)</span> 的充要条件是 <span class="math inline">\(E\)</span> 和 <span class="math inline">\(F\)</span> 之间只有有限个中间域。</p></li>
+</ul>
+<h2 id="代数扩域">代数扩域</h2>
+<p>袋鼠蛞蝓x</p>
+<ul>
+<li><p><span class="math inline">\(E\)</span> 是 <span class="math inline">\(F\)</span> 的扩域，<span class="math inline">\(K\)</span> 是 <span class="math inline">\(E\)</span> 上 <span class="math inline">\(F\)</span> 的代数元全体构成的集合，它也是一个
+<span class="math inline">\(E\)</span> 的子域。</p>
+<p>两个代数数的和、差、积、商都是代数数。</p></li>
+<li><p>虽然代数扩张不一定是有限扩张，我们可以给出有限扩张的一些性质：</p>
+<p><span class="math inline">\(E\)</span> 是 <span class="math inline">\(F\)</span> 的扩域，则 <span class="math inline">\([E:F]&lt;\infty\)</span> 等价于存在 <span class="math inline">\(E\)</span> 中的有限个代数元 <span class="math inline">\(u_1,...,u_n\)</span> 使得 <span class="math inline">\(E=F(u_1,u_2,...,u_n)\)</span>。</p></li>
+<li><p>代数扩张有传递性。如果 <span class="math inline">\(E\)</span> 是
+<span class="math inline">\(F\)</span> 的代数扩域，<span class="math inline">\(K\)</span> 是 <span class="math inline">\(E\)</span> 的代数扩域，则 <span class="math inline">\(K\)</span> 是 <span class="math inline">\(F\)</span> 的代数扩域。</p>
+<p><span class="math inline">\(E\)</span> 是 <span class="math inline">\(F\)</span> 的扩域，<span class="math inline">\(K\)</span> 是 <span class="math inline">\(E\)</span> 上 <span class="math inline">\(F\)</span> 的代数元全体构成的集合，则任何 <span class="math inline">\(E\)</span> 上 <span class="math inline">\(K\)</span> 的代数元属于 <span class="math inline">\(K\)</span>。</p></li>
+<li><p><span class="math inline">\(E\)</span> 是 <span class="math inline">\(F\)</span> 的扩域，<span class="math inline">\(K\)</span> 是 <span class="math inline">\(E\)</span> 的子域且是 <span class="math inline">\(F\)</span> 的代数扩域，如果 <span class="math inline">\(K\)</span> 在 <span class="math inline">\(E\)</span> 中的任何代数扩域都和 <span class="math inline">\(K\)</span> 重合（无真代数扩张），那么 <span class="math inline">\(K\)</span> 是 <span class="math inline">\(F\)</span> 在 <span class="math inline">\(E\)</span> 中的代数闭包，<span class="math inline">\(K\)</span> 也称为在 <span class="math inline">\(E\)</span> 中是代数封闭的。</p>
+<p>于是，<span class="math inline">\(F\)</span> 在 <span class="math inline">\(E\)</span> 中的代数闭包是全体 <span class="math inline">\(E\)</span> 中 <span class="math inline">\(F\)</span>
+上的代数元集合。这是一个相对的概念。</p></li>
+<li><p><span class="math inline">\(K\)</span> 是一个域，如果 <span class="math inline">\(K\)</span>
+无真代数扩张，则称其为一个代数闭域。这等价于 <span class="math inline">\(K[x]\)</span>
+上所有不可约多项式都为一阶。</p></li>
+<li><p>如果 <span class="math inline">\(K\)</span> 是 <span class="math inline">\(F\)</span> 的代数扩域，且 <span class="math inline">\(K\)</span> 是一个代数闭域，则称 <span class="math inline">\(K\)</span> 是 <span class="math inline">\(F\)</span> 的代数闭包。</p>
+<p>一个代数闭域 <span class="math inline">\(K\)</span> 的子域 <span class="math inline">\(F\)</span> 的代数闭包 <span class="math inline">\(E\)</span>
+一定也是代数闭域。于是每个域都有一个代数闭域作为其代数扩张，即为其代数闭包。</p></li>
+<li><p>一个域的代数闭包在同构的意义下是唯一的。也即，如果 <span class="math inline">\(K\)</span> 有两个代数闭包 <span class="math inline">\(E_1,E_2\)</span>，则存在同构映射 <span class="math inline">\(\psi:E_1 \to E_2\)</span> 满足 <span class="math inline">\(\psi(a)=a,\forall a \in K\)</span>。</p></li>
+</ul>
+<h2 id="分裂域">分裂域</h2>
+<p>研究由 <span class="math inline">\(F[x]\)</span> 上的某个已知多项式
+<span class="math inline">\(f(x)\)</span> 的根决定的扩域。</p>
+<ul>
+<li><p>对于 <span class="math inline">\(F\)</span> 上的不可约多项式
+<span class="math inline">\(f(x)\)</span>，它在 <span class="math inline">\(F\)</span> 的扩域 <span class="math inline">\(F[x]/(f(x))\)</span> 上有根。</p></li>
+<li><p><span class="math inline">\(f(x)\)</span> 是 <span class="math inline">\(F\)</span> 上的首一多项式，<span class="math inline">\(E\)</span> 是 <span class="math inline">\(F\)</span> 的扩域且适合条件：</p>
+<ul>
+<li><p><span class="math inline">\(f(x)\)</span> 在 <span class="math inline">\(E[x]\)</span> 上可以分解为一次因式的乘积，即存在
+<span class="math inline">\(r_1,r_2,...,r_n \in E\)</span> 满足 <span class="math inline">\(f(x)=(x-r_1)...(x-r_n)\)</span></p></li>
+<li><p><span class="math inline">\(E=F[r_1,r_2,...,r_n]\)</span></p></li>
+</ul>
+<p>则称 <span class="math inline">\(E\)</span> 是多项式 <span class="math inline">\(f(x)\)</span> 的分裂域，可以把 <span class="math inline">\(E\)</span> 看做 <span class="math inline">\(F\)</span> 添加了 <span class="math inline">\(f(x)\)</span> 的根得到的扩域。</p></li>
+<li><p><span class="math inline">\(F[x]\)</span> 任意首一多项式 <span class="math inline">\(f(x)\)</span>
+的分裂域存在，以下考虑其是否唯一的问题。事实上，分裂域在同构的意义下是唯一的。</p>
+<ul>
+<li><p>设 <span class="math inline">\(\eta : a\to \bar{a}\)</span> 是域
+<span class="math inline">\(F\to \bar{F}\)</span> 的同构，<span class="math inline">\(E\)</span> 和 <span class="math inline">\(\bar{E}\)</span> 分别是 <span class="math inline">\(F,\bar{F}\)</span> 的扩域，<span class="math inline">\(u\in E\)</span> 是 <span class="math inline">\(F\)</span> 上代数元且其极小多项式为 <span class="math inline">\(g(x)\)</span>，则 <span class="math inline">\(\eta\)</span> 可以扩张为 <span class="math inline">\(F(u)\to \bar{E}\)</span>
+上的单同态，这种扩张的数目等于 <span class="math inline">\(\bar{g}(x)\)</span> 在 <span class="math inline">\(\bar{E}\)</span> 上不同根的个数。</p></li>
+<li><p>设 <span class="math inline">\(\eta : a\to \bar{a}\)</span> 是域
+<span class="math inline">\(F\to \bar{F}\)</span> 的同构，<span class="math inline">\(f(x)\)</span> 是 <span class="math inline">\(F[x]\)</span> 上的首一多项式，<span class="math inline">\(\bar{f}(x)\)</span> 是 <span class="math inline">\(\bar{F}[x]\)</span>
+上相应的多项式（对多项式的每个系数做映射）。<span class="math inline">\(E\)</span> 和 <span class="math inline">\(\bar{E}\)</span> 分别是 <span class="math inline">\(f(x),\bar{f}(x)\)</span> 的分裂域，则 <span class="math inline">\(\eta\)</span> 可以扩张为 <span class="math inline">\(E\to \bar{E}\)</span>
+上的同构，这种扩张的数目不超过 <span class="math inline">\([E:F]\)</span>。当 <span class="math inline">\(\bar{f}(x)\)</span> 在 <span class="math inline">\(\bar{E}\)</span> 上无重根时，正好等于 <span class="math inline">\([E:F]\)</span>。</p>
+<p>因此，取特殊情况 <span class="math inline">\(F=\bar{F},\eta\)</span>
+是恒等映射，则有 <span class="math inline">\(E\)</span> 和 <span class="math inline">\(\bar{E}\)</span>
+都同构，也即分裂域在同构的意义下是唯一的。</p></li>
+<li><p><span class="math inline">\(E\)</span> 是 <span class="math inline">\(F\)</span> 上多项式 <span class="math inline">\(f(x)\)</span> 的分裂域，则 <span class="math inline">\(E/F\)</span> 的自同构（保持 <span class="math inline">\(F\)</span> 中元素不动的自同构）数目不超过 <span class="math inline">\([E:F]\)</span>。当 <span class="math inline">\(f(x)\)</span> 在 <span class="math inline">\(E\)</span> 上无重根时，正好等于 <span class="math inline">\([E:F]\)</span>。</p></li>
+</ul>
+<p>说实话不是很懂上面两个东西怎么用的...可能是还没学 Galois
+理论的原因，也可以预见学习的时候会很痛苦了。</p></li>
+</ul>
+<h2 id="可分扩域">可分扩域</h2>
+<ul>
+<li><p>设 <span class="math inline">\(F\)</span> 上的多项式 <span class="math inline">\(f(x)=f_1(x)^{k_1} f_2(x)^{k_2} ...
+f_n(x)^{k_n}\)</span>，考虑 <span class="math inline">\(f_0(x)=f_1(x)f_2(x) ... f_n(x)\)</span>，它和
+<span class="math inline">\(f(x)\)</span> 有相同的分裂域 <span class="math inline">\(E\)</span>。其中 <span class="math inline">\(f_i(x),f_j(x)\)</span>
+互素且都是不可约因子，因此互相之间没有相同的根。</p>
+<p>于是 <span class="math inline">\(f_0(x)\)</span>
+有重根等价于它的某个因子 <span class="math inline">\(f_i(x)\)</span>
+有重根。因此，我们讨论 <span class="math inline">\(f_0(x)\)</span>
+的所有因子都没有重根的情形，此时称 <span class="math inline">\(f(x),f_0(x)\)</span> 为可分多项式。此时 <span class="math inline">\(E/F\)</span> 的自同构也有 <span class="math inline">\([E:F]\)</span> 个。</p></li>
+<li><p><span class="math inline">\(E\)</span> 是 <span class="math inline">\(F\)</span> 的扩域，如果一个 <span class="math inline">\(E\)</span> 上元素 <span class="math inline">\(u\)</span> 在 <span class="math inline">\(F\)</span> 上的极小多项式是可分多项式，称 <span class="math inline">\(u\)</span> 是 <span class="math inline">\(F\)</span> 上的可分元。</p>
+<p>如果 <span class="math inline">\(E\)</span>
+上的每个元都是可分元，则称 <span class="math inline">\(E\)</span> 是
+<span class="math inline">\(F\)</span> 的可分扩张 / 可分扩域。</p></li>
+<li><p>研究域 <span class="math inline">\(F\)</span>
+上的多项式何时有重根，分为特征为 <span class="math inline">\(0\)</span>
+或 <span class="math inline">\(k\)</span> 的情况讨论。首先，如果 <span class="math inline">\(f(x)\)</span> 是 <span class="math inline">\(F\)</span> 上的非零首一多项式，则 <span class="math inline">\(f(x)\)</span> 在分裂域中无重根等价于 <span class="math inline">\((f(x),f^\prime (x))=1\)</span>。</p>
+<ul>
+<li>如果 <span class="math inline">\(F\)</span> 的特征为 <span class="math inline">\(0\)</span>，则 <span class="math inline">\(F\)</span> 上的不可约多项式都是可分多项式。</li>
+<li>如果 <span class="math inline">\(F\)</span> 的特征是 <span class="math inline">\(p \neq 0\)</span>，则 <span class="math inline">\(F\)</span> 上的不可约多项式可分的充要条件为 <span class="math inline">\(g^\prime (x)=0\)</span>，形状为 <span class="math inline">\(g(x)=a_o + a_1 x^p +...+a_k x^{kp}\)</span></li>
+</ul>
+<p>于是我们知道，只有特征不为 <span class="math inline">\(0\)</span>
+的域上才有不可分多项式。</p></li>
+<li><p>Frobenius 同态：特征为 <span class="math inline">\(p\)</span>
+的域 <span class="math inline">\(F\)</span> 上的映射 <span class="math inline">\(\psi(a)=a^p\)</span> 是 <span class="math inline">\(F\)</span> 上的自同态，也是单同态。记 <span class="math inline">\(F^p =\lbrace a^p | a \in F \rbrace\)</span>，它是
+<span class="math inline">\(F\)</span> 的子域</p></li>
+<li><p>特征为 <span class="math inline">\(p\)</span> 的域上的多项式
+<span class="math inline">\(x^p-b\)</span> 要么不可约，要么可以表示为
+<span class="math inline">\((x-a)^p\)</span> 的形式。</p></li>
+<li><p>如果某个域上的所有多项式都是可分多项式，则称其为完全域。</p>
+<p>显然，完全域 <span class="math inline">\(F\)</span> 的代数扩域 <span class="math inline">\(E\)</span> 一定是可分扩域，<span class="math inline">\(E\)</span> 中元素 <span class="math inline">\(u\)</span> 在 <span class="math inline">\(F\)</span> 上的极小多项式一定是可分多项式，于是
+<span class="math inline">\(u\)</span> 是可分元，<span class="math inline">\(E\)</span> 是 <span class="math inline">\(F\)</span> 的可分扩域。特征为 <span class="math inline">\(0\)</span> 的域都是完全域，比如 <span class="math inline">\(Q,R,C\)</span> 等等。</p>
+<p>特征为 <span class="math inline">\(p\)</span>
+的域是完全域的等价条件是 <span class="math inline">\(F=F^p\)</span>。</p></li>
+<li><p>有限域一定是完全域。因为其 Frobenius 同态一定是同构。</p></li>
+</ul>
+<h2 id="正规扩域">正规扩域</h2>
+<ul>
+<li><p>引理：<span class="math inline">\(f(x)\)</span> 是 <span class="math inline">\(F\)</span> 上的多项式，<span class="math inline">\(E\)</span> 是 <span class="math inline">\(F\)</span> 上关于多项式 <span class="math inline">\(f(x)\)</span> 的分裂域。对于某个 <span class="math inline">\(u\in E\)</span>，它的极小多项式为 <span class="math inline">\(g(x)\)</span>，则 <span class="math inline">\(g(x)\)</span> 的所有根都在 <span class="math inline">\(E\)</span> 中，也即在 <span class="math inline">\(E\)</span> 中可以分解为一次因式的积。</p>
+<p>也就是说，对于某个 <span class="math inline">\(F\)</span> 的分裂域
+<span class="math inline">\(E\)</span>，<span class="math inline">\(F\)</span> 上的任意不可约多项式 <span class="math inline">\(g(x)\)</span> 要么根全部在 <span class="math inline">\(E\)</span> 中，要么全都不在 <span class="math inline">\(E\)</span> 中。这符合正规扩域的要求。</p></li>
+<li><p>正规扩域：<span class="math inline">\(E\)</span> 是 <span class="math inline">\(F\)</span> 的代数扩域，<span class="math inline">\(F\)</span> 上的任意不可约多项式 <span class="math inline">\(g(x)\)</span> 要么根全部在 <span class="math inline">\(E\)</span> 中，要么全都不在 <span class="math inline">\(E\)</span> 中，则称 <span class="math inline">\(E\)</span> 是 <span class="math inline">\(F\)</span> 的正规扩域（正规扩张）。</p></li>
+<li><p>如果 <span class="math inline">\(E\)</span> 是 <span class="math inline">\(F\)</span> 的有限扩张，则 <span class="math inline">\(E\)</span> 是 <span class="math inline">\(F\)</span> 的正规扩张等价于 <span class="math inline">\(E\)</span> 是 <span class="math inline">\(F\)</span> 上某个多项式的分裂域。</p></li>
+<li><p>域 <span class="math inline">\(F\)</span>
+的任意有限扩张一定含在某个正规扩张中。</p></li>
+<li><p>正规闭包：<span class="math inline">\(E\)</span> 是 <span class="math inline">\(F\)</span> 的代数扩域，若 <span class="math inline">\(K\)</span> 是 <span class="math inline">\(F\)</span> 的正规扩域且包含 <span class="math inline">\(E\)</span>，<span class="math inline">\(M\)</span>
+是 <span class="math inline">\(F\)</span> 的正规扩域且满足 <span class="math inline">\(F \subseteq E \subseteq M \subseteq
+K\)</span>，则一定有 <span class="math inline">\(M=K\)</span> 时，称
+<span class="math inline">\(K\)</span> 是 <span class="math inline">\(E/F\)</span> 的正规闭包。</p></li>
+<li><p><span class="math inline">\(E\)</span> 是 <span class="math inline">\(F\)</span> 的有限维正规扩张，<span class="math inline">\(K\)</span> 是 <span class="math inline">\(E\)</span> 与 <span class="math inline">\(F\)</span> 的中间域，<span class="math inline">\(F
+\subseteq K \subseteq E\)</span>，以下结论互相等价：</p>
+<ul>
+<li><span class="math inline">\(K\)</span> 是 <span class="math inline">\(F\)</span> 的正规扩张</li>
+<li>如果 <span class="math inline">\(\sigma\)</span> 是 <span class="math inline">\(E/F\)</span> 的自同构，则 <span class="math inline">\(\sigma(K) \subseteq K\)</span></li>
+<li>如果 <span class="math inline">\(\sigma\)</span> 是 <span class="math inline">\(E/F\)</span> 的自同构，则 <span class="math inline">\(\sigma(K) = K\)</span></li>
+</ul></li>
+<li><p><span class="math inline">\(E\)</span> 是 <span class="math inline">\(F\)</span> 上可分多项式 <span class="math inline">\(f(x)\)</span> 的分裂域，则 <span class="math inline">\(E\)</span> 是 <span class="math inline">\(F\)</span> 的可分扩张，也就是说 <span class="math inline">\(E\)</span> 上的每个元素都是 <span class="math inline">\(F\)</span> 的可分元。</p></li>
+</ul>
+<h2 id="galois-扩域与-galois-对应">Galois 扩域与 Galois 对应</h2>
+<ul>
+<li><p>Galois 扩域：对于一个域 <span class="math inline">\(F\)</span>
+上的可分多项式 <span class="math inline">\(f(x)\)</span>，<span class="math inline">\(F\)</span> 关于 <span class="math inline">\(f(x)\)</span> 的分裂域即为 Galois 扩域。</p>
+<p>这是因为 Galois 扩域的意义为 <span class="math inline">\(F\)</span>
+上的有限维可分正规扩张，分裂域是有限维扩域，<span class="math inline">\(F\)</span> 关于可分多项式 <span class="math inline">\(f(x)\)</span>
+的分裂域一定是一个可分扩张，且是正规扩张。（草，突然发现好像说反了</p></li>
+<li><p>Galois 群：<span class="math inline">\(E\)</span> 是 <span class="math inline">\(F\)</span> 的扩域，<span class="math inline">\(E/F\)</span>
+上的自同构全体构成一个群（运算为映射的合成），称为 <span class="math inline">\(E/F\)</span> 的 Galois 群，记为 <span class="math inline">\(Gal E/F\)</span>。</p>
+<p>因此 <span class="math inline">\(F\)</span> 的 Galois 扩域为 <span class="math inline">\(E\)</span>，使得 <span class="math inline">\(|Gal
+E/F|=[E:F]\)</span>。</p></li>
+<li><p>不变子域：<span class="math inline">\(E\)</span> 是一个域，<span class="math inline">\(AutE\)</span> 是 <span class="math inline">\(E\)</span> 上的自同构群，<span class="math inline">\(G\)</span> 是 <span class="math inline">\(AutE\)</span> 的一个子群。定义 <span class="math inline">\(InvG=\lbrace a \in E | \eta(a)=a,\forall \eta \in
+G \rbrace\)</span>。可以证明 <span class="math inline">\(InvG\)</span>
+满足有恒等元、无零因子、非零可逆和交换的性质，因此它是 <span class="math inline">\(E\)</span> 的一个子域，称为 <span class="math inline">\(E\)</span> 的 <span class="math inline">\(G\)</span> 不变子域。于是我们可以把 <span class="math inline">\(E\)</span> 当做 <span class="math inline">\(InvG\)</span> 的扩域，它们在维数上有以下关系：</p>
+<ul>
+<li>Artin 引理：<span class="math inline">\(G\)</span>
+是有限子群时，<span class="math inline">\(|G| \geq
+[E:InvG]\)</span></li>
+</ul></li>
+<li><p><span class="math inline">\(E\)</span> 是 <span class="math inline">\(F\)</span> 的 Galois 扩域，等价于 <span class="math inline">\(F=InvG\)</span>，其中 <span class="math inline">\(G\)</span> 是 <span class="math inline">\(AutE\)</span> 的有限子群。也就是说，<span class="math inline">\(G\)</span> 是 <span class="math inline">\(E/F\)</span> 上的自同构全体，可以写作 <span class="math inline">\(Gal(E/InvG)=G,F=Inv (Gal E/F)\)</span>。</p></li>
+<li><p>Galois 理论的基本定理：在定理叙述之前先做定义。</p>
+<ul>
+<li><p><span class="math inline">\(E\)</span> 是 <span class="math inline">\(F\)</span> 的扩域，于是 <span class="math inline">\(G=Gal E/F\)</span>，作集合 <span class="math inline">\(\Sigma=\lbrace H|H\)</span> 是 <span class="math inline">\(G\)</span> 的子群 <span class="math inline">\(\rbrace\)</span>，<span class="math inline">\(\Omega=\lbrace K|K\)</span> 是 <span class="math inline">\(E,F\)</span> 的中间域 <span class="math inline">\(\rbrace\)</span>，定义 <span class="math inline">\(\varphi: H \to InvH\)</span>，<span class="math inline">\(\psi :K \to GalE/K\)</span>，二者是在 <span class="math inline">\(\Sigma,\Omega\)</span> 上方向相反的映射。</p></li>
+<li><p>有一些结论：</p>
+<p><span class="math inline">\(H_1 \subseteq H_2\)</span>，则 <span class="math inline">\(Inv H_2 \subseteq Inv H_1\)</span></p>
+<p><span class="math inline">\(K_1 \subseteq K_2\)</span>，则 <span class="math inline">\(Gal E/K_1 \subseteq Gal E/K_2\)</span></p>
+<p><span class="math inline">\(H \subseteq Gal(E/Inv H)\)</span></p>
+<p><span class="math inline">\(K\subseteq Inv(Gal E/K)\)</span></p></li>
+<li><p>如果 <span class="math inline">\(E\)</span> 是 <span class="math inline">\(F\)</span> 的 Galois 扩域，则：</p>
+<p><span class="math inline">\(\psi,\varphi\)</span>
+是互逆的一一对应，称为 Galois 对应；</p>
+<p><span class="math inline">\(H_1 \subseteq H_2 \iff Inv H_2 \subseteq
+Inv H_1\)</span>；</p>
+<p><span class="math inline">\(| H| = [E:Inv H]\)</span>，于是有 <span class="math inline">\([G:H]=[Inv H:F]\)</span>；</p>
+<p><span class="math inline">\(H\)</span> 是 <span class="math inline">\(G\)</span> 的正规子群等价于 <span class="math inline">\(InvH\)</span> 是 <span class="math inline">\(F\)</span> 的正规扩域，此时还有 <span class="math inline">\(Gal(Inv H/F) \cong G/H\)</span>。</p></li>
+</ul></li>
+</ul>
+<h2 id="有限域">有限域</h2>
+<ul>
+<li><p>有限域也称 Galois 域。特征为 <span class="math inline">\(p\)</span> 的有限域 <span class="math inline">\(F\)</span> 的元素个数为 <span class="math inline">\(p^n\)</span>，是素子域 <span class="math inline">\(Z_p\)</span> 的分裂域，对应多项式是 <span class="math inline">\(f(x)=x^{p^n}-x\)</span>。这是一个可分多项式，因此
+<span class="math inline">\(F\)</span> 是 <span class="math inline">\(Z_p\)</span> 的 Galois
+扩域。大小相同的这样的域在同构的意义下唯一。</p></li>
+<li><p><span class="math inline">\(E\)</span> 是 <span class="math inline">\(F\)</span> 的扩域，<span class="math inline">\(E,F\)</span> 都是有限域且 <span class="math inline">\([E:F]=m\)</span>，则 <span class="math inline">\(Gal E/F\)</span> 是一个阶为 <span class="math inline">\(m\)</span> 的循环群，生成元是 <span class="math inline">\(E\)</span> 上的自同构 <span class="math inline">\(\eta :a \to a^q\)</span>，<span class="math inline">\(q=|F|\)</span>。</p>
+<p>考虑 <span class="math inline">\(Gal E/Z_p\)</span> 是循环群，<span class="math inline">\(GalE/F\)</span> 是它的子群，而 <span class="math inline">\(m\)</span> 阶子群有且仅有一个即可。</p></li>
+<li><p><span class="math inline">\(E\)</span> 是元素个数等于 <span class="math inline">\(p^n\)</span> 的域，且 <span class="math inline">\(m|n\)</span>，于是 <span class="math inline">\(E\)</span> 的元素个数为 <span class="math inline">\(p^m\)</span> 的子域有且仅有一个。</p></li>
+</ul>
+<h2 id="分圆域">分圆域</h2>
+<p>我的域论真的一塌糊涂，每天都在默念还好我以后接触到的域都是普通数域了（</p>
+<ul>
+<li><p>对于一个特征为 <span class="math inline">\(0\)</span> 的域，研究
+<span class="math inline">\(F\)</span> 上多项式 <span class="math inline">\(x^n -1\)</span> 的分裂域 <span class="math inline">\(E\)</span>，称之为 <span class="math inline">\(F\)</span> 上的 <span class="math inline">\(n\)</span> 阶分圆域。</p>
+<p>显然有 <span class="math inline">\((x^n -1 , nx^{n-1}
+)=1\)</span>，于是 <span class="math inline">\(x^n -1\)</span>
+在其分裂域上有 <span class="math inline">\(n\)</span> 个不同的根，这
+<span class="math inline">\(n\)</span> 个根构成的循环群记为 <span class="math inline">\(R\)</span>。它作为循环群有生成元，称之为 <span class="math inline">\(1\)</span> 的 <span class="math inline">\(n\)</span> 次本原根，这样的本原根显然有 <span class="math inline">\(\varphi(n)\)</span> 个，与此同时 <span class="math inline">\(R\)</span> 的自同构也有 <span class="math inline">\(\varphi(n)\)</span>
+个，构成了循环的自同构群。</p></li>
+<li><p>如上定义后可以知道 <span class="math inline">\(Gal E/F\)</span>
+是一个 Abel 群，它和 <span class="math inline">\(AutR\)</span>
+的子群是同构的。</p></li>
+<li><p><span class="math inline">\(E\)</span> 是 <span class="math inline">\(F\)</span> 关于元素 <span class="math inline">\(d\)</span> 的 <span class="math inline">\(Galois\)</span> 扩域，如果 <span class="math inline">\(Gal E/F\)</span> 是一个循环群，则称 <span class="math inline">\(E\)</span> 是 <span class="math inline">\(F\)</span> 的循环扩域 / 循环扩张。如果 <span class="math inline">\(Gal E/F\)</span> 是一个 <span class="math inline">\(Abel\)</span> 群，则称 <span class="math inline">\(E\)</span> 是 <span class="math inline">\(F\)</span> 的 <span class="math inline">\(Abel\)</span> 扩张。</p>
+<p>由上一条可知分圆域是 <span class="math inline">\(F\)</span> 的 <span class="math inline">\(Abel\)</span> 扩张。</p></li>
+<li><p>如果 <span class="math inline">\(E=F(d)\)</span>，其中 <span class="math inline">\(d \notin F\)</span> 且 <span class="math inline">\(d^n \in F\)</span>，<span class="math inline">\(n\)</span> 是满足 <span class="math inline">\(d^n
+\in F\)</span> 的最小正整数，于是称 <span class="math inline">\(E\)</span> 是 <span class="math inline">\(F\)</span> 关于 <span class="math inline">\(d\)</span> 的 <span class="math inline">\(n\)</span> 次根扩张 / 扩域。</p></li>
+<li><p>如果 <span class="math inline">\(F\)</span> 含有 <span class="math inline">\(1\)</span> 的 <span class="math inline">\(n\)</span> 次本原根，且 <span class="math inline">\(E\)</span> 是 <span class="math inline">\(F\)</span> 的 <span class="math inline">\(n\)</span> 次根扩张，那么 <span class="math inline">\(E/F\)</span> 是一个循环扩张，<span class="math inline">\([E:F]=k\)</span> 是 <span class="math inline">\(n\)</span> 的一个因子。</p>
+<p>反之，如果 <span class="math inline">\(E\)</span> 是 <span class="math inline">\(F\)</span> 的 <span class="math inline">\(n\)</span> 维循环扩域，那么一定存在某个 <span class="math inline">\(d \in E\)</span>，使得 <span class="math inline">\(E=F(d), d^n \in F\)</span>。</p></li>
+<li><p>回到关于 <span class="math inline">\(Q\)</span> 上的 <span class="math inline">\(n\)</span> 阶分圆域的讨论。<span class="math inline">\(R\)</span> 是 <span class="math inline">\(1\)</span> 的 <span class="math inline">\(n\)</span> 次根集合，令 <span class="math inline">\(\varphi _{n} (x) = \Pi (x-z)\)</span>，其中 <span class="math inline">\(z\)</span> 跑遍 <span class="math inline">\(R\)</span> 中的本原根。这一多项式一定是 <span class="math inline">\(Q[x]\)</span> 上的多项式，称为 <span class="math inline">\(n\)</span> 阶分圆多项式。</p>
+<p>实际上，<span class="math inline">\(x^n -1 = \Pi _{d | n ,d \leq n}
+\varphi _{d} (x)\)</span>，例如 <span class="math inline">\(x^{12} -1 =
+(x-1)(x+1)(x^2 +x +1)(x^2 +1 )(x^2 -x +1)(x^4 -x^2
++1)\)</span>，分别对应了 <span class="math inline">\(1,2,3,4,6,12\)</span> 阶的分圆多项式。</p>
+<p><span class="math inline">\(\varphi _n (x)\)</span> 都是 <span class="math inline">\(Q[x]\)</span> 上的不可约多项式，因此也是 $x^n -1 $
+的本原根的极小多项式。</p></li>
+<li><p>有理数域上 <span class="math inline">\(n\)</span> 阶分圆域的
+<span class="math inline">\(Galois\)</span> 群同构于 <span class="math inline">\(n\)</span> 阶循环群的自同构群，阶为 <span class="math inline">\(\varphi (n)\)</span>。</p>
+<p>特殊地，有理数域上 <span class="math inline">\(p\)</span> 阶分圆域的
+<span class="math inline">\(Galois\)</span> 群是 <span class="math inline">\(p-1\)</span> 阶的。</p></li>
+</ul>
+<h2 id="一元方程式的根式求解">一元方程式的根式求解</h2>
+<p>都会了，也没什么能考的题，所以不想写了（摆烂</p>
+<h1 id="期中提示">期中提示</h1>
+<p>打星号的表示笔者到现在还不能很好地反应过来怎么证明，打井号的表示会证明但记不住（</p>
+<p>越复习越绝望，真就是破碎的群知识。尤其 hx
+是第一年，不确定性更强了（</p>
+<h2 id="引理都会证了吗">引理都会证了吗？</h2>
+<ul>
+<li><p><span class="math inline">\(H,K\)</span> 是群 <span class="math inline">\(G\)</span> 的子群，<span class="math inline">\(HK=\lbrace hk | h\in H,k\in
+K\rbrace\)</span>，于是 <span class="math inline">\(HK=KH
+\Leftrightarrow HK\)</span> 是 <span class="math inline">\(G\)</span>
+的子群。</p></li>
+<li><p><span class="math inline">\(H,K\)</span> 是群 <span class="math inline">\(G\)</span> 的两个有限子群，有 <span class="math inline">\(|HK||H\cap K|=|H||K|\)</span>。</p>
+<p>与此同时，如果 <span class="math inline">\(H\)</span> 是 <span class="math inline">\(G\)</span> 的正规子群，则有 <span class="math inline">\(KH/H \cong K/H\cap K\)</span>。</p>
+<p>推广到环同态结论，如果 <span class="math inline">\(S\)</span> 是
+<span class="math inline">\(R\)</span> 的环理想，<span class="math inline">\(I\)</span> 是 <span class="math inline">\(R\)</span> 的子环，则有 <span class="math inline">\((S+I)/I \cong S/S\cap I\)</span>。</p></li>
+<li><p><span class="math inline">\(G\)</span> 的两个正规子群 <span class="math inline">\(H,K\)</span> 交集为 <span class="math inline">\(\lbrace e
+\rbrace\)</span>，那么二者之间元素交换，也就是说，对 <span class="math inline">\(\forall h \in H,k\in K\)</span>，有 <span class="math inline">\(hk=kh\)</span>。</p>
+<p>后续这个用来证明了直积的几个性质，非常好用。也很好证明。</p></li>
+<li><p><span class="math inline">\(a,b\)</span> 是群 <span class="math inline">\(G\)</span> 中的两个元素，<span class="math inline">\(ab=ba\)</span>，若 <span class="math inline">\(o(a)=m,o(b)=n\)</span>，则存在 <span class="math inline">\(g\in G\)</span> 满足 <span class="math inline">\(o(g)=[m,n]\)</span>。</p></li>
+<li><p><span class="math inline">\(G\)</span> 是一个有限群，<span class="math inline">\(H\)</span> 是 <span class="math inline">\(G\)</span> 的子群且 <span class="math inline">\([G:H]=n\)</span>，则 <span class="math inline">\(H\)</span> 含有 <span class="math inline">\(G\)</span> 的一个正规子群 <span class="math inline">\(K\)</span>，<span class="math inline">\([G:K]|n!\)</span>。如果 <span class="math inline">\(|G|\)</span> 不能整除 <span class="math inline">\(n!\)</span>，那么 <span class="math inline">\(K\)</span> 是 <span class="math inline">\(G\)</span> 的一个非平凡正规子群。（**）</p></li>
+<li><p><span class="math inline">\(G\)</span> 是 <span class="math inline">\(p^m\)</span> 阶群。证明：</p>
+<ul>
+<li><span class="math inline">\(N\)</span> 是 <span class="math inline">\(G\)</span> 的正规子群且 <span class="math inline">\(N\neq \lbrace e \rbrace\)</span>，则 <span class="math inline">\(C\cap N\neq \lbrace e \rbrace\)</span>，<span class="math inline">\(C\)</span> 是 <span class="math inline">\(G\)</span> 的中心。（**）</li>
+<li><span class="math inline">\(H\)</span> 是 <span class="math inline">\(G\)</span> 的真子群，则 <span class="math inline">\(H\)</span> 真包含于 <span class="math inline">\(N(H)\)</span>。（*）</li>
+<li><span class="math inline">\(G\)</span> 的子群 <span class="math inline">\(H\)</span> 为 <span class="math inline">\(p^{m-1}\)</span> 阶，则 <span class="math inline">\(H\)</span> 是 <span class="math inline">\(G\)</span> 的正规子群。</li>
+</ul></li>
+<li><p><span class="math inline">\(G\)</span> 不含指数为 <span class="math inline">\(2\)</span> 的子群，则一定有指数为 <span class="math inline">\(3\)</span> 的正规子群。</p></li>
+<li><p>(Cauchy 引理)一个有限 <span class="math inline">\(Abel\)</span>
+群 <span class="math inline">\(G\)</span> 满足素数 <span class="math inline">\(p\)</span> 整除 <span class="math inline">\(|G|\)</span>，则 <span class="math inline">\(G\)</span> 中有一个元素的周期是 <span class="math inline">\(p\)</span>。（*）</p>
+<p>更一般地，并不需要 <span class="math inline">\(Abel\)</span>
+群这个条件也可以满足。</p></li>
+<li><p>所有的 <span class="math inline">\(pq\)</span> 阶群（<span class="math inline">\(p,q\)</span> 为素数，<span class="math inline">\(q&gt;p\)</span>）都可以写成两种形式之一。</p>
+<p>一个是普通的循环群，另一个是类似于二面体群的一个表述：</p>
+<p><span class="math inline">\(\lbrace a^i b^j | i=0,1,...,p-1,
+j=0,1,...,q-1, aba=b^r\rbrace\)</span>，且 <span class="math inline">\(r\)</span> 满足 <span class="math inline">\(r\not
+\equiv 1(mod \\;q)\)</span>，以及 <span class="math inline">\(r^p \equiv
+1(mod \\; q)\)</span>。</p>
+<p>如果 <span class="math inline">\(p=2\)</span>
+的话，这就是一个二面体群。</p></li>
+</ul>
+<h2 id="定理都会证-记得了吗">定理都会证 / 记得了吗？</h2>
+<ul>
+<li><p><span class="math inline">\(G\)</span> 是一个有限阶交换群，于是
+<span class="math inline">\(G\)</span> 是循环群 <span class="math inline">\(\Leftrightarrow\)</span> <span class="math inline">\(|G|\)</span> 是满足式子 <span class="math inline">\(a^n=e,\forall a \in G\)</span>
+的最小正整数。（*）</p>
+<p>看到最小就应该知道，先找个最大的但比 <span class="math inline">\(|G|\)</span>
+小的，再证明有比他更大的，矛盾。</p></li>
+<li><p><span class="math inline">\(n\geq 5\)</span> 时，<span class="math inline">\(A_n\)</span> 是单群。</p>
+<p>只要证明所有的三元组都在 <span class="math inline">\(A_n\)</span>
+的正规子群里，也就是有一个在正规子群里即可。否则考虑正规子群中不动点最多的元素，可能有两类，分别证明可以更多。</p>
+<p>真的很怀疑何宝会考一些定理的证明，不然这 <span class="math inline">\(1.5h\)</span> 时间究竟能做出点啥（挠头</p></li>
+<li><p>轨道元素数的计数：<span class="math inline">\(|Gx|=[G:Stab \\;
+x]\)</span>。（*）（怎么这个都不会啊（恼</p>
+<p>作映射 <span class="math inline">\(Gx\rightarrow
+G/S\)</span>，证明它同构。</p></li>
+<li><p>带恒等元的交换环是域等价于它只有平凡理想。（#）</p>
+<p>也就是说这里平凡理想代替了每个元素可逆的条件，在这个情况下也正是这么推出来的。</p></li>
+<li><p>特征为 <span class="math inline">\(p\)</span>
+的域有最小子域，它同构于 <span class="math inline">\(Z_p\)</span>。</p>
+<p>特征为 <span class="math inline">\(0\)</span>
+的域有最小子域，它同构于有理数域。</p>
+<p>作一个恒等元的主理想，它和 <span class="math inline">\(Z\)</span>
+同构，<span class="math inline">\(Z\)</span> 的分式域是 <span class="math inline">\(Q\)</span>，把它们放到分式域造出来的单同态三角里，推出
+<span class="math inline">\(Q\)</span> 在 <span class="math inline">\(F\)</span> 中的像是最小子域。</p></li>
+</ul>
+<h2 id="难题会做了吗">难题会做了吗？</h2>
+<ul>
+<li><p><span class="math inline">\(G\)</span> 是有限群且有一个 <span class="math inline">\(p-Sylow\)</span> 子群 <span class="math inline">\(P\)</span>，令 <span class="math inline">\(N=N(P)\)</span> 是 <span class="math inline">\(P\)</span> 的正规化子群，证明：<span class="math inline">\(G\)</span> 的任意包含 <span class="math inline">\(N\)</span> 的子群等于它的正规化子群。（*）</p>
+<p><span class="math inline">\(H\)</span> 是 <span class="math inline">\(G\)</span> 的包含 <span class="math inline">\(N\)</span> 的子群，对于 <span class="math inline">\(x\in N(H)\)</span>，<span class="math inline">\(x^{-1} Px\)</span> 是 <span class="math inline">\(p-Sylow\)</span> 子群且属于 <span class="math inline">\(N\)</span>，于是属于 <span class="math inline">\(H\)</span>。故存在 <span class="math inline">\(y
+\in H\)</span> 满足 <span class="math inline">\(y^{-1}
+x^{-1}Pxy=P\)</span>，于是 <span class="math inline">\(xy \in
+N(P)=N\)</span>，有 <span class="math inline">\(N(H)\subseteq
+H\)</span>，相等。</p></li>
+<li><p><span class="math inline">\(G\)</span> 是有限群且有一个 <span class="math inline">\(p-Sylow\)</span> 子群 <span class="math inline">\(P\)</span>，<span class="math inline">\(H\)</span>
+是 <span class="math inline">\(G\)</span> 的子群且 <span class="math inline">\(|H|=p^m\)</span>，证明 <span class="math inline">\(H \cap N(P)=H\cap N\)</span>。（*）</p>
+<p>只要证明左边包含于右边。因为 <span class="math inline">\((H\cap
+N(P))P\)</span> 是 <span class="math inline">\(G\)</span> 的子群，<span class="math inline">\(P\)</span> 是 <span class="math inline">\(H\)</span> 的 <span class="math inline">\(p-Sylow\)</span> 子群，则 <span class="math inline">\((H\cap N(P))P \subseteq P\)</span>。于是 <span class="math inline">\((H\cap N(P))P / P\cong (H\cap N(P)) / (H\cap
+P)\)</span>，于是二者相等。</p></li>
+<li><p>实数环上的自同构只有恒等变换一个。</p>
+<p>这个证明思路其实很像柯西方程，先证有理数环，再夹出实数情况。</p></li>
+<li><p><span class="math inline">\(F\)</span> 是一个数域，则在 <span class="math inline">\(m\neq n\)</span> 时，不存在从环 <span class="math inline">\(M_n(F)\)</span> 到 <span class="math inline">\(M_m(F)\)</span> 上的满同态。</p>
+<p>如果存在的话，<span class="math inline">\(kerf\)</span> 是 <span class="math inline">\(M_n(F)\)</span> 的理想，只能是 <span class="math inline">\(\lbrace e \rbrace\)</span> 或者 <span class="math inline">\(M_n(F)\)</span> 自身。</p></li>
+</ul>
+<h2 id="概念记对了吗">概念记对了吗？</h2>
+<ul>
+<li><p>可解群，幂零群的东西真记不清楚。</p>
+<ul>
+<li>可解群的子群和同态像还是可解群；如果 <span class="math inline">\(G\)</span> 的正规子群 <span class="math inline">\(K\)</span> 满足 <span class="math inline">\(K\)</span> 和 <span class="math inline">\(G/K\)</span> 是可解群，则 <span class="math inline">\(G\)</span> 是可解群。</li>
+<li><span class="math inline">\(G\)</span> 是可解群等价于其 <span class="math inline">\(n\)</span> 次导群（换位子子群）为 <span class="math inline">\(\lbrace e \rbrace\)</span>。</li>
+<li>当 <span class="math inline">\(G\)</span> 的 <span class="math inline">\(n\)</span> 次中心 <span class="math inline">\(C_n=G\)</span> 时，称 <span class="math inline">\(G\)</span> 为幂零群。满足此条件的最小的 <span class="math inline">\(n\)</span> 称为 <span class="math inline">\(G\)</span> 的幂指数。</li>
+<li><span class="math inline">\(G\)</span> 是幂零群还等价于 <span class="math inline">\(G\)</span> 有一个正规群列 <span class="math inline">\(\lbrace e\rbrace=G_0\triangleleft G_1\triangleleft
+... \triangleleft G_r=G\)</span>，使得 <span class="math inline">\(G_i/G_{i-1} \subseteq
+C(G/G_{i-1})\)</span>。这里要求每个 <span class="math inline">\(G_i
+\triangleleft G\)</span>，即使正规子群不存在传递性。</li>
+</ul></li>
+<li><p>单环：不是除环的非交换环只有平凡理想，称为单环。</p>
+<p>典型的单环是在除环 <span class="math inline">\(R\)</span>
+上构造的矩阵环 <span class="math inline">\(M_n(R)\)</span>。</p></li>
+<li><p>整区：交换的带恒等元的整环，只比域少一个逆元条件。</p></li>
+<li><p>由分式域造出来的域和域之间的单同态：会画那个图就懂了，一个整区两个域，两个嵌入推一个单同态。</p></li>
+</ul>
+<h2 id="踩坑踩麻了吗">踩坑踩麻了吗？</h2>
+<ul>
+<li><p>正规子群不能传递，很多时候觉得灵光一闪做出来了都不靠谱。</p></li>
+<li><blockquote>
+<p>批证明题作业的感觉就像有一扇门，正确解法是拉动门把手进去，但有学生拿了把斧头把门劈开进去了，有人从门缝下钻进去，有人拆了通风管道爬进来，还有人挂在三层楼外拍窗。而我就是在门里等人的那个，一脸懵逼看着他们各显神通。——不知出处</p>
+<p>而我进不去门，翻开答案知道可以拧门把手之后还是拧反方向了，有的时候答案就写了“把手”两个字，于是我把门把手扳了下来。——驰雨</p>
+<p>做证明题的感觉就像面对着一扇玻璃门，有的玻璃看着太过透明以至于过于激动地直接冲了过去然后直接被撞晕；有的题在门前犹豫半天不敢靠近，结果走过去发现是自动门。——Retaliatory
+Peddlers</p>
+</blockquote></li>
+</ul>
+<h2 id="赛博猫猫敲键盘">赛博猫猫敲键盘</h2>
+<p>以下内容和本人没有任何关系，是我博客右侧的赛博猫猫随便按出来的东西，如果可以阅读纯属巧合：</p>
+<ul>
+<li><p>求 <span class="math inline">\(100\)</span> 阶 <span class="math inline">\(Abel\)</span>
+群的所有同构类，写出它们的不变因子组。</p>
+<p>有手就行。</p></li>
+<li><p>普通的置换计算题，具体数字忘了。</p>
+<p>有手就行。</p></li>
+<li><p>在 <span class="math inline">\(G=R \backslash
+\lbrace-1\rbrace\)</span> 上自行定义一个运算使其称为群，并证明。</p>
+<p>我靠，我考试的时候真的不会，明明都想到 <span class="math inline">\((-1,-1)\)</span> 映射到 <span class="math inline">\(-1\)</span>，还想到了 <span class="math inline">\((a+1)(b+1)\)</span>，结果还是开天窗了。无数数竞的悲伤回忆开始攻击我..</p>
+<p>实际上就是定义 <span class="math inline">\(a\times
+b=ab+a+b\)</span>.</p></li>
+<li><p>作 <span class="math inline">\(Z_m\)</span> 到 <span class="math inline">\(Z_n\)</span>
+上的同态，有多少个？单同态有多少个？满同态有多少个？</p>
+<p>私以为是这张卷子最麻烦的题目，多分分类，我也不确定做对没有...（UPD：错了一点点细节。</p>
+<p>感觉一看就是个结论，但我没见过，临场慌得要死。</p></li>
+<li><p>证明 <span class="math inline">\(105\)</span> 阶群有一个 <span class="math inline">\(35\)</span> 阶子群。</p>
+<p>一个 <span class="math inline">\(5\)</span> 阶正规子群和一个 <span class="math inline">\(7\)</span> 阶群的乘积，或者一个 <span class="math inline">\(7\)</span> 阶正规子群和一个 <span class="math inline">\(5\)</span> 阶群的乘积都是 <span class="math inline">\(35\)</span> 阶子群，所以只要用一下 <span class="math inline">\(Sylow\)</span> 定理就可以了。</p>
+<p>临场慌得要死 ++，这个题写了好久，还把 <span class="math inline">\(HK=KH\)</span> 等价于 <span class="math inline">\(HK\)</span> 是 <span class="math inline">\(G\)</span>
+的子群那个结论写上去了，完全没用。</p></li>
+<li><p>证明 <span class="math inline">\(R[x]/(x^2+1)\)</span> 和复数环
+<span class="math inline">\(C\)</span> 同构，其中 <span class="math inline">\((x^2+1)\)</span> 是 <span class="math inline">\(x^2+1\)</span> 生成的主理想。</p>
+<p>作同态 <span class="math inline">\(f(g(x))=g(i)\)</span>，它是满同态，<span class="math inline">\(kerf=(x^2+1)\)</span>。</p></li>
+<li><p>求 <span class="math inline">\(n\)</span> 阶二面体群 <span class="math inline">\((n\geq 2)\)</span> 的中心，什么样的 <span class="math inline">\(n\)</span> 能够使得 <span class="math inline">\(D_n\)</span> 是幂零群？</p>
+<p>中心分奇偶讨论，奇数只有 <span class="math inline">\(\lbrace e
+\rbrace\)</span>，偶数还有个 <span class="math inline">\(y^{n/2}\)</span>，再讨论 <span class="math inline">\(2\)</span> 的情况，中心就是自身；幂零群当且仅当
+<span class="math inline">\(n\)</span> 是 <span class="math inline">\(2\)</span> 的幂次，用上中心列证明就行。</p>
+<p>前者作业里做过，后者一看就是个结论但我没见过，我不是废物谁是废物？</p></li>
+</ul>
+<p>总结：废物一个，1.3 走起。</p>
+<h1 id="期末提示">期末提示</h1>
+<p>期末没有提示，复习的时候注意事项直接手写了，理了好几大张纸。结果期末考上来第一题：</p>
+<blockquote>
+<p>陈述你在这门课中印象最深的一个定理或者结论，并描述它的一个应用或者推论。</p>
+</blockquote>
+<p>给我整蒙了（</p>
+<p>总之这一篇完结了！华子的代数还是劲不够大（至少比隔壁的代数学实验班差远了，hx
+的劲也没 zmx
+大），下学期的两门分析应该会比抽代更痛苦一些。代数的旅途也快到终点了，之后还有一门不是必须要上的拓扑学（因为是基础方向的专业课，但我应该会去上一下），就要说再见了。之后还会用到的基本上都是简单的抽代知识和线性代数了呢w</p>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>我很可爱 请给我钱（？）</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.jpg" alt="驰雨Chiyuru 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.jpg" alt="驰雨Chiyuru 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>驰雨Chiyuru
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://chiyuru.github.io/2022/09/19/huixiangdou/" title="你知道茴字的四种写法吗？">https://chiyuru.github.io/2022/09/19/huixiangdou/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E8%AF%BE%E7%A8%8B%E5%AE%9E%E5%BD%95/" rel="tag"># 课程实录</a>
+              <a href="/tags/%E5%88%B7%E4%B9%A6/" rel="tag"># 刷书</a>
+              <a href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag"># 数学</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/09/07/Diary-2022-09/" rel="prev" title="日记·篇一·22年9月">
+      <i class="fa fa-chevron-left"></i> 日记·篇一·22年9月
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/09/24/Elementary-probability-theory/" rel="next" title="初等概率论与挣扎">
+      初等概率论与挣扎 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  
+  <div class="comments">
+  <script src="https://utteranc.es/client.js" repo="Chiyuru/chiyuru.github.io" issue-term="pathname" theme="github-light" crossorigin="anonymous" async></script>
+  </div>
+  
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BE%A4%E8%AE%BA"><span class="nav-text">群论</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BE%A4%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-text">群的定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%90%E7%BE%A4"><span class="nav-text">子群</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%82%8D%E9%9B%86%E6%AD%A3%E8%A7%84%E7%BE%A4"><span class="nav-text">傍集，正规群</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%8C%E6%80%81"><span class="nav-text">同态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BE%AA%E7%8E%AF%E7%BE%A4"><span class="nav-text">循环群</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BD%AE%E6%8D%A2%E7%BE%A4"><span class="nav-text">置换群</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BE%A4%E4%BD%9C%E7%94%A8"><span class="nav-text">群作用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sylow-%E5%AE%9A%E7%90%86"><span class="nav-text">Sylow 定理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BE%A4%E7%9A%84%E7%9B%B4%E7%A7%AF"><span class="nav-text">群的直积</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%89%E9%99%90%E7%94%9F%E6%88%90-abel-%E7%BE%A4"><span class="nav-text">有限生成 Abel 群</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%A3%E8%A7%84%E7%BE%A4%E5%88%97%E4%B8%8E%E5%8F%AF%E8%A7%A3%E7%BE%A4"><span class="nav-text">正规群列与可解群</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%8E%AF%E8%AE%BA"><span class="nav-text">环论</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8E%AF%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-text">环的定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%90%E7%8E%AF%E7%90%86%E6%83%B3%E4%B8%8E%E5%95%86%E7%8E%AF"><span class="nav-text">子环，理想与商环</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8E%AF%E5%90%8C%E6%80%81"><span class="nav-text">环同态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B4%E7%8E%AF%E5%88%86%E5%BC%8F%E5%9F%9F"><span class="nav-text">整环，分式域</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%94%AF%E4%B8%80%E5%88%86%E8%A7%A3%E7%8E%AF"><span class="nav-text">唯一分解环</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pid-%E4%B8%8E%E6%AC%A7%E6%B0%8F%E6%95%B4%E5%8C%BA"><span class="nav-text">PID 与欧氏整区</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%9F%E4%B8%8A%E7%9A%84%E4%B8%80%E5%85%83%E5%A4%9A%E9%A1%B9%E5%BC%8F%E7%8E%AF"><span class="nav-text">域上的一元多项式环</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%A4%E6%8D%A2%E7%8E%AF%E4%B8%8A%E7%9A%84%E5%A4%9A%E9%A1%B9%E5%BC%8F%E7%8E%AF"><span class="nav-text">交换环上的多项式环</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B4%A0%E7%90%86%E6%83%B3"><span class="nav-text">素理想</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%9F%E4%B8%8E-galois-%E7%90%86%E8%AE%BA"><span class="nav-text">域与 Galois 理论</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%9F%E7%9A%84%E6%89%A9%E5%BC%A0"><span class="nav-text">域的扩张</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E6%95%B0%E6%89%A9%E5%9F%9F"><span class="nav-text">代数扩域</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E8%A3%82%E5%9F%9F"><span class="nav-text">分裂域</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%AF%E5%88%86%E6%89%A9%E5%9F%9F"><span class="nav-text">可分扩域</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%A3%E8%A7%84%E6%89%A9%E5%9F%9F"><span class="nav-text">正规扩域</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#galois-%E6%89%A9%E5%9F%9F%E4%B8%8E-galois-%E5%AF%B9%E5%BA%94"><span class="nav-text">Galois 扩域与 Galois 对应</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%89%E9%99%90%E5%9F%9F"><span class="nav-text">有限域</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E5%9C%86%E5%9F%9F"><span class="nav-text">分圆域</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E5%85%83%E6%96%B9%E7%A8%8B%E5%BC%8F%E7%9A%84%E6%A0%B9%E5%BC%8F%E6%B1%82%E8%A7%A3"><span class="nav-text">一元方程式的根式求解</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%9F%E4%B8%AD%E6%8F%90%E7%A4%BA"><span class="nav-text">期中提示</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%95%E7%90%86%E9%83%BD%E4%BC%9A%E8%AF%81%E4%BA%86%E5%90%97"><span class="nav-text">引理都会证了吗？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9A%E7%90%86%E9%83%BD%E4%BC%9A%E8%AF%81-%E8%AE%B0%E5%BE%97%E4%BA%86%E5%90%97"><span class="nav-text">定理都会证 &#x2F; 记得了吗？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9A%BE%E9%A2%98%E4%BC%9A%E5%81%9A%E4%BA%86%E5%90%97"><span class="nav-text">难题会做了吗？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A6%82%E5%BF%B5%E8%AE%B0%E5%AF%B9%E4%BA%86%E5%90%97"><span class="nav-text">概念记对了吗？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B8%A9%E5%9D%91%E8%B8%A9%E9%BA%BB%E4%BA%86%E5%90%97"><span class="nav-text">踩坑踩麻了吗？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B5%9B%E5%8D%9A%E7%8C%AB%E7%8C%AB%E6%95%B2%E9%94%AE%E7%9B%98"><span class="nav-text">赛博猫猫敲键盘</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%9F%E6%9C%AB%E6%8F%90%E7%A4%BA"><span class="nav-text">期末提示</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="驰雨Chiyuru"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">驰雨Chiyuru</p>
+  <div class="site-description" itemprop="description">おはよう、朝だよ</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Chiyuru" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Chiyuru" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:mafy21@mails.tsinghua.edu.cn" title="E-Mail → mailto:mafy21@mails.tsinghua.edu.cn" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/Chiyuru_0417" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;Chiyuru_0417" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/ma-fei-yan-33" title="知乎 → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;ma-fei-yan-33" rel="noopener" target="_blank"><i class="fab fa-zhihu fa-fw"></i>知乎</a>
+      </span>
+  </div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">驰雨Chiyuru</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv1">
+  本站总访客数：<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共166.2k字</span>
+</div>
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300,"hOffset":-15,"vOffset":-15},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
+</html>

@@ -1,0 +1,2876 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"chiyuru.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="据说统计推断是统辅基础五大件里最难的，这门课也可以直接称为数理统计（基础）。我初概的体验并不是很好，甩锅给了不匹配的教材，还记了 PF。但统计推断要洗心革面好好上，也打算做预习。不仅是因为不打算再去数学系回炉重造，也是担心留下一种隐隐怀疑自己并不是很适合学统计的感觉，本科过半又换方向的试错成本就略高了。 不过，我确实也很好奇到底适不适合、有多感兴趣呢？真不行的话，该换还得换呀。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数理统计初探——统计推断">
+<meta property="og:url" content="https://chiyuru.github.io/2022/11/09/Statistical-Inference/index.html">
+<meta property="og:site_name" content="『姑妄言之姑妄听之』">
+<meta property="og:description" content="据说统计推断是统辅基础五大件里最难的，这门课也可以直接称为数理统计（基础）。我初概的体验并不是很好，甩锅给了不匹配的教材，还记了 PF。但统计推断要洗心革面好好上，也打算做预习。不仅是因为不打算再去数学系回炉重造，也是担心留下一种隐隐怀疑自己并不是很适合学统计的感觉，本科过半又换方向的试错成本就略高了。 不过，我确实也很好奇到底适不适合、有多感兴趣呢？真不行的话，该换还得换呀。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2022/11/10/KgwxjsHpdqVCP8Q.png">
+<meta property="og:image" content="https://s2.loli.net/2022/11/10/96cXDZjMATdz1ns.png">
+<meta property="og:image" content="https://s2.loli.net/2022/11/10/kUnosgDvltpVGCx.png">
+<meta property="og:image" content="https://s2.loli.net/2022/11/10/XlfzMd3LVN6xBvn.png">
+<meta property="og:image" content="https://s2.loli.net/2022/11/10/5C1DIs7VA8rRpvG.png">
+<meta property="og:image" content="https://s2.loli.net/2022/11/10/isu5VE8UmqGRDQc.png">
+<meta property="og:image" content="https://s2.loli.net/2022/11/10/WrPwDSbvtNxVTO7.png">
+<meta property="og:image" content="https://s2.loli.net/2022/11/10/39KfRQ1cnBpDbM4.png">
+<meta property="og:image" content="https://s2.loli.net/2022/11/10/ipCfAIzGNYbrREK.png">
+<meta property="og:image" content="https://s2.loli.net/2022/11/10/XuYVFkrIE14ZpO8.png">
+<meta property="og:image" content="https://s2.loli.net/2022/11/14/XEcfOiPsK397zq6.png">
+<meta property="og:image" content="https://s2.loli.net/2022/11/14/48m1hsC5ozDNXyf.png">
+<meta property="og:image" content="https://s2.loli.net/2022/11/14/R3xeGq69dJlwfoh.png">
+<meta property="og:image" content="https://s2.loli.net/2022/11/14/2Hiut73Ns8YZE9x.png">
+<meta property="og:image" content="https://s2.loli.net/2022/11/14/EtzhJnWQaGgdk58.png">
+<meta property="og:image" content="https://s2.loli.net/2022/11/14/Iti1jAKc74QRWbz.jpg">
+<meta property="og:image" content="https://s2.loli.net/2022/11/14/9sgt8DElTq4rPHA.jpg">
+<meta property="og:image" content="https://s2.loli.net/2022/11/15/rPZ4zcwh1BmeDsK.jpg">
+<meta property="og:image" content="https://s2.loli.net/2022/11/15/Svc39OEw5YKbatr.png">
+<meta property="og:image" content="https://s2.loli.net/2022/11/15/CEtRPFrbusQZOlL.png">
+<meta property="og:image" content="https://s2.loli.net/2022/11/15/DjVouFIUKhBtzk5.png">
+<meta property="og:image" content="https://s2.loli.net/2022/11/15/Vl6NgIHcZrKoFQ9.png">
+<meta property="og:image" content="https://s2.loli.net/2022/11/15/wJh6iVCW73djxNm.png">
+<meta property="og:image" content="https://s2.loli.net/2022/11/15/boNDnERSgxV5Cim.png">
+<meta property="og:image" content="https://s2.loli.net/2022/11/15/YQFvCIO8Wptlbig.png">
+<meta property="og:image" content="https://s2.loli.net/2022/11/29/jIyFs5JalDzrpVP.png">
+<meta property="og:image" content="https://s2.loli.net/2022/11/29/ax2whdeIVbl58Cz.jpg">
+<meta property="og:image" content="https://s2.loli.net/2022/11/20/C49PtevUWc5jHVw.jpg">
+<meta property="og:image" content="https://s2.loli.net/2022/11/20/obLXT61Kcunx5Mi.png">
+<meta property="og:image" content="https://s2.loli.net/2022/11/20/sitSDJEMO2VupG5.png">
+<meta property="og:image" content="https://s2.loli.net/2022/11/20/r24pTEG7dnRPHIw.jpg">
+<meta property="og:image" content="https://s2.loli.net/2022/11/20/xUtclLFqdfzhI3E.jpg">
+<meta property="og:image" content="https://s2.loli.net/2022/11/20/4aC1ihZlAcNI2kR.jpg">
+<meta property="og:image" content="https://s2.loli.net/2022/11/20/vuzCQqMW6fTLbxg.jpg">
+<meta property="og:image" content="https://s2.loli.net/2022/11/20/bO8F4ynqUBN6ExL.png">
+<meta property="og:image" content="https://s2.loli.net/2022/11/21/hI1jqgovw348xTl.png">
+<meta property="og:image" content="https://s2.loli.net/2022/11/21/KLW8I6ctOzSmqf2.png">
+<meta property="og:image" content="https://s2.loli.net/2022/11/21/RhG3MBuc5AyUjze.png">
+<meta property="og:image" content="https://s2.loli.net/2022/11/21/Io2l5Hzxhyb1OFW.jpg">
+<meta property="og:image" content="https://s2.loli.net/2022/11/21/rIVAXxnL7Gfyup4.png">
+<meta property="og:image" content="https://s2.loli.net/2022/11/21/loCKVpiHeg29GnB.png">
+<meta property="og:image" content="https://s2.loli.net/2022/11/21/3jhtxZyH9cKqPeT.jpg">
+<meta property="og:image" content="https://s2.loli.net/2022/11/21/g5XFnsWCkaST3lH.png">
+<meta property="og:image" content="https://s2.loli.net/2022/11/21/w4KPMSJuaA9DXmQ.png">
+<meta property="og:image" content="https://s2.loli.net/2022/11/21/uDPOR9VXod4YMQj.png">
+<meta property="og:image" content="https://s2.loli.net/2022/11/29/Xx4dkfGNyOqcKnH.png">
+<meta property="og:image" content="https://s2.loli.net/2022/11/29/eO6nfItHCoqvJMr.jpg">
+<meta property="og:image" content="https://s2.loli.net/2022/11/25/XiqgCueVUlanxLM.png">
+<meta property="og:image" content="https://s2.loli.net/2022/11/27/jNVMn9zcTXJDWga.png">
+<meta property="og:image" content="https://s2.loli.net/2022/11/27/eHOVrwRymbkKZnz.jpg">
+<meta property="og:image" content="https://s2.loli.net/2022/11/27/ZhfiDLta5C1oklw.jpg">
+<meta property="og:image" content="https://s2.loli.net/2022/11/27/fcCYRMNaik1ohTB.jpg">
+<meta property="og:image" content="https://s2.loli.net/2022/11/27/LKHB6VparIOimzP.jpg">
+<meta property="og:image" content="https://s2.loli.net/2022/11/29/ekTsyOlDz35i4mE.png">
+<meta property="og:image" content="https://s2.loli.net/2022/11/29/WklE6cgO85VPaQF.png">
+<meta property="og:image" content="https://s2.loli.net/2022/11/29/k4IQJq2guEeOPft.png">
+<meta property="og:image" content="https://s2.loli.net/2022/11/29/URSQ7feVcDzxbiI.png">
+<meta property="og:image" content="https://s2.loli.net/2022/11/29/MQK7iPAR4cZ2y9S.png">
+<meta property="og:image" content="https://s2.loli.net/2022/11/29/M1WTS7bhdzrKuOw.png">
+<meta property="og:image" content="https://s2.loli.net/2022/11/29/dPZTSGnH5oic3Wq.png">
+<meta property="og:image" content="https://s2.loli.net/2022/11/29/XMF42jQzGCEOWgm.png">
+<meta property="og:image" content="https://s2.loli.net/2022/11/29/IOQVr1hGD6CHljs.png">
+<meta property="og:image" content="https://s2.loli.net/2022/11/29/xbO8HRDcuL7GgyC.jpg">
+<meta property="og:image" content="https://s2.loli.net/2022/12/05/RNYSJsKGExj4gWw.png">
+<meta property="og:image" content="https://s2.loli.net/2022/12/05/3PJrLzdAqt2ihon.png">
+<meta property="og:image" content="https://s2.loli.net/2022/12/05/I1emRiPvwFxkM4l.png">
+<meta property="og:image" content="https://s2.loli.net/2022/12/05/Tda2EkfYz8bBWP4.png">
+<meta property="og:image" content="https://s2.loli.net/2022/12/05/p6dc2ZbUqeHmiBo.jpg">
+<meta property="og:image" content="https://s2.loli.net/2022/12/07/HhAGi4EruPK9cCM.png">
+<meta property="og:image" content="https://s2.loli.net/2022/12/08/567QUCzZwL1FvWa.png">
+<meta property="og:image" content="https://s2.loli.net/2022/12/08/KZBEIO2hmdplVDW.png">
+<meta property="og:image" content="https://s2.loli.net/2022/12/08/qdEAG7vaSfxznMk.png">
+<meta property="og:image" content="https://s2.loli.net/2022/12/09/nGOdgRLDWl7yHYS.png">
+<meta property="og:image" content="https://s2.loli.net/2022/12/09/wnh3FPfROKgDjYG.png">
+<meta property="og:image" content="https://s2.loli.net/2022/12/11/k9AigbzHpQeyt6B.jpg">
+<meta property="og:image" content="https://s2.loli.net/2022/12/11/Me6BHyitGUdjaTR.jpg">
+<meta property="og:image" content="https://s2.loli.net/2022/12/11/Ofn4vm1bDRSzFoW.jpg">
+<meta property="og:image" content="https://s2.loli.net/2022/12/11/hOlVTxcyKpUFo1t.jpg">
+<meta property="og:image" content="https://s2.loli.net/2022/12/11/KthOEMq1FsInJGe.png">
+<meta property="og:image" content="https://s2.loli.net/2022/12/11/jwuLg45MtpOP3Nf.png">
+<meta property="og:image" content="https://s2.loli.net/2022/12/11/El63nDusdmoLqAP.png">
+<meta property="og:image" content="https://s2.loli.net/2022/12/11/LG6upPYa5c8v9QC.png">
+<meta property="og:image" content="https://s2.loli.net/2022/12/15/MjSnHVXGrFRKC5e.jpg">
+<meta property="og:image" content="https://s2.loli.net/2022/12/15/6dSaf9e4kvFW2OR.jpg">
+<meta property="og:image" content="https://s2.loli.net/2022/12/15/fBSli5xwI4Kt2Jh.jpg">
+<meta property="og:image" content="https://s2.loli.net/2022/12/17/PBtvDJUlqOhGp3R.png">
+<meta property="og:image" content="https://s2.loli.net/2022/12/17/RDNvXeBl5baAgzi.png">
+<meta property="og:image" content="https://s2.loli.net/2022/12/17/b4Ffx9P1dA26yqv.png">
+<meta property="og:image" content="https://s2.loli.net/2022/12/17/FNAmipPtHXabL5S.jpg">
+<meta property="og:image" content="https://s2.loli.net/2022/12/17/EiyJw6PqGRHsKoC.png">
+<meta property="og:image" content="https://s2.loli.net/2022/12/17/nQjPt3hoWD7H189.png">
+<meta property="og:image" content="https://s2.loli.net/2022/12/17/86Ri75gPjQSnlfh.png">
+<meta property="og:image" content="https://s2.loli.net/2022/12/17/g9fpOdqFRrLPitW.jpg">
+<meta property="og:image" content="https://s2.loli.net/2022/12/17/ZF5RbupI9cnwrXe.png">
+<meta property="og:image" content="https://s2.loli.net/2022/12/17/bgRXpMVjwQltSus.jpg">
+<meta property="og:image" content="https://s2.loli.net/2022/12/17/S5qMUjbpfxisAvh.png">
+<meta property="og:image" content="https://s2.loli.net/2022/12/17/oKnPhzvRxJgL5Xp.jpg">
+<meta property="og:image" content="https://s2.loli.net/2022/12/17/vyAtcbTPdrGn6Zx.png">
+<meta property="og:image" content="https://s2.loli.net/2022/12/17/swD64V32gBTZG7t.jpg">
+<meta property="og:image" content="https://s2.loli.net/2022/12/17/ZO2Bn9E4PWrMdtc.png">
+<meta property="og:image" content="https://s2.loli.net/2022/12/17/2jpb3uU1qEtGl5L.png">
+<meta property="og:image" content="https://s2.loli.net/2022/12/17/rwAIq67U5Jl9FsK.png">
+<meta property="og:image" content="https://s2.loli.net/2022/12/22/FjSmXYCIPRvQHwD.png">
+<meta property="og:image" content="https://s2.loli.net/2022/12/22/vudYjS1GK7eBEq4.png">
+<meta property="og:image" content="https://s2.loli.net/2022/12/22/b5DGMflA1I9SKti.png">
+<meta property="og:image" content="https://s2.loli.net/2022/12/22/sI5GdYKJR3P7Dbv.png">
+<meta property="og:image" content="https://s2.loli.net/2022/12/22/AVR9xkrwIlMyNhm.png">
+<meta property="og:image" content="https://s2.loli.net/2022/12/22/WgijzPlQUxEtbrm.png">
+<meta property="og:image" content="https://s2.loli.net/2022/12/22/4oz78PmgXJ3qxfn.png">
+<meta property="og:image" content="https://s2.loli.net/2022/12/22/waBlU8TnIVEYibs.png">
+<meta property="og:image" content="https://s2.loli.net/2022/12/22/Q9mAFDdYZUxPv6w.png">
+<meta property="og:image" content="https://s2.loli.net/2022/12/21/6TEM1vSosXLcwOg.jpg">
+<meta property="article:published_time" content="2022-11-09T13:51:08.000Z">
+<meta property="article:modified_time" content="2022-12-21T17:44:44.000Z">
+<meta property="article:author" content="驰雨Chiyuru">
+<meta property="article:tag" content="课程实录">
+<meta property="article:tag" content="刷书">
+<meta property="article:tag" content="数学">
+<meta property="article:tag" content="统计">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2022/11/10/KgwxjsHpdqVCP8Q.png">
+
+<link rel="canonical" href="https://chiyuru.github.io/2022/11/09/Statistical-Inference/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>数理统计初探——统计推断 | 『姑妄言之姑妄听之』</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="『姑妄言之姑妄听之』" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">『姑妄言之姑妄听之』</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://chiyuru.github.io/2022/11/09/Statistical-Inference/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="驰雨Chiyuru">
+      <meta itemprop="description" content="おはよう、朝だよ">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="『姑妄言之姑妄听之』">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          数理统计初探——统计推断
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-11-09 21:51:08" itemprop="dateCreated datePublished" datetime="2022-11-09T21:51:08+08:00">2022-11-09</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-12-22 01:44:44" itemprop="dateModified" datetime="2022-12-22T01:44:44+08:00">2022-12-22</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>据说统计推断是统辅基础五大件里最难的，这门课也可以直接称为数理统计（基础）。我初概的体验并不是很好，甩锅给了不匹配的教材，还记了
+PF。但统计推断要洗心革面好好上，也打算做预习。不仅是因为不打算再去数学系回炉重造，也是担心留下一种隐隐怀疑自己并不是很适合学统计的感觉，本科过半又换方向的试错成本就略高了。</p>
+<p>不过，我确实也很好奇到底适不适合、有多感兴趣呢？真不行的话，该换还得换呀。</p>
+<span id="more"></span>
+<p>这课的 PPT
+是英文，老师讲课用中文，教材英文中译都有，图书馆借来的是中文版，据说考试卷子是英文的。</p>
+<p>妈呀.jpg，所以以下遇到名词的话会中英都写。一些懒得打的东西就直接通过截图
+PPT 或者手写拍照给出，主要我也怕我把写的东西弄丢了（。</p>
+<h1 id="lecture-1">Lecture 1</h1>
+<p>先吹了会水，尽管课时紧张，还是要骗骗大家统计学前景非常广阔 x</p>
+<p>本节介绍统计推断中的一些基本概念，对应教材第五章《随机样本的性质》。</p>
+<h2 id="研究范围约定及基本定义">研究范围约定及基本定义</h2>
+<ul>
+<li><p>研究范围的约定：在研究大量数据、确定其行为时，因为难以全部分析，我们会对其进行多次随机抽样（Sampling），研究多次得到的样本的性质，以及“多次”中蕴含的性质，来推断总体数据的性质。这是统计推断的核心思想之一。以下约定一些术语。</p>
+<ul>
+<li><p>Population（总体）：总的研究范围，用一个随机变量 <span class="math inline">\(X\)</span> 来概括，<span class="math inline">\(X\)</span> 服从有某些参数 <span class="math inline">\(\theta\)</span> 的分布 <span class="math inline">\(F\)</span>。我们的目标正是通过抽样来找到这个分布
+<span class="math inline">\(F\)</span>，从而刻画 Population
+的性质。</p></li>
+<li><p>Population parameters：用于表征 Population
+的性质，比如期望，方差，矩，也就是上述的 <span class="math inline">\(\theta\)</span>。例如，对于一个服从正态分布的
+Population，它的 Population parameters 记为 <span class="math inline">\(\theta=(\mu, \sigma^2)\)</span>。</p></li>
+<li><p>Sample（样本）：多次抽样得到的随机变量 <span class="math inline">\(X_1,X_2,...,X_n\)</span>
+独立同分布，有相同的（边缘）概率密度函数（PMF） <span class="math inline">\(f(x)\)</span>，则称其为 Population
+中的（随机）样本。</p></li>
+<li><p>Sample size（样本量）：显然上述的那个 <span class="math inline">\(n\)</span>
+就是样本量，表征样本大小，trivial。</p></li>
+</ul>
+<p>举个例子。现在有 10000
+个产品，其中有一部分废品。我们想知道大约有多少废品又不希望检测所有的产品，于是每次抽样
+100 个进行检测。此处的 Population 就是指 10000 个产品，每次的 Sample
+是抽到的 100 个样品，Sample size 是100。可以在 Population 上定义随机变量
+<span class="math inline">\(X\)</span>，如果产品是废品则 <span class="math inline">\(X=1\)</span>，合格则 <span class="math inline">\(X=0\)</span>，则每个样本可以表征为 <span class="math inline">\(X=\lbrace X_1,X_2,...,X_n\rbrace\)</span>。</p>
+<p>在我们抽样之前，<span class="math inline">\(X_i\)</span>
+都还是未知的随机变量，和 Population 同分布。然而抽样之后，<span class="math inline">\(X=\lbrace X_1,X_2,...,X_n\rbrace\)</span>
+就成为了一个确切的，由实数组成的数组，比如在上述例子中，某次抽样得到的结果是一个由
+<span class="math inline">\(0,1\)</span> 表示的数组。</p>
+<ul>
+<li><p>Sample
+space（样本空间）：和概率论中的样本空间不太一样的是，这里的样本空间表示所有抽样可以得到的数组，用
+<span class="math inline">\(\chi\)</span> 表示，这个符号和 Chi-Square
+分布的符号是相同的。在上述例子中，就是：<span class="math inline">\(\chi
+= \lbrace (x_1,x_2,...,x_{100}) | x_i \in \lbrace 0,1
+\rbrace,i=1,2,...,100\rbrace\)</span>。</p></li>
+<li><p>Simple random sampling：怎么定义随机抽样？如果能使得到的 <span class="math inline">\(X_1,X_2,...,X_n\)</span> 独立同分布（<span class="math inline">\(i.i.d. \sim
+F\)</span>），那么这种抽样方式就是简单随机抽样，也称为随机抽样。</p>
+<p>需要注意的是，简单随机抽样是有放回的，否则抽到某一元素的概率会不断变化，并不是独立的。</p></li>
+<li><p>Joint distribution function：<span class="math inline">\(F(x_1,x_2,...,x_n)=F(x_1)F(x_2)...F(x_n)\)</span></p></li>
+<li><p>Joint density function (if exists)：<span class="math inline">\(f(x_1,x_2,...,x_n)=f(x_1)f(x_2)...f(x_n)\)</span></p></li>
+</ul></li>
+</ul>
+<h2 id="统计量">统计量</h2>
+<ul>
+<li><p>定义了这么多东西之后，我们可以研究抽取出来的随机样本 <span class="math inline">\(X_1,X_2,...,X_n\)</span>，研究方式是定义一些关于这些随机样本的函数，研究函数的性质。</p>
+<ul>
+<li><p>Statistic（统计量）：记抽取得到的随机样本 / 数据为 <span class="math inline">\(X_1,X_2,...,X_n\)</span>，函数 <span class="math inline">\(T(X_1,...,X_n)\)</span>
+称为一个统计量。显然，在抽取之前它是一个随机变量的函数，也即一个随机向量；但在抽取之后，<span class="math inline">\(T\)</span> 可以计算为一个实数。</p>
+<p>作为随机变量，<span class="math inline">\(T\)</span> 的概率分布称为
+Sampling Distribution，抽样分布。</p></li>
+<li><p>亿些常用的 Statistic：</p>
+<p>Sample mean：<span class="math inline">\(X = \frac{1}{n}
+\Sigma_{i=1}^n X_i\)</span></p>
+<p>Sample variance：<span class="math inline">\(S^2 = \frac{1}{n-1}
+\Sigma_{i=1}^{n} (X_i-X) ^2\)</span></p>
+<p>Sample standard deviation：<span class="math inline">\(S\)</span></p>
+<p>K-th origin moment（k 阶矩）：<span class="math inline">\(a_{n,k} =
+\frac{1}{n} \Sigma _{i=1} ^{n} X_i ^k, k =1,2,...\)</span></p>
+<p>K-th center moment（k 阶中心矩）：<span class="math inline">\(m_{n,k}
+= \frac{1}{n} \Sigma _{i=1} ^{n} (X_i-X) ^k, k =2,3,...\)</span></p>
+<p>Order statistic（次序统计量）：排列所有的样本为 <span class="math inline">\(X_ {(1)} \leq X_ {(2)} \leq ... \leq
+X_{(n)}\)</span>，则 <span class="math inline">\((X _{(1)}, X
+_{(2)},...,X _{(n)})\)</span> 是次序统计量。</p>
+<p>Sample medium（中位数）：<span class="math inline">\(m_{\frac{1}{2}}=X_{n/2}\)</span> 或者 <span class="math inline">\(\frac{1}{2} (X _{n/2}+X _{n/2+1})\)</span></p>
+<p>Extremum of sample：<span class="math inline">\(X _{(1)},X
+_{(n)}\)</span></p>
+<p>Sample p-fractile（<span class="math inline">\(0&lt;p&lt;1\)</span>）：<span class="math inline">\(m_p = X_{(m)}\)</span>，其中 <span class="math inline">\(m=[(n+1)p]\)</span></p>
+<p>Sample range（极差）：<span class="math inline">\(R=X _{(n)}-X
+_{(1)}\)</span></p>
+<p>Sample coefficient of variation（样本变异系数）：<span class="math inline">\(v=\frac{S}{X}\)</span></p>
+<p>Sample skewness（样本偏度），Sample kurtosis（样本峰度）自查：</p>
+<figure>
+<img src="https://s2.loli.net/2022/11/10/KgwxjsHpdqVCP8Q.png" alt="uwu">
+<figcaption aria-hidden="true">uwu</figcaption>
+</figure>
+<p>Empirical distribution function（经验分布函数）：</p>
+<p><span class="math inline">\(I_A(x)=1 \\; for \\; x \in A, otherwise
+\\;0\)</span></p>
+<p><span class="math inline">\(F_n(x)=\frac{1}{n}[number\\; of\\;
+X_1,X_2,...,X_n \leq x]\)</span></p>
+<p>对于二阶随机向量：</p>
+<p><span class="math inline">\(S_{XY}=\frac{1}{n} \Sigma _{i=1} ^{n}
+(X_i-X)(Y_i-Y)\)</span></p>
+<p><span class="math inline">\(S_X,S_Y,X,Y\)</span>
+各自同上定义。</p></li>
+</ul></li>
+</ul>
+<h2 id="经典分布查阅">经典分布查阅</h2>
+<h3 id="卡方分布">卡方分布</h3>
+<figure>
+<img src="https://s2.loli.net/2022/11/10/96cXDZjMATdz1ns.png" alt="1.png">
+<figcaption aria-hidden="true">1.png</figcaption>
+</figure>
+<figure>
+<img src="https://s2.loli.net/2022/11/10/kUnosgDvltpVGCx.png" alt="2.png">
+<figcaption aria-hidden="true">2.png</figcaption>
+</figure>
+<figure>
+<img src="https://s2.loli.net/2022/11/10/XlfzMd3LVN6xBvn.png" alt="3.png">
+<figcaption aria-hidden="true">3.png</figcaption>
+</figure>
+<h3 id="t-分布"><span class="math inline">\(t-\)</span>分布</h3>
+<figure>
+<img src="https://s2.loli.net/2022/11/10/5C1DIs7VA8rRpvG.png" alt="4.png">
+<figcaption aria-hidden="true">4.png</figcaption>
+</figure>
+<figure>
+<img src="https://s2.loli.net/2022/11/10/isu5VE8UmqGRDQc.png" alt="5.png">
+<figcaption aria-hidden="true">5.png</figcaption>
+</figure>
+<figure>
+<img src="https://s2.loli.net/2022/11/10/WrPwDSbvtNxVTO7.png" alt="6.png">
+<figcaption aria-hidden="true">6.png</figcaption>
+</figure>
+<h3 id="f-分布"><span class="math inline">\(F\)</span> 分布</h3>
+<figure>
+<img src="https://s2.loli.net/2022/11/10/39KfRQ1cnBpDbM4.png" alt="7.png">
+<figcaption aria-hidden="true">7.png</figcaption>
+</figure>
+<figure>
+<img src="https://s2.loli.net/2022/11/10/ipCfAIzGNYbrREK.png" alt="8.png">
+<figcaption aria-hidden="true">8.png</figcaption>
+</figure>
+<figure>
+<img src="https://s2.loli.net/2022/11/10/XuYVFkrIE14ZpO8.png" alt="9.png">
+<figcaption aria-hidden="true">9.png</figcaption>
+</figure>
+<h1 id="lecture-2">Lecture 2</h1>
+<p>本节仍然是介绍统计学的基础内容，讨论了一些 Statistic
+的性质，并介绍了分布族。</p>
+<p>我偷懒，定理和证明就直接拍手写了，自认为自己的字还没那么不堪入目。另外每个学期都会有找不到的笔记，还是存电子版吧（</p>
+<h2 id="统计量及其性质">统计量及其性质</h2>
+<p>Lecture 1 中介绍了 114514 个常用的
+Statistic，我们对其中一些讨论它们的 sample distribution 的性质。</p>
+<h3 id="特殊统计量">特殊统计量</h3>
+<ul>
+<li><p>Sample mean：因为它的形式是 <span class="math inline">\(nX =
+X_1+X_2+...+X_n\)</span>，且 <span class="math inline">\(X_i\)</span>
+互相之间 i.i.d.，我们可以用概率母函数 / 矩母函数来处理得到 <span class="math inline">\(nX\)</span> 的分布。</p>
+<p>如果只是求近似而不是准确的分布，可以使用 Central Limit Theorem
+进行估计，但要注意，只有 <span class="math inline">\(X_i\)</span>
+的方差有限的情况才能使用 CLT。</p></li>
+<li><p>Linear transformation：形为 <span class="math inline">\(Y=\frac{X}{n}\)</span>，于是我们可以用 <span class="math inline">\(CDF\)</span> 转 <span class="math inline">\(PDF/PMF\)</span> 的方式计算它的 <span class="math inline">\(PDF/PMF\)</span>，直接给出结论：<span class="math inline">\(f_Y(y)=nf_X(ny)\)</span>。</p></li>
+</ul>
+<h3 id="经典结论">经典结论</h3>
+<ul>
+<li><p>Theorem 1：</p>
+<figure>
+<img src="https://s2.loli.net/2022/11/14/XEcfOiPsK397zq6.png" alt="1.png">
+<figcaption aria-hidden="true">1.png</figcaption>
+</figure></li>
+<li><p>Theorem 2：</p>
+<figure>
+<img src="https://s2.loli.net/2022/11/14/48m1hsC5ozDNXyf.png" alt="2.png">
+<figcaption aria-hidden="true">2.png</figcaption>
+</figure>
+<p>这个第二问的证明，要用一下 <span class="math inline">\(cov(X_1,X_2)=0\)</span>，权当留个提示。因为我第一遍没证出来。</p></li>
+<li><p>Theorem 3：</p>
+<figure>
+<img src="https://s2.loli.net/2022/11/14/R3xeGq69dJlwfoh.png" alt="3.png">
+<figcaption aria-hidden="true">3.png</figcaption>
+</figure>
+<p>因为 <span class="math inline">\(\bar{X}\)</span> 的期望和 <span class="math inline">\(X_1\)</span> 的期望相同，<span class="math inline">\(S\)</span> 的期望和 <span class="math inline">\(X_1\)</span> 的方差相同，因此二者是 unbiased
+statistic（无偏统计量）</p></li>
+</ul>
+<h3 id="正态分布的随机抽样">正态分布的随机抽样</h3>
+<ul>
+<li><p>Theorem
+1：考虑独立不同分布的正态分布的线性组合，它的方差和期望也是一个线性组合。一般这种类似于
+<span class="math inline">\(X_1+X_2+...+X_n\)</span>
+的都可以用矩母函数证明。</p>
+<figure>
+<img src="https://s2.loli.net/2022/11/14/2Hiut73Ns8YZE9x.png" alt="4.png">
+<figcaption aria-hidden="true">4.png</figcaption>
+</figure></li>
+<li><p>Example 1：</p>
+<figure>
+<img src="https://s2.loli.net/2022/11/14/EtzhJnWQaGgdk58.png" alt="5.png">
+<figcaption aria-hidden="true">5.png</figcaption>
+</figure>
+<p><span class="math inline">\(X,Y\)</span>
+是两个方差和期望都已知的正态分布，要求 <span class="math inline">\(P(X&gt;Y)=P(X-Y&gt;0)\)</span>，而 <span class="math inline">\(X-Y\)</span>
+是正态分布的线性组合，也是参数已知的正态分布，将其标准化即可。</p></li>
+<li><p>Theorem 2：考虑一组由正态分布随机抽样生成的
+statistics，用矩阵形式表示：</p>
+<figure>
+<img src="https://s2.loli.net/2022/11/14/Iti1jAKc74QRWbz.jpg" alt="2.jpg">
+<figcaption aria-hidden="true">2.jpg</figcaption>
+</figure>
+<p>可以看到矩阵是正交矩阵时有很好的性质。固定正交矩阵的第一行之后，我们可以对此时的
+<span class="math inline">\(\bar{X}\)</span> 和 <span class="math inline">\(S^2\)</span> 进行讨论：</p>
+<p>Theorem 3：<span class="math inline">\(\bar{X}\)</span> 和 <span class="math inline">\(S^2\)</span> 是独立的，且由 <span class="math inline">\(S^2\)</span> 可以生成一个 Chi-Square 分布。</p>
+<figure>
+<img src="https://s2.loli.net/2022/11/14/9sgt8DElTq4rPHA.jpg" alt="1.jpg">
+<figcaption aria-hidden="true">1.jpg</figcaption>
+</figure></li>
+</ul>
+<h2 id="指数分布族">指数分布族</h2>
+<h3 id="概念">概念</h3>
+<ul>
+<li><p>简单来说，一个分布的 PDF / PMF 可以表示为 <span class="math inline">\(f(x; \theta) = c(\theta)h(x) exp[\Sigma_{j=1} ^{n}
+w_j(\theta) t_j(x)]\)</span> 的形式，则无论随机取多少个独立同分布的
+sample，它们的联合分布也可以保持这个形式，则称该 population
+属于指数分布族。</p>
+<p>其中的 <span class="math inline">\(\theta\)</span>
+表示该分布的参数，可以表示为 <span class="math inline">\(\theta =
+(\theta_1,\theta_2,...,\theta_k)\)</span></p>
+<p>比如正态分布，Poisson 分布都属于指数分布族：</p>
+<p><span class="math inline">\(f(x_1,x_2,...,x_n;\theta) = (\sqrt{2\pi}
+\sigma)^{-n} exp(-\frac{1}{2\sigma ^2} \Sigma_{i=1} ^{n}
+(x_i-\mu)^2)\)</span> 为正态分布的 Joint PDF；</p>
+<p><span class="math inline">\(f(x_1,x_2,...,x_n;\theta) = e^{-n\theta}
+(\Pi_{i=1} ^{n} \frac{1}{x_i !}) exp(ln\theta (x_1 + x_2 +...+
+x_n))\)</span> 为泊松分布的 Joint PMF。</p>
+<p>实际上，连续的指数分布族还有 Gamma，Beta
+分布族，离散的指数分布族还有二项和负二项分布族。</p></li>
+</ul>
+<h3 id="自然指数分布族">自然指数分布族</h3>
+<ul>
+<li><p>自然指数分布族和举例：</p>
+<figure>
+<img src="https://s2.loli.net/2022/11/15/rPZ4zcwh1BmeDsK.jpg" alt="E37A9170F0484981CC47B22C9F88227F.jpg">
+<figcaption aria-hidden="true">E37A9170F0484981CC47B22C9F88227F.jpg</figcaption>
+</figure></li>
+</ul>
+<h3 id="位置与尺度族">位置与尺度族</h3>
+<ul>
+<li><p>位置与尺度族：直观来说，位置族的形状完全一样，但位置上有偏移，例如若干个期望不同而方差相同的正态分布；尺度族的位置相同，形状上有伸缩变化，例如若干个期望相同但方差不同的正态分布。</p></li>
+<li><p>位置族：取一个标准概率密度函数（standard PDF）<span class="math inline">\(f(x)\)</span>，位置族中的其他函数 <span class="math inline">\(f(x-\mu)\)</span> 相对于这个标准函数的偏差记为
+<span class="math inline">\(\mu\)</span>，称为 location
+parameter（位置参数）.</p>
+<figure>
+<img src="https://s2.loli.net/2022/11/15/Svc39OEw5YKbatr.png" alt="1 2.png">
+<figcaption aria-hidden="true">1 <em>2</em>.png</figcaption>
+</figure></li>
+<li><p>尺度族：取一个标准概率密度函数（standard PDF）<span class="math inline">\(f(x)\)</span>，尺度族中的其他函数 <span class="math inline">\(\frac{1}{\sigma} f(\frac{x}{\sigma})\)</span>
+相对于这个标准函数的偏差记为 <span class="math inline">\(\sigma\)</span>，称为 scale
+parameter（尺度参数）.</p>
+<figure>
+<img src="https://s2.loli.net/2022/11/15/CEtRPFrbusQZOlL.png" alt="2.png">
+<figcaption aria-hidden="true">2.png</figcaption>
+</figure></li>
+<li><p>位置-尺度族：取一个标准概率密度函数（standard PDF）<span class="math inline">\(f(x)\)</span>，位置-尺度族中的其他随机变量 <span class="math inline">\(X\)</span> 有 PDF 为 <span class="math inline">\(\frac{1}{\sigma} f(\frac{x-\mu}{\sigma})\)</span>
+，当且仅当存在以 <span class="math inline">\(f(z)\)</span> 为 PDF
+的随机变量 <span class="math inline">\(Z\)</span>，从而有 <span class="math inline">\(X=\sigma Z+\mu\)</span>。</p>
+<p>这一定理可以用 CDF 法证明。</p></li>
+<li><p>例子：<span class="math inline">\(Z\sim N(\mu,\sigma
+^2)\)</span>，且 $X=aZ+b $，于是 <span class="math inline">\(X\sim
+N(a\mu +b,a^2 \sigma ^2 )\)</span>，相对于 standard distribution <span class="math inline">\(Y\sim N(0,1)\)</span>，location parameter 为 <span class="math inline">\(a\mu +b\)</span>，scale parameter 为 <span class="math inline">\(a\sigma\)</span>。</p></li>
+</ul>
+<h2 id="delta-method-application-only">Delta Method (Application
+Only)</h2>
+<p>就两个定理，也没证明。用于已知参数的分布 <span class="math inline">\(X\)</span> 的函数 <span class="math inline">\(g(X)\)</span>，对其进行近似。第一个定理针对 <span class="math inline">\(g&#39;(\mu) \neq 0\)</span>，第二个定理针对 <span class="math inline">\(g&#39;(\mu)=0\)</span> 的情况进行进一步近似。</p>
+<figure>
+<img src="https://s2.loli.net/2022/11/15/DjVouFIUKhBtzk5.png" alt="d.png">
+<figcaption aria-hidden="true">d.png</figcaption>
+</figure>
+<h2 id="其他定理查阅">其他定理查阅</h2>
+<h3 id="大数定律">大数定律</h3>
+<figure>
+<img src="https://s2.loli.net/2022/11/15/Vl6NgIHcZrKoFQ9.png" alt="w.png">
+<figcaption aria-hidden="true">w.png</figcaption>
+</figure>
+<figure>
+<img src="https://s2.loli.net/2022/11/15/wJh6iVCW73djxNm.png" alt="x.png">
+<figcaption aria-hidden="true">x.png</figcaption>
+</figure>
+<h3 id="中心极限定理">中心极限定理</h3>
+<figure>
+<img src="https://s2.loli.net/2022/11/15/boNDnERSgxV5Cim.png" alt="y.png">
+<figcaption aria-hidden="true">y.png</figcaption>
+</figure>
+<h3 id="slutskys-theorem">Slutsky's Theorem</h3>
+<figure>
+<img src="https://s2.loli.net/2022/11/15/YQFvCIO8Wptlbig.png" alt="z.png">
+<figcaption aria-hidden="true">z.png</figcaption>
+</figure>
+<h1 id="homework-1">Homework 1</h1>
+<figure>
+<img src="https://s2.loli.net/2022/11/29/jIyFs5JalDzrpVP.png" alt="41.png">
+<figcaption aria-hidden="true">41.png</figcaption>
+</figure>
+<figure>
+<img src="https://s2.loli.net/2022/11/29/ax2whdeIVbl58Cz.jpg" alt="42.jpg">
+<figcaption aria-hidden="true">42.jpg</figcaption>
+</figure>
+<h1 id="lecture-3">Lecture 3</h1>
+<p>本节介绍数据简化原理，仍然围绕 Statistic 的选取展开。</p>
+<blockquote>
+<p>Data don't make any sense, we will have to resort to statistics.</p>
+</blockquote>
+<p>然而，每一个 statistic
+的使用都不可避免地会遗失数据的细节。这些细节有时是没有用的，statistic
+反而保留了最有用的部分（例如
+parameter）；有的时候是有用的，根据数据处理的目的，有可能需要重新选择
+statistic。</p>
+<h2 id="充分统计量">充分统计量</h2>
+<h3 id="定义和应用">定义和应用</h3>
+<ul>
+<li><p>Sufficient statistics：<span class="math inline">\(T(x)\)</span>
+是一个充分统计量当且仅当样本 <span class="math inline">\(X\)</span> 在
+<span class="math inline">\(T(X)\)</span> 条件下的分布与 <span class="math inline">\(\theta\)</span> 无关。</p>
+<p>写作数学语言：<span class="math inline">\(P_\theta(X=x | T(X)=T(x)) =
+\frac{P_\theta (X=x)}{P_\theta(T(X)=T(x))} =
+\frac{p(x;\theta)}{q(T(x);\theta)}\)</span> 与参数 <span class="math inline">\(\theta\)</span> 无关。于是，验证一个 statistic
+<span class="math inline">\(T(x)\)</span> 最直接的方法就是计算 <span class="math inline">\(x\)</span> 的联合分布的概率密度，以及 <span class="math inline">\(T(x)\)</span> 的概率密度，对二者求比值。</p></li>
+<li><p>对一些特殊的分布，我们来寻找它们的充分统计量。</p>
+<ul>
+<li><p>Bernoulli sufficient statistic：<span class="math inline">\(X_1,X_2,...,X_n i.i.d\sim B(1,\theta)\)</span>，则
+<span class="math inline">\(T(X)=X_1+...+X_n\)</span> 是 <span class="math inline">\(\theta\)</span> 的充分统计量，可以通过 <span class="math inline">\(T(X)\sim B(n,\theta)\)</span> 来验算。</p></li>
+<li><p>Normal sufficient statistic：<span class="math inline">\(X_1,X_2,...,X_n i.i.d\sim
+N(\mu,\sigma^2)\)</span>，则 <span class="math inline">\(T(X)=\bar{X}\)</span> 是 <span class="math inline">\(\mu\)</span> 的充分统计量（注意不是 <span class="math inline">\(\sigma\)</span> 的充分统计量），可以通过 <span class="math inline">\(T(X)\sim N(\mu,\frac{\sigma^2}{n})\)</span>
+验算。</p></li>
+<li><p>Sufficient order statistic：<span class="math inline">\(X_1,X_2,...,X_n i.i.d\)</span>，population 的 PDF
+是 <span class="math inline">\(f(x)\)</span>，于是全体次序统计量 <span class="math inline">\(X_{(1)},...,X_{(n)}\)</span> 是充分统计量，因为
+<span class="math inline">\(P(X_1=x_1,...,X_n=x_n |
+X_{(1)}=x_{(1)},...,X_{(n)}=x_{(n)}) = \frac{1}{n!}\)</span></p>
+<p>Remark：这提示我们，次序统计量可以是多维的。</p></li>
+</ul></li>
+<li><p>显然，这样寻找充分统计量是不现实的。以下有因子分解定理帮助我们寻找合适的
+<span class="math inline">\(T(x)\)</span>：</p>
+<p>Factorization theorem：设 $f(x;) $ 是 sample X
+的联合概率密度函数，统计量 <span class="math inline">\(T(x)\)</span> 是
+sufficient statistic 当且仅当存在函数 <span class="math inline">\(g(t;\theta)\)</span> 和 <span class="math inline">\(h(x)\)</span>，满足 <span class="math inline">\(f(x;\theta)=g(T(x);\theta)h(x)\)</span>。</p>
+<p>对离散条件的 Factorization theorem 进行证明：</p>
+<p>左推右，trivial。右推左：</p>
+<figure>
+<img src="https://s2.loli.net/2022/11/20/C49PtevUWc5jHVw.jpg" alt="3.jpg">
+<figcaption aria-hidden="true">3.jpg</figcaption>
+</figure></li>
+<li><p>因此，由 Factorization theorem 可以知道，把 Joint PDF 里面 <span class="math inline">\(\theta,\bar{x}\)</span> 不可分离的部分，以及 <span class="math inline">\(\theta\)</span>
+单独的部分取出放在一起，就可以从中找出 sufficient statistic。</p></li>
+<li><p>应用数理统计的概率写法，求充分统计量</p>
+<ul>
+<li><p>Uniform sufficient statistic：<span class="math inline">\(X_1,X_2,...,X_n i.i.d\sim
+Unif(\theta_1,\theta_2)\)</span>，寻找关于 <span class="math inline">\(\theta_1,\theta_2\)</span> 的充分统计量。</p>
+<p>事实上，Joint PDF 可以写成 <span class="math inline">\(f(x_1,x_2,...,x_n)=(\frac{1}{\theta_2-\theta_1})^nI_{\lbrace\theta_1
+\leq x_1,x_2,...,x_n \leq \theta_2\rbrace}\)</span>，也即</p>
+<p><span class="math inline">\(f(x_1,x_2,...,x_n)=(\frac{1}{\theta_2-\theta_1})^nI_{\theta_1
+\leq x_{(1)}}I_{x_{(n)} \leq \theta_2}\)</span>，于是 sufficient
+statistic 是 <span class="math inline">\(x_{(1)},x_{(2)}\)</span>。</p></li>
+<li><p>Exponential sufficient statistic：<span class="math inline">\(X_1,X_2,...,X_n i.i.d\sim
+exp(\lambda)\)</span>，寻找关于 <span class="math inline">\(\lambda\)</span> 的充分统计量。</p>
+<p>事实上，Joint PDF 是 <span class="math inline">\(f(\bar{x};\lambda)=\lambda^n
+e^{-\lambda(x_1+...+x_n)}=\lambda^ne^{-\lambda t}
+h(\bar{x})=g(t;\lambda)h(\bar{x})\)</span>，于是有 <span class="math inline">\(T(\bar{X})=X_1+X_2+...+X_n\)</span> 是 sufficient
+statistic，而 <span class="math inline">\(h(\bar{x})=I_{x_i&gt;0,i=1,2,...,n}\)</span>。</p></li>
+<li><p>还有很多例子，懒得举了</p></li>
+</ul></li>
+<li><p>Exponential family 的 PDF 有比较好的性质： <span class="math inline">\(f(x; \theta) = c(\theta)h(x) exp[\Sigma_{j=1} ^{n}
+w_j(\theta) t_j(x)]\)</span></p>
+<p>于是 Joint PDF 可以写为 <span class="math inline">\(f(\bar{x};
+\theta) = c(\theta)^m \Pi_{i=1}^m h(x_i) exp[\Sigma_{j=1} ^{n}
+\Sigma_{i=1} ^m w_j(\theta)
+t_j(x_i)]\)</span>，因此这一样本的充分统计量是 <span class="math inline">\((\Sigma_{j=1}^m t_1(X_j),...,\Sigma_{j=1}^m
+t_n(X_j))\)</span>。</p></li>
+</ul>
+<h3 id="充分统计量的性质">充分统计量的性质</h3>
+<ul>
+<li><span class="math inline">\(T\)</span> 是参数 <span class="math inline">\(\theta\)</span> 的充分统计量，且 <span class="math inline">\(T=\phi(S)\)</span>，则 <span class="math inline">\(S\)</span> 也是充分统计量。
+<ul>
+<li>如果 <span class="math inline">\(\phi\)</span>
+是一一对应，二者的信息量相同。</li>
+<li>如果 <span class="math inline">\(\phi\)</span> 不是一一对应，则
+<span class="math inline">\(T\)</span> 是 <span class="math inline">\(S\)</span>
+的一个精简而且还是充分统计量，是更有用的。</li>
+</ul>
+<figure>
+<img src="https://s2.loli.net/2022/11/20/obLXT61Kcunx5Mi.png" alt="1.png">
+<figcaption aria-hidden="true">1.png</figcaption>
+</figure></li>
+<li>Examples（懒得抄了）：</li>
+</ul>
+<figure>
+<img src="https://s2.loli.net/2022/11/20/sitSDJEMO2VupG5.png" alt="2.png">
+<figcaption aria-hidden="true">2.png</figcaption>
+</figure>
+<h3 id="极小充分统计量">极小充分统计量</h3>
+<ul>
+<li><p>sufficient statistic <span class="math inline">\(T^*(X)\)</span>
+被称为 minimal sufficient statistic 当且仅当：对任意充分统计量 <span class="math inline">\(T(X)\)</span>，存在函数 <span class="math inline">\(\psi\)</span> 使得 <span class="math inline">\(T^*(X)=\psi(T(X))\)</span>。也就是说，<span class="math inline">\(T^*(X)\)</span> 实现了数据的最大简化。minimal
+sufficient statistic 的维度是最小的，它不一定唯一。</p>
+<ul>
+<li>判定定理：<span class="math inline">\(f(x;\theta)\)</span> 是 <span class="math inline">\(X\)</span> 的 PDF，则对两个样本点 <span class="math inline">\(x\)</span> 和 <span class="math inline">\(y\)</span>，<span class="math inline">\(f(x;\theta)/f(y;\theta)\)</span> 是 <span class="math inline">\(\theta\)</span> 的常函数当且仅当 <span class="math inline">\(T(x)=T(y)\)</span>，那么 <span class="math inline">\(T(X)\)</span> 是 <span class="math inline">\(\theta\)</span> 的 minimal sufficient
+statistic。证明如下：</li>
+</ul>
+<figure>
+<img src="https://s2.loli.net/2022/11/20/r24pTEG7dnRPHIw.jpg" alt="4.jpg">
+<figcaption aria-hidden="true">4.jpg</figcaption>
+</figure></li>
+<li><p>举一些例子。</p>
+<ul>
+<li><p>Normal minimal sufficient statistic：<span class="math inline">\(X_1,X_2,...,X_n i.i.d\sim
+N(\mu,\sigma^2)\)</span>，则 <span class="math inline">\((\bar{X},S^2)\)</span> 是 <span class="math inline">\((\mu,\sigma^2)\)</span>
+的极小充分统计量。</p></li>
+<li><p>Uniform minimal sufficient statistic：<span class="math inline">\(X_1,X_2,...,X_n i.i.d\sim Unif(\theta,\theta
++1)\)</span>，则 <span class="math inline">\((X_{(1)},X_{(2)})\)</span>
+是 $$ 的极小充分统计量。</p></li>
+<li><p>分别验证如下：</p>
+<figure>
+<img src="https://s2.loli.net/2022/11/20/xUtclLFqdfzhI3E.jpg" alt="5.jpg">
+<figcaption aria-hidden="true">5.jpg</figcaption>
+</figure></li>
+</ul></li>
+</ul>
+<h2 id="辅助统计量">辅助统计量</h2>
+<h3 id="定义">定义</h3>
+<ul>
+<li><p><span class="math inline">\(S(X)\)</span> 是 ancillary statistic
+当且仅当它的分布是 <span class="math inline">\(\theta\)</span>
+的常函数。比如说，常数就是一个 trivial ancillary statistic。</p></li>
+<li><p><span class="math inline">\(S(X)\)</span> 是一阶 ancillary
+statistic，当 <span class="math inline">\(E(S(X))\)</span> 也是 <span class="math inline">\(\theta\)</span> 的常函数时。</p></li>
+<li><p>举一些例子：</p>
+<ul>
+<li><p>Uniform ancillary statistic：<span class="math inline">\(X_1,X_2,...,X_n i.i.d\sim
+Unif(\theta,\theta+1)\)</span>，则 <span class="math inline">\(X_{(n)}-X_{(1)}\)</span>
+是辅助统计量。验证如下：</p></li>
+<li><p>Location ancillary statistic：<span class="math inline">\(Z_1,Z_2,...,Z_n\)</span> 是服从 <span class="math inline">\(F(x)\)</span> 的 Population 中的样本，位置参数为
+<span class="math inline">\(\theta\)</span>，于是 <span class="math inline">\(X_1=Z_1+\theta,...,X_n=Z_n+\theta\)</span>，故
+<span class="math inline">\(r=X_{(n)}-X_{(1)}\)</span> 是 ancillary
+statistic，因为</p>
+<p>$F(r;)=P(Rr;)=P(maxX_i-minX_i r)=P(max Z_i-minZ_i
+r)=P(Z_{(n)}-Z_{(1)}r) $</p>
+<p>这是和 <span class="math inline">\(\theta\)</span>
+无关的量。所以，location ancillary statistic 还可以是 <span class="math inline">\(X_{(n-1)}-X_{(3)}\)</span>，等等。</p></li>
+<li><p>Scale ancillary statistic：同理，<span class="math inline">\(X_i/X_j\)</span> 都是 ancillary
+statistic，因为可以归一为 <span class="math inline">\(Z_i/Z_j\)</span>。由统计量的函数性质可知，<span class="math inline">\(\frac{X_1+...+X_n}{X_i}\)</span> 是形式比较好的
+ancillary statistic。</p></li>
+</ul></li>
+</ul>
+<h3 id="辅助统计量的性质">辅助统计量的性质</h3>
+<ul>
+<li><span class="math inline">\(V(X)\)</span> 是 nontrivial ancillary
+statistic，于是 <span class="math inline">\(\lbrace
+x:V(x)=v\rbrace\)</span> 不包含任何 <span class="math inline">\(\theta\)</span> 的信息。</li>
+<li><span class="math inline">\(T(X)\)</span> 是 statistic，如果 <span class="math inline">\(V(T(X))\)</span> 是 nontrivial ancillary
+statistic，那么 <span class="math inline">\(T\)</span>
+的简化中仍然不含有 <span class="math inline">\(\theta\)</span>，需要进一步进行简化。</li>
+<li>如果一个 sufficient statistic <span class="math inline">\(T(X)\)</span> 没有非常值函数是 ancillary
+statistic，那么它在简化数据中是最优的。</li>
+</ul>
+<h2 id="完全统计量">完全统计量</h2>
+<h3 id="定义-1">定义</h3>
+<ul>
+<li><p><span class="math inline">\(X\sim F=\lbrace f(x;\theta),\theta
+\in \Theta \rbrace\)</span> 是一个分布族，<span class="math inline">\(\Theta\)</span> 是参数空间。记 <span class="math inline">\(T=T(X)\)</span>，如果对于任意函数 <span class="math inline">\(\psi\)</span>，如果 <span class="math inline">\(E_\theta \psi(T(X))=0,\forall \theta \in
+\Theta\)</span>，那么一定有 <span class="math inline">\(P_\theta(\psi(T(X))=0)=1,\forall \theta \in
+\Theta\)</span>。</p></li>
+<li><p>听起来很抽象，举几个例子：</p>
+<ul>
+<li><p><span class="math inline">\(X=(X_1,X_2,...,X_n)\)</span> 是来自于
+<span class="math inline">\(B(1,\theta)\)</span> 的随机样本，那么 <span class="math inline">\(T(X)=\Sigma_{i=1} ^n X_i\)</span> 对于参数 <span class="math inline">\(\theta\)</span> 是一个 complete
+statistic。验证如下：</p>
+<figure>
+<img src="https://s2.loli.net/2022/11/20/4aC1ihZlAcNI2kR.jpg" alt="6.jpg">
+<figcaption aria-hidden="true">6.jpg</figcaption>
+</figure></li>
+<li><p><span class="math inline">\(X=(X_1,X_2,...,X_n)\)</span> 是来自于
+<span class="math inline">\(Unif(0,\theta)\)</span> 的随机样本，那么
+<span class="math inline">\(T(X)=X_{(n)}\)</span> 对于参数 <span class="math inline">\(\theta\)</span> 是一个 complete
+statistic。验证如下：</p>
+<figure>
+<img src="https://s2.loli.net/2022/11/20/vuzCQqMW6fTLbxg.jpg" alt="7.jpg">
+<figcaption aria-hidden="true">7.jpg</figcaption>
+</figure></li>
+</ul></li>
+<li><p>complete statistic 不一定存在。</p></li>
+</ul>
+<h3 id="指数族中的完全统计量">指数族中的完全统计量</h3>
+<ul>
+<li><p>指数分布族的 PDF 有形式： <span class="math inline">\(f(x;
+\theta) = c(\theta)h(x) exp[\Sigma_{j=1} ^{n} w_j(\theta)
+t_j(x)]\)</span></p>
+<p>于是如果参数空间 <span class="math inline">\(\Theta\)</span> 包括
+<span class="math inline">\(R^k\)</span> 的开集，则统计量 <span class="math inline">\(T(X)=(\Sigma_{i=1} ^m t_1(X_i),...,\Sigma_{i=1} ^m
+t_n(X_i))\)</span> 是一个 complete statistic。</p></li>
+<li><p>Remark：定理中要求开集是为了防止一些特殊情况，比如：</p></li>
+</ul>
+<h3 id="完全统计量的性质">完全统计量的性质</h3>
+<ul>
+<li><p>如果 minimal sufficient statistic 存在，那么任何 complete
+statistic 都是 minimal sufficient 的。</p></li>
+<li><p>Basu Theorem：如果 <span class="math inline">\(T(X)\)</span> 是
+(minimal) complete &amp; sufficient statistic，那么它和任何 ancillary
+statistic 独立。这是一个很好的性质，因为直观上来看 ancillary statistic
+是和任何 sufficient statistic
+独立的而现实并非如此，而这个定理可以给出一个补充条件。</p></li>
+<li><p>Basu Theorem 的应用：</p>
+<ul>
+<li><p>设 <span class="math inline">\(X_1,...,X_n i.i.d\sim
+U(\theta_1,\theta_2)\)</span>，证明 <span class="math inline">\(\frac{X_{(i)} - X_{(1)}}{X_{(n)}-X_{(1)}}\)</span>
+与 <span class="math inline">\((X_{(n)},X_{(1)})\)</span> 独立。</p>
+<p><span class="math inline">\(X_{(n)}\)</span> 是 complete
+statistic，<span class="math inline">\((X_{(n)},X_{(1)})\)</span> 是
+minimal sufficient statistic，于是也是 minimal complete &amp; sufficient
+statistic，只要证明 <span class="math inline">\(\frac{X_{(i)} -
+X_{(1)}}{X_{(n)}-X_{(1)}}\)</span> 是 ancillary statistic 即可。</p>
+<p>而这是一个位置-尺度分布族，需要先正规化为 <span class="math inline">\(Y_i =
+\frac{X_i-\theta_1}{\theta_2-\theta_1}\)</span>，则有 <span class="math inline">\(Y_1,Y_2,...,Y_n i.i.d.\sim U(0,1)\)</span>，于是
+<span class="math inline">\(\frac{X_{(i)} -
+X_{(1)}}{X_{(n)}-X_{(1)}}=\frac{Y_{(i)}-Y_{(1)}}{Y_{(n)}-Y_{(1)}}\)</span>，从而是
+<span class="math inline">\(\theta\)</span> 的常函数，为 ancillary
+statistic。</p></li>
+<li><p>设 <span class="math inline">\(X_1,...,X_n i.i.d\sim
+N(\mu,\sigma^2)\)</span>，证明 <span class="math inline">\(\bar{X}\)</span> 和 <span class="math inline">\(S^2\)</span> 是独立的。</p>
+<p>实际上，这个问题在 Lecture 2 中我们使用正交矩阵证明过，此处再给出一个
+Basu Theorem 下的证明。事实上，我们已经知道对于已知的 <span class="math inline">\(\sigma^2\)</span>，有 <span class="math inline">\(\bar{X}\)</span> 是 complete &amp; sufficient，而
+<span class="math inline">\(S^2\)</span> 是
+ancillary，所以二者独立。</p></li>
+</ul></li>
+</ul>
+<h2 id="似然原理">似然原理</h2>
+<ul>
+<li><p>如果 <span class="math inline">\(f(x;\theta)\)</span> 是样本
+<span class="math inline">\(X=(X_1,X_2,...,X_n)\)</span> 的 Joint
+PDF，则记 <span class="math inline">\(\theta\)</span> 的函数 <span class="math inline">\(L(\theta;x)=f(x;\theta)\)</span>
+为似然函数（Likelihood Function），有时也写作 <span class="math inline">\(L(\theta)\)</span> 以突出变量。</p>
+<p>Log Likelihood：<span class="math inline">\(l(\theta;x)=log
+L(\theta;x)\)</span>。</p></li>
+<li><p>Likelihood Principle：</p>
+<ul>
+<li>用参数族 <span class="math inline">\(\Theta\)</span> 中的不同参数
+<span class="math inline">\(\theta_1,\theta_2\)</span> 进行比较 <span class="math inline">\(L(\theta_1;x)&gt;L(\theta_2;x)\)</span>，那么
+<span class="math inline">\(\theta_1\)</span> 比起 <span class="math inline">\(\theta_2\)</span>
+是一个更好的真实值的选择。从而可以在参数未知的情况下，对真实的 <span class="math inline">\(\theta\)</span> 进行推断。</li>
+<li>样本点 <span class="math inline">\(x,y\)</span> 满足 <span class="math inline">\(L(\theta;x)\)</span> 和 <span class="math inline">\(L(\theta;y)\)</span> 之间成比例，即存在 <span class="math inline">\(L(\theta;x)=C(x,y)L(\theta;y)\)</span>，那么从
+<span class="math inline">\(x,y\)</span> 出发对 <span class="math inline">\(\theta\)</span>
+做如上推断，得到的结果是相同的。</li>
+</ul></li>
+<li><p>Equivalence Principe：如果 <span class="math inline">\(Y=g(X)\)</span> 是一个度量尺度变换，且 <span class="math inline">\(Y\)</span> 的模型和 <span class="math inline">\(X\)</span>
+的模型具有相同的形式结构，则推断方法应同时满足度量同变和形式不变。</p></li>
+</ul>
+<h1 id="lecture-4">Lecture 4</h1>
+<p>本节介绍 Fisher Information 和 Point Estimation。</p>
+<h2 id="fisher-information">Fisher Information</h2>
+<h3 id="定义-2">定义</h3>
+<ul>
+<li><p>取 <span class="math inline">\(f(x;\theta),\theta \in
+\Theta\)</span> 作为一个分布族，则 score function 定义为 <span class="math inline">\(S(x;\theta)=\frac{\partial log L(\theta)}{\partial
+\theta}=\frac{1}{f(x;\theta)} \frac{\partial f(x;\theta)}{\partial
+\theta}\)</span>。</p>
+<p>对于一个给定的 <span class="math inline">\(\theta\)</span>，可知
+<span class="math inline">\(E[S(X,\theta)]=0,E[S(X,\theta)]^2=I(\theta)\)</span>，后者就是
+Fisher Information。</p>
+<p>因此，<span class="math inline">\(Var[S(X;\theta)]=E[S(X;\theta)]^2-
+E^2[S((X;\theta))]=I(\theta)\)</span></p>
+<p>对于一个 score function 有较大方差的分布，我们希望能够较为容易地估计
+<span class="math inline">\(\theta\)</span>。</p></li>
+<li><p><span class="math inline">\(I(\theta) = E[S(X;\theta)]^2 =
+-E(\frac{\partial^2}{\partial \theta^2} logL(\theta))\)</span></p></li>
+</ul>
+<h3 id="与熵的关系">与熵的关系</h3>
+<ul>
+<li><p>relative entropy：<span class="math inline">\(KL(p:q)=\int
+p(x)log \frac{p(x)}{q(x)} dx\)</span>，</p>
+<p>定义：</p>
+<p><span class="math inline">\(D(\theta,\theta + \Delta
+\theta)=KL(f(x;\theta):f(x,\theta+\Delta \theta)) = -\int
+f(x;\theta)[log f(x,\theta + \Delta \theta)-log f(x;\theta)]
+dx\)</span></p>
+<p>经过 Taylor 展开：</p>
+<p><span class="math inline">\(log f(x,\theta + \Delta \theta)-log
+f(x,\theta) = \frac{\partial log f(x,\theta)}{\partial \theta} \Delta
+\theta + \frac{1}{2} \Delta \theta^\prime \frac{\partial^2 log
+f(x,\theta)}{\partial \theta^\prime \partial \theta} \Delta \theta +
+o(||\Delta \theta||^2)\)</span></p>
+<p>于是：</p>
+<p><span class="math inline">\(D(\theta,\theta+\Delta \theta) =
+-E[\frac{\partial log f(x,\theta)}{\partial \theta}]\Delta \theta -
+\frac{1}{2} \Delta \theta^\prime E[\frac{\partial^2 log
+f(x,\theta)}{\partial \theta^\prime \partial \theta} ]\Delta \theta +
+o(||\Delta \theta||^2) = -\frac{1}{2}\Delta \theta^\prime I(\theta)
+\Delta \theta\)</span></p>
+<p>Remark： Fisher Information 越大，越能够区分参数。</p></li>
+</ul>
+<h3 id="充分统计量和辅助统计量">充分统计量和辅助统计量</h3>
+<p>不是很懂。贴个图吧。</p>
+<figure>
+<img src="https://s2.loli.net/2022/11/20/bO8F4ynqUBN6ExL.png" alt="8.png">
+<figcaption aria-hidden="true">8.png</figcaption>
+</figure>
+<h2 id="点估计">点估计</h2>
+<h3 id="定义-3">定义</h3>
+<ul>
+<li>Example 1：<span class="math inline">\((X_1,X_2,...,X_n)i.i.d \sim
+N(\mu,\sigma^2)\)</span>，我们想找到两个参数比较好的一个估计，可以考虑
+<span class="math inline">\(\mu = \bar{X},\sigma^2 =
+S^2\)</span>。这是非常典型的估计量，因为 <span class="math inline">\(E(\bar{X})=\mu,E(S^2) =\sigma^2\)</span>
+，因此是无偏的。</li>
+<li>Example 2：<span class="math inline">\((X_1,X_2,...,X_n)i.i.d \sim
+P(\lambda)\)</span>，于是考虑 <span class="math inline">\(P(X_1=x_1,...,X_n=x_n)\)</span>可知 <span class="math inline">\(T(X)= X_1+...+X_n \sim P(n \lambda )\)</span>
+是一个充分统计量，<span class="math inline">\(E(T(X))=\lambda\)</span>。</li>
+<li>实际上，样本的任意一个 statistic 都是它的点估计量（point
+estimator），实际观测值称为估计值，即 estimate，它是一个数值。</li>
+</ul>
+<h3 id="好的性质">好的性质</h3>
+<ul>
+<li><p>无偏性。对于 population <span class="math inline">\(\lbrace
+f(x;\theta):\theta \in \Theta \rbrace\)</span> 中的随机抽样 <span class="math inline">\(X=(X_1,...,X_n)\)</span>，<span class="math inline">\(g(\theta)\)</span> 是定义在参数空间 <span class="math inline">\(\Theta\)</span> 上的函数，一个 <span class="math inline">\(g(\theta)\)</span> 的估计量，<span class="math inline">\(\hat{g}(X)=\hat{g}(X_1,...,X_n)\)</span> 是
+unbiased 如果 <span class="math inline">\(E_\theta
+[\hat{g}(X)]=g(\theta),\theta \in \Theta\)</span>。否则是有偏的。</p>
+<p>定义 systematic error 为 <span class="math inline">\(E(\theta)-\theta\)</span>，则无偏即为 systematic
+error 为 0.</p>
+<p>说句人话，就是求某个 estimator 的期望是不是 <span class="math inline">\(\theta\)</span>，如果是的话就是无偏的。</p></li>
+<li><p>有效性。对于两个 estimators <span class="math inline">\(\hat{g}_1(X),\hat{g}_2(X)\)</span>，如果 <span class="math inline">\(Var(\hat{g}_1(X))\leq Var(\hat{g}_2(X))\)</span>
+对任意 <span class="math inline">\(\theta \in \Theta\)</span>
+成立，并且参数空间中至少有一个 <span class="math inline">\(\theta\)</span> 使上述式子不取等号，那么称 <span class="math inline">\(\hat{g}_1 (X)\)</span> 相比 <span class="math inline">\(\hat{g}_2(X)\)</span> 更有效。</p></li>
+<li><p>相合性。</p>
+<ul>
+<li><p>对任意样本量为 <span class="math inline">\(n\)</span> 的样本，记
+<span class="math inline">\(\hat{g}_n(X) = \hat{g}_n
+(X_1,...,X_n)\)</span> 是一个 estimator，如果 <span class="math inline">\(\hat{g}_n(X)\)</span> 依概率收敛到 <span class="math inline">\(g(\theta)\)</span>，也即，对任意的 <span class="math inline">\(\theta \in \Theta\)</span>，<span class="math inline">\(\varepsilon &gt;0\)</span>，有 <span class="math inline">\(\lim_{n\to \infty} P_\theta (|\hat{g}_n (X)
+-g(\theta)| \geq \varepsilon)=0\)</span>，那么 <span class="math inline">\(\hat{g}_n(X)\)</span> 被称为一个 <span class="math inline">\(g(\theta)\)</span> 的 weakly consistent
+estimator。</p></li>
+<li><p>如果对任意 $$，有 <span class="math inline">\(P_\theta (lim _{n
+\to \infty} \hat{g}_n (X)=g(\theta))=1\)</span>，则称其为 strongly
+consistent estimator。</p></li>
+<li><p>如果对任意 <span class="math inline">\(\theta \in \Theta
+,r&gt;0\)</span>，有 $lim <em>{n } E</em>|_n(X)-g()|^r = 0 $，则称其为
+<span class="math inline">\(g(\theta)\)</span> 的 <span class="math inline">\(r\)</span> 阶 consistent estimator。</p></li>
+<li><p>Example
+1：（这个对我来说还是一下子难以想到..归根结底是初概这一部分没学会，要补）</p>
+<figure>
+<img src="https://s2.loli.net/2022/11/21/hI1jqgovw348xTl.png" alt="7.png">
+<figcaption aria-hidden="true">7.png</figcaption>
+</figure></li>
+</ul></li>
+</ul>
+<h3 id="评价点估计的方式mse">评价点估计的方式——MSE</h3>
+<ul>
+<li><p>Mean Squared Error（MSE）：对于一个 estimator <span class="math inline">\(T\)</span> 和一个参数 <span class="math inline">\(\theta\)</span>，MSE 定义为：</p>
+<p><span class="math inline">\(MSE(T)=MSE_\theta(T)=E_\theta((T-\theta)^2)=Var_\theta(T)+(Bias_\theta
+(T))^2\)</span>，</p>
+<p>其中，<span class="math inline">\(Bias_\theta
+(T)=E_\theta(T)-\theta\)</span>。于是对于一个无偏的 <span class="math inline">\(T\)</span>，它的 MSE 就是方差。</p></li>
+<li><p>如果有某个 <span class="math inline">\(\hat{g}^*(X)\)</span>
+使得对任意的 estimator <span class="math inline">\(\hat{g}(X)\)</span>
+都有 <span class="math inline">\(E_\theta(\hat{g}^* (X)-g(\theta))^2
+\leq E_\theta(\hat{g} (X)-g(\theta))^2\)</span> 对任意的 <span class="math inline">\(\theta \in \Theta\)</span> 成立，则称其为
+uniformly minimum MSE estimator，不一定存在。</p></li>
+<li><p>往往需要在 bias 和 MSE
+之间进行权衡，二者不一定同时最小。</p></li>
+<li><p>Example 1：</p>
+<figure>
+<img src="https://s2.loli.net/2022/11/21/KLW8I6ctOzSmqf2.png" alt="1.png">
+<figcaption aria-hidden="true">1.png</figcaption>
+</figure>
+<figure>
+<img src="https://s2.loli.net/2022/11/21/RhG3MBuc5AyUjze.png" alt="3.png">
+<figcaption aria-hidden="true">3.png</figcaption>
+</figure>
+<figure>
+<img src="https://s2.loli.net/2022/11/21/Io2l5Hzxhyb1OFW.jpg" alt="2.jpg">
+<figcaption aria-hidden="true">2.jpg</figcaption>
+</figure>
+<p>Example 2：</p>
+<figure>
+<img src="https://s2.loli.net/2022/11/21/rIVAXxnL7Gfyup4.png" alt="4.png">
+<figcaption aria-hidden="true">4.png</figcaption>
+</figure>
+<figure>
+<img src="https://s2.loli.net/2022/11/21/loCKVpiHeg29GnB.png" alt="5.png">
+<figcaption aria-hidden="true">5.png</figcaption>
+</figure>
+<figure>
+<img src="https://s2.loli.net/2022/11/21/3jhtxZyH9cKqPeT.jpg" alt="6.jpg">
+<figcaption aria-hidden="true">6.jpg</figcaption>
+</figure></li>
+</ul>
+<h3 id="求估计量的方法矩法">求估计量的方法——矩法</h3>
+<ul>
+<li><p><span class="math inline">\(X_1,X_2,...,X_n\)</span> 是来自于以
+<span class="math inline">\(f_\theta(x)\)</span> 为 PDF 的有有限 <span class="math inline">\(k\)</span> 阶矩的随机样本，<span class="math inline">\(\theta=(\theta_1,...,\theta _k) \in R^k\)</span>
+是未知的。定义：</p>
+<ul>
+<li>Sample moment：<span class="math inline">\(m_1 = \frac{1}{n}
+\Sigma_{i=1} ^n X_i,m_2=\frac{1}{n}\Sigma_{i=1} ^n
+X_i^2,...\)</span></li>
+<li>Population moment：<span class="math inline">\(\mu_1 =
+E(X_1)=h_1(\theta),\mu_2=E(X_1 ^2)=h_2(\theta),...\)</span></li>
+</ul></li>
+<li><p>Method of Moment（MOM）approach：对于未知的 <span class="math inline">\(\theta=(\theta_1,...,\theta_k)\)</span>，可以通过求解
+<span class="math inline">\(k\)</span> 个方程 <span class="math inline">\(m_i=h_i(\theta)\)</span> 来确定它们每个的
+estimator，<span class="math inline">\(k\)</span> 个方程确定 <span class="math inline">\(k\)</span> 个“未知数”，很合理。</p>
+<p>事实上，这样解出来的 estimator 称为 moment
+estimator，也有可能解不出来。</p></li>
+<li><p>Example 1：</p>
+<figure>
+<img src="https://s2.loli.net/2022/11/21/g5XFnsWCkaST3lH.png" alt="8.png">
+<figcaption aria-hidden="true">8.png</figcaption>
+</figure></li>
+<li><p>矩法得到的 moment estimator 不一定唯一，比如取前 <span class="math inline">\(k\)</span> 个方程和取后 <span class="math inline">\(k\)</span>
+个方程得到的结果可能是不一样的，有很多例子。为了计算方便，我们尽量会取低阶矩。为了
+unbiasedness，往往会取中心矩。</p></li>
+<li><p>MOM estimator 的性质：</p>
+<ul>
+<li><p>无偏性：样本原点矩一般都无偏，其余的没有一致的论断。</p>
+<figure>
+<img src="https://s2.loli.net/2022/11/21/w4KPMSJuaA9DXmQ.png" alt="9.png">
+<figcaption aria-hidden="true">9.png</figcaption>
+</figure></li>
+<li><p>相合性：</p>
+<figure>
+<img src="https://s2.loli.net/2022/11/21/uDPOR9VXod4YMQj.png" alt="0.png">
+<figcaption aria-hidden="true">0.png</figcaption>
+</figure></li>
+</ul></li>
+<li><p>MOM 的优缺点：</p>
+<ul>
+<li>简单好算，不用知道分布。</li>
+<li>样本较小时可能不精确，不一定完全反映样本的特征（漏参数）。</li>
+</ul></li>
+</ul>
+<h1 id="homework-2">Homework 2</h1>
+<figure>
+<img src="https://s2.loli.net/2022/11/29/Xx4dkfGNyOqcKnH.png" alt="51.png">
+<figcaption aria-hidden="true">51.png</figcaption>
+</figure>
+<figure>
+<img src="https://s2.loli.net/2022/11/29/eO6nfItHCoqvJMr.jpg" alt="52.jpg">
+<figcaption aria-hidden="true">52.jpg</figcaption>
+</figure>
+<h1 id="lecture-5">Lecture 5</h1>
+<p>本节介绍另一种点估计方法——Maximum Likelihood
+Estimator，这是最为流行的方法。</p>
+<p>没想到的是这一讲还讲了一些数值方法，收敛到数值分析去了，我血赚（x</p>
+<h2 id="极大似然估计量-mle">极大似然估计量 (MLE)</h2>
+<h3 id="定义-4">定义</h3>
+<ul>
+<li><p>找一个使得似然函数的值最大的常数 <span class="math inline">\(\theta\)</span>，其函数作为一个 estimator，称为
+maximum likelihood estimator。</p></li>
+<li><p>MLE 的求法不一定是求导，先看看求导能不能做 &amp;&amp;
+算出来的结果对了没有 &amp;&amp; 有没有更简单的方法</p></li>
+<li><p>举个超几何分布的例子，这个问题的主要难度其实在于意识到，<span class="math inline">\(X\)</span>
+单点就是一个观测值，以及用离散方法。</p>
+<figure>
+<img src="https://s2.loli.net/2022/11/25/XiqgCueVUlanxLM.png" alt="AW1T5__2A4ZA_HG_64_2WRI.png">
+<figcaption aria-hidden="true">AW1T5__2A4ZA_HG_64_2WRI.png</figcaption>
+</figure></li>
+</ul>
+<h3 id="性质">性质</h3>
+<ul>
+<li><p>Invariance Property：如果 <span class="math inline">\(\hat{\theta} _{MLE}\)</span> 是 <span class="math inline">\(\theta\)</span> 的 MLE，且 <span class="math inline">\(g\)</span> 是任意的函数，则 <span class="math inline">\(g(\hat{\theta} _{MLE})\)</span> 是 <span class="math inline">\(g(\theta)\)</span> 的 MLE。</p></li>
+<li><p>Consistency：在某些条件下，MLE 序列依概率收敛到某个 <span class="math inline">\(\theta\)</span> 值。（非常模糊，看看就好</p></li>
+<li><p>MLE &amp; sufficient statistic：<span class="math inline">\(X=(X_1,X_2,...,X_n)\)</span> 是 Population
+中的一个随机抽样，Population 服从 <span class="math inline">\(\lbrace
+f(x;\theta),\theta \in \Theta \rbrace\)</span> 的分布。如果 <span class="math inline">\(T=T(X_1,...,X_n)\)</span> 是一个充分统计量，且
+<span class="math inline">\(\theta\)</span> 的 MLE 存在，那么 <span class="math inline">\(\hat{\theta}=\psi(T)\)</span> 是 <span class="math inline">\(T\)</span> 的一个函数。</p></li>
+<li><p>Asymptotic normality：在某些情况下，MLE <span class="math inline">\(\hat{\theta}\)</span>
+的序列（作为一个未赋值的随机变量）趋近于正态分布，准确来说，<span class="math inline">\(\sqrt{n} (\hat{\theta}_n - \theta) \to
+N(0,\sigma_\theta ^2),n\to \infty\)</span>。其中，<span class="math inline">\(\sigma_\theta ^2 =
+\frac{1}{I(\theta)}\)</span>，<span class="math inline">\(I(\theta)\)</span> 是 <span class="math inline">\(X\)</span> 的概率密度函数 <span class="math inline">\(f(x;\theta)\)</span> 导出的 Fisher
+Information。</p>
+<p>如果使用 Delta Method，可以导出 <span class="math inline">\(\sqrt{n}[g(\hat{\theta}_n)-g(\theta)] \to
+N(0,(g&#39;^2(\theta)/I(\theta)))\)</span>。</p>
+<p>以上均为依分布收敛。</p></li>
+<li><p>相比于矩法，MLE
+方法有求解更快的优点，但有时缺乏数值稳定性，且必须知道 Population
+的分布。</p></li>
+</ul>
+<h3 id="mle-的数值解法">MLE 的数值解法</h3>
+<ul>
+<li>主要是使用牛顿法求解没有显式解的一阶微分方程。</li>
+</ul>
+<h2 id="mle-的应用">MLE 的应用</h2>
+<ul>
+<li><p>标记重捕法：标记重捕过程实际上可以视为超几何分布过程，使用关于
+<span class="math inline">\(\theta\)</span> 的 MLE
+估计即可。例如，第一次捉住了 10 只蜻蜓，全部做标记后放归。第二次捕捉 20
+只蜻蜓后发现其中 4 只做了标记，希望求得种群数量 <span class="math inline">\(N\)</span>
+的估计值。实际上，记第二次捕获的蜻蜓里有 <span class="math inline">\(r\)</span> 只做了标记，<span class="math inline">\(N\)</span> 可以被视为随机变量 <span class="math inline">\(r\)</span> 的分布中的参数，即 <span class="math inline">\(L(N;r)=f(r;N)=\frac{C_{10} ^r C_{N-10}^{20-r}}{C_N
+^{20}}\)</span>，得到 <span class="math inline">\(N\)</span> 的 MLE 为
+<span class="math inline">\(\hat{N}=[\frac{200}{r}]\)</span>，种群总数为
+50 只的概率最大。</p></li>
+<li><p>Hardy-Weinberg Law:
+一个二倍体基因型包括两个基因，每个基因有两种表示，A 和
+a。在人群中随机抽样得到 56 人中有 13 个为 AA 型，24 个为 Aa 型，19 个为
+aa 型。求此基因显示为 A 的概率的 MLE。</p>
+<p>实际上可以将以上抽样视作对一个服从 <span class="math inline">\(B(112,\theta)\)</span> 的 Population
+进行抽样，得到一个容量为 112 的样本，其中抽取得到 50 个 A 和 62 个
+a。考虑此样本的 Joint PDF 为 <span class="math inline">\(f(X)=C_{112}
+^{50} \theta ^{50} (1-\theta) ^{62}\)</span> 取最大值时，<span class="math inline">\(\theta=\frac{25}{56}\)</span> 即为解。</p></li>
+</ul>
+<h1 id="lecture-6">Lecture 6</h1>
+<p>本节重新介绍 Fisher
+Information，并给出最后一种点估计方法——UMVUE。</p>
+<h2 id="regular-condition">Regular Condition</h2>
+<p>一共有五条，分别提示了开集，概率密度为正，对参数的导数存在，对参数的求导和对
+x 的积分可交换，Fisher Information 有限。</p>
+<figure>
+<img src="https://s2.loli.net/2022/11/27/jNVMn9zcTXJDWga.png" alt="I_FOWWR257NGS_3D57E.png">
+<figcaption aria-hidden="true">I_F<code>OWWR257N</code>G<code>S_3D5</code>7E.png</figcaption>
+</figure>
+<h2 id="revisit-fisher-information">Revisit Fisher Information</h2>
+<ul>
+<li><p>Random Sample 的 Fisher Information</p>
+<figure>
+<img src="https://s2.loli.net/2022/11/27/eHOVrwRymbkKZnz.jpg" alt="1.jpg">
+<figcaption aria-hidden="true">1.jpg</figcaption>
+</figure></li>
+<li><p>Population 的 Fisher Infomation</p>
+<figure>
+<img src="https://s2.loli.net/2022/11/27/ZhfiDLta5C1oklw.jpg" alt="2.jpg">
+<figcaption aria-hidden="true">2.jpg</figcaption>
+</figure></li>
+<li><p>Example 1：对于<span class="math inline">\(X\sim N(\mu,\sigma
+^2), \sigma^2\)</span> 已知，求 <span class="math inline">\(I(\mu)\)</span>。</p>
+<figure>
+<img src="https://s2.loli.net/2022/11/27/fcCYRMNaik1ohTB.jpg" alt="3.jpg">
+<figcaption aria-hidden="true">3.jpg</figcaption>
+</figure></li>
+<li><p>对于一个 estimator 序列 <span class="math inline">\(\lbrace
+\hat{\theta}_n \rbrace\)</span>，有 <span class="math inline">\(\sqrt{n}
+(\hat{\theta}_n -\theta _0) \to N(0,\frac{1}{I(\theta _0)})\)</span>
+依分布收敛。考虑正态分布的性质可知，有 <span class="math inline">\(\hat{\theta}_n -\theta _0 \to
+N(0,\frac{1}{nI(\theta _0)})\)</span>。其中 <span class="math inline">\(\theta_0\)</span> 表示参数的真值。</p></li>
+</ul>
+<h2 id="umvue">UMVUE</h2>
+<h3 id="定义-5">定义</h3>
+<ul>
+<li><p>The best unbiased estimator 是方差最小的无偏估计量，因此其 MSE
+也最小。也可以指 UMVUE，也即 uniformly minimum variance unbiased
+estimator，一致最小方差无偏估计。其中的 uniformly
+指的是对所有的参数都成立。</p></li>
+<li><p>当然，一个样本可能不存在 unbiased estimator，也就没有
+UMVUE，比如：</p>
+<p><span class="math inline">\(X_1,X_2,...,X_n i.i.d. \sim
+B(1,p)\)</span>，<span class="math inline">\(g(p)=\frac{1}{p}\)</span>
+是要进行估计的量，它没有无偏估计量。</p>
+<figure>
+<img src="https://s2.loli.net/2022/11/27/LKHB6VparIOimzP.jpg" alt="4.jpg">
+<figcaption aria-hidden="true">4.jpg</figcaption>
+</figure></li>
+<li><p>每个无偏估计都是 sufficient estimator 的函数。</p></li>
+</ul>
+<h3 id="验证-umvue">验证 UMVUE</h3>
+<ul>
+<li><p>对于随机抽样 <span class="math inline">\(X_1,X_2,...,X_n\)</span>，样本对 <span class="math inline">\(\theta\)</span> 的充分统计量为 <span class="math inline">\(T(X)\)</span>，则 <span class="math inline">\(h(T(X))\)</span> 是 UMVUE 当且仅当对任意 <span class="math inline">\(0\)</span> 的无偏统计量 <span class="math inline">\(\psi(T(X))\)</span>，有 <span class="math inline">\(cov(\psi(T(X)),h(T(X)))=0\)</span>。其中有 <span class="math inline">\(E(\psi(T(X)))=0\)</span>。</p></li>
+<li><p>Example 1：</p>
+<figure>
+<img src="https://s2.loli.net/2022/11/29/ekTsyOlDz35i4mE.png" alt="OSWR18N__6IB39Z4H`1QVCV.png">
+<figcaption aria-hidden="true">OSWR18N__6IB39Z4H`1QVCV.png</figcaption>
+</figure></li>
+</ul>
+<h3 id="寻找-umvue">寻找 UMVUE</h3>
+<p>寻找总比验证更困难。</p>
+<ul>
+<li><p>Cramer-Rao Inequality：<span class="math inline">\(X_1,X_2,...,X_n\)</span> 是服从 PDF <span class="math inline">\(f(x | \theta)\)</span> 的随机样本，<span class="math inline">\(W(X)=W(X_1,...,X_n)\)</span> 是 <span class="math inline">\(X\)</span> 的一个统计量，满足 <span class="math inline">\(\frac{d}{d\theta} E_\theta W(X) = \int
+\frac{\partial}{\partial \theta} [W(x)f(x|\theta)] dx\)</span>，且 <span class="math inline">\(Var_\theta W(X) &lt; \infty\)</span>，于是 <span class="math inline">\(Var_\theta (W(X)) \geq \frac{(\frac{d}{d\theta}
+E_\theta W(X))^2}{nI(\theta)}\)</span>。</p>
+<p>如果一个 unbiased estimator 达到了 C-R lower bound，它就是
+UMVUE。然而这不是充要条件，任意一个 UMVUE
+未必满足取等条件。且需要注意只有在满足 Regularity Conditions
+的时候才能保持 Cramer-Rao 成立。</p></li>
+<li><p>多元形式的 Cramer-Rao Inequality：<span class="math inline">\(Cov_\theta(\hat{\theta}) \geq
+(nI(\theta))^{-1}\)</span>。其中，<span class="math inline">\(A\geq
+B\)</span> 表示 <span class="math inline">\(A-B\)</span>
+是一个非负定矩阵。</p></li>
+<li><p>Example 1：</p>
+<figure>
+<img src="https://s2.loli.net/2022/11/29/WklE6cgO85VPaQF.png" alt="1.png">
+<figcaption aria-hidden="true">1.png</figcaption>
+</figure>
+<figure>
+<img src="https://s2.loli.net/2022/11/29/k4IQJq2guEeOPft.png" alt="2.png">
+<figcaption aria-hidden="true">2.png</figcaption>
+</figure></li>
+<li><p>Rao-Blackwell：<span class="math inline">\(T(X)\)</span> 是 <span class="math inline">\(g(\theta)\)</span> 的 sufficient statistic，<span class="math inline">\(\hat{g}(X)\)</span> 是 <span class="math inline">\(g(\theta)\)</span> 的 unbiased estimator，于是记
+<span class="math inline">\(h(T)=E(\hat{g}(X)|T)\)</span> 也是一个
+unbiased estimator，且 <span class="math inline">\(Var(h(T))\leq
+Var(\hat{g}(X))\)</span>。</p>
+<p>这是一个把 unbiased estimator 的方差降低的方法，启发出以下的
+Lehmann-Scheffe Theorem。</p></li>
+<li><p><span class="math inline">\(T(X)\)</span> 是 <span class="math inline">\(g(\theta)\)</span> 的 complete and sufficient
+statistic，如果 <span class="math inline">\(\hat{g}(T(X))\)</span> 是
+unbiased estimator，那么它就是唯一的 UMVUE。</p></li>
+<li><p><span class="math inline">\(T(X)\)</span> 是 <span class="math inline">\(g(\theta)\)</span> 的 complete and sufficient
+statistic，<span class="math inline">\(U\)</span> 是 <span class="math inline">\(g(\theta)\)</span> 的 unbiased estimator，那么
+<span class="math inline">\(\hat{g}(T)=E_\theta (U|T)\)</span>
+也是唯一的 UMVUE。</p>
+<p>这给出了已知 complete and sufficient estimator
+时的两种方法：要么直接寻找其函数使得它也是 unbiased
+estimator，要么得到一个 unbiased estimator
+然后二者结合做出解。显然，对于 Exponential Family
+中的分布来说，这个方法比较容易操作，因为我们可以轻松地找到 complete and
+sufficient estimator。</p>
+<p>注意一个特例：Normal Distribution 的 UMVUE 就是对应的 <span class="math inline">\(\bar{X},S^2\)</span>
+在系数和常数上的修正，这是易于证明的。</p></li>
+<li><p>Example 1：</p>
+<figure>
+<img src="https://s2.loli.net/2022/11/29/URSQ7feVcDzxbiI.png" alt="A.png">
+<figcaption aria-hidden="true">A.png</figcaption>
+</figure></li>
+<li><p>Example 2：</p>
+<figure>
+<img src="https://s2.loli.net/2022/11/29/MQK7iPAR4cZ2y9S.png" alt="B.png">
+<figcaption aria-hidden="true">B.png</figcaption>
+</figure>
+<figure>
+<img src="https://s2.loli.net/2022/11/29/M1WTS7bhdzrKuOw.png" alt="B2.png">
+<figcaption aria-hidden="true">B2.png</figcaption>
+</figure></li>
+<li><p>Example 3：</p>
+<figure>
+<img src="https://s2.loli.net/2022/11/29/dPZTSGnH5oic3Wq.png" alt="C.png">
+<figcaption aria-hidden="true">C.png</figcaption>
+</figure></li>
+</ul>
+<h2 id="判别无偏统计量的有效性">判别无偏统计量的有效性</h2>
+<ul>
+<li><p>Efficiency：</p>
+<figure>
+<img src="https://s2.loli.net/2022/11/29/XMF42jQzGCEOWgm.png" alt="Z.png">
+<figcaption aria-hidden="true">Z.png</figcaption>
+</figure></li>
+</ul>
+<h1 id="homework-3">Homework 3</h1>
+<figure>
+<img src="https://s2.loli.net/2022/11/29/IOQVr1hGD6CHljs.png" alt="71.png">
+<figcaption aria-hidden="true">71.png</figcaption>
+</figure>
+<figure>
+<img src="https://s2.loli.net/2022/11/29/xbO8HRDcuL7GgyC.jpg" alt="72.jpg">
+<figcaption aria-hidden="true">72.jpg</figcaption>
+</figure>
+<p>后记：期中考试又考了一遍这个题，不过问的是 <span class="math inline">\(\theta ^2\)</span> 的
+UMVUE。考场上自己写的时候才发现根本不用这么复杂，在第三行那一步的时候凑一个
+<span class="math inline">\(\theta ^2\)</span>（此处是 <span class="math inline">\(\theta\)</span>）出来就行，搞不懂助教为什么凑的是
+<span class="math inline">\(1-\theta\)</span>。结果是一样的，毕竟用
+complete &amp; sufficient statistic 得出的 UMVUE 是唯一的。</p>
+<p><span class="math inline">\(\theta ^2\)</span> 的 UMVUE 是 <span class="math inline">\(\frac{(n-1)(n-2)}{(T-1)(T-2)}\)</span>，可见与
+<span class="math inline">\(\theta\)</span> 的 UMVUE 形式类似。</p>
+<h1 id="mid-term">Mid-Term</h1>
+<p><a target="_blank" rel="noopener" href="https://in.closed.social:9443/ipfs/Qmc2T23eWee8879KWctzJn8Dfv843oNh8nbHx8KB7L4dY5">Click
+Here</a></p>
+<p>问就是，不是我写的，跟我没关系，请不要开盒.jpg</p>
+<h1 id="lecture-7">Lecture 7</h1>
+<p>本节介绍区间估计，它对于参数的估计就更模糊一些，注重于根据一系列数据来提供若干个区间，使得参数的函数值落在其中。听起来没那么完美，但是现实就是这样的嘛。</p>
+<h2 id="interval-estimation">Interval Estimation</h2>
+<h3 id="定义-6">定义</h3>
+<ul>
+<li><p>任意的 statistic <span class="math inline">\(\hat{g}_1(X),\hat{g}_2(X)\)</span> 满足 <span class="math inline">\(\hat{g}_1(X) \leq \hat{g} _2 (X)\)</span>，则区间
+<span class="math inline">\([\hat{g}_1(X),\hat{g}_2(X)]\)</span> 是
+<span class="math inline">\(g(\theta)\)</span> 的一个 interval
+estimate（也可以叫做 confidence
+interval）。这个定义很宽泛，因为一个区间估计未必需要 <span class="math inline">\(g(\theta)\)</span>
+落在其中，它可以是无效的。需要注意的是，此处的用词是
+estimate，意思是说，这里的 <span class="math inline">\(X\)</span>
+指的是一个确切的样本。</p></li>
+<li><p>coverage probability：区间 <span class="math inline">\([\hat{g}_1(X),\hat{g}_2(X)]\)</span> 的 coverage
+probability 是随机区间 <span class="math inline">\([\hat{g}_1(X),\hat{g}_2(X)]\)</span> 包括真实值
+<span class="math inline">\(g(X)\)</span> 的概率，也就是 <span class="math inline">\(P\lbrace g(\theta) \in [\hat{g}_1(X),\hat{g}_2(X)]
+\rbrace &gt;0\)</span>。</p></li>
+<li><p>Example 1：</p>
+<figure>
+<img src="https://s2.loli.net/2022/12/05/RNYSJsKGExj4gWw.png" alt="1.png">
+<figcaption aria-hidden="true">1.png</figcaption>
+</figure>
+<figure>
+<img src="https://s2.loli.net/2022/12/05/3PJrLzdAqt2ihon.png" alt="2.png">
+<figcaption aria-hidden="true">2.png</figcaption>
+</figure></li>
+</ul>
+<h3 id="measurement">Measurement</h3>
+<p>然后就是要衡量一个 interval estimation 的有效度。</p>
+<ul>
+<li><p><span class="math inline">\(X_1,X_2,...,X_n\)</span> 是一个服从
+<span class="math inline">\(f(x;\theta)\)</span> 的随机样本。Confidence
+Level（置信度，也写作 reliability）被定义为 <span class="math inline">\(P(\theta \in
+[\hat{\theta_1},\hat{\theta_2}])=P(\hat{\theta_1}\leq \theta \leq
+\hat{\theta_2})\)</span>。</p></li>
+<li><p>Confidence coefficient（置信系数）：<span class="math inline">\(inf_{\theta \in \Theta} P_\theta (\hat{\theta _1}
+\leq \theta \leq \hat{\theta_2})\)</span></p></li>
+<li><p>Precision（精确度）：有很多种估计方法，此处取最常用的方法：mean
+interval length，即计算 <span class="math inline">\(E_{\theta}(\hat{\theta_2}-\hat{\theta
+_1})\)</span>，这个值越大说明区间越长，因此估计的精确度越差。</p>
+<p>一般来说，置信度和精确度是一对相反的要求，需要进行
+trade-off。</p></li>
+<li><p>Example 1：</p>
+<figure>
+<img src="https://s2.loli.net/2022/12/05/I1emRiPvwFxkM4l.png" alt="3.png">
+<figcaption aria-hidden="true">3.png</figcaption>
+</figure></li>
+<li><p>Revisit Confidence Interval：重新对于 confidence interval
+进行定义，加上 confidence coefficient 的条件后如下：区间 <span class="math inline">\([\hat{\theta _1}(X),\hat{\theta _2}(X)]\)</span>
+是 <span class="math inline">\(\theta\)</span> 的一个 interval
+estimate，且对于一个给定的 <span class="math inline">\(\alpha\)</span>
+有 <span class="math inline">\(0&lt;\alpha &lt;1\)</span>，如果 <span class="math inline">\(P(\hat{\theta_1}(X)\leq \theta \leq
+\hat{\theta_2}(X)) \geq 1-\alpha\)</span>，那么称区间 <span class="math inline">\([\hat{\theta _1}(X),\hat{\theta _2}(X)]\)</span>
+是一个有 confidence level 为 <span class="math inline">\(1-\alpha\)</span> 的， <span class="math inline">\(\theta\)</span> 的 confidence interval。</p>
+<p>于是 confidence coefficient <span class="math inline">\(inf_{\theta
+\in \Theta} P_\theta (\hat{\theta _1} (X)\leq \theta \leq
+\hat{\theta_2}(X)) \leq \alpha\)</span>，是 confidence interval <span class="math inline">\([\hat{\theta _1}(X),\hat{\theta _2}(X)]\)</span>
+的 confidence coefficient。</p></li>
+<li><p>Remark 1：此处如果有 <span class="math inline">\(\alpha=0.05\)</span>，不代表 <span class="math inline">\(\theta\)</span> 有 <span class="math inline">\(0.95\)</span>
+的概率落在得到的区间里，而是指的是我们有 <span class="math inline">\(0.95\)</span> 的信度能够确定 <span class="math inline">\(\theta\)</span> 在此区间里。更形象地，我们取 <span class="math inline">\(1000\)</span> 个样本，得到的 <span class="math inline">\(1000\)</span> 个区间里大约会有 <span class="math inline">\(950\)</span> 个覆盖住 <span class="math inline">\(\theta\)</span>。</p></li>
+<li><p>Remark 2：在取样本之前，所有的区间 <span class="math inline">\([\hat{\theta _1}(X),\hat{\theta _2}(X)]\)</span>
+都是 random interval，但取得样本之后区间的左右端都变为定值，称为
+observed interval。</p></li>
+<li><p>Confidence
+Limit：有的时候我们只关心参数的上界或下界，即只考虑单边。对于给定的
+statistic <span class="math inline">\(\hat{\theta}_U (X),\hat{\theta}_L
+(X)\)</span>，对于给定的 <span class="math inline">\(0&lt;\alpha
+&lt;1\)</span>，如果 <span class="math inline">\(P_\theta(\theta \leq
+\hat{\theta}_U (X))\geq 1-\alpha,\theta \in \Theta\)</span>，或者 <span class="math inline">\(P_\theta(\theta \geq \hat{\theta}_L (X))\geq
+1-\alpha,\theta \in \Theta\)</span>，则称 <span class="math inline">\(\hat{\theta}_U (X),\hat{\theta}_L (X)\)</span>
+分别是 <span class="math inline">\(\theta\)</span> 的 upper confidence
+limit 和 lower confidence limit，且有置信度 <span class="math inline">\(1-\alpha\)</span>。</p>
+<p>针对 confidence limit 的 precision 估计：<span class="math inline">\(E(\hat{\theta}_U(X))\)</span> 越小或者 <span class="math inline">\(E(\hat{\theta}_L(X))\)</span> 越大，越精确。</p>
+<p>此时，取 confidence interval 为 <span class="math inline">\([\hat{\theta _L}(X),\hat{\theta
+_U}(X)]\)</span>，它的 confidence level 为 <span class="math inline">\(1-\alpha_1-\alpha_2\)</span>。</p></li>
+</ul>
+<h3 id="多维情形">多维情形</h3>
+<p>略（</p>
+<h2 id="构造合适的-interval-estimation">构造合适的 Interval
+Estimation</h2>
+<h3 id="pivot-quantity-method">Pivot quantity method</h3>
+<p>如果要翻译的话，可以称为“枢轴量方法”。</p>
+<ul>
+<li><p>寻找 Pivot Quantity 的方法：找到一个包含参数 <span class="math inline">\(\theta\)</span> 的随机变量，它关于 <span class="math inline">\(X_1,X_2,...,X_n\)</span>
+的部分最好是一个充分统计量的形式，且这个随机变量的分布已知。</p>
+<p>观察此 pivot quantity 落在区间 <span class="math inline">\([a,b]\)</span> 上的概率，并适当选取让这个概率大于
+<span class="math inline">\(1-\alpha\)</span>。</p>
+<p>再把这个式子改成关于 <span class="math inline">\(\theta\)</span> 的
+interval estimation 的形式。</p></li>
+<li><p>总之，要找一个分布与 <span class="math inline">\(\theta\)</span>
+无关，且形式上与 <span class="math inline">\(\theta\)</span>
+有关的随机变量，它在形式上也不能和其他未知的参数有关。</p></li>
+<li><p>位置-尺度族的常用 Pivot Quantity：</p>
+<table>
+<thead>
+<tr class="header">
+<th>Form of PDF</th>
+<th>Type of PDF</th>
+<th>Pivotal Quantity</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(f(x-\mu)\)</span></td>
+<td>Location</td>
+<td><span class="math inline">\(\bar{X}-\mu\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\((1/\sigma)f(x/\sigma)\)</span></td>
+<td>Scale</td>
+<td><span class="math inline">\(\bar{X}/\sigma\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\((1/\sigma)f((x-\mu)/\sigma)\)</span></td>
+<td>Location-Scale</td>
+<td><span class="math inline">\((\bar{X}-\mu)/S\)</span></td>
+</tr>
+</tbody>
+</table></li>
+</ul>
+<h3 id="approximate-ci">Approximate CI</h3>
+<ul>
+<li><p>顾名思义，在找不到合适的 pivot estimation
+的时候，可以利用中心极限定理等方式取得一个依分布收敛的随机变量，把它作为
+pivot estimation，然后进行考虑。</p></li>
+<li><p>常用于不确定分布的 Population，或者无法求得合适的 pivot
+estimation 的 Population。如果有精确的 pivot estimation
+但是转化为参数中心的不等式时计算太复杂，也可以将其中的项进行改动，比如把某个
+<span class="math inline">\(\mu\)</span> 改成 <span class="math inline">\(\bar{X}\)</span>，等等。</p></li>
+<li><p>Example 1：</p>
+<figure>
+<img src="https://s2.loli.net/2022/12/05/Tda2EkfYz8bBWP4.png" alt="4.png">
+<figcaption aria-hidden="true">4.png</figcaption>
+</figure></li>
+<li><p>前提是样本量足够大。</p></li>
+</ul>
+<h2 id="关于正态分布的-ci">关于正态分布的 CI</h2>
+<p>幸运的是，下面这张图上有你需要的一切：</p>
+<figure>
+<img src="https://s2.loli.net/2022/12/05/p6dc2ZbUqeHmiBo.jpg" alt="5.jpg">
+<figcaption aria-hidden="true">5.jpg</figcaption>
+</figure>
+<ul>
+<li><p>1 和 2 指出的是对于某个随机样本 <span class="math inline">\(X_1,...,X_n i.i.d \sim N(\mu,
+\sigma^2)\)</span>，在参数之一已知的时候，求出另一参数的 CI 的方法。在
+Remark 里提出了不需要已知参数时的方法。</p></li>
+<li><p>3 指出的是两个参数都不可知时，利用独立性得出 <span class="math inline">\(\mu,\sigma^2\)</span> 的 Confidence Region
+的方式，虽然考试中并不会涉及，但是我觉得思路相当好。</p></li>
+<li><p>4 指出的是两个不同的正态 Population 中分别取样，得出 <span class="math inline">\(\mu_1-\mu_2\)</span>，<span class="math inline">\(\frac{\sigma_1 ^2}{\sigma_2 ^2}\)</span> 的 CI
+的方法。</p>
+<p>分类讨论了几种：在方差相等时 <span class="math inline">\(\mu_1-\mu_2\)</span> 的 CI
+可以准确求出（如果已知了 <span class="math inline">\(\sigma\)</span>
+甚至更方便，用标准化到正态分布的 <span class="math inline">\(T\)</span>
+就可以做了），方差不等时 <span class="math inline">\(\mu_1-\mu_2\)</span> 的 CI 是 approximate
+的；此外，<span class="math inline">\(\frac{\sigma_1 ^2}{\sigma_2
+^2}\)</span> 的 CI 求法在最后一种情况里给出。</p></li>
+</ul>
+<h1 id="homework-4">Homework 4</h1>
+<p>略，基本就是以上内容的简单应用，不过计算量有点大（</p>
+<h1 id="lecture-8">Lecture 8</h1>
+<p>心情如图所示：orz orz orz orz orz orz</p>
+<figure>
+<img src="https://s2.loli.net/2022/12/07/HhAGi4EruPK9cCM.png" alt="8__M_9R7H9G@JKC_T~7TYRM.png">
+<figcaption aria-hidden="true">8__M_9R7H9G@JKC_T~7TYRM.png</figcaption>
+</figure>
+<p>本节介绍假设检验的一些基本信息，这也是直到学期末为止的后半部分课程的主要内容。</p>
+<p>突然想起 V1ncent19 学长说过的一段话：</p>
+<blockquote>
+<p>如果对生存分析不太熟悉的同学可以先笼统地理解为研究“某件事情什么时候发生”，这个时候就不得不提起某蒙古上单的评论“*
+* 什么时候 * 啊”，大概就是研究这种事情。</p>
+</blockquote>
+<p>所以假设检验的通俗解释大概就是，对于某个样本，我们先验证它是否满足 A
+条件，如果满足，我们就认为某个与参数相关的结论 B
+是对的。否则，有一个和结论 B 矛盾的结论 C
+成立。生活中其实处处都是假设检验，类似于通过“今天 ta
+和我说话了”来判断出“ta
+一定喜欢我吧！”这一假设成立，显然信度不是很高。</p>
+<h2 id="基本定义">基本定义</h2>
+<h3 id="检验的定义">检验的定义</h3>
+<ul>
+<li><p>Hypothesis Testing：我们有一个 distribution family 为 <span class="math inline">\(F=\lbrace f(x;\theta),\theta \in \Theta
+\rbrace\)</span>，记 <span class="math inline">\(X=(X_1,X_2,...,X_n)\)</span>
+是上述分布族中的一个随机样本。记 <span class="math inline">\(\Theta_0\)</span> 是 <span class="math inline">\(\Theta\)</span>
+中不为空的一个子集，我们想检验是否有 <span class="math inline">\(\theta
+\in \Theta_0\)</span>。记 <span class="math inline">\(\Theta_1=\Theta -
+\Theta_0\)</span> 是 <span class="math inline">\(\Theta_0\)</span>
+的补集。</p>
+<ul>
+<li>Null Hypothesis（原假设）：记为 <span class="math inline">\(H_0\)</span>：<span class="math inline">\(\theta
+\in \Theta_0\)</span>，说明存在某个 <span class="math inline">\(\theta_0
+\in \Theta_0\)</span>，使得 <span class="math inline">\(X_i \sim
+f(x;\theta_0)\)</span>。</li>
+<li>Alternative Hypothesis（备择假设）：<span class="math inline">\(H_0\)</span> 的 Alternative Hypothesis 记为 <span class="math inline">\(H_1\)</span>：<span class="math inline">\(\theta
+\in \Theta_1\)</span>。</li>
+<li>于是假设检验过程可以写为：<span class="math inline">\(H_o:\theta \in
+\Theta_0 \leftrightarrow H_1 : \theta \in \Theta_1\)</span>。</li>
+<li>Simple and composite hypothesis ：<span class="math inline">\(H_0 (/
+H_1)\)</span> 是一个 simple hypothesis 等价于 <span class="math inline">\(\Theta_0(/ \Theta_1)\)</span> 是一个单点集，否则是
+composite hypothesis。</li>
+</ul>
+<p>根据样本检验 <span class="math inline">\(H_0\)</span>
+是否正确的过程，称作对于 <span class="math inline">\(H_1\)</span>
+检验假设 <span class="math inline">\(H_0\)</span>。（我瞎翻译的，原文是
+testing the hypothesis <span class="math inline">\(H_0\)</span> against
+the alternative <span class="math inline">\(H_1\)</span>）</p>
+<p>在 Hypothesis Testing 中，null hypothesis <span class="math inline">\(H_0\)</span> 称为 original
+belief，是一个我们希望通过样本验证它是错的的精确条件。我们一般预设它是错的，预设
+alternative hypothesis 是对的。</p></li>
+<li><p>Rejection Region：在一个随机样本 <span class="math inline">\(X=(X_1,X_2,...,X_n)\)</span>
+上我们要做出一个决定，即接受还是拒绝 null hypothesis <span class="math inline">\(H_0\)</span>。也就是说我们要定义出一个条件 <span class="math inline">\(A\)</span>，满足此条件则 accept null
+hypothesis，否则 reject null hypothesis。</p>
+<p>不满足条件 <span class="math inline">\(A\)</span> 的样本 <span class="math inline">\(X\)</span> 会使得 null hypothesis
+被拒绝，符合我们的预设，这样的 <span class="math inline">\(X\)</span>
+的集合称为 Rejection Region（或称 critical region），记为 <span class="math inline">\(D\)</span>，是一个样本子空间。于是 <span class="math inline">\(D^c\)</span> 就是 Acceptance Region，满足 <span class="math inline">\(\chi=D+D^c\)</span>，<span class="math inline">\(\chi\)</span> 是样本空间。</p></li>
+<li><p>Two-side 和 One-side test：</p>
+<ul>
+<li><p>双边检验：<span class="math inline">\(H_0:\theta=\theta_0
+\leftrightarrow H_1:\theta \neq \theta_0\)</span>，它的检验条件 <span class="math inline">\(A\)</span> 是 <span class="math inline">\(A: -c
+\leq T(X)\leq c\)</span>，其中 <span class="math inline">\(T(X)\)</span>
+是 <span class="math inline">\(\theta\)</span> 的一个估计量。于是
+rejection region 就是 <span class="math inline">\(D=\lbrace |T(X)| &gt;c
+\rbrace\)</span>。</p></li>
+<li><p>单边检验：<span class="math inline">\(H_0:\theta \leq \theta_0
+\leftrightarrow H_1 : \theta &gt; \theta_0\)</span>，它的检验条件 <span class="math inline">\(A\)</span> 是 <span class="math inline">\(A:
+T(X)\leq c\)</span>，其中 <span class="math inline">\(T(X)\)</span> 是
+<span class="math inline">\(\theta\)</span> 的一个估计量。于是 rejection
+region 就是 <span class="math inline">\(D=\lbrace T(X) &gt;c
+\rbrace\)</span>。</p>
+<p>对称地，如果 <span class="math inline">\(H_0:\theta \geq \theta_0
+\leftrightarrow H_1 : \theta &lt; \theta_0\)</span>，它的检验条件 <span class="math inline">\(A\)</span> 是 <span class="math inline">\(A:
+T(X)\geq c\)</span>，其中 <span class="math inline">\(T(X)\)</span> 是
+<span class="math inline">\(\theta\)</span> 的一个估计量。于是 rejection
+region 就是 <span class="math inline">\(D=\lbrace T(X) &lt;c
+\rbrace\)</span>。</p></li>
+</ul></li>
+</ul>
+<h3 id="检验函数">检验函数</h3>
+<ul>
+<li><p>Test Function：在某些非黑即白的检验条件下，<span class="math inline">\(\psi(X)=I_{\lbrace reject H_0
+\rbrace}\)</span>。也就是说 <span class="math inline">\(H_0\)</span> 被
+reject、符合预设的时候 test function 取为 <span class="math inline">\(1\)</span>，否则取为 <span class="math inline">\(0\)</span>。</p>
+<p>实际上，更标准的 test function 定义为 reject <span class="math inline">\(H_0\)</span> 的概率，如果是 non-randomized test 则
+<span class="math inline">\(\psi(X)=0,1\)</span>，如果是 randomized test
+则 <span class="math inline">\(\psi(X)\)</span> 可取 <span class="math inline">\([0,1]\)</span> 之间的值。</p></li>
+<li><p>以下考虑一些 randomized test。</p>
+<p>Example 1：</p>
+<figure>
+<img src="https://s2.loli.net/2022/12/08/567QUCzZwL1FvWa.png" alt="1.png">
+<figcaption aria-hidden="true">1.png</figcaption>
+</figure>
+<p>由此定义 randomized test function：临界条件下定义 <span class="math inline">\(\psi (X)=r\)</span>，<span class="math inline">\(X\in D\)</span> 时 <span class="math inline">\(\psi(X)=1\)</span>，否则 <span class="math inline">\(X\in D^c\)</span> 时 <span class="math inline">\(\psi (X)=0\)</span>。</p></li>
+</ul>
+<h2 id="type-i-ii-errors">Type I &amp; II Errors</h2>
+<p>实际上，我们在假设检验中进行随机抽样，总有可能取到偏误的样本，导致错误地
+reject 或者 accept 了 <span class="math inline">\(H_0\)</span>。有两种错误，分别称为 Type I &amp; II
+Error。</p>
+<ul>
+<li><p>通俗来说，Type I Error 是假阳性，也就是把实际正确的 <span class="math inline">\(H_0\)</span> 给 reject
+了，就像给健康人判了感染一样。发生 Type I Error
+是因为取到的样本恰好落在了 <span class="math inline">\(D\)</span>
+里，这个概率是：</p>
+<p><span class="math inline">\(\alpha(\theta)=P(I)=P[(X_1,X_2,...,X_n)
+\in D | H_0]=P[(X_1,X_2,...,X_n) \in D | \theta \in
+\Theta_0]\)</span></p>
+<p>发生 Type I Error 的最大概率，也就是 <span class="math inline">\(\alpha=max_{\theta \in \Theta_0}
+P(I)\)</span>，称为 the level of significance（显著性水平）。当 <span class="math inline">\(\alpha=0\)</span> 时说明 <span class="math inline">\(D=\emptyset\)</span>，也就是说 <span class="math inline">\(H_0\)</span> 永远被接受。</p></li>
+<li><p>相对地，Type II Error 就是假阴性，<span class="math inline">\(P(II)=P[(X_1,X_2,...,X_n) \in D^c | \theta \notin
+\Theta_0]\)</span>。</p>
+<p>定义发生 Type II Error 的概率为 <span class="math inline">\(\beta(\theta)\)</span>，于是 <span class="math inline">\(\beta(\theta)=1\)</span> 时也有 <span class="math inline">\(D=\emptyset\)</span>，这是和预设不符的。</p></li>
+<li><p>同时降低两种 Error 是不太可能的，以一个正态的估计量 <span class="math inline">\(T(X)\)</span>
+为例，可以看到呈一个此消彼长的趋势。（课上这个图画了好久，不是很懂，摸鱼去了）</p>
+<figure>
+<img src="https://s2.loli.net/2022/12/08/KZBEIO2hmdplVDW.png" alt="2.png">
+<figcaption aria-hidden="true">2.png</figcaption>
+</figure>
+<p>但是在实际操作中我们会遵循 Neyman-Pearson Principle，去尽量降低发生
+Type I Error 的概率，让 the level of significance 降低到一个预设的级别
+<span class="math inline">\(\alpha\)</span>，再去考虑降低 Type II Error
+的概率。</p>
+<p>于是如果样本落进了 <span class="math inline">\(H_0\)</span> 的
+acceptance
+region，我们会保持自己的预设，优先考虑这个样本没有提供足够的证据来
+reject <span class="math inline">\(H_0\)</span>，而不是我们应该 accept
+<span class="math inline">\(H_0\)</span>。</p></li>
+</ul>
+<h2 id="power-function">Power Function</h2>
+<ul>
+<li><p>Power Function（功效函数，势函数）定义为一个假设检验中，样本落在
+<span class="math inline">\(H_0\)</span> 的 rejection region <span class="math inline">\(D\)</span> 上的概率，即 <span class="math inline">\(\pi(\theta)=P_\theta (X \in D)\)</span>。当 accept
+<span class="math inline">\(H_0\)</span> 时，<span class="math inline">\(\pi(\theta)=\alpha(\theta)\)</span>，否则 <span class="math inline">\(\pi(\theta)=1-\beta(\theta)\)</span>。</p></li>
+<li><p>单次检验 <span class="math inline">\(\psi\)</span> 的 power
+function 定义为 <span class="math inline">\(\pi_\psi(\theta)=E_\theta
+[\psi(X)]\)</span>，其中 <span class="math inline">\(\psi(X)\)</span> 是
+reject <span class="math inline">\(H_0\)</span> 的概率，也就是说 power
+function 是整个检验中 reject <span class="math inline">\(H_0\)</span>
+的概率总和。</p>
+<p>对于一个 non-randomized test，<span class="math inline">\(\pi_\psi(\theta)=P_\theta (X=(X_1,...,X_n) \in
+D)\)</span>，因为 <span class="math inline">\(\psi\)</span> 取值为 <span class="math inline">\(0,1\)</span>。</p>
+<p>对于一个 randomized test，<span class="math inline">\(\pi_\psi(\theta)=P(T(X)&gt;c)+rP(T(X)=c)\)</span>，因为
+<span class="math inline">\(\psi\)</span> 取值 <span class="math inline">\(0,1,r\)</span>。</p></li>
+<li><p>Example 1：</p>
+<figure>
+<img src="https://s2.loli.net/2022/12/08/qdEAG7vaSfxznMk.png" alt="3.png">
+<figcaption aria-hidden="true">3.png</figcaption>
+</figure>
+<p>Remark：这个题给出了两个 power function 的曲线，可以看到 <span class="math inline">\(\pi_1(\theta)\)</span> 底部和 <span class="math inline">\(\theta\)</span> 轴贴得比较近，对于 Type I Error
+的预防较好；在 <span class="math inline">\(\theta\)</span> 落在 <span class="math inline">\(\Theta_1\)</span> 中时 <span class="math inline">\(\pi(\theta)=1-\beta(\theta)\)</span>，因此 <span class="math inline">\(\pi_2(\theta)\)</span> 对 Type II Error
+的预防较好。</p>
+<p>实际上，这两个检验方式都不够好，没有同时预防两种 Error。最理想的
+power function 应该在 <span class="math inline">\(\theta=0.5\)</span>
+处陡然上升，这样 <span class="math inline">\(\alpha(\theta)\)</span> 和
+<span class="math inline">\(\beta (\theta)\)</span>，也即发生 Type I
+&amp; II Error 的概率都能得到控制。</p></li>
+</ul>
+<h2 id="p-value">P-value</h2>
+<ul>
+<li><p>感觉不是很好理解，先举个例子。我们已经知道在假设检验的时候一般都有一个范围，例如在
+<span class="math inline">\(T(X)&gt;a\)</span> 时 reject <span class="math inline">\(H_0\)</span>，等等。当拿到一个样本计算出 <span class="math inline">\(T(X)\)</span> 后，它在大于 <span class="math inline">\(a\)</span> 时可能离 <span class="math inline">\(a\)</span> 很远，也可能离 <span class="math inline">\(a\)</span> 很近。离 <span class="math inline">\(a\)</span>
+越远，我们越确信这个样本更好地反映了应该 reject <span class="math inline">\(H_0\)</span>。因此，我们希望找一个标准来衡量这种“确信”的程度，因此引入
+P-value。</p></li>
+<li><p>某一个样本 <span class="math inline">\(X\)</span> 的 P-value
+反映出了在 reject or accept <span class="math inline">\(H_0\)</span>
+这件事上有相同结果的时候，所能得到的其他样本比 <span class="math inline">\(X\)</span>
+更加极端的概率。虽然听起来很奇怪，但就是这样的。反映到具体例子里，大概就是：</p>
+<p><img src="https://s2.loli.net/2022/12/09/nGOdgRLDWl7yHYS.png"></p>
+<p>P-value 是一个基于所得样本的条件概率，前提是 <span class="math inline">\(H_0\)</span> 成立。</p></li>
+<li><p>Decision Rule：给出一个衡量标准 <span class="math inline">\(\alpha\)</span>，我们在 <span class="math inline">\(T(X)\)</span> 符合判断要求，且 <span class="math inline">\(P-value \leq \alpha\)</span> 时 reject <span class="math inline">\(H_0\)</span>。因此，P-value 能够衡量做出 rejection
+of a hypothesis 这一决定的证据充分程度，P-value
+越小，拒绝的理由越充分，这样的操作就可以称为一个 strong
+rejection，称结果 highly statistically
+significant（统计学上有高度的显著意义（我瞎翻译的</p></li>
+<li><p>Example 1（HW）：</p>
+<p><img src="https://s2.loli.net/2022/12/09/wnh3FPfROKgDjYG.png"></p>
+<p>先建个模：试验得到的样本是 <span class="math inline">\((x_1,x_2)=(25.1,27.6)\)</span>，null hypothesis
+指的是“药是无效的”，alternative hypothesis
+指的是“药是有效的”（对此区分是因为我们预设 reject null
+hypothesis）。如今得到了一个比较小的 P-value 是 <span class="math inline">\(0.015\)</span>，这说明了我们有比较大的把握通过这一个样本来确定药是有效的。</p>
+<p>四个选项都不对。<span class="math inline">\(A\)</span> 选项计算的是
+<span class="math inline">\(P(H_0)\)</span>，<span class="math inline">\(B\)</span> 选项计算的或许是 <span class="math inline">\(E(X_1-X_2)\)</span>，<span class="math inline">\(C\)</span> 选项计算的是 <span class="math inline">\(P(T(X_1)&lt;a |
+H_0)\)</span>，虽然在形式上比较接近 P-value 的定义了但还是不对，<span class="math inline">\(D\)</span> 选项问题在于 <span class="math inline">\(p&gt;0.05\)</span> 时说明这一组样本对于 reject
+<span class="math inline">\(H_0\)</span>
+的可信度不够高，并不完全证明没有治疗效果。</p></li>
+<li><p>The American Statistical Association's statement on p-values:
+context, process, and purpose</p>
+<p>因为 P-value 真的很容易被误用，所以 ASA 在 2016 年提出了使用和解释
+P-value 的原则。摘录如下：</p>
+<blockquote>
+<ul>
+<li><p>P-values can indicate how incompatible the data are with a
+specified statistical model.</p>
+<p>A p-value provides one approach to summarizing the
+<strong>incompatibility</strong> between a particular set of data and a
+proposed model for the data.</p>
+<p>The smaller the p-value, the greater <strong>the statistical
+incompatibility</strong> of the data with the null hypothesis, if the
+underlying assumptions used to calculate the p-value hold.</p></li>
+<li><p>P-values do not measure the probability that the studied
+hypothesis is true, or the probability that the data were produced by
+random chance alone.</p>
+<p>Researchers often wish to turn a p-value into a statement about the
+truth of a null hypothesis, or about the probability that random chance
+produced the observed data. The p-value is neither.</p></li>
+<li><p>Scientific conclusions and business or policy decisions should
+not be based only on whether a p-value passes a specific
+threshold.</p></li>
+<li><p>Proper inference requires full reporting and
+transparency.</p></li>
+<li><p>A p-value, or statistical significance, does not measure the size
+of an effect or the importance of a result.</p>
+<p>Smaller p-values do not necessarily imply the presence of larger or
+more important effects, and larger p-values do not imply a lack of
+importance or even lack of effect.</p>
+<p>Any effect, no matter how tiny, can produce a small p-value if the
+sample size or measurement precision is high enough, and large effects
+may produce unimpressive p-values if the sample size is small or
+measurements are imprecise.</p>
+<p>Similarly, identical estimated effects will have different p-values
+if the precision of the estimates differs.</p>
+<p>(讲了一些选取 estimator 会带来的区别，课程还没涉及到)</p></li>
+<li><p>By itself, a p-value does not provide a good measure of evidence
+regarding a model or hypothesis.</p>
+<p>Researchers should recognize that a p-value without context or other
+evidence provides limited information.</p>
+<p>For example, a p-value near 0.05 taken by itself offers only weak
+evidence against the null hypothesis.</p></li>
+</ul>
+</blockquote>
+<p>总的来说，P-value 能够提供的信息是有限的。</p></li>
+</ul>
+<h1 id="lecture-9">Lecture 9</h1>
+<p>本节继续介绍了以正态分布样本为主的假设检验。变得越来越像 Interval
+Estimation 了。</p>
+<p>首先回顾一下假设检验的过程：</p>
+<ul>
+<li>先设出一个 null hypothesis <span class="math inline">\(H_0\)</span>
+和对应的 alternative hypothesis <span class="math inline">\(H_1\)</span>，二者不一定构成全集。</li>
+<li>找到用于假设检验的 test statistic <span class="math inline">\(T(X)\)</span>，以及对应的 rejection region <span class="math inline">\(D\)</span>，例如 <span class="math inline">\(D=\lbrace X | T(X)&gt;a \rbrace\)</span>，<span class="math inline">\(a\)</span> 是待定的。</li>
+<li>找到一个合适的 level of significance <span class="math inline">\(\alpha\)</span>，一般是 <span class="math inline">\(0.01,0.05\)</span>，通过控制 critical
+value，也就是控制发生 Type I Error 的概率小于 <span class="math inline">\(\alpha\)</span>，来决定 <span class="math inline">\(D\)</span> 的具体形式。</li>
+<li>取样本，计算 <span class="math inline">\(T(X)\)</span>，看它是否在
+rejection region 里，判断是否要 reject null hypothesis。</li>
+<li>计算 P-value
+的大小，来判断通过这组样本作出决定的这一做法有多大的可信度。</li>
+</ul>
+<p>每一步都比较清楚了，目前落实到具体问题里需要处理的是找 test
+statistic，以及控制 critical value 来得到 rejection region 两步。</p>
+<h2 id="testing-in-various-populations">Testing in various
+populations</h2>
+<p>懒得翻译了，总之在正态分布的一些情况里、以及一些简单分布中进行分析。</p>
+<h3 id="a-single-normal-population">A single normal population</h3>
+<ul>
+<li><p>检验 <span class="math inline">\(\mu\)</span> 的过程分为是否知道
+<span class="math inline">\(\sigma\)</span>
+具体值的两种情况，又分为三种典型的 Hypothesis
+进行处理，一切都在图中：</p>
+<figure>
+<img src="https://s2.loli.net/2022/12/11/k9AigbzHpQeyt6B.jpg" alt="a.jpg">
+<figcaption aria-hidden="true">a.jpg</figcaption>
+</figure>
+<p>注意我们在进行检验的时候，往往把等于号的情况归到 null hypothesis
+中去。</p>
+<p>以上前半部分对 two-sided 进行了检验，remark 里指出了 <span class="math inline">\(\sigma\)</span> 未知的检验方法，这称为 <span class="math inline">\(U\)</span> 检验；后半部分对 one-sided
+的一种情况进行了检验，同样在 remark 里指出了 <span class="math inline">\(\sigma\)</span> 未知的检验方法，这称为 <span class="math inline">\(t\)</span> 检验。</p></li>
+<li><p>检验 <span class="math inline">\(\sigma\)</span>
+的过程分为是否知道 <span class="math inline">\(\mu\)</span>
+具体值的两种情况，又分为三种典型的 Hypothesis
+进行处理，一切都在图中：</p>
+<figure>
+<img src="https://s2.loli.net/2022/12/11/Me6BHyitGUdjaTR.jpg" alt="b.jpg">
+<figcaption aria-hidden="true">b.jpg</figcaption>
+</figure>
+<p>此处都是利用 <span class="math inline">\(\chi^2\)</span>
+分布进行检验，称为 <span class="math inline">\(\chi^2\)</span>
+检验。</p></li>
+</ul>
+<h3 id="non-normal-population">Non-normal population</h3>
+<ul>
+<li><p>检验 <span class="math inline">\(B(1,\theta)\)</span> 分布的
+population 的参数</p>
+<p>以一个例子来说明：</p>
+<figure>
+<img src="https://s2.loli.net/2022/12/11/Ofn4vm1bDRSzFoW.jpg" alt="d.jpg">
+<figcaption aria-hidden="true">d.jpg</figcaption>
+</figure>
+<p>这带我们回顾了 test function <span class="math inline">\(\varphi(X)\)</span> 的定义，它代表了 <span class="math inline">\(T(X)\)</span> 取某个值的时候 reject <span class="math inline">\(H_0\)</span> 的信度。</p></li>
+</ul>
+<h3 id="two-normal-distributions">Two normal distributions</h3>
+<ul>
+<li><p>在 two normal distribution 的情况下，检验 <span class="math inline">\(\mu_1-\mu_2\)</span>，<span class="math inline">\(\sigma_1^2 / \sigma_2 ^2\)</span>，以及进行 paired
+comparison。</p>
+<figure>
+<img src="https://s2.loli.net/2022/12/11/hOlVTxcyKpUFo1t.jpg" alt="c.jpg">
+<figcaption aria-hidden="true">c.jpg</figcaption>
+</figure></li>
+</ul>
+<h3 id="summary">Summary</h3>
+<p>本来想自己画个表格，结果摆了。</p>
+<ul>
+<li>One normal population</li>
+</ul>
+<figure>
+<img src="https://s2.loli.net/2022/12/11/KthOEMq1FsInJGe.png" alt="1.png">
+<figcaption aria-hidden="true">1.png</figcaption>
+</figure>
+<figure>
+<img src="https://s2.loli.net/2022/12/11/jwuLg45MtpOP3Nf.png" alt="2.png">
+<figcaption aria-hidden="true">2.png</figcaption>
+</figure>
+<ul>
+<li>Two normal populations（不包括 paired comparison，paired comparison
+的目标是考察一个正态分布的期望是否为 0）</li>
+</ul>
+<figure>
+<img src="https://s2.loli.net/2022/12/11/El63nDusdmoLqAP.png" alt="3.png">
+<figcaption aria-hidden="true">3.png</figcaption>
+</figure>
+<figure>
+<img src="https://s2.loli.net/2022/12/11/LG6upPYa5c8v9QC.png" alt="4.png">
+<figcaption aria-hidden="true">4.png</figcaption>
+</figure>
+<ul>
+<li><p>Non-normal population</p>
+<p><span class="math inline">\(B(1,\theta)\)</span> 见前。</p></li>
+</ul>
+<h2 id="bootstrapping-method">Bootstrapping Method</h2>
+<p>本来觉得看起来很好玩，没想到居然直接不讲了，sigh。我自己补一个。</p>
+<p>实际情况下样本不一定来自一个 Normal
+Distribution，数据集也可能不够大。我们可以用 Bootstrap 的方法嗯造一个
+Normal Distribution
+的数据集，然后进行假设检验。方法是每次有放回地从数据集里抽取一组数据，注意不仅是样本之间可以有重叠，样本内部抽每个数据的时候也是有放回抽取的。</p>
+<p>比如对于一个较小的、不确定是否为 Normal Distribution
+的数据集做假设检验：<span class="math inline">\(H_0:\mu =
+33.02\)</span>，<span class="math inline">\(H_1:\mu \neq
+33.02\)</span>。</p>
+<table>
+<colgroup>
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>No.</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+<th>10</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Data</td>
+<td>28</td>
+<td>-44</td>
+<td>29</td>
+<td>30</td>
+<td>26</td>
+<td>27</td>
+<td>22</td>
+<td>23</td>
+<td>33</td>
+<td>16</td>
+</tr>
+<tr class="even">
+<td>No.</td>
+<td>11</td>
+<td>12</td>
+<td>13</td>
+<td>14</td>
+<td>15</td>
+<td>16</td>
+<td>17</td>
+<td>18</td>
+<td>19</td>
+<td>20</td>
+</tr>
+<tr class="odd">
+<td>Data</td>
+<td>29</td>
+<td>24</td>
+<td>24</td>
+<td>40</td>
+<td>21</td>
+<td>31</td>
+<td>34</td>
+<td>-2</td>
+<td>25</td>
+<td>19</td>
+</tr>
+</tbody>
+</table>
+<p>Bootstrap Method 代码实现如下：</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># To see whether datas are from a normal population</span></span><br><span class="line">speed <span class="operator">&lt;-</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="number">28</span><span class="punctuation">,</span> <span class="operator">-</span><span class="number">44</span><span class="punctuation">,</span> <span class="number">29</span><span class="punctuation">,</span> <span class="number">30</span><span class="punctuation">,</span> <span class="number">26</span><span class="punctuation">,</span> <span class="number">27</span><span class="punctuation">,</span> <span class="number">22</span><span class="punctuation">,</span> <span class="number">23</span><span class="punctuation">,</span> <span class="number">33</span><span class="punctuation">,</span> <span class="number">16</span><span class="punctuation">,</span> <span class="number">24</span><span class="punctuation">,</span> <span class="number">29</span><span class="punctuation">,</span> <span class="number">24</span><span class="punctuation">,</span> <span class="number">40</span><span class="punctuation">,</span> <span class="number">21</span><span class="punctuation">,</span> <span class="number">31</span><span class="punctuation">,</span> <span class="number">34</span><span class="punctuation">,</span> <span class="operator">-</span><span class="number">2</span><span class="punctuation">,</span> <span class="number">25</span><span class="punctuation">,</span> <span class="number">19</span><span class="punctuation">)</span></span><br><span class="line">hist<span class="punctuation">(</span>speed<span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Create a new population whose mean is 33.02</span></span><br><span class="line">newspeed <span class="operator">&lt;-</span> speed <span class="operator">-</span> mean<span class="punctuation">(</span>speed<span class="punctuation">)</span> <span class="operator">+</span> <span class="number">33.02</span></span><br><span class="line">mean<span class="punctuation">(</span>newspeed<span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Bootstrap Method : Take out 20 observations at random, do it for 1000 times</span></span><br><span class="line">bstrap <span class="operator">&lt;-</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="punctuation">)</span></span><br><span class="line"><span class="keyword">for</span> <span class="punctuation">(</span>i <span class="keyword">in</span> <span class="number">1</span><span class="operator">:</span><span class="number">1000</span><span class="punctuation">)</span><span class="punctuation">&#123;</span></span><br><span class="line">    newsample <span class="operator">&lt;-</span> sample<span class="punctuation">(</span>newspeed<span class="punctuation">,</span> <span class="number">20</span><span class="punctuation">,</span> replace <span class="operator">=</span> <span class="built_in">T</span><span class="punctuation">)</span></span><br><span class="line">    bstrap <span class="operator">&lt;-</span> <span class="built_in">c</span><span class="punctuation">(</span>bstrap<span class="punctuation">,</span> mean<span class="punctuation">(</span>newsample<span class="punctuation">)</span><span class="punctuation">)</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br><span class="line">hist<span class="punctuation">(</span>bstrap<span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Calculate the p-value: P(stat &lt; 21.75) + P(stat &gt; 44.29)</span></span><br><span class="line"><span class="punctuation">(</span><span class="built_in">sum</span><span class="punctuation">(</span>bstrap <span class="operator">&lt;</span> <span class="number">21.75</span><span class="punctuation">)</span> <span class="operator">+</span> <span class="built_in">sum</span><span class="punctuation">(</span>bstrap <span class="operator">&gt;</span> <span class="number">44.29</span><span class="punctuation">)</span><span class="punctuation">)</span><span class="operator">/</span><span class="number">1000</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># The p-value is 0.004, which is less than 0.05. Reject H_0</span></span><br></pre></td></tr></table></figure>
+<p>综上，这一组数据不足以支持 <span class="math inline">\(H_0\)</span>，我们选择 Reject <span class="math inline">\(H_0\)</span>。</p>
+<h2 id="test-based-on-clt">Test based on CLT</h2>
+<p>实际情况里不一定发生既不是 Normal
+Distribution，数据集又很小这么背的事情。如果数据量很大的话，完全可以使用
+CLT 方法，进行一个 asymptotic sampling distribution
+的规约，然后对近似正态分布进行 Hypothesis Testing。</p>
+<p>对于一组 <span class="math inline">\(X_1,X_2,...,X_n i.i.d. \sim
+F\)</span>，有 mean <span class="math inline">\(\mu\)</span> 和 variance
+<span class="math inline">\(\sigma^2\)</span>，取 <span class="math inline">\(\bar{X_n}=\Sigma_{i=1} ^n X_i/n\)</span> 为 sample
+mean，<span class="math inline">\(S^2 = \Sigma _{i=1} ^n (X_i-\bar{X})^2
+/(n-1)\)</span> 为 sample variance。利用 CLT 可知：</p>
+<p><span class="math inline">\(F=N(\mu,\sigma^2)\)</span> 时，一定有
+<span class="math inline">\(\sqrt{n}(\bar{X_n}-\mu)/\sigma \sim
+N(0,1)\)</span>。否则 <span class="math inline">\(n\)</span>
+足够大时，由 CLT 也有 <span class="math inline">\(\sqrt{n}(\bar{X_n}-\mu)/\sigma \to
+N(0,1)\)</span>。</p>
+<p><span class="math inline">\(F=N(\mu,\sigma^2)\)</span> 时，有 <span class="math inline">\(\sqrt{n}(\bar{X_n}-\mu)/S \sim
+t_{n-1}\)</span>。否则 <span class="math inline">\(n\)</span>
+足够大时，由 CLT 和 Slutsky Theorem，有 <span class="math inline">\(\sqrt{n}(\bar{X_n}-\mu)/S \to
+N(0,1)\)</span>。这个形式是用在 <span class="math inline">\(\sigma\)</span> 未知的场合下进行假设检验的。</p>
+<p>以上二者均依分布收敛。</p>
+<ul>
+<li><p>Test <span class="math inline">\(\mu_1 -\mu_2\)</span> when <span class="math inline">\(\sigma_1 ^2,\sigma_2 ^2\)</span> unknown, and m, n
+are both large enough</p>
+<p>由 CLT 和 Slutsky Theorem，可知在 <span class="math inline">\(H_0:\mu_1 -\mu_2 =\mu_0\)</span> 条件下，<span class="math inline">\(U=\frac{\bar{Y}-\bar{X}-\mu_0}{\sqrt{S_X ^2 /m+
+S_Y ^2 /n}} \to N(0,1)\)</span>。对其假设检验，得到双尾检验的 Rejection
+Region 是 <span class="math inline">\(D=\lbrace
+(X_1,...,X_m,Y_1,...,Y_n) | |U|&gt;z_{\alpha /2}
+\rbrace\)</span>。</p></li>
+<li><p>Test the mean <span class="math inline">\(\theta\)</span> of
+<span class="math inline">\(B(1,\theta)\)</span> when n is large
+enough</p>
+<p>由 CLT 可知在 <span class="math inline">\(H_0:\theta =
+\theta_0\)</span> 条件下，<span class="math inline">\(U=\frac{\sqrt{n}(\bar{X}-\theta_0)}{\sqrt{\theta_0(1-\theta_0)}}
+\to N(0,1)\)</span>，双尾检验的 Rejection Region 为 <span class="math inline">\(D=\lbrace (X_1,...,X_n) | |U| &gt; z_{\alpha /2}
+\rbrace\)</span>。</p></li>
+<li><p>Test the mean <span class="math inline">\(\theta\)</span> of
+<span class="math inline">\(P(\theta)\)</span> when n is large
+enough</p>
+<p>由 CLT 可知在 <span class="math inline">\(H_0:\theta =
+\theta_0\)</span> 条件下，<span class="math inline">\(U
+=\frac{\sqrt{n}(\bar{X}-\theta_0)}{\sqrt{\theta_0}} \to
+N(0,1)\)</span>，双尾检验的 Rejection Region 为 <span class="math inline">\(D=\lbrace (X_1,...,X_n) | |U| &gt; z_{\alpha /2}
+\rbrace\)</span>。</p></li>
+</ul>
+<h1 id="homework-5">Homework 5</h1>
+<p>略麻烦，我不是很懂那个 <span class="math inline">\(B(1,\theta)\)</span>
+的自主检验方法，蹲一个标答。</p>
+<h1 id="lecture-10">Lecture 10</h1>
+<p>老师发着烧还坚持上课，辛苦了 qwq</p>
+<p>本节继续介绍 Hypothesis Testing，但是使用 Likelihood Ratio 方法。</p>
+<h2 id="likelihood-ratio-test-lrt">Likelihood Ratio Test (LRT)</h2>
+<p>我们之前知道，解 MLE 方法的原理是 Likelihood Function 的值越大，说明
+<span class="math inline">\(\theta\)</span> 作为参数的可能性越大。在
+Hypothesis Test 中也可以通过 <span class="math inline">\(H_0,H_1\)</span> 的 maximum likelihood 得到最佳的
+<span class="math inline">\(\theta\)</span>，从而对 <span class="math inline">\(H_0,H_1\)</span> 做判断。</p>
+<p>为了方便后续的计算，我们先给出：对于一个 random sample <span class="math inline">\(X_1,...,X_n i.i.d. \sim N(\mu,\sigma
+^2)\)</span>，在 MLE 那一讲已经求得，其 <span class="math inline">\(\hat{\mu}_{MLE} = \bar{X}\)</span> 是 sample
+mean，但 <span class="math inline">\(\hat { \sigma } _{MLE} ^2\)</span>
+不是 sample variance，而是 <span class="math inline">\(\frac {1} {n}
+\Sigma _{ i=1 } ^n (x _i - \mu) ^2\)</span>。</p>
+<h3 id="likelihood-ratio-method">Likelihood Ratio Method</h3>
+<ul>
+<li><p><span class="math inline">\(H_0:\theta =\theta_0 \leftrightarrow
+H_1:\theta =\theta_1\)</span>，一个不是非常寻常的 hypothesis test。</p>
+<p>考虑 <span class="math inline">\(\frac{L(\theta_0; x)}{L(\theta_1;
+x)} &lt;c\)</span> 时 reject <span class="math inline">\(H_0\)</span>。显然，如果 accept <span class="math inline">\(H_1\)</span>，则说明全域 <span class="math inline">\(\Theta\)</span> 上的最佳参数是 <span class="math inline">\(\theta_1\)</span>，也即它是 MLE，使得 <span class="math inline">\(L(\theta_1;x)&gt;L(\theta_0;x)\)</span>
+成立。于是在 hypothesis test 中放松些要求，考虑 <span class="math inline">\(\frac{L(\theta_0; x)}{L(\theta_1; x)}
+&lt;c\)</span> 时 Reject <span class="math inline">\(H_0\)</span>。</p></li>
+<li><p>推广到 <span class="math inline">\(H_0:\theta \in \Theta_0
+\leftrightarrow H_1:\theta \in \Theta_1\)</span></p>
+<p>考虑 <span class="math inline">\(\frac{sup_{\theta \in \Theta_0}
+L(\theta;x)}{sup_{\theta \in \Theta_1} L(\theta;x)} &lt;c\)</span> 时
+reject <span class="math inline">\(H_0\)</span>。这个想法也很自然，<span class="math inline">\(sup_{\theta \in \Theta} L(\theta;x)\)</span>
+对应的 <span class="math inline">\(\theta\)</span> 就是 <span class="math inline">\(\Theta\)</span> 域中最佳的参数取值。</p>
+<p>实际上，我们可以把 <span class="math inline">\(sup _{\theta \in
+\Theta _0 } L(\theta ; x )\)</span> 记作 <span class="math inline">\(L(
+\hat { \theta } _{MLE ; 0} )\)</span>。</p>
+<p>同样地，把 <span class="math inline">\(sup _{\theta \in \Theta }
+L(\theta;x)\)</span> 记作 $ L( _{MLE} )$。</p>
+<p>于是当 <span class="math inline">\(L(\hat{\theta} _{MLE; 0}
+)\)</span> / $ L( _{MLE} )$ 接近于 <span class="math inline">\(1\)</span> 时，<span class="math inline">\(H_0\)</span> 更有可能是对的；如果 <span class="math inline">\(L(\hat{\theta} _{MLE; 0} )\)</span> / <span class="math inline">\(L(\hat{\theta} _{MLE} )\)</span> 距离 <span class="math inline">\(1\)</span> 比较远，就更有可能是错的。</p></li>
+<li><p>记 likelihood ratio 为 <span class="math inline">\(\lambda (x) =
+L(\hat{\theta} _{MLE; 0} )\)</span> / <span class="math inline">\(L(\hat{\theta} _{MLE} )\)</span> ，于是当 <span class="math inline">\(\lambda(x)&lt;\lambda_0\)</span> 时 reject <span class="math inline">\(H_0\)</span>，其中 <span class="math inline">\(\lambda_0\)</span> 是一个等待被决定的常数。</p>
+<p>决定这个常数的过程和上一讲的操作基本上是一样的。一般来说，我们会把
+reject <span class="math inline">\(H_0\)</span> 的条件等价地写成：<span class="math inline">\(-2 log \lambda &gt; C(=-2log
+\lambda_0)\)</span>，然后对于 continuous / discrete distribution
+进行讨论。</p>
+<p>对于 non-randomized test，<span class="math inline">\(\varphi (x) =
+I_{\lbrace \lambda &lt; \lambda_0 \rbrace}\)</span>，考虑 <span class="math inline">\(\pi(x) = E_\theta \varphi(X) \leq
+\alpha\)</span>。</p>
+<p>对于 randomized test，在 <span class="math inline">\(\lambda=\lambda_0\)</span> 处插入 <span class="math inline">\(\varphi(x)=r\)</span>，<span class="math inline">\(r\)</span> 是一个 <span class="math inline">\((0,1)\)</span> 上的值即可。</p></li>
+</ul>
+<h2 id="单-population-上样本的-lrt">单 Population 上样本的 LRT</h2>
+<figure>
+<img src="https://s2.loli.net/2022/12/15/MjSnHVXGrFRKC5e.jpg" alt="1.jpg">
+<figcaption aria-hidden="true">1.jpg</figcaption>
+</figure>
+<h2 id="单-normal-distribution-上样本的-lrt">单 Normal Distribution
+上样本的 LRT</h2>
+<figure>
+<img src="https://s2.loli.net/2022/12/15/6dSaf9e4kvFW2OR.jpg" alt="2.jpg">
+<figcaption aria-hidden="true">2.jpg</figcaption>
+</figure>
+<h2 id="双-normal-distribution-上样本的-lrt">双 Normal Distribution
+上样本的 LRT</h2>
+<p>饶了我罢。</p>
+<p>PPT 第 27-36 页，自行查阅，此处略过。</p>
+<h2 id="limiting-distribution-of-lr">Limiting Distribution of LR</h2>
+<ul>
+<li><p>如果 <span class="math inline">\(\Theta\)</span> 的维度为 <span class="math inline">\(k\)</span> 严格大于 <span class="math inline">\(\Theta_0\)</span> 的维度 <span class="math inline">\(s\)</span>，分布的 PDF
+符合正则条件，则对于检验问题 <span class="math inline">\(H_o:\theta \in
+\Theta_0 \leftrightarrow H_1 : \theta \in \Theta_1\)</span>，在 <span class="math inline">\(H_0\)</span> 条件下，当 <span class="math inline">\(n \to \infty\)</span> 时有 <span class="math inline">\(-2log \lambda(X) \to \chi _t ^2\)</span>
+依分布收敛，<span class="math inline">\(t=n-s\)</span>。</p></li>
+<li><p>Example 1：</p>
+<figure>
+<img src="https://s2.loli.net/2022/12/15/fBSli5xwI4Kt2Jh.jpg" alt="3.jpg">
+<figcaption aria-hidden="true">3.jpg</figcaption>
+</figure></li>
+<li><p>总的来说，对于一个大样本，我们对 <span class="math inline">\(H_0:\theta \in \Omega_0 \leftrightarrow H_1:\theta
+\notin \Omega_0\)</span> 进行 LRT 时，LR 即为 <span class="math inline">\(\lambda=\frac{max_{\theta \in \Omega_0}
+L(\theta)}{max_{\theta \in \Omega} L(\theta)}\)</span> 且使得 <span class="math inline">\(-2log\lambda \to \chi_t ^2\)</span>。于是 reject
+<span class="math inline">\(H_0\)</span> 的条件即为 <span class="math inline">\(-2log \lambda&gt;-2log \lambda_0=\chi_{t,\alpha}
+^2\)</span>，由此可以确定 <span class="math inline">\(\lambda_0\)</span>。</p></li>
+<li><p>Application: (Hardy-Weinberg equilibrium) 一个基因可以表达为
+<span class="math inline">\(A\)</span> 或者 <span class="math inline">\(a\)</span>，组合成为 <span class="math inline">\(AA,Aa,aa\)</span>
+之一。对于观察到的基因样本，我们已知一个样本量为 <span class="math inline">\(n\)</span> 的样本中每种基因的个数，记为 <span class="math inline">\(N_{AA},N_{Aa},N_{aa}\)</span>。希望通过这一数据，推算出基因表达为
+<span class="math inline">\(A\)</span> 的概率 <span class="math inline">\(\theta\)</span>。（以我高一上学期生物期中考试 42
+分的水平勉强表达完了题面，真不懂这个东西）考虑如下：</p>
+<ul>
+<li><p>Hardy-Weinberg equilibrium 的 null hypothesis 为：<span class="math inline">\(H_0: p_{AA}=\theta^2\)</span>，<span class="math inline">\(p_{Aa}=2\theta (1-\theta)\)</span>，<span class="math inline">\(p_{aa}=(1-\theta)^2\)</span> 对某个 <span class="math inline">\(\theta \in (0,1)\)</span> 成立。对应的 alternative
+hypothesis 即为 otherwise。用 LRT 进行检验：</p></li>
+<li><p><span class="math inline">\(\Theta_0=\lbrace
+(p_{AA},p_{Aa},p_{aa} )| p_{AA}=\theta^2\)</span>，<span class="math inline">\(p_{Aa}=2\theta (1-\theta)\)</span>，<span class="math inline">\(p_{aa}=(1-\theta)^2 \rbrace\)</span>
+是一维的，因为变量实际上只有 <span class="math inline">\(\theta\)</span>。</p>
+<p><span class="math inline">\(\Theta=\lbrace (p_{AA},p_{Aa},p_{aa} )|
+p_{AA}+p_{Aa}+p_{aa}=1\rbrace\)</span>
+是二维的，因为它由一个线性式决定。故 <span class="math inline">\(t=n-s=1\)</span>。</p></li>
+<li><p>于是 $ =( { <em>{AA} })^{N </em>{AA} }$ <span class="math inline">\(( \frac{ \hat{p} _{0,Aa} } {\hat{p} _{Aa} }) ^{N
+_{Aa} }\)</span> <span class="math inline">\((\frac{\hat{p} _{0,aa} }
+{\hat{p} _{aa} } ) ^{N _{aa} }\)</span>。</p></li>
+<li><p>Full-model MLE 是 <span class="math inline">\(\hat{p} _{AA}=N
+_{AA} /n\)</span>，<span class="math inline">\(\hat{p} _{Aa}=N
+_{Aa}/n\)</span>，<span class="math inline">\(\hat{p} _{aa}=N
+_{aa}/n\)</span>。</p></li>
+<li><p>而 sub-model 的 MLE 可以计算 Likelihood Function 得到，为 <span class="math inline">\(\hat{\theta} =
+\frac{2N_{AA}+N_{Aa}}{2n}\)</span>。</p>
+<p>对应可求得 <span class="math inline">\(\hat{p}
+_{0,AA}\)</span>，<span class="math inline">\(\hat{p}
+_{0,Aa}\)</span>，<span class="math inline">\(\hat{p}
+_{0,aa}\)</span>，再代入 <span class="math inline">\(-2log\lambda \to
+\chi_1 ^2\)</span> 就可以求出 rejection region，是一个 <span class="math inline">\(\chi^2\)</span> 检验的形式。</p></li>
+</ul></li>
+</ul>
+<h2 id="summary-1">Summary</h2>
+<p>没想到今天又熬了个通宵学统推，很酣畅淋漓的感觉。问就是生活在东四区。</p>
+<p>沃日，修炸掉的 LaTeX 又修了半个小时， 这下快到东三区了。</p>
+<p>LRT 的内容其实说白了和费尽心思找 test statistic 的 Hypothesis Test
+求法没有区别，最后困难的点还是收敛到了找参数上面。LRT 是借助 level of
+significance 以及视 <span class="math inline">\(\lambda(x)\)</span> 为
+rejection region 的雏形来找 <span class="math inline">\(\lambda_0\)</span>，上一讲的检验找的是分位数，差不多的事。</p>
+<h1 id="lecture-11">Lecture 11</h1>
+<p>Hypothesis Test 的最后一讲，关于 Universal Most Powerful
+Test，理解起来真的很折磨王。</p>
+<h2 id="ump-test">UMP Test</h2>
+<ul>
+<li><p>Definition：对于某些特定的 hypothesis：<span class="math inline">\(H_0: \theta \in \Theta_0 \leftrightarrow H_1 :
+\theta \in \Theta_1\)</span>，如果 power function 在 <span class="math inline">\(\Theta_0\)</span> 上的取值满足 <span class="math inline">\(\beta _{\varphi} (\theta)=E _\theta [\varphi (X)]
+\leq \alpha, \forall \theta \in \Theta_0\)</span>，则记 test function
+<span class="math inline">\(\varphi(x)\)</span> 是一个 level <span class="math inline">\(\alpha\)</span> test。</p>
+<p>此时，记 <span class="math inline">\(\Phi _{\alpha} = \lbrace \forall
+\varphi (x): \beta _{\varphi} (\theta) \leq \alpha , \theta \in \Theta_0
+\rbrace\)</span> 是一系列满足 power function
+的检验，如果其中存在某个检验 <span class="math inline">\(\varphi ^* (x)
+\in \Phi _{\alpha}\)</span> 使得对任意的 <span class="math inline">\(\varphi (x)\)</span>，有 power function 在 <span class="math inline">\(\Theta_1\)</span> 上的任意取值也满足 <span class="math inline">\(\beta _{\varphi ^*} (\theta) \geq \beta _{\varphi
+} (\theta)\)</span>，那么称检验 <span class="math inline">\(\varphi ^*
+(x)\)</span> 是一个 uniformly most powerful level <span class="math inline">\(\alpha\)</span> test。</p>
+<p>说人话：对于一些 Type I Error 发生概率不超过 <span class="math inline">\(\alpha\)</span> 的检验，其中 Type II Error
+也最小（也就是说 <span class="math inline">\(\beta(\theta)\)</span> 在
+<span class="math inline">\(\theta \in \Theta_1\)</span>
+上取值总是最大）的那个就是 UMP test。</p></li>
+<li><p>Neyman-Pearson Lemma 是一个在双单假设检验中寻找 UMP test
+的充要条件。定理叙述为：</p>
+<p>对于 Hypothesis <span class="math inline">\(H_0: \theta = \theta_0
+\leftrightarrow H_1 : \theta = \theta _1\)</span>，分布对应 PDF 或 PMF
+为 <span class="math inline">\(f(x | \theta_i)\)</span>，有某个 test
+满足以下条件：</p>
+<ul>
+<li>如果 <span class="math inline">\(\frac{f(x|\theta _1)}{f(x|\theta
+_2)} &gt; k\)</span>，则有 <span class="math inline">\(x \in
+D\)</span>，样本在 <span class="math inline">\(H_0\)</span> 的 rejection
+region 中。</li>
+<li>如果 <span class="math inline">\(\frac{f(x|\theta _1)}{f(x|\theta
+_2)} &lt; k\)</span>，则有 <span class="math inline">\(x \in
+D^c\)</span>，样本不在 <span class="math inline">\(H_0\)</span> 的
+rejection region 中。</li>
+<li><span class="math inline">\(\alpha = P _{\theta _0} (X \in D |
+H_0)\)</span>，即 Type I Error 发生的概率是 <span class="math inline">\(\alpha\)</span>。</li>
+</ul>
+<p>其中 <span class="math inline">\(k\)</span> 是某个非负数，<span class="math inline">\(\alpha\)</span> 是设定好的 level of
+significance。</p>
+<p>于是这个 test 是 UMP level <span class="math inline">\(\alpha\)</span> test。反过来对于一个 UMP
+test，也一定满足上述条件，也就是说按照 Likelihood Ratio 的范围来确定
+rejection region。</p></li>
+<li><p>Neyman-Pearson Fundamental Lemma 是一个关于 discrete distribution
+的更详细叙述。</p>
+<p>对于 Hypothesis <span class="math inline">\(H_0: \theta = \theta_0
+\leftrightarrow H_1 : \theta = \theta _1\)</span>，分布对应 PMF 为 <span class="math inline">\(f(x | \theta_i)\)</span>，样本为 <span class="math inline">\(X=(X_1,...,X_n)\)</span>，于是 test function
+记为：<span class="math inline">\(\varphi(x)\)</span> 在 <span class="math inline">\(\frac{f(x|\theta _1)}{f(x|\theta _2)} &gt;
+k\)</span> 时取 <span class="math inline">\(1\)</span>，在 <span class="math inline">\(\frac{f(x|\theta _1)}{f(x|\theta _2)} &lt;
+k\)</span> 时取 <span class="math inline">\(0\)</span>，在 <span class="math inline">\(\frac{f(x|\theta _1)}{f(x|\theta _2)} = k\)</span>
+时取 <span class="math inline">\(r\)</span>。</p>
+<p>于是存在 <span class="math inline">\(k&gt;0,0&lt;r&lt;1\)</span>
+，使得 <span class="math inline">\(E _{\theta _0} \varphi(X)= P _{\theta
+_0} [\frac{f(x|\theta _1)}{f(x|\theta _2)} &gt; k] + r P _{\theta _0}
+[\frac{f(x|\theta _1)}{f(x|\theta _2)} = k] = \alpha\)</span> ，这个
+test 是所有 level of significance 小于 <span class="math inline">\(\alpha\)</span> 的 test 的 UMP。注意上式是一个在
+<span class="math inline">\(H_0\)</span> 下的条件概率，表征 Type I Error
+的概率。在具体例子里，我们可以通过这个式子确定 <span class="math inline">\(r\)</span> 的取值。</p>
+<p>当然，如果是 continuous distribution，<span class="math inline">\(r=0\)</span>，同样做检验即可。</p></li>
+<li><p>Corollary：有三条推论，但是懒得写了。</p>
+<ul>
+<li><p>对某个 Hypothesis 的 UMP level <span class="math inline">\(\alpha\)</span> test，它的 power function 在 <span class="math inline">\(\Theta_0\)</span> 上取值是 <span class="math inline">\(\alpha\)</span>，所以在 <span class="math inline">\(\Theta_1\)</span> 上大于等于 <span class="math inline">\(\alpha\)</span>。</p></li>
+<li><p>关于充分统计量的两条。感觉不太会拿来考试就直接截个屏吧。证明也不难。</p>
+<figure>
+<img src="https://s2.loli.net/2022/12/17/PBtvDJUlqOhGp3R.png" alt="1.png">
+<figcaption aria-hidden="true">1.png</figcaption>
+</figure></li>
+</ul></li>
+<li><p>Applications：</p>
+<ul>
+<li><p>Example 1：</p>
+<figure>
+<img src="https://s2.loli.net/2022/12/17/RDNvXeBl5baAgzi.png" alt="2.png">
+<figcaption aria-hidden="true">2.png</figcaption>
+</figure>
+<p>Discussions for Example 1：</p>
+<figure>
+<img src="https://s2.loli.net/2022/12/17/b4Ffx9P1dA26yqv.png" alt="3.png">
+<figcaption aria-hidden="true">3.png</figcaption>
+</figure>
+<figure>
+<img src="https://s2.loli.net/2022/12/17/FNAmipPtHXabL5S.jpg" alt="4.jpg">
+<figcaption aria-hidden="true">4.jpg</figcaption>
+</figure>
+<p>Remark：这个很典型，从单点推广到单侧检验，但是双侧检验是行不通的。</p></li>
+<li><p>Example 2：</p>
+<figure>
+<img src="https://s2.loli.net/2022/12/17/EiyJw6PqGRHsKoC.png" alt="5.png">
+<figcaption aria-hidden="true">5.png</figcaption>
+</figure>
+<figure>
+<img src="https://s2.loli.net/2022/12/17/nQjPt3hoWD7H189.png" alt="6.png">
+<figcaption aria-hidden="true">6.png</figcaption>
+</figure>
+<p>Remark：因为会做所以就不手写了，截个图当存档。可以当做 UMP 系列中
+randomized test 的范本。</p></li>
+<li><p>Example 3：</p>
+<figure>
+<img src="https://s2.loli.net/2022/12/17/86Ri75gPjQSnlfh.png" alt="7.png">
+<figcaption aria-hidden="true">7.png</figcaption>
+</figure>
+<figure>
+<img src="https://s2.loli.net/2022/12/17/g9fpOdqFRrLPitW.jpg" alt="8.jpg">
+<figcaption aria-hidden="true">8.jpg</figcaption>
+</figure>
+<p>Remark：最后一问下次再看看。</p></li>
+</ul></li>
+</ul>
+<h2 id="ump-test-问题的常见规约">UMP Test 问题的常见规约</h2>
+<p>在上面的 Application Examples 里面我们看到，UMP Test
+问题有很多规约情况，可以通过两个单点 hypothesis
+先归到一个单点，再推广到双区间情况。也有时候双侧检验不能规约。下面对于一般的情况进行讨论。</p>
+<ul>
+<li><p><span class="math inline">\(\varphi (x)\)</span> 是 hypothesis
+<span class="math inline">\(H_0 : \theta = \theta _0 \leftrightarrow H_1
+: \theta = \theta _1 (\theta _1 &gt; \theta _0)\)</span> 的一个 <span class="math inline">\(\alpha\)</span> level 检验。如果 <span class="math inline">\(\varphi(x)\)</span> 的取值不依靠 <span class="math inline">\(\theta _1\)</span> 而存在，则上述 hypothesis
+可以推广到 <span class="math inline">\(H_0 : \theta = \theta _0
+\leftrightarrow H_1 : \theta &gt; \theta _0\)</span> 形式。</p></li>
+<li><p>Example 1：</p>
+<figure>
+<img src="https://s2.loli.net/2022/12/17/ZF5RbupI9cnwrXe.png" alt="9.png">
+<figcaption aria-hidden="true">9.png</figcaption>
+</figure>
+<figure>
+<img src="https://s2.loli.net/2022/12/17/bgRXpMVjwQltSus.jpg" alt="10.jpg">
+<figcaption aria-hidden="true">10.jpg</figcaption>
+</figure>
+<p>Remark：第二问里面是一个双侧检验，但是 rejection region
+仍然是单侧的。说明二者之间没有必然的关系。</p></li>
+<li><p>Example 2：</p>
+<figure>
+<img src="https://s2.loli.net/2022/12/17/S5qMUjbpfxisAvh.png" alt="11.png">
+<figcaption aria-hidden="true">11.png</figcaption>
+</figure>
+<figure>
+<img src="https://s2.loli.net/2022/12/17/oKnPhzvRxJgL5Xp.jpg" alt="12.jpg">
+<figcaption aria-hidden="true">12.jpg</figcaption>
+</figure></li>
+<li><p>Summary：做一般复合假设的 MP 的步骤，general hypothesis 记为
+<span class="math inline">\(H_0: \theta \in \Theta _0 \leftrightarrow
+H_1: \theta \in \Theta _1\)</span>。</p>
+<ul>
+<li>在 <span class="math inline">\(\Theta _0\)</span> 里寻找一个尽量靠近
+<span class="math inline">\(\Theta _1\)</span> 的点 <span class="math inline">\(\theta _0\)</span>，在 <span class="math inline">\(\Theta _1\)</span> 里同样找一个 <span class="math inline">\(\theta _1\)</span>。</li>
+<li>按照 NP lemma 来建立一个关于 <span class="math inline">\(H_0: \theta
+= \theta _0 \leftrightarrow H_1: \theta =\theta _1\)</span> 的 MP，记为
+<span class="math inline">\(\varphi _{\theta _1}\)</span>。</li>
+<li>如果 <span class="math inline">\(\varphi _{\theta _1}\)</span> 关于
+<span class="math inline">\(\theta _1\)</span> 独立，则它可以扩充到
+<span class="math inline">\(H_0: \theta =\theta _0 \leftrightarrow H_1:
+\theta \in \Theta _1\)</span> 的 UMP。</li>
+<li>想要再扩充到 <span class="math inline">\(H_0: \theta \in \Theta _0
+\leftrightarrow H_1: \theta \in \Theta _1\)</span> 的话，需要检验 power
+function 在 <span class="math inline">\(\Theta_0\)</span>
+里的取值，也即验证 <span class="math inline">\(E _\theta \varphi (X)
+\leq \alpha,\theta \in \Theta_0\)</span>。一般来说，如果 power function
+是单调的，这个条件比较容易满足，而这在单参数指数分布族中比较常见。</li>
+<li>以上方法对单维度参数可行，且要求参数空间在 <span class="math inline">\(R\)</span> 上。分布属于单参数指数分布族。</li>
+</ul></li>
+<li><p>Fun Fact：实际上是先有了 N-P Lemma，人们才回头构造了 Likelihood
+Ratio Test，最后才有最开始学习的 F-test，t-test 之类的东西。</p></li>
+</ul>
+<h2 id="hypothesis-testing-confidence-interval">Hypothesis Testing &amp;
+Confidence Interval</h2>
+<p>之前做题的时候一直感觉到这二者之间有关系，下面用定理和一个简单的一菜两吃（x）的例子详细说一下为什么其实是一回事，也作为
+hypothesis testing 学习的尾声。</p>
+<ul>
+<li><p>Example：</p>
+<figure>
+<img src="https://s2.loli.net/2022/12/17/vyAtcbTPdrGn6Zx.png" alt="13.png">
+<figcaption aria-hidden="true">13.png</figcaption>
+</figure>
+<figure>
+<img src="https://s2.loli.net/2022/12/17/swD64V32gBTZG7t.jpg" alt="14.jpg">
+<figcaption aria-hidden="true">14.jpg</figcaption>
+</figure></li>
+<li><p>Summary：实际上我们再看这个过程。以寻找 CI 为例。</p>
+<ul>
+<li><p>把目标转化为 Test the hypothesis： <span class="math inline">\(H_0: \theta = \theta _0 \leftrightarrow H_1:
+\theta \neq \theta _0\)</span>，要求 level of significance 为 <span class="math inline">\(\alpha\)</span>。然后来计算 <span class="math inline">\(\theta\)</span> 的 confidence interval <span class="math inline">\([\hat{\theta} _1 (X),\hat{\theta} _2
+(X)]\)</span>，有 confidence level 为 <span class="math inline">\(1-\alpha\)</span>。</p></li>
+<li><p>在 <span class="math inline">\(H_0\)</span> 条件下，如果 <span class="math inline">\(\theta \notin [\hat{\theta} _1 (X),\hat{\theta} _2
+(X)]\)</span>，我们就 reject <span class="math inline">\(H_0\)</span>。这一概率是 Type I Error 概率：</p>
+<p><span class="math inline">\(P(reject | H_0)=P_{\theta _0}(\theta _0
+\notin [\hat{ \theta } _1 (X), \hat { \theta } _2 (X) ]) = 1 - P _{
+\theta _0} ( \theta _0 \in [\hat{ \theta} _1 (X),\hat{ \theta} _2 (X)])
+= \alpha\)</span></p></li>
+<li><p>所以 <span class="math inline">\([\hat{\theta} _1
+(X),\hat{\theta} _2 (X)]\)</span> 是一个以 confidence level <span class="math inline">\(1-\alpha\)</span> 的 confidence interval</p></li>
+</ul>
+<p>寻找 upper confidence limit 则检验 hypothesis：<span class="math inline">\(H_0: \theta \geq \theta _0 \leftrightarrow H_1:
+\theta &lt; \theta _0\)</span>；</p>
+<p>寻找 lower confidence limit 则检验 hypothesis：<span class="math inline">\(H_0: \theta \leq \theta _0 \leftrightarrow H_1:
+\theta &gt; \theta _0\)</span>。</p></li>
+<li><p>Theorem 1：对任意的 <span class="math inline">\(\theta \in
+\Theta\)</span>，有一个 hypothesis <span class="math inline">\(H_o:\theta = \theta _0\)</span> 的检验，它的 level
+of significance 是 <span class="math inline">\(\alpha\)</span>，而 <span class="math inline">\(H_0\)</span> 的 acceptance region 是 <span class="math inline">\(A(\theta _0)\)</span>。于是集合 <span class="math inline">\(C(X)= \lbrace \theta : X \in A(\theta)
+\rbrace\)</span> 是一个以 <span class="math inline">\(1-\alpha\)</span>
+为 confidence level 的 confidence region for <span class="math inline">\(\theta\)</span>。</p></li>
+<li><p>Theorem 2：<span class="math inline">\(C(X)\)</span> 是一个以
+<span class="math inline">\(1-\alpha\)</span> 为 confidence level 的
+confidence region for <span class="math inline">\(\theta\)</span>，也就是对任意 <span class="math inline">\(\theta _0 \in C(X)\)</span>，有 <span class="math inline">\(P[\theta _0 \in C(X) | \theta = \theta _0] = 1-
+\alpha\)</span>。于是 hypothesis <span class="math inline">\(H_0 :
+\theta = \theta _0\)</span> 的 acceptance region 是 <span class="math inline">\(A(\theta _0)=\lbrace X : \theta _0 \in C(X)
+\rbrace\)</span>，这一 test 的 level of significance 是 <span class="math inline">\(\alpha\)</span>。</p></li>
+</ul>
+<h2 id="extended-content">Extended Content *</h2>
+<p>总之就是好玩的东西。</p>
+<h3 id="monotone-likelihood-ratio">Monotone Likelihood Ratio</h3>
+<p>对于某个 sample 的充分统计量 <span class="math inline">\(T(X)\)</span>，考虑关于它的检验使得以 <span class="math inline">\(T(x)\)</span> 为 rejection region 的度量。</p>
+<h3 id="ump-in-exponential-family">UMP in Exponential Family</h3>
+<ul>
+<li><p><span class="math inline">\(X_1,X_2,...,X_n\)</span> 是一组来自
+exponential family 的 random sample，它们的 population 服从一个以 $f(x;)
+= C() h(x) exp(Q() T(x)) $ 为 PDF 的 distribution。其中，<span class="math inline">\(Q(\theta)\)</span> 是严格单调的。由 exponential
+family 的性质，我们记 <span class="math inline">\(V(x_1,...,x_n) =
+\Sigma _{i=1} ^n T(x_i)\)</span> 为一个 sufficient statistic。</p>
+<p>如果 <span class="math inline">\(Q(\theta)\)</span> 严格递增，考虑
+hypothesis <span class="math inline">\(H_0: \theta \leq \theta _0
+\leftrightarrow H_A : \theta &gt; \theta _0\)</span>，UMP test 的形式由
+test function 给出： <span class="math inline">\(V(x_1,...,x_n)&gt;C\)</span> 时 <span class="math inline">\(\varphi (x_1,...,x_n) = 1\)</span>，<span class="math inline">\(V(x_1,...,x_n)&lt;C\)</span> 时 <span class="math inline">\(\varphi (x_1,...,x_n) = 0\)</span>， <span class="math inline">\(V(x_1,...,x_n) = C\)</span> 时 <span class="math inline">\(\varphi (x_1,...,x_n) = \gamma\)</span>。根据
+level of significance 是 <span class="math inline">\(\alpha\)</span>，可以确定出 <span class="math inline">\(\gamma\)</span> 的取值。</p>
+<p>hypothesis 的形式为 <span class="math inline">\(H_0: \theta \geq
+\theta _0 \leftrightarrow H_A : \theta &lt; \theta _0\)</span>
+的做法类似，<span class="math inline">\(Q(\theta)\)</span>
+单调递减时的操作也类似。</p></li>
+<li><p>可以这么做的原因是，这和使用 likelihood function
+的结果是一样的。</p>
+<p>先考虑单点 hypothesis <span class="math inline">\(H_0: \theta =
+\theta _0 \leftrightarrow H_A : \theta = \theta _1(\theta _1 &gt; \theta
+_0)\)</span>，此时有 <span class="math inline">\(\lambda (x)=\frac{f(x;
+\theta _1)} {f(x; \theta _0)}\)</span> 是关于 <span class="math inline">\(V(x)\)</span> 严格单调的，由此可以给出单点处的 MP
+Test，它不依赖于 <span class="math inline">\(\theta _1\)</span>，可以把
+<span class="math inline">\(H _A\)</span> 延拓到 <span class="math inline">\(\theta &gt; \theta _0\)</span>。而 power function
+在 <span class="math inline">\(\Theta _0\)</span> 上是关于 <span class="math inline">\(\theta\)</span> 单调的，可以再把 <span class="math inline">\(H_0\)</span> 延拓到 <span class="math inline">\(\theta \leq \theta _0\)</span>。</p></li>
+<li><p>Example 1：The Binomial Case</p>
+<figure>
+<img src="https://s2.loli.net/2022/12/17/ZO2Bn9E4PWrMdtc.png" alt="15.png">
+<figcaption aria-hidden="true">15.png</figcaption>
+</figure>
+<figure>
+<img src="https://s2.loli.net/2022/12/17/2jpb3uU1qEtGl5L.png" alt="16.png">
+<figcaption aria-hidden="true">16.png</figcaption>
+</figure>
+<figure>
+<img src="https://s2.loli.net/2022/12/17/rwAIq67U5Jl9FsK.png" alt="17.png">
+<figcaption aria-hidden="true">17.png</figcaption>
+</figure></li>
+</ul>
+<h1 id="homework-6">Homework 6</h1>
+<p>破事挺多啊</p>
+<p>助教在干啥助教为什么不批作业了（</p>
+<h1 id="lecture-12">Lecture 12</h1>
+<p>最后一课，介绍一些分布未知时的处理方法，称为非参数检验。</p>
+<h2 id="sign-test">Sign Test</h2>
+<ul>
+<li><p>对于 paired data 的检验。</p>
+<p>假定 <span class="math inline">\(X=(X_1,...,X_n),Y=(Y_1,...,Y_n)\)</span>
+是已知的两组数据，希望知道二者之间有没有显著差异，即 hypothesis 为 <span class="math inline">\(H_0: \mu = 0 \leftrightarrow H_1 : \mu \neq
+0\)</span>，其中记 <span class="math inline">\(Z_i = Y_i - X_i,\mu =
+E(Z_i)\)</span>。</p>
+<p>实际上我们也可以通过 two sample t test 进行操作，假设 <span class="math inline">\(X,Y\)</span>
+是正态分布的。但是这样做精度不高，而且无法突出两组数据的特征，尤其是在有明显偏离的数据上，non-parametric
+test 表现更好。</p>
+<p>说回主题，在 sign test 中我们可以赋予每一个 data 一个 sign
+值，以祈这一组 sign 值近似于某一分布。最简单的方式就是按照 data
+的正负性来赋值，记 <span class="math inline">\(n_+\)</span> 为 sign
+的正值数量，<span class="math inline">\(n_-\)</span> 为负值数量，舍弃
+<span class="math inline">\(0\)</span> 值。于是有 <span class="math inline">\(n_0 = n_+ + n _-\)</span>，且 <span class="math inline">\(n_+ \sim B( n_0 , \theta)\)</span>，原假设即转化为
+<span class="math inline">\(H_0 : \theta = 0.5 \leftrightarrow H_1 :
+\theta \neq 0.5\)</span>，变成了熟悉的检验形式。</p></li>
+<li><p>Example for paired test</p>
+<figure>
+<img src="https://s2.loli.net/2022/12/22/FjSmXYCIPRvQHwD.png" alt="1.png">
+<figcaption aria-hidden="true">1.png</figcaption>
+</figure>
+<figure>
+<img src="https://s2.loli.net/2022/12/22/vudYjS1GK7eBEq4.png" alt="2.png">
+<figcaption aria-hidden="true">2.png</figcaption>
+</figure></li>
+<li><p>Test median of population</p>
+<p>通过一个样本来找某一 population 的中位数，也可以通过 sign test
+进行，放一个例子在这里，就不细说了。</p>
+<figure>
+<img src="https://s2.loli.net/2022/12/22/b5DGMflA1I9SKti.png" alt="3.png">
+<figcaption aria-hidden="true">3.png</figcaption>
+</figure>
+<figure>
+<img src="https://s2.loli.net/2022/12/22/sI5GdYKJR3P7Dbv.png" alt="4.png">
+<figcaption aria-hidden="true">4.png</figcaption>
+</figure>
+<p>Remark：实际上在这个例子里，取 median 为 1.39 也不影响检验结果。sign
+test 对具体数据的表现能力较弱，实际上是 low power 的。</p></li>
+</ul>
+<h2 id="wilcoxon-signed-rank-sum-test">Wilcoxon Signed Rank Sum
+Test</h2>
+<p>这个东西很好玩，但是考试暂时不考，码的成分又比较大，而且理论部分我想后面再研究研究再写，先跳过了。</p>
+<h2 id="goodness-of-fit-test">Goodness of Fit Test</h2>
+<p>难得遇到一个我早就考虑过的问题，大概是高一上生物课的时候，讲孟德尔种豌豆发现某些基因表达的比例大概是
+<span class="math inline">\(9:3:3:1\)</span>。我就很好奇这个是怎么近似出来的，你总不能只告诉我“看着很像”吧。Goodness
+of fit test 大概就是解决这一类问题。</p>
+<ul>
+<li><p>设 <span class="math inline">\(X=(X_1,...,X_n)\)</span>
+是来自某一 population 的随机样本，<span class="math inline">\(F\)</span>
+是一个给定的分布，也叫做 theoretical distribution，我们想要验证 <span class="math inline">\(H_o: X \sim F\)</span> 这一假设。</p>
+<p>首先我们需要进行一些量化，来反映某个 statistic 什么情况下能代表 <span class="math inline">\(X \sim F\)</span>。也就是说，要定义一个 quantity
+<span class="math inline">\(D=D(X_1,X_2,...,X_n,F)\)</span> 使得在 <span class="math inline">\(D \geq c\)</span> 时 reject <span class="math inline">\(H_0\)</span>。这时定义 goodness-of-fit 的程度为
+<span class="math inline">\(p(d_0) = P(D \geq d_0 | H_0)\)</span>，<span class="math inline">\(d_0\)</span> 是确切样本下 <span class="math inline">\(D\)</span> 的观测值。</p></li>
+<li><p>Pearson <span class="math inline">\(\chi ^2\)</span> test for
+discrete F</p>
+<p>令 <span class="math inline">\(X=(X_1,X_2,...,X_n)\)</span> 是
+population <span class="math inline">\(X\)</span>
+中的一个随机样本，theoretical distribution <span class="math inline">\(F\)</span> 为一个离散分布，其 PMF 为 <span class="math inline">\(f(a_i)=p_i,\Sigma _{i=1} ^r p_i =1\)</span>。于是
+hypothesis 转化为 <span class="math inline">\(H_0: P(X=a_i) =
+p_i,i=1,2,...,r\)</span>。</p>
+<p>记 <span class="math inline">\(v_i\)</span> 是样本中观察到的 <span class="math inline">\(a_i\)</span> 的出现次数，于是 <span class="math inline">\(\Sigma _{i=1} ^r v_i= n\)</span>，<span class="math inline">\(v_i\)</span> 是自然数。在 <span class="math inline">\(H_0\)</span> 条件下，当 <span class="math inline">\(n\)</span> 足够大时，有频率 <span class="math inline">\(\frac { v_i }{n} \to p_i\)</span>。于是我们用
+<span class="math inline">\(K_n = \Sigma _{i =1} ^r c_i (\frac {v_i}{n}
+-p_i) = \Sigma _{i=1} ^r \frac{(v_i - np_i) ^2}{np_i }\)</span>
+作为衡量的指标，其中的系数 <span class="math inline">\(c_i = \frac{n}
+{p_i }\)</span>。</p>
+<p>这一指标的好处在于，在 <span class="math inline">\(H_0\)</span>
+条件下，当 $n $ 时有 <span class="math inline">\(K_n \to \Chi _{r-1}
+^2\)</span>。所以称为 Pearson <span class="math inline">\(\chi
+^2\)</span> test。</p></li>
+<li><p>Example 1：</p>
+<figure>
+<img src="https://s2.loli.net/2022/12/22/AVR9xkrwIlMyNhm.png" alt="5.png">
+<figcaption aria-hidden="true">5.png</figcaption>
+</figure></li>
+<li><p>Pearson <span class="math inline">\(\chi ^2\)</span> test for
+continuous F</p>
+<p>这和数值分析里面那个差分技巧还挺像的，分割区间然后强行转成 discrete
+distribution 就可以了。取 <span class="math inline">\(r-1\)</span>
+个常数 <span class="math inline">\(a_0 = -\infty &lt; a_1 &lt; a _2
+&lt;...&lt; a _{r-1} &lt; + \infty = a _r\)</span>，就把区间分割成了
+<span class="math inline">\(r\)</span> 段（注意它们的起和止，除了 <span class="math inline">\(I_r\)</span> 之外都是左开右闭的）：<span class="math inline">\(I _1 = (- \infty , a _1], I_2 = (a_1, a_2],..., I
+_r = (a _{r-1} , \infty)\)</span>。再记 <span class="math inline">\(p_j
+= P _F(X \in I_j) = F(a_j) - F(a _{j-1})\)</span> 即可做出假设：<span class="math inline">\(H_0 : P(X \in I_j) =
+p_j,j=1,2,...,r\)</span>。</p>
+<p>类似地给出衡量指标 <span class="math inline">\(K_n = \Sigma _{i =1}
+^r c_i (\frac {v_i}{n} -p_i) = \Sigma _{i=1} ^r \frac{(v_i - np_i)
+^2}{np_i }\)</span>，在 <span class="math inline">\(H_0\)</span>
+条件下，当 $n $ 时有 <span class="math inline">\(K_n \to \Chi _{r-1}
+^2\)</span>。</p>
+<p>Remark：可以看到这个操作的近似程度做得比较多，所以有几点注意事项。</p>
+<ul>
+<li>关于 <span class="math inline">\(r\)</span>
+的选择。理论上和实际观测到的 frequency <span class="math inline">\(v_i\)</span> 不能小于 <span class="math inline">\(5\)</span>，否则应当合并相邻的区间。</li>
+<li>不能根据得到的 sample 来划定 <span class="math inline">\(a_i\)</span>，这是没有普遍性的。</li>
+<li>实际上因为左右端是取到无穷的，这一区间的选择方式可能带来一定问题。</li>
+</ul></li>
+<li><p>Example 1：</p>
+<figure>
+<img src="https://s2.loli.net/2022/12/22/WgijzPlQUxEtbrm.png" alt="6.png">
+<figcaption aria-hidden="true">6.png</figcaption>
+</figure>
+<figure>
+<img src="https://s2.loli.net/2022/12/22/4oz78PmgXJ3qxfn.png" alt="7.png">
+<figcaption aria-hidden="true">7.png</figcaption>
+</figure>
+<figure>
+<img src="https://s2.loli.net/2022/12/22/waBlU8TnIVEYibs.png" alt="8.png">
+<figcaption aria-hidden="true">8.png</figcaption>
+</figure>
+<p>Remark：可以看到这里 Pearson 指标的近似分布是 <span class="math inline">\(\chi ^2 _3\)</span> 而不是 <span class="math inline">\(\chi ^2 _5\)</span>，这是因为此处的 theoretical
+distribution 参数也是未知的，是通过 MLE
+方法估计出来的。在这种情况下，Pearson 指标将收敛到 <span class="math inline">\(\chi ^2 _{r-s-1}\)</span>，其中 <span class="math inline">\(s\)</span> 是未知参数的数目。</p></li>
+</ul>
+<h2 id="contingency-table-independence">Contingency Table
+Independence</h2>
+<p>另一种问题，种豌豆的时候每一次收获的结果必然有数值上的差异，（开始认真地编数据），比如说第一次是
+<span class="math inline">\(213 : 76 : 69 : 25\)</span>，第二次是 <span class="math inline">\(254 : 85 : 89 :
+32\)</span>，那么凭什么说它们都反映了同样的比例？</p>
+<p>我们称 <span class="math inline">\(10\)</span>
+次采集豌豆统计出来的表格为 contingency table，contingency
+为偶然的意思，称这种检验为 homogeneity test，即为同质性检验。（词汇量
+++！（</p>
+<ul>
+<li><p>实际上，我们用一个高维的 <span class="math inline">\(\chi
+^2\)</span> 检验来解决问题。Contingency table 的形式如下：</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th>Category 1</th>
+<th>...</th>
+<th>Category C</th>
+<th><span class="math inline">\(\Sigma\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Group 1</td>
+<td><span class="math inline">\(N_{11}\)</span></td>
+<td>...</td>
+<td><span class="math inline">\(N_{1C}\)</span></td>
+<td><span class="math inline">\(N_{1+}\)</span></td>
+</tr>
+<tr class="even">
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td>Group R</td>
+<td><span class="math inline">\(N_{R1}\)</span></td>
+<td>...</td>
+<td><span class="math inline">\(N_{RC}\)</span></td>
+<td><span class="math inline">\(N_{R+}\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\Sigma\)</span></td>
+<td><span class="math inline">\(N_{+1}\)</span></td>
+<td>...</td>
+<td><span class="math inline">\(N_{+C}\)</span></td>
+<td><span class="math inline">\(n\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>记 <span class="math inline">\(p_{ij} = P(Category_j | Group _i) =
+\frac{N _{ij} }{N _{i+} }\)</span>，于是有 <span class="math inline">\(\Sigma _{j=1} ^C p_{ij} = \Sigma _{i=1} ^R p_{ij}
+= 1\)</span>。比较粗暴地来说，我们想要确定每一组 <span class="math inline">\(p_{ij}=p_j\)</span> 对任意的 <span class="math inline">\(i\)</span> 都是成立的，而 <span class="math inline">\(p_j = P(category _j)\)</span>。</p>
+<p>所以假设可以写成：$H_0 : p_{ij} = p_j $ 对任意的 <span class="math inline">\(i \leq R\)</span> 都成立。此时 Pearson
+指标可以写成：</p>
+<p><span class="math inline">\(\Sigma _{i=1} ^R \Sigma _{ j=1 } ^C
+\frac{(N _{ij} - N _{i+}N _{+j} /n) ^2} {N _{i+}N _{+j} /n} = n (\Sigma
+_{i=1} ^R \Sigma _{ j=1 } ^C \frac{N_{ij} }{N_{i+} N_{+j}} - 1) \to \chi
+_{(R-1)(C-1)} ^2\)</span>，这一近似在 <span class="math inline">\(R,S\)</span> 较大且符合 <span class="math inline">\(H_0\)</span> 假设的情况下是成立的。</p></li>
+<li><p>Example 1：</p>
+<figure>
+<img src="https://s2.loli.net/2022/12/22/Q9mAFDdYZUxPv6w.png" alt="9.png">
+<figcaption aria-hidden="true">9.png</figcaption>
+</figure></li>
+</ul>
+<h2 id="normality-test">Normality Test</h2>
+<p>和 Wilcoxon Test 类似的原因，暂时先咕了</p>
+<h2 id="summary-2">Summary</h2>
+<p>Non-parametric Test
+应用范围更广，毕竟一般都不知道是什么分布；在大样本情况下表现较好。</p>
+<p>Parametric Test 的 model assumption
+正确时精度很高，但是泛用性不够强。</p>
+<h1 id="完结撒花">完结撒花</h1>
+<p>证明和代码都还没有补齐，暂时称不上证明完毕。但是以考试为目标的应用部分完结了，目前称得上一个夜话团圆。</p>
+<figure>
+<img src="https://s2.loli.net/2022/12/21/6TEM1vSosXLcwOg.jpg" alt="HEA.jpg">
+<figcaption aria-hidden="true">HEA.jpg</figcaption>
+</figure>
+<h1 id="final">Final</h1>
+<p>一些简单的提示。</p>
+<ul>
+<li><p>在正态分布 <span class="math inline">\(X_1,X_2,...,X_n i.i.d.
+\sim N(\mu ,\sigma ^2)\)</span> 里，一些常用于检验的统计量及其分布：</p>
+<ul>
+<li><p><span class="math inline">\(\frac{\sqrt{n} (\bar{X} - \mu
+)}{\sigma} \sim N(0,1)\)</span>，利用正态分布的线性性质即可。</p></li>
+<li><p>记 sample mean 为 <span class="math inline">\(S^2 = \frac{1}{n-1}
+\Sigma _{i=1} ^n (X_i - \bar{X})^2\)</span>，于是有 <span class="math inline">\(\frac{(n-1)S^2} {\sigma ^2} \sim \chi _{n-1}
+^2\)</span>。</p>
+<p>另一个 Chi-square 分布是 <span class="math inline">\(\frac{nS _{\mu}
+} {\sigma ^2} = \Sigma _{i=1} ^n (\frac{X_i - \mu}{\sigma})^2 \sim \chi
+^2 _{n}\)</span>。注意区分 <span class="math inline">\(S_\mu\)</span> 和
+<span class="math inline">\(S\)</span> 的区别，前者实际上是 2-nd center
+moment，后者是 sample variance。</p></li>
+<li><p>以上计算都比较依赖 <span class="math inline">\(\sigma\)</span>，实际上 <span class="math inline">\(\frac{\sqrt{n} (\bar{X} - \mu)}{S} \sim
+t_{n-1}\)</span>，由 <span class="math inline">\(t-\)</span>
+分布的构造可以得出。</p></li>
+<li><p>大数定律下，sample variance <span class="math inline">\(S \to
+\sigma\)</span>。</p></li>
+</ul></li>
+<li><p>经典的 CI 估计</p>
+<ul>
+<li><p>单 population 下 <span class="math inline">\(X=(X_1,X_2,...,X_n)
+i.i.d. \sim N(\mu ,\sigma ^2)\)</span>，四种估计：</p>
+<p><span class="math inline">\(\mu\)</span> 已知，估计 <span class="math inline">\(\sigma\)</span>，pivot statistic 为 <span class="math inline">\(\frac{nS _{\mu} } {\sigma ^2} = \Sigma _{i=1} ^n
+(\frac{X_i - \mu}{\sigma})^2 \sim \chi ^2 _{n}\)</span></p>
+<p><span class="math inline">\(\mu\)</span> 未知，估计 <span class="math inline">\(\sigma\)</span>，pivot statistic 为 <span class="math inline">\(\frac{(n-1)S^2} {\sigma ^2} \sim \chi _{n-1}
+^2\)</span></p>
+<p><span class="math inline">\(\sigma\)</span> 已知，估计 <span class="math inline">\(\mu\)</span>，pivot statistic 为 <span class="math inline">\(\frac{\sqrt{n} (\bar{X} - \mu )}{\sigma} \sim
+N(0,1)\)</span></p>
+<p><span class="math inline">\(\sigma\)</span> 未知，估计 <span class="math inline">\(\mu\)</span>，pivot statistic 为 <span class="math inline">\(\frac{\sqrt{n} (\bar{X} - \mu)}{S} \sim
+t_{n-1}\)</span></p></li>
+<li><p>双 population 下 <span class="math inline">\(X=(X_1,...,X_m)
+i.i.d. \sim N(\mu _1,\sigma _1 ^2)\)</span>，<span class="math inline">\(Y=(Y_1,...,Y_n)i.i.d. \sim N(\mu _2,\sigma _2
+^2)\)</span>，四个参数都未知时的四种估计：</p>
+<p><span class="math inline">\(\sigma _1 ^2 = \sigma _2 ^2 = \sigma
+^2\)</span> 时估计 <span class="math inline">\(\mu_1 - \mu
+_2\)</span></p>
+<p><span class="math inline">\(\sigma _1 \neq \sigma _2\)</span>
+时渐进估计 <span class="math inline">\(\mu_1 -\mu_2\)</span> 和 <span class="math inline">\(\sigma _1 ^2 / \sigma _2 ^2\)</span></p></li>
+</ul></li>
+<li><p>Precision（精确度）：有很多种估计方法，此处取最常用的方法：mean
+interval length，即计算 <span class="math inline">\(E_{\theta}(\hat{\theta_2}-\hat{\theta
+_1})\)</span>，这个值越大说明区间越长，因此估计的精确度越差。</p>
+<p>还有 confidence coefficient 的定义。</p></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>我很可爱 请给我钱（？）</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.jpg" alt="驰雨Chiyuru 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.jpg" alt="驰雨Chiyuru 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>驰雨Chiyuru
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://chiyuru.github.io/2022/11/09/Statistical-Inference/" title="数理统计初探——统计推断">https://chiyuru.github.io/2022/11/09/Statistical-Inference/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E8%AF%BE%E7%A8%8B%E5%AE%9E%E5%BD%95/" rel="tag"># 课程实录</a>
+              <a href="/tags/%E5%88%B7%E4%B9%A6/" rel="tag"># 刷书</a>
+              <a href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag"># 数学</a>
+              <a href="/tags/%E7%BB%9F%E8%AE%A1/" rel="tag"># 统计</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/11/01/Diary-2022-11/" rel="prev" title="日记·篇三·22年11月">
+      <i class="fa fa-chevron-left"></i> 日记·篇三·22年11月
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/11/10/Statistic-Minor-Repo/" rel="next" title="统辅课程测评搬运">
+      统辅课程测评搬运 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  
+  <div class="comments">
+  <script src="https://utteranc.es/client.js" repo="Chiyuru/chiyuru.github.io" issue-term="pathname" theme="github-light" crossorigin="anonymous" async></script>
+  </div>
+  
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-1"><span class="nav-text">Lecture 1</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A0%94%E7%A9%B6%E8%8C%83%E5%9B%B4%E7%BA%A6%E5%AE%9A%E5%8F%8A%E5%9F%BA%E6%9C%AC%E5%AE%9A%E4%B9%89"><span class="nav-text">研究范围约定及基本定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%9F%E8%AE%A1%E9%87%8F"><span class="nav-text">统计量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%8F%E5%85%B8%E5%88%86%E5%B8%83%E6%9F%A5%E9%98%85"><span class="nav-text">经典分布查阅</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%A1%E6%96%B9%E5%88%86%E5%B8%83"><span class="nav-text">卡方分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#t-%E5%88%86%E5%B8%83"><span class="nav-text">\(t-\)分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#f-%E5%88%86%E5%B8%83"><span class="nav-text">\(F\) 分布</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-2"><span class="nav-text">Lecture 2</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%9F%E8%AE%A1%E9%87%8F%E5%8F%8A%E5%85%B6%E6%80%A7%E8%B4%A8"><span class="nav-text">统计量及其性质</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%B9%E6%AE%8A%E7%BB%9F%E8%AE%A1%E9%87%8F"><span class="nav-text">特殊统计量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%8F%E5%85%B8%E7%BB%93%E8%AE%BA"><span class="nav-text">经典结论</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AD%A3%E6%80%81%E5%88%86%E5%B8%83%E7%9A%84%E9%9A%8F%E6%9C%BA%E6%8A%BD%E6%A0%B7"><span class="nav-text">正态分布的随机抽样</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%87%E6%95%B0%E5%88%86%E5%B8%83%E6%97%8F"><span class="nav-text">指数分布族</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A6%82%E5%BF%B5"><span class="nav-text">概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E7%84%B6%E6%8C%87%E6%95%B0%E5%88%86%E5%B8%83%E6%97%8F"><span class="nav-text">自然指数分布族</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%8D%E7%BD%AE%E4%B8%8E%E5%B0%BA%E5%BA%A6%E6%97%8F"><span class="nav-text">位置与尺度族</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#delta-method-application-only"><span class="nav-text">Delta Method (Application
+Only)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E5%AE%9A%E7%90%86%E6%9F%A5%E9%98%85"><span class="nav-text">其他定理查阅</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B"><span class="nav-text">大数定律</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86"><span class="nav-text">中心极限定理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#slutskys-theorem"><span class="nav-text">Slutsky&#39;s Theorem</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#homework-1"><span class="nav-text">Homework 1</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-3"><span class="nav-text">Lecture 3</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%85%E5%88%86%E7%BB%9F%E8%AE%A1%E9%87%8F"><span class="nav-text">充分统计量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%E5%92%8C%E5%BA%94%E7%94%A8"><span class="nav-text">定义和应用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%85%E5%88%86%E7%BB%9F%E8%AE%A1%E9%87%8F%E7%9A%84%E6%80%A7%E8%B4%A8"><span class="nav-text">充分统计量的性质</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9E%81%E5%B0%8F%E5%85%85%E5%88%86%E7%BB%9F%E8%AE%A1%E9%87%8F"><span class="nav-text">极小充分统计量</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%85%E5%8A%A9%E7%BB%9F%E8%AE%A1%E9%87%8F"><span class="nav-text">辅助统计量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89"><span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%85%E5%8A%A9%E7%BB%9F%E8%AE%A1%E9%87%8F%E7%9A%84%E6%80%A7%E8%B4%A8"><span class="nav-text">辅助统计量的性质</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%8C%E5%85%A8%E7%BB%9F%E8%AE%A1%E9%87%8F"><span class="nav-text">完全统计量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89-1"><span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E6%95%B0%E6%97%8F%E4%B8%AD%E7%9A%84%E5%AE%8C%E5%85%A8%E7%BB%9F%E8%AE%A1%E9%87%8F"><span class="nav-text">指数族中的完全统计量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%8C%E5%85%A8%E7%BB%9F%E8%AE%A1%E9%87%8F%E7%9A%84%E6%80%A7%E8%B4%A8"><span class="nav-text">完全统计量的性质</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%BC%E7%84%B6%E5%8E%9F%E7%90%86"><span class="nav-text">似然原理</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-4"><span class="nav-text">Lecture 4</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#fisher-information"><span class="nav-text">Fisher Information</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89-2"><span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8E%E7%86%B5%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-text">与熵的关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%85%E5%88%86%E7%BB%9F%E8%AE%A1%E9%87%8F%E5%92%8C%E8%BE%85%E5%8A%A9%E7%BB%9F%E8%AE%A1%E9%87%8F"><span class="nav-text">充分统计量和辅助统计量</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%82%B9%E4%BC%B0%E8%AE%A1"><span class="nav-text">点估计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89-3"><span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A5%BD%E7%9A%84%E6%80%A7%E8%B4%A8"><span class="nav-text">好的性质</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%84%E4%BB%B7%E7%82%B9%E4%BC%B0%E8%AE%A1%E7%9A%84%E6%96%B9%E5%BC%8Fmse"><span class="nav-text">评价点估计的方式——MSE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B1%82%E4%BC%B0%E8%AE%A1%E9%87%8F%E7%9A%84%E6%96%B9%E6%B3%95%E7%9F%A9%E6%B3%95"><span class="nav-text">求估计量的方法——矩法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#homework-2"><span class="nav-text">Homework 2</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-5"><span class="nav-text">Lecture 5</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9E%81%E5%A4%A7%E4%BC%BC%E7%84%B6%E4%BC%B0%E8%AE%A1%E9%87%8F-mle"><span class="nav-text">极大似然估计量 (MLE)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89-4"><span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%A7%E8%B4%A8"><span class="nav-text">性质</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mle-%E7%9A%84%E6%95%B0%E5%80%BC%E8%A7%A3%E6%B3%95"><span class="nav-text">MLE 的数值解法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mle-%E7%9A%84%E5%BA%94%E7%94%A8"><span class="nav-text">MLE 的应用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-6"><span class="nav-text">Lecture 6</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#regular-condition"><span class="nav-text">Regular Condition</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#revisit-fisher-information"><span class="nav-text">Revisit Fisher Information</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#umvue"><span class="nav-text">UMVUE</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89-5"><span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%AA%8C%E8%AF%81-umvue"><span class="nav-text">验证 UMVUE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%BB%E6%89%BE-umvue"><span class="nav-text">寻找 UMVUE</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%A4%E5%88%AB%E6%97%A0%E5%81%8F%E7%BB%9F%E8%AE%A1%E9%87%8F%E7%9A%84%E6%9C%89%E6%95%88%E6%80%A7"><span class="nav-text">判别无偏统计量的有效性</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#homework-3"><span class="nav-text">Homework 3</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#mid-term"><span class="nav-text">Mid-Term</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-7"><span class="nav-text">Lecture 7</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#interval-estimation"><span class="nav-text">Interval Estimation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89-6"><span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#measurement"><span class="nav-text">Measurement</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E7%BB%B4%E6%83%85%E5%BD%A2"><span class="nav-text">多维情形</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9E%84%E9%80%A0%E5%90%88%E9%80%82%E7%9A%84-interval-estimation"><span class="nav-text">构造合适的 Interval
+Estimation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#pivot-quantity-method"><span class="nav-text">Pivot quantity method</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#approximate-ci"><span class="nav-text">Approximate CI</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E6%AD%A3%E6%80%81%E5%88%86%E5%B8%83%E7%9A%84-ci"><span class="nav-text">关于正态分布的 CI</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#homework-4"><span class="nav-text">Homework 4</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-8"><span class="nav-text">Lecture 8</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E5%AE%9A%E4%B9%89"><span class="nav-text">基本定义</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A3%80%E9%AA%8C%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-text">检验的定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A3%80%E9%AA%8C%E5%87%BD%E6%95%B0"><span class="nav-text">检验函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#type-i-ii-errors"><span class="nav-text">Type I &amp; II Errors</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#power-function"><span class="nav-text">Power Function</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p-value"><span class="nav-text">P-value</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-9"><span class="nav-text">Lecture 9</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#testing-in-various-populations"><span class="nav-text">Testing in various
+populations</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#a-single-normal-population"><span class="nav-text">A single normal population</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#non-normal-population"><span class="nav-text">Non-normal population</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#two-normal-distributions"><span class="nav-text">Two normal distributions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#summary"><span class="nav-text">Summary</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bootstrapping-method"><span class="nav-text">Bootstrapping Method</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#test-based-on-clt"><span class="nav-text">Test based on CLT</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#homework-5"><span class="nav-text">Homework 5</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-10"><span class="nav-text">Lecture 10</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#likelihood-ratio-test-lrt"><span class="nav-text">Likelihood Ratio Test (LRT)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#likelihood-ratio-method"><span class="nav-text">Likelihood Ratio Method</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%95-population-%E4%B8%8A%E6%A0%B7%E6%9C%AC%E7%9A%84-lrt"><span class="nav-text">单 Population 上样本的 LRT</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%95-normal-distribution-%E4%B8%8A%E6%A0%B7%E6%9C%AC%E7%9A%84-lrt"><span class="nav-text">单 Normal Distribution
+上样本的 LRT</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%8C-normal-distribution-%E4%B8%8A%E6%A0%B7%E6%9C%AC%E7%9A%84-lrt"><span class="nav-text">双 Normal Distribution
+上样本的 LRT</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#limiting-distribution-of-lr"><span class="nav-text">Limiting Distribution of LR</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#summary-1"><span class="nav-text">Summary</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-11"><span class="nav-text">Lecture 11</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ump-test"><span class="nav-text">UMP Test</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ump-test-%E9%97%AE%E9%A2%98%E7%9A%84%E5%B8%B8%E8%A7%81%E8%A7%84%E7%BA%A6"><span class="nav-text">UMP Test 问题的常见规约</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hypothesis-testing-confidence-interval"><span class="nav-text">Hypothesis Testing &amp;
+Confidence Interval</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#extended-content"><span class="nav-text">Extended Content *</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#monotone-likelihood-ratio"><span class="nav-text">Monotone Likelihood Ratio</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ump-in-exponential-family"><span class="nav-text">UMP in Exponential Family</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#homework-6"><span class="nav-text">Homework 6</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-12"><span class="nav-text">Lecture 12</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#sign-test"><span class="nav-text">Sign Test</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#wilcoxon-signed-rank-sum-test"><span class="nav-text">Wilcoxon Signed Rank Sum
+Test</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#goodness-of-fit-test"><span class="nav-text">Goodness of Fit Test</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#contingency-table-independence"><span class="nav-text">Contingency Table
+Independence</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#normality-test"><span class="nav-text">Normality Test</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#summary-2"><span class="nav-text">Summary</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%8C%E7%BB%93%E6%92%92%E8%8A%B1"><span class="nav-text">完结撒花</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#final"><span class="nav-text">Final</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="驰雨Chiyuru"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">驰雨Chiyuru</p>
+  <div class="site-description" itemprop="description">おはよう、朝だよ</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Chiyuru" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Chiyuru" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:mafy21@mails.tsinghua.edu.cn" title="E-Mail → mailto:mafy21@mails.tsinghua.edu.cn" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/Chiyuru_0417" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;Chiyuru_0417" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/ma-fei-yan-33" title="知乎 → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;ma-fei-yan-33" rel="noopener" target="_blank"><i class="fab fa-zhihu fa-fw"></i>知乎</a>
+      </span>
+  </div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">驰雨Chiyuru</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv1">
+  本站总访客数：<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共166.2k字</span>
+</div>
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300,"hOffset":-15,"vOffset":-15},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
+</html>

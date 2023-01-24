@@ -1,0 +1,428 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>『姑妄言之姑妄听之』</title>
+  
+  
+  <link href="https://chiyuru.github.io/atom.xml" rel="self"/>
+  
+  <link href="https://chiyuru.github.io/"/>
+  <updated>2023-01-24T16:12:20.272Z</updated>
+  <id>https://chiyuru.github.io/</id>
+  
+  <author>
+    <name>驰雨Chiyuru</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>数学分析 I 速通日志</title>
+    <link href="https://chiyuru.github.io/2023/01/15/Learn-Mathematical-Analysis-or-Die/"/>
+    <id>https://chiyuru.github.io/2023/01/15/Learn-Mathematical-Analysis-or-Die/</id>
+    <published>2023-01-15T04:34:52.000Z</published>
+    <updated>2023-01-24T16:12:20.272Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;大二的寒假，我居然为了下学期不在概率论和复分析课上被爆杀，而在这儿速通数分。&lt;/p&gt;
+&lt;p&gt;转数环环友：你可以以任意顺序完成培养方案（&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="数学" scheme="https://chiyuru.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>日记·篇五·23年1月</title>
+    <link href="https://chiyuru.github.io/2023/01/01/Diary-2023-01/"/>
+    <id>https://chiyuru.github.io/2023/01/01/Diary-2023-01/</id>
+    <published>2023-01-01T04:34:52.000Z</published>
+    <updated>2023-01-23T15:40:56.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;日复一日，年复一年&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="碎碎念" scheme="https://chiyuru.github.io/tags/%E7%A2%8E%E7%A2%8E%E5%BF%B5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>日记·篇四·22年12月</title>
+    <link href="https://chiyuru.github.io/2022/12/01/Diary-2022-12/"/>
+    <id>https://chiyuru.github.io/2022/12/01/Diary-2022-12/</id>
+    <published>2022-12-01T14:27:34.000Z</published>
+    <updated>2022-12-31T11:32:29.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;好冷好冷好冷好冷好冷好冷好冷（&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="碎碎念" scheme="https://chiyuru.github.io/tags/%E7%A2%8E%E7%A2%8E%E5%BF%B5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>统辅课程测评搬运</title>
+    <link href="https://chiyuru.github.io/2022/11/10/Statistic-Minor-Repo/"/>
+    <id>https://chiyuru.github.io/2022/11/10/Statistic-Minor-Repo/</id>
+    <published>2022-11-09T18:14:58.000Z</published>
+    <updated>2022-11-14T14:51:03.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;一月余之前树洞上看到的统计辅修课程测评，来自物理系 9 字班的学长 &lt;a href=&quot;https://v1ncent19.github.io&quot;&gt;V1ncent19&lt;/a&gt;，已得到授权转载。希望在选课期间
+cover
+到一些阅读我博客的、对统计学感兴趣的同学，也是一个重新排版后给我自己参考的方式。&lt;/p&gt;
+&lt;p&gt;本文同样遵守文末提到的 CC BY-NC-SA 4.0 协议，版权归原作者所有。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="数学" scheme="https://chiyuru.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
+    
+    <category term="这里面看起来很好玩" scheme="https://chiyuru.github.io/tags/%E8%BF%99%E9%87%8C%E9%9D%A2%E7%9C%8B%E8%B5%B7%E6%9D%A5%E5%BE%88%E5%A5%BD%E7%8E%A9/"/>
+    
+    <category term="统计" scheme="https://chiyuru.github.io/tags/%E7%BB%9F%E8%AE%A1/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>数理统计初探——统计推断</title>
+    <link href="https://chiyuru.github.io/2022/11/09/Statistical-Inference/"/>
+    <id>https://chiyuru.github.io/2022/11/09/Statistical-Inference/</id>
+    <published>2022-11-09T13:51:08.000Z</published>
+    <updated>2022-12-21T17:44:44.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;据说统计推断是统辅基础五大件里最难的，这门课也可以直接称为数理统计（基础）。我初概的体验并不是很好，甩锅给了不匹配的教材，还记了
+PF。但统计推断要洗心革面好好上，也打算做预习。不仅是因为不打算再去数学系回炉重造，也是担心留下一种隐隐怀疑自己并不是很适合学统计的感觉，本科过半又换方向的试错成本就略高了。&lt;/p&gt;
+&lt;p&gt;不过，我确实也很好奇到底适不适合、有多感兴趣呢？真不行的话，该换还得换呀。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="课程实录" scheme="https://chiyuru.github.io/tags/%E8%AF%BE%E7%A8%8B%E5%AE%9E%E5%BD%95/"/>
+    
+    <category term="刷书" scheme="https://chiyuru.github.io/tags/%E5%88%B7%E4%B9%A6/"/>
+    
+    <category term="数学" scheme="https://chiyuru.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
+    
+    <category term="统计" scheme="https://chiyuru.github.io/tags/%E7%BB%9F%E8%AE%A1/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>日记·篇三·22年11月</title>
+    <link href="https://chiyuru.github.io/2022/11/01/Diary-2022-11/"/>
+    <id>https://chiyuru.github.io/2022/11/01/Diary-2022-11/</id>
+    <published>2022-10-31T18:27:34.000Z</published>
+    <updated>2022-11-30T15:21:16.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;聊以对抗记忆的变形。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="碎碎念" scheme="https://chiyuru.github.io/tags/%E7%A2%8E%E7%A2%8E%E5%BF%B5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>数值实验顺便 Python 复健</title>
+    <link href="https://chiyuru.github.io/2022/10/16/Numerical-Analysis-Experiments/"/>
+    <id>https://chiyuru.github.io/2022/10/16/Numerical-Analysis-Experiments/</id>
+    <published>2022-10-15T18:10:58.000Z</published>
+    <updated>2022-12-26T18:48:59.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;数值分析的上机实验难度为 &lt;span class=&quot;math inline&quot;&gt;\(10\)&lt;/span&gt;
+的话，纸笔题的难度恐怕就是碘化银的 &lt;span class=&quot;math inline&quot;&gt;\(K_{sp}\)&lt;/span&gt;（大致是 &lt;span class=&quot;math inline&quot;&gt;\(4.2×10^{−51}\)&lt;/span&gt;（&lt;/p&gt;
+&lt;p&gt;我不会 MATLAB，又懒得学，就选了 Python。反正作业就是造轮子，也不能用
+MATLAB 的函数，那 Python 不亏。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="课程实录" scheme="https://chiyuru.github.io/tags/%E8%AF%BE%E7%A8%8B%E5%AE%9E%E5%BD%95/"/>
+    
+    <category term="数学" scheme="https://chiyuru.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
+    
+    <category term="这里面看起来很好玩" scheme="https://chiyuru.github.io/tags/%E8%BF%99%E9%87%8C%E9%9D%A2%E7%9C%8B%E8%B5%B7%E6%9D%A5%E5%BE%88%E5%A5%BD%E7%8E%A9/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>日记·篇二·22年10月</title>
+    <link href="https://chiyuru.github.io/2022/10/01/Diary-2022-10/"/>
+    <id>https://chiyuru.github.io/2022/10/01/Diary-2022-10/</id>
+    <published>2022-09-30T16:20:54.000Z</published>
+    <updated>2022-10-31T18:22:39.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;不知道能坚持写多久呢？&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="碎碎念" scheme="https://chiyuru.github.io/tags/%E7%A2%8E%E7%A2%8E%E5%BF%B5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>初等概率论与挣扎</title>
+    <link href="https://chiyuru.github.io/2022/09/24/Elementary-probability-theory/"/>
+    <id>https://chiyuru.github.io/2022/09/24/Elementary-probability-theory/</id>
+    <published>2022-09-24T04:58:22.000Z</published>
+    <updated>2022-10-06T12:52:35.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;虽然 dwl
+老师确实很好，但是我感觉初概这课有点儿稀碎（个人意见，个人意见）。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="刷书" scheme="https://chiyuru.github.io/tags/%E5%88%B7%E4%B9%A6/"/>
+    
+    <category term="数学" scheme="https://chiyuru.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>你知道茴字的四种写法吗？</title>
+    <link href="https://chiyuru.github.io/2022/09/19/huixiangdou/"/>
+    <id>https://chiyuru.github.io/2022/09/19/huixiangdou/</id>
+    <published>2022-09-19T12:52:08.000Z</published>
+    <updated>2022-12-31T09:13:29.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;看到“满同态”还可以被叫做“映上同态”，并且后面的习题确实这么问了的时候，我的第一反应就是：你知道茴字的四种写法吗？&lt;/p&gt;
+&lt;p&gt;以及，“映上同态”这个词听起来莫名很日式（&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="课程实录" scheme="https://chiyuru.github.io/tags/%E8%AF%BE%E7%A8%8B%E5%AE%9E%E5%BD%95/"/>
+    
+    <category term="刷书" scheme="https://chiyuru.github.io/tags/%E5%88%B7%E4%B9%A6/"/>
+    
+    <category term="数学" scheme="https://chiyuru.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>日记·篇一·22年9月</title>
+    <link href="https://chiyuru.github.io/2022/09/07/Diary-2022-09/"/>
+    <id>https://chiyuru.github.io/2022/09/07/Diary-2022-09/</id>
+    <published>2022-09-07T14:55:03.000Z</published>
+    <updated>2022-09-30T15:54:44.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;好无聊，写写日记（&lt;/p&gt;
+&lt;p&gt;博客彻底变成日常了。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="碎碎念" scheme="https://chiyuru.github.io/tags/%E7%A2%8E%E7%A2%8E%E5%BF%B5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>躺平记——暑假特别篇</title>
+    <link href="https://chiyuru.github.io/2022/09/01/lying-flat-in-holiday/"/>
+    <id>https://chiyuru.github.io/2022/09/01/lying-flat-in-holiday/</id>
+    <published>2022-09-01T14:55:03.000Z</published>
+    <updated>2022-09-07T09:43:30.000Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;你不会摆烂了一个暑假吧&quot;&gt;你不会摆烂了一个暑假吧？&lt;/h1&gt;
+&lt;p&gt;确实，不然我暑假回家干嘛？&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="碎碎念" scheme="https://chiyuru.github.io/tags/%E7%A2%8E%E7%A2%8E%E5%BF%B5/"/>
+    
+    <category term="躺平" scheme="https://chiyuru.github.io/tags/%E8%BA%BA%E5%B9%B3/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>用相册细碎地回忆一下在 THU 的第一年</title>
+    <link href="https://chiyuru.github.io/2022/08/17/2022-photos-and-fragments/"/>
+    <id>https://chiyuru.github.io/2022/08/17/2022-photos-and-fragments/</id>
+    <published>2022-08-16T16:23:56.000Z</published>
+    <updated>2022-08-16T18:08:39.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;是前面这一年间一直没有删掉的一些照片，基本按照时间线排列。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="碎碎念" scheme="https://chiyuru.github.io/tags/%E7%A2%8E%E7%A2%8E%E5%BF%B5/"/>
+    
+    <category term="睡隙碎笔" scheme="https://chiyuru.github.io/tags/%E7%9D%A1%E9%9A%99%E7%A2%8E%E7%AC%94/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>2022 Sharygin Geometry Olympic 题解小记</title>
+    <link href="https://chiyuru.github.io/2022/08/14/Sharygin-Geometry-Olympic/"/>
+    <id>https://chiyuru.github.io/2022/08/14/Sharygin-Geometry-Olympic/</id>
+    <published>2022-08-14T15:52:19.000Z</published>
+    <updated>2022-08-20T15:42:35.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;今年是第三次写 Sharygin Geometry Olympic
+题解，可能是最后一次。&lt;del&gt;所以我又来水字数了&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;退役两年人员写几何题快裂开了，从来没觉得做题这么难过。但是蛮好玩的，什么叫思维体操啊（&lt;/p&gt;
+&lt;p&gt;只做了一点微小的贡献，谢谢大家。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="碎碎念" scheme="https://chiyuru.github.io/tags/%E7%A2%8E%E7%A2%8E%E5%BF%B5/"/>
+    
+    <category term="这里面看起来很好玩" scheme="https://chiyuru.github.io/tags/%E8%BF%99%E9%87%8C%E9%9D%A2%E7%9C%8B%E8%B5%B7%E6%9D%A5%E5%BE%88%E5%A5%BD%E7%8E%A9/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>刷 Python Crash Course 然后还有酒井暑培 AI Track</title>
+    <link href="https://chiyuru.github.io/2022/08/01/Python-Crash-Course/"/>
+    <id>https://chiyuru.github.io/2022/08/01/Python-Crash-Course/</id>
+    <published>2022-08-01T14:55:03.000Z</published>
+    <updated>2022-08-12T15:53:54.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;简单的自救以及#每日这里面看起来很好玩。&lt;/p&gt;
+&lt;p&gt;其实就是写了点刷书习题，然后暑培写了 AI Track
+的大作业。水个字数。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="刷书" scheme="https://chiyuru.github.io/tags/%E5%88%B7%E4%B9%A6/"/>
+    
+    <category term="这里面看起来很好玩" scheme="https://chiyuru.github.io/tags/%E8%BF%99%E9%87%8C%E9%9D%A2%E7%9C%8B%E8%B5%B7%E6%9D%A5%E5%BE%88%E5%A5%BD%E7%8E%A9/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>睡隙碎笔</title>
+    <link href="https://chiyuru.github.io/2022/07/29/sleep(0)/"/>
+    <id>https://chiyuru.github.io/2022/07/29/sleep(0)/</id>
+    <published>2022-07-29T09:15:41.000Z</published>
+    <updated>2022-08-15T16:28:54.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;不知道给这些稀碎的话语叫什么好，就叫睡隙碎笔吧。&lt;/p&gt;
+&lt;p&gt;之前想叫摸（鱼）隙碎笔，想了想觉得一天还是睡觉的时间比摸鱼更多，单独一个“摸”字也很奇怪。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="碎碎念" scheme="https://chiyuru.github.io/tags/%E7%A2%8E%E7%A2%8E%E5%BF%B5/"/>
+    
+    <category term="睡隙碎笔" scheme="https://chiyuru.github.io/tags/%E7%9D%A1%E9%9A%99%E7%A2%8E%E7%AC%94/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>在 THU 上过的第一无聊的课——制图实习</title>
+    <link href="https://chiyuru.github.io/2022/07/26/Computer-Drawing-for-Engineering/"/>
+    <id>https://chiyuru.github.io/2022/07/26/Computer-Drawing-for-Engineering/</id>
+    <published>2022-07-25T18:00:00.000Z</published>
+    <updated>2022-09-20T04:11:37.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;是我可能这辈子也不会再碰到的领域了。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="躺平" scheme="https://chiyuru.github.io/tags/%E8%BA%BA%E5%B9%B3/"/>
+    
+    <category term="课程实录" scheme="https://chiyuru.github.io/tags/%E8%AF%BE%E7%A8%8B%E5%AE%9E%E5%BD%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>躺平记——游戏篇</title>
+    <link href="https://chiyuru.github.io/2022/07/11/lying-flat-in-games/"/>
+    <id>https://chiyuru.github.io/2022/07/11/lying-flat-in-games/</id>
+    <published>2022-07-11T09:15:41.000Z</published>
+    <updated>2022-07-11T10:26:38.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;新鲜的 tag:
+躺平。&lt;del&gt;甚至想把之前的科协躺平篇改个标题，然后变成一个系列&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;在 &lt;a href=&quot;https://chiyuru.github.io/2022/06/16/Hello-World/#more&quot;&gt;Hello
+World！&lt;/a&gt;和 &lt;a href=&quot;https://chiyuru.github.io/about/&quot;&gt;About&lt;/a&gt;
+里就提到过，我有很多游戏的坑。音游有
+Lanota、Arcaea，&lt;del&gt;抽卡类&lt;/del&gt;塔防有明日方舟，其实也玩过若干国产乙女游戏，若干
+GalGame，棋牌类有雀魂，还有不知道该怎么分类的 Fate/Grand
+Order（FGO）。每次玩着玩着就会回到 FGO
+去，可能是别的游戏都有或挺大或不小的圈子，而&lt;del&gt;半死不活的&lt;/del&gt; FGO
+没有。即使有，想要无视也很容易，因为身边没有玩 FGO 的朋友了。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="碎碎念" scheme="https://chiyuru.github.io/tags/%E7%A2%8E%E7%A2%8E%E5%BF%B5/"/>
+    
+    <category term="躺平" scheme="https://chiyuru.github.io/tags/%E8%BA%BA%E5%B9%B3/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>基础物理光学实验备忘录</title>
+    <link href="https://chiyuru.github.io/2022/07/03/Physics-Lab2-Notes/"/>
+    <id>https://chiyuru.github.io/2022/07/03/Physics-Lab2-Notes/</id>
+    <published>2022-07-03T13:24:07.000Z</published>
+    <updated>2022-10-29T17:30:52.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;考虑到开学之后肯定没空每周研究实验怎么做，最近又很颓不想干活。于是一边补番一边写一份从零开始的，&lt;strong&gt;讲人话的&lt;/strong&gt;实验备忘录，目的是将来做实验前快速阅读一遍，然后对着设计好的实验表和博文就能&lt;del&gt;优雅地&lt;/del&gt;动手不动脑地做完实验，还能从这篇备忘录里抄点东西去写实验报告。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="课程实录" scheme="https://chiyuru.github.io/tags/%E8%AF%BE%E7%A8%8B%E5%AE%9E%E5%BD%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Tsinghua Logic Summer School</title>
+    <link href="https://chiyuru.github.io/2022/06/27/The-Second-Tsinghua-Logic-Summer-School/"/>
+    <id>https://chiyuru.github.io/2022/06/27/The-Second-Tsinghua-Logic-Summer-School/</id>
+    <published>2022-06-27T12:28:20.000Z</published>
+    <updated>2022-08-10T14:41:52.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;第一次上前沿研究类的讲座课，本来是想像竞赛的时候按日写赛题评析一样，按照
+DAY1~DAY5
+的顺序每天上完课梳理一下思路，简单提一提觉得有趣的点。&lt;del&gt;结果到 DAY2
+就被复杂度和计算理论知识直接干碎了。&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;后面的课虽然很有意思但一涉及到相关问题就不太能完全理解，硬要写的话没太大意义，遂放弃，变成了日常吐槽（又在水
+blog 了是吗&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="课程实录" scheme="https://chiyuru.github.io/tags/%E8%AF%BE%E7%A8%8B%E5%AE%9E%E5%BD%95/"/>
+    
+    <category term="这里面看起来很好玩" scheme="https://chiyuru.github.io/tags/%E8%BF%99%E9%87%8C%E9%9D%A2%E7%9C%8B%E8%B5%B7%E6%9D%A5%E5%BE%88%E5%A5%BD%E7%8E%A9/"/>
+    
+  </entry>
+  
+</feed>

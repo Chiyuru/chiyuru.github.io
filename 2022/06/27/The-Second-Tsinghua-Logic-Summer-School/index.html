@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"chiyuru.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="第一次上前沿研究类的讲座课，本来是想像竞赛的时候按日写赛题评析一样，按照 DAY1~DAY5 的顺序每天上完课梳理一下思路，简单提一提觉得有趣的点。结果到 DAY2 就被复杂度和计算理论知识直接干碎了。 后面的课虽然很有意思但一涉及到相关问题就不太能完全理解，硬要写的话没太大意义，遂放弃，变成了日常吐槽（又在水 blog 了是吗">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Tsinghua Logic Summer School">
+<meta property="og:url" content="https://chiyuru.github.io/2022/06/27/The-Second-Tsinghua-Logic-Summer-School/index.html">
+<meta property="og:site_name" content="『姑妄言之姑妄听之』">
+<meta property="og:description" content="第一次上前沿研究类的讲座课，本来是想像竞赛的时候按日写赛题评析一样，按照 DAY1~DAY5 的顺序每天上完课梳理一下思路，简单提一提觉得有趣的点。结果到 DAY2 就被复杂度和计算理论知识直接干碎了。 后面的课虽然很有意思但一涉及到相关问题就不太能完全理解，硬要写的话没太大意义，遂放弃，变成了日常吐槽（又在水 blog 了是吗">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-06-27T12:28:20.000Z">
+<meta property="article:modified_time" content="2022-08-10T14:41:52.000Z">
+<meta property="article:author" content="驰雨Chiyuru">
+<meta property="article:tag" content="课程实录">
+<meta property="article:tag" content="这里面看起来很好玩">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://chiyuru.github.io/2022/06/27/The-Second-Tsinghua-Logic-Summer-School/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Tsinghua Logic Summer School | 『姑妄言之姑妄听之』</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="『姑妄言之姑妄听之』" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">『姑妄言之姑妄听之』</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://chiyuru.github.io/2022/06/27/The-Second-Tsinghua-Logic-Summer-School/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="驰雨Chiyuru">
+      <meta itemprop="description" content="おはよう、朝だよ">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="『姑妄言之姑妄听之』">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Tsinghua Logic Summer School
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-06-27 20:28:20" itemprop="dateCreated datePublished" datetime="2022-06-27T20:28:20+08:00">2022-06-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-08-10 22:41:52" itemprop="dateModified" datetime="2022-08-10T22:41:52+08:00">2022-08-10</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>第一次上前沿研究类的讲座课，本来是想像竞赛的时候按日写赛题评析一样，按照
+DAY1~DAY5
+的顺序每天上完课梳理一下思路，简单提一提觉得有趣的点。<del>结果到 DAY2
+就被复杂度和计算理论知识直接干碎了。</del></p>
+<p>后面的课虽然很有意思但一涉及到相关问题就不太能完全理解，硬要写的话没太大意义，遂放弃，变成了日常吐槽（又在水
+blog 了是吗</p>
+<span id="more"></span>
+<h1 id="day-1">DAY 1</h1>
+<p><strong>注：第一天结束之后随手记的东西，这一天完全理解了是因为之前就学过一点，遂保留。</strong></p>
+<p>第一节课还是比较熟悉的内容。上学期刚在数据库课上学过 Relational
+Algebra，开课前一晚找了本离散补了一下 First Order Logic。上课的时候 wiki
+查了一下什么是 Relational Calculus 之后对照着 PPT
+看了一遍，就去摸鱼了。</p>
+<p>查作业题熬到半夜，关于证明 Relational Algebra 中 difference
+的独立性。Google 出来<a target="_blank" rel="noopener" href="https://moodle2.cs.huji.ac.il/nu15/pluginfile.php/167868/mod_resource/content/3/relalgLect1.pdf">一个看起来像是泰国人写的课件</a>，细讲了一下怎么证明乘积、并、投影和选择的独立性，偏偏没有取差。然后给了一个
+Monotonic Query 的定义，看了一大圈回来才意识到这好像是证明 difference
+独立性的提示。想了亿会之后意识到的确是提示，用单调性举个反例就好了，<del>我好蠢！</del>太优雅啦！</p>
+<p>证明吸取过往教训没有口胡，而是<del>口胡加上</del>举了个反例。第一天没打
+LaTeX，作业直接手写了个塑料英语交掉。句子丑到高三英语春考前的我自己都要跳出来骂人的程度。</p>
+<h1 id="phokion-的塑料英语">Phokion 的塑料英语</h1>
+<p>DAY1
+我还在怀疑自己是不是因为秋季学期法语二外的荼毒，已经不能辨别正常的英文读音了，但
+Chrome 的字幕显示确实和老爷子的读音差别好大。于是下午又去听了一下 Hybrid
+Logic 主题，不用字幕的话也能听懂。得出结论不是我的问题（</p>
+<p>这几天啃 PPT 之余好奇的就是：Phokion
+的母语真的是英语吗？还是法语或者某个与法语相近的语言，比如西班牙语？（不是很懂语言学的知识，关于语系什么的ww）</p>
+<p>听到了无数个法语读音的 -an，不发音的 h，只有 Chrome 字幕能明白的
+“Query”， PPT 上关于 naive chase procedure 的描述中用的是有分音符的
+naïve（也有可能是出于正式），读音也接近法语耶。感觉母语不是英语的可能性增加了！（x</p>
+<h1 id="google-救大命">Google 救大命</h1>
+<p>我的数据结构选的是下学期自动化系的课，相比计算机系的课来说是3学分阉割版<del>（主要是为了保命）</del>，秋季学期才开课。于是此前关于时间复杂度问题的认识还只停留在符号层面，计算理论更是一窍不通。从
+DAY2 开始类似的问题就没太懂，常见问题的规约全靠 Google
+救命，最后作业做了个七七八八，还行吧。</p>
+<p>DAY3 的 Problem2 直接查出来一篇 Phokion 的
+paper，在里面找某个结论的时候发现证明标了个引用符号，往前找文献又是给引理标了引用，最后找到了
+Repair of Inconsistent Database
+理论初建的论文。其他很多问题查文献往往也只有若干篇 Phokion 团队的
+paper，只有您的实验室在做这个方向是吗.jpg</p>
+<p>什么叫逻辑学专题与<strong>前沿</strong>啊。我还是第一次上前沿专题讨论课形式的课程呢。想到春季学期的时候差点选了数学系的《现代数学前沿概览》，后来学长说目前本来就比数学系基础差一点，不如再学一年再去<del>挨打</del>上课，<del>而且这课是
+647 开的，可能要慎重，</del>遂暂时放弃。</p>
+<h1 id="奇妙的作息时间">奇妙的作息时间</h1>
+<p>回家之后不用去教室，早十可以九点半起床了。形成了很怪的作息：</p>
+<ul>
+<li>早晨九点半起床洗漱恰饭。对着字幕和 PPT 听 Phokion
+的塑料英语，一直到十二点一刻。</li>
+<li>早午饭间距有点近，可以先睡个午觉，一点半（甚至更晚）再起来吃午饭。</li>
+<li>睡醒，恰饭，写作业。有可能还要听一遍回放，我太菜了QAQ</li>
+<li>一边查文献一边摸鱼到深夜，两点半睡觉是基本操作<del>，甚至可以睡够七个小时，多好</del>。</li>
+</ul>
+<p>要是说没休息好，好像也不至于，加上午觉一天至少睡八个小时；要说没干活好像也没有，该做的都做了，起码不至于非常摸鱼。要说哪里很怪，可能就是午觉有点长，而且时区不太对了（</p>
+<p>在学校无论晚上睡多久，似乎也很少睡午觉。从早晨出门开始就漂泊在外一整天，中途回寝室睡感觉挺麻烦的；即使多骑几段路回寝室，说不定上床睡觉也不方便；在教室或者图书馆趴着睡觉醒来都会头晕好一阵，体验也不是很好，干脆撑住就不睡了；第二节和第三节都有课的话吃个饭就不错了，这哪有觉给你睡啊，你睡不睡吧（</p>
+<p>回家真好，松软的床就在两步之外，还不用爬梯子，累了就倒头睡觉qwq</p>
+<h1 id="到底学到了什么">到底学到了什么</h1>
+<p>真要说学到了多少 Database 理论知识，我自己都觉得愧疚：证明还要靠
+Google，对着各种文献 Ctrl+F 然后剪刀手，DAY2
+作业里不理解的题直接上手糊了<del>但是还拿了9/10是为什么呢</del>，之类的摸鱼行为真挺多的。<del>当然也不能指望我五天迅速精通老爷子研究了二十年的东西对吧</del>，哪怕讲座上的只是一点皮毛。</p>
+<p>所以如果真的说学到了什么，大概之后回忆起来的还是 Phokion 在 PPT
+上讲过的 target tgds&amp;egds
+以电影数据为例的描述、总统选举不同规则下的结果等等，很有趣。</p>
+<blockquote>
+<p>举例是理解的试金石。</p>
+</blockquote>
+<p>学抽代和高代（选）的时候也是一样，正是因为有各式各样的例子和动手操作的空间，我才觉得初学数学相比初学其他很多东西来说更有趣。当然，哪怕很多时候最终目的还是回归抽象，“用做游戏的方式理解规则”的这个过程还是很乐在其中。</p>
+<p>另外就是很开心坚持到了最后，没有自闭退课跑路。DAY2
+的计算理论看麻了的时候想过无非几种可能：后面的内容变轻松一点，顺利上完
+or
+后面还是侧重于计算理论，越来越不懂，退课跑路明年多学点计算机知识之后再来
+or 头铁把课上完，1
+学分绩点拉胯的话就当多上了一门体育课<del>，反正怎么样也卷不过院系里那群卷王</del>。</p>
+<p>还好后三天的内容很成体系也很有意思，也不是太需要基础，作业和
+take-home exam
+已经顺利搞定了。可能还有个原因就是有朋友（唔赛博朋友可以这样说吗，起码我认为是朋友的ww）也在上这门课，虽然也没鼓起勇气问
+dalao 各种 trivial
+的问题，但不知道为什么有很踏实的感觉，单人行动的话可能中途受不了跑路的概率也会增加一点吧（</p>
+<p>系里之前还有几个也选了课的同学<del>（但我其实并不认识，惭愧）</del>问我打不打算退课跑路，尤其是第二天的时候虽然很犹豫，但回答至少会把课跟完，认真看看作业。你院每个学期为了
+GPA 3.9+ 退课退到 20
+学分的人真的好多，第一学期的时候我的心态其实也一样，为了 GPA
+而没有手选数分高代，而是去微 A
+和线代<del>爆杀</del>了。当然我目前的考虑还是不保研直接留学，<del>就算保研也没什么地方可以去，</del>可能也没有资格居高临下一般议论他人为了维持
+GPA 的努力。</p>
+<p>但我自己还是觉得学有趣的、有用的、对自己来说更有价值的东西，比保持一个毕业后就迅速贬值的数值更有意义；与此同时，培养方案只是顺便完成的东西而已<del>（其实是自己专业的培养方案太烂了）</del>。选一条更困难的道路，也是相当幸福的事情。（别中二了啊，以后再看到这句话肯定会尴尬的啊啊啊（</p>
+<h1 id="结课合影">结课合影</h1>
+<p>结课合影的时候发现没给 zoom
+开摄像头权限，网页版打开权限后要刷新重进，重进之后大家都打开了摄像头于是直接卡爆，啥也显示不出来。好不容易把自己的摄像头打开，听到助教说已经截完图了，呜呜（</p>
+<p>事后去看了课程回放，想自己截一个合影，发现因为电脑卡住而看不到界面的我完全失去了表情管理，还给所有人表演了一个展示浓密的头发（在镜头前理了半天乱糟糟的头发（应该没人看我吧应该没人看我吧x</p>
+<p>是时候认真配一下另一台电脑的设置，然后把主力机换掉了。surface
+中看不中用啊（但是真的很轻便呜呜</p>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>我很可爱 请给我钱（？）</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.jpg" alt="驰雨Chiyuru 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.jpg" alt="驰雨Chiyuru 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>驰雨Chiyuru
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://chiyuru.github.io/2022/06/27/The-Second-Tsinghua-Logic-Summer-School/" title="Tsinghua Logic Summer School">https://chiyuru.github.io/2022/06/27/The-Second-Tsinghua-Logic-Summer-School/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E8%AF%BE%E7%A8%8B%E5%AE%9E%E5%BD%95/" rel="tag"># 课程实录</a>
+              <a href="/tags/%E8%BF%99%E9%87%8C%E9%9D%A2%E7%9C%8B%E8%B5%B7%E6%9D%A5%E5%BE%88%E5%A5%BD%E7%8E%A9/" rel="tag"># 这里面看起来很好玩</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/06/25/lying-flat/" rel="prev" title="在科协躺平的第一学期">
+      <i class="fa fa-chevron-left"></i> 在科协躺平的第一学期
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/07/03/Physics-Lab2-Notes/" rel="next" title="基础物理光学实验备忘录">
+      基础物理光学实验备忘录 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  
+  <div class="comments">
+  <script src="https://utteranc.es/client.js" repo="Chiyuru/chiyuru.github.io" issue-term="pathname" theme="github-light" crossorigin="anonymous" async></script>
+  </div>
+  
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#day-1"><span class="nav-text">DAY 1</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#phokion-%E7%9A%84%E5%A1%91%E6%96%99%E8%8B%B1%E8%AF%AD"><span class="nav-text">Phokion 的塑料英语</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#google-%E6%95%91%E5%A4%A7%E5%91%BD"><span class="nav-text">Google 救大命</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A5%87%E5%A6%99%E7%9A%84%E4%BD%9C%E6%81%AF%E6%97%B6%E9%97%B4"><span class="nav-text">奇妙的作息时间</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%B0%E5%BA%95%E5%AD%A6%E5%88%B0%E4%BA%86%E4%BB%80%E4%B9%88"><span class="nav-text">到底学到了什么</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%93%E8%AF%BE%E5%90%88%E5%BD%B1"><span class="nav-text">结课合影</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="驰雨Chiyuru"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">驰雨Chiyuru</p>
+  <div class="site-description" itemprop="description">おはよう、朝だよ</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Chiyuru" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Chiyuru" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:mafy21@mails.tsinghua.edu.cn" title="E-Mail → mailto:mafy21@mails.tsinghua.edu.cn" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/Chiyuru_0417" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;Chiyuru_0417" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/ma-fei-yan-33" title="知乎 → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;ma-fei-yan-33" rel="noopener" target="_blank"><i class="fab fa-zhihu fa-fw"></i>知乎</a>
+      </span>
+  </div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">驰雨Chiyuru</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv1">
+  本站总访客数：<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共166.2k字</span>
+</div>
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300,"hOffset":-15,"vOffset":-15},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
+</html>

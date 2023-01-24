@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"chiyuru.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="考虑到开学之后肯定没空每周研究实验怎么做，最近又很颓不想干活。于是一边补番一边写一份从零开始的，讲人话的实验备忘录，目的是将来做实验前快速阅读一遍，然后对着设计好的实验表和博文就能优雅地动手不动脑地做完实验，还能从这篇备忘录里抄点东西去写实验报告。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基础物理光学实验备忘录">
+<meta property="og:url" content="https://chiyuru.github.io/2022/07/03/Physics-Lab2-Notes/index.html">
+<meta property="og:site_name" content="『姑妄言之姑妄听之』">
+<meta property="og:description" content="考虑到开学之后肯定没空每周研究实验怎么做，最近又很颓不想干活。于是一边补番一边写一份从零开始的，讲人话的实验备忘录，目的是将来做实验前快速阅读一遍，然后对着设计好的实验表和博文就能优雅地动手不动脑地做完实验，还能从这篇备忘录里抄点东西去写实验报告。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s1.ax1x.com/2022/07/04/jGNzVO.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/07/04/jGUpIe.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/07/04/jGUPGd.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/07/06/jdtZaq.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/07/06/jdtuGT.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/07/06/jdt1sJ.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/07/10/jrORQH.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/07/10/jrOWyd.md.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/07/10/jrO2Se.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/07/10/jrOcWD.md.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/07/10/jrO6JO.md.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/07/10/jrOfOA.md.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/07/09/jrwiY4.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/07/09/jrwAp9.md.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/07/09/jrwFfJ.md.png">
+<meta property="article:published_time" content="2022-07-03T13:24:07.000Z">
+<meta property="article:modified_time" content="2022-10-29T17:30:52.000Z">
+<meta property="article:author" content="驰雨Chiyuru">
+<meta property="article:tag" content="课程实录">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s1.ax1x.com/2022/07/04/jGNzVO.png">
+
+<link rel="canonical" href="https://chiyuru.github.io/2022/07/03/Physics-Lab2-Notes/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>基础物理光学实验备忘录 | 『姑妄言之姑妄听之』</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="『姑妄言之姑妄听之』" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">『姑妄言之姑妄听之』</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://chiyuru.github.io/2022/07/03/Physics-Lab2-Notes/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="驰雨Chiyuru">
+      <meta itemprop="description" content="おはよう、朝だよ">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="『姑妄言之姑妄听之』">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          基础物理光学实验备忘录
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-07-03 21:24:07" itemprop="dateCreated datePublished" datetime="2022-07-03T21:24:07+08:00">2022-07-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-10-30 01:30:52" itemprop="dateModified" datetime="2022-10-30T01:30:52+08:00">2022-10-30</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>考虑到开学之后肯定没空每周研究实验怎么做，最近又很颓不想干活。于是一边补番一边写一份从零开始的，<strong>讲人话的</strong>实验备忘录，目的是将来做实验前快速阅读一遍，然后对着设计好的实验表和博文就能<del>优雅地</del>动手不动脑地做完实验，还能从这篇备忘录里抄点东西去写实验报告。</p>
+<span id="more"></span>
+<p>这个操作是合理的。<del>我和物理本来就不合适，</del>结合上学期的经验可以发现，无论有没有学过原理，我唯一的解决方案就是按计划一帧一帧地做实验，才不至于大脑空白。加之我秋季学期就没选理论课，理论水平也就是现在这样了，倘若现在不写，将来更写不出来。上学期因为仓促，只在讲义上手写了一些要点，有的时候记不清了就会不知所措，所以这次码个字可以详细一点。</p>
+<p>这样的话，物理实验就变成了<del>大猩猩也能做的</del>体力活罢了。我不否认这个想法，也无意论辩这门课是否有意义，将本文视作作者的救命手册即可。</p>
+<p><strong>注：未经授权禁止转载，本人不希望在院系里受到关注；所有提到的引用，包括图片，文字，数据信息等，著作权归原作者所有；一概不提供文中提到的自用实验表格，请自行阅读实验讲义，勿直接伸手。</strong></p>
+<h1 id="完整报告篇">完整报告篇</h1>
+<h2 id="用单色仪测定介质的吸收曲线">用单色仪测定介质的吸收曲线</h2>
+<h3 id="原理简述">原理简述</h3>
+<p>一束光入射到有一定厚度的介质上时，有一部分光被反射，另一部分被吸收，其余被透射——也即进入有厚度<span class="math inline">\(d\)</span>的介质。根据各部分的光强，可以定义出介质板的光谱外透射率<span class="math inline">\(T=\frac{I_T}{I_0}\)</span>和光谱透射率<span class="math inline">\(T_{i}=\frac{I_2}{I_1}\)</span>。</p>
+<p>（此处应该有图，但是没有图。）</p>
+<p>光谱透射率同时与介质的性质和入射光的波长<span class="math inline">\(\lambda\)</span>​相关。为什么这么说呢？因为忽略介质内散射的情况下<span class="math inline">\(T_{i}=e^{-\alpha d}\)</span>​，<span class="math inline">\(\alpha\)</span>​称为介质的线性吸收系数，与介质的性质和入射光波长有关。</p>
+<p>经过若干次透射后，透射光的光强为一个等比数列的和，即为<span class="math inline">\(I_T=\frac{I_0(1-R)^2e^{-\alpha
+d}}{1-R^2e^{-2\alpha d}}\)</span>​。其中，<span class="math inline">\(I_{0}\)</span>​为入射光强，<span class="math inline">\(R\)</span>​为单一界面上的反射率。由此可以计算光谱外透射率<span class="math inline">\(T=\frac{I_T}{I_0}\)</span>​。</p>
+<p>在实际实验中，使用了两块仅厚度不同的试样，计算后近似得出光谱外透射率的比值，<strong>我们不加证明地给出吸收系数的近似：<span class="math inline">\(\alpha=\frac{lnT_{1}-lnT_{2}}{d_{2}-d_{1}}\)</span></strong>
+。实际实验中，<strong>用微电流放大器的显示值</strong><span class="math inline">\(V_{1}\)</span>,<span class="math inline">\(V_{2}\)</span><strong>分别替换上式的</strong><span class="math inline">\(T_{1}\)</span>,<span class="math inline">\(T_{2}\)</span>。</p>
+<h3 id="应该做什么在纸上记什么">应该做什么？在纸上记什么？</h3>
+<p>你不懂仪器的构造，但是没关系，跟着做就行了。</p>
+<h4 id="校对单色仪的波长示值">校对单色仪的波长示值</h4>
+<p>单色仪长这个样子：</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/jGNzVO"><img src="https://s1.ax1x.com/2022/07/04/jGNzVO.png" alt="jGNzVO.png"></a></p>
+<p><strong>第一步</strong>，通过两个鼓轮调入射狭缝 S1 和出射狭缝 S2
+的宽度，分别约为 1mm 和 2mm（目测即可）。</p>
+<p><strong>第二步</strong>，把汞灯放在 S1 前面，打开汞灯，把手轮转到
+577.0~579.1nm 之间的某一位置（通过波长示数器观察）。</p>
+<p>显微镜目镜和物镜拧紧放在 S2 前面，调一调高度和与 S2
+的距离，观察到像这样的图像。黄的叫谱线，黑的叫狭缝刃口。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/jGUpIe"><img src="https://s1.ax1x.com/2022/07/04/jGUpIe.png" alt="jGUpIe.png"></a></p>
+<blockquote>
+<p>关小入射狭缝 S1
+使两条谱线分开，在谱线沿缝方向宽度基本均匀、亮度好的前提下，
+使狭缝尽量窄，谱线尽量细。再关小出射狭缝
+S2，同时微动手轮，使其中一条谱线始终在狭缝中央，直至狭缝宽度与谱线同宽（此时微动手轮，谱线即被遮挡，谱线消失）。</p>
+</blockquote>
+<p>纸上谈兵来说，如上操作可以得到单条谱线的波长示值（显示在波长计数器上）。按这个办法慢慢调波长，在标准值附近分别找两条黄线，一条紫线和一条绿线的示值，把它们记在第一个表里，<strong>差值的平均值就是单色仪波长示值的系统误差，之后要修约。</strong></p>
+<p>标准值是黄线 579.1nm， 黄线 577.0nm，绿线 546.1nm，紫线 435.8nm。</p>
+<h4 id="用汞灯调狭缝宽度">用汞灯调狭缝宽度</h4>
+<p><strong>第一步</strong>，将单色仪的波长读数装置转到示值在
+577.0~579.1nm 之间的某一位置。将出射缝 S2 的宽度暂时调至约
+2mm。用显微镜<strong>观察汞的两条黄谱线（577.0nm 和
+579.1nm）</strong>。如果看不到谱线，增加 S2 缝宽或改变波长示值。</p>
+<p><strong>第二步</strong>，缓慢增加入射狭缝 S1
+的宽度，使谱线变宽，<strong>直到两条黄谱线刚好碰上且不重叠为止</strong>，此时入射狭缝宽约0.8mm。再调节出射狭缝
+S2
+的宽度，同时微调手轮，<strong>使出缝宽度与其中一条谱线宽度大致相同</strong>，此时出缝与入缝同宽，约
+0.8mm。</p>
+<p>此后不要再动单色仪，光强就能满足吸收系数测量的要求。此部分不需要记录数据。</p>
+<h4 id="溴钨灯光路调节而不是溴钨灯光路调节">溴钨灯/光路调节，而不是溴钨灯光/路调节</h4>
+<p><strong>第一步</strong>，溴钨灯按讲义上写的接三路输出电源，调整设置。</p>
+<p>然后，讲义上是这样写的：</p>
+<blockquote>
+<p>为了减少单色仪的光能损失，提高透光效率（充分利用单色仪的全孔径和相对孔径
+<em>D</em>/<em>f</em>），根据图 12 光路图，计算聚光镜和光源的位置。</p>
+<p>聚光(透)镜的参数见前面。单色仪焦距 <em>f</em>=300mm (即图 12 的
+<em>b</em>=300mm)，单色仪球面镜（准直镜）的光栏宽度
+<em>D</em>=50mm。成像规律符合 Gauss 公式。</p>
+<p>使球面镜的孔径 <em>D</em>
+充分照明，两个相似三角形应有下列关系：<em>d/D</em>=<em>a/b</em>。</p>
+</blockquote>
+<p><strong>翻译成人话：聚光镜摆在狭缝前面 18cm 处，溴钨灯摆在聚光镜前面
+9cm
+处，注意共轴。</strong>当然，得在表格上画个图，装模作样算一下这两个数据。</p>
+<p><strong>第二步</strong>，手轮调到
+610.0nm，调整各种位置。用眼睛靠近出射狭缝 S2 观察红色谱线。</p>
+<p>具体怎么调？<strong>先粗调后细调。</strong></p>
+<p>粗调：溴钨灯电流建议用
+2.0A。微调光源的位置，用眼睛观察溴钨灯在入射狭缝 S1
+处所成的清晰实像，粗略调节等高同轴。</p>
+<p>细调：溴钨灯电流建议用 1.50A。用眼睛靠近出射狭缝 S2
+观察光谱，左右(共轴)调节聚光镜至合适位置，不管条纹亮度均匀否，只关注条纹上、下边缘的圆弧左右对称否，调至对称。</p>
+<p>再前后、左右微调溴钨灯，眼睛能看到亮度均匀的光谱(条纹)，差不多这样。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/jGUPGd"><img src="https://s1.ax1x.com/2022/07/04/jGUPGd.png" alt="jGUPGd.png"></a></p>
+<p>调节好透镜和溴钨灯位置后，固定好它们。</p>
+<h4 id="最后的仪器安装">最后的仪器安装</h4>
+<p><strong>第一步</strong>，把样品装在 S2
+上，先薄再厚，具体操作摘录如下：</p>
+<blockquote>
+<p>将装有钕玻璃吸收片的样品反面的红点对准S2
+上红点，顺时针旋转样品，听到咔的声音，样品已锁定，往外拉一下，确认已安装好。</p>
+<p>取样品时侧面小螺钉往里轻推，逆时针旋转即可取下。</p>
+</blockquote>
+<p><strong>第二步</strong>，装硅光电二极管探头。</p>
+<blockquote>
+<p>将探头插入样品正面的圆柱孔内(插到底)，确认电缆接头处于拧紧状态。</p>
+</blockquote>
+<p>如果还是手笨接不好仪器，就求助一下旁边同学吧<del>，没救了</del>。</p>
+<h4 id="测量环节">测量环节</h4>
+<p>对每一个样品，观察对各色光的吸收情况。</p>
+<p>从 610.0nm 到 550.0nm
+转动手轮测定两个最大的吸收峰（光电探测器上的电压示值最小）的波长位置并记录。要求每隔
+2nm 测一次示值，在吸收峰左右 4nm 范围内测量点更密，取整数每隔 0.5nm
+测量一次，记录在最后一个表里。</p>
+<p>注意：测量要消空程，即只向一个方向转动手轮， 一次完成。</p>
+<h3 id="测完数据要分析计算什么画哪些图">测完数据要分析计算什么？画哪些图？</h3>
+<ul>
+<li>根据<span class="math inline">\(\alpha=\frac{lnV_{1}-lnV_{2}}{d_{2}-d_{1}}\)</span>，列表计算每个波长对应的<span class="math inline">\(\alpha\)</span></li>
+<li>画一个<span class="math inline">\(\lambda-\alpha\)</span>图，是为吸收曲线。从中读出两个峰值的数值，然后按波长修正规则修一下。</li>
+<li>误差分析讨论和回答思考题，可参考祖传实验报告。</li>
+</ul>
+<h3 id="本文写作中用到的参考">本文写作中用到的参考</h3>
+<ul>
+<li><p>单色仪实验操作视频：</p>
+<p>https://www.bilibili.com/video/BV17A411L7mg?spm_id_from=333.337.search-card.all.click&amp;vd_source=6ae5c31a80120436d23cf7b7c7ceb3ba</p></li>
+<li><p>清华大学2021秋基础物理实验(2)讲义</p></li>
+</ul>
+<h2 id="偏振光学系列实验">偏振光学系列实验</h2>
+<h3 id="原理简述-1">原理简述</h3>
+<ul>
+<li>什么是偏振光？<del>这不重要</del></li>
+</ul>
+<p>一个单色偏振光可以分解为两个互相垂直的线偏振光的叠加。表示如下：</p>
+<p><span class="math display">\[ \begin{cases}{}   \  E_x =  a_1\cos
+\omega t \\\\ E_y = a_2\cos (\omega t+\delta) \\     \end{cases}
+\]</span></p>
+<p>其中的<span class="math inline">\(\delta\)</span>被称为<span class="math inline">\(x\)</span>方向偏振分量相对于<span class="math inline">\(y\)</span>方向偏振分量的<strong>位相延迟量</strong>。显然，偏振光的“形状”由式中参数决定，主要探讨椭圆、圆和线偏振光的情况。引入<strong>偏振方向</strong>的概念：
+<span class="math inline">\(\alpha=arctan(\frac{a_2}{a_1}
+cos\delta)\)</span></p>
+<p>我们不加证明地给出关于椭圆偏振光的参数求解式。其中定义<span class="math inline">\(\psi\)</span>为<strong>椭圆的长轴方位角</strong><del>，我也不知道这个是什么意思</del>。</p>
+<p><span class="math display">\[ \begin{equation}
+\begin{cases}      \psi &amp;= \frac{1}{2}arctan(tan2\beta cos\delta)
+\\\\         \frac{b^2}{a^2} &amp;= \frac{2}{1+\sqrt{1-(sin2\beta
+sin\delta)^2}}-1 \\\\   \beta
+&amp;=arctan(\frac{a_2}{a_1})  \\     \end{cases}     \end{equation}
+\]</span></p>
+<ul>
+<li>偏振片是干什么的？好像是用来产生线偏振光的。</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/jdtZaq"><img src="https://s1.ax1x.com/2022/07/06/jdtZaq.png" alt="jdtZaq.png"></a></p>
+<p>首先，在这张图中，透射轴是偏振片上的那条轴，我们简称为<span class="math inline">\(x\)</span>轴；消光轴是垂直于偏振片的轴，简称为<span class="math inline">\(y\)</span>轴。沿<span class="math inline">\(x\)</span>轴振动光波的光强透射率为<span class="math inline">\(T_1\)</span>，它接近<span class="math inline">\(1\)</span>；沿<span class="math inline">\(y\)</span>轴振动光波的光强透射率为<span class="math inline">\(T_2\)</span>，它接近<span class="math inline">\(0\)</span>。二者小比大得到一个很小的值<span class="math inline">\(e\)</span>，即为<strong>消光比</strong>。</p>
+<p>马吕斯定律：振动方向和<span class="math inline">\(x\)</span>轴方向成<span class="math inline">\(\theta\)</span>角的线偏振光，经过偏振片后的透射率为
+<span class="math display">\[T_\theta=(T_1-T_2)cos^2\theta+T_2\]</span>
+提出这个定律有什么意义？</p>
+<p>实验中两个偏振片的组合（一个称为起偏器，一个称为检偏器）成为一组仪器。起偏器产生的线偏振光经过检偏器。因此，由马吕斯定律，二者的<span class="math inline">\(x\)</span>轴夹角即为<span class="math inline">\(\theta\)</span>。从结论来看，二者的<span class="math inline">\(x\)</span>轴垂直（<span class="math inline">\(\cos
+\theta=0\)</span>）则发生消光现象，二者的<span class="math inline">\(x\)</span>轴平行（<span class="math inline">\(\cos
+\theta=1\)</span>）则透射光强最大。</p>
+<ul>
+<li>反射和折射时的起偏现象</li>
+</ul>
+<p>电矢量形式的菲涅耳公式我看不懂，也不知道是干嘛的（直球）。</p>
+<p>和实验相关的东西翻译成人话来说就是，偏振器的透射轴方向可以由布儒斯特角确定。具体如下：</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/jdtuGT"><img src="https://s1.ax1x.com/2022/07/06/jdtuGT.png" alt="jdtuGT.png"></a></p>
+<p>预置光束在三棱镜上的入射角<span class="math inline">\(\theta_i\)</span>为<span class="math inline">\(arctan\text n\)</span>，其中<span class="math inline">\(\text
+n\)</span>为玻璃的反射率，也即初入射角约为56°。旋转偏振片到某个角度可以发现白纸屏上的光点很暗。微调二者，使得光点达到最暗时的入射角为布儒斯特角<span class="math inline">\(\theta_B\)</span>，且此时偏振片的透射轴（<span class="math inline">\(x\)</span>轴）方向平行于三棱镜上的入射面。</p>
+<p><strong>以下与实验无关，可在实验前阅读中跳过。</strong>讲义上还有一段关于S分量反射率的叙述，目测是菲涅尔定律的推导：</p>
+<blockquote>
+<p>此时， <em>S</em> 分量的反射率为<span class="math inline">\(R_{SB}=\frac{(n^2-1)^2}{(n^2+1)^2}\)</span>。</p>
+</blockquote>
+<p>关于<del>反应堆</del>玻片堆：</p>
+<blockquote>
+<p>上式表示的反射率<span class="math inline">\(R_{SB}\)</span>
+一般较小，反射光较弱。光束以<span class="math inline">\(\theta_B\)</span>射入多块平行玻璃板以获得只有
+<em>P</em> 分量的线偏振透射光，经过 <em>N</em> 块玻璃片的 2<em>N</em>
+个表面后，<em>S</em> 分量的总透射率为<span class="math display">\[(1-R_{SB})^{2N}=[1+(n-1)^2/2n]^{-4N}\]</span>在<span class="math inline">\(N\)</span>较大时，其值接近于<span class="math inline">\(0\)</span>。这种起偏装置就叫做玻片堆。</p>
+</blockquote>
+<ul>
+<li>延迟器和波片</li>
+</ul>
+<p>一般来说，线偏振光入射延迟器后出射为椭圆偏振光。其他的我就一句都没看懂了...<strong>不过没关系，一样可以做实验。</strong></p>
+<p>实验中需要操作的是判断波片快慢轴，定出方向，做一些测量。我们直接在下一部分说明。</p>
+<h3 id="应该做什么在附的实验表上记什么">应该做什么？在附的实验表上记什么？</h3>
+<h4 id="组装仪器">组装仪器</h4>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/jdt1sJ"><img src="https://s1.ax1x.com/2022/07/06/jdt1sJ.png" alt="jdt1sJ.png"></a></p>
+<p>这是一个分光计改装的实验仪。</p>
+<p>打开激光器，粗调2,3的轴线，小平台基本水平且与分光计主轴垂直。激光光斑不要太靠近偏振片区域的边缘。</p>
+<p>电阻箱阻值100Ω，使得毫伏表示数大于1毫伏。</p>
+<h4 id="观测布儒斯特角和偏振器的特性">观测布儒斯特角和偏振器的特性</h4>
+<p>玻璃片放在平台上，反射面过平台中心点。以下的此为“x”指实验表中的部分填写。</p>
+<p><strong>第一步</strong>，确定光束正入射棱镜表面时平台方位角<span class="math inline">\(\alpha_{i=0}\)</span>。用小纸片扎一个小孔，放在激光器出射光束处，调整棱镜表面的反射光在纸屏上的亮点和小孔重合，记下此时的平台方位角即为<span class="math inline">\(\alpha_{i=0}\)</span>。<del>能不能搞点正常的下标啊</del></p>
+<p><strong>第二步</strong>，<strong>旋转棱镜</strong>使得光束的入射角<span class="math inline">\(\theta_i\)</span>约为55°。旋转2到某个角度可以发现白纸屏上的光点很暗。微调入射角和起偏器，使得光点达到最暗时的平台方位角为<span class="math inline">\(\alpha_B\)</span>。起偏器2的方向角为<span class="math inline">\(P_{\leftrightarrow}\)</span>。<del>能不能搞点正常的下标啊</del></p>
+<p><strong>第二步要连做三次</strong>，得到一个平台方位角的平均值<span class="math inline">\(\alpha_B\)</span>，然后布儒斯特角测量值就是<span class="math inline">\(\alpha_{i=0}-\alpha_B\)</span>，然后折射率就是布儒斯特角取一个正切值。此为“4”。</p>
+<p><strong>第三步</strong>，如上得到一个起偏器方向角的平均值<span class="math inline">\(P_{\leftrightarrow}\)</span>，把2置于平均值位置。拿走玻璃片，转动3使得光强探测器上电压值最小，此时即为正交消光。在表格里记下3上度盘的度数为<span class="math inline">\(a_\uparrow\)</span>，可以看一下<span class="math inline">\(a_\uparrow\)</span>是否和<span class="math inline">\(P_{\leftrightarrow}\)</span>大约相差<span class="math inline">\(90°\)</span>作为验证，此为“5”。<del>能不能搞点正常的下标啊</del></p>
+<p><strong>第四步</strong>，保持偏振器2不动，将3的轮盘角多加<span class="math inline">\(90\)</span>度，从而恢复到二者<span class="math inline">\(x\)</span>轴平行的情况。在此基础上每次加上<span class="math inline">\(0,15,30,45,60,75,80,84,87,90\)</span>度，得到二者<span class="math inline">\(x\)</span>轴的夹角为以上数据。记下对应的电压值，注意夹角为<span class="math inline">\(90\)</span>度时<strong>可以视作已经消光，示数为环境光光强</strong>。此为“6”。</p>
+<h4 id="波片的特性研究">波片的特性研究</h4>
+<p><strong>第一步</strong>，把3的轮盘角调回<span class="math inline">\(a_\uparrow\)</span>，安装波片<span class="math inline">\(C_0\)</span>到2盘的度盘上，使得<span class="math inline">\(C_0\)</span>上白点处对应的直径大致竖直。微调<span class="math inline">\(C_0\)</span>使得电压示数最小，记录下此时内圈的游标盘示数为<span class="math inline">\(C_0\)</span>，此时有<span class="math inline">\(C_0\)</span>的快轴竖直。此为“7”。</p>
+<p><strong>第二步</strong>，<span class="math inline">\(C_0\)</span>不动，在小平台上放上<span class="math inline">\(C_x\)</span>使得光束可以垂直透过。旋转<span class="math inline">\(C_x\)</span>使得电压示数最小，此时<span class="math inline">\(C_x\)</span>的某个轴已经垂直于2的透射轴，达到竖直方向。记下此时<span class="math inline">\(C_x\)</span>的度盘数值，记为<span class="math inline">\(C_x\)</span>。此为“8”。</p>
+<p><strong>第三步</strong>，此时二者都不要再动，就有<span class="math inline">\(C_0\)</span>的快轴和<span class="math inline">\(C_x\)</span>的某一个轴平行。保证偏振器2的轮盘角为<span class="math inline">\(P_{\leftrightarrow}\)</span>，偏振器3的轮盘角为<span class="math inline">\(a_\uparrow\)</span>。<strong>然后在此基础上给</strong><span class="math inline">\(P_{\leftrightarrow}\)</span><strong>加上</strong><span class="math inline">\(15°\)</span>，转动3的轮盘角使得二者消光（表现为电压示数最小），记下此时的3度盘角度和转动的差值角度。<strong>每次测量结束后，将偏振器3的轮盘角归回<span class="math inline">\(a_\uparrow\)</span>。</strong></p>
+<p>还要再做两次，分别给<span class="math inline">\(P_{\leftrightarrow}\)</span>加上<span class="math inline">\(30°\)</span>和<span class="math inline">\(45°\)</span>，调节3的轮盘角。可以发现3的转动差值和给<span class="math inline">\(P_{\leftrightarrow}\)</span>加上的角度差不多，作为验证。因为这组成了一个<strong>半波片</strong>。此为“9”。</p>
+<p><strong>第四步</strong>，转动<span class="math inline">\(C_0\)</span>，给<span class="math inline">\(C_0\)</span>加上90°使得<span class="math inline">\(C_0\)</span>的快轴处于水平位置，和<span class="math inline">\(C_x\)</span>的某一个轴垂直。与第三步类似地求出3的轮盘角增加差值。可以发现3的转动差值约等于给<span class="math inline">\(P_{\leftrightarrow}\)</span>加上的角度取负，作为验证。因为这组成了一个<strong>全波片</strong>。此为“10”。</p>
+<p>这几步操作证明了<span class="math inline">\(C_x\)</span>竖直的“某一个轴”其实是<strong>快轴</strong>。</p>
+<h4 id="单个frac14波片的特性研究">单个<span class="math inline">\(\frac{1}{4}\)</span>波片的特性研究</h4>
+<p><strong>第一步</strong>，取下<span class="math inline">\(C_x\)</span>，把2归回<span class="math inline">\(P_{\leftrightarrow}\)</span>，把3归回<span class="math inline">\(a_\uparrow\)</span>。将2的轮盘角多加<span class="math inline">\(22.5°\)</span>，于是记录下<span class="math inline">\(P=P_{\leftrightarrow}+22.5°\)</span>。调节3使得偏振器3的透射轴与偏振器2的透射轴平行，记下此时的轮盘角<span class="math inline">\(a_i\)</span>。然后转动<span class="math inline">\(C_0\)</span>，分别记录最大的电压值和最小的电压值。</p>
+<p>然后，重复第一步，仅把其中的“<span class="math inline">\(22.5°\)</span>”分别改为<span class="math inline">\(45°,67.5°\)</span>实验两次即可。把此过程中的数据都记在表格里，下面的计算暂时先不用管。</p>
+<p><strong>第二步</strong>，把光源挡住，记一个系统误差电压值<span class="math inline">\(I_0\)</span>，填在表格边上那个空里面。此为“11”。</p>
+<h3 id="测完数据要分析计算什么画哪些图-1">测完数据要分析计算什么？画哪些图？</h3>
+<ul>
+<li>计算实验元件玻璃的布儒斯特角和折射率。前文已体现。</li>
+<li>绘图验证马吕斯定律</li>
+</ul>
+<p>用表6的数据分析<span class="math inline">\(\frac{I_m-I_{min}}{I_{max}-I_{min}}\)</span>和<span class="math inline">\((\cos
+x)^2\)</span>之间的线性关系（即二者相等），并绘制一个以<span class="math inline">\(\theta\)</span>为自变量的图，体现<span class="math inline">\(\frac{I_m-I_{min}}{I_{max}-I_{min}}\)</span>和<span class="math inline">\((\cos x)^2\)</span>两条曲线的变化。其中<span class="math inline">\(I_{min}\)</span>和<span class="math inline">\(I_{max}\)</span>分别代表<span class="math inline">\(\theta\)</span>为<span class="math inline">\(90°\)</span>和<span class="math inline">\(0°\)</span>时的光强测量值。</p>
+<ul>
+<li>观测偏振光通过半波片和全波片的现象。前文已体现。</li>
+<li>线偏振光通过<span class="math inline">\(\frac{1}{4}\)</span>波片</li>
+</ul>
+<p>其实就是把表格补满的过程。</p>
+<p>其中，计算波片相延可以使用<span class="math inline">\(|sin\delta_r|=\frac{2\sqrt{(I_{min}/I_{max})}}{sin(2\beta)(1+I_{min}/I_{max})}\)</span>来计算。三个值都略小于<span class="math inline">\(90°\)</span>。理论值均为<span class="math inline">\(90°\)</span>。</p>
+<p>用<span class="math inline">\(\alpha\)</span>计算长轴方位角则有<span class="math inline">\(\psi\)</span>和<span class="math inline">\(\alpha\)</span>相差<span class="math inline">\(90°\)</span>，但要把<span class="math inline">\(\psi\)</span>调到<span class="math inline">\([-90°,90°]\)</span>的范围内。三个理论值分别为<span class="math inline">\(0°,45°,90°\)</span>。</p>
+<p>用公式计算长轴方位角，则把<span class="math inline">\(\psi=\frac{1}{2}arctan(tan2\beta
+cos\delta)\)</span>代入算一下即可。理论值罗列同上，应该差距不大。</p>
+<p>其余分析参考祖传实验报告即可。</p>
+<h3 id="本文写作中用到的参考-1">本文写作中用到的参考</h3>
+<ul>
+<li><p>清华大学2021秋基础物理实验(2)讲义</p></li>
+<li><p>清华大学2011级尚恩垚学长的大物实验报告《偏振光学实验》</p></li>
+</ul>
+<p>（说来惭愧，我一个学基物的，看了别人的大物实验祖传报告，才学会了这个实验x）</p>
+<h2 id="塞曼效应实验">塞曼效应实验</h2>
+<p>待填坑。</p>
+<h2 id="光栅衍射实验">光栅衍射实验</h2>
+<p>笔者直到实验结束也没明白这是在做什么。</p>
+<p>放一个我自己的实验报告在这里，希望将来的社恐同学们不要再被困扰到了，到期末我会把信息脱敏后上传
+GitHub 和课程资源共享计划。<a target="_blank" rel="noopener" href="https://cloud.tsinghua.edu.cn/d/9eec91a1826542e79d93/">Click
+Here</a></p>
+<h1 id="简要报告篇">简要报告篇</h1>
+<h2 id="摩擦系数实验">摩擦系数实验</h2>
+<p>为什么这学期会有这么个实验...</p>
+<p>是新出的题目，暑假期间没有拿到讲义，可能不会写了。</p>
+<h2 id="弗兰克-赫兹实验">弗兰克-赫兹实验</h2>
+<h3 id="原理简述-2">原理简述</h3>
+<p>完全看不懂，拉倒吧。<del>总感觉也不影响实验</del></p>
+<h3 id="应该做什么">应该做什么？</h3>
+<h4 id="第一次实验的接线">第一次实验的接线</h4>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/jrORQH"><img src="https://s1.ax1x.com/2022/07/10/jrORQH.png" alt="jrORQH.png"></a></p>
+<p>实验仪“放大倍数”档位选择“<span class="math inline">\(×1\)</span>”档，“扫描选择”档位置于“手动”档。打开一体机电脑。参考讲义上的<span class="math inline">\(10(a)\)</span>给实验管箱接线<del>（或者照抄上图）</del>，检查无误后准备通电。</p>
+<p>通电时先打开实验仪背后红色按钮，再按下实验仪前面的“灯丝电流开关”（若不按下此按钮，灯丝电流输出为
+0A）。然后<strong>在实验仪上调整</strong>灯丝电流在<span class="math inline">\(0.8A\)</span>附近，拒斥场电压在<span class="math inline">\(7.5V\)</span>附近，控制栅电压在<span class="math inline">\(1.5V\)</span>左右。</p>
+<h4 id="寻找实验条件">寻找实验条件</h4>
+<p>缓慢<strong>在实验仪上增加</strong>扫描电压<span class="math inline">\(U_a\)</span>，观察<strong>板极电流<span class="math inline">\(I_p\)</span>的变化情况</strong>。
+当看到其起伏变化时，分别改变<strong>实验仪上</strong>的三个参数，定性观察每个参量对<span class="math inline">\(I_p\)</span>的影响。如果随着<span class="math inline">\(U_a\)</span>的增加在 <span class="math inline">\(0
+∼ 85V\)</span> 内能大致观察到<span class="math inline">\(I_p\)</span>有
+<span class="math inline">\(6\)</span>
+个峰，峰与谷的差别相对比较明显，则达到最佳测试条件。此时把实验仪上的档位切成自动扫描，启动自动采集软件绘制曲线，获取峰值电压。</p>
+<p>太抽象了，所以我找了一份实验数据，来自刘丁菡学长，大概这样：</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/jrOWyd"><img src="https://s1.ax1x.com/2022/07/10/jrOWyd.md.png" alt="jrOWyd.md.png"></a></p>
+<p>注意以下要点：</p>
+<ul>
+<li>实验仪上的灯丝电流不能一次改变很大，大概在<span class="math inline">\(0.01∼0.02A\)</span>左右；调整灯丝电流后要等两三分钟再观察<span class="math inline">\(I_p\)</span>的变化，有一个滞后。</li>
+<li>扫描电压<span class="math inline">\(U_a\)</span>较大时尽量使用自动挡位测量，用完之后尽快调零。如果出现电流表指针打表，要尽快调小扫描电压，关闭灯丝电流的开关。</li>
+</ul>
+<h4 id="跟着fh软件教程操作">跟着FH软件教程操作</h4>
+<p>按照教程一直做到第三步，第四步校准仪器的时候<strong>输入自动扫描电压</strong><span class="math inline">\(U_a\)</span>的最大值为<span class="math inline">\(90V\)</span>，扫描出完整的<span class="math inline">\(6\)</span>个峰和谷。第五步数据采集模块中选择数据个数为<span class="math inline">\(200\)</span>，点间延时为<span class="math inline">\(100ms\)</span>为最佳。此后一直根据教程行动即可，得到第一份数据。</p>
+<h4 id="定性研究的操作">定性研究的操作</h4>
+<p>保持灯丝电流和拒斥电压不动，改变控制栅电压在<span class="math inline">\(1.0V,1.5V,2.0V,2.5V,3.0V\)</span>这些值上变化，扫出曲线。</p>
+<p>保持灯丝电流和控制栅电压不动，改变拒斥电压在<span class="math inline">\(5.0V,6.0V,7.0V,8.0V,9.0V\)</span>这些值上变化，扫出曲线。</p>
+<h4 id="氩原子更高激发态的情况">氩原子更高激发态的情况</h4>
+<p><del>这一次是两人一组，等待大佬救我</del></p>
+<p>类似的操作，把亚克力板接进电路，设定最佳实验条件。<strong>在软件上调整扫描电压最大值为<span class="math inline">\(30V\)</span></strong>​。<strong>在实验仪上调整</strong>灯丝电流在<span class="math inline">\(0.78A\)</span>附近，控制栅电压在<span class="math inline">\(1.5V\)</span>左右。拒斥场电压分别调整为<span class="math inline">\(2.0V,2.5V,3.0V\)</span>。类似扫描出<span class="math inline">\(I_p-U_a\)</span>的归一化和非归一化曲线。</p>
+<p>注意以下的要点：</p>
+<ul>
+<li>只需要图上有两个峰。第二个峰大约出现在<span class="math inline">\(25V\)</span>左右，因此最大扫描电压只需要<span class="math inline">\(30V\)</span>。而且<span class="math inline">\(I_p\)</span>的最大峰值对应不超过<span class="math inline">\(50\mu A\)</span>。</li>
+<li>祖传报告中指出这一步实验仪上的另两个参数保持不变即可，和讲义不是很一样。<strong>我倾向于相信祖传报告。</strong></li>
+</ul>
+<p>实验结束后可以断开其他元件的连接，整理仪器，处理自己的数据。</p>
+<h3 id="测完数据要分析计算什么">测完数据要分析计算什么？</h3>
+<h4 id="测试i_p-u_a曲线得到氩原子第一激发电位">测试<span class="math inline">\(I_p-U_a\)</span>曲线，得到氩原子第一激发电位</h4>
+<p>找到第一部分数据的 Excel 表格 Data
+页，取六个峰值的电压数据和测量次数（注意舍去一看就不对的值），到 Origin
+里拟合数据。由于曲线上相邻两峰值之间的电位差就是氩原子的第一激发电<span class="math inline">\(U_g\)</span>，因此处理得到的斜率就是第一激发电位。</p>
+<p>太抽象了，这是一张示例处理表格，来自刘丁菡学长，其中的 <span class="math inline">\(Slope-Value\)</span> 就是所需要的值。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/jrO2Se"><img src="https://s1.ax1x.com/2022/07/10/jrO2Se.png" alt="jrO2Se.png"></a></p>
+<p>关于不确定度的计算，公式都在下面了：</p>
+<p><span class="math display">\[\Delta_A=S_b=b\sqrt{\frac{2(1-R^2)}{n-2}}\]</span></p>
+<p><span class="math display">\[\Delta_B=0.001×b+0.01\]</span></p>
+<p><span class="math display">\[U_g=(b±\Delta_{U_g})\]</span></p>
+<p>其中<span class="math inline">\(b\)</span>是斜率，<span class="math inline">\(R^2\)</span>是拟合的最后一列方差，<span class="math inline">\(n\)</span>是实验次数（即为<span class="math inline">\(6\)</span>），<span class="math inline">\(\Delta_{U_g}\)</span>是两个系差平方和的开方。</p>
+<h4 id="氩原子受击后回到基态辐射出的光波波长">氩原子受击后回到基态辐射出的光波波长</h4>
+<p>套下面两个公式：</p>
+<p><span class="math display">\[\lambda=\frac{hc}{eU_g}\]</span></p>
+<p><span class="math display">\[\Delta_\lambda=\lambda\frac{\Delta_{U_g}}{U_g}\]</span></p>
+<p>实验中观测不到发光是因为这是紫外波段而不是可见光波段，也因此用壳罩住了管子防止对人体造成伤害。</p>
+<h4 id="定性研究栅极电压和拒斥电压对i_p的影响">定性研究栅极电压和拒斥电压对<span class="math inline">\(I_p\)</span>的影响</h4>
+<p>控制栅电压的影响：由图可知，从峰值对应的扫描电压上看，随着 <span class="math inline">\(U_G\)</span> 值的增大，曲线中峰
+值所对应的扫描电压值稍向左偏移；从峰值的相对大小来看，随着 <span class="math inline">\(U_G\)</span> 值的增大，峰值先增大后减小，在 <span class="math inline">\(U_G≈ 2.0V\)</span>
+附近能观测到峰值最大，说明此时单位时间到达极板的电子最多。
+理论解释见祖传报告，反正我也写不出来。例图如下，来自刘丁菡学长：</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/jrOcWD"><img src="https://s1.ax1x.com/2022/07/10/jrOcWD.md.png" alt="jrOcWD.md.png"></a></p>
+<p>拒斥电压的影响：由图可知，随着 <span class="math inline">\(U_R\)</span>
+值的增大，曲线绝对值下移、峰谷值之间的差距变
+大、曲线中峰值所对应的扫描电压值稍向右偏移。理论解释见祖传报告，反正我也写不出来。例图如下，来自刘丁菡学长：</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/jrO6JO"><img src="https://s1.ax1x.com/2022/07/10/jrO6JO.md.png" alt="jrO6JO.md.png"></a></p>
+<h4 id="更高激发态的研究">更高激发态的研究</h4>
+<p>例图如下，来自刘丁菡学长。<span class="math inline">\(U_R\)</span>
+整体对曲线的影响与第一激发态是类似的，即随着 <span class="math inline">\(U_R\)</span>
+的增大，曲线整体下移，峰谷差值增大，峰值向右移动。但差别在于曲线的形状有所不同，即没有出现很明显的一个峰值，而是峰值附近有一个小平台。理论解释见祖传报告，反正我也写不出来。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/jrOfOA"><img src="https://s1.ax1x.com/2022/07/10/jrOfOA.md.png" alt="jrOfOA.md.png"></a></p>
+<h4 id="解答思考题">解答思考题</h4>
+<p>见祖传报告。</p>
+<h3 id="本文写作中用到的参考-2">本文写作中用到的参考</h3>
+<ul>
+<li>清华大学2020级刘丁菡学长的基物实验报告《弗兰克-赫兹实验》</li>
+</ul>
+<p>感谢学长的图救我老命，不然这个实验真的看不懂在干嘛...</p>
+<h2 id="几何光学系列实验">几何光学系列实验</h2>
+<p>不喜欢系列实验，真的好麻烦。</p>
+<h3 id="原理简述-3">原理简述</h3>
+<p><del>会算相似三角形就行</del></p>
+<ul>
+<li>薄透镜的成像规律</li>
+</ul>
+<p>经典公式：<span class="math inline">\(\frac{1}{f}=\frac{1}{p}+\frac{1}{q}\)</span>，其中
+<span class="math inline">\(p\)</span>,<span class="math inline">\(q\)</span> 分别代表物距和像距；<span class="math inline">\(\beta=-\frac{q}{p}\)</span>称为线放大率。</p>
+<p>它们有很多正负性质的要求：前三者实物/实像/凸透镜为正，虚物/虚像/凹透镜为负，<span class="math inline">\(\beta\)</span>在实像时为负，虚像时为正。</p>
+<ul>
+<li>内调焦望远镜</li>
+</ul>
+<p>望远镜是由一个物镜一个目镜组成的。当我们用一组物镜组替代物镜时，不必移动物镜和目镜间的距离<span class="math inline">\(l\)</span>，而是直接改变物镜组的焦距即可达到整体调焦的效果。这就叫做内调焦望远镜。</p>
+<p>实验中用到的物镜组是一个凸透镜<span class="math inline">\(L_1\)</span>和一个凹透镜<span class="math inline">\(L_2\)</span>组成的。这是一个最简单的变焦<del>物竞组</del>物镜组。原理是<span class="math inline">\(L_2\)</span>的物方焦点在<span class="math inline">\(L_1\)</span>的像方焦点右侧时，改变两个透镜的间距<span class="math inline">\(d\)</span>就能达到内部调焦的效果。此时取二者的“正焦距”（我不太会描述）为<span class="math inline">\(f_1&#39;\)</span>和<span class="math inline">\(f_2\)</span>，物镜的组合焦距即为<span class="math inline">\(f_o&#39;=\frac{f_1&#39;f_2}{d+f_2-f_1&#39;}\)</span>。要求满足<span class="math inline">\(f_1&#39;-f_2&lt;d&lt;f_1&#39;\)</span>才能如上调节。</p>
+<p>我们把目镜的焦距记作<span class="math inline">\(f_e\)</span>。望远镜的视放大率即为<span class="math inline">\(\Gamma_T=-\frac{f_o}{f_e}\)</span>。这个数值的绝对值越大，观察到的像越大。比如说，观察远物的时候可以通过调小<span class="math inline">\(d\)</span>来放大<span class="math inline">\(f_o\)</span>，观察近物的时候不想改变物镜组和目镜组之间的距离，直接放大<span class="math inline">\(d\)</span>即可。</p>
+<h3 id="应该做什么-1">应该做什么？</h3>
+<h4 id="a0.薄透镜成像规律">A0.薄透镜成像规律</h4>
+<p>为了满足近轴光线条件，要进行共轴调节。</p>
+<p>粗调的时候，先把光源，物，透镜靠拢，调节到中心大约在一条平行于导轨的直线上。总之怎么看着舒服就怎么调。</p>
+<p>细调的原理是<del>大象追小象</del>大像追小像。当物与像的距离大于 <span class="math inline">\(4f\)</span>
+时，凸透镜从物移到像的过程中会成两次清晰的像，一大一小。<strong>要做的就是</strong>移动像和透镜的位置，使得<span class="math inline">\(B_1\)</span>追上<span class="math inline">\(B_2\)</span>，也即两个像差不多大，这可以通过像屏上的坐标贴纸判断。此时像在透镜的主光轴上。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/jrwiY4"><img src="https://s1.ax1x.com/2022/07/09/jrwiY4.png" alt="jrwiY4.png"></a></p>
+<p>不要动平行光管，就是那个<del>挺长的不认识的东西。</del>此处无记录要求。</p>
+<h4 id="b1.物像距法测量薄凸透镜焦距">B1.物像距法测量薄凸透镜焦距</h4>
+<p>这很明示了，读个数据套公式就行。</p>
+<h4 id="b2.共轭法测量薄凸透镜焦距">B2.共轭法测量薄凸透镜焦距</h4>
+<p>读个数据套另一个公式：<span class="math inline">\(f=\frac{b^2-a^2}{4b}\)</span>，其中 <span class="math inline">\(a\)</span> 指两次透镜位置间距离。</p>
+<h4 id="b3.焦距仪法测薄凸透镜焦距">B3.焦距仪法测薄凸透镜焦距</h4>
+<p>读六组数据写在表格上，比较麻烦的是算不确定度。这一部分已经在讲义和实验表上详细手写了，照做即可，不再打一遍了。</p>
+<h4 id="c1.主面间距测量">C1.主面间距测量</h4>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/jrwAp9"><img src="https://s1.ax1x.com/2022/07/09/jrwAp9.md.png" alt="jrwAp9.md.png"></a></p>
+<p>5中的C.2应为B.3。不过我不太懂怎么通过这几个参数算主面间距，好怪。<strong>此处留坑。</strong></p>
+<h4 id="c2.修正共轭法系差">C2.修正共轭法系差</h4>
+<p>again，算就对了。</p>
+<h4 id="d.用焦距仪测凸透镜的焦距的附加透镜法">D.用焦距仪测凸透镜的焦距的附加透镜法</h4>
+<p>这个讲义上也说的挺清楚的。注意先给玻罗板取某一线对记录下来，第一步和第二步要用一样的线对<del>（废话）</del>。</p>
+<p>最后的凹透镜焦距是<span class="math inline">\(f_2=-\frac{f_1
+y_0}{y&#39;&#39;}\)</span>，由于是凹透镜的原因，焦距记为负的。</p>
+<h4 id="e.内调焦望远镜的物镜组研究">E.内调焦望远镜的物镜组研究</h4>
+<p><strong>第一步</strong>，分别对物镜组中的凹凸透镜进行共轴调节，用焦距仪法测此组光具焦距值<span class="math inline">\(f_o&#39;\)</span>作为物镜焦距。反推得到此时凹凸透镜的距离<span class="math inline">\(d=\frac{f_2f_1&#39;}{f_o&#39;}+f_1&#39;-f_2\)</span>。其中，由于凹凸透镜的焦距已经在B和D实验中测出，直接取用其值即可。</p>
+<p><strong>第二步</strong>，改变凹凸透镜距离使得长焦透镜<span class="math inline">\(L_1\)</span>距离测微目镜约<span class="math inline">\(10cm\)</span>。得到第二个测量值。</p>
+<p><strong>第三步</strong>，分别假设凹凸透镜的焦距，然后画一个类似下图的图。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/jrwFfJ"><img src="https://s1.ax1x.com/2022/07/09/jrwFfJ.md.png" alt="jrwFfJ.md.png"></a></p>
+<p>这张图的逻辑是：以纵轴表示自变量<span class="math inline">\(d\)</span>，横轴表示四个因变量。其计算公式分别为：</p>
+<p><span class="math display">\[l_{L_1H}=-\frac{f_1&#39;d}{d+f_2-f_1&#39;}\]</span></p>
+<p><span class="math display">\[l_{L_1H&#39;}=-\frac{d(d-f_1&#39;)}{d+f_2-f_1&#39;}\]</span></p>
+<p><span class="math display">\[F&#39;=l_{L_1H&#39;}+f_o&#39;\]</span></p>
+<p><span class="math display">\[F=l_{L_1H}-f_o&#39;\]</span></p>
+<p>其中，凸透镜<span class="math inline">\(f_1&#39;=0.3m\)</span>,凹透镜<span class="math inline">\(f_2=0.2m\)</span>。<del>所以这个图是不是实验之前就能画出来</del></p>
+<h3 id="本文写作中用到的参考-3">本文写作中用到的参考</h3>
+<ul>
+<li>透镜焦距实验-仪器详解</li>
+</ul>
+<p>https://www.bilibili.com/video/BV163411q7NP?spm_id_from=333.999.0.0&amp;vd_source=6ae5c31a80120436d23cf7b7c7ceb3ba</p>
+<ul>
+<li>清华大学2011级耿强学长的大物实验报告《透镜焦距的测定》P181</li>
+</ul>
+<h1 id="写在最后">写在最后</h1>
+<p>我一向把物理实验当成“可以摆弄仪器的好玩的课”，高中学竞赛的时候就羡慕物化生竞赛的同学可以做实验<del>，我们只能一直待在教室里写题</del>。但是哪怕基物实验
+1 拿了
+A-，对于实验的原理仍然不甚了解。到最后每学期六次做实验三次写报告成为了生活中的调剂，不用太动脑子就能写出一大片东西，好像自己很努力一样。</p>
+<p>在 Overleaf 上无意间找到了<a target="_blank" rel="noopener" href="https://www.overleaf.com/latex/templates/thu-emp-qing-hua-da-xue-jin-dai-wu-li-shi-yan-bao-gao-mo-ban/mbgqcryqhwqd">清华大学近代物理实验报告模板</a>。朱老师的要求和这个还是很不一样。发现也没有用于普通实验的模板，于是改了改我的自用模板，还行。</p>
+<p>GitHub
+地址：https://github.com/Chiyuru/THU-Fundamental-Physics-Report</p>
+<p><del>但是用 LaTeX 写实验报告的人哪个没有自己的模板啊</del></p>
+<p><del>您又在假装干活了是吗</del></p>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>我很可爱 请给我钱（？）</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.jpg" alt="驰雨Chiyuru 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.jpg" alt="驰雨Chiyuru 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>驰雨Chiyuru
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://chiyuru.github.io/2022/07/03/Physics-Lab2-Notes/" title="基础物理光学实验备忘录">https://chiyuru.github.io/2022/07/03/Physics-Lab2-Notes/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E8%AF%BE%E7%A8%8B%E5%AE%9E%E5%BD%95/" rel="tag"># 课程实录</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/06/27/The-Second-Tsinghua-Logic-Summer-School/" rel="prev" title="Tsinghua Logic Summer School">
+      <i class="fa fa-chevron-left"></i> Tsinghua Logic Summer School
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/07/11/lying-flat-in-games/" rel="next" title="躺平记——游戏篇">
+      躺平记——游戏篇 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  
+  <div class="comments">
+  <script src="https://utteranc.es/client.js" repo="Chiyuru/chiyuru.github.io" issue-term="pathname" theme="github-light" crossorigin="anonymous" async></script>
+  </div>
+  
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%8C%E6%95%B4%E6%8A%A5%E5%91%8A%E7%AF%87"><span class="nav-text">完整报告篇</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%A8%E5%8D%95%E8%89%B2%E4%BB%AA%E6%B5%8B%E5%AE%9A%E4%BB%8B%E8%B4%A8%E7%9A%84%E5%90%B8%E6%94%B6%E6%9B%B2%E7%BA%BF"><span class="nav-text">用单色仪测定介质的吸收曲线</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%9F%E7%90%86%E7%AE%80%E8%BF%B0"><span class="nav-text">原理简述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BA%94%E8%AF%A5%E5%81%9A%E4%BB%80%E4%B9%88%E5%9C%A8%E7%BA%B8%E4%B8%8A%E8%AE%B0%E4%BB%80%E4%B9%88"><span class="nav-text">应该做什么？在纸上记什么？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%A1%E5%AF%B9%E5%8D%95%E8%89%B2%E4%BB%AA%E7%9A%84%E6%B3%A2%E9%95%BF%E7%A4%BA%E5%80%BC"><span class="nav-text">校对单色仪的波长示值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%A8%E6%B1%9E%E7%81%AF%E8%B0%83%E7%8B%AD%E7%BC%9D%E5%AE%BD%E5%BA%A6"><span class="nav-text">用汞灯调狭缝宽度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%BA%B4%E9%92%A8%E7%81%AF%E5%85%89%E8%B7%AF%E8%B0%83%E8%8A%82%E8%80%8C%E4%B8%8D%E6%98%AF%E6%BA%B4%E9%92%A8%E7%81%AF%E5%85%89%E8%B7%AF%E8%B0%83%E8%8A%82"><span class="nav-text">溴钨灯&#x2F;光路调节，而不是溴钨灯光&#x2F;路调节</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%80%E5%90%8E%E7%9A%84%E4%BB%AA%E5%99%A8%E5%AE%89%E8%A3%85"><span class="nav-text">最后的仪器安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B5%8B%E9%87%8F%E7%8E%AF%E8%8A%82"><span class="nav-text">测量环节</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%8B%E5%AE%8C%E6%95%B0%E6%8D%AE%E8%A6%81%E5%88%86%E6%9E%90%E8%AE%A1%E7%AE%97%E4%BB%80%E4%B9%88%E7%94%BB%E5%93%AA%E4%BA%9B%E5%9B%BE"><span class="nav-text">测完数据要分析计算什么？画哪些图？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%AC%E6%96%87%E5%86%99%E4%BD%9C%E4%B8%AD%E7%94%A8%E5%88%B0%E7%9A%84%E5%8F%82%E8%80%83"><span class="nav-text">本文写作中用到的参考</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%81%8F%E6%8C%AF%E5%85%89%E5%AD%A6%E7%B3%BB%E5%88%97%E5%AE%9E%E9%AA%8C"><span class="nav-text">偏振光学系列实验</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%9F%E7%90%86%E7%AE%80%E8%BF%B0-1"><span class="nav-text">原理简述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BA%94%E8%AF%A5%E5%81%9A%E4%BB%80%E4%B9%88%E5%9C%A8%E9%99%84%E7%9A%84%E5%AE%9E%E9%AA%8C%E8%A1%A8%E4%B8%8A%E8%AE%B0%E4%BB%80%E4%B9%88"><span class="nav-text">应该做什么？在附的实验表上记什么？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%84%E8%A3%85%E4%BB%AA%E5%99%A8"><span class="nav-text">组装仪器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%82%E6%B5%8B%E5%B8%83%E5%84%92%E6%96%AF%E7%89%B9%E8%A7%92%E5%92%8C%E5%81%8F%E6%8C%AF%E5%99%A8%E7%9A%84%E7%89%B9%E6%80%A7"><span class="nav-text">观测布儒斯特角和偏振器的特性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B3%A2%E7%89%87%E7%9A%84%E7%89%B9%E6%80%A7%E7%A0%94%E7%A9%B6"><span class="nav-text">波片的特性研究</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8D%95%E4%B8%AAfrac14%E6%B3%A2%E7%89%87%E7%9A%84%E7%89%B9%E6%80%A7%E7%A0%94%E7%A9%B6"><span class="nav-text">单个\(\frac{1}{4}\)波片的特性研究</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%8B%E5%AE%8C%E6%95%B0%E6%8D%AE%E8%A6%81%E5%88%86%E6%9E%90%E8%AE%A1%E7%AE%97%E4%BB%80%E4%B9%88%E7%94%BB%E5%93%AA%E4%BA%9B%E5%9B%BE-1"><span class="nav-text">测完数据要分析计算什么？画哪些图？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%AC%E6%96%87%E5%86%99%E4%BD%9C%E4%B8%AD%E7%94%A8%E5%88%B0%E7%9A%84%E5%8F%82%E8%80%83-1"><span class="nav-text">本文写作中用到的参考</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A1%9E%E6%9B%BC%E6%95%88%E5%BA%94%E5%AE%9E%E9%AA%8C"><span class="nav-text">塞曼效应实验</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%89%E6%A0%85%E8%A1%8D%E5%B0%84%E5%AE%9E%E9%AA%8C"><span class="nav-text">光栅衍射实验</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%80%E8%A6%81%E6%8A%A5%E5%91%8A%E7%AF%87"><span class="nav-text">简要报告篇</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%91%A9%E6%93%A6%E7%B3%BB%E6%95%B0%E5%AE%9E%E9%AA%8C"><span class="nav-text">摩擦系数实验</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%97%E5%85%B0%E5%85%8B-%E8%B5%AB%E5%85%B9%E5%AE%9E%E9%AA%8C"><span class="nav-text">弗兰克-赫兹实验</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%9F%E7%90%86%E7%AE%80%E8%BF%B0-2"><span class="nav-text">原理简述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BA%94%E8%AF%A5%E5%81%9A%E4%BB%80%E4%B9%88"><span class="nav-text">应该做什么？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E6%AC%A1%E5%AE%9E%E9%AA%8C%E7%9A%84%E6%8E%A5%E7%BA%BF"><span class="nav-text">第一次实验的接线</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AF%BB%E6%89%BE%E5%AE%9E%E9%AA%8C%E6%9D%A1%E4%BB%B6"><span class="nav-text">寻找实验条件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%B7%9F%E7%9D%80fh%E8%BD%AF%E4%BB%B6%E6%95%99%E7%A8%8B%E6%93%8D%E4%BD%9C"><span class="nav-text">跟着FH软件教程操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9A%E6%80%A7%E7%A0%94%E7%A9%B6%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="nav-text">定性研究的操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B0%A9%E5%8E%9F%E5%AD%90%E6%9B%B4%E9%AB%98%E6%BF%80%E5%8F%91%E6%80%81%E7%9A%84%E6%83%85%E5%86%B5"><span class="nav-text">氩原子更高激发态的情况</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%8B%E5%AE%8C%E6%95%B0%E6%8D%AE%E8%A6%81%E5%88%86%E6%9E%90%E8%AE%A1%E7%AE%97%E4%BB%80%E4%B9%88"><span class="nav-text">测完数据要分析计算什么？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95i_p-u_a%E6%9B%B2%E7%BA%BF%E5%BE%97%E5%88%B0%E6%B0%A9%E5%8E%9F%E5%AD%90%E7%AC%AC%E4%B8%80%E6%BF%80%E5%8F%91%E7%94%B5%E4%BD%8D"><span class="nav-text">测试\(I_p-U_a\)曲线，得到氩原子第一激发电位</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B0%A9%E5%8E%9F%E5%AD%90%E5%8F%97%E5%87%BB%E5%90%8E%E5%9B%9E%E5%88%B0%E5%9F%BA%E6%80%81%E8%BE%90%E5%B0%84%E5%87%BA%E7%9A%84%E5%85%89%E6%B3%A2%E6%B3%A2%E9%95%BF"><span class="nav-text">氩原子受击后回到基态辐射出的光波波长</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9A%E6%80%A7%E7%A0%94%E7%A9%B6%E6%A0%85%E6%9E%81%E7%94%B5%E5%8E%8B%E5%92%8C%E6%8B%92%E6%96%A5%E7%94%B5%E5%8E%8B%E5%AF%B9i_p%E7%9A%84%E5%BD%B1%E5%93%8D"><span class="nav-text">定性研究栅极电压和拒斥电压对\(I_p\)的影响</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9B%B4%E9%AB%98%E6%BF%80%E5%8F%91%E6%80%81%E7%9A%84%E7%A0%94%E7%A9%B6"><span class="nav-text">更高激发态的研究</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E7%AD%94%E6%80%9D%E8%80%83%E9%A2%98"><span class="nav-text">解答思考题</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%AC%E6%96%87%E5%86%99%E4%BD%9C%E4%B8%AD%E7%94%A8%E5%88%B0%E7%9A%84%E5%8F%82%E8%80%83-2"><span class="nav-text">本文写作中用到的参考</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%A0%E4%BD%95%E5%85%89%E5%AD%A6%E7%B3%BB%E5%88%97%E5%AE%9E%E9%AA%8C"><span class="nav-text">几何光学系列实验</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%9F%E7%90%86%E7%AE%80%E8%BF%B0-3"><span class="nav-text">原理简述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BA%94%E8%AF%A5%E5%81%9A%E4%BB%80%E4%B9%88-1"><span class="nav-text">应该做什么？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#a0.%E8%96%84%E9%80%8F%E9%95%9C%E6%88%90%E5%83%8F%E8%A7%84%E5%BE%8B"><span class="nav-text">A0.薄透镜成像规律</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#b1.%E7%89%A9%E5%83%8F%E8%B7%9D%E6%B3%95%E6%B5%8B%E9%87%8F%E8%96%84%E5%87%B8%E9%80%8F%E9%95%9C%E7%84%A6%E8%B7%9D"><span class="nav-text">B1.物像距法测量薄凸透镜焦距</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#b2.%E5%85%B1%E8%BD%AD%E6%B3%95%E6%B5%8B%E9%87%8F%E8%96%84%E5%87%B8%E9%80%8F%E9%95%9C%E7%84%A6%E8%B7%9D"><span class="nav-text">B2.共轭法测量薄凸透镜焦距</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#b3.%E7%84%A6%E8%B7%9D%E4%BB%AA%E6%B3%95%E6%B5%8B%E8%96%84%E5%87%B8%E9%80%8F%E9%95%9C%E7%84%A6%E8%B7%9D"><span class="nav-text">B3.焦距仪法测薄凸透镜焦距</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#c1.%E4%B8%BB%E9%9D%A2%E9%97%B4%E8%B7%9D%E6%B5%8B%E9%87%8F"><span class="nav-text">C1.主面间距测量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#c2.%E4%BF%AE%E6%AD%A3%E5%85%B1%E8%BD%AD%E6%B3%95%E7%B3%BB%E5%B7%AE"><span class="nav-text">C2.修正共轭法系差</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#d.%E7%94%A8%E7%84%A6%E8%B7%9D%E4%BB%AA%E6%B5%8B%E5%87%B8%E9%80%8F%E9%95%9C%E7%9A%84%E7%84%A6%E8%B7%9D%E7%9A%84%E9%99%84%E5%8A%A0%E9%80%8F%E9%95%9C%E6%B3%95"><span class="nav-text">D.用焦距仪测凸透镜的焦距的附加透镜法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#e.%E5%86%85%E8%B0%83%E7%84%A6%E6%9C%9B%E8%BF%9C%E9%95%9C%E7%9A%84%E7%89%A9%E9%95%9C%E7%BB%84%E7%A0%94%E7%A9%B6"><span class="nav-text">E.内调焦望远镜的物镜组研究</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%AC%E6%96%87%E5%86%99%E4%BD%9C%E4%B8%AD%E7%94%A8%E5%88%B0%E7%9A%84%E5%8F%82%E8%80%83-3"><span class="nav-text">本文写作中用到的参考</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%86%99%E5%9C%A8%E6%9C%80%E5%90%8E"><span class="nav-text">写在最后</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="驰雨Chiyuru"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">驰雨Chiyuru</p>
+  <div class="site-description" itemprop="description">おはよう、朝だよ</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Chiyuru" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Chiyuru" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:mafy21@mails.tsinghua.edu.cn" title="E-Mail → mailto:mafy21@mails.tsinghua.edu.cn" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/Chiyuru_0417" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;Chiyuru_0417" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/ma-fei-yan-33" title="知乎 → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;ma-fei-yan-33" rel="noopener" target="_blank"><i class="fab fa-zhihu fa-fw"></i>知乎</a>
+      </span>
+  </div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">驰雨Chiyuru</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv1">
+  本站总访客数：<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共166.2k字</span>
+</div>
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300,"hOffset":-15,"vOffset":-15},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
+</html>

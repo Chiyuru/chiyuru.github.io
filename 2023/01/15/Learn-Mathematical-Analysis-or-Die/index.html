@@ -1,0 +1,1280 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"chiyuru.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="大二的寒假，我居然为了下学期不在概率论和复分析课上被爆杀，而在这儿速通数分。 转数环环友：你可以以任意顺序完成培养方案（">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数学分析 I 速通日志">
+<meta property="og:url" content="https://chiyuru.github.io/2023/01/15/Learn-Mathematical-Analysis-or-Die/index.html">
+<meta property="og:site_name" content="『姑妄言之姑妄听之』">
+<meta property="og:description" content="大二的寒假，我居然为了下学期不在概率论和复分析课上被爆杀，而在这儿速通数分。 转数环环友：你可以以任意顺序完成培养方案（">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2023/01/25/1FkScU8xRrQbZzD.png">
+<meta property="article:published_time" content="2023-01-15T04:34:52.000Z">
+<meta property="article:modified_time" content="2023-01-24T16:12:20.272Z">
+<meta property="article:author" content="驰雨Chiyuru">
+<meta property="article:tag" content="数学">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2023/01/25/1FkScU8xRrQbZzD.png">
+
+<link rel="canonical" href="https://chiyuru.github.io/2023/01/15/Learn-Mathematical-Analysis-or-Die/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>数学分析 I 速通日志 | 『姑妄言之姑妄听之』</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="『姑妄言之姑妄听之』" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">『姑妄言之姑妄听之』</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://chiyuru.github.io/2023/01/15/Learn-Mathematical-Analysis-or-Die/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="驰雨Chiyuru">
+      <meta itemprop="description" content="おはよう、朝だよ">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="『姑妄言之姑妄听之』">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          数学分析 I 速通日志
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-01-15 12:34:52" itemprop="dateCreated datePublished" datetime="2023-01-15T12:34:52+08:00">2023-01-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-01-25 00:12:20" itemprop="dateModified" datetime="2023-01-25T00:12:20+08:00">2023-01-25</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>大二的寒假，我居然为了下学期不在概率论和复分析课上被爆杀，而在这儿速通数分。</p>
+<p>转数环环友：你可以以任意顺序完成培养方案（</p>
+<span id="more"></span>
+<p>虽然已经学过一遍初级版，这次速通是作为观点的补充和复习，但还是很虚的。</p>
+<p>高二的时候我曾经备考过一阵子丘班
+(prototype)，不过因为当年联赛翻车省三的原因（，连初审都没有通过。组队备考的五个人里只有我们的队长
+ycj
+顺利去了北京，又通过了笔试，最终在面试中被刷掉了，他现在在上海理工大学，真的很可惜。cy
+后来放弃了，安心备考
+CMO，拿了银牌，现在在华子读数学，太成功了！不过虽然秋季学期一同上了数值分析，我至今也没和他面基成功。xzx
+和 wry
+似乎分别去了西安交大和上海财大，和他们没有很熟，后来也没再联系了。</p>
+<p>同时，这一段自学给我留下了对数分深刻的心理阴影，和不知道怎么手选又问不明白并列成为了大一没有学数分，而是选了微积分
+A 的两大原因，也成为了我本科很可能延毕一年的众多原因之二（</p>
+<p>使用的教材是常庚哲、史济怀《数学分析教程》，速通讲义是北京大学数学分析讲义和<a target="_blank" rel="noopener" href="https://www.bananaspace.org/wiki/%E8%AE%B2%E4%B9%89:%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90">一千零一页</a>，前者是后者的子集，的确更友善一些，用于提点重点，感谢甘主任对速通事业的支持！习题册是谢惠民《数学分析习题课讲义》，不过我觉得应该来不及做太多。</p>
+<p>并不是打算写知识点，没什么必要，只是想在这里哔哔赖赖一下，或许会试着虚空使用
+Feynman
+学习法？毕竟是速通，要快一些，不然下学期就寄了。发这一篇的主要目的是虚空被监督进度，毕竟我的效率实在是低下。</p>
+<p>按照欧老师的年终（粗略）统计，数分二和三课后加起来花了 210
+h，我打算速通到数分二为止，也就是整个寒假每天都在学的话，日均也要学 7
+h（。这显然是不可能的，毕竟我同时还有一些其他事务要做，比如点 R
+的技能树、编写统推讲义、推
+SRT、以及准备缓考科目。最重要的是，我还得摸鱼和出去玩啊！但还是尽量试试看，学到哪算哪，够用就行（了吗？</p>
+<h1 id="实数的构造">实数的构造</h1>
+<h2 id="从抽代出发事情变得简单了很多">从抽代出发，事情变得简单了很多</h2>
+<p>2023 年 1 月 17 日，星期二，很冷还没有暖气。</p>
+<p>大一的时候报了 wxf 老师的微积分
+A，这一块他其实也讲了一些，但是并不够严谨，我听着有点痛苦。说实在的我就不喜欢他这个授课的方式，下放知识又不彻底，等于炫技，不如不要下放。</p>
+<p>结果因为他不查考勤，微积分 A2 还是选了他的，最后大翻车。</p>
+<p>这一次会更加严谨、耐心，并保持好奇。</p>
+<ul>
+<li><p>用域公理、序公理和 Achimedes
+公理定义了实数域；整数和有理数可以用映射嵌入实数域，这个嵌入映射对于整数是单射。</p>
+<p>这个学过抽代之后倒是很好理解了，构造出域之后就有了最基本的三个元素
+<span class="math inline">\(0,1,-1\)</span>，把 <span class="math inline">\(n\)</span> 个 <span class="math inline">\(1\)</span> 加起来就是正整数 <span class="math inline">\(n\)</span>，考虑整数的分式域就是有理数域。实数域是一个特征为
+<span class="math inline">\(0\)</span>
+的域，这样构造出来的有理数域是它的最小子域，也即素域。</p>
+<p>为有理数定义了序关系 <span class="math inline">\(\frac{m}{n}&gt;\frac{p}{q} \iff mq&gt;np\)</span>
+之后， 就可以把序关系也嵌入到实数域里了，是成立的。</p></li>
+<li><p><span class="math inline">\(\mathbb{Q} \subseteq
+\mathbb{R}\)</span>，但是还没有从域的角度定义出 <span class="math inline">\(\mathbb{R} - \mathbb{Q}\)</span>
+里的元素，也就是无理数。仅仅是如上定义的话，一个所谓的实数域里完全可以只有有理数，也能满足序公理、域公理和
+Achimedes 公理，而我们想要一些其他的元素。比如说，<span class="math inline">\(\sqrt{2}\)</span> 怎么定义？</p>
+<p>当然可以对 <span class="math inline">\(\mathbb{Q}\)</span>
+做关于多项式 <span class="math inline">\(x^2-2\)</span> 的 Galois
+扩域（暴论，我不是很清楚这两个理论体系到底谁先谁后，还是别这么干比较好），但是这样可以做出很多形式上不相同的域，比如熟知的
+<span class="math inline">\(\mathbb{Q} (\sqrt{2})\)</span> 和 <span class="math inline">\(\mathbb{Q}[x] /
+(x^2-2)\)</span>，虽然它们本质上是同构的，但序关系无从保障。所以还是换个方法，也就是后面的
+Dedekind 分割。</p></li>
+<li><p>确界原理的证明非常炫酷，我每次写完一遍都觉得非常牛逼，可惜后来只记得是用每次缩小一半的区间套证明，具体细节还是自己写不出来。</p>
+<p>但是这样得到的 <span class="math inline">\(sup X\)</span>
+是一个闭区间套的极限，并不好用。更加好用的定义是对于任意 <span class="math inline">\(\varepsilon &gt;0\)</span>，存在 <span class="math inline">\(x \in X\)</span>，使得 <span class="math inline">\(x&gt;sup X -
+\varepsilon\)</span>。通俗一些说，上确界再小一点点都不可以。</p>
+<p>如果反过来假设确界定理成立，闭区间套公理可以很容易地被证明，只要分别取
+<span class="math inline">\(\lbrace a_n \rbrace\)</span> 的上确界和
+<span class="math inline">\(\lbrace b_n \rbrace\)</span>
+的下确界，夹出的区间就恰好是所有区间的交集。在已有序公理、域公理和
+Achimedes 公理的情况下二者是等价的。</p></li>
+<li><p>度量空间在数值分析课堂的引论里学过，当时在讲矩阵的范数如何定义，是从最普通的
+<span class="math inline">\(\mathbb{R}
+^n\)</span>讲起的，赞美包老师。虽然他这样根本不像在给数学系讲课，感觉有点照顾非数学系选课学生的意思。我的数分真是吃百家饭，这样也很好，多少消除一些曾经的心理阴影。</p>
+<p>对于度量空间 <span class="math inline">\((X,d)\)</span>，<span class="math inline">\(Y \subset X\)</span> 是子集，如果对任意的 <span class="math inline">\(x \in X\)</span> 和任意的 <span class="math inline">\(\varepsilon &gt;0\)</span> 都存在 <span class="math inline">\(y \in Y\)</span>，使得 <span class="math inline">\(d(y,x)&lt; \varepsilon\)</span>，那么称 <span class="math inline">\(Y\)</span> 在 <span class="math inline">\(X\)</span> 上是稠密的。直观上来说，就是 <span class="math inline">\(X\)</span> 上任意一个点都有 <span class="math inline">\(Y\)</span>
+上的一个点和它离得要多近有多近。举个例子的话，有理数和无理数在实数上都是稠密的，证明起来很简单，反复二分就可以了。</p></li>
+<li><p>然后就是线性空间的定义，印象里线性代数的最后一章就是学这个，当时不知道数域是什么，给我愁的，以为真的要把八条运算法则都背下来来证明一个东西是某个域上的线性空间，<del>当时要是会抽代就好了</del>。</p>
+<p>总之，<span class="math inline">\(F\)</span> 是一个数域，<span class="math inline">\(V\)</span>
+是某一集合，满足一些运算法则的时候，三元组 <span class="math inline">\((V,+,\times )\)</span> 是一个 <span class="math inline">\(F-\)</span> 线性空间。</p></li>
+</ul>
+<p>今天的数分就学到这里
+.jpg，内容大约是一周的量，还是有点少。明天再来.jpg</p>
+<p>2023 年 1 月 18 日，星期三，还是很冷但是稍微升温了一些。</p>
+<ul>
+<li><p>要开始构造实数了！用的是 Dedekind 分割。这个我也在 wxf 的微 A
+课上听过，但他讲得并不认真，仅限念了一遍定义。后一节课课前有同学提问说，为什么一左一右两个集合就能代表一个实数呢？他不是很愿意理会的样子，反问说你是不是补退选进来的所以没听过第一节课啊，一只羊为什么代表
+<span class="math inline">\(1\)</span>
+呢，两个集合怎么不能代表一个数呢。</p>
+<p>他可能是觉得这个问题太 trivial
+了吧，也或许只是当天心情不好而已，然而提问的同学看起来还是没理解的样子，还平白无故被敲打了一下，就茫然地坐下了。Anyway，在这之后我对这个课堂的印象就不是很好，后续也很少再去上课了。只是觉得，为什么不能好好讲清楚道理呢，就告诉同学理由是从几何直观的角度来看，把实数轴任意截断的一点都是实数，有这样的一个定义不就好了吗。当然，当然，应该是我吹毛求疵了，他可能真的只是当天心情不好，所以不太想解释，后来我也没怎么再听过他上课，不清楚还有没有类似的状况，可能属于是不小心碰到了一个极端情况。</p>
+<p>另外，单是讲过这个有什么意思呢，不说 Dedekind
+分割满足序公理所以确实可以定义出实数，也不拿来用一下，就莫名其妙放一个定义在这里，课后又让做题目，感觉是在炫技。后来我也看过一部分他的讲义和回放，挺多莫名其妙的安排都有点像炫技，就彻底放弃跟进度，自己单开了。不过确实也没人逼你选他的微积分课，接受不了的话，换别的老师的课堂就好了，或许是个伪命题吧。</p>
+<p>虽然大多数同学都吹 wxf
+讲课有多好，但我其实相当怀疑他们有一部分并没有听明白课堂内容，觉得老师讲的内容很高深，自己吹捧老师的话会显得很厉害而已。另外听说
+wxf
+的答疑确实很认真，或许大家说他好是指这一部分吧，还是指他喜欢在课堂上和群里讲笑话？PPT
+和讲义是准备得挺认真的，可惜我并不觉得设计得好，<del>感觉白认真了</del>。总之我是不太喜欢这种不彻底也不成体系的高阶知识下放，或许它自有意义，带大家了解一下也好。当然，和我相反的典型就是
+wl 他们，是真的学得很好，也喜欢 wxf
+的课堂，所以我这些话很可能只是弱者的托词而已。也是啊，我觉得他讲得不好，大一的时候干嘛不自己去看一千零一页，而是单开去拟合微积分往年习题了呢，乐。</p>
+<p>弱者的牢骚暂且发到这里，下面继续说点正经的。</p></li>
+<li><p>这下三纸无驴了。注意 Dedekind
+分割的断点是有理数时，会把它归到右侧区间里，这是为了保证左侧无最大元。一般把左侧的区间记为
+<span class="math inline">\(X\)</span>，也称这个分割代表的实数是 <span class="math inline">\(X\)</span>。</p>
+<p>Dedekind
+分割是满足序公理的，在这里需要先定义这一分割的序关系。对于实数 <span class="math inline">\(X,Y\)</span>，如果 <span class="math inline">\(X
+\subsetneq Y\)</span>，则有 <span class="math inline">\(X&lt;Y\)</span>。这个很好理解，<span class="math inline">\(X\)</span> 比 <span class="math inline">\(Y\)</span> 短一些，也就是 <span class="math inline">\(X\)</span> 的端点在 <span class="math inline">\(Y\)</span> 左侧，即 <span class="math inline">\(X&lt;Y\)</span>。再证明这个序关系满足序公理的五条要求即可。</p>
+<p>有了这样一个对实数的描述，就可以写出确界定理的第二种证明，也很炫酷。</p></li>
+<li><p>现在我们有了一个叫做实数的东西（Dedekind
+分割），它离组成实数域还差很远，因为域上的两种运算，加法和乘法，尚未被定义。我们来定义一下，然后先证明它是良好定义的，不会出
+bug。这指的是，对于两个实数的运算结果也是 Dedekind
+分割，且满足若干加法公理，并且是加法良定义的。</p>
+<p>加法定义：<span class="math inline">\(X+Y=\lbrace x+y | x \in X,y \in
+Y \rbrace\)</span>，零元素为 <span class="math inline">\(\bar{0} = X_0 =
+\lbrace x \in \mathbb{Q} | x&lt;0 \rbrace\)</span>。</p>
+<p>乘法定义：恒等元为 <span class="math inline">\(\bar{1}= X_1 = \lbrace
+x \in \mathbb{Q} | x &lt;1
+\rbrace\)</span>，需要根据正负性来分类定义。这个是 PIN
+的作业，我写作业去了。</p></li>
+</ul>
+<h2 id="summary">Summary</h2>
+<p>总之，在第一章里面，于我而言实际上是在抽代的基础上，为一个特征为
+<span class="math inline">\(0\)</span>
+的域在其素域的基础上添置了一些多余元素，让它也满足序公理和 Achimedes
+公理，这就符合实数域的定义了。为了使用的方便起见，又用 Dedekind
+分割确定了实数域元素的具体形式，把它和日常使用的实数域对应起来。这一过程中为了磨合一些
+bug，完成了不计其数的良定义确认，我愿称之为夜话团圆。</p>
+<p>素域就是熟知的 <span class="math inline">\(\mathbb{Q}\)</span>，由恒等元和零元素造出的整数环与其分式域构成。在此基础上，对素域元素做了一个序关系的定义，并嵌入实数域中，证明了它是符合序公理和
+Achimedes
+公理的。这说明这一做法可行，下一个任务就是具象化实数域的元素，也即实数。</p>
+<p>第二个创举是用 Dedekind
+分割构造所谓的实数的确切形式，这里用了一个几何的观点，就是把实数轴折断，把左半边的集合
+<span class="math inline">\(X\)</span>
+称为一个实数，通俗意义上来说，它代表的实际上是断点处的那个真正的实数。我们对创造出的这个实数进行了集合意义上的序、加法和乘法的定义。于是全体
+Dedekind 分割真正意义上构成了一个满足序公理和 Achimedes
+公理的域，这便和我们日常使用的实数没有差别了。</p>
+<p>此外，还有一个很有趣的东西叫做确界原理，它描述的是一个有上/下界的集合必有上/下确界。围绕它有三个证明，前两个是证明确界原理和区间套公理等价，第三个是用
+Dedekind
+分割作出的确切的实数来证明确界原理的确成立。用区间套公理推确界原理的证明最酷炫，希望我以后还能记得怎么做，以及它的细节。</p>
+<p>抽代真好用，赞美。我建议大家都和我一样，先学代数再学分析（什么啊</p>
+<p>学到这里，学过的几门数学课已经被充分利用过了。微积分自不必说，抽代上面说过了，高代的线性空间定义也出现过了，赋范空间和度量空间在数值分析的引论课上听过，甚至写习题写到可数理论，给了我一点小小的离散数学震撼，我以前一直以为这课没用，白学了。往后云端漫步了一点，在数分
+II 里找到了上学期在初概里了解过的 <span class="math inline">\(\sigma
+-\)</span>代数，其实属于是测度知识了，但把它当成高等概率论知识也未尝不可嘛（。另外我的初概学得稀烂，可以近似认为是在统计推断里学会的，也算是做了贡献（，不然就它还没出镜啦。</p>
+<p>什么叫做可以以任意顺序修完培养方案啊。我现在也理解为什么说数分难了，大一入学第一节课就学这玩意的话，反正我一下子受不了，会很想退学。不过这以前是
+Yau 班讲义来着，难怪我不配（</p>
+<h2 id="梦话可数集与不可数集">梦话：可数集与不可数集</h2>
+<p>2023 年 1 月 19 日，星期四，v 我 50，谢谢。</p>
+<p>在第一章继续逗留了一会，想补充一些可数（或者说可列）的东西。</p>
+<p>刚拿到习题的时候以为是离散数学，后来发现还是不太一样。这一部分先由
+PIN
+的习题展开，顺便理一下我在离散数学里学到的东西，发现两边在用不太类似的定义逻辑，接合在一起之后也有些
+happily ever after 了。</p>
+<p>终于在香蕉空间找到了开源的页面，省了很多打字的心力，赞美！以及发现原来最初编写这份讲义的是曾经访问了我博客的
+zrc 学长，由可爱的 _rqy
+完成了香蕉空间上的工作，世界真小，qwq，感谢前辈做出的贡献。</p>
+<h3 id="课后习题可数集与不可数集">课后习题：可数集与不可数集</h3>
+<p>令 <span class="math inline">\(\mathbb{N}\)</span>
+表示自然数的集合（包括 <span class="math inline">\(0\)</span>）。<span class="math inline">\(X\)</span> 是一个集合，如果存在单射 <span class="math inline">\(f\colon X\rightarrow \mathbb{N}\)</span>，我们就称
+<span class="math inline">\(X\)</span> 是可数的。如果 <span class="math inline">\(X\)</span> 不是可数的，我们就称它是不可数的。</p>
+<ul>
+<li><p>证明，有限集是可数的。</p>
+<p>Trivial.</p></li>
+<li><p>证明，可数集合的子集是可数的。</p>
+<p>Trivial，原映射的“一部分”，也就是它的导出映射对于剩余的元素仍然为单射。</p></li>
+<li><p>证明，如果 <span class="math inline">\(X\)</span>
+是可数集，那么我们总可以将 <span class="math inline">\(X\)</span> 写成
+<span class="math inline">\(X=\{x_1,x_2, x_3,
+\cdots\}\)</span>（即可以把 <span class="math inline">\(X\)</span>
+中的元素用自然数来标号）。（我们可以从一个开始一个一个的数下去把这些元素都罗列出来，所以叫做可数集）</p>
+<p>存在单射 <span class="math inline">\(f\colon X\rightarrow
+\mathbb{N}\)</span>，考虑 <span class="math inline">\(Im f\)</span>
+是一个自然数集合，由其一般性知可以表示为 <span class="math inline">\(\{
+1,2,3,... \}\)</span>。</p></li>
+<li><p>证明，有理数 <span class="math inline">\(\mathbb{Q}\)</span>
+是可数集。</p>
+<p>可以按分子分母绝对值之和写个大三角，不过我在知乎上看到过<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/361519628/answer/1872181083">一个很酷的证明</a>，摘录如下：</p>
+<blockquote>
+<p>不难证明 <span class="math inline">\(\mathbb {N}\times \mathbb
+{N}\)</span> 是可数集（考虑双射 $(n,m)^n(2m+1)-1 $），从而 <span class="math inline">\(\mathbb Z\times(\mathbb Z\backslash
+\{0\})\)</span> 可数。</p>
+<p>由 Cantor-Schröder–Bernstein 定理即得证。</p>
+</blockquote></li>
+<li><p>证明，可数个可数集合的并集也是可数集，也就是说，如果 <span class="math inline">\(X_1,X_2, \cdots, X_n, \cdots\)</span>
+都是可数集合，那么它们的并集 <span class="math inline">\(\displaystyle
+\bigcup_{n\geqslant 1} X_n\)</span>
+也是可数集合。（提示：这是一个需要记住的经典证明，请查阅参考书或者网络）</p>
+<p>排矩阵，列大三角。</p></li>
+<li><p><span class="math inline">\(X\)</span> 是可数的，映射 <span class="math inline">\(f\colon X\rightarrow Y\)</span>
+是满射。证明，<span class="math inline">\(Y\)</span> 是可数的。</p>
+<p>存在单射 <span class="math inline">\(g \colon Y \to X\)</span> 和
+<span class="math inline">\(h \colon X \to \mathbb N\)</span>，其复合
+<span class="math inline">\(g \cdot h \colon Y \to \mathbb N\)</span>
+也是单射。</p></li>
+<li><p>按照以下步骤证明 <span class="math inline">\(\mathbb R\)</span>
+是不可数的（同学们可以查阅一个用所谓对角线法则的经典证明，我们的证明基于区间套原理）：</p>
+<ul>
+<li><p>若 <span class="math inline">\(J\subset \mathbb R\)</span>
+是闭区间并且它的长度 <span class="math inline">\(|J|&gt;0\)</span>。证明，对任意的 <span class="math inline">\(x\in \mathbb R\)</span>，总存在闭区间 <span class="math inline">\(I\)</span>，使得 <span class="math inline">\(I\subset J\)</span>，<span class="math inline">\(|I|&gt;0\)</span> 且 <span class="math inline">\(x\notin I\)</span>。</p>
+<p>用实数 <span class="math inline">\(x\)</span> 的 Dedekind
+分割定义，取 $ I = J X^ $，只要证明它的长度非 <span class="math inline">\(0\)</span>，trivial.</p></li>
+<li><p>证明，如果 <span class="math inline">\(\{x_1,x_2,\cdots\}\)</span> 是 <span class="math inline">\(\mathbb R\)</span>
+的一个可数子集，那么存在闭区间套 <span class="math inline">\(I_1\supset
+I_2 \supset \cdots\)</span>，使得对任意的 <span class="math inline">\(n\)</span>，<span class="math inline">\(x_n \notin
+I_{n}\)</span>。</p>
+<p>取 <span class="math inline">\(I_1\)</span> 为 <span class="math inline">\(X_1 ^\prime\)</span> 的长度大于 <span class="math inline">\(0\)</span> 的闭区间，按上一问的方法构造闭区间
+<span class="math inline">\(I_2\)</span>，使得 <span class="math inline">\(I_2 \subset I_1\)</span>，<span class="math inline">\(|I_2|&gt;0\)</span> 且 <span class="math inline">\(x_2\notin I_2\)</span>。类似地构造 <span class="math inline">\(I_3,I_4,...\)</span> 即可。</p></li>
+<li><p>证明，<span class="math inline">\(\mathbb R\)</span> 不可数。</p>
+<p>反证法，设 <span class="math inline">\(\mathbb R\)</span> 可数，也即
+<span class="math inline">\(\mathbb R\)</span> 可以表示成 <span class="math inline">\(\mathbb R =\lbrace x_1,x_2,... \rbrace\)</span>
+的形式。因此存在上述的闭区间套，使得闭区间的交集里不含有 <span class="math inline">\(\mathbb R\)</span>
+的任何一个元素，是一个空集。这和区间套公理是矛盾的。</p>
+<p>嗯？这就证明完了？好美妙！</p></li>
+</ul></li>
+<li><p>证明，如果 <span class="math inline">\(X\)</span>
+是不可数集，<span class="math inline">\(A\)</span> 是 <span class="math inline">\(X\)</span> 的可数子集，那么 <span class="math inline">\(X-A\)</span> 是不可数的。</p>
+<p>反证法，trivial.</p></li>
+<li><p>证明，任意的长度不为 <span class="math inline">\(0\)</span>
+的区间（无论开或闭）都是不可数的。</p>
+<p>反证法，否则它是可数的，可以表示成 $X= x_1,x_2,... $
+的形式。于是也可以按前述方法构造出其上的一个区间套 <span class="math inline">\(X \supset X_1 \supset X_2 \supset
+...\)</span>，满足除了 <span class="math inline">\(X\)</span>
+之外的区间都是闭区间，且闭区间的交集是空集，这是矛盾的。</p></li>
+<li><p>证明，复数 <span class="math inline">\(\mathbb{C}\)</span>
+是不可数的。</p>
+<p>反证法，如果复数集是可数的，它的子集 <span class="math inline">\(\mathbb R\)</span> 也一定可数，矛盾。</p></li>
+<li><p>假设 <span class="math inline">\(\mathcal{I}\)</span> 是 <span class="math inline">\(\mathbb R\)</span>
+上的某些开区间组成的集合，它满足如下性质：对任意的 <span class="math inline">\(I,J \in \mathcal{I}\)</span>，<span class="math inline">\(I\neq J\)</span>，那么它们的交集是空集，即 <span class="math inline">\(I\cap J=\emptyset\)</span>。证明，<span class="math inline">\(\mathcal{I}\)</span> 是可数集。</p>
+<p>习题没有答案，于是我只能做一些不负责任的暴论：</p>
+<p>回到定义，想找一个从 <span class="math inline">\(\mathcal I\)</span>
+到 <span class="math inline">\(\mathbb N\)</span> 的单射 <span class="math inline">\(f\)</span>。只要考虑在 <span class="math inline">\(R_ +\)</span> 上的全体集合，对任意的 <span class="math inline">\(I \in \mathcal I\)</span>，取 <span class="math inline">\(f(I)\)</span> 为区间 <span class="math inline">\(I\)</span>
+覆盖的最小整数，这些整数一定两两不同，也就构成了一个到 <span class="math inline">\(\mathbb N\)</span> 的单射。</p>
+<p>但是不一定每个区间都覆盖一个整数，所以我想做个不负责任的操作：如果
+<span class="math inline">\(I = (a,b)\)</span>
+不覆盖整数，则将所有区间的端点关于 <span class="math inline">\(a\)</span> 的距离放大，直到放大后的区间 <span class="math inline">\(I ^ \prime =(a,b ^ \prime)\)</span>
+能覆盖住某一个整数，从左至右对每一个区间都这样操作。</p></li>
+</ul>
+<p>找到了作者在源代码注释里留下的彩蛋：</p>
+<ul>
+<li><p>证明，不能用可数条直线覆盖平面，即如果 <span class="math inline">\(\ell_1,\ell_2,\cdots\)</span> 是平面 <span class="math inline">\(\mathbb{R}^2\)</span> 上可数条直线，那么 <span class="math inline">\(\displaystyle \bigcup_{k\geqslant 1}\ell_k\neq
+\mathbb R^2\)</span>。</p></li>
+<li><p>一个圆心在 <span class="math inline">\((x_0,y_0)\)</span>
+处，半径为 <span class="math inline">\(r&gt;0\)</span> 的闭圆盘 <span class="math inline">\(\overline{B_r(x_0,y_0)}\)</span>，指的是：</p>
+<p><span class="math inline">\(\overline{B_r(x_0,y_0)}=\{(x,y)\mid
+(x-x_0)^2+(y-y_0)^2\leqslant r^2\}\)</span>；</p>
+<p>证明，不能用（无论可数个还是不可数个）两两不相交的闭圆盘（半径大于零）（圆心和半径可以变化）覆盖
+<span class="math inline">\(\mathbb
+R^2\)</span>，使得两个不同的圆盘至多有一个点是重合的。</p></li>
+<li><p>纯属娱乐，对后面学习分析并无帮助。</p></li>
+</ul>
+<h3 id="课后习题-schroeder-bernstein-定理">课后习题：
+Schroeder-Bernstein 定理</h3>
+<p>实际上，PIN 还有一道习题 Schroeder-Bernstein
+定理。这道题就不打算写了，学不完了
+.jpg，我把它轻轻放在这里，作为后面补充的引子：</p>
+<p>假设 <span class="math inline">\(X\)</span> 和 <span class="math inline">\(Y\)</span> 是两个集合，映射 <span class="math inline">\(f\colon X\rightarrow Y\)</span> 和 <span class="math inline">\(g\colon Y\rightarrow X\)</span> 都是单射。我们令
+<span class="math inline">\(X&#39;=X-g(Y)\)</span>。</p>
+<ul>
+<li><p>如果 <span class="math inline">\(X\)</span> 是有限集，证明，存在
+<span class="math inline">\(\varphi\colon X\rightarrow Y\)</span>，使得
+<span class="math inline">\(\varphi\)</span> 是双射。</p></li>
+<li><p>如果 <span class="math inline">\(X\)</span> 是可数集，证明，存在
+<span class="math inline">\(\varphi\colon X\rightarrow Y\)</span>，使得
+<span class="math inline">\(\varphi\)</span> 是双射。</p></li>
+</ul>
+<p>从现在开始，对 <span class="math inline">\(X\)</span>
+不加任何的限制。 我们令 <span class="math inline">\(h\colon X\rightarrow
+X\)</span> 是复合映射 <span class="math inline">\(h=g\circ
+f\)</span>。</p>
+<ul>
+<li><p>考虑 <span class="math inline">\(X\)</span> 的子集的集合 <span class="math inline">\(\mathcal{F}=\{A \subset X\mid X&#39;\cup
+h(A)\subset A \}\)</span>。证明，<span class="math inline">\(\mathcal{F}\)</span> 非空。</p></li>
+<li><p>证明，如果 <span class="math inline">\(A\in
+\mathcal{F}\)</span>，那么 <span class="math inline">\(X&#39;\cup
+h(A)\in \mathcal{F}\)</span>。</p></li>
+</ul>
+<p>我们定义<span class="math inline">\(A_0=\bigcap_{A\in
+\mathcal{F}}A=\{x\in X\mid\)</span>对任意的<span class="math inline">\(A\in \mathcal{F},\)</span>都有<span class="math inline">\(x\in A\}\)</span>。</p>
+<ul>
+<li><p>证明，<span class="math inline">\(A_0\in\mathcal{F}\)</span>。</p></li>
+<li><p>证明，<span class="math inline">\(X&#39;\cup
+h(A_0)=A_0\)</span>。</p></li>
+<li><p>令 <span class="math inline">\(B_0=X-A_0\)</span>。证明，<span class="math inline">\(f(A_0)\cap g^{-1}(B_0)=\emptyset\)</span> 并且
+<span class="math inline">\(f(A_0)\cup g^{-1}(B_0)=Y\)</span>。</p></li>
+<li><p>我们定义映射 <span class="math inline">\(\varphi\colon
+X\rightarrow Y\)</span>：对于 <span class="math inline">\(x\in
+X\)</span>，我们要求 <span class="math inline">\(\varphi(x)=\begin{cases}f(x), \ &amp;\text{如果}
+x\in A_0;\\g^{-1}(x), \ &amp;\text{如果} x\in
+B_0.\end{cases}\)</span></p>
+<p>证明，这是双射。</p></li>
+</ul>
+<p>根据上述，我们证明了 Schroeder-Bernstein 定理：如果有单射 <span class="math inline">\(f\colon X\rightarrow Y\)</span> 和单射 <span class="math inline">\(g\colon Y\rightarrow
+X\)</span>，那么存在着两个集合之间的双射 <span class="math inline">\(\varphi\colon X\rightarrow Y\)</span>。</p>
+<h3 id="离散数学复习等势与基数">离散数学复习：等势与基数</h3>
+<ul>
+<li><p>在离散数学里，更确切一点讲，在集合论里，介绍了一种关系，叫做等势。这一概念由
+Cantor
+提出，用来解决这样的一个困惑：为什么完全平方数貌似比正整数少很多，但是它们却可以一一对应？如何比较两个无穷集合谁的元素多，谁的元素少，谁更“无穷”？</p>
+<p>等势被定义为：如果集合 <span class="math inline">\(X\)</span> 和
+<span class="math inline">\(Y\)</span>
+之间如果存在双射，那么称二者等势，利用 Schroeder-Bernstein
+定理可知如果有单射 <span class="math inline">\(f\colon X\rightarrow
+Y\)</span> 和单射 <span class="math inline">\(g\colon Y\rightarrow
+X\)</span>，那么 <span class="math inline">\(X\)</span> 和 <span class="math inline">\(Y\)</span> 等势，写作 <span class="math inline">\(X \approx Y\)</span>。实际上有 <span class="math inline">\(\mathbb N \approx \mathbb Q \approx \mathbb
+Z\)</span>，等等。</p></li>
+<li><p>另外一个定义是集合的基数，记为 <span class="math inline">\(card(X)\)</span>，精确地测量集合的某些性质。我们定义
+<span class="math inline">\(card(X) \leq card(Y)\)</span> 等价于有单射
+<span class="math inline">\(f\colon X\rightarrow
+Y\)</span>，因此由等势的结论，有 <span class="math inline">\(card(X)=card(Y)\)</span> 等价于 <span class="math inline">\(X \approx
+Y\)</span>。与此同时，我们希望对这个虚无缥缈的概念做一些基本的规定，比如说把某些特殊的集合的基数作为标尺，来衡量其他集合的基数大小。我们选取了
+<span class="math inline">\(card(\mathbb N) = \aleph _0\)</span>，<span class="math inline">\(card(\mathbb R) = \aleph _1\)</span>
+作为这样的尺度。</p>
+<p>当然，对于有穷的集合，它的基数就是它的元素个数，此时称为有限基数，否则称为无限基数，我们不对有限基数多做讨论。上述的“尺度”中，<span class="math inline">\(\aleph _0\)</span>
+是最小的无限基数，它也大于所有的有限基数。</p></li>
+<li><p>基数理论的一个用处在于，可以用来衡量无穷集合的可数性。一个集合
+<span class="math inline">\(X\)</span> 满足 <span class="math inline">\(card(X) \leq \aleph _0\)</span>
+等价于它是可数的，也就是说，可数集 <span class="math inline">\(X\)</span> 要么是有限集合，要么基数是 <span class="math inline">\(\aleph _0\)</span>，可以和 <span class="math inline">\(\mathbb N\)</span>
+一一对应，也就是习题里面提到的，可数集可以表示成 <span class="math inline">\(X = \lbrace x_1,x_2,... \rbrace\)</span>
+的形式。</p></li>
+</ul>
+<p>但是，离散数学没有解答的是，为什么基数可以比较大小？我们可以看到
+<span class="math inline">\(\aleph _0\)</span>，$_1 $
+的出现，就代表了基数的取值未必是实数域上的子集。那么它的取值集合上的序关系是怎么定义的，是否满足序公理？</p>
+<ul>
+<li>实际上，对于集合 <span class="math inline">\(X,Y\)</span>，序关系
+<span class="math inline">\(card(X) \leq card(Y)\)</span>
+成立等价于有单射 <span class="math inline">\(f\colon X\rightarrow
+Y\)</span>。由此就可以验证这个关系满足序公理了。</li>
+</ul>
+<p>但是为什么任意两个基数都可以比较大小呢？在 <span class="math inline">\(\mathbb R\)</span>
+之外还有更多稀奇古怪的集合，以前可能想象不出来，学了抽代之后一想这些真的毛骨悚然，它们都可以互相将基数拿来比较大小吗？</p>
+<ul>
+<li>答案是可以的，但还是到实分析里再学吧（</li>
+</ul>
+<p>这样再看 Cantor 定理，也就是实数集 <span class="math inline">\(\mathbb R\)</span>
+不可数这一条定理，写成基数的形式就等价于，<span class="math inline">\(\aleph _1 = card(\mathbb R) &gt; \aleph
+_0\)</span>。</p>
+<ul>
+<li><p>我们在离散数学里定义了 <span class="math inline">\(card(\mathbb
+N) = \aleph _0\)</span>
+是最小的无限基数，却没有说明为什么最小。也就是没有说明，为什么可数的无限集是无限集里面最小的。所以，暂时只能从已经证明出的
+<span class="math inline">\(\mathbb R\)</span> 不可数，来证明 <span class="math inline">\(\aleph _1 &gt; \aleph _0\)</span>
+这两个特殊的无限基数之间的大小关系。</p></li>
+<li><p>Cantor 给出了另外一个证明。记 <span class="math inline">\(\mathcal P(X)\)</span> 为 <span class="math inline">\(X\)</span> 的幂集合，也即 <span class="math inline">\(X\)</span>
+的全体子集（包括空集和自身）构成的集合。</p>
+<p>引理：如果 <span class="math inline">\(X\)</span> 非空，那么 <span class="math inline">\(card(\mathcal P (X)) &gt;
+card(X)\)</span>。使用反证法证明，否则二者相等，存在 <span class="math inline">\(\mathcal P (X)\)</span> 和 <span class="math inline">\(X\)</span> 之间的一一对应 <span class="math inline">\(f \colon X \to \mathcal P (X)\)</span>。记 <span class="math inline">\(A = \lbrace x \colon x \notin f(x)
+\rbrace\)</span>，证明 <span class="math inline">\(f^{-1} (A)\)</span>
+和 $ A$ 不等即可。</p>
+<p>而 <span class="math inline">\([0,1]\)</span>
+上的实数用二进制表示后，<span class="math inline">\(0\)</span>
+的位置构成了自然数集的子集；自然数的任意一个子集都对应一个实数。因此
+<span class="math inline">\(R \supset \mathcal P (\mathbb
+N)\)</span>，有 <span class="math inline">\(card([0,1]) = card (\mathbb
+R) \geq card(\mathcal P (\mathbb N)) &gt; card(\mathbb N) = \aleph
+_0\)</span>，实数集不可数。</p></li>
+</ul>
+<p>最后，虽然看起来有些夜话团圆了，但基数还是很抽象。希尔伯特 23
+问的第一问连续统假设即是关于基数的一个看似很基本的问题，问 <span class="math inline">\(\aleph _0\)</span> 和 <span class="math inline">\(\aleph _1\)</span>
+之间是否还有别的基数。这一问题被证明和 ZFC
+公理体系互相独立，目前仍不知真伪。</p>
+<h1 id="极限">极限</h1>
+<h2 id="极限数列和级数">极限，数列和级数</h2>
+<p>2023 年 1 月 20
+日，星期五，睡前本来想看极限结果去写了可数集的补充内容，字数翻了个倍。</p>
+<p>这样下去的话，大概要每一个章节开一篇文章写比较合适了。昨天改标题的时候差点把文件名改了，想了想那样的话原有的两条评论显示不出来，不是很妙。或许有迁移
+issue
+之类的方法，没有试过也没有研究，不清楚能不能做到，多一事不如少一事。</p>
+<p>好像没什么可写的，这一部分都和微积分 A
+学的内容差不多。不过讲义里的一些观点很有意思，我把原文摘录下来：</p>
+<blockquote>
+<p>然而，根据极限的定义，如果有极限，我们要先验地知道极限是什么才可以利用定义来证明。事实上，要想猜到这个极限的值是很困难的。通过这个例子，我们发现极限的定义对于判断极限是否存并没有太大的帮助。</p>
+<p>从概念上而言，极限的定义在哲学意义上有一个先天的缺陷：判断数列收敛与否，应该由数列本身所决定而不需要依赖于外在的信息，比如说事先知道极限是什么。换句话说，我们想要内蕴地来考虑极限问题。这种看法和思考方式对数学的学习是大有裨益的。</p>
+</blockquote>
+<p>想起来数值分析学过的一些方法，比如对牛顿法失败的方程，也即有重根的方程重做某种牛顿法的时候，需要先知道重根是几次才能做出来，笑死。不过按照这个思路还是做出了很多改进方法，像魔法
+qwq</p>
+<p>此处“内蕴地”考虑极限问题，指的就是后面的 Cauchy
+收敛原则：一个数列收敛等价于它是柯西列。</p>
+<blockquote>
+<p>在数学中, 对于每一个数学对象 (例如极限) ,
+我们会例行公事般地考虑它的一些常见的性质. 比如说,
+这个对象最基本的例子是什么, 这种对象是否存在,
+如果存在的话它是否具有唯一性, 它的子对象和商对象 (如果有的话)
+都具有什么性质 (比如说遗传了原来的对象的什么性质) ,
+这个对象的可计算性以及在特定映射下的行为等等. 作为例子,
+我们刚刚见到一个点列的子对象 (即子列) 遗传了点列的收敛性 (和有界性) .
+尽管这是一种八股文一般的讨论方式 (Bourbaki 学派是这种方式最忠实的实践者)
+, 但是是非常有效率的一种学习和记忆方式,
+我们在课程上会尽量的按照这种习惯来学习. 特别要强调的是,
+每一个定义大家都应该搞清楚最基本的例子是什么。</p>
+</blockquote>
+<p>你知道那个叫概念的东西是什么嘛.jpg</p>
+<p>然后是学微积分的时候讲过就过了，不会再用的一个定理：</p>
+<ul>
+<li><p>(Bolzano–Weierstrass 的列紧性定理) 任意有界的实数序列 <span class="math inline">\(\{x_n\}_{n\geq 1}\)</span>
+必有单调收敛的子列。</p></li>
+<li><p>Cauchy 判别法（略）</p>
+<p>注意 Cauchy
+判别法仅能在实数列中使用，因为其证明需要关于有界的论述。</p></li>
+</ul>
+<p>另外，把级数的部分和视为一个数列的话，也可以用数列的性质来判断无穷级数是否收敛。也即，对于无穷级数
+<span class="math inline">\(x_1 + x_2 + ...+x_n +...\)</span>，考虑
+<span class="math inline">\(X_i = x_1 + x_2 + ... +
+x_i\)</span>，于是有无穷级数收敛等价于实数序列 <span class="math inline">\(\{x_n\}_{n\geq 1}\)</span> 收敛，可以使用 Cauchy
+判别法或定义判别的方式进行判断。考虑一种特殊的级数：</p>
+<ul>
+<li><p><span class="math inline">\(\{a_n\}_{n\geqslant 1}\)</span>
+是递减的正实数的数列并且 <span class="math inline">\(\displaystyle\lim_{n\rightarrow
+\infty}a_n=0\)</span>。假设级数 <span class="math inline">\(\sum_{k=1}^\infty\)</span> <span class="math inline">\(a_k\)</span> 发散。那么，对任意 <span class="math inline">\(x\in \mathbb R\)</span>，我们可以选取一组正负号
+<span class="math inline">\(\iota_k\in \{\pm 1\}\)</span>，使得级数
+<span class="math inline">\(\sum_{k=1}^\infty \iota_k a_k\)</span>
+收敛并且 <span class="math inline">\(\Sigma_{k=1}^\infty \iota_k
+a_k=x\)</span>。</p>
+<p>或许算是后面习题里的 Riemann
+重排定理的一个变式，总之证明是一样的。</p></li>
+</ul>
+<p>实际上，学级数的时候讲了很多判别法，无外乎绝对收敛和比较收敛。原理上都是
+Cauchy 收敛的变式。</p>
+<h2 id="指数函数和三角函数的级数定义">指数函数和三角函数的级数定义</h2>
+<p>2023 年 1 月 22 日，星期日，吃着素感觉脑子转不起来了（x</p>
+<p>我们假装自己只会用整数和有理数，然后用级数和极限分别定义了 <span class="math inline">\(e\)</span>，不仅在级数角度有熟知的 <span class="math inline">\(\displaystyle\lim_{n\rightarrow \infty}(1+
+\frac{1}{n})^n=e\)</span>，级数的表示是 <span class="math inline">\(\sum
+_{k=0} ^{+\infty} \frac{1}{k!} =
+e\)</span>。同样的，我们也想假装只会用多项式，来定义指数函数和三角函数。</p>
+<ul>
+<li><p>定义指数函数 <span class="math inline">\(\exp\colon \mathbb R
+\rightarrow \mathbb R\)</span> 如下：<span class="math inline">\(x\mapsto \exp(x)=e^x=\sum_{k=0}^\infty
+\frac{x^k}{k!}\)</span>。可以看到这个形式和 <span class="math inline">\(e\)</span> 的定义是很相似的。</p>
+<p>首先需要验证这是良定义的，也就是对于任意的 <span class="math inline">\(x \in \mathbb R\)</span>，有 <span class="math inline">\(\exp(x)=\sum_{k=0}^\infty \frac{x^k}{k!}\)</span>
+是一个收敛的无穷级数。证明的话，实际上是从某一位处截断，对后面的无穷项进行一个放缩控制。</p>
+<p>虽然我们熟知对任意的 <span class="math inline">\(x,y\in \mathbb
+R\)</span> 有 <span class="math inline">\(e^{x+y}=e^x\cdot
+e^y\)</span>，但是这在级数层面是不那么明显的。</p>
+<p>上述性质对于复数 <span class="math inline">\(x\)</span>
+也成立，从而引出对三角函数的定义。</p></li>
+<li><p>利用指数映射 <span class="math inline">\(\exp(z)\)</span>
+可以定义正弦和余弦函数：</p>
+<p><span class="math inline">\(\cos z =\frac{e^{iz}+e^{-iz}}{2} =
+\sum_{k=0}^\infty \frac{(-1)^k x^{2k}}{(2k)!}\)</span>，</p>
+<p>$ z ={e<sup>{iz}-e</sup>{-iz} 2i} = _{k=0}^$。</p>
+<p>换句话说，目前 <span class="math inline">\(\sin(z)\)</span> 和 <span class="math inline">\(\cos(z)\)</span>
+使用级数来定义的。至于其余三角函数，是根据 <span class="math inline">\(\cos z ,\sin z\)</span>
+的和差积商定义的。特别地，有 Euler公式：<span class="math inline">\(e^{iz}=\cos z + i \sin z\)</span>。</p>
+<p>所以，三角函数完全可以被代数地定义，只用无穷项的多项式，不需要用到三角形。级数实际是沟通代数和几何的重要工具。我们可以用上述两个公式和已知的指数函数性质，证明出三角函数的众多性质，例如平方和为
+<span class="math inline">\(1\)</span>，等等。</p></li>
+</ul>
+<h2 id="summary-1">Summary</h2>
+<p>这一部分最大的贡献是定义出了 <span class="math inline">\(e\)</span>，指数函数和三角函数。不同于之前的视角，一千零一页中介绍了一个内蕴的判别角度，即从数列本身的性质出发推出其自身是否收敛，得出了重要的
+Cauchy 判别法。当然，Cauchy
+判别法的使用场景限于实数，在其他的距离空间上未必成立。当然，极限还有其他的求法，例如夹逼方法，上下极限，定义法。</p>
+<p>与此同时，回忆了一些级数的内容，而级数本质上还是数列。级数这一部分在微积分里是放在微积分
+A(2)
+的最后一章介绍的，感觉很不合理，实际上完全可以在极限的地方就讲，不过没有必要，另外可能也是为了引出
+Fourier
+变换。总之，有了两组级数函数之后，对于中学里已知的内容的使用就可以更加大胆一些了。</p>
+<h2 id="梦话既然习题没有答案那我就胡说八道了">梦话：既然习题没有答案那我就胡说八道了</h2>
+<p>2023 年 1 月 23
+日，星期一，其实我不喜欢在初学（？）的时候做没有答案的习题，anyway
+还是写一写。</p>
+<h3 id="riemann-重排定理">Riemann 重排定理</h3>
+<p>证明下面有趣的定理：如果实数项级数 <span class="math inline">\(\displaystyle\sum_{n=1}^\infty a_n\)</span>
+收敛但不绝对收敛，那么可以将级数重新排列，使得重排后的级数可以收敛到任意事先指定的
+<span class="math inline">\(\alpha\in \mathbb
+R\cup\{-\infty,+\infty\}\)</span>。假设 <span class="math inline">\(\varphi\colon \mathbb{Z}_{\geqslant 1}\rightarrow
+\mathbb{Z}_{\geqslant 1}\)</span> 是正整数到自身的双射，令 <span class="math inline">\(b_k = a_{\varphi(k)}\)</span>，序列 <span class="math inline">\(\{b_k\}_{k\geqslant 1}\)</span> 被称为是 <span class="math inline">\(\{a_n\}_{n\geqslant 1}\)</span> 的一个重排，级数
+<span class="math inline">\(\displaystyle\sum_{k=1}^\infty b_k\)</span>
+被称为是级数 <span class="math inline">\(\displaystyle\sum_{n=1}^\infty
+a_n\)</span> 的一个重排。</p>
+<p>我们将 <span class="math inline">\(\{a_n\}_{n\geqslant 1}\)</span>
+中的非负项（<span class="math inline">\(\geqslant
+0\)</span>）的全体按照它们在 <span class="math inline">\(\{a_n\}_{n
+\geqslant 1}\)</span> 中的先后次序排列得到序列 <span class="math inline">\(c_1,c_2,c_3,...\)</span>；类似地，将 <span class="math inline">\(\{a_n\}_{n \geqslant 1}\)</span> 中的负项（<span class="math inline">\(&lt;0\)</span>）按原顺序排列得到序列 <span class="math inline">\(d_1,d_2,d_3,\cdots\)</span>。</p>
+<ul>
+<li><p>证明，<span class="math inline">\(\displaystyle\lim_{n\to \infty}
+c_n = 0\)</span>，<span class="math inline">\(\displaystyle\lim_{n\to
+\infty} d_n = 0\)</span>。</p>
+<p>Trivial，它们分别是原序列 <span class="math inline">\(\{a_n\}_{n\geqslant 1}\)</span>
+的两个子列，收敛结果和原序列相同。</p></li>
+<li><p>证明，<span class="math inline">\(\displaystyle\sum_{n=1}^\infty
+c_n = +\infty\)</span>，<span class="math inline">\(\displaystyle\sum_{n=1}^\infty d_n =
+-\infty\)</span>。</p>
+<p>Trivial，反证法假设否则有 <span class="math inline">\(\displaystyle\sum_{n=1}^\infty c_n =
+C\)</span>，且有 <span class="math inline">\(\displaystyle\sum_{n=1}^\infty
+a_n=A\)</span>，<span class="math inline">\(A,C \in \mathbb
+R\)</span>，那么有 <span class="math inline">\(\displaystyle\sum_{n=1}^\infty d_n = A-C \in
+\mathbb R\)</span>，级数绝对收敛。矛盾。</p></li>
+<li><p>证明: 对任意 <span class="math inline">\(\alpha \in \mathbb
+R\)</span>，存在级数 <span class="math inline">\(\displaystyle\sum_{n=1}^\infty a_n\)</span>
+的一个重排 <span class="math inline">\(\displaystyle\sum_{k=1}^\infty
+b_k\)</span>，使得 <span class="math inline">\(\displaystyle
+\sum_{k=1}^\infty b_k = \alpha\)</span>。</p>
+<p>不妨设 <span class="math inline">\(\alpha
+&gt;0\)</span>。正项是发散的，于是存在一个 <span class="math inline">\(n_1\)</span> 使得 $ c_1 + c_2 +...+ c_{ {n_1} }
+&lt; c_1 + c_2 +...+ c_{ {n_1} }+c_{ {n _1} + 1}$。</p>
+<p>取 <span class="math inline">\(\delta _1 = c_1 + c_2 +...+ c _{n_1}+c
+_{n _1 + 1} - \alpha &gt;0\)</span>，由负项是发散的，于是存在一个 <span class="math inline">\(m_1\)</span> 使得：</p>
+<p>$d_1 + d_2 + ... +d _{ {m _1} } &gt; -_1 d <em>1 + d_2 + ... +d
+</em>{ {m _1} +1 } $。再取 <span class="math inline">\(0 &lt; \delta _2
+= d_1 + d_2 + ... +d _{m _1 } + \delta _1 &lt; \delta
+_1\)</span>，此为一次操作。</p>
+<p>每做一次操作，<span class="math inline">\(\delta\)</span>
+都会相应地减小，始终非负。于是有 <span class="math inline">\((c_1+...+c
+_ {n_1 +1 }) + (d_1+...+d _{m _1})+...\)</span> 是一个收敛到 <span class="math inline">\(\alpha\)</span> 的重排级数。</p></li>
+<li><p>证明: 存在级数 <span class="math inline">\(\displaystyle\sum_{n=1}^\infty a_n\)</span>
+的一个重排 <span class="math inline">\(\displaystyle\sum_{k=1}^\infty
+x_k\)</span>，使得 <span class="math inline">\(\displaystyle
+\sum_{k=1}^\infty x_k = +\infty\)</span>。</p>
+<p>我不是很确定啊，但是我打算徒手捏一个：取一个固定的实数 <span class="math inline">\(M&gt;0\)</span>，每一次操作分别从正的部分和负的部分，取一段
+<span class="math inline">\(c_i + ... + c_{i+k}\)</span> 和 <span class="math inline">\(d_j + ... + d _{j+l}\)</span> 使得其和大于等于
+<span class="math inline">\(M\)</span>。于是每一次操作得到的小段和都大于等于
+<span class="math inline">\(M\)</span>，最后的级数和是发散的。</p></li>
+</ul>
+<h3 id="cesaro-求和极限">Cesaro 求和极限</h3>
+<p>设 <span class="math inline">\(\{a_n\}_{n\geqslant 1}\)</span>
+为实数序列，我们定义算数平均值序列 <span class="math inline">\(\displaystyle\sigma_n = \frac{a_1 + a_2 + \cdots +
+a_n}{n}\)</span>，其中 <span class="math inline">\(n=1,2,3,\cdots\)</span>。</p>
+<ul>
+<li><p>假设 <span class="math inline">\(\displaystyle\lim_{n\to \infty}
+a_n = a\)</span>。证明，<span class="math inline">\(\displaystyle\lim_{n\to \infty} \sigma_n =
+a\)</span>。</p>
+<p>Trivial.</p></li>
+<li><p>构造一个不收敛的序列 <span class="math inline">\(\{a_n\}_{n\geqslant 1}\)</span>，使得 <span class="math inline">\(\displaystyle\lim_{n \to \infty} \sigma_n =
+0\)</span>。</p>
+<p><span class="math inline">\(a_ i = (-1) ^i\)</span>。</p></li>
+<li><p>是否存在序列 <span class="math inline">\(\{a_n\}_{n\geqslant
+1}\)</span>，使得对任意 <span class="math inline">\(n\geqslant
+1\)</span>，都有 <span class="math inline">\(a_n &gt; 0\)</span> 并且
+<span class="math inline">\(\displaystyle\limsup_{n\to \infty} a_n =
+\infty\)</span> 然而 <span class="math inline">\(\displaystyle\lim_{n\to
+\infty} \sigma_n = 0\)</span>?</p>
+<p><span class="math inline">\(a_{i^2}=\sqrt{i},\)</span> 其余为 <span class="math inline">\(1 \over i^2\)</span>。（感谢 neruko
+的勘误！qwq</p></li>
+<li><p>对 <span class="math inline">\(k \geqslant 1\)</span>, 记 <span class="math inline">\(b_k = a_{k+1} - a_k\)</span>。证明，对任意的 <span class="math inline">\(n\geqslant 2\)</span>，都有 <span class="math inline">\(\displaystyle a_n - \sigma_n = \frac{1}{n}
+\sum_{k=1}^{n-1} k b_k\)</span>。</p>
+<p>Trivial.</p></li>
+<li><p>设 <span class="math inline">\(\displaystyle\lim_{k\to \infty} k
+b_k = 0\)</span> 并且 <span class="math inline">\(\{\sigma_n\}_{n\geqslant 1}\)</span>
+收敛。证明，<span class="math inline">\(\{a_n\}\)</span> 也收敛。</p>
+<p>注意，这是 (1) 在条件 <span class="math inline">\(n|a_{n+1}-a_n| \to
+0\)</span> 这一额外条件下的逆命题。</p>
+<p>Trivial，上一题左右对 <span class="math inline">\(n\)</span>
+取极限，利用极限的可加性。至于右边的极限为什么是 <span class="math inline">\(0\)</span>，用 <span class="math inline">\(\varepsilon - N\)</span> 写一下。</p></li>
+<li><p>把 (5) 的条件减弱为: <span class="math inline">\(\{ k
+b_k\}_{k\geqslant 1}\)</span> 是有界的并且 <span class="math inline">\(\displaystyle\lim_{n \to \infty} \sigma_n =
+\sigma\)</span>。证明，<span class="math inline">\(\displaystyle\lim_{n\to \infty} a_n =
+\sigma\)</span>。</p>
+<p><strong>？不会.jpg</strong></p></li>
+</ul>
+<h3 id="根式和指数的定义">根式和指数的定义</h3>
+<p>这个问题的目的是在 <span class="math inline">\(\mathbb R\)</span>
+上定义初等函数 <span class="math inline">\(\sqrt[n]{x}\)</span> 和 <span class="math inline">\(b^x\)</span>，比如说我们自然希望定义 <span class="math inline">\(\sqrt[n]{x}\)</span> 为满足 <span class="math inline">\(y^n = x\)</span> 唯一的正实数。</p>
+<ul>
+<li><p>给定正整数 <span class="math inline">\(n\)</span> 和实数 <span class="math inline">\(x&gt;0\)</span>，证明：如果正实数 <span class="math inline">\(y_1\)</span> 和 <span class="math inline">\(y_2\)</span> 满足 <span class="math inline">\(y_1^n = x=y_2^n\)</span>，那么 <span class="math inline">\(y_1=y_2\)</span>。</p>
+<p>Trivial.</p></li>
+<li><p>证明，如果 <span class="math inline">\(x&gt;0\)</span>，那么集合
+<span class="math inline">\(E(x) = \{t \in \mathbb R \mid t^n &lt;
+x\}\)</span> 是非空的并且有上界。</p>
+<p>Trivial，首先 <span class="math inline">\(0 \in E(x)\)</span>，再对
+<span class="math inline">\(x\)</span> 讨论。当 <span class="math inline">\(0&lt;x&lt;1\)</span> 时有 <span class="math inline">\(\forall t \in E(x), t&lt;1\)</span>，当 $1 x $
+时有 <span class="math inline">\(\forall t \in E(x),t \leq
+x\)</span>。</p></li>
+<li><p>证明，<span class="math inline">\(y = \sup E(x)\)</span> 满足
+<span class="math inline">\(y^n = x\)</span> 并且 <span class="math inline">\(y&gt;0\)</span>。</p>
+<p>首先有 <span class="math inline">\(0 \in E(x)\)</span>，于是 <span class="math inline">\(sup E(x) \geq 0\)</span>。如果 <span class="math inline">\(supE(x) = 0\)</span> 则不存在 <span class="math inline">\(\varepsilon &gt;0,\varepsilon ^n
+&lt;x\)</span>。取 <span class="math inline">\(\varepsilon ^n =
+\frac{x}{2}\)</span> 则矛盾。于是 <span class="math inline">\(y&gt;0\)</span>。再证明 <span class="math inline">\(y^n =x\)</span>。显然对于 <span class="math inline">\(\forall y \in \mathbb R, y^n \geq x\)</span> 都有
+$y $ 是 <span class="math inline">\(E(x)\)</span> 的上界，而对于 <span class="math inline">\(\forall z \in \mathbb R,z^n &lt; x\)</span>，存在
+<span class="math inline">\((z ^\prime) ^n = z_n +x\)</span> 使得 <span class="math inline">\(z^ \prime \in E(x)\)</span> 且 <span class="math inline">\(z^\prime &gt;z\)</span>，于是这样的 <span class="math inline">\(z\)</span> 都不是上界。因此 <span class="math inline">\(supE(x) = min \lbrace y \in \mathbb R, y^n \geq x
+\rbrace\)</span>，也即题中定义。</p></li>
+<li><p>证明， 映射 <span class="math inline">\(\sqrt[n]{\cdot}\colon
+\mathbb R_{&gt;0}\to \mathbb R_{&gt;0}, \ \ x \mapsto
+\sqrt[n]{x}=y\)</span> 是良好定义的。我们也记 <span class="math inline">\(\sqrt[n]{x}\)</span> 为 <span class="math inline">\(x^{\frac1n}\)</span>。</p>
+<p>良好定义的意思是，对于任意的 <span class="math inline">\(x =
+x^\prime\)</span>，有 <span class="math inline">\(y=y^
+\prime\)</span>。否则 <span class="math inline">\(y \neq y^
+\prime\)</span>，但由上题定义，上确界是唯一的。</p></li>
+<li><p>证明，<span class="math inline">\(\sqrt[n]{\cdot}\colon \mathbb
+R_{&gt;0}\to \mathbb R_{&gt;0}\)</span> 是双射。</p>
+<p>有以上铺垫后是显然的。</p></li>
+<li><p><span class="math inline">\(a,b\)</span> 是正实数，<span class="math inline">\(n\)</span> 为正整数。证明，<span class="math inline">\((ab)^{\frac1n} =
+a^{\frac1n}b^{\frac1n}\)</span></p>
+<p>定义 <span class="math inline">\(A(x) = \lbrace t \in \mathbb R \mid
+t^n &lt;a \rbrace\)</span>，<span class="math inline">\(B(x) = \lbrace t
+\in \mathbb R \mid t^n &lt;b \rbrace\)</span>，<span class="math inline">\(C(x) = \lbrace t \in \mathbb R \mid t^n &lt;a
+b\rbrace\)</span>，只要证明 <span class="math inline">\(A(x)B(x)=C(x)\)</span>，（集合相等的证明是左右互相包含），然后考虑两个集合的上确界则得证。</p></li>
+</ul>
+<p>在接下来的问题里，我们给定实数 <span class="math inline">\(b&gt;1\)</span> 来定义以 <span class="math inline">\(b\)</span> 为底的指数函数 <span class="math inline">\(x \mapsto b^x\)</span>。</p>
+<ul>
+<li><p>设 <span class="math inline">\(m,n,p,q \in
+\mathbb{Z}\)</span>，其中 <span class="math inline">\(n&gt;0\)</span>，<span class="math inline">\(q&gt;0\)</span>。令 <span class="math inline">\(r
+= \dfrac{m}{n} = \dfrac{p}{q}\)</span> 为有理数 <span class="math inline">\(r\)</span> 的两种表示。证明 <span class="math inline">\((b^m)^{\frac1n} = (b^p)^{\frac1q}\)</span></p>
+<p>Trivial.</p></li>
+<li><p>证明，对任意的有理数 <span class="math inline">\(r\)</span>，函数
+<span class="math inline">\(r\mapsto b^r\)</span> 是良好定义的。</p>
+<p>Trivial.</p></li>
+<li><p>证明，对任意的有理数 <span class="math inline">\(r,s\)</span>，我们有 <span class="math inline">\(b^{r+s} = b^rb^s\)</span>。</p>
+<p>记 <span class="math inline">\(r = \frac mn ,s= \frac
+pq\)</span>，于是 <span class="math inline">\(b^{r+s} =
+b^{\frac{mq+np}{nq} }=(b^{mq} b^{np} ) ^{\frac{1}{nq} }= b ^{\frac mn}
+b^{\frac pq} = b^r b^s\)</span>。</p></li>
+<li><p>对于 <span class="math inline">\(x \in \mathbb R\)</span>，令
+<span class="math inline">\(B(x)=\{b^t \mid t \in \mathbb{Q}, t
+\leqslant x\}\)</span>。证明，<span class="math inline">\(B(x)\)</span>
+非空且有上界。我们定义 <span class="math inline">\(b^x = \sup
+B(x)\)</span>, 这就定义了映射 <span class="math inline">\(x \mapsto
+b^x\)</span>。</p>
+<p>其实和之前那个也差不多，不写了。</p></li>
+<li><p>证明，如果 <span class="math inline">\(r\)</span> 是有理数，那么
+<span class="math inline">\(b^r = \sup B(r),\forall r \in
+\mathbb{Q}\)</span>。我们定义的指数映射在 <span class="math inline">\(r\in \mathbb{Q}\)</span> 时和之前是一致的。</p>
+<p>和上一题一样。</p></li>
+<li><p>证明，上题中定义的映射满足， 对任意的 <span class="math inline">\(x,y \in \mathbb R\)</span>，都有 <span class="math inline">\(b^{x+y} = b^x b^y\)</span>。</p>
+<p>证明 <span class="math inline">\(X(r)Y(r)=Z(r)\)</span>，于是上确界相等。</p></li>
+<li><p>证明，当 <span class="math inline">\(b=e\)</span>
+时，这样定义的函数和课程中定义的 <span class="math inline">\(e^x\)</span> 是一致的。</p>
+<p>嗯？</p>
+<p><span class="math inline">\(\exp(x)=\sum_{k=0}^\infty
+\frac{x^k}{k!}\)</span>。上述定义的 <span class="math inline">\(e^x =
+sup B(x) = sup \{e^t \mid t \in \mathbb{Q}, t \leqslant
+x\}\)</span>。</p>
+<p>我不到啊，或许他想让我证明的是 <span class="math inline">\((\sum_{k=0}^\infty \frac{1}{k!}) ^x =
+\sum_{k=0}^\infty \frac{x^k}{k!}\)</span>
+吗？这个课上好像证过。</p></li>
+</ul>
+<h3 id="根式的逼近">根式的逼近</h3>
+<p>给定正实数 <span class="math inline">\(\alpha\)</span> 和初始值 <span class="math inline">\(x_1 &gt;
+\sqrt{\alpha}\)</span>，我们归纳地定义序列 <span class="math inline">\(\{x_n\}_{n\geqslant 1}\)</span>：<span class="math inline">\(x_{n+1} = \frac{1}{2}\left(x_n +
+\frac{\alpha}{x_n}\right), n = 1,2,\cdots\)</span></p>
+<ul>
+<li><p>证明，<span class="math inline">\(\{x_n\}_{n\geqslant 1}\)</span>
+是递减的并且 <span class="math inline">\(\displaystyle\lim_{n\to \infty}
+x_n = \sqrt{\alpha}\)</span>（在问题E中已经定义）。这表明，从任意大于
+<span class="math inline">\(\sqrt{\alpha}\)</span>
+的初值出发，可用上述迭代公式近似地计算（逼近）<span class="math inline">\(\sqrt{\alpha}\)</span>。</p>
+<p>Trivial，因为这就是 Newton 法（狗头</p></li>
+<li><p>定义逼近的误差项 <span class="math inline">\(\varepsilon_n = x_n
+- \sqrt{\alpha}\)</span>。证明，<span class="math inline">\(\displaystyle\varepsilon_{n+1} =
+\frac{\varepsilon_n^2}{2x_n} &lt;
+\frac{\varepsilon_n^2}{2\sqrt{\alpha}}\)</span>。</p>
+<p>Trivial，这是 Newton 法的二阶收敛性质（逃</p></li>
+<li><p>证明，如果 <span class="math inline">\(\beta =
+2\sqrt{\alpha}\)</span>，那么 <span class="math inline">\(\displaystyle\varepsilon_{n+1} &lt; \beta
+\left(\frac{\varepsilon_1}{\beta}\right)^{2^n}\)</span>。这表明它的收敛速度非常快。</p>
+<p>Trivial.</p></li>
+<li><p>设 <span class="math inline">\(\alpha = 3\)</span>，<span class="math inline">\(x_1 = 2\)</span>，验证 <span class="math inline">\(\dfrac{\varepsilon_1}{\beta} &lt;
+0.1\)</span>，继而 <span class="math inline">\(\varepsilon_5 &lt; 4\cdot
+10^{-16}\)</span>，<span class="math inline">\(\varepsilon_6 &lt; 4
+\cdot 10^{-32}\)</span>。</p>
+<p>略（</p></li>
+<li><p>试用纸和笔，计算 <span class="math inline">\(\sqrt{3}\)</span>
+的精确到小数点5位的近似值。</p>
+<p>略（</p></li>
+</ul>
+<p>接下来，我们换另外一个迭代公式。固定 <span class="math inline">\(\alpha &gt; 1\)</span> 和 <span class="math inline">\(y_1 &gt; \sqrt{\alpha}\)</span>，定义 <span class="math inline">\(y_{n+1} = {\alpha + {y_n} \over 1 + {y_n}} = y_n +
+{\alpha - {y_n}^2 \over 1+{y_n} }\)</span>，$ n = 1,2,... $</p>
+<ul>
+<li><p>证明，<span class="math inline">\(\{y_{2k-1}\}_{k\geqslant
+1}\)</span> 为递减序列。</p>
+<p>这是一个大于 <span class="math inline">\(\sqrt{\alpha }\)</span>
+的序列，有 <span class="math inline">\(y_3 = \frac{\alpha + y_2}{1+y_2}
+= \frac{(\alpha +1 )y_1 + 2 \alpha}{2y_1 + \alpha +1} &lt;
+y_1\)</span>，可以推广到每一项。</p></li>
+<li><p>证明，<span class="math inline">\(\{y_{2k}\}_{k\geqslant
+1}\)</span> 为递增序列。</p>
+<p>Trivial，基本同上。</p></li>
+<li><p>证明，<span class="math inline">\(\displaystyle\lim_{n\to \infty}
+y_n = \sqrt{\alpha}\)</span>。</p>
+<p>上述的两个序列分别单调有界，各自收敛。由递推式可知都收敛到 <span class="math inline">\(\sqrt{\alpha }\)</span>，于是整体收敛。</p></li>
+<li><p>试讨论逼近 <span class="math inline">\(\sqrt{\alpha}\)</span>
+的收敛速度并与之前的比较。</p>
+<p>肯定是不如 Newton 方法收敛得快的。</p>
+<p>记逼近的误差项 <span class="math inline">\(\varepsilon_n = x_n -
+\sqrt{\alpha}\)</span>，于是 <span class="math inline">\(\displaystyle\lim_{n\to \infty} \frac{\varepsilon
+_{n+1} } {\varepsilon _n } = \frac{1-\sqrt{\alpha} }{1+\sqrt{\alpha}
+}\)</span>，这个序列线性收敛，而 Newton 方法二阶收敛。</p></li>
+</ul>
+<p>给我一点小小的数值分析震撼，但我感觉比前面的题都简单（</p>
+<h2 id="梦话-2.0乘积级数">梦话 2.0：乘积级数</h2>
+<p>其实乘积级数完全可以用对数函数拆成求和级数，可惜的是我们现在还没有对数函数，所以都是靠各种技巧来证明。</p>
+<ul>
+<li><p>乘积级数的收敛以及 Cauchy 判别法：<span class="math inline">\(\{a_n\}_{n\geqslant 1}\)</span>
+是复数的数列，我们假设对任意的 <span class="math inline">\(n\)</span>，<span class="math inline">\(a_n\neq
+0\)</span>。令 <span class="math inline">\(P_n=a_1\cdot a_2\cdot \cdots
+\cdot a_n\)</span>，如果数列 <span class="math inline">\(\{P_n\}_{n\geqslant 1}\)</span> 的极限存在且不是
+<span class="math inline">\(\mathbf{0}\)</span>，称无限乘积 <span class="math inline">\(\displaystyle\prod_{n\geqslant 1}a_n\)</span>
+收敛且记 <span class="math inline">\(\displaystyle\prod_{n\geqslant
+1}a_n=\lim_{n\rightarrow \infty}P_n\)</span>。</p>
+<p>我们有这种情况下的 Cauchy 判别准则：<span class="math inline">\(\displaystyle\prod_{n\geqslant 1}a_n\)</span>
+收敛当且仅当对任意的 <span class="math inline">\(\varepsilon&gt;0\)</span>，存在 <span class="math inline">\(N\)</span>，使得对任意的 <span class="math inline">\(n\geqslant N\)</span>，任意的 <span class="math inline">\(p\geqslant 0\)</span>，我们都有 <span class="math inline">\(\big|a_n\cdot a_{n+1}\cdot \cdots \cdot
+a_{n+p}-1\big|&lt;\varepsilon\)</span>。</p></li>
+<li><p>除此之外还有一个特殊情况：对于正数列 <span class="math inline">\(\{a_n\}_{n\geqslant 1}\)</span>，乘积 <span class="math inline">\(\displaystyle\prod_{n=1}^{\infty}(1+a_n)\)</span>
+收敛（极限必然不是零）等价于 <span class="math inline">\(\displaystyle\sum_{n =1}^{\infty} a_n\)</span>
+收敛。当然，有对数的话可以近似成 <span class="math inline">\(ln(1+a_n)
+\approx a_n\)</span>，直观上二者就相等。严格的证明也不困难。</p>
+<p>实际上，如果数列介于区间 <span class="math inline">\((0,1)\)</span>
+之间，二者也等价于乘积 <span class="math inline">\(\displaystyle\prod_{n=1}^{\infty}(1-a_n)\)</span>
+收敛。从对数的直观上来说也是明显的，但证明稍有不同。</p>
+<p>这样的话限制还是比较多的，只对正实数有效。如果想要推广到复数，就需要更强的条件。<span class="math inline">\(\{a_n\}_{n\geqslant 1}\)</span> 是复数的数列，如果
+<span class="math inline">\(\displaystyle\prod_{n=1}^{\infty}(1+|a_n|)\)</span>
+收敛（等价地说，就是 <span class="math inline">\(\displaystyle\sum_{n
+=1}^{\infty} a_n\)</span> 绝对收敛），则 <span class="math inline">\(\displaystyle\prod_{n=1}^{\infty}(1+a_n)\)</span>
+收敛（极限不是零）。</p></li>
+</ul>
+<p>2023 年 1 月 24 日，星期二，修了半天 LaTeX 然后摸了半天鱼（</p>
+<p>其实后来检查了半天，发现除了 NexT
+之外都是最新版本，不清楚究竟是哪里有问题，就换了个
+renderer，然后就好了（。倒是也把新版本的 NexT
+设置好了，但是当时搞的彩色标签暂时没找到好的替代 =
+=，原来的办法不太好用了，就还是暂时再用用旧的，哪天确定是它出了问题的话也可以一键搬家到新版（</p>
+<p>凌晨的时候本来在等备份，随手开了局舟，没想到一次通关，大概是什么回坑
+buff（。不过感觉不咋好玩，逐渐失去兴趣了，打算把活动打完就卸载掉。</p>
+<p>（这不是数分日志来着吗）（问题在这里发现的就在这儿解决一下好了）</p>
+<figure>
+<img src="https://s2.loli.net/2023/01/25/1FkScU8xRrQbZzD.png" alt="arknights.png">
+<figcaption aria-hidden="true">arknights.png</figcaption>
+</figure>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>我很可爱 请给我钱（？）</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.jpg" alt="驰雨Chiyuru 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.jpg" alt="驰雨Chiyuru 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>驰雨Chiyuru
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://chiyuru.github.io/2023/01/15/Learn-Mathematical-Analysis-or-Die/" title="数学分析 I 速通日志">https://chiyuru.github.io/2023/01/15/Learn-Mathematical-Analysis-or-Die/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag"># 数学</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/01/01/Diary-2023-01/" rel="prev" title="日记·篇五·23年1月">
+      <i class="fa fa-chevron-left"></i> 日记·篇五·23年1月
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  
+  <div class="comments">
+  <script src="https://utteranc.es/client.js" repo="Chiyuru/chiyuru.github.io" issue-term="pathname" theme="github-light" crossorigin="anonymous" async></script>
+  </div>
+  
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%9E%E6%95%B0%E7%9A%84%E6%9E%84%E9%80%A0"><span class="nav-text">实数的构造</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8E%E6%8A%BD%E4%BB%A3%E5%87%BA%E5%8F%91%E4%BA%8B%E6%83%85%E5%8F%98%E5%BE%97%E7%AE%80%E5%8D%95%E4%BA%86%E5%BE%88%E5%A4%9A"><span class="nav-text">从抽代出发，事情变得简单了很多</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#summary"><span class="nav-text">Summary</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A2%A6%E8%AF%9D%E5%8F%AF%E6%95%B0%E9%9B%86%E4%B8%8E%E4%B8%8D%E5%8F%AF%E6%95%B0%E9%9B%86"><span class="nav-text">梦话：可数集与不可数集</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98%E5%8F%AF%E6%95%B0%E9%9B%86%E4%B8%8E%E4%B8%8D%E5%8F%AF%E6%95%B0%E9%9B%86"><span class="nav-text">课后习题：可数集与不可数集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98-schroeder-bernstein-%E5%AE%9A%E7%90%86"><span class="nav-text">课后习题：
+Schroeder-Bernstein 定理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E5%A4%8D%E4%B9%A0%E7%AD%89%E5%8A%BF%E4%B8%8E%E5%9F%BA%E6%95%B0"><span class="nav-text">离散数学复习：等势与基数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9E%81%E9%99%90"><span class="nav-text">极限</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9E%81%E9%99%90%E6%95%B0%E5%88%97%E5%92%8C%E7%BA%A7%E6%95%B0"><span class="nav-text">极限，数列和级数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%87%E6%95%B0%E5%87%BD%E6%95%B0%E5%92%8C%E4%B8%89%E8%A7%92%E5%87%BD%E6%95%B0%E7%9A%84%E7%BA%A7%E6%95%B0%E5%AE%9A%E4%B9%89"><span class="nav-text">指数函数和三角函数的级数定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#summary-1"><span class="nav-text">Summary</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A2%A6%E8%AF%9D%E6%97%A2%E7%84%B6%E4%B9%A0%E9%A2%98%E6%B2%A1%E6%9C%89%E7%AD%94%E6%A1%88%E9%82%A3%E6%88%91%E5%B0%B1%E8%83%A1%E8%AF%B4%E5%85%AB%E9%81%93%E4%BA%86"><span class="nav-text">梦话：既然习题没有答案那我就胡说八道了</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#riemann-%E9%87%8D%E6%8E%92%E5%AE%9A%E7%90%86"><span class="nav-text">Riemann 重排定理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cesaro-%E6%B1%82%E5%92%8C%E6%9E%81%E9%99%90"><span class="nav-text">Cesaro 求和极限</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B9%E5%BC%8F%E5%92%8C%E6%8C%87%E6%95%B0%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-text">根式和指数的定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B9%E5%BC%8F%E7%9A%84%E9%80%BC%E8%BF%91"><span class="nav-text">根式的逼近</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A2%A6%E8%AF%9D-2.0%E4%B9%98%E7%A7%AF%E7%BA%A7%E6%95%B0"><span class="nav-text">梦话 2.0：乘积级数</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="驰雨Chiyuru"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">驰雨Chiyuru</p>
+  <div class="site-description" itemprop="description">おはよう、朝だよ</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Chiyuru" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Chiyuru" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:mafy21@mails.tsinghua.edu.cn" title="E-Mail → mailto:mafy21@mails.tsinghua.edu.cn" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/Chiyuru_0417" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;Chiyuru_0417" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/ma-fei-yan-33" title="知乎 → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;ma-fei-yan-33" rel="noopener" target="_blank"><i class="fab fa-zhihu fa-fw"></i>知乎</a>
+      </span>
+  </div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">驰雨Chiyuru</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv1">
+  本站总访客数：<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共166.2k字</span>
+</div>
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300,"hOffset":-15,"vOffset":-15},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
+</html>
