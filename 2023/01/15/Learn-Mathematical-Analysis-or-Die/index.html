@@ -29,7 +29,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://s2.loli.net/2023/01/25/1FkScU8xRrQbZzD.png">
 <meta property="article:published_time" content="2023-01-15T04:34:52.000Z">
-<meta property="article:modified_time" content="2023-01-25T14:30:46.816Z">
+<meta property="article:modified_time" content="2023-01-26T20:06:47.276Z">
 <meta property="article:author" content="驰雨Chiyuru">
 <meta property="article:tag" content="数学">
 <meta name="twitter:card" content="summary">
@@ -218,7 +218,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-01-25 22:30:46" itemprop="dateModified" datetime="2023-01-25T22:30:46+08:00">2023-01-25</time>
+                <time title="修改时间：2023-01-27 04:06:47" itemprop="dateModified" datetime="2023-01-27T04:06:47+08:00">2023-01-27</time>
               </span>
 
           
@@ -236,6 +236,25 @@
 <p>转数环环友：你可以以任意顺序完成培养方案（</p>
 <span id="more"></span>
 <p>虽然已经学过一遍初级版，这次速通是作为观点的补充和复习，但还是很虚的。</p>
+<p>说到这个任意顺序完成培养方案，摘一个 PIN 的前言（逃</p>
+<blockquote>
+<p>事实上,
+我们所接触的大多国内优秀同学都直接或者间接地默认数学学习一定顺序,
+须得按部就班, 层层递进, 才能扎实地进步. 这种想法本身没有错,
+但是数学的发展绝对不是线性的, 知识也不存在先天的顺序.
+一个普遍被提及的例证就是从 Newton 引入积分 (反流数术) 到 Cauchy
+的极限理论被广泛接受中间至少有半个世纪的光景, 那个优秀的数学家层出不穷,
+利用还没有被严格化的积分理论作出了很多享誉后世的工作.
+数学学习不应该被课程设置 (甚至被其名称) 切割. 比如说,
+所谓的曲线或者曲面的几何学、数学物理方程都可以称为 (多元)
+微积分学习的好例题, 很多微积分知识就是为了解决这样的问题应运而生的.
+微积分课程就应该学习和研究这样的例子,
+不能简单地将它们归结为是微分几何或者微分方程的内容而忽略.
+仅仅为了教学而刻意构造的各种例题长远来看有目光短浅之嫌.
+这种做法通常还会从心理上折射出胆怯的影子,
+以至于有同学误以为课程的顺序和难度有关联, “后面” 的课程比 “前面”
+的课程困难. 唯有正视, 方能前行.</p>
+</blockquote>
 <p>高二的时候我曾经备考过一阵子丘班
 (prototype)，不过因为当年联赛翻车省三的原因（，连初审都没有通过。组队备考的五个人里只有我们的队长
 ycj
@@ -1000,7 +1019,7 @@ n\)</span> 大小的复系数矩阵。</p>
 的良定义性质，也就是级数的收敛性。在这里用一个赋范空间上的绝对收敛概念，原本实数空间上的绝对收敛是对于绝对值而言，在赋范空间上改成对范数而言即可，这样还是能够通过绝对收敛推出收敛（因为范数和绝对值同样有三角不等式性质）。关于
 <span class="math inline">\(e^A = \sum_{k=0} ^\infty {A^k \over
 k!}\)</span>
-的绝对收敛性质也很好证明，当然，如果这个矩阵范数是一个向量相容范数，就更好证明了。</p>
+的绝对收敛性质也很好证明，可以使用矩阵范数的等价性。当然，如果这个矩阵范数是一个向量相容范数，就更简单了。</p>
 <p>不过，在这样的定义里，<span class="math inline">\(e^{A+B} = e^A
 e^B\)</span> 是不一定成立的，因为两个矩阵未必交换。但是 <span class="math inline">\(e^{sA} e^{tA} = e^{(s+t)A}\)</span>
 仍然成立。</p></li>
@@ -1011,6 +1030,332 @@ e^B\)</span> 是不一定成立的，因为两个矩阵未必交换。但是 <sp
 <p>说到习题没有答案这个问题，今天在知乎搜了一下居然有<a target="_blank" rel="noopener" href="https://github.com/huanghaox1212/huanghaox1212.github.io/releases/tag/yp-solution-part-1">民间版本</a>流传，作者是
 MO 和 OI 双修的高中生，太升级了。</p>
 <p>习题还在做，做完了再来碎碎念，然后就终于可以离开极限去学连续性了（</p>
+<p>2023 年 1 月 26 日，星期四，今天没有 die
+只是作业写起来真的有点慢（，这一章的习题全都做了哦。</p>
+<h3 id="连续函数的定义和基本性质">连续函数的定义和基本性质</h3>
+<ul>
+<li><p>（函数极限的Cauchy判别准则）给定函数 <span class="math inline">\(f\colon (a,x_0)\cup (x_0,b)\rightarrow
+\mathbb{R}\)</span>。那么，<span class="math inline">\(f\)</span> 在
+<span class="math inline">\(x_0\)</span> 处有极限当且仅当对任意的 <span class="math inline">\(\varepsilon&gt;0\)</span>，存在 <span class="math inline">\(\delta&gt;0\)</span>，使得对任意的 <span class="math inline">\(x_1,x_2\in (x_0-\delta,x_0+\delta)\)</span>，都有
+<span class="math inline">\(|f(x_1)-f(x_2)|&lt;\varepsilon\)</span>。</p>
+<p>如果有极限，这是定义，trivial.</p>
+<p>如果对任意的 <span class="math inline">\(\varepsilon&gt;0\)</span>，存在 <span class="math inline">\(\delta&gt;0\)</span>，使得对任意的 <span class="math inline">\(x_1,x_2\in (x_0-\delta,x_0+\delta)\)</span>，都有
+<span class="math inline">\(|f(x_1)-f(x_2)|&lt;\varepsilon\)</span>，那么取某一个固定的
+<span class="math inline">\(\varepsilon\)</span>，找到这样的区间 <span class="math inline">\(X=(x_0-\delta,x_0+\delta)\)</span>，任意取一组
+<span class="math inline">\(X\)</span> 上收敛到 <span class="math inline">\(x_0\)</span> 的点列 <span class="math inline">\(y_0,y_1,...,y_n,...\)</span>，它们的函数值序列
+<span class="math inline">\(\lbrace f(y_n) \rbrace _{n \geq 1}\)</span>
+是 Cauchy 列，一定收敛。</p>
+<p>至于为什么会收敛到 <span class="math inline">\(f(x_0)\)</span>
+这一点，这是因为 <span class="math inline">\(\lbrace y_n \rbrace _{n
+\geq 1}\)</span> 的极限是 <span class="math inline">\(x_0\)</span>。</p></li>
+<li><p>假设 <span class="math inline">\(I\)</span> 是一个非空的区间并且
+<span class="math inline">\(I\)</span> 不是一个点，证明，<span class="math inline">\(I\)</span> 上的连续函数 <span class="math inline">\(C(I)\)</span> 所构成的 <span class="math inline">\(\R\)</span>-线性空间是无限维的。</p>
+<p>这题我会！数值分析里学过！多项式的基 <span class="math inline">\(\lbrace 1,x,x^2,... \rbrace\)</span>
+是无限维的，因为它们彼此线性无关。</p></li>
+<li><p>假设 <span class="math inline">\((X,d_X)\)</span> 和 <span class="math inline">\((Y,d_Y)\)</span> 是距离空间，<span class="math inline">\(f\colon X\rightarrow Y\)</span> 是映射。假设 <span class="math inline">\(x_0\in X\)</span>，如果对任意 <span class="math inline">\(X\)</span> 中的点列 <span class="math inline">\(\{x_n\}_{n\geqslant 1}\)</span>，<span class="math inline">\(x_n\stackrel{d_X}{\longrightarrow}x_0\)</span>，我们都有
+<span class="math inline">\(f(x_n)\stackrel{d_Y}{\longrightarrow}f(x_0)\)</span>，我们就称
+<span class="math inline">\(f\)</span> 在 <span class="math inline">\(x_0\)</span> 处是连续的。如果 <span class="math inline">\(f\)</span> 在一切 <span class="math inline">\(x\in
+X\)</span> 处均连续，那么我们就称 <span class="math inline">\(f\)</span>
+是距离空间之间的连续映射。</p>
+<p>假设 <span class="math inline">\((X,d_X)\)</span>，<span class="math inline">\((Y,d_Y)\)</span> 和 <span class="math inline">\((Z,d_Z)\)</span> 是三个距离空间，<span class="math inline">\(f\colon X\rightarrow Y\)</span>，<span class="math inline">\(g\colon Y\rightarrow Z\)</span>
+均为连续映射。证明，它们的复合 <span class="math inline">\(g\circ
+f\colon X\rightarrow Z\)</span> 也是连续映射。</p>
+<p>一句话题意：连续映射的复合还是连续映射（</p>
+<p>Trivial.</p></li>
+<li><p>假设 <span class="math inline">\((X,d_X)\)</span> 和 <span class="math inline">\((Y,d_Y)\)</span> 是距离空间，<span class="math inline">\(f\colon X\rightarrow Y\)</span> 是连续映射。如果
+<span class="math inline">\(d&#39;_X\)</span> 是与 <span class="math inline">\(d_X\)</span> 等价的距离，<span class="math inline">\(d&#39;_Y\)</span> 是与 <span class="math inline">\(d_Y\)</span> 等价的距离，那么，对于 <span class="math inline">\((X,d&#39;_X)\)</span> 和 <span class="math inline">\((Y,d&#39;_Y)\)</span> 而言，<span class="math inline">\(f\)</span> 也是连续映射。</p>
+<p>等价的距离意思是对任意的 <span class="math inline">\(x_1 , x_2 \in
+X\)</span>，存在固定的参数 <span class="math inline">\(c,C \in
+R\)</span>，使得 <span class="math inline">\(c d^{\prime} _X (x_1,x_2)
+\leq d _X (x_1,x_2) \leq C d^{\prime} _X
+(x_1,x_2)\)</span>，代入一下连续的定义，取一个小一点的 <span class="math inline">\(\varepsilon\)</span> 就可以了。</p></li>
+<li><p>在 <span class="math inline">\(\R^n\)</span>
+上我们配有常见的距离，比如说 <span class="math inline">\(d_2\)</span>（请参考之前的讲义）；<span class="math inline">\((X,d_X)\)</span> 是距离空间。我们将映射 <span class="math inline">\(f\colon X\rightarrow \R^n\)</span>
+写成分量的形式：<span class="math inline">\(f\colon X\rightarrow \R^n, \
+\ x\mapsto f(x)=(f_1(x),f_2(x),\cdots,f_n(x))\)</span></p>
+<p>其中 <span class="math inline">\(f_i\colon X\rightarrow \R\)</span>
+是函数。证明，<span class="math inline">\(f\)</span>
+是连续映射当且仅当对所有的 <span class="math inline">\(i=1,\cdots,n\)</span>，<span class="math inline">\(f_i\)</span> 是连续函数。</p>
+<p>如果每个 <span class="math inline">\(f_i (x)\)</span>
+都是连续函数，那么对于收敛到 <span class="math inline">\(x_0\)</span>
+的点列 <span class="math inline">\(\lbrace x_i \rbrace _{i \geq
+1}\)</span>，对任意的 <span class="math inline">\(\varepsilon
+&gt;0\)</span>，存在一个最小的 <span class="math inline">\(\delta\)</span> 和最大的 <span class="math inline">\(N\)</span>，使得对任意分量函数，都有 <span class="math inline">\(n &gt;N\)</span> 时，<span class="math inline">\(|
+f_i(x_n)-f_i(x_0) | &lt;\varepsilon\)</span>。于是此时也有 <span class="math inline">\(| f(x_n) - f(x_0) | &lt;\sqrt{n}
+\varepsilon\)</span>，连续。（追求美观的话可以在第一步把 <span class="math inline">\(\varepsilon\)</span> 改成 <span class="math inline">\(\varepsilon \over \sqrt{n}\)</span>）</p>
+<p>如果 <span class="math inline">\(f(x)\)</span>
+是连续函数，那么分量的误差小于整体误差，每个分量都收敛。</p>
+<p>（这个我在数值分析也学过！耶！</p></li>
+<li><p>假设 <span class="math inline">\((X,d_X)\)</span>
+是距离空间，<span class="math inline">\((V,\|\cdot\|)\)</span>
+是赋范线性空间，<span class="math inline">\(f\colon X\rightarrow
+V\)</span> 和 <span class="math inline">\(g\colon X\rightarrow
+V\)</span> 是连续映射。证明，它们的和与差（自然的定义）<span class="math inline">\(f\pm g\colon X\rightarrow V\)</span>
+也是连续映射。</p>
+<p>如果 <span class="math inline">\(V=\mathbb{C}\)</span>（或者 <span class="math inline">\(n\times n\)</span>
+的矩阵构成的赋范线性空间），那么 <span class="math inline">\(f\cdot
+g\colon X\rightarrow \mathbb{C}\)</span> 是连续映射。</p>
+<p>如果 <span class="math inline">\(V=\mathbb{C}\)</span> 并且对任意的
+<span class="math inline">\(x\in X\)</span>，<span class="math inline">\(g(x)\neq 0\)</span>，那么 <span class="math inline">\(\dfrac{f}{g}\colon X\rightarrow
+\mathbb{C}\)</span> 是连续映射。</p>
+<p>你可以选择上面的一个情况来证明。</p>
+<p>PIN 你真的有点无聊（哭），其实都挺 trivial 的。</p></li>
+<li><p>试找出 <span class="math inline">\(\R\)</span> 上定义的函数</p>
+<p><span class="math inline">\(f(x)=\begin{cases}\frac{1}{q}, \
+&amp;\text{如果 $x=\dfrac{p}{q}$ 是有理数，其中 $p\in \mathbb{Z}$，$q\in
+\mathbb{Z}_{\geqslant 1}$ 且 $p$ 和 $q$ 互素};\\ 0, \ &amp;\text{如果
+$x$ 是无理数}\end{cases}\)</span></p>
+<p>的所有不连续点。</p>
+<p>回顾一下：连续点的含义是 <span class="math inline">\(f\)</span> 在
+<span class="math inline">\(x_0\)</span>
+处有（唯一的，左右相等的）极限，当且仅当对任意的 <span class="math inline">\(\varepsilon&gt;0\)</span>，存在 <span class="math inline">\(\delta&gt;0\)</span>，使得对任意的 <span class="math inline">\(x_1,x_2\in (x_0-\delta,x_0+\delta)\)</span>，都有
+<span class="math inline">\(|f(x_1)-f(x_2)|&lt;\varepsilon\)</span>。</p>
+<p>对于有理数点，其实很容易就能找到一个趋近于它的无理数点列。取一个它左侧的无理数点
+<span class="math inline">\(k\)</span>，二者一起不停找二分点，就可以取出一个趋近于这个有理数点的无理数点列。它的函数值是收敛不到
+<span class="math inline">\(\frac 1 q\)</span>
+的，于是所有的有理数点都是不连续点。</p>
+<p>但是 <span class="math inline">\(0\)</span>
+的函数值是咋定义的呢？如果函数值就是 <span class="math inline">\(0\)</span>，那它是唯一一个有理数连续点。</p>
+<p>对于无理数点 <span class="math inline">\(t\)</span>，对任意的 <span class="math inline">\(\varepsilon &gt;0\)</span>，总能够取 <span class="math inline">\(\delta\)</span> 满足 <span class="math inline">\(t\)</span> 的去心邻域 <span class="math inline">\(T = (t-\delta,t) \cup (t,t+\delta)\)</span>
+里面没有形如 <span class="math inline">\(p \over q\)</span>
+的有理数，使得分子分母互素，而且 <span class="math inline">\(q &lt;
+\frac{1}{\varepsilon}\)</span>，因此对任意 $ x_1 ,x_2 T$，有 <span class="math inline">\(| f(x_1 ) - f(x_2) | &lt;
+\varepsilon\)</span>，总是收敛的。</p>
+<p>至于为什么可以做到这一点，这是因为记把 <span class="math inline">\(t\)</span> 附近 <span class="math inline">\(q &lt;
+{1 \over \varepsilon }\)</span> 的有理数点中离它最近的距离记为 <span class="math inline">\(d\)</span>，取 <span class="math inline">\(\delta
+= \frac d 2\)</span> 即可，而这样的有理数点是有穷个，一定可以找到对应的
+<span class="math inline">\(d&gt;0\)</span>。</p>
+<p>总之，所有的不连续点的集合是 <span class="math inline">\(\mathbb
+Q\)</span>，视情况可能 <span class="math inline">\(0\)</span>
+会是连续的，这里定义的好像不是很好。</p></li>
+</ul>
+<h3 id="级数收敛性">级数收敛性</h3>
+<p>眼前一黑，我直接一个梦回微积分 A2（，这一部分就比较水字数了。</p>
+<ul>
+<li>试判断下列级数的收敛性。
+<ul>
+<li><p><span class="math inline">\(\sum_{n=1}^\infty
+(\sqrt{n+1}-\sqrt{n})\)</span></p>
+<p>发散，trivial.</p></li>
+<li><p><span class="math inline">\(\sum_{n=1}^\infty
+\frac{\sqrt{n+1}-\sqrt{n}}{n}\)</span></p>
+<p>收敛，trivial.</p></li>
+<li><p>$_{n=2}<sup>(-1)</sup>n $</p>
+<p>收敛，因为数列 <span class="math inline">\(n^{1 \over n}\)</span>
+单调减并趋近 <span class="math inline">\(1\)</span>，对于某个被 <span class="math inline">\(\varepsilon\)</span> 控制的 <span class="math inline">\(n &gt;N\)</span>，有 <span class="math inline">\(\sum_{n=N+1}^\infty (\sqrt[n]{n}-1)^n &lt;
+\sum_{n=N+1}^\infty \varepsilon ^n\)</span>。</p></li>
+<li><p>$_{n=1}^ (x) $</p>
+<p><span class="math inline">\(|x|&lt;1\)</span> 或 <span class="math inline">\(x=1\)</span> 时单项收敛不到 <span class="math inline">\(0\)</span>，级数发散；否则收敛。</p></li>
+<li><p>$_{n=1}^ $</p>
+<p>收敛，trivial.</p></li>
+<li><p>$_{n=1}<sup>()</sup>n $</p>
+<p>收敛，单项放缩。</p></li>
+<li><p>$_{n=1}^ $</p>
+<p>发散，验一下不符合 Cauchy 列。</p></li>
+<li><p><span class="math inline">\(\sum_{n=2}^\infty \frac{1}{(\log
+n)^{\log n}}\)</span></p>
+<p>感觉可以用积分法判断收敛（，但是还没学过积分（，怎么办呢。</p>
+<p>也可以放缩，<span class="math inline">\(n &gt; N\)</span> 时有 <span class="math inline">\(\frac{1}{(\log n)^{\log n}} &lt;
+\frac{1}{n^M}\)</span>。收敛。</p></li>
+<li><p>$_{n=1}^ $</p>
+<p>单项可以写成更好的形式：${(n^{1 n} / (n+ {1 n} ) ^{1 } )}^{n ^2 +1} $
+（天哪这个能渲染出来吗，好担心）</p>
+<p>发散。</p></li>
+<li><p>$_{n=1}<sup>(-1)</sup>{n-1} $</p>
+<p>收敛，Dirichlet 判别。</p></li>
+<li><p>$_{n=1}^ $</p>
+<p>发散，trivial.</p></li>
+<li><p><span class="math inline">\(\sum_{n=1}^\infty
+\left(1+\frac{1}{2}+\cdots + \frac1n\right)\frac{\sin
+nx}{n}\)</span></p>
+<p>收敛。拆分 <span class="math inline">\(b_n = \frac{1}{n} (1 + \frac 1
+2 +...+ \frac 1 n)\)</span>，<span class="math inline">\(a_n = \sin
+nx\)</span>，用 Dirichlet 判别法，其中 <span class="math inline">\(b_n
+&lt; \frac{log _2 n}{n}\)</span>。</p>
+<p>需要注意的是要讨论一下 <span class="math inline">\(x = 2k
+\pi\)</span> 的情况。</p></li>
+</ul></li>
+<li>试判断下列级数的收敛性并确定它们是否绝对收敛。
+<ul>
+<li><p>$_{n=2}<sup>(-1)</sup>n $</p>
+<p>不绝对收敛，感觉也可以用积分判别，懒得多想了（</p>
+<p>收敛，trivial.</p></li>
+<li><p>$_{n=2}^ $</p>
+<p>不绝对收敛，求一下 <span class="math inline">\(\sin
+\frac{n\pi}{4}\)</span> 的值就知道了。</p>
+<p>收敛，trivial.</p></li>
+<li><p>$_{n=1}<sup>(-1)</sup>n $</p>
+<p>不绝对收敛，分离常数之后发现一部分收敛一部分不收敛。</p>
+<p>收敛，仍然是分离常数，trivial.</p></li>
+<li><p><span class="math inline">\(\sum_{n=1}^\infty
+(-1)^{\frac{n(n-1)}{2}} \frac{n^{10}}{a^n} \qquad (a&gt;1)\)</span></p>
+<p>绝对收敛，trivial.</p></li>
+</ul></li>
+</ul>
+<h3 id="递减正项级数的凝聚检验法">递减正项级数的凝聚检验法</h3>
+<p>假设正整数 <span class="math inline">\(b\geqslant 2\)</span>，<span class="math inline">\(f\colon (1,\infty)\rightarrow
+\mathbb{R}_{&gt;0}\)</span> 是递减（未必严格递减）函数。</p>
+<ul>
+<li><p>证明下面的不等式：<span class="math inline">\((b-1)b^{k-1}f(b^{k})\leqslant
+\sum_{j=b^{k-1}}^{b^k-1} f(j) \leqslant
+(b-1)b^{k-1}f(b^{k-1})\)</span></p>
+<p>什么茶歇题。Trivial.</p></li>
+<li><p>证明：级数 $<em>{n=1}^f(n) $ 和 $ </em>{n=1}<sup>b</sup>n f(b^n)$
+同时收敛或者同时发散。</p>
+<p>我们称通过后者的收敛来判断前者收敛的方法为凝聚检验法。</p>
+<p>根据上一问求和，trivial.</p></li>
+<li><p>证明，<span class="math inline">\(\displaystyle \sum_{n=2}^\infty
+\frac{1}{n\log n}\)</span> 是发散的。</p>
+<p>不如试试积分收敛法（被捂嘴拖走</p>
+<p>取 <span class="math inline">\(b=2\)</span>
+知道它和调和级数是同收敛同发散的。</p></li>
+<li><p>证明，<span class="math inline">\(\displaystyle\sum_{n=100}^\infty \frac{1}{(n\log
+n) (\log (\log n))}\)</span> 是发散的。</p>
+<p>它和上一问的级数是同收敛同发散的。</p></li>
+<li><p>证明，如果 <span class="math inline">\(s&gt;1\)</span>，那么
+<span class="math inline">\(\displaystyle\sum_{n=1}^\infty
+\frac{1}{n^s}\)</span> 是收敛的；如果 <span class="math inline">\(0&lt;s&lt;1\)</span>，那么 <span class="math inline">\(\displaystyle\sum_{n=1}^\infty
+\frac{1}{n^s}\)</span> 是发散的。</p>
+<p>取 <span class="math inline">\(b=2\)</span>
+知它和一个等比数列同收敛同发散。</p></li>
+<li><p>假设 <span class="math inline">\(s&gt;1\)</span>。证明，<span class="math inline">\(\displaystyle\sum_{n=2}^\infty \frac{1}{n(\log
+n)^s}\)</span> 和 <span class="math inline">\(\displaystyle\sum_{n=10}^\infty \frac{1}{(n\log
+n)(\log(\log n))^s}\)</span> 都收敛。</p>
+<p>前一个和上一问同收敛同发散。后一个和 <span class="math inline">\(\displaystyle\sum_{n=10}^\infty \frac{1}{n {\log^s
+n} }\)</span> 同收敛同发散。</p></li>
+</ul>
+<blockquote>
+<p>Remark：上述的几个收敛的结论是标准并且重要的，记住这几个结论对于收敛以及函数大小的理解很有帮助。这里的证明尽管巧妙，但是等我们接触到积分的时候，我们就可以用统一的、简单的、更本质的也更容易记忆的方法来证明这些结论。</p>
+</blockquote>
+<h3 id="实数列的上下极限的刻画">实数列的上下极限的刻画</h3>
+<p>设 <span class="math inline">\(\{a_n\}_{n \geqslant 1}\)</span>
+是一个实数列。先补充几个定义：</p>
+<p><span class="math inline">\(\alpha \in \R\)</span>，如果对任意 <span class="math inline">\(\varepsilon&gt;0\)</span>, 存在无穷多 <span class="math inline">\(n\)</span>，使得 <span class="math inline">\(a_n
+\in (\alpha-\varepsilon,\alpha+\varepsilon)\)</span>，我们称 <span class="math inline">\(\alpha\)</span> 为 <span class="math inline">\(\{a_n\}_{n\geqslant 1}\)</span> 的一个极限点；</p>
+<p>如果对任意 <span class="math inline">\(M&gt;0\)</span>，存在无穷多个
+<span class="math inline">\(n\)</span>，使得 <span class="math inline">\(a_n \in (M,\infty)\)</span>，我们就称 <span class="math inline">\(+\infty\)</span> 为 <span class="math inline">\(\{a_n\}_{n\geqslant 1}\)</span> 的一个极限点；</p>
+<p>如果对任意 <span class="math inline">\(M&gt;0\)</span>，存在无穷多个
+<span class="math inline">\(n\)</span>，使得 <span class="math inline">\(a_n \in (-\infty,-M)\)</span>，我们就称 <span class="math inline">\(-\infty\)</span> 为 <span class="math inline">\(\{a_n\}_{n\geqslant 1}\)</span> 的一个极限点。</p>
+<ul>
+<li><p>证明，<span class="math inline">\(\alpha\in \R\)</span> 是 <span class="math inline">\(\{a_n\}_{n\geqslant 1}\)</span>
+的极限点当且仅当该数列有子序列 <span class="math inline">\(\{a_{n_k}\}_{k\geqslant 1}\)</span> 收敛于 <span class="math inline">\(\alpha\)</span>。</p>
+<p>对于 <span class="math inline">\(\varepsilon _1 = 1\)</span>，取
+<span class="math inline">\(a_1 \in
+(\alpha-\varepsilon_1,\alpha+\varepsilon_1)\)</span>；再取 <span class="math inline">\(\varepsilon _2 = |\alpha - a_1|\)</span>，继续取
+<span class="math inline">\(a_2\)</span>，依次操作就得到了收敛子序列。</p>
+<p>反过来是显然的。</p></li>
+<li><p>证明，<span class="math inline">\(+\infty\)</span> 是 <span class="math inline">\(\{a_n\}_{n\geqslant 1}\)</span>
+的极限点当且仅当该数列有子序列 <span class="math inline">\(\{a_{n_k}\}_{k\geqslant 1}\)</span> 使得 <span class="math inline">\(\displaystyle\lim_{k\to \infty} a_{n_k} =
++\infty\)</span>。</p>
+<p>Trivial.</p></li>
+<li><p>令 <span class="math inline">\(E = \bigl\{\alpha \in \R \cup
+\{\pm \infty\} \,\rvert\, \alpha \text{ 是 } \{a_n\}_{n\geqslant 1}
+\text{ 的极限点}\bigr\}\)</span> 为 <span class="math inline">\(\{a_n\}_{n\geqslant1}\)</span>
+的所有极限点所组成的集合（它是 <span class="math inline">\(\R \cup \{\pm
+\infty\}\)</span> 的子集）。证明，<span class="math inline">\(E \ne
+\emptyset\)</span>。</p>
+<p>考察 $sup {a_n}_{n} = + $ 或者 <span class="math inline">\(inf
+\{a_n\}_{n\geqslant1} = -\infty\)</span>，如果有二者之一则有 <span class="math inline">\(+\infty \in E\)</span> 或者 <span class="math inline">\(-\infty \in E\)</span>。</p>
+<p>否则，<span class="math inline">\(\{a_n\}_{n\geqslant1}\)</span>
+是有界的。如果它收敛于一点，则这一点是极限点，<span class="math inline">\(E\)</span> 非空。</p>
+<p>否则，<span class="math inline">\(\{a_n\}_{n\geqslant1}\)</span>
+有界且不收敛，它也有收敛的子列，子列收敛的极限是极限点。（救命，差点忘了这个</p></li>
+<li><p>证明：<span class="math inline">\(E \subset \R\)</span>
+当且仅当数列 <span class="math inline">\(\{a_n\}_{n\geqslant 1}\)</span>
+有界。</p>
+<p>Trivial.</p></li>
+<li><p>假设 <span class="math inline">\(\{a_n\}_{n\geqslant 1}\)</span>
+有界。试证明，<span class="math inline">\(\displaystyle \sup E =
+\limsup_{n\to \infty} a_n\)</span>，<span class="math inline">\(\displaystyle\inf E = \liminf_{n\to \infty}
+a_n\)</span>。</p>
+<p>是我困迷糊了吗？我不是很理解诶，比如说数列 <span class="math inline">\(1,1,100000,1,1,1,1,1,...\)</span>，真的符合第一条吗？</p></li>
+<li><p>假设 <span class="math inline">\(\{a_n\}_{n\geqslant 1}\)</span>
+有界。令 <span class="math inline">\(a^*= \displaystyle\limsup_{n\to
+\infty} a_n\)</span>，证明如下两个命题：</p>
+<ul>
+<li><p><span class="math inline">\(a^* \in E\)</span>（所以 <span class="math inline">\(\sup E\in E\)</span>）;</p></li>
+<li><p>对任意 <span class="math inline">\(x &gt; a^*\)</span>，存在
+<span class="math inline">\(N \in \mathbb{Z}_{\geqslant
+1}\)</span>，使得对任意 <span class="math inline">\(n&gt;N\)</span>，都有 <span class="math inline">\(a_n &lt; x\)</span>。</p></li>
+</ul></li>
+<li><p>试举一个数列 <span class="math inline">\(\{a_n\}_{n\geqslant
+1}\)</span> 作为例子，使得 <span class="math inline">\(E\cap \R \ne
+\emptyset\)</span> 且 <span class="math inline">\(E\not\subseteq
+\R\)</span>。</p>
+<p>这题我会！</p>
+<p><span class="math inline">\(1,2,1,3,1,4,...,1,n,1,n+1,...\)</span>，于是 <span class="math inline">\(E=\lbrace 1 , +\infty \rbrace\)</span>。</p></li>
+<li><p>试举一个数列 <span class="math inline">\(\{a_n\}_{n\geqslant
+1}\)</span> 作为例子，使得 <span class="math inline">\(E\)</span>
+为无穷集。</p>
+<p>这题我也会！</p>
+<p><span class="math inline">\(1,1,2,1,2,3,1,2,3,4,1,2,3,4,5,...\)</span>，于是
+<span class="math inline">\(E=\mathbb Z ^{+} \cup \lbrace + \infty
+\rbrace\)</span>。</p>
+<p>有可数集那味了！</p></li>
+</ul>
+<h3 id="素数的倒数和">*素数的倒数和</h3>
+<p>根据第七次课的内容，对于 <span class="math inline">\(s&gt;1\)</span>，我们可以定义 <span class="math inline">\(\zeta\)</span>-函数 <span class="math inline">\(\zeta(s)=\sum_{n=1}^\infty
+\frac{1}{n^s}\)</span>，</p>
+<p>并且证明了Euler乘积公式：<span class="math inline">\(\zeta(s)=\prod_{p\in
+\mathcal{P}}\frac{1}{1-p^{-s}}\)</span>，其中 <span class="math inline">\(\mathcal{P}\)</span> 是全体素数的集合。</p>
+<p>据此证明，级数 <span class="math inline">\(\sum_{p\in
+\mathcal{P}}\frac{1}{p^s}\)</span> 对于 <span class="math inline">\(s&gt;1\)</span> 是收敛的；对于 <span class="math inline">\(0&lt;s\leqslant 1\)</span>
+是发散的（这给出了有无穷多个素数的另一个证明）。</p>
+<p><strong>胡说八道：</strong></p>
+<p>我觉得吧，<span class="math inline">\(\zeta(s)=\prod_{p\in
+\mathcal{P}}\frac{1}{1-p^{-s}} = \prod_{p\in
+\mathcal{P}}(1+\frac{1}{p^{s} - 1})\)</span> 收敛等价于 <span class="math inline">\(\sum_{p\in \mathcal{P}} \frac{1}{p^{s} -
+1}\)</span> 收敛，那么 <span class="math inline">\(s &gt;1\)</span>
+时素数的倒数和也收敛。</p>
+<p>（毫无必要啊！直接小于调和级数和就可以了 T_T）</p>
+<p>其实我想胡说八道的是，<span class="math inline">\(\zeta(s)=\prod_{p\in
+\mathcal{P}}\frac{1}{1-p^{-s}}\)</span> 收敛能不能等价于 <span class="math inline">\(\zeta(s)=\prod_{p\in
+\mathcal{P}}(1-p^{-s})\)</span> 收敛，再等价于 <span class="math inline">\(\sum_{p \in \mathcal P} p^{-s}\)</span> 收敛？</p>
+<h3 id="basel问题的euler证明">*Basel问题的Euler“证明”</h3>
+<p>对任意的 <span class="math inline">\(\theta\in \R\)</span> 和 <span class="math inline">\(n\in \mathbb{Z}_{\geqslant
+1}\)</span>，试证明恒等式 <span class="math inline">\(\frac{\sin\bigl((2n+1)\theta\bigr)}{(2n+1)\sin\theta}=\prod_{k=1}^n
+\left(1-\frac{\sin^2(\theta)}{\sin^2\left(\frac{k\pi}{2n+1}\right)}\right)\)</span></p>
+<p>据此证明，对任意的 <span class="math inline">\(x\in
+\R\)</span>，我们都有 <span class="math inline">\(\frac{\sin(\pi x)}{\pi
+x}=\prod_{n=1}^\infty\left(1-\frac{x^2}{n^2}\right)\)</span></p>
+<p>（如果 <span class="math inline">\(x=0\)</span>，我们将左边定义为极限
+<span class="math inline">\(\displaystyle \lim_{x\rightarrow
+0}\frac{\sin(\pi x)}{\pi x}\)</span>）</p>
+<p><strong>胡说八道</strong>：</p>
+<p>这题还真的不是胡说八道，第一问是数值分析里学过的，第二类 Chebyshev
+多项式代入化简（（</p>
+<p>后一问大概只要取 <span class="math inline">\(\theta = \frac{\pi
+x}{2n+1}\)</span>，然后让 <span class="math inline">\(n \to
+\infty\)</span>。</p>
+<blockquote>
+<p>Remark：</p>
+<p>根据上面的公式，形式上，我们就有 <span class="math inline">\(sin(\pi
+x)=\pi x\prod_{n=1}^\infty\left(1-\frac{x^2}{n^2}\right)=\pi
+x\left(1-\left(\sum_{n=1}^\infty\frac{1}{n^2}\right)x^2+(\cdots)x^4+(\cdots)x^6+\cdots
+\right)\)</span></p>
+<p>所以，右边 <span class="math inline">\(x^3\)</span> 的系数就是 <span class="math inline">\(\displaystyle-\pi\sum_{n=1}^\infty\frac{1}{n^2}\)</span>。根据我们对于
+<span class="math inline">\(\sin\)</span> 的定义</p>
+<p><span class="math inline">\(\sin z =\frac{e^{iz}-e^{-iz}}{2i} =
+\sum_{k=0}^\infty \frac{(-1)^k z^{2k+1}}{(2k+1)!}\)</span></p>
+<p>所以，<span class="math inline">\(\sin(\pi x)\)</span> 中展开式的
+<span class="math inline">\(x^3\)</span> 项的系数是 <span class="math inline">\(-\dfrac{\pi^3}{6}\)</span>。比较系数，我们得到所谓的Basel问题的解：</p>
+<p><span class="math inline">\(\sum_{n=1}^\infty\frac{1}{n^2}=\frac{\pi^2}{6}\)</span></p>
+<p>这是 Euler 原始的想法，他就是利用了上面的乘积公式来猜测最终的极限是
+<span class="math inline">\(\dfrac{\pi^2}{6}\)</span>。有趣的是，他观察到
+<span class="math inline">\(\dfrac{\sin(\pi x)}{\pi x}\)</span>
+的零点恰好是 <span class="math inline">\(x=\pm n\)</span>，所以如果
+<span class="math inline">\(\dfrac{\sin(\pi x)}{\pi x}\)</span>
+的行为与多项式类似的话，那么这个函数应该是单项式的乘积，所以 Euler
+认为</p>
+<p><span class="math inline">\(\frac{\sin(\pi x)}{\pi x}=c\prod_{n\in
+\mathbb{Z}-\{0\}}\left(1-\frac{x}{n}\right)=c\prod_{n=1}^\infty\left(1-\frac{x^2}{n^2}\right)\)</span>。</p>
+<p>其中 <span class="math inline">\(c\)</span> 是一个待定的常数，通过取
+<span class="math inline">\(x\rightarrow 0\)</span> 的极限，他计算出
+<span class="math inline">\(c=1\)</span>。</p>
+</blockquote>
+<h1 id="连续性">连续性</h1>
+<p>进入新的章节啦！qwq</p>
+<p>2023 年 1 月 27 日，星期五，我要先去睡个觉（（</p>
 
     </div>
 
@@ -1157,7 +1502,7 @@ MO 和 OI 双修的高中生，太升级了。</p>
           <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%9E%E6%95%B0%E7%9A%84%E6%9E%84%E9%80%A0"><span class="nav-text">实数的构造</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8E%E6%8A%BD%E4%BB%A3%E5%87%BA%E5%8F%91%E4%BA%8B%E6%83%85%E5%8F%98%E5%BE%97%E7%AE%80%E5%8D%95%E4%BA%86%E5%BE%88%E5%A4%9A"><span class="nav-text">从抽代出发，事情变得简单了很多</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#summary"><span class="nav-text">Summary</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A2%A6%E8%AF%9D%E5%8F%AF%E6%95%B0%E9%9B%86%E4%B8%8E%E4%B8%8D%E5%8F%AF%E6%95%B0%E9%9B%86"><span class="nav-text">梦话：可数集与不可数集</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98%E5%8F%AF%E6%95%B0%E9%9B%86%E4%B8%8E%E4%B8%8D%E5%8F%AF%E6%95%B0%E9%9B%86"><span class="nav-text">课后习题：可数集与不可数集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98-schroeder-bernstein-%E5%AE%9A%E7%90%86"><span class="nav-text">课后习题：
 Schroeder-Bernstein 定理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E5%A4%8D%E4%B9%A0%E7%AD%89%E5%8A%BF%E4%B8%8E%E5%9F%BA%E6%95%B0"><span class="nav-text">离散数学复习：等势与基数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9E%81%E9%99%90"><span class="nav-text">极限</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9E%81%E9%99%90%E6%95%B0%E5%88%97%E5%92%8C%E7%BA%A7%E6%95%B0"><span class="nav-text">极限，数列和级数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%87%E6%95%B0%E5%87%BD%E6%95%B0%E5%92%8C%E4%B8%89%E8%A7%92%E5%87%BD%E6%95%B0%E7%9A%84%E7%BA%A7%E6%95%B0%E5%AE%9A%E4%B9%89"><span class="nav-text">指数函数和三角函数的级数定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#summary-1"><span class="nav-text">Summary</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A2%A6%E8%AF%9D%E6%97%A2%E7%84%B6%E4%B9%A0%E9%A2%98%E6%B2%A1%E6%9C%89%E7%AD%94%E6%A1%88%E9%82%A3%E6%88%91%E5%B0%B1%E8%83%A1%E8%AF%B4%E5%85%AB%E9%81%93%E4%BA%86"><span class="nav-text">梦话：既然习题没有答案那我就胡说八道了</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#riemann-%E9%87%8D%E6%8E%92%E5%AE%9A%E7%90%86"><span class="nav-text">Riemann 重排定理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cesaro-%E6%B1%82%E5%92%8C%E6%9E%81%E9%99%90"><span class="nav-text">Cesaro 求和极限</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B9%E5%BC%8F%E5%92%8C%E6%8C%87%E6%95%B0%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-text">根式和指数的定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B9%E5%BC%8F%E7%9A%84%E9%80%BC%E8%BF%91"><span class="nav-text">根式的逼近</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A2%A6%E8%AF%9D-2.0%E4%B9%98%E7%A7%AF%E7%BA%A7%E6%95%B0"><span class="nav-text">梦话 2.0：乘积级数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A2%A6%E8%AF%9D-3.0%E8%B7%9D%E7%A6%BB%E7%A9%BA%E9%97%B4%E4%B8%8E%E8%B5%8B%E8%8C%83%E7%BA%BF%E6%80%A7%E7%A9%BA%E9%97%B4"><span class="nav-text">梦话
 3.0：距离空间与赋范线性空间</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A2%A6%E8%AF%9D-4.0%E6%97%A2%E7%84%B6%E4%B9%A0%E9%A2%98%E6%B2%A1%E6%9C%89%E7%AD%94%E6%A1%88%E9%82%A3%E6%88%91%E5%B0%B1%E7%BB%A7%E7%BB%AD%E8%83%A1%E8%AF%B4%E5%85%AB%E9%81%93%E4%BA%86"><span class="nav-text">梦话
-4.0：既然习题没有答案那我就继续胡说八道了</span></a></li></ol></li></ol></div>
+4.0：既然习题没有答案那我就继续胡说八道了</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9E%E7%BB%AD%E5%87%BD%E6%95%B0%E7%9A%84%E5%AE%9A%E4%B9%89%E5%92%8C%E5%9F%BA%E6%9C%AC%E6%80%A7%E8%B4%A8"><span class="nav-text">连续函数的定义和基本性质</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%A7%E6%95%B0%E6%94%B6%E6%95%9B%E6%80%A7"><span class="nav-text">级数收敛性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%92%E5%87%8F%E6%AD%A3%E9%A1%B9%E7%BA%A7%E6%95%B0%E7%9A%84%E5%87%9D%E8%81%9A%E6%A3%80%E9%AA%8C%E6%B3%95"><span class="nav-text">递减正项级数的凝聚检验法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E6%95%B0%E5%88%97%E7%9A%84%E4%B8%8A%E4%B8%8B%E6%9E%81%E9%99%90%E7%9A%84%E5%88%BB%E7%94%BB"><span class="nav-text">实数列的上下极限的刻画</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B4%A0%E6%95%B0%E7%9A%84%E5%80%92%E6%95%B0%E5%92%8C"><span class="nav-text">*素数的倒数和</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#basel%E9%97%AE%E9%A2%98%E7%9A%84euler%E8%AF%81%E6%98%8E"><span class="nav-text">*Basel问题的Euler“证明”</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%9E%E7%BB%AD%E6%80%A7"><span class="nav-text">连续性</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -1242,7 +1587,7 @@ Schroeder-Bernstein 定理</span></a></li><li class="nav-item nav-level-3"><a cl
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共168.1k字</span>
+  <span class="post-count">博客全站共172.1k字</span>
 </div>
 
 

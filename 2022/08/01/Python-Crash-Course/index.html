@@ -350,10 +350,7 @@ Submit，竟然还过审了，人生污点喜加一：https://www.overleaf.com/l
 <h3 id="随机漫步">15-5 随机漫步</h3>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> random <span class="keyword">import</span> choice</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">RandomWalk</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, num_points = <span class="number">50000</span></span>):</span><br><span class="line">        self.num_points = num_points</span><br><span class="line">        self.x_values = [<span class="number">0</span>]</span><br><span class="line">        self.y_values = [<span class="number">0</span>]</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">fill_walk</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">while</span> <span class="built_in">len</span>(self.x_values) &lt; self.num_points:</span><br><span class="line">            x_direction = choice([-<span class="number">1</span>,<span class="number">1</span>])</span><br><span class="line">            x_distance = choice([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>])</span><br><span class="line">            x_length = x_direction * x_distance</span><br><span class="line">            </span><br><span class="line">            y_direction = choice([-<span class="number">1</span>,<span class="number">1</span>])</span><br><span class="line">            y_distance = choice([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">0</span>])</span><br><span class="line">            y_length = y_direction * y_distance</span><br><span class="line">            </span><br><span class="line">            x_location = self.x_values[-<span class="number">1</span>] + x_length</span><br><span class="line">            self.x_values.append(x_location)</span><br><span class="line">            </span><br><span class="line">            y_location = self.y_values[-<span class="number">1</span>] + y_length</span><br><span class="line">            self.y_values.append(y_location)</span><br><span class="line"></span><br><span class="line">Ant = RandomWalk()</span><br><span class="line">Ant.fill_walk()</span><br><span class="line">point_number = <span class="built_in">range</span>(<span class="number">0</span>,<span class="number">50000</span>)</span><br><span class="line"></span><br><span class="line">fig,ax = plt.subplots()</span><br><span class="line">ax.scatter(Ant.x_values,Ant.y_values,c=point_number,cmap=plt.cm.Blues,edgecolors=<span class="string">&#x27;none&#x27;</span>)</span><br><span class="line">ax.get_xaxis().set_visible(<span class="literal">False</span>)</span><br><span class="line">ax.get_yaxis().set_visible(<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
 <p>这个好有趣哦，希望做云朵的胶带厂商学一下，<del>多按几次随机漫步都比你们画的好看</del></p>
-<figure>
-<img src="https://s2.loli.net/2022/08/05/4j8rKmFDhU25pTi.png" alt="image-20220803160953455">
-<figcaption aria-hidden="true">image-20220803160953455</figcaption>
-</figure>
+<p><img src="https://s2.loli.net/2022/08/05/4j8rKmFDhU25pTi.png" alt="image-20220803160953455"></p>
 <h3 id="插曲install-plotly">插曲：install plotly</h3>
 <p>是的没错，前面那个是插播，这个是插曲。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install plotly</span><br></pre></td></tr></table></figure>
@@ -369,16 +366,10 @@ Submit，竟然还过审了，人生污点喜加一：https://www.overleaf.com/l
 希特卡的降雨量（梦回高考地理</h3>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</span><br><span class="line"></span><br><span class="line">filename = <span class="string">&#x27;sitka_weather_2018_simple.csv&#x27;</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(filename) <span class="keyword">as</span> f:</span><br><span class="line">    content = csv.reader(f)</span><br><span class="line">    header_row = <span class="built_in">next</span>(content)</span><br><span class="line">    </span><br><span class="line">    rains = []</span><br><span class="line">    dates = []</span><br><span class="line">    <span class="keyword">for</span> row <span class="keyword">in</span> content:</span><br><span class="line">        rain = <span class="built_in">float</span>(row[<span class="number">3</span>])</span><br><span class="line">        date = datetime.strptime(row[<span class="number">2</span>],<span class="string">&#x27;%Y-%m-%d&#x27;</span>)</span><br><span class="line">        rains.append(rain)</span><br><span class="line">        dates.append(date)</span><br><span class="line">    </span><br><span class="line">fig,ax = plt.subplots()</span><br><span class="line">plt.style.use(<span class="string">&#x27;seaborn&#x27;</span>)</span><br><span class="line">ax.plot(dates,rains,c=<span class="string">&#x27;red&#x27;</span>)</span><br><span class="line">ax.set_ylabel(<span class="string">&#x27;daily rain&#x27;</span>,fontsize=<span class="number">12</span>)</span><br><span class="line">ax.set_title(<span class="string">&#x27;Daily Rain in Sitka&#x27;</span>)</span><br><span class="line">fig.autofmt_xdate()</span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
 <p>为什么要画单日降雨量呀，季度性的才有点用吧（？</p>
-<figure>
-<img src="https://s2.loli.net/2022/08/05/RsVhMAjPyTU9dNH.png" alt="image-20220803234204659">
-<figcaption aria-hidden="true">image-20220803234204659</figcaption>
-</figure>
+<p><img src="https://s2.loli.net/2022/08/05/RsVhMAjPyTU9dNH.png" alt="image-20220803234204659"></p>
 <h3 id="希特卡的日温差">16-2 希特卡的日温差</h3>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</span><br><span class="line"></span><br><span class="line">filename = <span class="string">&#x27;sitka_weather_2018_simple.csv&#x27;</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(filename) <span class="keyword">as</span> f:</span><br><span class="line">    content = csv.reader(f)</span><br><span class="line">    header_row = <span class="built_in">next</span>(content)</span><br><span class="line">    </span><br><span class="line">    highs = []</span><br><span class="line">    lows = []</span><br><span class="line">    dates = []</span><br><span class="line">    <span class="keyword">for</span> row <span class="keyword">in</span> content:</span><br><span class="line">        high = <span class="built_in">int</span>(row[<span class="number">5</span>])</span><br><span class="line">        low = <span class="built_in">int</span>(row[<span class="number">6</span>])</span><br><span class="line">        date = datetime.strptime(row[<span class="number">2</span>],<span class="string">&#x27;%Y-%m-%d&#x27;</span>)</span><br><span class="line">        highs.append(high)</span><br><span class="line">        lows.append(low)</span><br><span class="line">        dates.append(date)</span><br><span class="line">    </span><br><span class="line">fig,ax = plt.subplots()</span><br><span class="line">plt.style.use(<span class="string">&#x27;seaborn&#x27;</span>)</span><br><span class="line">ax.plot(dates,highs,c=<span class="string">&#x27;red&#x27;</span>)</span><br><span class="line">ax.plot(dates,lows,c=<span class="string">&#x27;blue&#x27;</span>)</span><br><span class="line">ax.set_ylabel(<span class="string">&#x27;Temperature&#x27;</span>,fontsize=<span class="number">12</span>)</span><br><span class="line">ax.set_title(<span class="string">&#x27;Sitka Weather&#x27;</span>)</span><br><span class="line">fig.autofmt_xdate()</span><br><span class="line">ax.fill_between(dates,highs,lows,facecolor=<span class="string">&#x27;blue&#x27;</span>,alpha=<span class="number">0.2</span>)</span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-<figure>
-<img src="https://s2.loli.net/2022/08/05/fquirjDh5FHAskK.png" alt="image-20220803234934349">
-<figcaption aria-hidden="true">image-20220803234934349</figcaption>
-</figure>
+<p><img src="https://s2.loli.net/2022/08/05/fquirjDh5FHAskK.png" alt="image-20220803234934349"></p>
 <p>我的评价是，不如屑北京（x</p>
 <h3 id="咕咕咕">16-6 咕咕咕</h3>
 <p>画地图结果地图的图层显示不出来，只有散点。血压高了，暂时没看出来哪里有问题。</p>
@@ -500,25 +491,16 @@ p.t.s）</li>
 打标签，写了半天循环才想起来可以直接使用表达式的值。然后没理解错的话就是写个路径，存所有图片的文件名，然后把标签结果的
 <code>.txt</code> 输出到 <code>data/imgs</code>里去。</p>
 <p>大概看懂了思路是什么，不需要自己写的地方的具体实现有的还是不太明白。不过程序跑出来的时候还是有点又惊讶又激动的，原来我也可以做到的吗XD。（站在巨人的肩膀上XD（这还只是个开始</p>
-<figure>
-<img src="https://s2.loli.net/2022/08/08/tqsTPni1r9Y5dXk.png" alt="wowow">
-<figcaption aria-hidden="true">wowow</figcaption>
-</figure>
+<p><img src="https://s2.loli.net/2022/08/08/tqsTPni1r9Y5dXk.png" alt="wowow"></p>
 <h2 id="subtask-2-及以后">Subtask 2 及以后</h2>
 <p>Repo
 上的最新代码是已经填好大部分的版本，部分地方微调了一下。然后就是疯狂读文档试图理解他在干什么，虽然也没全懂...。</p>
 <p>但是因为显卡的问题，所以都是在友人的电脑上完成的，也不写啥了。</p>
 <h2 id="提交结果">提交结果</h2>
-<figure>
-<img src="https://s2.loli.net/2022/08/09/RZkcSDdvMx4ojgT.png" alt="image-20220809161338510">
-<figcaption aria-hidden="true">image-20220809161338510</figcaption>
-</figure>
+<p><img src="https://s2.loli.net/2022/08/09/RZkcSDdvMx4ojgT.png" alt="image-20220809161338510"></p>
 <p>唔...因为很怂所以甚至没有用自己的学号提交...本来想用 2021114514
 的，但是怎么偏偏 ban 了这个啊！</p>
-<figure>
-<img src="https://s2.loli.net/2022/08/09/FNv13Hb49lDzfJ5.png" alt="image-20220809161456569">
-<figcaption aria-hidden="true">image-20220809161456569</figcaption>
-</figure>
+<p><img src="https://s2.loli.net/2022/08/09/FNv13Hb49lDzfJ5.png" alt="image-20220809161456569"></p>
 <p>交上去之后一想，好像确实也有用这个学号的人，再一查正好是同一个院系里的，啊这。<del>那就让你赚点暑培奖励吧</del></p>
 <p>虽然是满分（因为平均过 0.80 了），但因为 Mountain 实在偏低所以没过
 Strong
@@ -550,24 +532,15 @@ Baseline。自己的设备不合适也没什么机会再调了，要么下次再
 Baseline，数据其实也没有之前那一次的好，但是用自己的学号提交了。<del>人类是有极限的</del>
 A 卡是有极限的，一轮一小时的话实在是跑不动，所以就先这样了。</p>
 <p>一些奇怪的散热方式：</p>
-<figure>
-<img src="https://s2.loli.net/2022/08/12/2UQF14hTMNdLebG.png" alt="image-20220812234902021">
-<figcaption aria-hidden="true">image-20220812234902021</figcaption>
-</figure>
+<p><img src="https://s2.loli.net/2022/08/12/2UQF14hTMNdLebG.png" alt="image-20220812234902021"></p>
 <p>下面垫的是数值分析和抽代的书（</p>
-<figure>
-<img src="https://s2.loli.net/2022/08/12/vXHJ45ySdztOhDr.png" alt="image-20220812234916346">
-<figcaption aria-hidden="true">image-20220812234916346</figcaption>
-</figure>
+<p><img src="https://s2.loli.net/2022/08/12/vXHJ45ySdztOhDr.png" alt="image-20220812234916346"></p>
 <p>鸠占鹊巢，于是我坐在了地上（</p>
 <p>刚在原仓库下提交了
 Issue，总感觉对方好像没意识到问题其实只是在于，这个值应该是
 <code>int</code> 而不是<code>str</code>而已（。不过也不太会有人用 CPU
 硬跑了，就这样吧。</p>
-<figure>
-<img src="https://s2.loli.net/2022/08/12/DrHWNjPntxoIOcy.png" alt="image-20220812234512664">
-<figcaption aria-hidden="true">image-20220812234512664</figcaption>
-</figure>
+<p><img src="https://s2.loli.net/2022/08/12/DrHWNjPntxoIOcy.png" alt="image-20220812234512664"></p>
 <p>总之完结撒花！</p>
 
     </div>
@@ -803,7 +776,7 @@ p.t.s）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" hre
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共168.1k字</span>
+  <span class="post-count">博客全站共172.1k字</span>
 </div>
 
 
