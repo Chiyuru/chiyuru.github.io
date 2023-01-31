@@ -22,14 +22,14 @@
 
   <meta name="description" content="大二的寒假，我居然为了下学期不在概率论和复分析课上被爆杀，而在这儿速通数分。 转数环环友：你可以以任意顺序完成培养方案（">
 <meta property="og:type" content="article">
-<meta property="og:title" content="数学分析 I 速通日志">
+<meta property="og:title" content="数学分析 I 速通日志（上）">
 <meta property="og:url" content="https://chiyuru.github.io/2023/01/15/Learn-Mathematical-Analysis-or-Die/index.html">
 <meta property="og:site_name" content="『姑妄言之姑妄听之』">
 <meta property="og:description" content="大二的寒假，我居然为了下学期不在概率论和复分析课上被爆杀，而在这儿速通数分。 转数环环友：你可以以任意顺序完成培养方案（">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://s2.loli.net/2023/01/25/1FkScU8xRrQbZzD.png">
 <meta property="article:published_time" content="2023-01-15T04:34:52.000Z">
-<meta property="article:modified_time" content="2023-01-28T17:30:32.281Z">
+<meta property="article:modified_time" content="2023-01-31T15:39:33.235Z">
 <meta property="article:author" content="驰雨Chiyuru">
 <meta property="article:tag" content="数学">
 <meta name="twitter:card" content="summary">
@@ -48,7 +48,7 @@
   };
 </script>
 
-  <title>数学分析 I 速通日志 | 『姑妄言之姑妄听之』</title>
+  <title>数学分析 I 速通日志（上） | 『姑妄言之姑妄听之』</title>
   
 
 
@@ -201,7 +201,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          数学分析 I 速通日志
+          数学分析 I 速通日志（上）
         </h1>
 
         <div class="post-meta">
@@ -218,7 +218,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-01-29 01:30:32" itemprop="dateModified" datetime="2023-01-29T01:30:32+08:00">2023-01-29</time>
+                <time title="修改时间：2023-01-31 23:39:33" itemprop="dateModified" datetime="2023-01-31T23:39:33+08:00">2023-01-31</time>
               </span>
 
           
@@ -1747,6 +1747,465 @@ Homeo}([0,1])\)</span> 并且 <span class="math inline">\(0\)</span> 和
 <p>2023 年 1 月 29
 日，星期日，我觉得凡是带有“一致”的东西都蛮恐怖的，比如 UMVUE（</p>
 <p>惭愧地说，一致连续性其实我以前没有学会过，因为考试不考（。再来一遍.jpg</p>
+<p>草，我之前把数分分成 I 和 II
+都觉得挺奇怪的，但目前已经三万多字了，Typora
+开始有点卡了（。所以这次又分别分了上下，暂且以期中考试为界吧。</p>
+<h2 id="紧性与开覆盖">紧性与开覆盖</h2>
+<p>是没接触过的很新的东西（，我怀疑这也不是数分内容，全在抄。好像也没抄会。</p>
+<h2 id="一致连续性-1">一致连续性</h2>
+<ul>
+<li><p>假设 <span class="math inline">\(f\colon X\rightarrow \mathbb
+R\)</span> 是连续函数，如果对任意的 <span class="math inline">\(\varepsilon&gt;0\)</span>，存在 <span class="math inline">\(\delta&gt;0\)</span>，使得对任意的 <span class="math inline">\(x,y\in X\)</span>，只要 <span class="math inline">\(d(x,y)&lt;\delta\)</span>，就有 <span class="math inline">\(|f(x)-f(y)|&lt;\varepsilon\)</span>，就称 <span class="math inline">\(f\)</span> 在 <span class="math inline">\(X\)</span> 上一致连续。</p>
+<p>看起来很像 Lipschitz 条件，不过 Lipschitz
+条件其实是特化版的，是一致连续的充分条件，用来解决一些不动点问题。</p></li>
+<li><p>有界闭区间上的连续函数一定一致连续。</p></li>
+<li><p>一致收敛和逐点收敛的区别实际上是关于点 <span class="math inline">\(x\)</span> 的差别，对 <span class="math inline">\(N\)</span> 的依赖进行区分即可。对于一个函数序列
+<span class="math inline">\(\lbrace f_n : X \to R \rbrace\)</span>
+和函数 <span class="math inline">\(f: X \to R\)</span>，有：</p>
+<p>逐点收敛是指，对任意的 <span class="math inline">\(x \in
+X\)</span>，任意 <span class="math inline">\(\varepsilon
+&gt;0\)</span>，存在 <span class="math inline">\(N=N(\varepsilon ,
+x)\)</span> 使得当 <span class="math inline">\(n &gt;N\)</span>
+时，<span class="math inline">\(| f_n(x) - f(x) | &lt;
+\varepsilon\)</span>。</p>
+<p>一致收敛是指，对任意的 <span class="math inline">\(\varepsilon
+&gt;0\)</span>，存在 <span class="math inline">\(N=N(\varepsilon)\)</span> 使得对任意的 <span class="math inline">\(x \in X\)</span>，有 <span class="math inline">\(|f_n(x) - f(x) | &lt;\varepsilon\)</span>，也就是
+<span class="math inline">\(\sup_{x \in X} | f_n(x) - f(x) |
+&lt;\varepsilon\)</span>。</p>
+<p>这样来看的话，显然有一致收敛能够推出逐点收敛，逐点收敛能推出一致收敛的要求是固定
+<span class="math inline">\(\varepsilon\)</span> 时存在 <span class="math inline">\(N\)</span> 的上确界 <span class="math inline">\(\sup _{x \in X}N(\varepsilon ,
+x)\)</span>，这个上确界不能是无穷。但 <span class="math inline">\(X\)</span> 的形式不能在任意条件下保证这一点。</p>
+<p>从计算的角度来看，逐点收敛到的函数相当于固定 <span class="math inline">\(x\)</span>，取 <span class="math inline">\(n \to
+\infty\)</span>，可以由此继续判断是否一致收敛到逐点收敛的函数。</p></li>
+</ul>
+<h2 id="级数收敛构造连续函数">级数收敛构造连续函数</h2>
+<p>本质上是把绝对值推广成函数的无穷范数，用来证明收敛。</p>
+<h2 id="梦话证明题但胡说八道而且还没写完">梦话：证明题，但胡说八道，而且还没写完</h2>
+<h3 id="连续一致连续和一致收敛">连续，一致连续和一致收敛</h3>
+<ul>
+<li><p>证明，函数 <span class="math inline">\(e^x\)</span> 在 <span class="math inline">\(\mathbb R\)</span> 上不是一致连续的而在 <span class="math inline">\((-\infty,0]\)</span> 上是一致连续的。</p>
+<p>Trivial.</p></li>
+<li><p>证明，幂函数映射 <span class="math inline">\(\mathbb
+R_{&gt;0}\times \mathbb R, \ \ (x,\alpha)\mapsto x^\alpha\)</span> 是
+<span class="math inline">\(\mathbb R_{&gt;0}\times \mathbb R\)</span>
+上的连续函数。</p>
+<p>因为 <span class="math inline">\(x^\alpha = e^{\alpha \ln
+x}\)</span>，且 <span class="math inline">\(\mathbb R_{&gt;0}\times
+\mathbb R \to \mathbb R\)</span>，<span class="math inline">\((x,\alpha)
+\to \alpha \ln x\)</span> 连续，<span class="math inline">\(\mathbb R
+\to \mathbb R\)</span>，<span class="math inline">\(x \to e^x\)</span>
+也连续。</p>
+<p>二者的叠加（？？这个叫什么来着啊）也是连续函数，而且是 <span class="math inline">\(\mathbb R_{&gt;0}\times \mathbb R \to \mathbb
+R\)</span> 的连续函数。</p></li>
+<li><p>证明，第九次课中定义的幂函数满足如下的性质：对任意 <span class="math inline">\(x,y&gt;0\)</span> 和 <span class="math inline">\(\alpha, \beta\)</span>，我们有 <span class="math inline">\((xy)^\alpha=x^\alpha y^\alpha\)</span>，<span class="math inline">\((x^\alpha)^\beta=x^{\alpha \beta}\)</span>； <span class="math inline">\(a^{\log_a x} =x\)</span>；如果 <span class="math inline">\(x&gt;0\)</span>，<span class="math inline">\(y&gt;0\)</span>，那么 <span class="math inline">\(a^{x+y}=a^x a^y\)</span>，<span class="math inline">\(\log_a(x\cdot
+y)=\log_a(x)+\log_a(y)\)</span>。</p>
+<p><span class="math inline">\((xy) ^\alpha = e^{\alpha \ln xy} =
+e^{\alpha (\ln x+\ln y)} = e^{\alpha \ln x}e^{\alpha \ln y} = x^\alpha
+y^\alpha\)</span>。</p>
+<p>类似地证明其他几个式子，总之一些 trivial 的性质对于 <span class="math inline">\(e^x\)</span> 和 <span class="math inline">\(\ln
+x\)</span> 成立，只要努力代入就可以了。</p></li>
+<li><p>在 <span class="math inline">\([0,1)\)</span>
+区间上考虑连续函数的序列 <span class="math inline">\(\{f_n(x)\}_{n\geqslant 1}\)</span>，其中 <span class="math inline">\(f_n(x)=x^n\)</span>。证明，对任意的 <span class="math inline">\(a&lt;1\)</span>，<span class="math inline">\(\{f_n(x)\}_{n\geqslant 1}\)</span> 在 <span class="math inline">\([0,a]\)</span> 上一致收敛到 <span class="math inline">\(0\)</span> 这个函数；但是 <span class="math inline">\(\{f_n(x)\}_{n\geqslant 1}\)</span> 在 <span class="math inline">\([0,1)\)</span> 上不一致收敛。</p>
+<p>连续函数列在闭区间上有一致控制：<span class="math inline">\(\sup_{x
+\in X} | f_n(x) - f(x) | = a^n &lt;\varepsilon\)</span>，只要取 <span class="math inline">\(N &gt; \log _a \varepsilon\)</span>
+即可，于是一致收敛。</p>
+<p>在 <span class="math inline">\([0,1)\)</span> 上也还是逐点收敛到
+<span class="math inline">\(f=0\)</span> 的，只要证明不一致收敛到 <span class="math inline">\(f=0\)</span> 即可。实际上有 <span class="math inline">\(\sup_{x \in X} | f_n(x) - f(x) | =
+1\)</span>。</p></li>
+<li><p>在 <span class="math inline">\(\mathbb R\)</span>
+上考虑连续函数的序列 <span class="math inline">\(\{f_n(x)\}_{n\geqslant
+1}\)</span>，其中 <span class="math inline">\(f_n(x)=\dfrac{nx}{1+n^2x^2}\)</span>。证明，<span class="math inline">\(\{f_n(x)\}_{n\geqslant 1}\)</span> 在 <span class="math inline">\(\mathbb R\)</span> 上逐点收敛到 <span class="math inline">\(0\)</span> 这个函数但是 <span class="math inline">\(\{f_n(x)\}_{n\geqslant 1}\)</span> 在 <span class="math inline">\(\mathbb R\)</span> 上不一致收敛。</p>
+<p>逐点收敛只要对 <span class="math inline">\(n \to \infty\)</span>
+即可，是收敛到 <span class="math inline">\(f=0\)</span> 的。</p>
+<p>考虑一致收敛的问题，$<em>{x X} | f_n(x) - f(x) | = </em>{x X} | { nx
++{ 1 nx}}| = 2 $，并不会一致收敛。</p></li>
+<li><p>在 <span class="math inline">\(\mathbb R\)</span>
+上考虑连续函数的序列 <span class="math inline">\(\{f_n(x)\}_{n\geqslant
+1}\)</span>，其中 <span class="math inline">\(f_n(x)=\begin{cases}\dfrac{nx^2}{1+nx}, \
+&amp;x&gt;0;\\&amp; \\\dfrac{nx^3}{1+nx^2}, \ &amp;x\leqslant
+0\end{cases}\)</span>.</p>
+<p>试研究 <span class="math inline">\(\{f_n(x)\}_{n\geqslant 1}\)</span>
+在 <span class="math inline">\(\mathbb R\)</span>
+上逐点收敛性和一致收敛性。</p>
+<p>逐点收敛到 <span class="math inline">\(f=x\)</span>，有手就行（，以下考虑一致收敛性。</p>
+<p>对于 <span class="math inline">\(x &gt;0\)</span>，有 <span class="math inline">\(\sup_{x \in X} | f_n(x) - f(x) | = \sup_{x \in X}
+|\frac{x}{1+nx}|&lt;\frac 1 n &lt; \varepsilon\)</span> 可以在 <span class="math inline">\(N &gt;\frac 1 \varepsilon\)</span> 时做到。</p>
+<p>对于 <span class="math inline">\(x \leq 0\)</span>，有 <span class="math inline">\(\sup_{x \in X} | f_n(x) - f(x) | = \sup_{x \in X}
+|\frac{x}{1+nx^2 }|&lt;\frac{1}{2 \sqrt{n} } &lt;
+\varepsilon\)</span>，可以在 <span class="math inline">\(N&gt;
+\frac{1}{4\varepsilon^2}\)</span> 时做到。</p>
+<p>所以取 <span class="math inline">\(N =[ \max \lbrace \frac 1
+\varepsilon , \frac{1}{4\varepsilon^2} \rbrace ] +1\)</span>
+即有一致收敛。</p></li>
+<li><p>给定连续函数 <span class="math inline">\(\varphi\colon \mathbb
+R_{\geqslant 0}\rightarrow \mathbb R\)</span>，满足 <span class="math inline">\(\varphi(0)=0\)</span>，<span class="math inline">\(\displaystyle \lim_{x\rightarrow
+\infty}\varphi(x)=0\)</span> 并且 <span class="math inline">\(\varphi\)</span> 不恒为零。证明，<span class="math inline">\(\mathbb R_{\geqslant 0}\)</span>
+上的连续函数的序列 <span class="math inline">\(\{f_n(x)\}_{n\geqslant
+1}\)</span> 和 <span class="math inline">\(\{g_n(x)\}_{n\geqslant
+1}\)</span> 逐点收敛到 <span class="math inline">\(0\)</span>
+这个函数但是不一致收敛，其中 <span class="math inline">\(f_n(x)=\varphi(nx)\)</span>，<span class="math inline">\(g_n(x)=\varphi\left(\dfrac{x}{n}\right)\)</span>。</p>
+<p>Trivial.</p></li>
+<li><p>（一致连续性的应用：积分的定义）<span class="math inline">\([a,b]\)</span> 是有限闭区间，<span class="math inline">\(f\in C\bigl([a,b]\bigr)\)</span>
+是实数值的函数。给定 <span class="math inline">\(n\geqslant
+1\)</span>，我们将 <span class="math inline">\([a,b]\)</span> 均分为
+<span class="math inline">\(n\)</span> 份：<span class="math inline">\([[a,b]=[a_1,b_1]\cup [a_2,b_2]\cup \cdots \cup
+[a_n,b_n], \ \ a_1=a, b_k=a_{k+1}~(k=1,\cdots, n-1),
+b_n=b\)</span>，</p>
+<p>其中对于 <span class="math inline">\(k=1,2,\cdots,n\)</span>，<span class="math inline">\(a_k=a+\dfrac{k-1}{n}(b-a)\)</span>。我们定义 <span class="math inline">\(S_n=\sum_{k=1}^n \frac{b-a}{n}f(a_k)\)</span></p>
+<p>证明，<span class="math inline">\(\{S_n\}_{n\geqslant 1}\)</span>
+收敛，我们用 $_{a}^b f $ 这个符号来记极限 <span class="math inline">\(\displaystyle \lim_{n\rightarrow
+\infty}S_n\)</span>。进一步证明，映射</p>
+<p>$<em>{a}^bC([a,b])R,   f</em>{a}^b f $ 是线性映射,并且如果我们在
+<span class="math inline">\(C\bigl([a,b]\bigr)\)</span> 用距离函数 <span class="math inline">\(d_\infty\)</span> 来考虑，那么这是连续映射。</p>
+<p>（提示：为了证明 <span class="math inline">\(\{S_n\}_{n\geqslant
+1}\)</span> 是Cauchy列，我们可以将 <span class="math inline">\(S_{n}\)</span> 和 <span class="math inline">\(S_m\)</span> 都与 <span class="math inline">\(S_{nm}\)</span> 做比较）</p>
+<p>考虑部分和序列收敛。是因为 <span class="math inline">\(f\)</span>
+在闭区间 <span class="math inline">\([a,b]\)</span>
+上有最大值和最小值，于是 <span class="math inline">\((b-a)s \leq S_n
+\leq (b-a)S\)</span>。比较 <span class="math inline">\(S_m\)</span> 和
+<span class="math inline">\(S_{nm}\)</span>
+能比出来什么呢...？作差用中值定理的话，二者的差可以控制在 <span class="math inline">\([\frac{n-1}{2mn} s,\frac{n-1}{2mn} S]\)</span>
+之间，确实可以控制在 <span class="math inline">\(\varepsilon\)</span>
+之内。但是只用 <span class="math inline">\(S_m\)</span> 和 <span class="math inline">\(S_{mn}\)</span> 做比较就可以得到是 Cauchy
+列的结论吗？</p>
+<p>线性映射是因为 <span class="math inline">\(f + g \to \int_{a}^b
+f+g\)</span>，有 <span class="math inline">\(\int_{a}^b f+g
+=\displaystyle \lim_{n\rightarrow \infty}(S_n+T_n)= \displaystyle
+\lim_{n\rightarrow \infty}S_n + \displaystyle \lim_{n\rightarrow
+\infty}T_n = \int_{a}^b f +\int_{a}^b g\)</span>。</p>
+<p>回顾一下距离函数是 <span class="math inline">\(d_\infty (f,g) =
+\sup_{x \in X} |f(x)-g(x)|\)</span>，想证明映射 <span class="math inline">\(\int_{a}^b\colon C\bigl([a,b]\bigr)\rightarrow
+\mathbb R\)</span> 是连续映射，只要证明对任意的 <span class="math inline">\(\varepsilon &gt;0\)</span>，存在 <span class="math inline">\(\delta\)</span> 使得 <span class="math inline">\(d_\infty (f,g) &lt; \delta\)</span> 时有 <span class="math inline">\(|\int_{a}^b f - \int_{a}^b
+g|&lt;\varepsilon\)</span>。</p>
+<p>由于这个映射是线性的，我们知道 <span class="math inline">\(|\int_{a}^b f - \int_{a}^b g| = |\int_{a}^b (f-g)|
+&lt; |\int_{a}^b d_{\infty}(f,g) | =
+(b-a)d_{\infty}(f,g)\)</span>，因此只要取 <span class="math inline">\(\delta = \frac {\varepsilon} {(b-a)}\)</span>
+就能够满足要求。因此这个映射是连续的。</p></li>
+<li><p>证明Cauchy的一个定理: 任给函数 <span class="math inline">\(f\colon [a,+\infty) \to
+\mathbb{R}\)</span>，我们假设 <span class="math inline">\(f\)</span>
+任意闭子区间 <span class="math inline">\([a,b]\)</span> 上有界
+(上界可能依赖于 <span class="math inline">\(b\)</span>)，
+那么下面两个式子当等号右边极限存在时成立：</p>
+<p><span class="math inline">\(\lim_{x \to +\infty} \frac{f(x)}{x} =
+\lim_{x \to + \infty} [f(x+1) - f(x)],\\\lim_{x \to + \infty}
+[f(x)]^{1/x} = \lim_{x \to + \infty} \frac{f(x+1)}{f(x)}, \ \
+\text{进一步假设对任意的 $x \in [a,\infty)$，$f(x) \geqslant c &gt;
+0$}\)</span></p>
+<p>首先，给下面的式子取个对数就能得到上面的式子，所以只要证明上面的式子。</p>
+<p>记 <span class="math inline">\(A = \lim_{x \to + \infty} [f(x+1) -
+f(x)]\)</span>，于是对任意 <span class="math inline">\(\varepsilon
+&gt;0\)</span>，存在 <span class="math inline">\(N \in \mathbb
+Z^+\)</span> 使得 <span class="math inline">\(x &gt;N\)</span>
+时都有：</p>
+<p><span class="math inline">\(A-\varepsilon &lt; f(x+1) - f(x) &lt;
+A+\varepsilon\)</span> 成立。</p>
+<p>因此 <span class="math inline">\(f(y) = (f(y)-f(y-1)) +
+(f(y-1)-f(y-2))+ ... +( f(n+1)-f(n)) +f(n)\)</span>，其中 <span class="math inline">\(n = N\)</span>，再做 <span class="math inline">\(\frac{f(y)}{y}\)</span>
+取极限即得到结论。</p></li>
+</ul>
+<h3 id="和一致连续性相关的问题">和一致连续性相关的问题</h3>
+<ul>
+<li><p>如果连续函数 <span class="math inline">\(f\)</span>
+在开区间（有限或无限）<span class="math inline">\(I \subset
+\mathbb{R}\)</span> 上是单调并且有界的，那么 <span class="math inline">\(f\)</span> 在 <span class="math inline">\(I\)</span> 上一致连续。</p>
+<p>Trivial.</p></li>
+<li><p><span class="math inline">\(I\)</span>
+是长度有限的区间（不一定是闭的）。 证明，<span class="math inline">\(I\)</span> 上的实值函数 <span class="math inline">\(f\)</span> 一致连续的充分必要条件是 <span class="math inline">\(f\)</span> 把Cauchy列映成Cauchy列（即如果 <span class="math inline">\(\{x_n\}_{n \geqslant 1} \subset I\)</span>
+是Cauchy列，那么 <span class="math inline">\(\{f(x_n) \}_{n \geqslant
+1}\)</span> 也是Cauchy列）。</p>
+<p>如果 <span class="math inline">\(f\)</span> 一致连续，由 Cauchy
+列和一致连续的定义知道 <span class="math inline">\(\{f(x_n) \}_{n
+\geqslant 1}\)</span> 也是 Cauchy 列。</p>
+<p>如果映射到的点列也是 Cauchy 列，且 <span class="math inline">\(f\)</span> 不一致连续。那么存在一个 <span class="math inline">\(\varepsilon &gt;0\)</span>，使得对任意的 <span class="math inline">\(\delta\)</span>，都存在 <span class="math inline">\(x,y \in I\)</span> 满足 <span class="math inline">\(|x-y|&lt;\delta\)</span> 且
+$|f(x)-f(y)|&gt;$。取一个和 <span class="math inline">\(\lbrace x_n
+\rbrace\)</span> 相近的数列 <span class="math inline">\(\lbrace y_n
+\rbrace\)</span>，满足 <span class="math inline">\(|x_n - y_n |&lt;
+\frac 1 n\)</span> 而且 <span class="math inline">\(|f(x_n) - f(y_n)|
+&gt;\varepsilon\)</span>，而且一定满足 <span class="math inline">\(\lbrace y_n \rbrace \subset I\)</span>。那么 <span class="math inline">\(\lbrace x_n \rbrace\)</span> 是收敛的 Cauchy
+列，<span class="math inline">\(\lbrace y_n \rbrace\)</span>
+也是收敛到同一点的 Cauchy 列。</p>
+<p>取序列 <span class="math inline">\(x_1,y_1,x_2,y_2,...,\)</span>
+也是一个 Cauchy 列，但它的映射并不是 Cauchy 列，矛盾。</p>
+<p>不会做于是 MSE 了半天 qwq</p></li>
+<li><p><span class="math inline">\(f\)</span> 在 <span class="math inline">\(\mathbb{R}\)</span> 上一致连续。证明，存在 <span class="math inline">\(a, b \in \mathbb{R}_{&gt;0}\)</span>，使得对任意的
+<span class="math inline">\(x\in \mathbb R\)</span>，我们都有 <span class="math inline">\(|f(x)| \leqslant a |x| + b\)</span></p>
+<p>取 <span class="math inline">\(b = |f(0)|\)</span>，对 <span class="math inline">\(\varepsilon = 1\)</span>，取一致连续定义中对应的
+<span class="math inline">\(\delta\)</span>，于是 <span class="math inline">\(|x - 0| &lt;\delta\)</span> 时一定有 $ |f(x) -
+f(0)|&lt;1$，可以得到 <span class="math inline">\(|f(x)| &lt; |f(0)| +1
+= b+1\)</span>。</p>
+<p>因此，对于任意的 <span class="math inline">\(x \in \mathbb
+R_+\)</span>，有 <span class="math inline">\(|f(x) - f(x-\delta)| &lt;
+1\)</span>，可以推出 <span class="math inline">\(|f(x) - f(0)| &lt;
+([\frac{1}{\delta}]+1) |x|\)</span>。对于 <span class="math inline">\(x
+\in R_-\)</span> 也可以得到类似的结论，于是只要取 <span class="math inline">\(b=|f(0)|\)</span>，<span class="math inline">\(a =
+[\frac 1 \delta] +1\)</span>，原式成立。</p></li>
+<li><p>假设函数 <span class="math inline">\(f\)</span> 在 <span class="math inline">\([0,\infty)\)</span> 上一致连续并且对任意的 <span class="math inline">\(x \in [0,1]\)</span>，我们都有 <span class="math inline">\(\displaystyle \lim_{n \rightarrow +\infty}f(x+n) =
+0\)</span>（这里 <span class="math inline">\(n\)</span> 是整数）。
+证明，<span class="math inline">\(\lim_{x \to +\infty}f(x) =
+0\)</span>。如果我们将条件减弱为 <span class="math inline">\(f\)</span>
+在 <span class="math inline">\([0,\infty)\)</span> 连续，
+结论是否依然成立? 证明或举出反例。</p></li>
+<li><p>假设 <span class="math inline">\(X\)</span> 是区间，<span class="math inline">\(f\colon X \rightarrow \mathbb{R}\)</span>
+是连续函数。如果存在正常数 <span class="math inline">\(L\)</span>，使得对任意的 <span class="math inline">\(x, y \in X\)</span>，都有 <span class="math inline">\(|f(x) - f(y)| \leqslant L|x-y|\)</span>，我们就称
+<span class="math inline">\(f\)</span> 在 <span class="math inline">\(X\)</span> 上满足Lipschitz条件。</p>
+<ul>
+<li><p>证明，<span class="math inline">\(f\)</span> 在 <span class="math inline">\(X\)</span> 上满足Lipschitz条件是 <span class="math inline">\(f\)</span> 在 <span class="math inline">\(X\)</span> 一致连续的充分条件。</p>
+<p>Trivial.</p></li>
+<li><p>判断上述条件是否是必要条件? 证明或举出反例。</p>
+<p>不是必要的，比如取 <span class="math inline">\(f(x) =
+\sqrt{x}\)</span>，<span class="math inline">\(x \in [0,1]\)</span>
+即有一致连续，但不满足 Lipschitz 条件。</p></li>
+<li><p>假设 <span class="math inline">\(f\)</span> 在 <span class="math inline">\([a,+\infty)\)</span> 上满足Lipschitz条件，其中
+<span class="math inline">\(a &gt; 0\)</span>，试证明 <span class="math inline">\(\dfrac{f(x)}{x}\)</span> 在 <span class="math inline">\([a,+\infty)\)</span> 一致连续。</p>
+<p>取任意的 <span class="math inline">\(\delta \in \mathbb
+R+\)</span>，考虑 <span class="math inline">\(x,y \in
+[a,+\infty)\)</span> 且 <span class="math inline">\(|x-y|=\delta\)</span> 的情况。此时有 <span class="math inline">\(|f(x) - f(y)|\leq L\delta\)</span>，且 <span class="math inline">\(f(x)\)</span> 一致连续。于是 <span class="math inline">\(|\frac{f(x)}{x} - \frac{f(y)}{y}| &lt; |\frac{f(y)
+\delta}{xy} |+|\frac{L\delta}{x}| &lt; (\frac{L+t}{a}+ \frac{b}{a^2})
+\delta\)</span>，也满足 Lipschitz 条件。</p>
+<p>上述的 <span class="math inline">\(t\)</span> 和 <span class="math inline">\(b\)</span> 是使得 <span class="math inline">\(|f(x)| \leq t|x| + b\)</span> 成立的值。</p>
+<p>我超，好难（</p></li>
+</ul></li>
+</ul>
+<h3 id="思考题-1">*思考题</h3>
+<ul>
+<li><p>连续函数 <span class="math inline">\(f\colon \mathbb R\rightarrow
+\mathbb R\)</span> 满足如下性质：对任意的 <span class="math inline">\(\delta&gt;0\)</span>，我们都有 <span class="math inline">\(\displaystyle \lim_{n\rightarrow \infty}
+f(n\delta)=0\)</span>，证明，<span class="math inline">\(\displaystyle
+\lim_{x\rightarrow +\infty} f(x)=0\)</span>。</p></li>
+<li><p>连续函数 <span class="math inline">\(\varphi\colon \mathbb
+R\rightarrow \mathbb R\)</span> 满足如下两个性质：</p>
+<ul>
+<li><p>它在无穷远的行为如下：<span class="math inline">\(\displaystyle
+\lim_{x\rightarrow +\infty}\bigl(
+\varphi(x)-x\bigr)=+\infty\)</span>。</p></li>
+<li><p><span class="math inline">\(\varphi\)</span> 的不动点集 <span class="math inline">\(\bigl\{x\in \mathbb R\bigm|
+\varphi(x)=x\bigr\}\)</span> 是非空的有限集。</p></li>
+</ul>
+<p>证明，如果 <span class="math inline">\(f\colon \mathbb R\rightarrow
+\mathbb R\)</span> 是连续函数并且满足 <span class="math inline">\(f\circ
+\varphi =f\)</span>，那么 <span class="math inline">\(f\)</span>
+一定是常值函数。</p></li>
+<li><p>连续函数 <span class="math inline">\(f\colon \mathbb R_{\geqslant
+0}\rightarrow \mathbb R\)</span> 满足 <span class="math inline">\(\displaystyle \lim_{x\rightarrow +\infty}
+\frac{f(x)}{x}=0\)</span>。假设 <span class="math inline">\(\{a_n\}_{n\geqslant 1}\)</span>
+是一列非负实数的数列并且数列 <span class="math inline">\(\{\dfrac{a_n}{n}\}_{n\geqslant 1}\)</span>
+是有界的，证明，<span class="math inline">\(\displaystyle
+\lim_{n\rightarrow \infty} \frac{f(a_n)}{n}=0\)</span></p></li>
+</ul>
+<h3 id="娱乐问题素数是无限多的拓扑证明-furstenberg-1955">*娱乐问题：素数是无限多的拓扑证明
+(Furstenberg, 1955)</h3>
+<p><span class="math inline">\(X\)</span> 是集合，<span class="math inline">\(\mathcal{T}=\{U\mid U\subset X\}\)</span> 是 <span class="math inline">\(X\)</span>
+的某些子集所组成的集合。如果下面三个条件成立</p>
+<ul>
+<li><p><span class="math inline">\(\emptyset \in \mathcal{T}\)</span>，
+<span class="math inline">\(X \in \mathcal{T}\)</span>。</p></li>
+<li><p>对任意的 <span class="math inline">\(\{U_{\alpha}\}_{\alpha \in
+\mathcal{A}}\subset \mathcal{T}\)</span>，其中 <span class="math inline">\(\mathcal{A}\)</span> 为指标集合，我们有 <span class="math inline">\(\displaystyle\bigcup_{\alpha \in
+\mathcal{A}}U_\alpha \in \mathcal{T}\)</span>。</p></li>
+<li><p>对任意有限个 <span class="math inline">\(U_1,U_2,\cdots, U_m \in
+\mathcal{T}\)</span>，我们有 <span class="math inline">\(\displaystyle\bigcap_{1\leqslant i\leqslant m}U_i
+\in \mathcal{T}\)</span>。</p></li>
+</ul>
+<p>我们就称 <span class="math inline">\(\mathcal{T}\)</span> 是 <span class="math inline">\(X\)</span> 上的一个{}，每个 <span class="math inline">\(U\in \mathcal{T}\)</span> 都被称作是（拓扑 <span class="math inline">\(\mathcal{T}\)</span> 下的）{}。我们把二元组 <span class="math inline">\((X,\mathcal{T})\)</span> 称作是一个{}。</p>
+<p>假设 <span class="math inline">\((X&#39;,\mathcal{T}&#39;)\)</span>
+是拓扑空间，<span class="math inline">\(f\colon X\rightarrow
+X&#39;\)</span>，如果对每个 <span class="math inline">\(U&#39;\in
+\mathcal{T}&#39;\)</span>，我们有 <span class="math inline">\(f^{-1}(U&#39;)\in \mathcal{T}\)</span>，我们就称
+<span class="math inline">\(f\)</span> 是{}。</p>
+<p>给定拓扑空间 <span class="math inline">\((X,\mathcal{T})\)</span>，考虑子集 <span class="math inline">\(F\subset X\)</span>，如果其补集 <span class="math inline">\(X-F\)</span> 是开集（即 <span class="math inline">\(X-F\in \mathcal{T}\)</span>），我们就称 <span class="math inline">\(F\)</span> 是在拓扑 <span class="math inline">\(\mathcal{T}\)</span>
+下的）{}。对于闭集，我们有如下的性质（简单的练习）：</p>
+<ul>
+<li><p><span class="math inline">\(\emptyset\)</span> 和 <span class="math inline">\(X\)</span> 都是闭集。</p></li>
+<li><p>任意多闭集的交集是闭集。</p></li>
+<li><p>有限个闭集的并集是闭集。</p></li>
+</ul>
+<p>娱乐问题：素数是无限多的拓扑证明（Furstenberg，1955）</p>
+<p>考虑 <span class="math inline">\(X=\mathbb{Z}\)</span>
+为全体整数的集合，对于 <span class="math inline">\(a,b \in
+\mathbb{Z}\)</span>，其中 <span class="math inline">\(a\geqslant
+1\)</span>，我们定义 <span class="math inline">\(U_{a,b}=\{ka+b\mid k
+\in \mathbb{Z}\}\)</span>（就是以 <span class="math inline">\(b\)</span>
+为某一项的双边的等差数列）。我们定义 <span class="math inline">\(X\)</span> 的子集的集合 <span class="math inline">\(\mathcal{T}\)</span>：如果 <span class="math inline">\(U\in \mathcal{T}\)</span>，要么 <span class="math inline">\(U=\emptyset\)</span>，要么 <span class="math inline">\(U\)</span> 是某些 <span class="math inline">\(U_{a,b}\)</span> 的并集。</p>
+<ul>
+<li><p><span class="math inline">\(U\in
+\mathcal{T}\)</span>。证明，<span class="math inline">\(x\in U\)</span>
+当且仅当存在 <span class="math inline">\(a\geqslant 1\)</span>，使得
+<span class="math inline">\(U_{a,x}\in \mathcal{T}\)</span>。</p></li>
+<li><p>证明，<span class="math inline">\(\mathbb{Z}\in
+\mathcal{T}\)</span>。</p></li>
+<li><p>证明，对于任意的 <span class="math inline">\(\{U_i\}_{i \in
+I}\subset \mathcal{T}\)</span>，那么 <span class="math inline">\(\bigcup
+U_i\in \mathcal{T}\)</span>。</p></li>
+<li><p>证明， 如果 <span class="math inline">\(U,V\in
+\mathcal{T}\)</span>，那么 <span class="math inline">\(U\cap V\in
+\mathcal{T}\)</span>。</p></li>
+<li><p>证明，任何有限集合都不是开集；任何补集是有限的集合都不是闭集。</p></li>
+<li><p>证明，<span class="math inline">\(U_{a,b}\)</span>
+即时开集也是闭集。</p></li>
+<li><p>证明，<span class="math inline">\(\displaystyle\mathbb{Z}-\{-1,1\}=\bigcup_{p~\text{是素数}}U_{p,0}\)</span>。</p></li>
+<li><p>用反证法证明，有无限多个素数。</p></li>
+</ul>
+<h1 id="期中考试">期中考试</h1>
+<p>考试时间为 2 小时 25
+分钟。两道大题之间是相互独立的。考试中后面的问题可以使用前面问题的结论（无论答题人是否已经得到正确的证明或者答案）。</p>
+<h2 id="基本概念和技巧的考察">基本概念和技巧的考察</h2>
+<ul>
+<li><p>试用 <span class="math inline">\(\varepsilon-N\)</span>
+语言证明：<span class="math inline">\(\displaystyle \lim_{n\rightarrow
+\infty}\dfrac{n}{n^2+1}=0\)</span>。</p>
+<p>Trivial.</p></li>
+<li><p>试用 <span class="math inline">\(\varepsilon-\delta\)</span>
+语言说明函数 <span class="math inline">\(\mathbb R\)</span> 上的函数
+<span class="math inline">\(f(x)=\begin{cases} \sin(\frac{1}{x}), &amp;\
+\ x\neq 0;\\0,&amp;\ \ x=0\end{cases}\)</span> 在 <span class="math inline">\(x=0\)</span> 处不连续。</p>
+<p>Trivial.</p></li>
+<li><p>计算极限：<span class="math inline">\(\displaystyle
+\lim_{n\rightarrow
+\infty}\left(1^2+2^2+3^2+\cdots+n^2\right)^\frac{1}{n}\)</span>。</p>
+<p><span class="math inline">\(1\)</span>。</p></li>
+<li><p>证明，级数 <span class="math inline">\(\displaystyle
+\sum_{n=1}^\infty \frac{2n+1}{n^2(n+100)^2}\)</span> 收敛。</p>
+<p>小于二阶调和级数，trivial.</p></li>
+<li><p>给定实数的序列 <span class="math inline">\(\{a_n\}_{n\geqslant
+1}\)</span>，假设级数 <span class="math inline">\(\displaystyle
+\sum_{n=1}^\infty a_n\)</span> 收敛。证明，对任意的实数 <span class="math inline">\(x\in (-1,1)\)</span>，级数 <span class="math inline">\(\displaystyle \sum_{n=1}^\infty a_n x^n\)</span>
+也收敛。（提示：利用Abel判别法）</p>
+<p>PIN 真的，我哭死，他期中考试还在基础题上给提示（</p>
+<p>Trivial.</p></li>
+<li><p>假设 <span class="math inline">\(f\)</span> 是非空开区间 <span class="math inline">\((a,b)\)</span> 上的连续函数，证明，对任意的 <span class="math inline">\(x_1,x_2\in (a,b)\)</span>，存在 <span class="math inline">\(x_0 \in (a,b)\)</span>，使得</p>
+<p><span class="math inline">\(f(x_0)=\frac{1}{2}\bigl(f(x_1)+f(x_2)\bigr)\)</span></p>
+<p>介值定理，trivial.</p></li>
+<li><p>假设函数 <span class="math inline">\(f:\mathbb R\rightarrow
+\mathbb R\)</span> 是以 <span class="math inline">\(1\)</span>
+为周期的连续函数，即对任意的 <span class="math inline">\(x\in \mathbb
+R\)</span>，我们有 <span class="math inline">\(f(x+1)=f(x)\)</span>。证明，<span class="math inline">\(f\)</span> 有界并且能取到其最大值，即存在 <span class="math inline">\(x_0\in \mathbb R\)</span>，使得 <span class="math inline">\(f(x_0)=\displaystyle \sup_{x\in \mathbb
+R}f(x)\)</span>。</p>
+<p>Trivial.</p></li>
+<li><p>证明，<span class="math inline">\(f(x)=\sqrt{x+1}\)</span> 作为
+<span class="math inline">\(\mathbb R_{\geqslant 0}\)</span>
+上的函数是一致连续的。</p>
+<p>因为满足 Lipschitz 条件，<span class="math inline">\(L=\frac 1
+2\)</span>。</p></li>
+</ul>
+<h2 id="级数">级数</h2>
+<p>首先回忆一下二项式展开：<span class="math inline">\(\displaystyle
+(1+z)^n=\sum_{k=0}^n {n \choose k} z^k\)</span>。特别地， 当 <span class="math inline">\(z=1\)</span> 时，我们有 <span class="math inline">\(\displaystyle 2^n=\sum_{k=0}^n {n \choose
+k}\)</span>。</p>
+<p>给定一个复数的数列 <span class="math inline">\(\{a_k\}_{k\geqslant
+0}\)</span>，我们定义新的数列 <span class="math inline">\(\{a_n^*\}_{n\geqslant 0}\)</span>，其中 <span class="math inline">\(a_n^*=\frac{1}{2^n}\sum_{k=0}^n {n \choose
+k}a_k\)</span></p>
+<h3 id="等比数列">等比数列</h3>
+<p>这一部分中，我们假设对任意的 <span class="math inline">\(k\geqslant
+0\)</span>，<span class="math inline">\(a_k=z^k\)</span>，其中 <span class="math inline">\(z\)</span> 为复数。</p>
+<ul>
+<li><p>证明，如果 <span class="math inline">\(|z|&lt;1\)</span>，那么级数 <span class="math inline">\(\displaystyle \sum_{k=0}^\infty a_k\)</span>
+收敛。我们用 <span class="math inline">\(A(z)\)</span>
+表示这个极限。</p></li>
+<li><p>证明，如果 <span class="math inline">\(|z|&lt;1\)</span>，那么级数 <span class="math inline">\(\displaystyle \sum_{k=0}^\infty a^*_k\)</span>
+收敛。我们用 <span class="math inline">\(A^*(z)\)</span>
+表示这个极限。</p></li>
+<li><p>证明，如果 <span class="math inline">\(|z|\geqslant
+1\)</span>，那么级数 <span class="math inline">\(\displaystyle
+\sum_{k=0}^\infty a_k\)</span> 不收敛。</p></li>
+<li><p>试找出一个 <span class="math inline">\(z\in
+\mathbb{C}\)</span>，<span class="math inline">\(|z|&gt;1\)</span>，级数
+<span class="math inline">\(\displaystyle \sum_{k=0}^\infty
+a^*_k\)</span> 收敛。</p></li>
+<li><p>证明，如果 <span class="math inline">\(|z|=1\)</span> 并且 <span class="math inline">\(z\neq\pm 1\)</span>，那么级数 <span class="math inline">\(\displaystyle \sum_{k=0}^\infty a^*_k\)</span>
+收敛。</p></li>
+</ul>
+<h3 id="收敛性比较">收敛性比较</h3>
+<p>这一部分中，我们假设 <span class="math inline">\(\{a_k\}_{k\geqslant
+0}\)</span> 为实数的序列。</p>
+<ul>
+<li>证明，当 <span class="math inline">\(k\in \mathbb{Z}_{\geqslant
+0}\)</span> 固定的时候，我们有：
+<ul>
+<li><span class="math inline">\(\lim_{n\rightarrow \infty} {n \choose
+k}/{\frac{n^k}{k!}}=1\)</span></li>
+<li><span class="math inline">\(\lim_{n\rightarrow \infty} {n \choose
+k}/{2^n}=0\)</span></li>
+</ul></li>
+<li>任意给定非负整数 <span class="math inline">\(n&gt;q\)</span>，我们定义 <span class="math inline">\(a_{n,q}^*=\frac{1}{2^n}\sum_{k=0}^q {n \choose
+k}a_k\)</span>，对每个固定的 <span class="math inline">\(q\)</span>，计算 <span class="math inline">\(\displaystyle \lim_{n\rightarrow \infty}
+a_{n,q}^*\)</span>。</li>
+<li>如果 <span class="math inline">\(\displaystyle \lim_{n\rightarrow
+\infty} a_{n}=0\)</span>，证明，<span class="math inline">\(\displaystyle \lim_{n\rightarrow \infty}
+a_{n}^*=0\)</span>。</li>
+<li>如果 <span class="math inline">\(\displaystyle \lim_{n\rightarrow
+\infty} a_{n}\)</span> 存在，证明，<span class="math inline">\(\displaystyle \lim_{n\rightarrow \infty}
+a_{n}^*\)</span> 存在并且恰好等于 <span class="math inline">\(\displaystyle \lim_{n\rightarrow \infty}
+a_{n}\)</span>。</li>
+<li>如果 <span class="math inline">\(\displaystyle \lim_{n\rightarrow
+\infty} a^*_{n}\)</span> 存在，<span class="math inline">\(\displaystyle
+\lim_{n\rightarrow \infty} a_{n}\)</span> 是否一定存在？</li>
+</ul>
+<p>在后面的问题中，对任意的 <span class="math inline">\(n\geqslant
+0\)</span>，我们定义部分和 <span class="math inline">\(S_n=\sum_{k=0}^n
+a_k, \ \ S^*_n=\sum_{k=0}^n a^*_k, \ \ U_n=2^n S_n^*\)</span></p>
+<ul>
+<li><p>证明，对任意的 <span class="math inline">\(n\geqslant
+0\)</span>，<span class="math inline">\(U_n\)</span> 都可以写成 <span class="math inline">\(S_0,S_1,\cdots,S_n\)</span>
+的整系数线性组合：<span class="math inline">\(U_n=\sum_{k=0}^n {n+1
+\choose k+1} S_k\)</span></p></li>
+<li><p>证明，如果级数 <span class="math inline">\(\displaystyle
+\sum_{k=0}^\infty a_k\)</span> 收敛，那么 <span class="math inline">\(\displaystyle \sum_{k=0}^\infty a^*_k\)</span>
+也收敛。</p></li>
+</ul>
+<h2 id="连续函数环的极大理想">连续函数环的极大理想</h2>
+<p>假设 <span class="math inline">\(a&lt;b\)</span>
+是实数，我们研究有界闭区间上的实数值连续函数的空间 <span class="math inline">\(C\bigl([a,b]\bigr)\)</span>。对于子集 <span class="math inline">\(I\subset
+C\bigl([a,b]\bigr)\)</span>，如果它满足如下三个条件：</p>
+<ul>
+<li><p><span class="math inline">\(I\neq \emptyset\)</span>，<span class="math inline">\(I \neq C\bigl([a,b]\bigr)\)</span>；</p></li>
+<li><p>对任意的 <span class="math inline">\(\varphi \in
+I\)</span>，<span class="math inline">\(\psi \in I\)</span>，我们有
+<span class="math inline">\(\varphi+\psi \in I\)</span>；</p></li>
+<li><p>对任意的 <span class="math inline">\(\varphi \in
+I\)</span>，<span class="math inline">\(f \in
+C\bigl([a,b]\bigr)\)</span>，我们有 <span class="math inline">\(\varphi\cdot f \in I\)</span>.</p></li>
+</ul>
+<p>我们就称 <span class="math inline">\(I\)</span> 是 <span class="math inline">\(C\bigl([a,b]\bigr)\)</span> 的一个{}。假设 <span class="math inline">\(\mathfrak{m}\)</span> 是 <span class="math inline">\(C\bigl([a,b]\bigr)\)</span>
+的理想并且不存在其它的包含 <span class="math inline">\(\mathfrak{m}\)</span> 的理想，我们就称 <span class="math inline">\(\mathfrak{m}\)</span> 是 <span class="math inline">\(C\bigl([a,b]\bigr)\)</span> 的一个{}（即若理想
+<span class="math inline">\(I\supset \mathfrak{m}\)</span>，那么 <span class="math inline">\(I =\mathfrak{m}\)</span>）。</p>
+<ul>
+<li><p>对任意的子集 <span class="math inline">\(A\subset
+[a,b]\)</span>，令 <span class="math inline">\(I(A)=\left\{f\in
+C\bigl([a,b]\bigr)\big| \text{对任意的 $x\in
+A$，$f(x)=0$}\right\}\)</span>。证明，<span class="math inline">\(I(A)\)</span> 是 <span class="math inline">\(C\bigl([a,b]\bigr)\)</span> 的理想。<span class="math inline">\(I([a,b])\)</span> 是什么？证明，如果有两个子集
+<span class="math inline">\(A\subset B\subset [a,b]\)</span>，那么 <span class="math inline">\(I(A)\supset I(B)\)</span>。是否存在 <span class="math inline">\(A\subset [a,b]\)</span> 为真子集，使得 <span class="math inline">\(I(A)=\{0\}\)</span>?</p></li>
+<li><p>证明，如果 <span class="math inline">\(I \subset
+C\bigl([a,b]\bigr)\)</span> 是理想，那么常值函数 <span class="math inline">\(1\notin I\)</span>。进一步证明，如果 <span class="math inline">\(I \subset C\bigl([a,b]\bigr)\)</span>
+是理想，那么对任意的 <span class="math inline">\(f\in I\)</span>，<span class="math inline">\(f\)</span> 在 <span class="math inline">\([a,b]\)</span> 上一定有零点（即 <span class="math inline">\(f(x)=0\)</span> 在 <span class="math inline">\([a,b]\)</span> 上有解）。</p></li>
+<li><p>对于 <span class="math inline">\(f \in
+C\bigl([a,b]\bigr)\)</span>，证明，集合 <span class="math inline">\(V(f)=\bigl\{x\in [a,b]\big| f(x)=0\bigr\}\)</span>
+是闭集。进一步证明，对于理想 <span class="math inline">\(I \subset
+C\bigl([a,b]\bigr)\)</span>，集合 <span class="math inline">\(V(I)=\bigl\{x\in [a,b]\big| \text{对任意的 $f\in
+I$},~ f(x)=0\bigr\}\)</span> 是闭集。如果理想 <span class="math inline">\(I \subset C\bigl([a,b]\bigr)\)</span> 使得 <span class="math inline">\(V(I)\)</span> 为全空间 <span class="math inline">\([a,b]\)</span>，你是否能够确定 <span class="math inline">\(I\)</span>？</p></li>
+<li><p>对任意的点 <span class="math inline">\(x\in
+[a,b]\)</span>，我们令 <span class="math inline">\(A=\{x\}\)</span> 并记
+<span class="math inline">\(\mathfrak{m}_x
+=I(A)=I\bigl(\{x\}\bigr)\)</span>，即 <span class="math inline">\(\mathfrak{m}_x=\left\{f\in C\bigl([a,b]\bigr)\big|
+f(x)=0\right\}\)</span>。</p>
+<p>证明，<span class="math inline">\(\mathfrak{m}_x\)</span>
+是极大理想。</p></li>
+<li><p>证明，如果 <span class="math inline">\(\mathfrak{m}\)</span> 是
+<span class="math inline">\(C\bigl([a,b]\bigr)\)</span>
+的极大理想，那么存在 <span class="math inline">\(x\in [a,b]\)</span>
+使得 <span class="math inline">\(\mathfrak{m}=\mathfrak{m}_x\)</span>。（提示：利用
+<span class="math inline">\([a,b]\)</span> 是紧的）</p></li>
+<li><p>是否存在理想 <span class="math inline">\(I \subset
+C\bigl([a,b]\bigr)\)</span> 使得 <span class="math inline">\(V(I)=\emptyset\)</span>？</p></li>
+<li><p>假设 <span class="math inline">\(A\)</span> 是闭集，证明，<span class="math inline">\(V(I(A))=A\)</span>。</p></li>
+</ul>
+<blockquote>
+<p>上面的结论可以推广到紧的距离空间的情形：假设 <span class="math inline">\((X,d)\)</span> 是紧的距离空间，<span class="math inline">\(C(X)\)</span> 是 <span class="math inline">\(X\)</span>
+上复数值的连续函数的全体，那么我们有如下的一一对应：<span class="math inline">\(X \longrightarrow \bigl\{\text{$C(X)$
+的极大理想}\bigr\}, \ \  x\mapsto \mathfrak{m}_x\)</span></p>
+<p>其中 <span class="math inline">\(\mathfrak{m}_x=\left\{f\in
+C\bigl(X\bigr)\big| f(x)=0\right\}\)</span>。据此，我们把可以把环 <span class="math inline">\(C(X)\)</span> 中的极大理想想象成空间的点，从而通过
+<span class="math inline">\(C(X)\)</span> 中的代数对象来研究 <span class="math inline">\(X\)</span> 上的几何，这是代数几何的开端。</p>
+</blockquote>
 
     </div>
 
@@ -1782,7 +2241,7 @@ Homeo}([0,1])\)</span> 并且 <span class="math inline">\(0\)</span> 和
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://chiyuru.github.io/2023/01/15/Learn-Mathematical-Analysis-or-Die/" title="数学分析 I 速通日志">https://chiyuru.github.io/2023/01/15/Learn-Mathematical-Analysis-or-Die/</a>
+    <a href="https://chiyuru.github.io/2023/01/15/Learn-Mathematical-Analysis-or-Die/" title="数学分析 I 速通日志（上）">https://chiyuru.github.io/2023/01/15/Learn-Mathematical-Analysis-or-Die/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -1893,7 +2352,8 @@ Homeo}([0,1])\)</span> 并且 <span class="math inline">\(0\)</span> 和
           <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%9E%E6%95%B0%E7%9A%84%E6%9E%84%E9%80%A0"><span class="nav-text">实数的构造</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8E%E6%8A%BD%E4%BB%A3%E5%87%BA%E5%8F%91%E4%BA%8B%E6%83%85%E5%8F%98%E5%BE%97%E7%AE%80%E5%8D%95%E4%BA%86%E5%BE%88%E5%A4%9A"><span class="nav-text">从抽代出发，事情变得简单了很多</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#summary"><span class="nav-text">Summary</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A2%A6%E8%AF%9D%E5%8F%AF%E6%95%B0%E9%9B%86%E4%B8%8E%E4%B8%8D%E5%8F%AF%E6%95%B0%E9%9B%86"><span class="nav-text">梦话：可数集与不可数集</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98%E5%8F%AF%E6%95%B0%E9%9B%86%E4%B8%8E%E4%B8%8D%E5%8F%AF%E6%95%B0%E9%9B%86"><span class="nav-text">课后习题：可数集与不可数集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98-schroeder-bernstein-%E5%AE%9A%E7%90%86"><span class="nav-text">课后习题：
 Schroeder-Bernstein 定理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E5%A4%8D%E4%B9%A0%E7%AD%89%E5%8A%BF%E4%B8%8E%E5%9F%BA%E6%95%B0"><span class="nav-text">离散数学复习：等势与基数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9E%81%E9%99%90"><span class="nav-text">极限</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9E%81%E9%99%90%E6%95%B0%E5%88%97%E5%92%8C%E7%BA%A7%E6%95%B0"><span class="nav-text">极限，数列和级数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%87%E6%95%B0%E5%87%BD%E6%95%B0%E5%92%8C%E4%B8%89%E8%A7%92%E5%87%BD%E6%95%B0%E7%9A%84%E7%BA%A7%E6%95%B0%E5%AE%9A%E4%B9%89"><span class="nav-text">指数函数和三角函数的级数定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#summary-1"><span class="nav-text">Summary</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A2%A6%E8%AF%9D%E6%97%A2%E7%84%B6%E4%B9%A0%E9%A2%98%E6%B2%A1%E6%9C%89%E7%AD%94%E6%A1%88%E9%82%A3%E6%88%91%E5%B0%B1%E8%83%A1%E8%AF%B4%E5%85%AB%E9%81%93%E4%BA%86"><span class="nav-text">梦话：既然习题没有答案那我就胡说八道了</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#riemann-%E9%87%8D%E6%8E%92%E5%AE%9A%E7%90%86"><span class="nav-text">Riemann 重排定理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cesaro-%E6%B1%82%E5%92%8C%E6%9E%81%E9%99%90"><span class="nav-text">Cesaro 求和极限</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B9%E5%BC%8F%E5%92%8C%E6%8C%87%E6%95%B0%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-text">根式和指数的定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B9%E5%BC%8F%E7%9A%84%E9%80%BC%E8%BF%91"><span class="nav-text">根式的逼近</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A2%A6%E8%AF%9D-2.0%E4%B9%98%E7%A7%AF%E7%BA%A7%E6%95%B0"><span class="nav-text">梦话 2.0：乘积级数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A2%A6%E8%AF%9D-3.0%E8%B7%9D%E7%A6%BB%E7%A9%BA%E9%97%B4%E4%B8%8E%E8%B5%8B%E8%8C%83%E7%BA%BF%E6%80%A7%E7%A9%BA%E9%97%B4"><span class="nav-text">梦话
 3.0：距离空间与赋范线性空间</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A2%A6%E8%AF%9D-4.0%E6%97%A2%E7%84%B6%E4%B9%A0%E9%A2%98%E6%B2%A1%E6%9C%89%E7%AD%94%E6%A1%88%E9%82%A3%E6%88%91%E5%B0%B1%E7%BB%A7%E7%BB%AD%E8%83%A1%E8%AF%B4%E5%85%AB%E9%81%93%E4%BA%86"><span class="nav-text">梦话
-4.0：既然习题没有答案那我就继续胡说八道了</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9E%E7%BB%AD%E5%87%BD%E6%95%B0%E7%9A%84%E5%AE%9A%E4%B9%89%E5%92%8C%E5%9F%BA%E6%9C%AC%E6%80%A7%E8%B4%A8"><span class="nav-text">连续函数的定义和基本性质</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%A7%E6%95%B0%E6%94%B6%E6%95%9B%E6%80%A7"><span class="nav-text">级数收敛性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%92%E5%87%8F%E6%AD%A3%E9%A1%B9%E7%BA%A7%E6%95%B0%E7%9A%84%E5%87%9D%E8%81%9A%E6%A3%80%E9%AA%8C%E6%B3%95"><span class="nav-text">递减正项级数的凝聚检验法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E6%95%B0%E5%88%97%E7%9A%84%E4%B8%8A%E4%B8%8B%E6%9E%81%E9%99%90%E7%9A%84%E5%88%BB%E7%94%BB"><span class="nav-text">实数列的上下极限的刻画</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B4%A0%E6%95%B0%E7%9A%84%E5%80%92%E6%95%B0%E5%92%8C"><span class="nav-text">*素数的倒数和</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#basel%E9%97%AE%E9%A2%98%E7%9A%84euler%E8%AF%81%E6%98%8E"><span class="nav-text">*Basel问题的Euler“证明”</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%9E%E7%BB%AD%E6%80%A7"><span class="nav-text">连续性</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E7%9A%84%E8%BF%9E%E7%BB%AD%E6%80%A7"><span class="nav-text">函数的连续性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9E%E7%BB%AD%E6%98%A0%E5%B0%84"><span class="nav-text">连续映射</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9E%E7%BB%AD%E5%87%BD%E6%95%B0%E7%9A%84%E6%80%A7%E8%B4%A8"><span class="nav-text">连续函数的性质</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9E%E7%BB%AD%E5%87%BD%E6%95%B0%E7%9A%84%E6%8B%93%E6%89%91%E5%88%BB%E7%94%BB"><span class="nav-text">连续函数的拓扑刻画</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#summary-2"><span class="nav-text">Summary</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A2%A6%E8%AF%9D%E8%83%A1%E8%AF%B4%E5%85%AB%E9%81%93%E4%B8%80%E4%BA%9B%E8%AF%81%E6%98%8E%E9%A2%98"><span class="nav-text">梦话：胡说八道一些证明题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B7%9D%E7%A6%BB%E7%A9%BA%E9%97%B4%E4%B8%8A%E7%9A%84%E6%8B%93%E6%89%91%E4%B8%8E%E8%BF%9E%E7%BB%AD%E6%80%A7"><span class="nav-text">距离空间上的拓扑与连续性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E7%9A%84%E9%9B%B6%E7%82%B9"><span class="nav-text">函数的零点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%9D%E8%80%83%E9%A2%98"><span class="nav-text">*思考题</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E8%87%B4%E8%BF%9E%E7%BB%AD%E6%80%A7"><span class="nav-text">一致连续性</span></a></li></ol></div>
+4.0：既然习题没有答案那我就继续胡说八道了</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9E%E7%BB%AD%E5%87%BD%E6%95%B0%E7%9A%84%E5%AE%9A%E4%B9%89%E5%92%8C%E5%9F%BA%E6%9C%AC%E6%80%A7%E8%B4%A8"><span class="nav-text">连续函数的定义和基本性质</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%A7%E6%95%B0%E6%94%B6%E6%95%9B%E6%80%A7"><span class="nav-text">级数收敛性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%92%E5%87%8F%E6%AD%A3%E9%A1%B9%E7%BA%A7%E6%95%B0%E7%9A%84%E5%87%9D%E8%81%9A%E6%A3%80%E9%AA%8C%E6%B3%95"><span class="nav-text">递减正项级数的凝聚检验法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E6%95%B0%E5%88%97%E7%9A%84%E4%B8%8A%E4%B8%8B%E6%9E%81%E9%99%90%E7%9A%84%E5%88%BB%E7%94%BB"><span class="nav-text">实数列的上下极限的刻画</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B4%A0%E6%95%B0%E7%9A%84%E5%80%92%E6%95%B0%E5%92%8C"><span class="nav-text">*素数的倒数和</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#basel%E9%97%AE%E9%A2%98%E7%9A%84euler%E8%AF%81%E6%98%8E"><span class="nav-text">*Basel问题的Euler“证明”</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%9E%E7%BB%AD%E6%80%A7"><span class="nav-text">连续性</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E7%9A%84%E8%BF%9E%E7%BB%AD%E6%80%A7"><span class="nav-text">函数的连续性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9E%E7%BB%AD%E6%98%A0%E5%B0%84"><span class="nav-text">连续映射</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9E%E7%BB%AD%E5%87%BD%E6%95%B0%E7%9A%84%E6%80%A7%E8%B4%A8"><span class="nav-text">连续函数的性质</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9E%E7%BB%AD%E5%87%BD%E6%95%B0%E7%9A%84%E6%8B%93%E6%89%91%E5%88%BB%E7%94%BB"><span class="nav-text">连续函数的拓扑刻画</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#summary-2"><span class="nav-text">Summary</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A2%A6%E8%AF%9D%E8%83%A1%E8%AF%B4%E5%85%AB%E9%81%93%E4%B8%80%E4%BA%9B%E8%AF%81%E6%98%8E%E9%A2%98"><span class="nav-text">梦话：胡说八道一些证明题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B7%9D%E7%A6%BB%E7%A9%BA%E9%97%B4%E4%B8%8A%E7%9A%84%E6%8B%93%E6%89%91%E4%B8%8E%E8%BF%9E%E7%BB%AD%E6%80%A7"><span class="nav-text">距离空间上的拓扑与连续性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E7%9A%84%E9%9B%B6%E7%82%B9"><span class="nav-text">函数的零点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%9D%E8%80%83%E9%A2%98"><span class="nav-text">*思考题</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E8%87%B4%E8%BF%9E%E7%BB%AD%E6%80%A7"><span class="nav-text">一致连续性</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B4%A7%E6%80%A7%E4%B8%8E%E5%BC%80%E8%A6%86%E7%9B%96"><span class="nav-text">紧性与开覆盖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E8%87%B4%E8%BF%9E%E7%BB%AD%E6%80%A7-1"><span class="nav-text">一致连续性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%A7%E6%95%B0%E6%94%B6%E6%95%9B%E6%9E%84%E9%80%A0%E8%BF%9E%E7%BB%AD%E5%87%BD%E6%95%B0"><span class="nav-text">级数收敛构造连续函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A2%A6%E8%AF%9D%E8%AF%81%E6%98%8E%E9%A2%98%E4%BD%86%E8%83%A1%E8%AF%B4%E5%85%AB%E9%81%93%E8%80%8C%E4%B8%94%E8%BF%98%E6%B2%A1%E5%86%99%E5%AE%8C"><span class="nav-text">梦话：证明题，但胡说八道，而且还没写完</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9E%E7%BB%AD%E4%B8%80%E8%87%B4%E8%BF%9E%E7%BB%AD%E5%92%8C%E4%B8%80%E8%87%B4%E6%94%B6%E6%95%9B"><span class="nav-text">连续，一致连续和一致收敛</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%92%8C%E4%B8%80%E8%87%B4%E8%BF%9E%E7%BB%AD%E6%80%A7%E7%9B%B8%E5%85%B3%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-text">和一致连续性相关的问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%9D%E8%80%83%E9%A2%98-1"><span class="nav-text">*思考题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A8%B1%E4%B9%90%E9%97%AE%E9%A2%98%E7%B4%A0%E6%95%B0%E6%98%AF%E6%97%A0%E9%99%90%E5%A4%9A%E7%9A%84%E6%8B%93%E6%89%91%E8%AF%81%E6%98%8E-furstenberg-1955"><span class="nav-text">*娱乐问题：素数是无限多的拓扑证明
+(Furstenberg, 1955)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%9F%E4%B8%AD%E8%80%83%E8%AF%95"><span class="nav-text">期中考试</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%E5%92%8C%E6%8A%80%E5%B7%A7%E7%9A%84%E8%80%83%E5%AF%9F"><span class="nav-text">基本概念和技巧的考察</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%A7%E6%95%B0"><span class="nav-text">级数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AD%89%E6%AF%94%E6%95%B0%E5%88%97"><span class="nav-text">等比数列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%94%B6%E6%95%9B%E6%80%A7%E6%AF%94%E8%BE%83"><span class="nav-text">收敛性比较</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9E%E7%BB%AD%E5%87%BD%E6%95%B0%E7%8E%AF%E7%9A%84%E6%9E%81%E5%A4%A7%E7%90%86%E6%83%B3"><span class="nav-text">连续函数环的极大理想</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -1978,7 +2438,7 @@ Schroeder-Bernstein 定理</span></a></li><li class="nav-item nav-level-3"><a cl
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共178.9k字</span>
+  <span class="post-count">博客全站共185.2k字</span>
 </div>
 
 
