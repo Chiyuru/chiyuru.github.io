@@ -6,7 +6,7 @@
   <link href="https://chiyuru.github.io/atom.xml" rel="self"/>
   
   <link href="https://chiyuru.github.io/"/>
-  <updated>2023-01-31T15:39:33.235Z</updated>
+  <updated>2023-02-01T18:34:22.137Z</updated>
   <id>https://chiyuru.github.io/</id>
   
   <author>
@@ -17,11 +17,28 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>日记·篇六·23年2月</title>
+    <link href="https://chiyuru.github.io/2023/02/01/Diary-2023-02/"/>
+    <id>https://chiyuru.github.io/2023/02/01/Diary-2023-02/</id>
+    <published>2023-01-31T18:14:35.000Z</published>
+    <updated>2023-02-01T18:34:22.137Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;总感觉假期快结束了，但是假期真的开始过吗（&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="碎碎念" scheme="https://chiyuru.github.io/tags/%E7%A2%8E%E7%A2%8E%E5%BF%B5/"/>
+    
+  </entry>
+  
+  <entry>
     <title>数学分析 I 速通日志（上）</title>
     <link href="https://chiyuru.github.io/2023/01/15/Learn-Mathematical-Analysis-or-Die/"/>
     <id>https://chiyuru.github.io/2023/01/15/Learn-Mathematical-Analysis-or-Die/</id>
     <published>2023-01-15T04:34:52.000Z</published>
-    <updated>2023-01-31T15:39:33.235Z</updated>
+    <updated>2023-02-01T18:35:01.512Z</updated>
     
     
     <summary type="html">&lt;p&gt;大二的寒假，我居然为了下学期不在概率论和复分析课上被爆杀，而在这儿速通数分。&lt;/p&gt;
@@ -398,30 +415,6 @@ Order（FGO）。每次玩着玩着就会回到 FGO
     
     
     <category term="课程实录" scheme="https://chiyuru.github.io/tags/%E8%AF%BE%E7%A8%8B%E5%AE%9E%E5%BD%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Tsinghua Logic Summer School</title>
-    <link href="https://chiyuru.github.io/2022/06/27/The-Second-Tsinghua-Logic-Summer-School/"/>
-    <id>https://chiyuru.github.io/2022/06/27/The-Second-Tsinghua-Logic-Summer-School/</id>
-    <published>2022-06-27T12:28:20.000Z</published>
-    <updated>2022-08-10T14:41:52.000Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;第一次上前沿研究类的讲座课，本来是想像竞赛的时候按日写赛题评析一样，按照
-DAY1~DAY5
-的顺序每天上完课梳理一下思路，简单提一提觉得有趣的点。&lt;del&gt;结果到 DAY2
-就被复杂度和计算理论知识直接干碎了。&lt;/del&gt;&lt;/p&gt;
-&lt;p&gt;后面的课虽然很有意思但一涉及到相关问题就不太能完全理解，硬要写的话没太大意义，遂放弃，变成了日常吐槽（又在水
-blog 了是吗&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="课程实录" scheme="https://chiyuru.github.io/tags/%E8%AF%BE%E7%A8%8B%E5%AE%9E%E5%BD%95/"/>
-    
-    <category term="这里面看起来很好玩" scheme="https://chiyuru.github.io/tags/%E8%BF%99%E9%87%8C%E9%9D%A2%E7%9C%8B%E8%B5%B7%E6%9D%A5%E5%BE%88%E5%A5%BD%E7%8E%A9/"/>
     
   </entry>
   
