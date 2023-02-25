@@ -6,7 +6,7 @@
   <link href="https://chiyuru.github.io/atom.xml" rel="self"/>
   
   <link href="https://chiyuru.github.io/"/>
-  <updated>2023-02-10T19:13:56.564Z</updated>
+  <updated>2023-02-25T16:15:54.091Z</updated>
   <id>https://chiyuru.github.io/</id>
   
   <author>
@@ -15,6 +15,54 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>多元问题对我来说太难了，但是多元统计分析</title>
+    <link href="https://chiyuru.github.io/2023/02/25/Multivariate-Statistical-Analysis/"/>
+    <id>https://chiyuru.github.io/2023/02/25/Multivariate-Statistical-Analysis/</id>
+    <published>2023-02-25T01:36:52.000Z</published>
+    <updated>2023-02-25T16:15:54.091Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;既然线性回归都写了，怎么能没有多元统计呢（？&lt;/p&gt;
+&lt;p&gt;其实是在课上同步写笔记体验很不错，dwl
+老师的风格一如既往的稳健，课堂节奏正好。在课上敲笔记总比摸鱼好。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="课程实录" scheme="https://chiyuru.github.io/tags/%E8%AF%BE%E7%A8%8B%E5%AE%9E%E5%BD%95/"/>
+    
+    <category term="数学" scheme="https://chiyuru.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
+    
+    <category term="统计" scheme="https://chiyuru.github.io/tags/%E7%BB%9F%E8%AE%A1/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>还就那个线性回归分析</title>
+    <link href="https://chiyuru.github.io/2023/02/21/Linear-Regression-Analysis/"/>
+    <id>https://chiyuru.github.io/2023/02/21/Linear-Regression-Analysis/</id>
+    <published>2023-02-21T11:12:18.000Z</published>
+    <updated>2023-02-25T16:15:13.030Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;本来真没打算连载这个，结果这课居然把课程笔记算成百分制里面的 10
+分（，那就写罢。&lt;/p&gt;
+&lt;p&gt;有参考 &lt;a href=&quot;https://blog.vicayang.cc/tags/statistics/&quot;&gt;Vica Yang
+的统辅笔记&lt;/a&gt;和 &lt;a href=&quot;https://v1ncent19.github.io/SummaryNotes/&quot;&gt;V1ncent19
+的统辅笔记&lt;/a&gt;，如果有引用均会在文中注明，在此向前辈表示感谢。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="课程实录" scheme="https://chiyuru.github.io/tags/%E8%AF%BE%E7%A8%8B%E5%AE%9E%E5%BD%95/"/>
+    
+    <category term="数学" scheme="https://chiyuru.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
+    
+    <category term="统计" scheme="https://chiyuru.github.io/tags/%E7%BB%9F%E8%AE%A1/"/>
+    
+  </entry>
   
   <entry>
     <title>数学分析 I 速通日志（下）</title>
@@ -38,7 +86,7 @@
     <link href="https://chiyuru.github.io/2023/02/01/Diary-2023-02/"/>
     <id>https://chiyuru.github.io/2023/02/01/Diary-2023-02/</id>
     <published>2023-01-31T18:14:35.000Z</published>
-    <updated>2023-02-24T15:57:05.370Z</updated>
+    <updated>2023-02-25T15:45:56.315Z</updated>
     
     
     <summary type="html">&lt;p&gt;总感觉假期快结束了，但是假期真的开始过吗（&lt;/p&gt;</summary>
@@ -107,7 +155,7 @@
     <link href="https://chiyuru.github.io/2022/11/10/Statistic-Minor-Repo/"/>
     <id>https://chiyuru.github.io/2022/11/10/Statistic-Minor-Repo/</id>
     <published>2022-11-09T18:14:58.000Z</published>
-    <updated>2023-02-22T14:00:13.237Z</updated>
+    <updated>2023-02-24T19:49:18.439Z</updated>
     
     
     <summary type="html">&lt;p&gt;一月余之前树洞上看到的统计辅修课程测评，来自物理系 9 字班的学长 &lt;a href=&quot;https://v1ncent19.github.io&quot;&gt;V1ncent19&lt;/a&gt;，已得到授权转载。希望在选课期间
@@ -120,9 +168,9 @@ cover
     
     <category term="数学" scheme="https://chiyuru.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
     
-    <category term="这里面看起来很好玩" scheme="https://chiyuru.github.io/tags/%E8%BF%99%E9%87%8C%E9%9D%A2%E7%9C%8B%E8%B5%B7%E6%9D%A5%E5%BE%88%E5%A5%BD%E7%8E%A9/"/>
-    
     <category term="统计" scheme="https://chiyuru.github.io/tags/%E7%BB%9F%E8%AE%A1/"/>
+    
+    <category term="这里面看起来很好玩" scheme="https://chiyuru.github.io/tags/%E8%BF%99%E9%87%8C%E9%9D%A2%E7%9C%8B%E8%B5%B7%E6%9D%A5%E5%BE%88%E5%A5%BD%E7%8E%A9/"/>
     
   </entry>
   
@@ -283,9 +331,9 @@ MATLAB 的函数，那 Python 不亏。&lt;/p&gt;</summary>
     
     
     
-    <category term="躺平" scheme="https://chiyuru.github.io/tags/%E8%BA%BA%E5%B9%B3/"/>
-    
     <category term="碎碎念" scheme="https://chiyuru.github.io/tags/%E7%A2%8E%E7%A2%8E%E5%BF%B5/"/>
+    
+    <category term="躺平" scheme="https://chiyuru.github.io/tags/%E8%BA%BA%E5%B9%B3/"/>
     
   </entry>
   
@@ -368,53 +416,6 @@ MATLAB 的函数，那 Python 不亏。&lt;/p&gt;</summary>
     <category term="碎碎念" scheme="https://chiyuru.github.io/tags/%E7%A2%8E%E7%A2%8E%E5%BF%B5/"/>
     
     <category term="睡隙碎笔" scheme="https://chiyuru.github.io/tags/%E7%9D%A1%E9%9A%99%E7%A2%8E%E7%AC%94/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>在 THU 上过的第一无聊的课——制图实习</title>
-    <link href="https://chiyuru.github.io/2022/07/26/Computer-Drawing-for-Engineering/"/>
-    <id>https://chiyuru.github.io/2022/07/26/Computer-Drawing-for-Engineering/</id>
-    <published>2022-07-25T18:00:00.000Z</published>
-    <updated>2022-09-20T04:11:37.000Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;是我可能这辈子也不会再碰到的领域了。&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="躺平" scheme="https://chiyuru.github.io/tags/%E8%BA%BA%E5%B9%B3/"/>
-    
-    <category term="课程实录" scheme="https://chiyuru.github.io/tags/%E8%AF%BE%E7%A8%8B%E5%AE%9E%E5%BD%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>躺平记——游戏篇</title>
-    <link href="https://chiyuru.github.io/2022/07/11/lying-flat-in-games/"/>
-    <id>https://chiyuru.github.io/2022/07/11/lying-flat-in-games/</id>
-    <published>2022-07-11T09:15:41.000Z</published>
-    <updated>2022-07-11T10:26:38.000Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;新鲜的 tag:
-躺平。&lt;del&gt;甚至想把之前的科协躺平篇改个标题，然后变成一个系列&lt;/del&gt;&lt;/p&gt;
-&lt;p&gt;在 &lt;a href=&quot;https://chiyuru.github.io/2022/06/16/Hello-World/#more&quot;&gt;Hello
-World！&lt;/a&gt;和 &lt;a href=&quot;https://chiyuru.github.io/about/&quot;&gt;About&lt;/a&gt;
-里就提到过，我有很多游戏的坑。音游有
-Lanota、Arcaea，&lt;del&gt;抽卡类&lt;/del&gt;塔防有明日方舟，其实也玩过若干国产乙女游戏，若干
-GalGame，棋牌类有雀魂，还有不知道该怎么分类的 Fate/Grand
-Order（FGO）。每次玩着玩着就会回到 FGO
-去，可能是别的游戏都有或挺大或不小的圈子，而&lt;del&gt;半死不活的&lt;/del&gt; FGO
-没有。即使有，想要无视也很容易，因为身边没有玩 FGO 的朋友了。&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="躺平" scheme="https://chiyuru.github.io/tags/%E8%BA%BA%E5%B9%B3/"/>
-    
-    <category term="碎碎念" scheme="https://chiyuru.github.io/tags/%E7%A2%8E%E7%A2%8E%E5%BF%B5/"/>
     
   </entry>
   

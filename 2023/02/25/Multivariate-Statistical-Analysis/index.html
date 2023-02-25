@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"chiyuru.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="既然线性回归都写了，怎么能没有多元统计呢（？ 其实是在课上同步写笔记体验很不错，dwl 老师的风格一如既往的稳健，课堂节奏正好。在课上敲笔记总比摸鱼好。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="多元问题对我来说太难了，但是多元统计分析">
+<meta property="og:url" content="https://chiyuru.github.io/2023/02/25/Multivariate-Statistical-Analysis/index.html">
+<meta property="og:site_name" content="『姑妄言之姑妄听之』">
+<meta property="og:description" content="既然线性回归都写了，怎么能没有多元统计呢（？ 其实是在课上同步写笔记体验很不错，dwl 老师的风格一如既往的稳健，课堂节奏正好。在课上敲笔记总比摸鱼好。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2023/02/25/CU1SBYayWI3MHDO.png">
+<meta property="og:image" content="https://s2.loli.net/2023/02/25/hMJW9TKGEmcptCa.png">
+<meta property="og:image" content="https://s2.loli.net/2023/02/25/I6NaJMgb7L8RiYr.png">
+<meta property="og:image" content="https://s2.loli.net/2023/02/25/KibpxcuaedowJLO.png">
+<meta property="og:image" content="https://s2.loli.net/2023/02/25/S3V5gv7AYCD4Efy.png">
+<meta property="og:image" content="https://s2.loli.net/2023/02/25/pRaLXMxUrKqOi5Q.png">
+<meta property="article:published_time" content="2023-02-25T01:36:52.000Z">
+<meta property="article:modified_time" content="2023-02-25T16:15:54.091Z">
+<meta property="article:author" content="驰雨Chiyuru">
+<meta property="article:tag" content="课程实录">
+<meta property="article:tag" content="数学">
+<meta property="article:tag" content="统计">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2023/02/25/CU1SBYayWI3MHDO.png">
+
+<link rel="canonical" href="https://chiyuru.github.io/2023/02/25/Multivariate-Statistical-Analysis/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>多元问题对我来说太难了，但是多元统计分析 | 『姑妄言之姑妄听之』</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="『姑妄言之姑妄听之』" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">『姑妄言之姑妄听之』</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://chiyuru.github.io/2023/02/25/Multivariate-Statistical-Analysis/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="驰雨Chiyuru">
+      <meta itemprop="description" content="おはよう、朝だよ">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="『姑妄言之姑妄听之』">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          多元问题对我来说太难了，但是多元统计分析
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-02-25 09:36:52" itemprop="dateCreated datePublished" datetime="2023-02-25T09:36:52+08:00">2023-02-25</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-02-26 00:15:54" itemprop="dateModified" datetime="2023-02-26T00:15:54+08:00">2023-02-26</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>既然线性回归都写了，怎么能没有多元统计呢（？</p>
+<p>其实是在课上同步写笔记体验很不错，dwl
+老师的风格一如既往的稳健，课堂节奏正好。在课上敲笔记总比摸鱼好。</p>
+<span id="more"></span>
+<h1 id="lecture-1">Lecture 1</h1>
+<p>吹水，然后讲了点基本概念。</p>
+<h2 id="多元数据的组织">多元数据的组织</h2>
+<p>对于多元数据，常见的形式是一个 population 中的样本个体（称为
+item）有不同的项，每个 item 呈现出 p 个 variable 的取值。我们每次在
+population 中抽样会取出 <span class="math inline">\(n\)</span> 个
+item，实际上获得了 <span class="math inline">\(np\)</span> 个数据。</p>
+<p>一般用矩阵组织二元数据，以随机变量作为列元素，把 population 中的 item
+作为横行。也就是说 <span class="math inline">\(n\)</span> 个 item 各自有
+p 个随机变量项目的情况下，可以把它组织成 <span class="math inline">\(n
+\times p\)</span> 尺寸的表格：</p>
+<table>
+<colgroup>
+<col style="width: 11%">
+<col style="width: 18%">
+<col style="width: 18%">
+<col style="width: 7%">
+<col style="width: 18%">
+<col style="width: 7%">
+<col style="width: 18%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>Variable 1</th>
+<th>Variable 2</th>
+<th>...</th>
+<th>Variable i</th>
+<th>...</th>
+<th>Variable p</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Item 1</td>
+<td><span class="math inline">\(x_{11}\)</span></td>
+<td><span class="math inline">\(x_{12}\)</span></td>
+<td>...</td>
+<td><span class="math inline">\(x_{1i}\)</span></td>
+<td>...</td>
+<td><span class="math inline">\(x_{1p}\)</span></td>
+</tr>
+<tr class="even">
+<td>Item 2</td>
+<td><span class="math inline">\(x_{21}\)</span></td>
+<td><span class="math inline">\(x_{22}\)</span></td>
+<td>...</td>
+<td><span class="math inline">\(x_{2i}\)</span></td>
+<td>...</td>
+<td><span class="math inline">\(x_{2p}\)</span></td>
+</tr>
+<tr class="odd">
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="even">
+<td>Item j</td>
+<td><span class="math inline">\(x_{j1}\)</span></td>
+<td><span class="math inline">\(x_{j2}\)</span></td>
+<td>...</td>
+<td><span class="math inline">\(x_{ji}\)</span></td>
+<td>...</td>
+<td><span class="math inline">\(x_{jp}\)</span></td>
+</tr>
+<tr class="odd">
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="even">
+<td>Item n</td>
+<td><span class="math inline">\(x_{n1}\)</span></td>
+<td><span class="math inline">\(x_{n2}\)</span></td>
+<td>...</td>
+<td><span class="math inline">\(x_{ni}\)</span></td>
+<td>...</td>
+<td><span class="math inline">\(x_{np}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>实际上就是一个 <span class="math inline">\(n \times p\)</span>
+大小的矩阵，每个 <span class="math inline">\(X_{ji}\)</span>
+都可以视作随机变量。因此，每一次从 population 中随机抽样出 <span class="math inline">\(n\)</span> 个
+item，都能得到一个不同的多元数据矩阵作为 observed data，在 multivariate
+statistics 中，observed data 一般是矩阵。</p>
+<p>更本质地，可以把一个随机矩阵视为 <span class="math inline">\(n\)</span> 个随机向量，每个随机向量代表了一个 item
+的具体分量数据。并且可以认为这 <span class="math inline">\(n\)</span> 个
+items 是彼此独立的（<span class="math inline">\(n\)</span>
+次独立的取样），于是可以认为 joint distribution 是 <span class="math inline">\(n\)</span> 个 PDF 之积。</p>
+<h2 id="描述性统计量">描述性统计量</h2>
+<p>老生常谈了捏。对于上述的 observed data，可以纵向观察各个 variable
+的性质。</p>
+<ul>
+<li><p>列均值/sample mean ：<span class="math inline">\(\bar{x_k} =
+\frac{1}{n} \Sigma_{i=1}^{n} x_{ik}\)</span>，<span class="math inline">\(k=1,2,...,p\)</span></p>
+<p>直观来说体现了分布的位置。</p></li>
+<li><p>列方差/sample variance ：<span class="math inline">\(s_k ^2 =
+s_{kk} = \frac{1}{n} \Sigma_{i=1}^n (x_{ik}-\bar{x_k})^2\)</span>，<span class="math inline">\(k=1,2,...,p\)</span></p>
+<p>直观来说体现了分布的分散程度。</p>
+<p>实际上，可以看到此处列方差的系数是 <span class="math inline">\(\frac{1}{n}\)</span> 而不是传统的 <span class="math inline">\(\frac{1}{n-1}\)</span>，这是由使用场景决定的。在统计推断中，如果需要无偏统计量则使用
+<span class="math inline">\(\frac{1}{n-1}\)</span>，如果需要极大似然估计（MLE）则使用
+<span class="math inline">\(\frac{1}{n}\)</span>。尤其是样本量 <span class="math inline">\(n\)</span>
+很大的情况下，二者的差别并不大，可以不做严格的区分。</p></li>
+<li><p>协方差，相关系数：直观上来说体现了线性相关性，相关系数为正则正相关，否则负相关，为
+<span class="math inline">\(0\)</span> 不相关。</p>
+<p>协方差定义为 <span class="math inline">\(s_{ik} = \frac 1 n
+\Sigma_{j=1}^n (x_{ji} - \bar{x_i})) (x_{ji} -
+\bar{x_k})\)</span>，可以看到实际上 <span class="math inline">\(s_{ik} =
+s_{ki}\)</span>，于是协方差矩阵有</p>
+<p><span class="math display">\[ \begin{bmatrix} s_{11} &amp; s_{12}
+&amp; ...&amp; s_{1p}\\ s_{21} &amp; s_{22} &amp; ...&amp; s_{2p} \\ ...
+&amp; ...&amp;...&amp;... \\ s_{p1} &amp; s_{p2} &amp;...&amp;s_{pp}
+\end{bmatrix}\]</span></p>
+<p>的形式，这是一个对角元为正的对称矩阵。</p>
+<p>类似地，相关系数定义为 $_{ik} = { } $
+的形式，也有对应的协方差矩阵，是一个对角元均为 <span class="math inline">\(1\)</span> 的对称矩阵。</p></li>
+</ul>
+<p>也可以由随机向量矩阵得到相应的 sample mean 向量和 sample variance
+向量。</p>
+<h2 id="mahalanobis-distance">Mahalanobis Distance</h2>
+<p>用来判断不同 item 的 的“距离”，从来衡量两组数据的相似性。实际上不同的
+variance 有不同的量纲，我们想比较不同 item 的差异，需要把 variance
+的量纲“统一”来计算二者的差异。使用 Mahalanobis distance 来计算。</p>
+<p>假设两个 item 的数据值分别是 <span class="math inline">\(P =
+(x_1,x_2,...,x_p),Q= (y_1,y_2,...,y_p)\)</span>，记整体 sample mean
+向量为 <span class="math inline">\(\mu =
+(\mu_1,\mu_2,...,\mu_p)\)</span>，协方差矩阵为 <span class="math inline">\(\Sigma\)</span>。在不同的使用场景下，Mahalanobis
+distance 有不同的形式，主要在以下方面处理了差异：</p>
+<ul>
+<li><p>通过给差值除掉此维度数据的协方差，来规范尺度差异。本质上是个仿射变换。</p>
+<p><span class="math inline">\(d(P,Q) = \sqrt{\frac{(x_1 -
+y_1)^2}{s_{11} } + \frac{(x_2 - y_2)^2}{s_{22} } + ... +\frac{(x_p -
+y_p)^2}{s_{pp} } }\)</span></p></li>
+<li><p>希望能够用二次型的形式直观表述 <span class="math inline">\(P\)</span> 和 <span class="math inline">\(Q\)</span>，或者 <span class="math inline">\(P\)</span> 和 <span class="math inline">\(\mu\)</span> 之间的差异。</p>
+<p><span class="math inline">\(d(P,\mu) = \sqrt{(x-\mu) ^T \Sigma ^{-1}
+(x-\mu)}\)</span></p>
+<p><span class="math inline">\(d(P,Q) = \sqrt{(x-y)^T \Sigma^{-1}
+(x-y)}\)</span></p></li>
+</ul>
+<p>此外还有两个结论：</p>
+<ul>
+<li><p>设 <span class="math inline">\(Z\)</span>
+是一个随机向量，记它的均值向量为 <span class="math inline">\(\mu
+_Z\)</span>，协方差矩阵为 <span class="math inline">\(\Sigma
+_Z\)</span>，二者均有限。<span class="math inline">\(A\)</span>
+是任意的对阵矩阵。于是有 <span class="math inline">\(E[Z^T AZ] =
+trace(A\Sigma_Z) + \mu_Z ^T A \mu_Z\)</span>。</p>
+<p><strong>Proof</strong>:考虑迹的性质。<span class="math inline">\(E[Z^T AZ] = tr(E[Z^T AZ]) = E[tr(Z^TAZ)] =
+E[tr(AZZ^T)] = tr(E[AZZ^T]) = tr(AE[ZZ^T])\)</span>，由<span class="math inline">\(Z\)</span> 是随机向量，<span class="math inline">\(E[ZZ^T] = (\Sigma_Z + \mu_Z ^T \mu_Z)\)</span>，故
+<span class="math inline">\(tr(AE[ZZ^T]) = tr(A\Sigma_Z) + tr(A\mu_Z
+\mu_Z^T) = trace(A\Sigma_Z) + \mu_Z ^T A \mu_Z\)</span>。</p></li>
+<li><p>2-范数的期望：<span class="math inline">\(p\)</span> 阶随机向量
+<span class="math inline">\(X\)</span> 有有限的均值向量 <span class="math inline">\(\mu\)</span> 和协方差矩阵 <span class="math inline">\(\Sigma\)</span>，于是 <span class="math inline">\(E[|| X - \mu ||_2 ^2] = \Sigma_{i=1} ^p
+\sigma_{ii}\)</span>。</p>
+<p><strong>Proof</strong>: 在上一个结论中取 <span class="math inline">\(A=I\)</span>，于是 <span class="math inline">\(E[|| X - \mu ||_2 ^2] = E[(X-\mu )^T I (X-\mu)] =
+tr(I\Sigma) = \Sigma_{i=1} ^p \sigma_{ii}\)</span>。</p>
+<p><strong>Remark</strong>: 对于独立同分布的 <span class="math inline">\(X\)</span> 和 <span class="math inline">\(Y\)</span>，有相同的均值向量和协方差矩阵，于是
+<span class="math inline">\(E[||X-Y||_2^2] = 2 \Sigma _{i=1} ^p \sigma
+_{ii}\)</span>。</p></li>
+</ul>
+<p>最后来考虑 Mahalanobis distance 的期望。<span class="math inline">\(p\)</span> 阶随机向量 <span class="math inline">\(X\)</span> 有有限的均值向量 <span class="math inline">\(\mu\)</span> 和协方差矩阵 <span class="math inline">\(\Sigma\)</span>，其 Mahalanobis distance 定义为
+<span class="math inline">\(||X- \mu ||_\Sigma = d(X,\mu) =
+\sqrt{(X-\mu)^T \Sigma^{-1} (X-\mu)}\)</span>，利用上述结论则 <span class="math inline">\(E[||X- \mu ||_\Sigma ^2] = p\)</span>。</p>
+<p>同理，对于独立同分布的 <span class="math inline">\(X\)</span> 和
+<span class="math inline">\(Y\)</span>，有 <span class="math inline">\(E[||X-Y||_\Sigma ^2] = 2p\)</span>。</p>
+<h2 id="exploratory-data-analysis-eda">Exploratory Data Analysis
+(EDA)</h2>
+<p>这个其实在线性回归课上也学过，主要讲的是数据清洗的原则和方法，也没有什么很实际的内容，感觉在扯皮。wljj
+的课上比较注重解释一些看起来很炫酷的图是怎么画的，真的很应用。</p>
+<p>这个能用 RMarkdown 写的话就好了，Typora 什么时候能支持
+RMarkdown（暴论</p>
+<h3 id="boxplot">Boxplot</h3>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">data <span class="operator">=</span> matrix<span class="punctuation">(</span><span class="number">0</span><span class="punctuation">,</span>nrow<span class="operator">=</span><span class="number">12</span><span class="punctuation">,</span>ncol<span class="operator">=</span><span class="number">2</span><span class="punctuation">)</span></span><br><span class="line">data<span class="punctuation">[</span><span class="punctuation">,</span><span class="number">1</span><span class="punctuation">]</span> <span class="operator">&lt;-</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="number">1</span><span class="punctuation">,</span><span class="number">1</span><span class="punctuation">,</span><span class="number">4</span><span class="punctuation">,</span><span class="number">4</span><span class="punctuation">,</span><span class="number">5</span><span class="punctuation">,</span><span class="number">8</span><span class="punctuation">,</span><span class="number">8</span><span class="punctuation">,</span><span class="number">9</span><span class="punctuation">,</span><span class="number">10</span><span class="punctuation">,</span><span class="number">10</span><span class="punctuation">,</span><span class="number">12</span><span class="punctuation">,</span><span class="number">13</span><span class="punctuation">)</span> <span class="comment"># dataset 1</span></span><br><span class="line">data<span class="punctuation">[</span><span class="punctuation">,</span><span class="number">2</span><span class="punctuation">]</span> <span class="operator">&lt;-</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="number">1</span><span class="punctuation">,</span><span class="number">1</span><span class="punctuation">,</span><span class="number">4</span><span class="punctuation">,</span><span class="number">4</span><span class="punctuation">,</span><span class="number">5</span><span class="punctuation">,</span><span class="number">8</span><span class="punctuation">,</span><span class="number">8</span><span class="punctuation">,</span><span class="number">9</span><span class="punctuation">,</span><span class="number">10</span><span class="punctuation">,</span><span class="number">10</span><span class="punctuation">,</span><span class="number">12</span><span class="punctuation">,</span><span class="number">19</span><span class="punctuation">)</span> <span class="comment"># dataset 2</span></span><br><span class="line"></span><br><span class="line">boxplot<span class="punctuation">(</span>data<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://s2.loli.net/2023/02/25/CU1SBYayWI3MHDO.png" alt="box.png"></p>
+<p>（假装在用 Rmd（</p>
+<p>boxplot 包含了很多信息。盒子的上边表示数据中的 75% 分位数，下边表示
+25% 分位数，盒子中间的线表示中位数。我们将 75% 分位数和 25%
+分位数的差记作 IQR，则盒子上边距离最上方的“触角”的距离是 1.5
+IQR，下边同理。</p>
+<p>对于正态分布来说，两个触角之间的距离表示了所有正常数据的范围，离开这个范围的数据基本上是
+out of 3<span class="math inline">\(\sigma\)</span> 的，可以直观地去除
+outlier。</p>
+<p>在 R 的绘图中会将上“触角”的值定为 75% quantile + 1.5 IQR
+和最大数据之间的较大值，下“触角”同理，因此在上面的这个例子里，两组数据的
+25% quantile 和 75% quantile 都是相同的，绘图结果有差别。</p>
+<h3 id="histogram">Histogram</h3>
+<p>柱状图的宽度还是有讲究的，适当的宽度可以看出分布的形状。通用的是
+<span class="math inline">\(h =( \frac{24\sqrt{\pi} } {n})^{\frac{1}{3}
+}\)</span>。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hist<span class="punctuation">(</span>mpg<span class="operator">$</span>hwy<span class="punctuation">,</span>main <span class="operator">=</span> <span class="string">&quot;Histogram of highway miles per gallon&quot;</span><span class="punctuation">,</span>breaks <span class="operator">=</span> <span class="built_in">round</span><span class="punctuation">(</span><span class="built_in">max</span><span class="punctuation">(</span>mpg<span class="operator">$</span>hwy<span class="punctuation">)</span><span class="operator">-</span><span class="built_in">min</span><span class="punctuation">(</span>mpg<span class="operator">$</span>hwy<span class="punctuation">)</span><span class="operator">/</span><span class="punctuation">(</span><span class="number">24</span><span class="operator">*</span><span class="built_in">sqrt</span><span class="punctuation">(</span><span class="built_in">pi</span><span class="punctuation">)</span><span class="operator">/</span><span class="built_in">length</span><span class="punctuation">(</span>mpg<span class="operator">$</span>hwy<span class="punctuation">)</span><span class="punctuation">)</span><span class="operator">^</span><span class="punctuation">(</span><span class="number">1</span><span class="operator">/</span><span class="number">3</span><span class="punctuation">)</span><span class="punctuation">)</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://s2.loli.net/2023/02/25/hMJW9TKGEmcptCa.png" alt="hist.png"></p>
+<h3 id="scatter-plot">Scatter Plot</h3>
+<p>散点图有很 fancy 的版本，这里展示一些实现：</p>
+<ul>
+<li><p>Scatter Plot</p>
+<p>放一个我线性回归作业里的图罢。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">men <span class="operator">&lt;-</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="number">72.5</span><span class="punctuation">,</span><span class="number">71.5</span><span class="punctuation">,</span><span class="number">70.5</span><span class="punctuation">,</span><span class="number">69.5</span><span class="punctuation">,</span><span class="number">68.5</span><span class="punctuation">,</span><span class="number">67.5</span><span class="punctuation">,</span><span class="number">66.5</span><span class="punctuation">,</span><span class="number">65.5</span><span class="punctuation">,</span><span class="number">64.5</span><span class="punctuation">)</span></span><br><span class="line">brothers <span class="operator">&lt;-</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="number">71.1</span><span class="punctuation">,</span><span class="number">70.2</span><span class="punctuation">,</span><span class="number">69.6</span><span class="punctuation">,</span><span class="number">69.5</span><span class="punctuation">,</span><span class="number">68.7</span><span class="punctuation">,</span><span class="number">67.7</span><span class="punctuation">,</span><span class="number">67.0</span><span class="punctuation">,</span><span class="number">66.5</span><span class="punctuation">,</span><span class="number">65.6</span><span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line">p <span class="operator">=</span> plot.default<span class="punctuation">(</span>men<span class="punctuation">,</span>brothers<span class="punctuation">,</span>xlim <span class="operator">=</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="number">63</span><span class="punctuation">,</span><span class="number">73</span><span class="punctuation">)</span><span class="punctuation">,</span>ylim<span class="operator">=</span><span class="built_in">c</span><span class="punctuation">(</span><span class="number">65</span><span class="punctuation">,</span><span class="number">72</span><span class="punctuation">)</span><span class="punctuation">,</span>main <span class="operator">=</span> <span class="string">&#x27;Heights of men and their brothers&#x27;</span><span class="punctuation">,</span>xlab <span class="operator">=</span> <span class="string">&#x27;medium heights of the men&#x27;</span><span class="punctuation">,</span>ylab <span class="operator">=</span> <span class="string">&#x27;medium heights of the brothers&#x27;</span><span class="punctuation">,</span>col <span class="operator">=</span> <span class="string">&quot;blue&quot;</span><span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line">abline<span class="punctuation">(</span>lm<span class="punctuation">(</span>brothers<span class="operator">~</span>men<span class="punctuation">)</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://s2.loli.net/2023/02/25/I6NaJMgb7L8RiYr.png" alt="plt.png"></p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lm<span class="punctuation">(</span>brothers<span class="operator">~</span>men<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+<p>Call: lm(formula = brothers ~ men)</p>
+<p>Coefficients: (Intercept) men<br>
+22.6525 0.6683</p></li>
+<li><p>Scatter Plot Matrix</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">library<span class="punctuation">(</span>GGally<span class="punctuation">)</span></span><br><span class="line">lizard<span class="operator">&lt;-</span>read.csv<span class="punctuation">(</span><span class="string">&#x27;t1-3.dat&#x27;</span><span class="punctuation">,</span>sep<span class="operator">=</span><span class="string">&#x27;&#x27;</span><span class="punctuation">,</span>header<span class="operator">=</span><span class="built_in">F</span><span class="punctuation">)</span></span><br><span class="line"><span class="built_in">names</span><span class="punctuation">(</span>lizard<span class="punctuation">)</span><span class="operator">&lt;-</span><span class="built_in">c</span><span class="punctuation">(</span><span class="string">&#x27;mass&#x27;</span><span class="punctuation">,</span><span class="string">&#x27;svl&#x27;</span><span class="punctuation">,</span><span class="string">&#x27;hls&#x27;</span><span class="punctuation">)</span></span><br><span class="line">ggpairs<span class="punctuation">(</span>lizard<span class="punctuation">,</span>title <span class="operator">=</span> <span class="string">&#x27;scatter plot matrix of lizard&#x27;</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://s2.loli.net/2023/02/25/KibpxcuaedowJLO.png" alt="spm.png"></p></li>
+<li><p>3D Scatter Plot</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">library<span class="punctuation">(</span>scatterplot3d<span class="punctuation">)</span></span><br><span class="line">data<span class="punctuation">(</span>iris<span class="punctuation">)</span></span><br><span class="line">head<span class="punctuation">(</span>iris<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+<p>Sepal.Length Sepal.Width Petal.Length Petal.Width Species 1 5.1 3.5
+1.4 0.2 setosa 2 4.9 3.0 1.4 0.2 setosa 3 4.7 3.2 1.3 0.2 setosa 4 4.6
+3.1 1.5 0.2 setosa 5 5.0 3.6 1.4 0.2 setosa 6 5.4 3.9 1.7 0.4 setosa</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scatterplot3d<span class="punctuation">(</span>iris<span class="punctuation">[</span><span class="punctuation">,</span><span class="number">1</span><span class="operator">:</span><span class="number">3</span><span class="punctuation">]</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://s2.loli.net/2023/02/25/S3V5gv7AYCD4Efy.png" alt="3d1.png"></p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">colors <span class="operator">&lt;-</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="string">&quot;#999999&quot;</span><span class="punctuation">,</span><span class="string">&quot;#E69F00&quot;</span><span class="punctuation">,</span><span class="string">&quot;#56B4E9&quot;</span><span class="punctuation">)</span></span><br><span class="line">colors <span class="operator">&lt;-</span> colors<span class="punctuation">[</span><span class="built_in">as.numeric</span><span class="punctuation">(</span>iris<span class="operator">$</span>Species<span class="punctuation">)</span><span class="punctuation">]</span></span><br><span class="line"></span><br><span class="line">scatterplot3d<span class="punctuation">(</span>iris<span class="punctuation">[</span><span class="punctuation">,</span><span class="number">1</span><span class="operator">:</span><span class="number">3</span><span class="punctuation">]</span><span class="punctuation">,</span>pch<span class="operator">=</span><span class="number">16</span><span class="punctuation">,</span>color<span class="operator">=</span>colors<span class="punctuation">,</span>main<span class="operator">=</span><span class="string">&#x27;3D scatter plot of iris flower&#x27;</span><span class="punctuation">,</span> grid<span class="operator">=</span><span class="literal">TRUE</span><span class="punctuation">,</span> box<span class="operator">=</span><span class="literal">TRUE</span><span class="punctuation">,</span> type<span class="operator">=</span><span class="string">&quot;h&quot;</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://s2.loli.net/2023/02/25/pRaLXMxUrKqOi5Q.png" alt="3d2.png"></p></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>我很可爱 请给我钱（？）</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.jpg" alt="驰雨Chiyuru 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.jpg" alt="驰雨Chiyuru 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>驰雨Chiyuru
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://chiyuru.github.io/2023/02/25/Multivariate-Statistical-Analysis/" title="多元问题对我来说太难了，但是多元统计分析">https://chiyuru.github.io/2023/02/25/Multivariate-Statistical-Analysis/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E8%AF%BE%E7%A8%8B%E5%AE%9E%E5%BD%95/" rel="tag"># 课程实录</a>
+              <a href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag"># 数学</a>
+              <a href="/tags/%E7%BB%9F%E8%AE%A1/" rel="tag"># 统计</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/02/21/Linear-Regression-Analysis/" rel="prev" title="还就那个线性回归分析">
+      <i class="fa fa-chevron-left"></i> 还就那个线性回归分析
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  
+  <div class="comments">
+  <script src="https://utteranc.es/client.js" repo="Chiyuru/chiyuru.github.io" issue-term="pathname" theme="github-light" crossorigin="anonymous" async></script>
+  </div>
+  
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-1"><span class="nav-text">Lecture 1</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E5%85%83%E6%95%B0%E6%8D%AE%E7%9A%84%E7%BB%84%E7%BB%87"><span class="nav-text">多元数据的组织</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8F%8F%E8%BF%B0%E6%80%A7%E7%BB%9F%E8%AE%A1%E9%87%8F"><span class="nav-text">描述性统计量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mahalanobis-distance"><span class="nav-text">Mahalanobis Distance</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#exploratory-data-analysis-eda"><span class="nav-text">Exploratory Data Analysis
+(EDA)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#boxplot"><span class="nav-text">Boxplot</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#histogram"><span class="nav-text">Histogram</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#scatter-plot"><span class="nav-text">Scatter Plot</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="驰雨Chiyuru"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">驰雨Chiyuru</p>
+  <div class="site-description" itemprop="description">おはよう、朝だよ</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Chiyuru" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Chiyuru" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:mafy21@mails.tsinghua.edu.cn" title="E-Mail → mailto:mafy21@mails.tsinghua.edu.cn" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/Chiyuru_0417" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;Chiyuru_0417" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/ma-fei-yan-33" title="知乎 → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;ma-fei-yan-33" rel="noopener" target="_blank"><i class="fab fa-zhihu fa-fw"></i>知乎</a>
+      </span>
+  </div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="copyright">
+  
+  &copy; 2022 – 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">驰雨Chiyuru</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv1">
+  本站总访客数：<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300,"hOffset":-15,"vOffset":-15},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
+</html>

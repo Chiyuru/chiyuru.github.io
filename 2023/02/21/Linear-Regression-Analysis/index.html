@@ -20,17 +20,25 @@
     var CONFIG = {"hostname":"chiyuru.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="おはよう、朝だよ">
-<meta property="og:type" content="website">
-<meta property="og:title" content="『姑妄言之姑妄听之』">
-<meta property="og:url" content="https://chiyuru.github.io/tags/%E7%A2%8E%E7%A2%8E%E5%BF%B5/index.html">
+  <meta name="description" content="本来真没打算连载这个，结果这课居然把课程笔记算成百分制里面的 10 分（，那就写罢。 有参考 Vica Yang 的统辅笔记和 V1ncent19 的统辅笔记，如果有引用均会在文中注明，在此向前辈表示感谢。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="还就那个线性回归分析">
+<meta property="og:url" content="https://chiyuru.github.io/2023/02/21/Linear-Regression-Analysis/index.html">
 <meta property="og:site_name" content="『姑妄言之姑妄听之』">
-<meta property="og:description" content="おはよう、朝だよ">
+<meta property="og:description" content="本来真没打算连载这个，结果这课居然把课程笔记算成百分制里面的 10 分（，那就写罢。 有参考 Vica Yang 的统辅笔记和 V1ncent19 的统辅笔记，如果有引用均会在文中注明，在此向前辈表示感谢。">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2023/02/26/AHxRkaSBD87fW3V.png">
+<meta property="og:image" content="https://s2.loli.net/2023/02/26/iRyejXI6TuSvroJ.png">
+<meta property="article:published_time" content="2023-02-21T11:12:18.000Z">
+<meta property="article:modified_time" content="2023-02-25T16:15:13.030Z">
 <meta property="article:author" content="驰雨Chiyuru">
+<meta property="article:tag" content="课程实录">
+<meta property="article:tag" content="数学">
+<meta property="article:tag" content="统计">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2023/02/26/AHxRkaSBD87fW3V.png">
 
-<link rel="canonical" href="https://chiyuru.github.io/tags/%E7%A2%8E%E7%A2%8E%E5%BF%B5/">
+<link rel="canonical" href="https://chiyuru.github.io/2023/02/21/Linear-Regression-Analysis/">
 
 
 <script id="page-configurations">
@@ -38,12 +46,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>标签: 碎碎念 | 『姑妄言之姑妄听之』</title>
+  <title>还就那个线性回归分析 | 『姑妄言之姑妄听之』</title>
   
 
 
@@ -176,243 +184,211 @@
         <div class="content-wrap">
           
 
-          <div class="content tag">
+          <div class="content post posts-expand">
             
 
+    
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h2 class="collection-header">碎碎念
-          <small>标签</small>
-        </h2>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://chiyuru.github.io/2023/02/21/Linear-Regression-Analysis/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="驰雨Chiyuru">
+      <meta itemprop="description" content="おはよう、朝だよ">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="『姑妄言之姑妄听之』">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          还就那个线性回归分析
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-02-21 19:12:18" itemprop="dateCreated datePublished" datetime="2023-02-21T19:12:18+08:00">2023-02-21</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-02-26 00:15:13" itemprop="dateModified" datetime="2023-02-26T00:15:13+08:00">2023-02-26</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2023</span>
+        <p>本来真没打算连载这个，结果这课居然把课程笔记算成百分制里面的 10
+分（，那就写罢。</p>
+<p>有参考 <a target="_blank" rel="noopener" href="https://blog.vicayang.cc/tags/statistics/">Vica Yang
+的统辅笔记</a>和 <a target="_blank" rel="noopener" href="https://v1ncent19.github.io/SummaryNotes/">V1ncent19
+的统辅笔记</a>，如果有引用均会在文中注明，在此向前辈表示感谢。</p>
+<span id="more"></span>
+<h1 id="lecture-1">Lecture 1</h1>
+<p>主要是在吹水，开玩笑以及活跃气氛。正经的内容大概就一个古老的回归现象，我还没有听得很懂，麻了。</p>
+<h2 id="galtons-experiment">Galton's Experiment</h2>
+<p>以下全是胡说八道，不能保证完全对。</p>
+<p>介绍正态分布的时候会有一个很经典的小球过钉板的演示实验，最后落在底部的球似乎呈现出一个正态分布。但实际上球和钉子的每次碰撞都是一个
+Bernoulli 过程，过了 n 层钉板就是 n 次 Bernoulli
+过程加和，可以近似为正态分布。实际上只要 n
+够大，由中心极限定理任何分布的加和都可以被近似为正态分布。</p>
+<p>但我觉得实际上小球的情况并不是独立的，毕竟过程中会有相互的碰撞，真的没问题吗（</p>
+<p>回归现象的起源是 Galton
+对于父代和子代的身高做了一个统计，发现身高远离均值的父母的后代往往身高会比他们更接近平均水平，也就是某一身高水平的父母的孩子的身高中位数作为因变量，父母身高作为自变量时，拟合出的直线的斜率小于
+<span class="math inline">\(1\)</span>。</p>
+<p>假设不发生回归现象，则和钉板现象一样，后代的性状会逐渐分散，这被认为是一个种群稳定性状的方式。听起来很玄学，似乎也有一个稍微合理的生物学解释了，但我们希望从统计学的角度分析这件事，背后是存在数学规律的。</p>
+<p><img src="https://s2.loli.net/2023/02/26/AHxRkaSBD87fW3V.png" alt="Galton.png"></p>
+<p>上图是课程中反复出现的一张图，对此做了很多解释。最上面的正态分布是父代的身高情况（实际上是父母身高的加权和），通过一个“倾斜槽”之后的第二个正态分布展示了子代的身高情况，比父代更加靠近中心。下方也有一个类似于钉板的装置，n
+层钉板指的就是 n
+代繁衍的过程，或者也可以指代一代繁衍中的其他影响身高的非基因因素，它们被视作独立同分布的，因此加和由中心极限定理可以被近似为正态分布。</p>
+<p>图中还呈现出了父代中的一个小组“过钉板”后的结果，是一个小的正态分布。实际上子代的数据就是由一个一个小的正态分布叠加起来的，而正态分布可以线性相加，所以最后呈现出的还是正态分布。</p>
+<p>好玄学，我也不知道我在说什么，甚至不是很确定自己理解对了没有。</p>
+<p>Anyway，还是 think mathematically，记 <span class="math inline">\(X_i\)</span> 为第 <span class="math inline">\(i\)</span> 代的种群身高变化量，<span class="math inline">\(\lbrace X_i \rbrace\)</span>
+是独立同分布的。则记父代种群的随机变量为 <span class="math inline">\(F=
+\Sigma _{i=1} ^n X_i\)</span>，子代种群的随机变量为 <span class="math inline">\(S=
+\Sigma_{i=1}^nX_i\)</span>，考虑二者的相关系数：</p>
+<p><span class="math inline">\(\rho(F,S) =
+\frac{cov(F,S)}{\sqrt{Var(F)Var(S)} } = \frac{Var(F) + Cov
+(F,X_n)}{\sqrt{Var(F)Var(S)} }
+=1+\frac{cov(F,X_n)}{Var(F)}&lt;1\)</span>，因此 <span class="math inline">\(\rho(F,X_n)&lt;0\)</span> 也即二者呈负相关。</p>
+<h2 id="一些术语">一些术语</h2>
+<ul>
+<li><p>一般来说，我们把 <span class="math inline">\(X\)</span> 作为
+predictor/input/explanatory variable，把 <span class="math inline">\(Y\)</span> 作为 response/output/dependent
+variable。</p></li>
+<li><p><span class="math inline">\(Y \sim X\)</span> 被称为 simple
+regression，一元总归是简单的。</p>
+<p><span class="math inline">\(Y \sim X_1,X_2,...,X_p\)</span> 称为
+multiple/multivariate regression，实际上这两者是不一样的。</p>
+<p>如果每个回归式中有超过一个 <span class="math inline">\(X\)</span>
+就称为 multiple regression，如果有多个 <span class="math inline">\(Y\)</span> 就称为 multivariate
+regression，并且每个式子里只能有一个不同的 dependent variable。</p>
+<p>还有叫做 multivariate multiple regression 的回归方法，也就是用多个
+<span class="math inline">\(X\)</span> 来预测多个 <span class="math inline">\(Y\)</span> 的情况，每个 <span class="math inline">\(Y\)</span> 出现在不同的式子里。</p></li>
+<li><p>一般来说 <span class="math inline">\(Y\)</span>
+是连续型随机变量，<span class="math inline">\(X\)</span>
+可以是连续型、离散型或者分类型随机变量。有一些名词，不抄了，简单列一下：</p>
+<p><img src="https://s2.loli.net/2023/02/26/iRyejXI6TuSvroJ.png" alt="regression.png"></p></li>
+</ul>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2023-02-01T02:14:35+08:00"
-              content="2023-02-01">
-          02-01
-        </time>
+    
+    
+    
+        <div class="reward-container">
+  <div>我很可爱 请给我钱（？）</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.jpg" alt="驰雨Chiyuru 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.jpg" alt="驰雨Chiyuru 支付宝">
+        <p>支付宝</p>
       </div>
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2023/02/01/Diary-2023-02/" itemprop="url">
-            <span itemprop="name">日记·篇六·23年2月</span>
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>驰雨Chiyuru
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://chiyuru.github.io/2023/02/21/Linear-Regression-Analysis/" title="还就那个线性回归分析">https://chiyuru.github.io/2023/02/21/Linear-Regression-Analysis/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
           </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2023-01-01T12:34:52+08:00"
-              content="2023-01-01">
-          01-01
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2023/01/01/Diary-2023-01/" itemprop="url">
-            <span itemprop="name">日记·篇五·23年1月</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-    <div class="collection-year">
-      <span class="collection-header">2022</span>
-    </div>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-12-01T22:27:34+08:00"
-              content="2022-12-01">
-          12-01
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/12/01/Diary-2022-12/" itemprop="url">
-            <span itemprop="name">日记·篇四·22年12月</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-11-01T02:27:34+08:00"
-              content="2022-11-01">
-          11-01
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/11/01/Diary-2022-11/" itemprop="url">
-            <span itemprop="name">日记·篇三·22年11月</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-10-01T00:20:54+08:00"
-              content="2022-10-01">
-          10-01
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/10/01/Diary-2022-10/" itemprop="url">
-            <span itemprop="name">日记·篇二·22年10月</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-09-07T22:55:03+08:00"
-              content="2022-09-07">
-          09-07
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/09/07/Diary-2022-09/" itemprop="url">
-            <span itemprop="name">日记·篇一·22年9月</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-09-01T22:55:03+08:00"
-              content="2022-09-01">
-          09-01
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/09/01/lying-flat-in-holiday/" itemprop="url">
-            <span itemprop="name">躺平记——暑假特别篇</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-08-17T00:23:56+08:00"
-              content="2022-08-17">
-          08-17
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/08/17/2022-photos-and-fragments/" itemprop="url">
-            <span itemprop="name">用相册细碎地回忆一下在 THU 的第一年</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-08-14T23:52:19+08:00"
-              content="2022-08-14">
-          08-14
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/08/14/Sharygin-Geometry-Olympic/" itemprop="url">
-            <span itemprop="name">2022 Sharygin Geometry Olympic 题解小记</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-07-29T17:15:41+08:00"
-              content="2022-07-29">
-          07-29
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/07/29/sleep(0)/" itemprop="url">
-            <span itemprop="name">睡隙碎笔</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
+        </div>
     </div>
   </div>
-  
-  
-  
 
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E8%AF%BE%E7%A8%8B%E5%AE%9E%E5%BD%95/" rel="tag"># 课程实录</a>
+              <a href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag"># 数学</a>
+              <a href="/tags/%E7%BB%9F%E8%AE%A1/" rel="tag"># 统计</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/02/01/Learn-Mathematical-Analysis-or-Die-2/" rel="prev" title="数学分析 I 速通日志（下）">
+      <i class="fa fa-chevron-left"></i> 数学分析 I 速通日志（下）
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2023/02/25/Multivariate-Statistical-Analysis/" rel="next" title="多元问题对我来说太难了，但是多元统计分析">
+      多元问题对我来说太难了，但是多元统计分析 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
   
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/tags/%E7%A2%8E%E7%A2%8E%E5%BF%B5/page/2/">2</a><a class="extend next" rel="next" href="/tags/%E7%A2%8E%E7%A2%8E%E5%BF%B5/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
-  </nav>
+  
+  
 
 
 
           </div>
           
+    
+  
+  <div class="comments">
+  <script src="https://utteranc.es/client.js" repo="Chiyuru/chiyuru.github.io" issue-term="pathname" theme="github-light" crossorigin="anonymous" async></script>
+  </div>
+  
+  
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -459,6 +435,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-1"><span class="nav-text">Lecture 1</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#galtons-experiment"><span class="nav-text">Galton&#39;s Experiment</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E6%9C%AF%E8%AF%AD"><span class="nav-text">一些术语</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
