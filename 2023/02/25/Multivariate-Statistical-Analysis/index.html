@@ -34,7 +34,7 @@
 <meta property="og:image" content="https://s2.loli.net/2023/02/25/S3V5gv7AYCD4Efy.png">
 <meta property="og:image" content="https://s2.loli.net/2023/02/25/pRaLXMxUrKqOi5Q.png">
 <meta property="article:published_time" content="2023-02-25T01:36:52.000Z">
-<meta property="article:modified_time" content="2023-02-25T16:15:54.091Z">
+<meta property="article:modified_time" content="2023-02-25T17:28:25.536Z">
 <meta property="article:author" content="驰雨Chiyuru">
 <meta property="article:tag" content="课程实录">
 <meta property="article:tag" content="数学">
@@ -225,7 +225,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-02-26 00:15:54" itemprop="dateModified" datetime="2023-02-26T00:15:54+08:00">2023-02-26</time>
+                <time title="修改时间：2023-02-26 01:28:25" itemprop="dateModified" datetime="2023-02-26T01:28:25+08:00">2023-02-26</time>
               </span>
 
           
@@ -358,7 +358,7 @@ s_{kk} = \frac{1}{n} \Sigma_{i=1}^n (x_{ik}-\bar{x_k})^2\)</span>，<span class=
 <li><p>协方差，相关系数：直观上来说体现了线性相关性，相关系数为正则正相关，否则负相关，为
 <span class="math inline">\(0\)</span> 不相关。</p>
 <p>协方差定义为 <span class="math inline">\(s_{ik} = \frac 1 n
-\Sigma_{j=1}^n (x_{ji} - \bar{x_i})) (x_{ji} -
+\Sigma_{j=1}^n (x_{ji} - \bar{x_i}) (x_{ji} -
 \bar{x_k})\)</span>，可以看到实际上 <span class="math inline">\(s_{ik} =
 s_{ki}\)</span>，于是协方差矩阵有</p>
 <p><span class="math display">\[ \begin{bmatrix} s_{11} &amp; s_{12}
@@ -397,7 +397,7 @@ y_p)^2}{s_{pp} } }\)</span></p></li>
 是一个随机向量，记它的均值向量为 <span class="math inline">\(\mu
 _Z\)</span>，协方差矩阵为 <span class="math inline">\(\Sigma
 _Z\)</span>，二者均有限。<span class="math inline">\(A\)</span>
-是任意的对阵矩阵。于是有 <span class="math inline">\(E[Z^T AZ] =
+是任意的对称矩阵。于是有 <span class="math inline">\(E[Z^T AZ] =
 trace(A\Sigma_Z) + \mu_Z ^T A \mu_Z\)</span>。</p>
 <p><strong>Proof</strong>:考虑迹的性质。<span class="math inline">\(E[Z^T AZ] = tr(E[Z^T AZ]) = E[tr(Z^TAZ)] =
 E[tr(AZZ^T)] = tr(E[AZZ^T]) = tr(AE[ZZ^T])\)</span>，由<span class="math inline">\(Z\)</span> 是随机向量，<span class="math inline">\(E[ZZ^T] = (\Sigma_Z + \mu_Z ^T \mu_Z)\)</span>，故
@@ -459,14 +459,11 @@ outlier。</p>
 <p><img src="https://s2.loli.net/2023/02/25/KibpxcuaedowJLO.png" alt="spm.png"></p></li>
 <li><p>3D Scatter Plot</p>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">library<span class="punctuation">(</span>scatterplot3d<span class="punctuation">)</span></span><br><span class="line">data<span class="punctuation">(</span>iris<span class="punctuation">)</span></span><br><span class="line">head<span class="punctuation">(</span>iris<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-<p>Sepal.Length Sepal.Width Petal.Length Petal.Width Species 1 5.1 3.5
-1.4 0.2 setosa 2 4.9 3.0 1.4 0.2 setosa 3 4.7 3.2 1.3 0.2 setosa 4 4.6
-3.1 1.5 0.2 setosa 5 5.0 3.6 1.4 0.2 setosa 6 5.4 3.9 1.7 0.4 setosa</p>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scatterplot3d<span class="punctuation">(</span>iris<span class="punctuation">[</span><span class="punctuation">,</span><span class="number">1</span><span class="operator">:</span><span class="number">3</span><span class="punctuation">]</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
 <p><img src="https://s2.loli.net/2023/02/25/S3V5gv7AYCD4Efy.png" alt="3d1.png"></p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">colors <span class="operator">&lt;-</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="string">&quot;#999999&quot;</span><span class="punctuation">,</span><span class="string">&quot;#E69F00&quot;</span><span class="punctuation">,</span><span class="string">&quot;#56B4E9&quot;</span><span class="punctuation">)</span></span><br><span class="line">colors <span class="operator">&lt;-</span> colors<span class="punctuation">[</span><span class="built_in">as.numeric</span><span class="punctuation">(</span>iris<span class="operator">$</span>Species<span class="punctuation">)</span><span class="punctuation">]</span></span><br><span class="line"></span><br><span class="line">scatterplot3d<span class="punctuation">(</span>iris<span class="punctuation">[</span><span class="punctuation">,</span><span class="number">1</span><span class="operator">:</span><span class="number">3</span><span class="punctuation">]</span><span class="punctuation">,</span>pch<span class="operator">=</span><span class="number">16</span><span class="punctuation">,</span>color<span class="operator">=</span>colors<span class="punctuation">,</span>main<span class="operator">=</span><span class="string">&#x27;3D scatter plot of iris flower&#x27;</span><span class="punctuation">,</span> grid<span class="operator">=</span><span class="literal">TRUE</span><span class="punctuation">,</span> box<span class="operator">=</span><span class="literal">TRUE</span><span class="punctuation">,</span> type<span class="operator">=</span><span class="string">&quot;h&quot;</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-<p><img src="https://s2.loli.net/2023/02/25/pRaLXMxUrKqOi5Q.png" alt="3d2.png"></p></li>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">colors <span class="operator">&lt;-</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="string">&quot;#999999&quot;</span><span class="punctuation">,</span><span class="string">&quot;#E69F00&quot;</span><span class="punctuation">,</span><span class="string">&quot;#56B4E9&quot;</span><span class="punctuation">)</span></span><br><span class="line">colors <span class="operator">&lt;-</span> colors<span class="punctuation">[</span><span class="built_in">as.numeric</span><span class="punctuation">(</span>iris<span class="operator">$</span>Species<span class="punctuation">)</span><span class="punctuation">]</span></span><br><span class="line"></span><br><span class="line">scatterplot3d<span class="punctuation">(</span>iris<span class="punctuation">[</span><span class="punctuation">,</span><span class="number">1</span><span class="operator">:</span><span class="number">3</span><span class="punctuation">]</span><span class="punctuation">,</span>pch<span class="operator">=</span><span class="number">16</span><span class="punctuation">,</span>color<span class="operator">=</span>colors<span class="punctuation">,</span>main<span class="operator">=</span><span class="string">&#x27;3D scatter plot of iris flower&#x27;</span><span class="punctuation">,</span> grid<span class="operator">=</span><span class="literal">TRUE</span><span class="punctuation">,</span> box<span class="operator">=</span><span class="literal">TRUE</span><span class="punctuation">,</span> type<span class="operator">=</span><span class="string">&quot;h&quot;</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure></li>
 </ul>
+<p><img src="https://s2.loli.net/2023/02/25/pRaLXMxUrKqOi5Q.png" alt="3d2.png"></p>
 
     </div>
 
