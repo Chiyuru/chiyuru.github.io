@@ -20,17 +20,17 @@
     var CONFIG = {"hostname":"chiyuru.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="本来真没打算连载这个，结果这课居然把课程笔记算成百分制里面的 10 分（，那就写罢。 有参考 Vica Yang 的统辅笔记和 V1ncent19 的统辅笔记，如果有引用均会在文中注明，在此向前辈表示感谢。">
+  <meta name="description" content="本来真没打算连载这个，结果这课居然把课程笔记算成百分制里面的 10 分（，那就写罢。 有参考 Vica Yang 的统辅笔记，JhZhang 的课堂笔记和 V1ncent19 的统辅笔记，如有引用均会在文中注明，在此向前辈表示感谢。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="还就那个线性回归分析">
 <meta property="og:url" content="https://chiyuru.github.io/2023/02/21/Linear-Regression-Analysis/index.html">
 <meta property="og:site_name" content="『姑妄言之姑妄听之』">
-<meta property="og:description" content="本来真没打算连载这个，结果这课居然把课程笔记算成百分制里面的 10 分（，那就写罢。 有参考 Vica Yang 的统辅笔记和 V1ncent19 的统辅笔记，如果有引用均会在文中注明，在此向前辈表示感谢。">
+<meta property="og:description" content="本来真没打算连载这个，结果这课居然把课程笔记算成百分制里面的 10 分（，那就写罢。 有参考 Vica Yang 的统辅笔记，JhZhang 的课堂笔记和 V1ncent19 的统辅笔记，如有引用均会在文中注明，在此向前辈表示感谢。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://s2.loli.net/2023/02/26/AHxRkaSBD87fW3V.png">
 <meta property="og:image" content="https://s2.loli.net/2023/02/26/iRyejXI6TuSvroJ.png">
 <meta property="article:published_time" content="2023-02-21T11:12:18.000Z">
-<meta property="article:modified_time" content="2023-03-02T14:58:27.977Z">
+<meta property="article:modified_time" content="2023-03-03T04:05:27.619Z">
 <meta property="article:author" content="驰雨Chiyuru">
 <meta property="article:tag" content="课程实录">
 <meta property="article:tag" content="数学">
@@ -221,7 +221,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-03-02 22:58:27" itemprop="dateModified" datetime="2023-03-02T22:58:27+08:00">2023-03-02</time>
+                <time title="修改时间：2023-03-03 12:05:27" itemprop="dateModified" datetime="2023-03-03T12:05:27+08:00">2023-03-03</time>
               </span>
 
           
@@ -238,8 +238,9 @@
         <p>本来真没打算连载这个，结果这课居然把课程笔记算成百分制里面的 10
 分（，那就写罢。</p>
 <p>有参考 <a target="_blank" rel="noopener" href="https://blog.vicayang.cc/tags/statistics/">Vica Yang
-的统辅笔记</a>和 <a target="_blank" rel="noopener" href="https://v1ncent19.github.io/SummaryNotes/">V1ncent19
-的统辅笔记</a>，如果有引用均会在文中注明，在此向前辈表示感谢。</p>
+的统辅笔记</a>，<a target="_blank" rel="noopener" href="https://www.zhihu.com/column/c_1332050772843511808">JhZhang
+的课堂笔记</a>和 <a target="_blank" rel="noopener" href="https://v1ncent19.github.io/SummaryNotes/">V1ncent19
+的统辅笔记</a>，如有引用均会在文中注明，在此向前辈表示感谢。</p>
 <span id="more"></span>
 <h1 id="lecture-1">Lecture 1</h1>
 <p>主要是在吹水，开玩笑以及活跃气氛。正经的内容大概就一个古老的回归现象，我还没有听得很懂，麻了。</p>
@@ -318,6 +319,7 @@ X_i\)</span>，<span class="math inline">\(Var(Y_i)=Var(\varepsilon_i) =
 N(\beta_0 + \beta_1 X_i,\sigma^2)\)</span>，<span class="math inline">\(i=1,2,...,n\)</span>。</p>
 <h3 id="参数的意义和求算">参数的意义和求算</h3>
 <p>斜率 <span class="math inline">\(\beta_1\)</span> 的意义为 <span class="math inline">\(X_i\)</span> 增加 1 单位时 <span class="math inline">\(Y_i\)</span> 的变化量；截距 <span class="math inline">\(\beta_0\)</span> 的意义分两种情况解释，当 <span class="math inline">\(X_i\)</span> 取值范围中有 <span class="math inline">\(0\)</span> 时即为 <span class="math inline">\(X_i=0\)</span> 时的平均响应 <span class="math inline">\(E(Y_i)\)</span>，否则截距没有意义。</p>
+<h4 id="least-sum-of-square-方法">Least Sum of Square 方法</h4>
 <p>求算最佳参数实际上就是求使得 sum of squared diff 最小的 <span class="math inline">\(\hat{\beta_0},\hat{\beta_1}\)</span>，从而得到
 <span class="math inline">\(Y_i\)</span> 的估计值 $= + X_i $。于是有
 <span class="math inline">\(\hat{\beta_0},\hat{\beta_1} = \arg \min
@@ -348,12 +350,198 @@ _i\)</span> 是随机变量。</p>
 的估计，使用残差 <span class="math inline">\(e_1,...,e_n\)</span>
 来考虑。</p>
 <p>取 <span class="math inline">\(\hat{\sigma ^2} = \frac{\Sigma _{i=1}
-^n e_i ^2}{n-2}\)</span>。这是因为 <span class="math inline">\(e_1,e_2,...,e_n\)</span> 的自由度为 <span class="math inline">\(df_E = n-2\)</span>，考虑 sum of square <span class="math inline">\(SSE= \Sigma_{i=1} ^n (Y_i - \hat{Y_i})^2=\Sigma
-_{i=1} ^n e_i ^2\)</span>，定义 mean of squared errors <span class="math inline">\(MSE= \frac{SSE}{df_E} = \frac{\Sigma_{i=1}^n e_i
+^n e_i ^2}{n-2}\)</span>。这是因为 <span class="math inline">\(e_1,e_2,...,e_n\)</span> 的 degree of
+freedom（自由度） 记为 <span class="math inline">\(df_E =
+n-2\)</span>，由此考虑 sum of square <span class="math inline">\(SSE=
+\Sigma_{i=1} ^n (Y_i - \hat{Y_i})^2=\Sigma _{i=1} ^n e_i
+^2\)</span>，定义 mean of squared errors <span class="math inline">\(MSE= \frac{SSE}{df_E} = \frac{\Sigma_{i=1}^n e_i
 ^2}{n-2}\)</span> 为 <span class="math inline">\(\hat{\sigma
 ^2}\)</span>。</p>
+<h4 id="mle-方法">MLE 方法</h4>
+<p>也可以用推断课上的 MLE 方法。实际上，我们想找到一个 <span class="math inline">\(\beta_0,\beta_1\)</span> 的最佳估计，还可以使用
+MLE 方法进行估计。</p>
+<p>在正态假设下，我们可以将 <span class="math inline">\(n\)</span>
+组数据视作 <span class="math inline">\(n\)</span>
+个互相独立的随机变量，取使得其likelihood function 最大的一组 <span class="math inline">\(\beta_-,\beta_1,\sigma^2\)</span>
+作为估计量。likelihood function 即为 <span class="math inline">\(f(y_1,y_2,...,y_n) =
+f_1(y_1)...f_n(y_n)\)</span>，得到的 estimator 中 <span class="math inline">\(\hat{\beta_0},\hat{\beta_1}\)</span> 与 least sum
+of square 中得出的估计量相同，但 <span class="math inline">\(\hat{\sigma
+^2} = \frac{\Sigma _{i=1} ^n e_i
+^2}{n}\)</span>。注意这是一个有偏的估计量，而 least sum of square
+得到的估计量是无偏的。</p>
 <h2 id="推断复习">推断复习</h2>
 <p>咕了。什么嘛，我推断学得还是可以的嘛（x</p>
+<h1 id="附录">附录</h1>
+<h2 id="常见重要分布">常见重要分布</h2>
+<p>From <a target="_blank" rel="noopener" href="https://v1ncent19.github.io/SummaryNotes/">Statistic
+Note</a> P10, by V1ncent19</p>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><span class="math inline">\(X\)</span></th>
+<th><span class="math inline">\(p_X(k)\big/f_X(x)\)</span></th>
+<th><span class="math inline">\(\mathbb{E}\)</span></th>
+<th><span class="math inline">\(var\)</span></th>
+<th>PGF</th>
+<th>MGF</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(\mathrm{Bern} (p)\)</span></td>
+<td></td>
+<td><span class="math inline">\(p\)</span></td>
+<td><span class="math inline">\(pq\)</span></td>
+<td></td>
+<td><span class="math inline">\(q+pe^s\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(B (n,p)\)</span></td>
+<td><span class="math inline">\(C_n^k p^k(1-p)^{n-k}\)</span></td>
+<td><span class="math inline">\(np\)</span></td>
+<td><span class="math inline">\(npq\)</span></td>
+<td><span class="math inline">\((q+ps)^n\)</span></td>
+<td><span class="math inline">\((q+pe^s)^n\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\mathrm{Geo} (p)\)</span></td>
+<td><span class="math inline">\((1-p)^{k-1}p\)</span></td>
+<td><span class="math inline">\(\dfrac{1}{p}\)</span></td>
+<td><span class="math inline">\(\dfrac{q}{p^2}\)</span></td>
+<td><span class="math inline">\(\dfrac{ps}{1-qs}\)</span></td>
+<td><span class="math inline">\(\dfrac{pe^s}{1-qe^s}\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(H(n,M,N)\)</span></td>
+<td><span class="math inline">\(\dfrac{C_M^kC_{N-M}^{n-k}}{C_N^n}\)</span></td>
+<td><span class="math inline">\(n\dfrac{M}{N}\)</span></td>
+<td><span class="math inline">\(\dfrac{nM(N-n)(N-M)}{N^2(n-1)}\)</span></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(P(\lambda)\)</span></td>
+<td><span class="math inline">\(\dfrac{\lambda^k}{k!}e^{-\lambda}\)</span></td>
+<td><span class="math inline">\(\lambda\)</span></td>
+<td><span class="math inline">\(\lambda\)</span></td>
+<td><span class="math inline">\(e^{\lambda(s-1)}\)</span></td>
+<td><span class="math inline">\(e^{\lambda(e^s-1)}\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(U(a,b)\)</span></td>
+<td><span class="math inline">\(\dfrac{1}{b-a}\)</span></td>
+<td><span class="math inline">\(\dfrac{a+b}{2}\)</span></td>
+<td><span class="math inline">\(\dfrac{(b-a)^2}{12}\)</span></td>
+<td></td>
+<td><span class="math inline">\(\dfrac{e^{sb}-e^{sa}}{(b-a)^s}\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(N(\mu,\sigma^2)\)</span></td>
+<td><span class="math inline">\(\dfrac{1}{\sigma
+\sqrt{2\pi}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}\)</span></td>
+<td><span class="math inline">\(\mu\)</span></td>
+<td><span class="math inline">\(\sigma^2\)</span></td>
+<td></td>
+<td><span class="math inline">\(e^{\frac{\sigma^2s^2}{2}+\mu
+s}\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\epsilon(\lambda)\)</span></td>
+<td><span class="math inline">\(\lambda e^{-\lambda x}\)</span></td>
+<td><span class="math inline">\(\dfrac{1}{\lambda}\)</span></td>
+<td><span class="math inline">\(\dfrac{1}{\lambda^2}\)</span></td>
+<td></td>
+<td><span class="math inline">\(\frac{\lambda}{\lambda-s}\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\Gamma(\alpha,\lambda)\)</span></td>
+<td><span class="math inline">\(\dfrac{\lambda^\alpha}{\Gamma(\alpha)}x^{\alpha-1}e^{-\lambda
+x}\)</span></td>
+<td><span class="math inline">\(\dfrac{\alpha}{\lambda}\)</span></td>
+<td><span class="math inline">\(\dfrac{\alpha}{\lambda^2}\)</span></td>
+<td></td>
+<td>$()^<span class="math inline">\(| |\)</span>B(,)$</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\chi^2_n\)</span></td>
+<td><span class="math inline">\(\dfrac{1}{2^{\frac{n}{2}}\Gamma(\frac{n}{2})}x^{\frac{n}{2}-1}e^{-\frac{x}{2}}\)</span></td>
+<td><span class="math inline">\(n\)</span></td>
+<td><span class="math inline">\(2n\)</span></td>
+<td></td>
+<td>$ (1-2s)^{-n/2} $</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(t_\nu\)</span></td>
+<td><span class="math inline">\(\dfrac{\Gamma(\frac{\nu+1}{2})}{\sqrt{\nu\pi}\Gamma(\frac{\nu}{2})}(1+\frac{x^2}{\nu})^{-\frac{\nu+1}{2}}\)</span></td>
+<td><span class="math inline">\(0\)</span></td>
+<td><span class="math inline">\(\dfrac{\nu}{\nu-2}\)</span></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(F_{m,n}\)</span></td>
+<td><span class="math inline">\(\dfrac{\Gamma(\frac{m+n}{2})}{\Gamma(\frac{m}{2})\Gamma(\frac{n}{2})}\dfrac{m^\frac{m}{2}n^\frac{n}{2}x^{\frac{m}{2}-1}}{(mx+n)^{\frac{m+n}{2}}}\)</span></td>
+<td><span class="math inline">\(\dfrac{n}{n-2}\)</span></td>
+<td><span class="math inline">\(\dfrac{2n^2(m+n-2)}{m(n-2)^2(n-4)}\)</span></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Consider <span class="math inline">\(X_1,X_2,\ldots,X_n\)</span>
+i.i.d. <span class="math inline">\(\sim N(0,1)\)</span>; <span class="math inline">\(Y,Y_1,Y_2,\ldots,Y_m\)</span> i.i.d. <span class="math inline">\(\sim N(0,1)\)</span> - <span class="math inline">\(\chi^2\)</span> Distribution：</p>
+<p><span class="math inline">\(\chi^2\)</span> distribution with degree
+of freedom <span class="math inline">\(n\)</span>：$ =_{i=1}^n
+X_i<sup>2</sup>2_n$。 For independent <span class="math inline">\(\xi_i\sim\chi^2_{n_i},\,
+i=1,2,\ldots,k\)</span>：<span class="math inline">\(x_{i_0}=\sum_{i=1}^k\xi_i\sim\chi^2_{n_1+\ldots+n_k}\)</span></p>
+<ul>
+<li><p><span class="math inline">\(t\)</span> Distribution：</p>
+<p><span class="math inline">\(t\)</span> distribution with degree of
+freedom <span class="math inline">\(n\)</span>：$ T==t_n$</p>
+<p>Upper <span class="math inline">\(\alpha\)</span>-fractile of <span class="math inline">\(t_\nu\)</span>, satisfies <span class="math inline">\(\mathbb{P}(T\geq
+c)=\alpha\)</span>，$t_{,}=<em>{c}(Tc)=,Tt</em>$</p></li>
+<li><p><span class="math inline">\(F\)</span> Distribution：</p>
+<p><span class="math inline">\(F\)</span> distribution with degree of
+freedom <span class="math inline">\(m\)</span> and <span class="math inline">\(n\)</span>：$ F=F_{m,n}$</p>
+<ul>
+<li>If <span class="math inline">\(Z\sim F_{m,n}\)</span>, then <span class="math inline">\(\dfrac{1}{Z}\sim F_{n,m}\)</span>；</li>
+<li>If <span class="math inline">\(T\sim t_n\)</span>, then <span class="math inline">\(T^2\sim F_{1,n}\)</span>；</li>
+<li><span class="math inline">\(F_{m,n,1-\alpha}=\dfrac{1}{F_{n,m,\alpha}}\)</span>
+。</li>
+</ul></li>
+</ul>
+<p>Some useful lemmas in statistical inference：</p>
+<ul>
+<li><p>For <span class="math inline">\(X_1,X_2,\ldots,X_n\)</span>
+independent with <span class="math inline">\(X_i\sim
+N(\mu_i,\sigma^2_i)\)</span>, then <span class="math inline">\(\sum_{i=1}^n\left(\frac{X_i-\mu_i}{\sigma_i}\right)^2\sim
+\chi^2_n\)</span></p></li>
+<li><p>For <span class="math inline">\(X_1,X_2,\ldots,X_n\)</span>
+i.i.d.<span class="math inline">\(\sim N(\mu,\sigma^2)\)</span>, then $
+T=t_{n-1} $</p></li>
+<li><p>For <span class="math inline">\(X_1,X_2,\ldots,X_m\)</span>
+i.i.d.<span class="math inline">\(\sim N(\mu_1,\sigma^2)\)</span>, <span class="math inline">\(Y_1,Y_2,\ldots,Y_n\)</span> i.i.d.<span class="math inline">\(\sim N(\mu_2,\sigma^2)\)</span>,d enote sample
+pooled variance <span class="math inline">\(S_{\omega}^2=\dfrac{(m-1)S^2_1+(n-1)S^2_2}{m+n-2}\)</span>,
+then <span class="math inline">\(T=\frac{(\bar{X}-\bar{Y})-(\mu_1-\mu_2)}{S_{\omega}}\cdot
+\sqrt{\frac{mn}{m+n}}\sim t_{m+n-2}\)</span></p></li>
+<li><p>For <span class="math inline">\(X_1,X_2,\ldots,X_m\)</span>
+i.i.d.<span class="math inline">\(\sim N(\mu,\sigma^2)\)</span>, <span class="math inline">\(Y_1,Y_2,\ldots,Y_n\)</span> i.i.d.<span class="math inline">\(\sim N(\mu_2,\sigma^2)\)</span>, then
+$T=F_{m-1,n-1} $</p></li>
+<li><p>For <span class="math inline">\(X_1,X_2,\ldots,X_n\)</span>
+i.i.d. <span class="math inline">\(\sim \varepsilon(\lambda)\)</span>,
+then $ 2n{X}=2<em>{i=1}^nX_i ^2</em>{2n} $</p>
+<p>Remark：for <span class="math inline">\(X_i\sim\varepsilon(\lambda)=\Gamma(1,\lambda)\)</span>，<span class="math inline">\(2\lambda\sum_{i=1}^nX_i\sim\Gamma(n,1/2)=\chi^2_{2n}\)</span>.</p></li>
+</ul>
+<h2 id="分位数速查">分位数速查</h2>
+<p>用 R 怎么算还没研究完，先放个分位数图算了。</p>
 
     </div>
 
@@ -502,7 +690,7 @@ _{i=1} ^n e_i ^2\)</span>，定义 mean of squared errors <span class="math inli
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-1"><span class="nav-text">Lecture 1</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#galtons-experiment"><span class="nav-text">Galton&#39;s Experiment</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E6%9C%AF%E8%AF%AD"><span class="nav-text">一些术语</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-2"><span class="nav-text">Lecture 2</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#simple-linear-regression"><span class="nav-text">Simple Linear Regression</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%9A%84%E7%BB%84%E7%BB%87%E5%92%8C%E8%A1%A8%E7%A4%BA"><span class="nav-text">数据的组织和表示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E7%9A%84%E8%A1%A8%E7%A4%BA"><span class="nav-text">模型的表示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E7%9A%84%E6%84%8F%E4%B9%89%E5%92%8C%E6%B1%82%E7%AE%97"><span class="nav-text">参数的意义和求算</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%A8%E6%96%AD%E5%A4%8D%E4%B9%A0"><span class="nav-text">推断复习</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-1"><span class="nav-text">Lecture 1</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#galtons-experiment"><span class="nav-text">Galton&#39;s Experiment</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E6%9C%AF%E8%AF%AD"><span class="nav-text">一些术语</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-2"><span class="nav-text">Lecture 2</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#simple-linear-regression"><span class="nav-text">Simple Linear Regression</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%9A%84%E7%BB%84%E7%BB%87%E5%92%8C%E8%A1%A8%E7%A4%BA"><span class="nav-text">数据的组织和表示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E7%9A%84%E8%A1%A8%E7%A4%BA"><span class="nav-text">模型的表示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E7%9A%84%E6%84%8F%E4%B9%89%E5%92%8C%E6%B1%82%E7%AE%97"><span class="nav-text">参数的意义和求算</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#least-sum-of-square-%E6%96%B9%E6%B3%95"><span class="nav-text">Least Sum of Square 方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mle-%E6%96%B9%E6%B3%95"><span class="nav-text">MLE 方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%A8%E6%96%AD%E5%A4%8D%E4%B9%A0"><span class="nav-text">推断复习</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%99%84%E5%BD%95"><span class="nav-text">附录</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E9%87%8D%E8%A6%81%E5%88%86%E5%B8%83"><span class="nav-text">常见重要分布</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E4%BD%8D%E6%95%B0%E9%80%9F%E6%9F%A5"><span class="nav-text">分位数速查</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
