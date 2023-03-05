@@ -34,7 +34,7 @@
 <meta property="og:image" content="https://s2.loli.net/2023/02/25/S3V5gv7AYCD4Efy.png">
 <meta property="og:image" content="https://s2.loli.net/2023/02/25/pRaLXMxUrKqOi5Q.png">
 <meta property="article:published_time" content="2023-02-25T01:36:52.000Z">
-<meta property="article:modified_time" content="2023-03-03T16:48:25.606Z">
+<meta property="article:modified_time" content="2023-03-05T07:59:16.471Z">
 <meta property="article:author" content="驰雨Chiyuru">
 <meta property="article:tag" content="课程实录">
 <meta property="article:tag" content="数学">
@@ -225,7 +225,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-03-04 00:48:25" itemprop="dateModified" datetime="2023-03-04T00:48:25+08:00">2023-03-04</time>
+                <time title="修改时间：2023-03-05 15:59:16" itemprop="dateModified" datetime="2023-03-05T15:59:16+08:00">2023-03-05</time>
               </span>
 
           
@@ -458,12 +458,141 @@ outlier。</p>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">library<span class="punctuation">(</span>scatterplot3d<span class="punctuation">)</span></span><br><span class="line">data<span class="punctuation">(</span>iris<span class="punctuation">)</span></span><br><span class="line">head<span class="punctuation">(</span>iris<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scatterplot3d<span class="punctuation">(</span>iris<span class="punctuation">[</span><span class="punctuation">,</span><span class="number">1</span><span class="operator">:</span><span class="number">3</span><span class="punctuation">]</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
 <p><img src="https://s2.loli.net/2023/02/25/S3V5gv7AYCD4Efy.png" alt="3d1.png"></p>
-<p>```R colors &lt;- c("#999999","#E69F00","#56B4E9") colors &lt;-
-colors[as.numeric(iris$Species)]</p>
-<p>scatterplot3d(iris[,1:3],pch=16,color=colors,main='3D scatter plot of
-iris flower', grid=TRUE, box=TRUE, type="h")</p></li>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">colors <span class="operator">&lt;-</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="string">&quot;#999999&quot;</span><span class="punctuation">,</span><span class="string">&quot;#E69F00&quot;</span><span class="punctuation">,</span><span class="string">&quot;#56B4E9&quot;</span><span class="punctuation">)</span></span><br><span class="line">colors <span class="operator">&lt;-</span> colors<span class="punctuation">[</span><span class="built_in">as.numeric</span><span class="punctuation">(</span>iris<span class="operator">$</span>Species<span class="punctuation">)</span><span class="punctuation">]</span></span><br><span class="line"></span><br><span class="line">scatterplot3d<span class="punctuation">(</span>iris<span class="punctuation">[</span><span class="punctuation">,</span><span class="number">1</span><span class="operator">:</span><span class="number">3</span><span class="punctuation">]</span><span class="punctuation">,</span>pch<span class="operator">=</span><span class="number">16</span><span class="punctuation">,</span>color<span class="operator">=</span>colors<span class="punctuation">,</span>main<span class="operator">=</span><span class="string">&#x27;3D scatter plot of iris flower&#x27;</span><span class="punctuation">,</span> grid<span class="operator">=</span><span class="literal">TRUE</span><span class="punctuation">,</span> box<span class="operator">=</span><span class="literal">TRUE</span><span class="punctuation">,</span> type<span class="operator">=</span><span class="string">&quot;h&quot;</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure></li>
 </ul>
 <p><img src="https://s2.loli.net/2023/02/25/pRaLXMxUrKqOi5Q.png" alt="3d2.png"></p>
+<h1 id="lecture-2">Lecture 2</h1>
+<p>介绍了一些矩阵方法，以及复习线性代数。</p>
+<h2 id="linear-algebra">Linear Algebra</h2>
+<p>什么嘛，我线代学得还可以嘛（喜</p>
+<p>矩阵分解的复习就跳过了，也就那点东西，主要是谱分解和奇异值分解。</p>
+<h3 id="matrix-interpretation-of-mahalanobis-distance">Matrix
+Interpretation of Mahalanobis-distance</h3>
+<p>注意一些左乘矩阵代表的意义，比如在 Mahalanobis
+距离中常用的处理方式是旋转和伸缩，二者分别可以左乘一个正交矩阵/对角矩阵来完成。</p>
+<p>因此，回忆一下 Mahalanobis 距离的表达式 <span class="math inline">\(d(P,Q) = \sqrt{(x-y)^T \Sigma^{-1}
+(x-y)}\)</span>，其中要求 <span class="math inline">\(\Sigma\)</span>
+是一个对称正定矩阵，可以分解为 <span class="math inline">\(\Sigma = P
+AP^T\)</span> 的形式，其中 <span class="math inline">\(P\)</span>
+是正交矩阵，<span class="math inline">\(A\)</span>
+是特征值对角矩阵。</p>
+<h3 id="matrix-inequality">Matrix Inequality</h3>
+<p><strong>Extended Cauchy-Schwartz Inequality</strong>：对于两个 <span class="math inline">\(p \times 1\)</span> 大小的向量 <span class="math inline">\(b,d\)</span>，任意的 <span class="math inline">\(B\)</span> 满足是对称正定矩阵，于是有</p>
+<p><span class="math display">\[(b^T d)^2 \leq (b^T Bb)(d B^{-1}
+d)\]</span>，</p>
+<p>等号成立当且仅当 <span class="math inline">\(b=cB^{-1}
+d\)</span>，<span class="math inline">\(c\)</span> 是常数。</p>
+<p><strong>Proof</strong>（证明摘自 <a target="_blank" rel="noopener" href="https://blog.vicayang.cc/Note-Matrix-Foundation-for-MSA/#%E5%B9%BF%E4%B9%89cauchy-schwarz%E4%B8%8D%E7%AD%89%E5%BC%8F">Vica's
+Blog</a>）：注意到</p>
+<p><span class="math display">\[\boldsymbol{b}^\intercal\boldsymbol{d}=\boldsymbol{b}^\intercal\boldsymbol{I}\boldsymbol{d}=\boldsymbol{b}^\intercal\boldsymbol{B}^{1/2}\boldsymbol{B}^{-1/2}\boldsymbol{d}=(\boldsymbol{B}^{1/2}\boldsymbol{b})^\intercal(\boldsymbol{B}^{-1/2}\boldsymbol{d})\]</span></p>
+<p>然后套用柯西不等式即得证。</p>
+<p><strong>Maximization Lemma</strong>：<span class="math inline">\(B\)</span> 是对称正定矩阵，<span class="math inline">\(d\)</span> 是给定的向量，于是对于任意不为零的向量
+<span class="math inline">\(x\)</span>，有</p>
+<p><span class="math display">\[\max _{x\neq 0} \frac{(x^T d)^2}{x^T Bx}
+= d^T B^{-1} d\]</span>，</p>
+<p>取到最大值时有 <span class="math inline">\(x = c B^{-1}
+d\)</span>，<span class="math inline">\(c\)</span> 是常数。</p>
+<p><strong>Proof</strong>：即为 Extended Cauchy-Schwartz Inequality
+的变形。</p>
+<h2 id="描述性统计量的矩阵表示">描述性统计量的矩阵表示</h2>
+<p>上次说到把二维数据组织成 <span class="math inline">\(n \times
+p\)</span> 尺寸的表格：</p>
+<table>
+<colgroup>
+<col style="width: 11%">
+<col style="width: 18%">
+<col style="width: 18%">
+<col style="width: 7%">
+<col style="width: 18%">
+<col style="width: 7%">
+<col style="width: 18%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>Variable 1</th>
+<th>Variable 2</th>
+<th>...</th>
+<th>Variable i</th>
+<th>...</th>
+<th>Variable p</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Item 1</td>
+<td><span class="math inline">\(x_{11}\)</span></td>
+<td><span class="math inline">\(x_{12}\)</span></td>
+<td>...</td>
+<td><span class="math inline">\(x_{1i}\)</span></td>
+<td>...</td>
+<td><span class="math inline">\(x_{1p}\)</span></td>
+</tr>
+<tr class="even">
+<td>Item 2</td>
+<td><span class="math inline">\(x_{21}\)</span></td>
+<td><span class="math inline">\(x_{22}\)</span></td>
+<td>...</td>
+<td><span class="math inline">\(x_{2i}\)</span></td>
+<td>...</td>
+<td><span class="math inline">\(x_{2p}\)</span></td>
+</tr>
+<tr class="odd">
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="even">
+<td>Item j</td>
+<td><span class="math inline">\(x_{j1}\)</span></td>
+<td><span class="math inline">\(x_{j2}\)</span></td>
+<td>...</td>
+<td><span class="math inline">\(x_{ji}\)</span></td>
+<td>...</td>
+<td><span class="math inline">\(x_{jp}\)</span></td>
+</tr>
+<tr class="odd">
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="even">
+<td>Item n</td>
+<td><span class="math inline">\(x_{n1}\)</span></td>
+<td><span class="math inline">\(x_{n2}\)</span></td>
+<td>...</td>
+<td><span class="math inline">\(x_{ni}\)</span></td>
+<td>...</td>
+<td><span class="math inline">\(x_{np}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>实际上就是一个 <span class="math inline">\(n \times p\)</span>
+大小的矩阵，记为 <span class="math inline">\(A =
+[y_1,y_2,...,y_p]\)</span>。</p>
+<p>sample mean vector 也可以写成矩阵变换的表示：$ {X} = A^T _n$，其中
+<span class="math inline">\(\mathbb 1_p\)</span> 表示 <span class="math inline">\(p\)</span> 个分量都是 <span class="math inline">\(1\)</span> 的向量。</p>
+<p>covariance matrix 也可以写成矩阵表达：$ n S_p = A^T (I_n - _n _n^T)
+A$，事实上 <span class="math inline">\(\mathbb 1_n \mathbb 1_n
+^T=\mathbb 1_{n\times n}\)</span> 是一个分量都为 <span class="math inline">\(1\)</span> 的矩阵。</p>
+<p>correlation matrix 在 covariance matrix 的基础上继续做变换即可。记
+$D^{ 2} = diag(,..., ) $，于是 correlation matrix 可以记为 <span class="math inline">\(R_p= D^{-\frac 1 2} S_p D^{-\frac 1
+2}\)</span></p>
+<p>在此基础上再定义一个 generalized sample variance，事实上是 covariance
+matrix
+的行列式值的绝对值，也就是这个对称矩阵的全体特征值的积的绝对值。由行列式的形式可以知道它是一个和各个
+covariance coefficient
+相关的式子，一定程度上可以反映数据的离散程度（但因为是标量，缺乏各个方向上的数据的离散情况）。例如对于二维数据（<span class="math inline">\(p=2\)</span>），可以知道 <span class="math inline">\(|S|=s_{11} s_{22} (1- r_{12}^2)\)</span>。</p>
+<p>另一个常用的表示是 covariance matrix
+的迹，也即这个对称矩阵的全体特征值的和。</p>
 
     </div>
 
@@ -613,7 +742,8 @@ iris flower', grid=TRUE, box=TRUE, type="h")</p></li>
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
           <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-1"><span class="nav-text">Lecture 1</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E5%85%83%E6%95%B0%E6%8D%AE%E7%9A%84%E7%BB%84%E7%BB%87"><span class="nav-text">多元数据的组织</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8F%8F%E8%BF%B0%E6%80%A7%E7%BB%9F%E8%AE%A1%E9%87%8F"><span class="nav-text">描述性统计量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mahalanobis-distance"><span class="nav-text">Mahalanobis Distance</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#exploratory-data-analysis-eda"><span class="nav-text">Exploratory Data Analysis
-(EDA)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#boxplot"><span class="nav-text">Boxplot</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#histogram"><span class="nav-text">Histogram</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#scatter-plot"><span class="nav-text">Scatter Plot</span></a></li></ol></li></ol></li></ol></div>
+(EDA)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#boxplot"><span class="nav-text">Boxplot</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#histogram"><span class="nav-text">Histogram</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#scatter-plot"><span class="nav-text">Scatter Plot</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-2"><span class="nav-text">Lecture 2</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#linear-algebra"><span class="nav-text">Linear Algebra</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#matrix-interpretation-of-mahalanobis-distance"><span class="nav-text">Matrix
+Interpretation of Mahalanobis-distance</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#matrix-inequality"><span class="nav-text">Matrix Inequality</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8F%8F%E8%BF%B0%E6%80%A7%E7%BB%9F%E8%AE%A1%E9%87%8F%E7%9A%84%E7%9F%A9%E9%98%B5%E8%A1%A8%E7%A4%BA"><span class="nav-text">描述性统计量的矩阵表示</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
