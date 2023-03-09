@@ -29,7 +29,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://s2.loli.net/2023/02/06/SdyAbfTuWrFURO8.png">
 <meta property="article:published_time" content="2023-02-01T10:31:21.000Z">
-<meta property="article:modified_time" content="2023-02-10T19:13:56.564Z">
+<meta property="article:modified_time" content="2023-03-09T14:37:28.144Z">
 <meta property="article:author" content="驰雨Chiyuru">
 <meta property="article:tag" content="数学">
 <meta name="twitter:card" content="summary">
@@ -218,7 +218,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-02-11 03:13:56" itemprop="dateModified" datetime="2023-02-11T03:13:56+08:00">2023-02-11</time>
+                <time title="修改时间：2023-03-09 22:37:28" itemprop="dateModified" datetime="2023-03-09T22:37:28+08:00">2023-03-09</time>
               </span>
 
           
@@ -274,8 +274,8 @@ Chebyshev 多项式拿了全国 rank
 More</a></p></li>
 <li><p>另外观察导数定义的形式：<span class="math inline">\(\lim _{x \to
 x_0} \frac{f(x)-f(x_0)}{x-x_0}\)</span>，我们可以知道只要 <span class="math inline">\(f: \mathbb R \to V\)</span> 是连续映射，<span class="math inline">\((V,|| \cdot ||)\)</span>
-是赋范线性空间，那么这个极限就有意义，可以定义导数。比如说映射 <span class="math inline">\(x \to exp (xA), \R \to M_n(\R)\)</span>
-就有导数。</p></li>
+是赋范线性空间，那么这个极限就有意义，可以定义导数。比如说映射 <span class="math inline">\(x \to exp (xA), \mathbb R \to M_n(\mathbb
+R)\)</span> 就有导数。</p></li>
 <li><p>一些可能没学过或者单纯是忘了的定理：</p>
 <p>导函数不一定是连续的，但是它可以满足介值定理。所以 Cauchy
 中值定理的形式 <span class="math inline">\(\frac{f&#39;(x)}{g&#39;(x)}\)</span> 实际上意味着
@@ -289,30 +289,31 @@ x_0} \frac{f(x)-f(x_0)}{x-x_0}\)</span>，我们可以知道只要 <span class="
 <h2 id="梦话经典的作业题胡说八道环节">梦话：经典的作业题胡说八道环节</h2>
 <h3 id="导数的定义和计算">导数的定义和计算</h3>
 <ul>
-<li><p><span class="math inline">\(\R^n\)</span> 上配有范数 <span class="math inline">\(\|(x_1,\cdots,x_n)\|_2=\sqrt{(x_1)^2+\cdots+(x_n)^2}\)</span>，我们考虑映射</p>
-<p><span class="math inline">\(f\colon \R \rightarrow \R^n, \
-\  x\mapsto f(x)=(f_1(x),\cdots, f_n(x))\)</span></p>
+<li><p><span class="math inline">\(\mathbb R^n\)</span> 上配有范数 <span class="math inline">\(\|(x_1,\cdots,x_n)\|_2=\sqrt{(x_1)^2+\cdots+(x_n)^2}\)</span>，我们考虑映射</p>
+<p><span class="math inline">\(f\colon \mathbb R \rightarrow \mathbb
+R^n, \ \  x\mapsto f(x)=(f_1(x),\cdots, f_n(x))\)</span></p>
 <p>证明，<span class="math inline">\(f\)</span> 在 <span class="math inline">\(x_0\)</span> 处的导数存在当且仅当对每个分量函数
 <span class="math inline">\(f_k\)</span>，它在 <span class="math inline">\(x_0\)</span> 处的导数都存在并且</p>
 <p><span class="math inline">\(f&#39;(x)=\bigl(f_1&#39;(x),\cdots,
 f_n&#39;(x)\bigr)\)</span>。</p>
 <p>Trivial.</p></li>
-<li><p>考虑函数 <span class="math inline">\(e^{ix}\)</span>，将它视作是映射 <span class="math inline">\(f\colon \R\rightarrow \mathbb{C}, \ \ x \mapsto
-e^{ix}\)</span></p>
+<li><p>考虑函数 <span class="math inline">\(e^{ix}\)</span>，将它视作是映射 <span class="math inline">\(f\colon \mathbb R\rightarrow \mathbb{C}, \ \ x
+\mapsto e^{ix}\)</span></p>
 <p>利用定义证明，<span class="math inline">\(f&#39;(0)=i ~(\in
 \mathbb{C})\)</span>。仿照课堂上的做法证明 <span class="math inline">\(\bigl(e^{ix}\bigr)&#39;=ie^{ix}\)</span>。</p>
 <p>老演员了，PIN 真的很喜欢 exp 函数。</p></li>
 <li><p>利用上面两个问题的结论计算 <span class="math inline">\(\sin
 x\)</span> 和 <span class="math inline">\(\cos x\)</span> 的导数。</p>
-<p><span class="math inline">\(f:\R \to \R^2\)</span>，<span class="math inline">\(x \to (sinx,cosx)\)</span>，（？），把二者都写成
-<span class="math inline">\(e^{ix}\)</span> 的变式。</p></li>
-<li><p>定义映射 <span class="math inline">\(E\colon \R \rightarrow
-\mathbb{C}=\R^2, \ \ \theta\mapsto (\cos\theta,
+<p><span class="math inline">\(f:\mathbb R \to \mathbb
+R^2\)</span>，<span class="math inline">\(x \to
+(sinx,cosx)\)</span>，（？），把二者都写成 <span class="math inline">\(e^{ix}\)</span> 的变式。</p></li>
+<li><p>定义映射 <span class="math inline">\(E\colon \mathbb R
+\rightarrow \mathbb{C}=\mathbb R^2, \ \ \theta\mapsto (\cos\theta,
 \sin\theta)\)</span>，我们用下面符号表示平面上的单位圆：</p>
-<p><span class="math inline">\(\mathbf{S}^1=\bigl\{(x,y)\in \R^2\bigm|
-x^2+y^2=1\bigr\}\)</span></p>
+<p><span class="math inline">\(\mathbf{S}^1=\bigl\{(x,y)\in \mathbb
+R^2\bigm| x^2+y^2=1\bigr\}\)</span></p>
 <p>证明，<span class="math inline">\(\mathbf{S}^1\)</span>
-上的点可以写成 <span class="math inline">\((\sin\theta,\cos\theta)\)</span> 的形式，即 <span class="math inline">\(E(\R)=\mathbf{S}^1\)</span>。试计算 <span class="math inline">\(E&#39;(\theta)\)</span> 并验证对于这个映射（<span class="math inline">\(\R^2\)</span>
+上的点可以写成 <span class="math inline">\((\sin\theta,\cos\theta)\)</span> 的形式，即 <span class="math inline">\(E(\mathbb R)=\mathbf{S}^1\)</span>。试计算 <span class="math inline">\(E&#39;(\theta)\)</span> 并验证对于这个映射（<span class="math inline">\(\mathbb R^2\)</span>
 上取值），Rolle中值定理并不成立。</p>
 <p>圆上的点可以视作一条过原点的直线和圆的交点，所以问题的重点是为什么
 <span class="math inline">\(\frac{\cos \theta}{\sin \theta}\)</span>
@@ -336,7 +337,7 @@ x+2x^2\sin\left(\frac{1}{x}\right), \ \ &amp;x\neq 0;\\ 0, \ \ &amp;x=0.
 <p><span class="math inline">\(x \neq 0\)</span> 时的导函数是 <span class="math inline">\(f&#39;(x) = 1+4x \sin (\frac{1}{x}) -2 \cos (\frac
 1 x)\)</span>，在任意的邻域 <span class="math inline">\((-\varepsilon ,
 \varepsilon)\)</span> 上不保证大于 <span class="math inline">\(0\)</span>。</p></li>
-<li><p><span class="math inline">\(\mathbf{I}_n\)</span> 是 <span class="math inline">\(n\times n\)</span> 的单位矩阵，<span class="math inline">\(A\in \mathbf{M}_n(\R)\)</span>，计算 <span class="math inline">\(\dfrac{d}{dx}\Big|_{x=0}\det
+<li><p><span class="math inline">\(\mathbf{I}_n\)</span> 是 <span class="math inline">\(n\times n\)</span> 的单位矩阵，<span class="math inline">\(A\in \mathbf{M}_n(\mathbb R)\)</span>，计算 <span class="math inline">\(\dfrac{d}{dx}\Big|_{x=0}\det
 (\mathbf{I}+xA)\)</span>，即 <span class="math inline">\(\det
 (\mathbf{I}+xA)\)</span> 在 <span class="math inline">\(x=0\)</span>
 处的导数。</p>
@@ -434,16 +435,16 @@ x\)</span></p></li>
 &lt;\dfrac{1}{2};\\1-x, \  \ \dfrac{1}{2}\leqslant x \leqslant
 1.\end{cases}\)</span></p>
 <p>接下来，以 <span class="math inline">\(1\)</span> 为周期，我们可以将
-<span class="math inline">\(\psi\)</span> 延拓成 <span class="math inline">\(\R\)</span> 上的周期函数（连续）并且仍然将它记作
-<span class="math inline">\(\psi\)</span>，它的函数图像好像是锯齿一般。</p>
-<p>我们定义Takagi函数 <span class="math inline">\(T\colon \R\rightarrow
-\R\)</span> 如下：<span class="math inline">\(T(x)=\sum_{k=0}^\infty
-\frac{1}{2^k}\psi(2^k x)\)</span></p>
+<span class="math inline">\(\psi\)</span> 延拓成 <span class="math inline">\(\mathbb R\)</span>
+上的周期函数（连续）并且仍然将它记作 <span class="math inline">\(\psi\)</span>，它的函数图像好像是锯齿一般。</p>
+<p>我们定义Takagi函数 <span class="math inline">\(T\colon \mathbb
+R\rightarrow \mathbb R\)</span> 如下：<span class="math inline">\(T(x)=\sum_{k=0}^\infty \frac{1}{2^k}\psi(2^k
+x)\)</span></p>
 <p>我们实际上可以考虑部分和 <span class="math inline">\(\displaystyle
 T_n(x)=\sum_{k=0}^n \frac{1}{2^k}\psi(2^k x)\)</span>。当 <span class="math inline">\(n\)</span>
 越来越大的时候，它们的图像看起来逐渐地收敛。这个习题的目标是粗略地研究Takagi函数的性质。</p>
 <ul>
-<li><p>证明，<span class="math inline">\(T(x)\)</span> 是 <span class="math inline">\(\R\)</span> 上良好定义的有界连续函数。</p>
+<li><p>证明，<span class="math inline">\(T(x)\)</span> 是 <span class="math inline">\(\mathbb R\)</span> 上良好定义的有界连续函数。</p>
 <p>良好定义：<span class="math inline">\(T(x) \leq \sum_{k=0}^\infty
 \frac{1}{2^k} = 2\)</span>，一定是收敛级数，所以是良好定义的。</p>
 <p>有界：如上所述。</p>
@@ -492,7 +493,8 @@ x}+1=2^n(x+h_n)\)</span></p>
 x\)</span> 都不是整数，我们沿用~E7)中的符号，</p>
 <p>证明，数列 <span class="math inline">\(\Bigl\{\dfrac{T(x+h_n)-T(x-h&#39;_n)}{h_n+h&#39;_n}\Bigr\}_{n\geqslant
 1}\)</span> 不收敛。</p></li>
-<li><p>证明，<span class="math inline">\(T(x)\)</span> 是 <span class="math inline">\(\R\)</span> 上处处连续处处不可微的函数。</p></li>
+<li><p>证明，<span class="math inline">\(T(x)\)</span> 是 <span class="math inline">\(\mathbb R\)</span>
+上处处连续处处不可微的函数。</p></li>
 <li><p>证明，我们有如下的函数方程：</p>
 <p><span class="math inline">\(T(x)=\begin{cases}2x+\dfrac{T(4x)}{4},\ \
 0\leqslant x &lt;\dfrac{1}{4};\\\dfrac{1}{2}+\dfrac{T(4x-1)}{4},\ \
@@ -501,9 +503,9 @@ x\)</span> 都不是整数，我们沿用~E7)中的符号，</p>
 \dfrac{1}{2}\leqslant x &lt;\dfrac{3}{4};\\2-2x+\dfrac{T(4x-3)}{4},\ \
 \dfrac{3}{4}\leqslant x \leqslant 1.\end{cases}\)</span></p></li>
 <li><p>（Takagi函数图像的自相似性）令 <span class="math inline">\(\Gamma=\bigl\{(x,T(x))\mid 0\leqslant x\leqslant
-1\bigr\}\subset \R^2\)</span> 是 <span class="math inline">\(T\)</span>
-在区间 <span class="math inline">\([0,1]\)</span>
-上的函数图像。我们定义如下四个仿射变换 <span class="math inline">\(\Phi_i\colon \R^2\rightarrow \R^2\)</span>：</p>
+1\bigr\}\subset \mathbb R^2\)</span> 是 <span class="math inline">\(T\)</span> 在区间 <span class="math inline">\([0,1]\)</span>
+上的函数图像。我们定义如下四个仿射变换 <span class="math inline">\(\Phi_i\colon \mathbb R^2\rightarrow \mathbb
+R^2\)</span>：</p>
 <ul>
 <li><p><span class="math inline">\(\Phi_0 \left(\begin{array}{ccc}x \\y
 \end{array} \right)&amp;= \left(\begin{array}{ccc}\frac{1}{4} &amp; 0
@@ -529,12 +531,12 @@ x\)</span> 都不是整数，我们沿用~E7)中的符号，</p>
 <p>证明，<span class="math inline">\(\Phi_i\)</span> 恰好把 <span class="math inline">\(\Gamma\)</span> 变成 <span class="math inline">\(T\)</span> 在区间 <span class="math inline">\([\dfrac{i}{4},\dfrac{i+1}{4}]\)</span>
 上的图像，其中 <span class="math inline">\(i=0,1,2,3\)</span>。</p></li>
 </ul></li>
-<li><p>令 <span class="math inline">\(S_0=\{(x,y)\in \R^2 \mid
-0\leqslant x\leqslant 1, 0\leqslant y \leqslant 1\}\)</span> 是 <span class="math inline">\(\R^2\)</span> 上的闭方块。对每个 <span class="math inline">\(n\geqslant 0\)</span>，我们定义 <span class="math inline">\(\displaystyle
+<li><p>令 <span class="math inline">\(S_0=\{(x,y)\in \mathbb R^2 \mid
+0\leqslant x\leqslant 1, 0\leqslant y \leqslant 1\}\)</span> 是 <span class="math inline">\(\mathbb R^2\)</span> 上的闭方块。对每个 <span class="math inline">\(n\geqslant 0\)</span>，我们定义 <span class="math inline">\(\displaystyle
 S_{n+1}=\bigcup_{k=0}^3\Phi_k(S_n)\)</span>。证明，<span class="math inline">\(S_n\)</span> 是平面上一列单调下降的紧集并且 <span class="math inline">\(\displaystyle \Gamma=\bigcap_{n\geqslant
 0}S_n\)</span>。我们有 <span class="math inline">\(S_1\)</span> 和 <span class="math inline">\(S_2\)</span> 的示意图：</p></li>
-<li><p>证明，<span class="math inline">\(\displaystyle\sup_{x\in \R}T(x)
-\leqslant \dfrac{2}{3}\)</span>。</p></li>
+<li><p>证明，<span class="math inline">\(\displaystyle\sup_{x\in \mathbb
+R}T(x) \leqslant \dfrac{2}{3}\)</span>。</p></li>
 <li><p>找一个 <span class="math inline">\(c\in [0,1]\)</span>，使得
 <span class="math inline">\(T(c)=\dfrac{2}{3}\)</span>。</p></li>
 <li><p>（<span class="math inline">\(T^{-1}(\dfrac{2}{3})\)</span>
@@ -585,7 +587,7 @@ b^-} f(x)\)</span>。证明，存在 <span class="math inline">\(x_0 \in
 <p>如果 <span class="math inline">\(f(x)\)</span> 在 <span class="math inline">\([a,b]\)</span>
 上严格单调递增，那么这两个结论很好推。</p>
 <p>如果满足这两个条件，那么至少有 <span class="math inline">\(f(x)\)</span> 在 <span class="math inline">\([a,b]\)</span> 上非严格单调递增，可能存在 <span class="math inline">\(f(x_1) =f(x_2)\)</span> 的情况，<span class="math inline">\(x_1 \neq x_2\)</span>。此时对任意 <span class="math inline">\(s \in (x_1,x_2)\)</span> 都有 <span class="math inline">\(f(s)=f(x_1)\)</span>，于是在这一子区间上 <span class="math inline">\(f&#39;(x) =0\)</span>，矛盾。</p></li>
-<li><p><span class="math inline">\(g\in C(\R)\)</span> 在 <span class="math inline">\(\mathbb{R}\)</span> 上可微。假设存在常数 <span class="math inline">\(M\)</span>，使得 <span class="math inline">\(\displaystyle\sup_{x \in \mathbb{R}}|g&#39;(x)|
+<li><p><span class="math inline">\(g\in C(\mathbb R)\)</span> 在 <span class="math inline">\(\mathbb{R}\)</span> 上可微。假设存在常数 <span class="math inline">\(M\)</span>，使得 <span class="math inline">\(\displaystyle\sup_{x \in \mathbb{R}}|g&#39;(x)|
 \leqslant M\)</span>。 对任意的 <span class="math inline">\(\varepsilon
 &gt; 0\)</span>，我们定义 <span class="math inline">\(f_\varepsilon(x) =
 x + \varepsilon g(x)\)</span>，证明，存在仅依赖于 <span class="math inline">\(M\)</span> 的常数 <span class="math inline">\(\delta = \delta(M) &gt; 0\)</span>，使得当 <span class="math inline">\(\varepsilon &lt; \delta\)</span> 时，<span class="math inline">\(f\colon \mathbb{R} \rightarrow \mathbb{R}\)</span>
@@ -670,15 +672,16 @@ H_n&#39; (x)\)</span>，所以是多项式。归纳地证明 <span class="math i
 <h3 id="emile-borel-引理">Emile Borel 引理</h3>
 <h4 id="第一部分截断函数的构造">第一部分：截断函数的构造</h4>
 <ul>
-<li><p>定义函数 <span class="math inline">\(\phi\colon \R\rightarrow
-\R\)</span>：</p>
+<li><p>定义函数 <span class="math inline">\(\phi\colon \mathbb
+R\rightarrow \mathbb R\)</span>：</p>
 <p><span class="math inline">\(\phi(x)=\begin{cases}e^{-\frac{1}{x^2}},
 \ \ x&gt;0;\\0, \ \ \ \ x\leqslant 0.\end{cases}\)</span></p>
-<p>证明，<span class="math inline">\(\phi\in C^\infty(\R)\)</span>。</p>
+<p>证明，<span class="math inline">\(\phi\in C^\infty(\mathbb
+R)\)</span>。</p>
 <p>只要证明在 <span class="math inline">\(x=0\)</span>
 处无限可微。实际上一阶导数是 <span class="math inline">\(0\)</span>，二阶及以上可以归纳地证明都是 <span class="math inline">\(0\)</span>。</p></li>
-<li><p>定义函数 <span class="math inline">\(\chi\colon \R\rightarrow
-\R\)</span>：<span class="math inline">\(\chi(x)=\frac{\phi(2-|x|)}{\phi(2-|x|)+\phi(|x|-1)}\)</span>，证明，<span class="math inline">\(\chi(x)\in C^\infty(\R)\)</span> 并且 <span class="math inline">\(\chi\big|_{[-1,1]}\equiv 1\)</span>，<span class="math inline">\(\chi\big|_{(-\infty,-2]\cup [2,\infty)}\equiv
+<li><p>定义函数 <span class="math inline">\(\chi\colon \mathbb
+R\rightarrow \mathbb R\)</span>：<span class="math inline">\(\chi(x)=\frac{\phi(2-|x|)}{\phi(2-|x|)+\phi(|x|-1)}\)</span>，证明，<span class="math inline">\(\chi(x)\in C^\infty(\mathbb R)\)</span> 并且 <span class="math inline">\(\chi\big|_{[-1,1]}\equiv 1\)</span>，<span class="math inline">\(\chi\big|_{(-\infty,-2]\cup [2,\infty)}\equiv
 0\)</span>，<span class="math inline">\(0\leqslant \chi(x)\leqslant
 1\)</span> 并且是偶函数。</p>
 <p><span class="math inline">\(\chi\big|_{[-1,1]}\equiv
@@ -688,13 +691,14 @@ H_n&#39; (x)\)</span>，所以是多项式。归纳地证明 <span class="math i
 <span class="math inline">\(1\)</span> 和 <span class="math inline">\(2\)</span>
 两点处无限维可导。（因为是偶函数，所以很容易可以看出负数区间上是一样的）。这两个也很好证明，一阶导数都是
 <span class="math inline">\(0\)</span>。</p></li>
-<li><p>证明，对任意的 <span class="math inline">\(0&lt;a&lt;b\)</span>，存在光滑偶函数 <span class="math inline">\(\rho(x)\in C^\infty(\R)\)</span>，使得 <span class="math inline">\(\rho\big|_{[-a,a]}\equiv 1\)</span>，<span class="math inline">\(\rho\big|_{(-\infty,-b]\cup [b,\infty)}\equiv
+<li><p>证明，对任意的 <span class="math inline">\(0&lt;a&lt;b\)</span>，存在光滑偶函数 <span class="math inline">\(\rho(x)\in C^\infty(\mathbb R)\)</span>，使得
+<span class="math inline">\(\rho\big|_{[-a,a]}\equiv 1\)</span>，<span class="math inline">\(\rho\big|_{(-\infty,-b]\cup [b,\infty)}\equiv
 0\)</span>，<span class="math inline">\(0\leqslant \rho(x)\leqslant
 1\)</span>。</p>
 <p>构造 <span class="math inline">\(\rho (x) =
 \frac{\phi(b-|x|)}{\phi(b-|x|)+\phi(|x|-a)}\)</span>。</p></li>
 <li><p>证明，存在偶函数 <span class="math inline">\(\psi \in
-C^\infty(\R^n)\)</span>，使得 <span class="math inline">\(\psi\big|_{\{x\mid|x|\leqslant 1\}}\equiv
+C^\infty(\mathbb R^n)\)</span>，使得 <span class="math inline">\(\psi\big|_{\{x\mid|x|\leqslant 1\}}\equiv
 1\)</span>，<span class="math inline">\(\psi\big|_{\{x\mid|x|\geqslant
 2\}}\equiv 0\)</span>，<span class="math inline">\(0\leqslant \psi(x
 )\leqslant 1\)</span>。</p>
@@ -773,7 +777,7 @@ f&#39;_k(x)| &lt; \varepsilon\)</span> 对任意的 <span class="math inline">\(
 \choose \ell}\frac{t_k^{n-\ell}}{(k-\ell)!}x^{k-\ell}\chi^{(n-\ell)}(t_k
 x)\)</span></p>
 <p>归纳就好了。</p></li>
-<li><p>（Borel引理）任意给定一个数列 <span class="math inline">\(\{a_k\}_{k\geqslant 0}\)</span>，证明，存在 <span class="math inline">\(\R\)</span> 上的光滑函数 <span class="math inline">\(f\)</span>，使得对任意的 <span class="math inline">\(k\geqslant 0\)</span>，<span class="math inline">\(f^{(k)}(0)=a_k\)</span>。（提示：略难。）</p>
+<li><p>（Borel引理）任意给定一个数列 <span class="math inline">\(\{a_k\}_{k\geqslant 0}\)</span>，证明，存在 <span class="math inline">\(\mathbb R\)</span> 上的光滑函数 <span class="math inline">\(f\)</span>，使得对任意的 <span class="math inline">\(k\geqslant 0\)</span>，<span class="math inline">\(f^{(k)}(0)=a_k\)</span>。（提示：略难。）</p>
 <p>取 <span class="math inline">\(f(x) = \displaystyle \sum_{k=0}^\infty
 f_k(x)\)</span>，如果它可以逐项求导，那么是能够满足后一个条件的，所以只要证明
 <span class="math inline">\(f(x)\)</span> 在 <span class="math inline">\(0\)</span>
@@ -921,30 +925,32 @@ C\bigl([0,1]\bigr)\)</span>，<span class="math inline">\(g\)</span> 在
 <li><p><span class="math inline">\(f\)</span> 在 <span class="math inline">\((-1,1)\)</span> 上二阶可导，<span class="math inline">\(f(0) = f&#39;(0) = 0\)</span>。如果对任意的 <span class="math inline">\(x\in (-1,1)\)</span>，都有 <span class="math inline">\(|f&#39;&#39;(x)| \leqslant
 |f(x)|+|f&#39;(x)|\)</span>，证明，<span class="math inline">\(f(x)
 \equiv 0\)</span>。</p></li>
-<li><p>设 <span class="math inline">\(f\)</span> 在 <span class="math inline">\(\R\)</span> 上二阶可导，满足 <span class="math inline">\(f(0) = f&#39;(0) = 0\)</span>, 且存在正实数 <span class="math inline">\(C\)</span> 使得, 对所有的 <span class="math inline">\(x\in \R\)</span>, 有 <span class="math inline">\(|f&#39;&#39;(x)| \le
+<li><p>设 <span class="math inline">\(f\)</span> 在 <span class="math inline">\(\mathbb R\)</span> 上二阶可导，满足 <span class="math inline">\(f(0) = f&#39;(0) = 0\)</span>, 且存在正实数 <span class="math inline">\(C\)</span> 使得, 对所有的 <span class="math inline">\(x\in \mathbb R\)</span>, 有 <span class="math inline">\(|f&#39;&#39;(x)| \le
 C|f(x)f&#39;(x)|\)</span>。证明，<span class="math inline">\(f(x) \equiv
-0\)</span>, <span class="math inline">\(\forall x \in
-\R\)</span>。</p></li>
-<li><p><span class="math inline">\(n\)</span> 是正整数，<span class="math inline">\(f\)</span> 在 <span class="math inline">\(\R\)</span> 上 <span class="math inline">\(n\)</span> 阶可导，<span class="math inline">\(f(0) = f&#39;(0) = \cdots = f^{(n-1)}(0) =
+0\)</span>, <span class="math inline">\(\forall x \in \mathbb
+R\)</span>。</p></li>
+<li><p><span class="math inline">\(n\)</span> 是正整数，<span class="math inline">\(f\)</span> 在 <span class="math inline">\(\mathbb
+R\)</span> 上 <span class="math inline">\(n\)</span> 阶可导，<span class="math inline">\(f(0) = f&#39;(0) = \cdots = f^{(n-1)}(0) =
 0\)</span>。如果 <span class="math inline">\(C\in\mathbb{R}_{&gt;0}\)</span> 和 <span class="math inline">\(\ell \in \mathbb{Z}_{\geqslant
-0}\)</span>，使得对任意 <span class="math inline">\(x\in \R\)</span>
-都有 <span class="math inline">\(|f^{(n)}(x)| \leqslant
+0}\)</span>，使得对任意 <span class="math inline">\(x\in \mathbb
+R\)</span> 都有 <span class="math inline">\(|f^{(n)}(x)| \leqslant
 C|f^{(\ell)}(x)|\)</span>，证明，<span class="math inline">\(f(x) \equiv
 0\)</span>。</p></li>
 <li><p><span class="math inline">\(n\)</span> 是正整数，证明，多项式
 <span class="math inline">\(\displaystyle P(x) = \sum_{k=0}^{n+1}
 C_{n+1}^k (-1)^k (x-k)^n\)</span> 是 <span class="math inline">\(0\)</span>。</p>
 <p>考虑 <span class="math inline">\(x^i\)</span> 的系数，全都是 <span class="math inline">\(0\)</span>。（好怪</p></li>
-<li><p><span class="math inline">\(f\in
-C^\infty(\R)\)</span>。假设存在正实数 <span class="math inline">\(C\)</span>，使得对任意 <span class="math inline">\(n \in \mathbb{Z}_{\geqslant 0}\)</span> 和任意的
-<span class="math inline">\(x \in \R\)</span>，我们都有 <span class="math inline">\(|f^{(n)}(x)| \leqslant C\)</span>。</p>
+<li><p><span class="math inline">\(f\in C^\infty(\mathbb
+R)\)</span>。假设存在正实数 <span class="math inline">\(C\)</span>，使得对任意 <span class="math inline">\(n \in \mathbb{Z}_{\geqslant 0}\)</span> 和任意的
+<span class="math inline">\(x \in \mathbb R\)</span>，我们都有 <span class="math inline">\(|f^{(n)}(x)| \leqslant C\)</span>。</p>
 <ul>
-<li><p>证明，给定任意的 <span class="math inline">\(x_0 \in
-\R\)</span>，我们可以(以 <span class="math inline">\(x_0\)</span>
-为中心)将 <span class="math inline">\(f(x)\)</span> 在 <span class="math inline">\(\R\)</span> 上展开为无穷Taylor级数，即<span class="math inline">\(f(x) = \sum_{k=0}^\infty
-\frac{f^{(k)}(x_0)}{k!}(x-x_0)^k, \qquad \forall x \in \R\)</span></p>
+<li><p>证明，给定任意的 <span class="math inline">\(x_0 \in \mathbb
+R\)</span>，我们可以(以 <span class="math inline">\(x_0\)</span>
+为中心)将 <span class="math inline">\(f(x)\)</span> 在 <span class="math inline">\(\mathbb R\)</span> 上展开为无穷Taylor级数，即<span class="math inline">\(f(x) = \sum_{k=0}^\infty
+\frac{f^{(k)}(x_0)}{k!}(x-x_0)^k, \qquad \forall x \in \mathbb
+R\)</span></p>
 <p>只要证明这个级数是逐点收敛的，实际上 <span class="math inline">\(|f(x) |\leq C \exp(x-x_0)\)</span>。</p></li>
-<li><p><span class="math inline">\(E\subset \R\)</span>
+<li><p><span class="math inline">\(E\subset \mathbb R\)</span>
 是一个无穷集并且有界。证明，如果 <span class="math inline">\(f\)</span>
 在 <span class="math inline">\(E\)</span> 上的取值都是零，那么 <span class="math inline">\(f\equiv 0\)</span>。</p></li>
 </ul></li>
@@ -962,16 +968,16 @@ C\)</span>。证明，<span class="math inline">\(\displaystyle\lim_{x\to
 <span class="math inline">\(x_0\)</span> 是 <span class="math inline">\(f&#39;\)</span> 的 <span class="math inline">\((r-1)\)</span>-重根。</p>
 <p><span class="math inline">\(f&#39;(x) = (x-x_0)^r g&#39;(x) - rg(x)
 (x-x_0)^{r-1}\)</span>。</p></li>
-<li><p>假设 <span class="math inline">\(f\)</span> 为 <span class="math inline">\(\R\)</span> 上 <span class="math inline">\(n\)</span> 阶的可微函数。证明，如果 <span class="math inline">\(f(x) = 0\)</span> 有 <span class="math inline">\(n+1\)</span> 个不同的实根，那么 <span class="math inline">\(f^{(n)}(x) = 0\)</span> 至少有一个实根。</p>
+<li><p>假设 <span class="math inline">\(f\)</span> 为 <span class="math inline">\(\mathbb R\)</span> 上 <span class="math inline">\(n\)</span> 阶的可微函数。证明，如果 <span class="math inline">\(f(x) = 0\)</span> 有 <span class="math inline">\(n+1\)</span> 个不同的实根，那么 <span class="math inline">\(f^{(n)}(x) = 0\)</span> 至少有一个实根。</p>
 <p>不停用 Lagrange 中值定理。</p></li>
-<li><p><span class="math inline">\(f\)</span> 为 <span class="math inline">\(\R\)</span> 上的可微函数。假设 <span class="math inline">\(f(x) = 0\)</span> 按重数计算恰有 <span class="math inline">\(r\)</span> 个实根，也就是说，<span class="math inline">\(f(x) = 0\)</span> 有 <span class="math inline">\(s\)</span> 个相异的实根 <span class="math inline">\(x_1, x_2, \cdots, x_s\)</span>，它们的重数分别为
+<li><p><span class="math inline">\(f\)</span> 为 <span class="math inline">\(\mathbb R\)</span> 上的可微函数。假设 <span class="math inline">\(f(x) = 0\)</span> 按重数计算恰有 <span class="math inline">\(r\)</span> 个实根，也就是说，<span class="math inline">\(f(x) = 0\)</span> 有 <span class="math inline">\(s\)</span> 个相异的实根 <span class="math inline">\(x_1, x_2, \cdots, x_s\)</span>，它们的重数分别为
 <span class="math inline">\(r_1, r_2, \cdots, r_s\)</span> 并且 <span class="math inline">\(r_1+r_2 + \cdots + r_s = r\)</span>。证明，<span class="math inline">\(f&#39;(x) = 0\)</span> 按重数计至少有 <span class="math inline">\(r-1\)</span> 个根。</p>
 <p><span class="math inline">\(f&#39;(x)\)</span> 对于相异的实根 <span class="math inline">\(x_1, x_2, \cdots, x_s\)</span>，它们的重数分别为
 <span class="math inline">\(r_1-1, r_2-1, \cdots, r_s-1\)</span>
 ，并且在 <span class="math inline">\(x_1, x_2, \cdots, x_s\)</span>
 之间用 Lagrange 中值定理还有 <span class="math inline">\(s-1\)</span>
 个根，于是共有 <span class="math inline">\(r-1\)</span> 个根。</p></li>
-<li><p>假设 <span class="math inline">\(f\)</span> 为 <span class="math inline">\(\R\)</span> 上 <span class="math inline">\(n\)</span> 阶的可微函数。证明，如果 <span class="math inline">\(f(x) = 0\)</span> 按重数计恰有 <span class="math inline">\(n+1\)</span> 个实根，那么 <span class="math inline">\(f^{(n)}(x) = 0\)</span> 至少有一个实根。</p>
+<li><p>假设 <span class="math inline">\(f\)</span> 为 <span class="math inline">\(\mathbb R\)</span> 上 <span class="math inline">\(n\)</span> 阶的可微函数。证明，如果 <span class="math inline">\(f(x) = 0\)</span> 按重数计恰有 <span class="math inline">\(n+1\)</span> 个实根，那么 <span class="math inline">\(f^{(n)}(x) = 0\)</span> 至少有一个实根。</p>
 <p>归纳。</p></li>
 </ul>
 <h1 id="积分">积分</h1>
@@ -990,13 +996,12 @@ C\)</span>。证明，<span class="math inline">\(\displaystyle\lim_{x\to
 <p>一个技术性的引理（定义），实际上类似于极限的 <span class="math inline">\(\delta - \varepsilon\)</span>
 描述和点列描述法：</p>
 <blockquote>
-<p><span class="math inline">\(I=[a,b]\)</span> 是有界闭区间，<span class="math inline">\(f\colon I\rightarrow \R\)</span>
+<p><span class="math inline">\(I=[a,b]\)</span> 是有界闭区间，<span class="math inline">\(f\colon I\rightarrow \mathbb R\)</span>
 是函数，如下命题是等价的：</p>
 <ul>
-<li><p>对任意的 <span class="math inline">\(\varepsilon&gt;0\)</span>，存在两个阶梯函数 <span class="math inline">\(F_\varepsilon\colon I \rightarrow \R\)</span> 和
-<span class="math inline">\(\Psi_\varepsilon\colon I \rightarrow
-\R\)</span>，使得对任意的 <span class="math inline">\(x\in
-I\)</span>，都有</p>
+<li><p>对任意的 <span class="math inline">\(\varepsilon&gt;0\)</span>，存在两个阶梯函数 <span class="math inline">\(F_\varepsilon\colon I \rightarrow \mathbb
+R\)</span> 和 <span class="math inline">\(\Psi_\varepsilon\colon I
+\rightarrow \mathbb R\)</span>，使得对任意的 <span class="math inline">\(x\in I\)</span>，都有</p>
 <p><span class="math inline">\(\big|f(x)-F_\varepsilon(x)\big|&lt;\Psi_\varepsilon(x)\)</span>
 并且 <span class="math inline">\(\int_I \Psi_\varepsilon
 &lt;\varepsilon\)</span></p></li>
@@ -1053,8 +1058,8 @@ f\bigl(a+k\frac{b-a}{n}\bigr)\mathbf{1}_{[a+(k-1)\frac{b-a}{n},a+k\frac{b-a}{n}]
 More</a></p>
 <h2 id="梦话终于找到积分的作业在哪了但是还没写">梦话：终于找到积分的作业在哪了但是还没写</h2>
 <h3 id="积分定义的补充与扩展">积分定义的补充与扩展</h3>
-<p>我们总假设 <span class="math inline">\(I=[a,b]\subset \R\)</span>
-是一个有界闭区间，<span class="math inline">\(V\)</span>
+<p>我们总假设 <span class="math inline">\(I=[a,b]\subset \mathbb
+R\)</span> 是一个有界闭区间，<span class="math inline">\(V\)</span>
 是一个赋范线性空间。</p>
 <ul>
 <li><p><span class="math inline">\(\sigma_1,\sigma_2\in
@@ -1062,20 +1067,18 @@ More</a></p>
 <p>对 <span class="math inline">\(\sigma_1 \cup \sigma_2\)</span>
 再加细就可以了。</p></li>
 <li><p>考虑在 <span class="math inline">\(V\)</span>
-中取值的阶梯／简单函数的空间 <span class="math inline">\(\mathcal{E}(I)\)</span>，证明，这是 <span class="math inline">\(\R\)</span>-线性空间并且积分算子 <span class="math inline">\(\displaystyle\int_{a}^b\colon
+中取值的阶梯／简单函数的空间 <span class="math inline">\(\mathcal{E}(I)\)</span>，证明，这是 <span class="math inline">\(\mathbb R\)</span>-线性空间并且积分算子 <span class="math inline">\(\displaystyle\int_{a}^b\colon
 \mathcal{E}(I)\rightarrow V\)</span>
 是良好定义的（不依赖于分划的选取）并且是线性映射，其中积分的定义方式与函数在
-<span class="math inline">\(\R\)</span>
+<span class="math inline">\(\mathbb R\)</span>
 中取值时的方式一致。据此，用阶梯函数逼近的方式定义在 <span class="math inline">\(V\)</span>
 中取值的Riemann可积的函数。你不需要写下细节但是你应该对照笔记研究原来证明的每一步。</p></li>
 <li><p>假设 <span class="math inline">\(f\colon I\rightarrow
 \mathbb{R}^n\)</span>，其中 <span class="math inline">\(f_i\)</span> 是
 <span class="math inline">\(f\)</span> 的每个分量。那么 <span class="math inline">\(f\in \mathcal{R}(I)\)</span> 当且仅当对每个分量
-<span class="math inline">\(f_i\)</span> 我们都有 <span class="math inline">\(f_i\in \mathcal{R}(I)\)</span>。特别地，当 <span class="math inline">\(f\colon \R\rightarrow \mathbb{C}\)</span>
+<span class="math inline">\(f_i\)</span> 我们都有 <span class="math inline">\(f_i\in \mathcal{R}(I)\)</span>。特别地，当 <span class="math inline">\(f\colon \mathbb R\rightarrow \mathbb{C}\)</span>
 时，我们有 <span class="math inline">\(\displaystyle \int_a^b f =
-\int_a^b \Re f+i\int_{a}^b \Im f\)</span>，其中 <span class="math inline">\(\Re f\)</span> 和 <span class="math inline">\(\Im
-f\)</span> 分别为 <span class="math inline">\(f\)</span>
-的实部和虚部。</p></li>
+\int_a^b \mathbb Re f+i\int_{a}^b \Im f\)</span>，其中 <span class="math inline">\(\mathbb Re f\)</span> 和 <span class="math inline">\(\Im f\)</span> 分别为 <span class="math inline">\(f\)</span> 的实部和虚部。</p></li>
 <li><p>试证明积分的区间可加性：假设 <span class="math inline">\(a&lt;c&lt;b\)</span>，那么对于任意的 <span class="math inline">\(f\in \mathcal{R}(I)\)</span>，我们有 <span class="math inline">\(f\)</span> 在 <span class="math inline">\([a,c]\)</span> 和 <span class="math inline">\([c,b]\)</span> 上的限制都是阶梯函数，并且 <span class="math inline">\(\int_{a}^b f =\int_{a}^c f+\int_c^b
 f\)</span>。</p></li>
 <li><p>证明，对于任意两个分划 <span class="math inline">\(\sigma\)</span> 和 <span class="math inline">\(\sigma&#39;\)</span>，它们所对应的Darboux上下和满足</p>
@@ -1093,7 +1096,8 @@ f\)</span>。</p></li>
 <li><p>（不定积分的分部积分公式：对计算不定积分有用）假设 <span class="math inline">\(f,g\in C^1(I)\)</span>，那么，我们有</p>
 <p><span class="math inline">\(\int f&#39;\cdot g=f\cdot g-\int f\cdot
 g&#39;\)</span></p></li>
-<li><p>（不定积分的变量替换公式：对计算不定积分有用）假设 <span class="math inline">\(\Phi\colon \R\rightarrow \R\)</span> 可微，<span class="math inline">\(f\)</span> 是连续函数，那么</p>
+<li><p>（不定积分的变量替换公式：对计算不定积分有用）假设 <span class="math inline">\(\Phi\colon \mathbb R\rightarrow \mathbb R\)</span>
+可微，<span class="math inline">\(f\)</span> 是连续函数，那么</p>
 <p><span class="math inline">\(\int (f\circ \Phi)\Phi&#39;=\int
 f\)</span></p></li>
 </ul>
@@ -1105,10 +1109,13 @@ f\)</span></p></li>
 [a,b]}|f(x)|\)</span>）。</p>
 <h4 id="dini定理及应用">Dini定理及应用</h4>
 <ul>
-<li><p>（Dini定理）假设 <span class="math inline">\(K\subset
-\R^n\)</span> 是紧子集，<span class="math inline">\(f_n\colon
-K\rightarrow \R\)</span> 是一列连续函数，它们逐点地收敛到连续函数 <span class="math inline">\(f\colon K\rightarrow \R\)</span>，即对每个 <span class="math inline">\(x\in K\)</span>，我们都有 <span class="math inline">\(\displaystyle \lim_{n\rightarrow
-\infty}f_n(x)=f(x)\)</span>。证明，如果 <span class="math inline">\(\{f_n\}_{n\geqslant 1}\)</span>
+<li><p>（Dini定理）假设 <span class="math inline">\(K\subset \mathbb
+R^n\)</span> 是紧子集，<span class="math inline">\(f_n\colon
+K\rightarrow \mathbb R\)</span> 是一列连续函数，它们逐点地收敛到连续函数
+<span class="math inline">\(f\colon K\rightarrow \mathbb
+R\)</span>，即对每个 <span class="math inline">\(x\in
+K\)</span>，我们都有 <span class="math inline">\(\displaystyle
+\lim_{n\rightarrow \infty}f_n(x)=f(x)\)</span>。证明，如果 <span class="math inline">\(\{f_n\}_{n\geqslant 1}\)</span>
 是上升的函数列（即对任意 <span class="math inline">\(x\in K\)</span> 和
 <span class="math inline">\(n\)</span>，我们都有 <span class="math inline">\(f_n(x)\leqslant f_{n+1}(x)\)</span>），那么 <span class="math inline">\(f_n\)</span> 一致收敛到 <span class="math inline">\(f\)</span>。（参考荆公子的某次习题课）</p></li>
 <li><p>考虑区间 <span class="math inline">\(I=[-1,1]\)</span>。我们通过归纳的方式定义一族多项式函数：</p>
@@ -1147,8 +1154,8 @@ C([0,1])\)</span>，我们定义 <span class="math inline">\(B_{f,n}(x)=
 <span class="math inline">\(\delta_x\)</span>。</p>
 </blockquote>
 <h4 id="紧集上的情形">紧集上的情形</h4>
-<p>从此往后，我们假设 <span class="math inline">\(K\subset \R^n\)</span>
-是紧集，<span class="math inline">\(C(K)\)</span> 是 <span class="math inline">\(K\)</span> 上的实数值连续函数所构成的线性空间，用
+<p>从此往后，我们假设 <span class="math inline">\(K\subset \mathbb
+R^n\)</span> 是紧集，<span class="math inline">\(C(K)\)</span> 是 <span class="math inline">\(K\)</span> 上的实数值连续函数所构成的线性空间，用
 <span class="math inline">\(P(K)\)</span> 表示 <span class="math inline">\(K\)</span> 上多项式函数组成的空间（即形如 <span class="math inline">\(\displaystyle \sum_{|\alpha|\leqslant m} c_\alpha
 x^\alpha\)</span> 的函数，其中 <span class="math inline">\(m\)</span>
 是正整数，<span class="math inline">\(\alpha\)</span>
@@ -1178,7 +1185,7 @@ K\)</span>，<span class="math inline">\(x\neq x&#39;\)</span>，都存在
 C(K)\bigm|\text{存在}\{f_k\}_{k\geqslant1}\subset P(K),
 f_k\text{一致收敛到}f\bigr\}\)</span> 为 <span class="math inline">\(P(K)\)</span> 在 <span class="math inline">\(C(K)\)</span> 中的闭包。</p></li>
 <li><p>我们现在假设 <span class="math inline">\(\mathcal{A}\subset
-C(K)\)</span> 是 <span class="math inline">\(\wedge\vee\)</span>-封闭的，并且对任意的 <span class="math inline">\(\alpha,\beta \in \R\)</span>，任意的 <span class="math inline">\(x,y \in K\)</span>，<span class="math inline">\(x\neq y\)</span>（我们此时假设 <span class="math inline">\(K\)</span> 至少含有两个点）都存在函数 <span class="math inline">\(\varphi\in A\)</span>，使得 <span class="math inline">\(\varphi(x)=\alpha\)</span>，<span class="math inline">\(\varphi(y)=\beta\)</span>。</p>
+C(K)\)</span> 是 <span class="math inline">\(\wedge\vee\)</span>-封闭的，并且对任意的 <span class="math inline">\(\alpha,\beta \in \mathbb R\)</span>，任意的 <span class="math inline">\(x,y \in K\)</span>，<span class="math inline">\(x\neq y\)</span>（我们此时假设 <span class="math inline">\(K\)</span> 至少含有两个点）都存在函数 <span class="math inline">\(\varphi\in A\)</span>，使得 <span class="math inline">\(\varphi(x)=\alpha\)</span>，<span class="math inline">\(\varphi(y)=\beta\)</span>。</p>
 <p>我们通过下面的步骤来证明 <span class="math inline">\(\mathcal{A}\subset C(K)\)</span>
 是稠密的（即对任意给定的连续函数 <span class="math inline">\(f\in
 C(K)\)</span>，对任意的 <span class="math inline">\(\varepsilon&gt;0\)</span>，总存在 <span class="math inline">\(\varphi \in \mathcal{A}\)</span>，使得 <span class="math inline">\(\|\varphi-f\|_{\infty}&lt;\varepsilon\)</span>）：</p>
@@ -1211,10 +1218,10 @@ C(K)\)</span> 是能够区分点的，<span class="math inline">\(\wedge\vee\)</
 在连续函数空间 <span class="math inline">\(C(K)\)</span>
 中是稠密的。</p></li>
 <li><p>给定以 <span class="math inline">\(2\pi\)</span> 为周期的连续函数
-<span class="math inline">\(f\in C(\R)\)</span>。证明，任给 <span class="math inline">\(\varepsilon&gt;0\)</span>，总存在一个有限的三角级数</p>
+<span class="math inline">\(f\in C(\mathbb R)\)</span>。证明，任给 <span class="math inline">\(\varepsilon&gt;0\)</span>，总存在一个有限的三角级数</p>
 <p><span class="math inline">\(T(x)=\sum_{-N\leqslant k \leqslant N} a_k
 \cos(kx)+\sum_{-N\leqslant k \leqslant N} b_k \sin(kx)\)</span></p>
-<p>其中 <span class="math inline">\(N\)</span> 是正整数，<span class="math inline">\(a_k,b_k\)</span> 是实数，使得对任意的 <span class="math inline">\(x\in \R\)</span>，我们都有 <span class="math inline">\(|f(x)-T(x)|&lt;\varepsilon\)</span>。（提示：考虑
+<p>其中 <span class="math inline">\(N\)</span> 是正整数，<span class="math inline">\(a_k,b_k\)</span> 是实数，使得对任意的 <span class="math inline">\(x\in \mathbb R\)</span>，我们都有 <span class="math inline">\(|f(x)-T(x)|&lt;\varepsilon\)</span>。（提示：考虑
 <span class="math inline">\(C([0,2\pi])\)</span>
 和它的某个子代数）</p></li>
 </ul>
