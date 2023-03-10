@@ -30,7 +30,7 @@
 <meta property="og:image" content="https://s2.loli.net/2023/02/26/AHxRkaSBD87fW3V.png">
 <meta property="og:image" content="https://s2.loli.net/2023/02/26/iRyejXI6TuSvroJ.png">
 <meta property="article:published_time" content="2023-02-21T11:12:18.000Z">
-<meta property="article:modified_time" content="2023-03-09T14:36:57.469Z">
+<meta property="article:modified_time" content="2023-03-10T04:06:04.935Z">
 <meta property="article:author" content="驰雨Chiyuru">
 <meta property="article:tag" content="课程实录">
 <meta property="article:tag" content="数学">
@@ -221,7 +221,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-03-09 22:36:57" itemprop="dateModified" datetime="2023-03-09T22:36:57+08:00">2023-03-09</time>
+                <time title="修改时间：2023-03-10 12:06:04" itemprop="dateModified" datetime="2023-03-10T12:06:04+08:00">2023-03-10</time>
               </span>
 
           
@@ -443,7 +443,50 @@ t_{n-2,1-\alpha /4} s(b_1)) \times (b_0 - t_{n-2,1-\alpha /4} s(b_0),b_0
 <p>一个 significance test 的 power 指的是 reject <span class="math inline">\(H_0\)</span> 时 <span class="math inline">\(H_1\)</span> 是正确的的概率，也就是 <span class="math inline">\(1-P(\)</span>Type II Error<span class="math inline">\()\)</span>。实际上一个推断是好的的情况下需要既不
 over-powered 也不 under powered，这和 Type I Error 与 Type II Error
 此消彼长的性质有关。</p>
-<p>Power function 一般是一个关于参数的函数。</p>
+<p>Power function 一般是一个关于参数的函数。以推断 <span class="math inline">\(\beta_1\)</span> 的过程为例，计算这一推断的 power
+function。</p>
+<ul>
+<li><p>我们在线性回归参数推断里会用到一种非中心化 t-分布。普通的
+t-分布是关于 <span class="math inline">\(x=0\)</span> 对称的，非中心化
+t-分布有一定的偏差。注意并不是整体在坐标轴方向上的移动，其形状也发生了变化。表达式为
+<span class="math inline">\(t(df, \delta ) = \frac{N(0,1) +
+\delta}{\sqrt{\chi_{df} / df}}\)</span>。</p></li>
+<li><p>对 <span class="math inline">\(\beta_1\)</span> 进行推断：null
+hypothesis 为 <span class="math inline">\(H_0: \beta_1
+=0\)</span>，这样设置是因为关心两个变量之间是否存在线性关系。</p>
+<p>在假设 <span class="math inline">\(H_0\)</span> 下可以考虑 test
+statistic 为 <span class="math inline">\(T= \frac{b_1 -0}{s(b_1)} \sim
+t_{n-2}\)</span>，然而在 <span class="math inline">\(H_1\)</span>
+下,</p>
+<p><span class="math display">\[T=\frac{b_1}{s(b_1)} = \frac{b_1 -
+\beta_1 + \beta_1}{s(b_1)} = \frac{b_1-\beta_1}{s(b_1)} + \frac{\beta_1
+/ \sigma(b_1)}{s(b_1)/\sigma(b_1)} =  \frac{N(0,1) +
+\delta}{\sqrt{\chi_{df} / df}} \sim
+t(n-2,\beta_1/\sigma(b_1))\]</span></p>
+<p>于是 <span class="math inline">\(Power(\beta_1) = P(Reject H_0 | H_1
+holds) = P(|T| &gt; t_{n-2,1-\alpha /2} | \beta_1 \neq 0) =
+P(T&lt;t_{n-2,\alpha /2}) +1-P(T&lt;t_{n-2,1-\alpha
+/2})\)</span>，其中在 <span class="math inline">\(\beta_1 \neq
+0\)</span> 的条件下，<span class="math inline">\(T\sim t(n-2,\beta_1 /
+\sigma(b_1))\)</span>。</p></li>
+<li><p>Remark：上述形式更方便代码实现，因为 <code>pt</code>
+函数里可以直接给出非中心化参数来计算函数值。上个学期推断课上使用 power
+function 时对上式的计算采用以下的方式：</p>
+<p><span class="math display">\[\begin{aligned} Power(\beta_1) &amp;=
+P(\frac{b_1-\beta_1}{s(b_1)}&gt; t_{n-2,1-\alpha /2}-\frac{\beta_1 /
+\sigma(b_1)}{s(b_1)/\sigma(b_1)})+P(\frac{b_1-\beta_1}{s(b_1)}&lt;
+t_{n-2,\alpha /2}-\frac{\beta_1 / \sigma(b_1)}{s(b_1)/\sigma(b_1)}) \\
+&amp;=1-P(\frac{b_1-\beta_1}{s(b_1)}&lt; t_{n-2,1-\alpha
+/2}-\frac{\beta_1 /
+\sigma(b_1)}{s(b_1)/\sigma(b_1)})+P(\frac{b_1-\beta_1}{s(b_1)}&lt;
+t_{n-2,\alpha /2}-\frac{\beta_1 / \sigma(b_1)}{s(b_1)/\sigma(b_1)})
+\\&amp;=1-F(t_{n-2,1-\alpha /2}-\frac{\beta_1 /
+\sigma(b_1)}{s(b_1)/\sigma(b_1)}) + F( t_{n-2,\alpha /2}-\frac{\beta_1 /
+\sigma(b_1)}{s(b_1)/\sigma(b_1)})  \end{aligned}\]</span></p>
+<p>其中，<span class="math inline">\(\frac{b_1-\beta_1 }{s(b_1)} \sim
+t_{n-2}\)</span>，<span class="math inline">\(F\)</span> 是 <span class="math inline">\(t_{n-2}\)</span> 的 CDF 函数。</p>
+<p>这个形式太过复杂了。</p></li>
+</ul>
 <h2 id="blue">BLUE</h2>
 <p><a target="_blank" rel="noopener" href="https://record.umich.edu/articles/origins-go-blue/">Go Blue
 !</a>（</p>
@@ -620,7 +663,47 @@ then $ 2n{X}=2<em>{i=1}^nX_i ^2</em>{2n} $</p>
 <p>Remark：for <span class="math inline">\(X_i\sim\varepsilon(\lambda)=\Gamma(1,\lambda)\)</span>，<span class="math inline">\(2\lambda\sum_{i=1}^nX_i\sim\Gamma(n,1/2)=\chi^2_{2n}\)</span>.</p></li>
 </ul>
 <h2 id="分位数速查">分位数速查</h2>
-<p>用 R 怎么算还没研究完，先放个分位数图算了。</p>
+<p>来自 Package stats, version 4.2.1。</p>
+<p>其实都可以直接查文档啦（，R 的文档还是很保姆式的。</p>
+<h3 id="t-分布模拟">t-分布模拟</h3>
+<p>t-distribution 下有四个函数，分别是 density, CDF, quantile
+function(<span class="math inline">\(CDF^{-1}\)</span>)，还有一个是随机生成一个模拟数组。</p>
+<p><code>dt(x, df, ncp, log = FALSE)</code> 用来计算 PDF 的函数值 <span class="math inline">\(f(x)\)</span>，df 是自由度，ncp 表示非中心化参数
+<span class="math inline">\(\delta\)</span>；</p>
+<p><code>pt(x, df, ncp, lower.tail = TRUE, log.p = FALSE)</code>
+用来计算 CDF 的函数值 <span class="math inline">\(F(x)\)</span>，注意
+<code>lower.tail = TRUE</code> 时计算的是左边值 <span class="math inline">\(F(x)\)</span>，否则实际计算了 <span class="math inline">\(1-F(x)\)</span>。</p>
+<p><code>qt(p, df, ncp, lower.tail = TRUE, log.p = TRUE)</code>
+用来计算分位数，也即 <span class="math inline">\(F^{-1}(p)\)</span>，其他参数意义同上。</p>
+<p>一些我的作业里的函数参考：</p>
+<ul>
+<li><p>```R &gt; qt(1 - 0.025, df = 8) [1] 2.306004 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">	这里计算的是 $t_&#123;8,0.975&#125;$ 的下分位数，实际上是一个 level of significance 为 $0.05$ 的双尾检验中用到的分位数。</span><br><span class="line"></span><br><span class="line">- ```R</span><br><span class="line">  &gt; 2 * pt(-8.529, df = 8)</span><br><span class="line">  [1] 2.74639e-05</span><br></pre></td></tr></table></figure></p>
+<p>这里是在计算一个 P-value，计算的是比 observed data <span class="math inline">\(-8.529\)</span> 更极端的数据的出现概率，单边是
+<span class="math inline">\(F (-8.529)\)</span>，注意此处的“极端”包含比
+<span class="math inline">\(-8.529\)</span> 更小和比 <span class="math inline">\(8.529\)</span> 更大这两种情况，实际上是 <span class="math inline">\(F(-8.529) + 1- F(8.529)\)</span>。</p>
+<p>由于 t-distribution 是对称的，可以简化为 <span class="math inline">\(2 \times F(-8.529)\)</span>。</p></li>
+<li><p>```R &gt; ncp &lt;- 2.0/0.50 &gt; c &lt;- qt(1-0.025,df=8) &gt;
+pt(-c, df=8, ncp) + 1 - pt(c, df=8, ncp) [1] 0.9367429
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">  这是一个非中心的 t 检验，实际上是在计算 Power Function。</span><br><span class="line"></span><br><span class="line">### 正态分布模拟</span><br><span class="line"></span><br><span class="line">常用的三个函数是 `dnorm`，`pnorm`，`qnorm`，含义与 t-分布中的 `dt`，`pt`，`qt` 相似。</span><br><span class="line"></span><br><span class="line">```R</span><br><span class="line">dnorm(x, mean = 0, sd = 1, log = FALSE)</span><br><span class="line">pnorm(q, mean = 0, sd = 1, lower.tail = TRUE, log.p = FALSE)</span><br><span class="line">qnorm(p, mean = 0, sd = 1, lower.tail = TRUE, log.p = FALSE)</span><br></pre></td></tr></table></figure></p></li>
+</ul>
+<p>注意一般正态检验中都是使用标准正态分布，也就是不需要去改变
+<code>mean</code> 和 <code>sd</code> 的默认值。</p>
+<ul>
+<li>```R &gt; pnorm(0) [1] 0.5 &gt; qnorm(0.025) [1] -1.959964
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### F-分布模拟</span><br><span class="line"></span><br><span class="line">```R</span><br><span class="line">df(x, df1, df2, ncp, log = FALSE)</span><br><span class="line">pf(q, df1, df2, ncp, lower.tail = TRUE, log.p = FALSE)</span><br><span class="line">qf(p, df1, df2, ncp, lower.tail = TRUE, log.p = FALSE)</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>注意 <span class="math inline">\(F\)</span>
+分布的两个自由度都可以取到无穷，写作 <code>df1 = Inf</code>。</p>
+<h3 id="chi-square-分布模拟">Chi-square 分布模拟</h3>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dchisq<span class="punctuation">(</span>x<span class="punctuation">,</span> df<span class="punctuation">,</span> ncp <span class="operator">=</span> <span class="number">0</span><span class="punctuation">,</span> <span class="built_in">log</span> <span class="operator">=</span> <span class="literal">FALSE</span><span class="punctuation">)</span></span><br><span class="line">pchisq<span class="punctuation">(</span>q<span class="punctuation">,</span> df<span class="punctuation">,</span> ncp <span class="operator">=</span> <span class="number">0</span><span class="punctuation">,</span> lower.tail <span class="operator">=</span> <span class="literal">TRUE</span><span class="punctuation">,</span> log.p <span class="operator">=</span> <span class="literal">FALSE</span><span class="punctuation">)</span></span><br><span class="line">qchisq<span class="punctuation">(</span>p<span class="punctuation">,</span> df<span class="punctuation">,</span> ncp <span class="operator">=</span> <span class="number">0</span><span class="punctuation">,</span> lower.tail <span class="operator">=</span> <span class="literal">TRUE</span><span class="punctuation">,</span> log.p <span class="operator">=</span> <span class="literal">FALSE</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+<h2 id="其他常用-r-命令">其他常用 R 命令</h2>
+<p>持续更新中，基本都是作业里扒出来的。</p>
+<h3 id="confidence-interval">confidence interval</h3>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">confint<span class="punctuation">(</span>object<span class="punctuation">,</span> parm<span class="punctuation">,</span> level <span class="operator">=</span> <span class="number">0.95</span><span class="punctuation">,</span> ...<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+<p>注意 confidence coefficient 的默认值是 <span class="math inline">\(0.95\)</span>，<code>confint</code>
+函数是用于拟合模型参数的置信区间估计，例如：</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">model <span class="operator">&lt;-</span> lm<span class="punctuation">(</span>data<span class="punctuation">)</span></span><br><span class="line">confint<span class="punctuation">(</span>model<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">				 <span class="number">2.5</span> <span class="operator">%    97.5 %</span></span><br><span class="line"><span class="punctuation">(</span>Intercept<span class="punctuation">)</span> <span class="number">8.670370</span> <span class="number">11.729630</span></span><br><span class="line">V2			 <span class="number">2.918388</span>  <span class="number">5.081612</span></span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -769,7 +852,7 @@ then $ 2n{X}=2<em>{i=1}^nX_i ^2</em>{2n} $</p>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-1"><span class="nav-text">Lecture 1</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#galtons-experiment"><span class="nav-text">Galton&#39;s Experiment</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E6%9C%AF%E8%AF%AD"><span class="nav-text">一些术语</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-2"><span class="nav-text">Lecture 2</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#simple-linear-regression"><span class="nav-text">Simple Linear Regression</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%9A%84%E7%BB%84%E7%BB%87%E5%92%8C%E8%A1%A8%E7%A4%BA"><span class="nav-text">数据的组织和表示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E7%9A%84%E8%A1%A8%E7%A4%BA"><span class="nav-text">模型的表示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E7%9A%84%E6%84%8F%E4%B9%89%E5%92%8C%E6%B1%82%E7%AE%97"><span class="nav-text">参数的意义和求算</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#least-sum-of-square-%E6%96%B9%E6%B3%95"><span class="nav-text">Least Sum of Square 方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mle-%E6%96%B9%E6%B3%95"><span class="nav-text">MLE 方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%A8%E6%96%AD%E5%A4%8D%E4%B9%A0"><span class="nav-text">推断复习</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-3"><span class="nav-text">Lecture 3</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E4%B8%AD%E7%9A%84%E6%8E%A8%E6%96%AD"><span class="nav-text">线性回归中的推断</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E6%8E%A8%E6%96%AD"><span class="nav-text">参数推断</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#power-function"><span class="nav-text">Power Function</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#blue"><span class="nav-text">BLUE</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%99%84%E5%BD%95"><span class="nav-text">附录</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E9%87%8D%E8%A6%81%E5%88%86%E5%B8%83"><span class="nav-text">常见重要分布</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E4%BD%8D%E6%95%B0%E9%80%9F%E6%9F%A5"><span class="nav-text">分位数速查</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-1"><span class="nav-text">Lecture 1</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#galtons-experiment"><span class="nav-text">Galton&#39;s Experiment</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E6%9C%AF%E8%AF%AD"><span class="nav-text">一些术语</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-2"><span class="nav-text">Lecture 2</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#simple-linear-regression"><span class="nav-text">Simple Linear Regression</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%9A%84%E7%BB%84%E7%BB%87%E5%92%8C%E8%A1%A8%E7%A4%BA"><span class="nav-text">数据的组织和表示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E7%9A%84%E8%A1%A8%E7%A4%BA"><span class="nav-text">模型的表示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E7%9A%84%E6%84%8F%E4%B9%89%E5%92%8C%E6%B1%82%E7%AE%97"><span class="nav-text">参数的意义和求算</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#least-sum-of-square-%E6%96%B9%E6%B3%95"><span class="nav-text">Least Sum of Square 方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mle-%E6%96%B9%E6%B3%95"><span class="nav-text">MLE 方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%A8%E6%96%AD%E5%A4%8D%E4%B9%A0"><span class="nav-text">推断复习</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-3"><span class="nav-text">Lecture 3</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E4%B8%AD%E7%9A%84%E6%8E%A8%E6%96%AD"><span class="nav-text">线性回归中的推断</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E6%8E%A8%E6%96%AD"><span class="nav-text">参数推断</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#power-function"><span class="nav-text">Power Function</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#blue"><span class="nav-text">BLUE</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%99%84%E5%BD%95"><span class="nav-text">附录</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E9%87%8D%E8%A6%81%E5%88%86%E5%B8%83"><span class="nav-text">常见重要分布</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E4%BD%8D%E6%95%B0%E9%80%9F%E6%9F%A5"><span class="nav-text">分位数速查</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#t-%E5%88%86%E5%B8%83%E6%A8%A1%E6%8B%9F"><span class="nav-text">t-分布模拟</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#chi-square-%E5%88%86%E5%B8%83%E6%A8%A1%E6%8B%9F"><span class="nav-text">Chi-square 分布模拟</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E5%B8%B8%E7%94%A8-r-%E5%91%BD%E4%BB%A4"><span class="nav-text">其他常用 R 命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#confidence-interval"><span class="nav-text">confidence interval</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
