@@ -34,7 +34,7 @@
 <meta property="og:image" content="https://s2.loli.net/2023/02/25/S3V5gv7AYCD4Efy.png">
 <meta property="og:image" content="https://s2.loli.net/2023/02/25/pRaLXMxUrKqOi5Q.png">
 <meta property="article:published_time" content="2023-02-25T01:36:52.000Z">
-<meta property="article:modified_time" content="2023-03-10T15:46:13.320Z">
+<meta property="article:modified_time" content="2023-03-10T20:01:29.295Z">
 <meta property="article:author" content="驰雨Chiyuru">
 <meta property="article:tag" content="课程实录">
 <meta property="article:tag" content="数学">
@@ -225,7 +225,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-03-10 23:46:13" itemprop="dateModified" datetime="2023-03-10T23:46:13+08:00">2023-03-10</time>
+                <time title="修改时间：2023-03-11 04:01:29" itemprop="dateModified" datetime="2023-03-11T04:01:29+08:00">2023-03-11</time>
               </span>
 
           
@@ -600,7 +600,8 @@ covariance coefficient
 <li><p>多元正态分布的概率密度形式和一元是完全类似的：</p>
 <p><span class="math display">\[f(x) = \frac{1}{(2\pi) ^{p/2} |\Sigma
 |^{1/2}} exp(-\frac{(x-\mu)^T \Sigma^{-1} (x-\mu)}{2})\]</span></p>
-<p>其中，<span class="math inline">\(\mu\)</span> 是 <span class="math inline">\(x\)</span> 的均值，<span class="math inline">\(\Sigma\)</span> 是 <span class="math inline">\(x\)</span> 的协方差矩阵，是正定矩阵。</p></li>
+<p>其中，<span class="math inline">\(\mu\)</span> 是 <span class="math inline">\(x\)</span> 的均值，<span class="math inline">\(\Sigma\)</span> 是 <span class="math inline">\(x\)</span>
+的协方差矩阵，这是一个正定矩阵。</p></li>
 <li><p>先把二元的情况拿出来观察，<span class="math inline">\(p=2\)</span>，于是有 <span class="math inline">\(f(x) = \frac{1}{2\pi |\Sigma|^{1/2}}
 exp(-\frac{(x-\mu)^T \Sigma^{-1} (x-\mu)}{2})\)</span>。其中有</p>
 <p><span class="math display">\[\mu = \begin{bmatrix} \mu_1 \\ \mu_2
@@ -610,9 +611,130 @@ Var(X_2)\end{bmatrix}\]</span></p></li>
 <li><p>我们想对 <span class="math inline">\(\mu\)</span> 和 <span class="math inline">\(\Sigma\)</span> 做一些估计，回顾一下统计推断里的
 MLE 估计，矩估计等等方法。</p></li>
 </ul>
-<h2 id="多元正态分布的参数估计">多元正态分布的参数估计</h2>
+<h2 id="补充矩阵向量求导期望">补充：矩阵向量求导、期望</h2>
+<ul>
+<li><p>向量求导很熟悉了，就是 Jacobian matrix
+那一套。但在多元统计里使用的求导矩阵是 Jacobian matrix
+的转置。有一些看起来轻微抽象的结论：</p>
+<p><span class="math display">\[\frac{\partial}{\partial x} Ax =
+A^T\]</span></p>
+<p><span class="math display">\[\frac{\partial}{\partial x} x^TA =
+A\]</span></p>
+<p><span class="math display">\[\frac{\partial}{\partial x} x^Tx =
+2x\]</span></p>
+<p><span class="math display">\[\frac{\partial}{\partial x} x^TAx =
+Ax+A^Tx\]</span></p>
+<p>实际上都非常容易推导，把 <span class="math inline">\(Ax\)</span> 视为
+<span class="math inline">\(x\)</span>
+的线性变换，再对分量求导即可。</p></li>
+<li><p>对矩阵的求导暂时只考虑对称正定的情况。</p>
+<p><span class="math display">\[\frac{\partial |A|}{\partial A} = |A|
+A^{-1}\]</span></p>
+<p><span class="math display">\[\frac{\partial tr(AB)}{\partial A}
+=B^T\]</span></p>
+<p><span class="math display">\[\frac{\partial tr(A^{-1}B)}{\partial A}
+= -A^{-1}B^TA^{-1}\]</span></p>
+<p>有点抽象（</p></li>
+<li><p>对于某一个 population <span class="math inline">\(c^T X =
+\begin{bmatrix} c_1 &amp; c_2 &amp; ... &amp;c_n \end{bmatrix}
+\begin{bmatrix} X_1 \\ X_2 \\...\\X_n \end{bmatrix}\)</span>, 其期望变为
+<span class="math inline">\(c^T \mu\)</span>，方差变为 <span class="math inline">\(c^T \Sigma c\)</span>；</p>
+<p>如果 <span class="math inline">\(c^TX\)</span> 是一个
+sample，同理样本均值变为 <span class="math inline">\(c^T
+\mu\)</span>，样本方差变为 <span class="math inline">\(c^T
+Sc\)</span>。</p>
+<p>对于两个 population <span class="math inline">\(b^TX\)</span> 和
+<span class="math inline">\(c^TX\)</span>，有 <span class="math inline">\(Cov(b^T X,c^TX) = b^TXc\)</span>。</p></li>
+</ul>
+<h2 id="多元正态分布参数估计">多元正态分布参数估计</h2>
 <p>没写完呢，待会接着写。晚上搁那儿用 RMarkdown
-写多元统计作业，体验一般，思路比打字快结果兼容不了，效果不如手写。以后还是写完代码然后给手推的公式拍照合在一起算了。</p>
+写多元统计作业，体验一般，思路比打字快结果手越来越慢，完全兼容不了。效果不如手写，以后还是写完代码然后给手推的公式拍照合在一起算了。</p>
+<h3 id="极大似然估计">极大似然估计</h3>
+<p>这个我在课上自己推出来了（喜），还喜提了 dwl 老师在我身边叫我名字 +
+纠正书写，她居然还记得我，但想起来我开摆的初概，真是又开心又尴尬（。结论是：</p>
+<p>对于 <span class="math inline">\(X_1,X_2,...,X_n\)</span> i.i.d.
+<span class="math inline">\(\sim N_p (\mu,\Sigma)\)</span>，参数 <span class="math inline">\(\mu\)</span> 和 <span class="math inline">\(\Sigma\)</span> 的极大似然估计是：</p>
+<p><span class="math display">\[ \hat{\mu}_{MLE} = \bar{X}\]</span></p>
+<p><span class="math display">\[\hat{\Sigma}_{MLE} = \frac{1}{n}
+\Sigma_{i=1} ^n (X_j - \bar{X})(X_j - \bar{X})^T\]</span></p>
+<h3 id="无偏估计">无偏估计</h3>
+<p>首先考虑样本方差为 <span class="math inline">\(S = \frac{1}{n-1}
+\Sigma_{i=1} ^n (X_j - \bar{X})(X_j - \bar{X})^T = \frac{n}{n-1}
+\hat{\Sigma}_{MLE}\)</span>，它是 <span class="math inline">\(\Sigma\)</span> 的无偏估计；<span class="math inline">\(\mu\)</span> 的无偏估计显然是 <span class="math inline">\(\bar{X}\)</span>。</p>
+<p>事实上还有性质：<span class="math inline">\(Cov(\bar{X}) = \frac 1 n
+\Sigma\)</span>；<span class="math inline">\(S\)</span> 和 <span class="math inline">\(\bar{X}\)</span>
+互相独立，且是一组充分统计量（用因子分解定理简单看一下）。</p>
+<h2 id="多元正态分布的性质">多元正态分布的性质</h2>
+<ul>
+<li><p><span class="math inline">\(X \sim N_p(\mu , \Sigma) \iff a^TX
+\sim N(a^T\mu,a^T\Sigma a)\)</span> 对任意的 <span class="math inline">\(a \in \mathbb R^p\)</span> 成立。</p>
+<p><span class="math inline">\(X\sim N_p(\mu ,\Sigma) \iff X+d \sim
+N_p(\mu +d , \Sigma)\)</span> 对任意的 <span class="math inline">\(d\in
+\mathbb R^p\)</span> 成立。</p></li>
+<li><p>对于特定的 <span class="math inline">\(N_p(\mu ,
+\Sigma)\)</span>，我们可以用 <span class="math inline">\(p\)</span>
+个标准正态分布捏出来。对于任意的 <span class="math inline">\(Z_1,Z_2,...,Z_p\)</span> i.i.d. <span class="math inline">\(\sim N(0,1)\)</span>，记 <span class="math inline">\(Z=(Z_1,Z_2,...,Z_p)^T\)</span>。对任意的对称正定矩阵
+<span class="math inline">\(\Sigma\)</span> 和实向量 <span class="math inline">\(\mu \in \mathbb R^p\)</span>，有 <span class="math inline">\(X = \mu + \Sigma^{\frac 1 2} Z \sim
+N_p(\mu,\Sigma)\)</span>。</p></li>
+<li><p>对于满足多元正态分布的 <span class="math inline">\(X =
+(X_1,X_2,...,X_p)^T \sim N_p(\mu ,\Sigma)\)</span>，我们可以根据 <span class="math inline">\(\mu\)</span>，<span class="math inline">\(\Sigma\)</span> 的信息找到任意一组 <span class="math inline">\((X_{i1},X_{i2},...,X_{ij})\)</span>
+的期望和方差，也可以通过协方差矩阵得到任意一对 <span class="math inline">\((X_i,X_j)\)</span>
+之间的独立性关系（注意对于正态分布，独立和不相关是等价的，对于其他分布不能这样推理）。</p>
+<p>然而对于相关的随机向量，例如 <span class="math inline">\(\begin{bmatrix} X_1 \\ X_2\end{bmatrix}\sim
+N_{q_1+q_2} (\begin{bmatrix}\mu_1 \\ \mu_2 \end{bmatrix},\begin{bmatrix}
+\Sigma_{11} &amp;\Sigma_{12} \\ \Sigma_{21} &amp; \Sigma_{22}
+\end{bmatrix})\)</span>，其中 <span class="math inline">\(|
+\Sigma_{22}|&gt;0\)</span>，可以看到 <span class="math inline">\(X_1,X_2\)</span>
+之间并不独立。此时我们有另一种结果： $(X_1 | X_2 = x_2) N(<em>1 +
+</em>{12} _{22}^{-1} (x_2 - _2)) $</p>
+<p><strong>Proof：</strong>（这是我写在作业里的一个方法，写个作业用蹩脚英文，现在看看绷不住了）</p>
+<p>According to the resolution:</p>
+<p><span class="math display">\[\Sigma =  \begin{bmatrix} \Sigma_{11}
+&amp; \Sigma_{12} \\ \Sigma_{21} &amp; \Sigma_{22} \end{bmatrix}
+=  \begin{bmatrix}\Sigma_{11} - \Sigma_{12 } \Sigma_{22}^{-1}
+\Sigma_{21} &amp; \Sigma _{12} \\ 0  &amp;
+\Sigma_{22}\end{bmatrix}   \begin{bmatrix}I &amp;0 \\ -\Sigma_{22} ^{-1}
+\Sigma_{21}  &amp; I\end{bmatrix}^{-1}\]</span></p>
+<p>Note that:</p>
+<p><span class="math inline">\((x-\mu)^T \Sigma ^{-1} (x-\mu) =
+\begin{bmatrix}x_1^T - \mu_1^T &amp; x_2^T - \mu_2^T\end{bmatrix}
+\begin{bmatrix} I &amp; 0 \\ -\Sigma_{22}^{-1} \Sigma_{21} &amp;
+I\end{bmatrix} \begin{bmatrix}(\Sigma_{11} - \Sigma_{12 }
+\Sigma_{22}^{-1} \Sigma_{21})^{-1} &amp; 0 \\ 0 &amp; \Sigma_{22}^{-1}
+\end{bmatrix} \begin{bmatrix}I &amp; -\Sigma_{12} \Sigma_{22} ^{-1} \\ 0
+&amp;I\end{bmatrix} \begin{bmatrix}x_1 - \mu_1 \\ x_2-
+\mu_2\end{bmatrix}\)</span></p>
+<p>We can know that <span class="math inline">\((x_1^T -\mu_1^T) -
+(x_2^T - \mu_2^T ) \Sigma_{22}^{-1} \Sigma_{21} \sim N(0,\Sigma_{11} -
+\Sigma_{12 } \Sigma_{22}^{-1} \Sigma_{21})\)</span>,</p>
+<p>so that <span class="math inline">\(X_1 \sim N(\mu_1 +\Sigma_{21}
+\Sigma_{22}^{-1} (x_2 - \mu_2)\)</span>,$<em>{11} - </em>{12 }
+<em>{22}^{-1} </em>{21}) $, the conditional distribution can be derived
+from the distribution.</p>
+<p>因此可以看到，即使随机向量的两部分之间有相关性，也可以进行分离。</p></li>
+<li><p><span class="math inline">\(X \sim
+N_p(\mu,\Sigma)\)</span>，于是有 <span class="math inline">\((X-\mu) ^T
+\Sigma^{-1}(X-\mu) \sim \chi_p ^2\)</span>。</p>
+<p><strong>Proof：</strong>取 <span class="math inline">\(Z=\Sigma^{\frac 1 2} \sim N_p
+(0,I_p)\)</span>。</p>
+<p>于是 <span class="math inline">\((X-\mu) ^T \Sigma^{-1} (X-\mu) =
+[(X-\mu)^T \Sigma^{-\frac 1 2}] [\Sigma^{-\frac 1 2} (X-\mu)] = Z^TZ
+=\Sigma_{i=1} ^p Z_i ^2 \sim \chi_p ^2\)</span>。</p></li>
+<li><p><span class="math inline">\(X_1,X_2,..,X_n\)</span>
+是相互独立的多元正态分布，<span class="math inline">\(X_j \sim N_p(\mu_j
+, \Sigma)\)</span>，记 <span class="math inline">\(V_1 =
+c_1X_1+c_2X_2+...+c_nX_n = c^TX\)</span>。</p>
+<ul>
+<li><span class="math inline">\(V_1 \sim N(c^T \mu , c^Tc
+\Sigma)\)</span>；</li>
+<li>对于 <span class="math inline">\(V_2 =
+b_1X_1+b_2X_2+...+b_nX_n\)</span>，有 <span class="math inline">\(V_1,V_2\)</span> 的协方差矩阵为 <span class="math inline">\(\begin{bmatrix} c^Tc\Sigma &amp; b^Tc\Sigma \\
+b^Tc\Sigma &amp; b^Tb\Sigma \end{bmatrix}\)</span>。</li>
+<li><span class="math inline">\(V_1,V_2\)</span> 相互独立 <span class="math inline">\(\iff b^Tc = 0\)</span>（由上一结论直接得出）</li>
+</ul></li>
+</ul>
+<h1 id="lecture-4">Lecture 4</h1>
+<p>咕咕咕</p>
 
     </div>
 
@@ -763,7 +885,7 @@ MLE 估计，矩估计等等方法。</p></li>
       <div class="post-toc-wrap sidebar-panel">
           <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-1"><span class="nav-text">Lecture 1</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E5%85%83%E6%95%B0%E6%8D%AE%E7%9A%84%E7%BB%84%E7%BB%87"><span class="nav-text">多元数据的组织</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8F%8F%E8%BF%B0%E6%80%A7%E7%BB%9F%E8%AE%A1%E9%87%8F"><span class="nav-text">描述性统计量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mahalanobis-distance"><span class="nav-text">Mahalanobis Distance</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#exploratory-data-analysis-eda"><span class="nav-text">Exploratory Data Analysis
 (EDA)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#boxplot"><span class="nav-text">Boxplot</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#histogram"><span class="nav-text">Histogram</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#scatter-plot"><span class="nav-text">Scatter Plot</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-2"><span class="nav-text">Lecture 2</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#linear-algebra"><span class="nav-text">Linear Algebra</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#matrix-interpretation-of-mahalanobis-distance"><span class="nav-text">Matrix
-Interpretation of Mahalanobis-distance</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#matrix-inequality"><span class="nav-text">Matrix Inequality</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8F%8F%E8%BF%B0%E6%80%A7%E7%BB%9F%E8%AE%A1%E9%87%8F%E7%9A%84%E7%9F%A9%E9%98%B5%E8%A1%A8%E7%A4%BA"><span class="nav-text">描述性统计量的矩阵表示</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-3"><span class="nav-text">Lecture 3</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E5%85%83%E6%AD%A3%E6%80%81%E5%88%86%E5%B8%83"><span class="nav-text">多元正态分布</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E5%85%83%E6%AD%A3%E6%80%81%E5%88%86%E5%B8%83%E7%9A%84%E5%8F%82%E6%95%B0%E4%BC%B0%E8%AE%A1"><span class="nav-text">多元正态分布的参数估计</span></a></li></ol></li></ol></div>
+Interpretation of Mahalanobis-distance</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#matrix-inequality"><span class="nav-text">Matrix Inequality</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8F%8F%E8%BF%B0%E6%80%A7%E7%BB%9F%E8%AE%A1%E9%87%8F%E7%9A%84%E7%9F%A9%E9%98%B5%E8%A1%A8%E7%A4%BA"><span class="nav-text">描述性统计量的矩阵表示</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-3"><span class="nav-text">Lecture 3</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E5%85%83%E6%AD%A3%E6%80%81%E5%88%86%E5%B8%83"><span class="nav-text">多元正态分布</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A1%A5%E5%85%85%E7%9F%A9%E9%98%B5%E5%90%91%E9%87%8F%E6%B1%82%E5%AF%BC%E6%9C%9F%E6%9C%9B"><span class="nav-text">补充：矩阵向量求导、期望</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E5%85%83%E6%AD%A3%E6%80%81%E5%88%86%E5%B8%83%E5%8F%82%E6%95%B0%E4%BC%B0%E8%AE%A1"><span class="nav-text">多元正态分布参数估计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9E%81%E5%A4%A7%E4%BC%BC%E7%84%B6%E4%BC%B0%E8%AE%A1"><span class="nav-text">极大似然估计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%A0%E5%81%8F%E4%BC%B0%E8%AE%A1"><span class="nav-text">无偏估计</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E5%85%83%E6%AD%A3%E6%80%81%E5%88%86%E5%B8%83%E7%9A%84%E6%80%A7%E8%B4%A8"><span class="nav-text">多元正态分布的性质</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-4"><span class="nav-text">Lecture 4</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
