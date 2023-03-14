@@ -6,7 +6,7 @@
   <link href="https://chiyuru.github.io/atom.xml" rel="self"/>
   
   <link href="https://chiyuru.github.io/"/>
-  <updated>2023-03-13T14:37:05.240Z</updated>
+  <updated>2023-03-14T14:43:16.449Z</updated>
   <id>https://chiyuru.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://chiyuru.github.io/2023/03/01/Diary-2023-03/"/>
     <id>https://chiyuru.github.io/2023/03/01/Diary-2023-03/</id>
     <published>2023-02-28T23:54:35.000Z</published>
-    <updated>2023-03-13T14:37:05.240Z</updated>
+    <updated>2023-03-14T14:43:16.449Z</updated>
     
     
     <summary type="html">&lt;p&gt;某些人学都学不完了，还有空写日记？（&lt;/p&gt;</summary>
@@ -61,7 +61,7 @@
     <link href="https://chiyuru.github.io/2023/02/21/Linear-Regression-Analysis/"/>
     <id>https://chiyuru.github.io/2023/02/21/Linear-Regression-Analysis/</id>
     <published>2023-02-21T11:12:18.000Z</published>
-    <updated>2023-03-11T16:14:50.912Z</updated>
+    <updated>2023-03-14T14:44:57.323Z</updated>
     
     
     <summary type="html">&lt;p&gt;本来真没打算连载这个，结果这课居然把课程笔记算成百分制里面的 10
@@ -186,9 +186,9 @@ cover
     
     <category term="数学" scheme="https://chiyuru.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
     
-    <category term="这里面看起来很好玩" scheme="https://chiyuru.github.io/tags/%E8%BF%99%E9%87%8C%E9%9D%A2%E7%9C%8B%E8%B5%B7%E6%9D%A5%E5%BE%88%E5%A5%BD%E7%8E%A9/"/>
-    
     <category term="统计" scheme="https://chiyuru.github.io/tags/%E7%BB%9F%E8%AE%A1/"/>
+    
+    <category term="这里面看起来很好玩" scheme="https://chiyuru.github.io/tags/%E8%BF%99%E9%87%8C%E9%9D%A2%E7%9C%8B%E8%B5%B7%E6%9D%A5%E5%BE%88%E5%A5%BD%E7%8E%A9/"/>
     
   </entry>
   
@@ -349,9 +349,9 @@ MATLAB 的函数，那 Python 不亏。&lt;/p&gt;</summary>
     
     
     
-    <category term="躺平" scheme="https://chiyuru.github.io/tags/%E8%BA%BA%E5%B9%B3/"/>
-    
     <category term="碎碎念" scheme="https://chiyuru.github.io/tags/%E7%A2%8E%E7%A2%8E%E5%BF%B5/"/>
+    
+    <category term="躺平" scheme="https://chiyuru.github.io/tags/%E8%BA%BA%E5%B9%B3/"/>
     
   </entry>
   
