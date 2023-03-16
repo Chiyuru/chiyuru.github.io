@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"chiyuru.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="《概率论 (1)》课程第一次 bonus。一个略长的证明，我使用的证明框架来自这里。感觉挺有意思，发出来水一篇留作纪念（，毕竟博客的数学 tag 下面几乎全是统计，成何体统。 本文发布时已过本次加分作业设定的截止时间。 证完了才知道 Kai Lai Chung 附录和 lzx 的课程笔记里都有提示是正常的吗（，有的人上课是真的一点都不听啊（">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Proof of Carathéodory’s Extension Theorem">
+<meta property="og:url" content="https://chiyuru.github.io/2023/03/13/Proof-of-Caratheodory-Extension-Theorem/index.html">
+<meta property="og:site_name" content="『姑妄言之姑妄听之』">
+<meta property="og:description" content="《概率论 (1)》课程第一次 bonus。一个略长的证明，我使用的证明框架来自这里。感觉挺有意思，发出来水一篇留作纪念（，毕竟博客的数学 tag 下面几乎全是统计，成何体统。 本文发布时已过本次加分作业设定的截止时间。 证完了才知道 Kai Lai Chung 附录和 lzx 的课程笔记里都有提示是正常的吗（，有的人上课是真的一点都不听啊（">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2023/03/16/JmU19EyKPkchDqg.jpg">
+<meta property="article:published_time" content="2023-03-13T13:18:06.000Z">
+<meta property="article:modified_time" content="2023-03-15T16:44:53.124Z">
+<meta property="article:author" content="驰雨Chiyuru">
+<meta property="article:tag" content="数学">
+<meta property="article:tag" content="这里面看起来很好玩">
+<meta property="article:tag" content="概率">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2023/03/16/JmU19EyKPkchDqg.jpg">
+
+<link rel="canonical" href="https://chiyuru.github.io/2023/03/13/Proof-of-Caratheodory-Extension-Theorem/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Proof of Carathéodory’s Extension Theorem | 『姑妄言之姑妄听之』</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="『姑妄言之姑妄听之』" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">『姑妄言之姑妄听之』</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://chiyuru.github.io/2023/03/13/Proof-of-Caratheodory-Extension-Theorem/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="驰雨Chiyuru">
+      <meta itemprop="description" content="おはよう、朝だよ">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="『姑妄言之姑妄听之』">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Proof of Carathéodory’s Extension Theorem
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-03-13 21:18:06" itemprop="dateCreated datePublished" datetime="2023-03-13T21:18:06+08:00">2023-03-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-03-16 00:44:53" itemprop="dateModified" datetime="2023-03-16T00:44:53+08:00">2023-03-16</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>《概率论 (1)》课程第一次
+bonus。一个略长的证明，我使用的证明框架来自<a target="_blank" rel="noopener" href="http://www.probability.net/WEBcaratheodory.pdf">这里</a>。感觉挺有意思，发出来<del>水一篇</del>留作纪念（，<del>毕竟博客的数学
+tag 下面几乎全是统计，成何体统</del>。</p>
+<p>本文发布时已过本次加分作业设定的截止时间。</p>
+<p>证完了才知道 Kai Lai Chung 附录和 lzx
+的课程笔记里都有提示是正常的吗（，有的人上课是真的一点都不听啊（</p>
+<span id="more"></span>
+<p>证明使用英文完成，我的英语全盛期水平高考才考了
+135<del>（虽然是地狱难度的上海英语）</del>，可想而知有多烂。</p>
+<p>Get started!</p>
+<p>In the following, <span class="math inline">\(\Omega\)</span> is a
+set. Whenever a union of sets is denoted <span class="math inline">\(\uplus\)</span> as opposed to <span class="math inline">\(\cup\)</span>, it indicates that the sets involved
+are pairwise disjoint.</p>
+<h1 id="definition-1-semi-ring">Definition 1 (semi-ring)</h1>
+<p><strong>Definition 1 (semi-ring)</strong>:</p>
+<p>A semi-ring on <span class="math inline">\(\Omega\)</span> is a
+subset <span class="math inline">\(\mathcal S\)</span> of the power set
+<span class="math inline">\(P(\Omega)\)</span> with the following
+properties:</p>
+<ul>
+<li><span class="math inline">\(\emptyset \in \mathcal S\)</span></li>
+<li><span class="math inline">\(A,B \in \mathcal S \Rightarrow A\cup B
+\in \mathcal S\)</span></li>
+<li><span class="math inline">\(A,B \in \mathcal S \Rightarrow \exists n
+\geq 0, \exists A_i \in \mathcal S: A \setminus B = \uplus_{i=1} ^n
+A_i\)</span></li>
+</ul>
+<h1 id="definition-2-ring">Definition 2 (ring)</h1>
+<p><strong>Definition 2 (ring)</strong>:</p>
+<p>A ring on <span class="math inline">\(\Omega\)</span> is a subset
+<span class="math inline">\(\mathcal R\)</span> of the power set <span class="math inline">\(P(\Omega)\)</span> with the following
+properties:</p>
+<ul>
+<li><span class="math inline">\(\emptyset \in \mathcal R\)</span></li>
+<li><span class="math inline">\(A,B \in \mathcal R \Rightarrow A \cup B
+\in \mathcal R\)</span></li>
+<li><span class="math inline">\(A , B \in \mathcal R \Rightarrow A
+\setminus B \in \mathcal R\)</span></li>
+</ul>
+<p><strong>Remark 1</strong>:</p>
+<ul>
+<li><p><span class="math inline">\(A \cup B = A\setminus (A \setminus
+B)\)</span> and therefore that a ring is closed under pairwise
+intersection.</p></li>
+<li><p>A ring on <span class="math inline">\(\Omega\)</span> is also a
+semi-ring on <span class="math inline">\(\Omega\)</span>.</p></li>
+<li><p>Let <span class="math inline">\((\mathcal R_i ) _{i \in
+I}\)</span> be an arbitrary family of rings on <span class="math inline">\(\Omega\)</span>, with <span class="math inline">\(I \neq \emptyset\)</span>. Then <span class="math inline">\(\mathcal R \triangleq \cap_{i \in I} \mathcal
+R_i\)</span> is also a ring on <span class="math inline">\(\Omega\)</span>.</p></li>
+</ul>
+<p>These properties are trivial.</p>
+<h1 id="definition-3-ring-generated-by-set">Definition 3 (ring generated
+by set)</h1>
+<p><strong>Definition 3 (ring generated by set)</strong>:</p>
+<p>Let <span class="math inline">\(\mathcal A\)</span> be a subset of
+the power set <span class="math inline">\(P(\Omega)\)</span>. Define $ R
+(A) { R$ is ring on <span class="math inline">\(\Omega : \mathcal A
+\subset \mathcal R\}\)</span>.</p>
+<p>It's easy to show that <span class="math inline">\(P(\Omega)\)</span>
+is a ring on <span class="math inline">\(\Omega\)</span>, and that <span class="math inline">\(R(\mathcal A)\)</span> is not empty. Define <span class="math inline">\(\mathcal R(\mathcal A) \triangleq \cap _{\mathcal
+R \in R(\mathcal A)} \mathcal R\)</span> as the ring generated by <span class="math inline">\(\mathcal A\)</span>.</p>
+<p><strong>Remark 2</strong>:</p>
+<ul>
+<li>In the definition above, we should show that <span class="math inline">\(\mathcal R(\mathcal A)\)</span> is a ring on <span class="math inline">\(\Omega\)</span> cause it's defined as the
+intersections of all rings in <span class="math inline">\(R(\mathcal
+A)\)</span>.</li>
+<li><span class="math inline">\(\mathcal A \subseteq \mathcal R(\mathcal
+A)\)</span>.</li>
+</ul>
+<h1 id="proposition-1-the-way-to-generate-a-ring-by-a-semi-ring">Proposition
+1 (the way to generate a ring by a semi-ring)</h1>
+<p><strong>Proposition 1 (the way to generate a ring by a
+semi-ring)</strong>:</p>
+<p>Let <span class="math inline">\(S\)</span> be a semi-ring on <span class="math inline">\(\Omega\)</span>. Define the set <span class="math inline">\(\mathcal R\)</span> of all finite unions of
+pairwise disjoint elements of <span class="math inline">\(\mathcal
+S\)</span>, i.e.</p>
+<p><span class="math display">\[\mathcal R \triangleq \lbrace A:A =
+\uplus_{i=1} ^n A_i ,A_i \in \mathcal S,n\in \mathbb Z+
+\rbrace\]</span></p>
+<p>(where if <span class="math inline">\(n=0\)</span>, the corresponding
+union is empty, i.e. <span class="math inline">\(\emptyset \in \mathcal
+R\)</span>). Then <span class="math inline">\(\mathcal R = \mathcal
+R(\mathcal S)\)</span>.</p>
+<p><strong>Proof</strong>:</p>
+<p>First to prove that <span class="math inline">\(R\)</span> is a ring.
+Let <span class="math inline">\(A = \uplus _{i=1} ^n A_i\)</span> and
+<span class="math inline">\(B= \uplus _{j=1} ^p B_j \in \mathcal
+R\)</span>:</p>
+<ul>
+<li><span class="math inline">\(A \cap B = \uplus _{i,j} (A_i \cap
+B_j)\)</span> and that <span class="math inline">\(\mathcal R\)</span>
+is closed under pairwise intersection.</li>
+<li>If <span class="math inline">\(p \geq 1\)</span>, then <span class="math inline">\(A\setminus B = \cap_{j=1} ^p (\uplus _{i=1} ^n
+(A_i \setminus B_j))\)</span>, and that <span class="math inline">\(\mathcal R\)</span> is closed under set
+difference.</li>
+<li><span class="math inline">\(A \cup B = (A\setminus B) \uplus
+B\)</span>, and that <span class="math inline">\(\mathcal R\)</span> is
+a ring on <span class="math inline">\(\Omega\)</span>.</li>
+</ul>
+<p>Then to prove that <span class="math inline">\(\mathcal R\)</span> is
+the minimal ring that contains <span class="math inline">\(\mathcal
+S\)</span>, which is trivial.</p>
+<p>So <span class="math inline">\(\mathcal R(\mathcal S)\)</span> is
+indeed the ring generated by the semi-ring <span class="math inline">\(\mathcal S\)</span>, now we have the way to
+generate a ring from a semi-ring.</p>
+<p><strong>Remark 3 (Another way to generate a ring by a
+semi-ring)</strong>:</p>
+<p>Everything being as before, define: <span class="math inline">\(\mathcal R &#39; \triangleq \lbrace A:A =
+\cup_{i=1} ^n A_i,A_i \in S,n\in \mathbb Z+ \rbrace\)</span>. We don't
+require the sets involved in the union to be pairwise disjoint. Using
+the fact that the ring <span class="math inline">\(\mathcal R\)</span>
+is closed under finite unoin, then <span class="math inline">\(\mathcal
+R&#39; \subseteq \mathcal R\)</span> while <span class="math inline">\(\mathcal R\)</span> is the minimal ring that
+contains <span class="math inline">\(\mathcal S\)</span>, thus <span class="math inline">\(\mathcal R&#39; = \mathcal R = \mathcal R
+(\mathcal S)\)</span>.</p>
+<h1 id="definition-4-measure-on-set">Definition 4 (measure on set)</h1>
+<p><strong>Definition 4 (measure on set)</strong>:</p>
+<p>Let <span class="math inline">\(\mathcal A \subseteq
+P(\Omega)\)</span> with <span class="math inline">\(\emptyset \in
+\mathcal A\)</span>. We call measure on <span class="math inline">\(\mathcal A\)</span>, any map <span class="math inline">\(\mu: \mathcal A \to [0,+\infty]\)</span> with the
+following properties:</p>
+<ul>
+<li><span class="math inline">\(\mu(\emptyset) = 0\)</span></li>
+<li><span class="math inline">\(A \in \mathcal A,A_n \in \mathcal
+A\)</span> and <span class="math inline">\(A = \uplus _{n=1} ^{+\infty}
+A_n \Rightarrow \mu(A) = \Sigma_{i=1} ^{+\infty} \mu (A_n)\)</span>
+(which is called countable additivity)</li>
+</ul>
+<p>While $A $ is a <span class="math inline">\(\sigma-\)</span>algebra
+on <span class="math inline">\(\Omega\)</span>, the second property can
+be replaced by:</p>
+<ul>
+<li><span class="math inline">\(A_n \in \mathcal A\)</span> and <span class="math inline">\(A = \uplus _{n=1} ^{+\infty} A_n \Rightarrow
+\mu(A) = \Sigma_{i=1} ^{+\infty} \mu (A_n)\)</span></li>
+</ul>
+<p><strong>Remark 4</strong>:</p>
+<p>We don't require the set $A $ is a <span class="math inline">\(\sigma
+-\)</span>algebra on <span class="math inline">\(\Omega\)</span>. If
+<span class="math inline">\(A,B \in \mathcal A\)</span>, <span class="math inline">\(A \subseteq B\)</span> and <span class="math inline">\(B \setminus A \in \mathcal A\)</span>, then <span class="math inline">\(\mu(A) \leq \mu(B)\)</span>. The proof is
+trivial.</p>
+<h1 id="proposition-2-measure-extended-from-semi-ring-to-ring">Proposition 2
+(measure extended from semi-ring to ring)</h1>
+<p><strong>Proposition 2 (measure extended from semi-ring to
+ring)</strong>:</p>
+<p>Let <span class="math inline">\(\mathcal S\)</span> be a semi-ring on
+<span class="math inline">\(\Omega\)</span>, and <span class="math inline">\(\mu : \mathcal S \to [0,+\infty]\)</span> be a
+measure on <span class="math inline">\(\mathcal S\)</span>. There exists
+an extension of <span class="math inline">\(\mu\)</span> on <span class="math inline">\(\mathcal R(\mathcal S)\)</span>, i.e. a measure
+<span class="math inline">\(\bar{\mu}: \mathcal R (\mathcal S) \to
+[0,+\infty]\)</span> such that <span class="math inline">\(\bar{\mu}|_{\mathcal S } = \mu\)</span>.</p>
+<p><strong>Proof</strong>:</p>
+<p>Let <span class="math inline">\(A\)</span> be an element of <span class="math inline">\(\mathcal R =\mathcal R(\mathcal S)\)</span> with
+representation <span class="math inline">\(A = \uplus _{i=1} ^n
+A_i\)</span> as a finite union of pairwise disjoint elements of <span class="math inline">\(\mathcal S\)</span>. Define <span class="math inline">\(\bar{\mu} (A) = \Sigma_{i=1} ^n \mu(A_i)\)</span>
+as the extended measure on ring <span class="math inline">\(\mathcal
+R\)</span>. Then check it's well-defined, derived from <span class="math inline">\(\mathcal S\)</span>, and is a measure.</p>
+<ul>
+<li><p>Let <span class="math inline">\(A \in \mathcal R(\mathcal
+S)\)</span>, <span class="math inline">\(A = \uplus _{i=1} ^n A_i =
+\uplus _{j=1} ^p B_j\)</span>, show that <span class="math inline">\(\bar{\mu} (A) = \Sigma_{i=1} ^n
+\mu(A_i)=\Sigma_{j=1} ^m \mu(B_j)\)</span>.</p>
+<p>For <span class="math inline">\(i=1,2,...,n\)</span>, <span class="math inline">\(\mu (A_i) = \Sigma_{j=1} ^p \mu(A_i \cap
+B_j)\)</span>, for <span class="math inline">\(j=1,2,...,p\)</span>,
+<span class="math inline">\(\mu(B_j) = \Sigma_{i=1} ^n \mu(A_i \cap
+B_j)\)</span>.</p>
+<p>Then <span class="math inline">\(\Sigma_{i=1} ^n \mu(A_i)=
+\Sigma_{i=1} ^n \Sigma_{j=1} ^p \mu(A_i \cap B_j)= \Sigma_{j=1} ^p
+\Sigma_{i=1} ^n \mu(A_i \cap B_j)= \Sigma_{j=1} ^m \mu(B_j)\)</span>, so
+the map <span class="math inline">\(\bar{\mu} :\mathcal R (\mathcal S)
+\to [0,+\infty]\)</span> is well-defined.</p></li>
+<li><p>Easy to show that <span class="math inline">\(\bar{\mu}|_{\mathcal S } = \mu\)</span>.</p></li>
+<li><p>Suppose that <span class="math inline">\((A_n)_{n \geq
+1}\)</span> is a sequence of pairwise disjoint elements of <span class="math inline">\(\mathcal R (\mathcal S)\)</span>, each <span class="math inline">\(A_n\)</span> have the representation <span class="math inline">\(A_n = \uplus _{k=1} ^{p_n} A_n ^k , n \geq
+1\)</span> as a finite union of disjoint elements of <span class="math inline">\(\mathcal S\)</span>.</p>
+<p>Suppose moreover $A = _{n=1} ^{+} A_n $ is an element of <span class="math inline">\(\mathcal R(\mathcal S)\)</span> with
+representation <span class="math inline">\(A = \uplus_{j=1} ^p
+B_j\)</span>, as a finite union of pairwise disjoint elements of <span class="math inline">\(\mathcal S\)</span>.</p>
+<p>We want to show that <span class="math inline">\(\bar{\mu} (A) =
+\Sigma_{n=1} ^{\infty} \bar{\mu} (A_n)\)</span>, then <span class="math inline">\(\bar{\mu}\)</span> meets the property of countable
+additivity, thus it's a measure on <span class="math inline">\(\mathcal
+R(\mathcal S)\)</span>.According to the definition of <span class="math inline">\(\bar{\mu}\)</span>, <span class="math inline">\(\bar{\mu}(A) = \Sigma_{j=1}^p \mu(
+B_j)\)</span>.</p>
+<p>For each <span class="math inline">\(j=1,2,...,p\)</span>, <span class="math inline">\(B_j = \cup_{n=1} ^{+\infty} \cup_{k=1}^{p_n} (A_n
+^k \cap B_j) = \uplus_{m=1} ^{+\infty} C_m\)</span>, while for <span class="math inline">\(m=1,2,...,+\infty\)</span>, <span class="math inline">\(C_m = \uplus _{k=1}^{p_n} (A_n ^k \cap
+B_j)\)</span> is a union of disjoint pairwise elements in <span class="math inline">\(\mathcal S\)</span>, then <span class="math inline">\(C_m \in \mathcal S\)</span>.</p>
+<p>According to the definition of <span class="math inline">\(\bar{\mu}\)</span>, <span class="math inline">\(\mu(C_m) = \Sigma_{k=1} ^{p_n} \mu(A_n ^k \cap
+B_j)\)</span>, thus <span class="math inline">\(\mu(B_j) = \Sigma_{m=1}
+^{+\infty} \mu(C_m) = \Sigma_{n=1} ^{+\infty}\Sigma_{k=1} ^{p_n} \mu(A_n
+^k \cap B_j)\)</span>.</p>
+<p>On the other hand, <span class="math inline">\(A_n ^k = A_n ^k \cap A
+= \uplus_{j=1} ^p (A_n ^k \cap B_j)\)</span>, thus <span class="math inline">\(\bar{\mu}(A_n ^k) = \mu(A_n ^k) = \Sigma_{j=1} ^p
+\mu(A_n ^k \cap B_j)\)</span>. While $A_n = _{k=1} ^{p_n} A_n ^k $, we
+know that <span class="math inline">\(\bar{\mu} (A_n)= \Sigma_{k=1}^
+{p_n} \bar{\mu}(A_n ^k) = \Sigma_{k=1}^ {p_n} \Sigma_{j=1} ^p \mu(A_n ^k
+\cap B_j)\)</span>.</p>
+<p>After all, ${}(A) = <em>{j=1} ^p (B_j) = </em>{j=1} ^p <em>{n=1}
+^{+}</em>{k=1} ^{p_n} (A_n ^k B_j) = <em>{n=1} ^{+} </em>{k=1}^ {p_n}
+<em>{j=1} ^p (A_n ^k B_j) = </em>{n=1} ^{+}{}(A_n) $, which indicates
+that <span class="math inline">\(\bar{\mu}\)</span> is a measure on
+<span class="math inline">\(\mathcal R(\mathcal S)\)</span>.</p></li>
+</ul>
+<p>Thus <span class="math inline">\(\bar{\mu}\)</span> is a extended
+measure on the ring <span class="math inline">\(\mathcal R (\mathcal
+S)\)</span>, and is extended from the semi-ring <span class="math inline">\(\mathcal S\)</span>.</p>
+<h1 id="proposition-3-uniqueness-of-the-extension-barmu">Proposition 3
+(Uniqueness of the extension <span class="math inline">\(\bar{\mu}\)</span>)</h1>
+<p><strong>Proposition 3 (Uniqueness of the extension <span class="math inline">\(\bar{\mu}\)</span>)</strong></p>
+<p>Let <span class="math inline">\(\mathcal S\)</span> be a semi-ring on
+<span class="math inline">\(\Omega\)</span>, and <span class="math inline">\(\mu : \mathcal S \to [0,+\infty]\)</span> be a
+measure on <span class="math inline">\(\mathcal S\)</span>. There exists
+an <strong>unique</strong> extension of <span class="math inline">\(\mu\)</span> on <span class="math inline">\(\mathcal R(\mathcal S)\)</span>, i.e. a measure
+<span class="math inline">\(\bar{\mu}: \mathcal R (\mathcal S) \to
+[0,+\infty]\)</span> such that <span class="math inline">\(\bar{\mu}|_{\mathcal S } = \mu\)</span>.</p>
+<p><strong>Proof</strong>:</p>
+<p>We just prove the uniqueness of the structure of <span class="math inline">\(\bar{\mu}\)</span> in proposition 2.</p>
+<p>Take <span class="math inline">\(\bar{\mu} : \mathcal R (\mathcal S)
+\to [0,+\infty]\)</span> as defined in proposition 2, we proved that
+<span class="math inline">\(\bar{\mu}\)</span> is indeed a measure on
+the ring <span class="math inline">\(\mathcal R (\mathcal S)\)</span>.
+Let <span class="math inline">\(\mu &#39;\)</span> be another measure
+extended from <span class="math inline">\(\mathcal S\)</span>.</p>
+<p>For each <span class="math inline">\(A \in \mathcal R(\mathcal
+S)\)</span>, <span class="math inline">\(A\)</span> has a representation
+<span class="math inline">\(A = \uplus_{i=1} ^n A_i\)</span> as a finite
+union of pairwise disjoint elements in <span class="math inline">\(\mathcal S\)</span>. According to the definition,
+<span class="math inline">\(\mu&#39;(A) = \Sigma_{i=1} ^n \mu &#39;(A_i)
+= \mu(A_i) = \Sigma_{i=1}^n \bar{\mu}(A_i) = \bar{\mu}(A)\)</span>. This
+being true for each <span class="math inline">\(A \in \mathcal
+R(\mathcal S)\)</span>, then the extension is unique.</p>
+<h1 id="definition-5-outer-measure">Definition 5 (outer-measure)</h1>
+<p><strong>Definition 5 (outer-measure)</strong>:</p>
+<p>We define an outer-measure on <span class="math inline">\(\Omega\)</span> as being any map <span class="math inline">\(\mu^*: P(\Omega) \to [0,+\infty]\)</span> with the
+following properties:</p>
+<ul>
+<li><span class="math inline">\(\mu ^*(\emptyset) = 0\)</span></li>
+<li><span class="math inline">\(A \subseteq B \Rightarrow \mu^*(A)\leq
+\mu^*(B)\)</span></li>
+<li><span class="math inline">\(\mu^*(\cup_{i=1} ^{+\infty} A_n) \leq
+\Sigma_{i=1}^{+\infty} \mu^*(A_n)\)</span></li>
+</ul>
+<p><strong>Remark 5</strong>:</p>
+<p>According to the third property of outer-measure, <span class="math inline">\(\mu^*(A \cup B) \leq \mu^*(A) +\mu^*(B)\)</span>
+where <span class="math inline">\(\mu ^*\)</span> is an outer-measure on
+<span class="math inline">\(\Omega\)</span> and <span class="math inline">\(A,B \subseteq \Omega\)</span>.</p>
+<h1 id="definition-6-the-sigma-algebra-associated-with-outer-measure">Definition
+6 (the <span class="math inline">\(\sigma-\)</span>algebra associated
+with outer-measure)</h1>
+<p><strong>Definition 6 (the <span class="math inline">\(\sigma-\)</span>algebra associated with
+outer-measure)</strong>:</p>
+<p>Let <span class="math inline">\(\mu^*\)</span> be an outer-measure on
+<span class="math inline">\(\Omega\)</span>. We define:</p>
+<p><span class="math display">\[\Sigma(\mu ^*) \triangleq \lbrace A
+\subseteq \Omega: \mu^*(T) = \mu^*(T \cap A) + \mu^*(T \cap A^C),
+\forall T \subseteq \Omega \rbrace\]</span></p>
+<p>We call <span class="math inline">\(\Sigma(\mu^*)\)</span> the <span class="math inline">\(\sigma-\)</span>algebra associated with the
+outer-measure <span class="math inline">\(\mu^*\)</span>. (The fact
+<span class="math inline">\(\Sigma(\mu^*)\)</span> is a <span class="math inline">\(\sigma-\)</span>algebra remains to be proved)</p>
+<h1 id="proposition-4-the-sigma-algebra-associated-with-outer-measure">Proposition
+4 (the <span class="math inline">\(\sigma-\)</span>algebra associated
+with outer-measure)</h1>
+<p><strong>Proposition 4 (the <span class="math inline">\(\sigma-\)</span>algebra associated with
+outer-measure)</strong>:</p>
+<p>Let <span class="math inline">\(\mu^*\)</span> be an outer-measure on
+<span class="math inline">\(\Omega\)</span>. Let <span class="math inline">\(\Sigma = \Sigma(\mu^*)\)</span> be the <span class="math inline">\(\sigma-\)</span>algebra associated with <span class="math inline">\(\mu^*\)</span>. <span class="math inline">\(\Sigma\)</span> is indeed a <span class="math inline">\(\sigma-\)</span>algebra.</p>
+<p><strong>Proof</strong>:</p>
+<p>Let <span class="math inline">\(A,B \in \Sigma\)</span> and <span class="math inline">\(T\subseteq \Omega\)</span>. First of all, <span class="math inline">\(\Omega,\emptyset \in \Sigma(\mu^*)\)</span> thus
+<span class="math inline">\(\Sigma(\mu^*)\)</span> is non-empty.</p>
+<ul>
+<li><p>For <span class="math inline">\(A \in \Sigma\)</span>, there is
+$^<em>(T) = ^</em>(T A) + ^<em>(T A^C)= ^</em>(T A^C)+ ^*(T A) $ thus
+<span class="math inline">\(A^C \in \Omega\)</span>.</p></li>
+<li><p>Note that <span class="math inline">\(T\cap A^C = T \cap (A\cap
+B)^C \cap A^C\)</span>, <span class="math inline">\(T\cap A\cap B^C =
+T\cap (A\cap B)^C \cap A\)</span>, then</p>
+<p><span class="math display">\[\mu^*(T\cap A^C) +\mu^*(T\cap A\cap B^C)
+= \mu^*(T \cap (A\cap B)^C \cap A^C) + \mu^*(T\cap (A\cap B)^C \cap A) =
+\mu^*(T\cap(A\cap B)^C)\]</span></p>
+<p>Addint <span class="math inline">\(\mu^*(T\cap (A\cap B))\)</span> on
+both sides of the equation above, there is</p>
+<p><span class="math display">\[\mu^*(T) = \mu^*(T \cap(A\cap
+B))+\mu^*(T\cap (A\cap B)^C)\]</span></p>
+<p>which suggests that <span class="math inline">\(A\cap B \in
+\Sigma\)</span> when <span class="math inline">\(A ,B \in
+\Sigma\)</span>, we proved that intersection is closed in <span class="math inline">\(\Sigma\)</span>.</p></li>
+<li><p>With the two properties above, it's trivial to prove that <span class="math inline">\(A\cup B\)</span> and <span class="math inline">\(A\setminus B \in \Sigma\)</span>.</p></li>
+</ul>
+<p>Let <span class="math inline">\((B_n)_{n \geq 1}\)</span> be a
+sequence of pairwise disjoint elements of <span class="math inline">\(\Sigma\)</span>, and let <span class="math inline">\(B\triangleq \uplus_{i=1}^{+\infty} B_i\)</span>.
+Let <span class="math inline">\(N \geq 1\)</span>.</p>
+<ul>
+<li><p>For each <span class="math inline">\(N \in \mathbb Z+\)</span>,
+there is <span class="math inline">\(\uplus_{i=1}^N B_i \in
+\Sigma\)</span>. Thus <span class="math inline">\(\mu^*(T\cap
+(\uplus_{i=1} ^N B_i)) = \Sigma_{i=1}^N \mu^*(T\cap B_n)\)</span>.
+According to the definition of <span class="math inline">\(B\)</span>,
+there is <span class="math inline">\(\uplus_{i=1} ^N B_i \subseteq
+B\)</span>, then <span class="math inline">\(B^C \subseteq
+(\uplus_{i=1}^N B_i)^C\)</span>. Thus <span class="math inline">\(T \cap
+B^C \subseteq T \cap (\uplus_{i=1}^N B_i)^C\)</span>.</p>
+<p>Due to the second property of outer-measure, <span class="math inline">\(\mu^*( T \cap B^C) \leq \mu^*(T\cap
+(\uplus_{i=1}^N B_i)^C)\)</span>, thus there is:</p>
+<p><span class="math display">\[\mu^*(T \cap B^C)
++\Sigma_{i=1}^{+\infty} \mu^*(T\cap B_i) \leq \mu^*(T \cap
+(\uplus_{i=1}^N B_n)^C)+\Sigma_{i=1}^{+\infty} \mu^*(T\cap B_i) =
+\mu^*(T \cap (\uplus_{i=1}^N B_n)^C)+\mu^*(T\cap (\uplus_{i=1} ^N B_i))
+= \mu^*(T)\]</span></p>
+<p>cause <span class="math inline">\((\uplus_{i=1}^N B_n) \in
+\Sigma(\mu^*)\)</span>.</p>
+<p>While <span class="math inline">\(\mu^*(T) \leq \mu^*(T\cap B^C) +
+\mu^*(T\cap B) \leq \Sigma_{i=1}^{+\infty} \mu^*(T\cap B_i) +
+\mu^*(T\cap B^C)\)</span>, thus <span class="math inline">\(\mu^*(T) =
+\mu^*(T\cap B)+ \mu(T\cap B^C)\)</span> meets, <span class="math inline">\(B\triangleq \uplus_{i=1}^{+\infty} B_i \in
+\Sigma\)</span>.</p></li>
+</ul>
+<p>All the statements above show that <span class="math inline">\(\Sigma(\mu^*)\)</span> is a <span class="math inline">\(\sigma-\)</span>algebra.</p>
+<h1 id="proposition-5-the-measure-on-the-sigma-algebra-sigmamu">Proposition
+5 (the measure on the <span class="math inline">\(\sigma-\)</span>algebra <span class="math inline">\(\Sigma(\mu^*)\)</span>)</h1>
+<p><strong>Proposition 5 (the measure on the <span class="math inline">\(\sigma-\)</span>algebra <span class="math inline">\(\Sigma(\mu^*)\)</span>)</strong>:</p>
+<p>Let <span class="math inline">\(\mu^*\)</span> be an outer-measure on
+<span class="math inline">\(\Omega\)</span>. Let <span class="math inline">\(\Sigma = \Sigma(\mu^*)\)</span> be the <span class="math inline">\(\sigma-\)</span>algebra associated with <span class="math inline">\(\mu^*\)</span>. Then <span class="math inline">\(\mu^* |_{\Sigma}\)</span> is a measure on <span class="math inline">\(\Sigma\)</span>.</p>
+<p><strong>Proof</strong>:</p>
+<p><span class="math inline">\(\mu^*\)</span> is an outer-measure on
+<span class="math inline">\(\Omega\)</span> (of course on <span class="math inline">\(\Sigma\)</span>), then we only need to prove the
+countable additivity of <span class="math inline">\(\mu^*\)</span> on
+<span class="math inline">\(\Sigma\)</span>.</p>
+<p>According to the equation <span class="math inline">\(\mu^*(T \cup B)
+= \Sigma_{i=1}^{+\infty} \mu^*(T\cap B_i)\)</span> in the proof of
+proposition 4, take <span class="math inline">\(T=B\)</span> (cause
+<span class="math inline">\(\Sigma\)</span> is a <span class="math inline">\(\sigma-\)</span>algebra on <span class="math inline">\(\Omega\)</span>,<span class="math inline">\(B \in
+\Sigma\)</span>). Thus <span class="math inline">\(\mu^*(B) =
+\Sigma_{i=1}^{+\infty} \mu^*( B_i)\)</span>, <span class="math inline">\(\mu^*|_{\Sigma}\)</span> is the measure on <span class="math inline">\(\Sigma\)</span>.</p>
+<h1 id="proposition-6-the-outer-measure-on-the-set-derived-from-a-measure-on-the-ring">Proposition
+6 (the outer-measure on the set derived from a measure on the ring)</h1>
+<p><strong>Proposition 6 (the outer-measure on the set derived from a
+measure on the ring)</strong>:</p>
+<p>Let <span class="math inline">\(\mathcal R\)</span> be a ring on
+<span class="math inline">\(\Omega\)</span> and <span class="math inline">\(\mu : \mathcal R \to [0,+\infty]\)</span> be a
+measure on <span class="math inline">\(\mathcal R\)</span>. For all
+<span class="math inline">\(T \subseteq \Omega\)</span>,define:</p>
+<p><span class="math display">\[\mu^*(T) \triangleq \inf \lbrace
+\Sigma_{n=1} ^{+\infty} \mu(A_n) , A_n \in \mathcal R , T \subseteq
+\cup_{n=1}^{+\infty} A_n \rbrace\]</span></p>
+<p>which also means <span class="math inline">\((A_n)\)</span> is an
+<span class="math inline">\(\mathcal R-\)</span>cover of <span class="math inline">\(T\)</span>. Then <span class="math inline">\(\mu^*\)</span> is an outer-measure on <span class="math inline">\(\Omega\)</span>, derived from the measure <span class="math inline">\(\mu\)</span> on <span class="math inline">\(\mathcal R\)</span>, and <span class="math inline">\(\mu^* | _{\mathcal R} = \mu\)</span>.</p>
+<p><strong>Proof</strong>:</p>
+<ul>
+<li><p>Take <span class="math inline">\(T=\emptyset\)</span>, <span class="math inline">\(A_n = \emptyset\)</span> for each <span class="math inline">\(n \in \mathbb Z+\)</span>, then <span class="math inline">\((A_n)_{n\geq 1}\)</span> is an <span class="math inline">\(\mathcal R -\)</span>cover of <span class="math inline">\(T\)</span>. It follows that <span class="math inline">\(0 \leq \mu^*(T) \leq 0\)</span>, then <span class="math inline">\(\mu^*(T)=0\)</span>.</p></li>
+<li><p>Let <span class="math inline">\(A \subseteq B \subseteq
+\Omega\)</span>. Let <span class="math inline">\((B_n)_{n\geq
+1}\)</span> be an <span class="math inline">\(\mathcal R-\)</span>cover
+of <span class="math inline">\(B\)</span>, then it's also an <span class="math inline">\(\mathcal R-\)</span>cover of <span class="math inline">\(A\)</span>.</p>
+<p><span class="math inline">\(\mu^*(A) \leq \Sigma_{i=1}^{+\infty}
+\mu(B_n)\)</span> for each <span class="math inline">\(\mathcal R
+-\)</span>cover of <span class="math inline">\(B\)</span>, then <span class="math inline">\(\mu^*(A) \leq \inf( \Sigma_{i=1}^{+\infty}
+\mu(B_n)) = \mu^*(B)\)</span>.</p></li>
+<li><p>Let <span class="math inline">\((A_n)_{n \geq 1}\)</span> be a
+sequence of subsets of <span class="math inline">\(\Omega\)</span>, with
+<span class="math inline">\(\mu^*(A_n) &lt;+\infty\)</span> for all
+<span class="math inline">\(n \geq 1\)</span>. According to the
+definition of <span class="math inline">\(\mu^*\)</span>, given <span class="math inline">\(\varepsilon &gt;0\)</span>, then for all <span class="math inline">\(n \geq 1\)</span>, there exists an <span class="math inline">\(\mathcal R-\)</span>cover <span class="math inline">\((A_n ^p)_{p\geq 1}\)</span> of <span class="math inline">\(A_n\)</span> such that <span class="math inline">\(\Sigma_{p=1} ^{+\infty} \mu(A_n^p) &lt; \mu^*(A_n)
++\frac{\varepsilon}{2^n}\)</span>.</p>
+<p>For the <span class="math inline">\(\mathcal R-\)</span>covers <span class="math inline">\(\cup_{p=1}^{+\infty} A_n^p\)</span>, <span class="math inline">\(\cup_{n=1}^{+\infty} \cup_{p=1}^{+\infty}
+A_n^p\)</span> is a countable set and can be reorganized as <span class="math inline">\(\cup_{k=1} ^{+\infty} R_k = \cup_{n=1}^{+\infty}
+\cup_{p=1}^{+\infty} A_n^p\)</span>, while <span class="math inline">\(R_k \in \mathcal R\)</span> for each <span class="math inline">\(k \in \mathbb Z+\)</span>. Then $<em>{k=1} ^{+}
+R_k = </em>{n=1}^{+} _{p=1}^{+} A_n^p $ is an <span class="math inline">\(\mathcal R -\)</span>cover for <span class="math inline">\(\cup_{n=1}^{+\infty} A_n\)</span>.</p>
+<p>According to the countable additivity of <span class="math inline">\(\mu\)</span>, <span class="math inline">\(\mu^*(\cup_{n=1}^{+\infty} A_n)\leq
+\mu(\cup_{n=1}^{+\infty} A_n) \leq \Sigma_{n=1}^{+\infty} \Sigma_{p=1}
+^{+\infty} \mu(A_n^p)&lt;\Sigma_{n=1} ^{+\infty} \mu^*(A_n)
++\varepsilon\)</span> holds for each <span class="math inline">\(\varepsilon &gt;0\)</span>. Thus <span class="math inline">\(\mu^*(\cup_{i=1} ^{+\infty} A_n) \leq
+\Sigma_{i=1}^{+\infty} \mu^*(A_n)\)</span> holds.</p></li>
+</ul>
+<p>According to all the properties shown above, <span class="math inline">\(\mu^*\)</span> is an outer-measure on <span class="math inline">\(\Omega\)</span>.</p>
+<p>We show that $^* $ 's restriction on <span class="math inline">\(\mathcal R\)</span> is <span class="math inline">\(\mu\)</span> below.</p>
+<ul>
+<li><p>Let <span class="math inline">\(A \in \mathcal R\)</span>, <span class="math inline">\((A_n)_{n \geq 1}\)</span> be an <span class="math inline">\(\mathcal R-\)</span>cover of <span class="math inline">\(A\)</span> and put <span class="math inline">\(B_1
+= A_1 \cap A\)</span>, and <span class="math inline">\(B_{n+1}
+\triangleq (A_{n+1}\cap A) \setminus ((A_1 \cap A) \cup ...\cup (A_n
+\cap A) )\)</span>. Thus, <span class="math inline">\((B_n)_{n \geq
+1}\)</span> is a sequence of pairwise disjoint elements in <span class="math inline">\(\mathcal R\)</span>, and <span class="math inline">\(A = \uplus_{n=1} ^{+\infty} B_n\)</span>.</p>
+<p>It's trivial that <span class="math inline">\(\mu^*(A) \leq
+\mu(A)\)</span> cause <span class="math inline">\(A\)</span> is an <span class="math inline">\(\mathcal R-\)</span>cover of itself.On the other
+hand, $(A) = <em>{i=1} ^{+} (B_i ) </em>{i=1} ^{+} (A_i) $ holds for
+each <span class="math inline">\(\mathcal R-\)</span>cover <span class="math inline">\((A_n)_{n\geq 1}\)</span> for <span class="math inline">\(A\)</span>. Thus <span class="math inline">\(\mu(A) \leq \inf(\Sigma_{i=1} ^{+\infty} \mu(A_i))
+= \mu ^*(A)\)</span>, the equality <span class="math inline">\(\mu^*(A)
+= \mu(A)\)</span> holds.</p></li>
+</ul>
+<p>This being true for all <span class="math inline">\(A \in \mathcal
+R\)</span>, we have proved that <span class="math inline">\(\mu ^*|
+_{\mathcal R} = \mu\)</span>.</p>
+<h1 id="proposition-7-the-sigma-extension-of-a-ring-and-its-measure">Proposition
+7 (the <span class="math inline">\(\sigma-\)</span>extension of a ring
+and its measure)</h1>
+<p><strong>Proposition 7 (the <span class="math inline">\(\sigma-\)</span>extension of a ring and its
+measure)</strong>:</p>
+<p>Let <span class="math inline">\(\mathcal R\)</span> be a ring on
+<span class="math inline">\(\Omega\)</span> and <span class="math inline">\(\mu : \mathcal R \to [0,+\infty]\)</span> be a
+measure on <span class="math inline">\(\mathcal R\)</span>. Define <span class="math inline">\(\mu^*\)</span> as the outer-measure derived from
+<span class="math inline">\(\mu\)</span> in proposition 6. Then the
+<span class="math inline">\(\sigma-\)</span>extension <span class="math inline">\(\sigma(\mathcal R)\)</span> of <span class="math inline">\(\mathcal R\)</span> is a subset of <span class="math inline">\(\Sigma(\mu^*)\)</span>, thus <span class="math inline">\(\mu^* |_{\sigma(\mathcal R)}\)</span> is a measure
+on <span class="math inline">\(\sigma(\mathcal R)\)</span>.</p>
+<p><strong>Proof</strong>:</p>
+<p>We want to show that <span class="math inline">\(\sigma(\mathcal R)
+\subseteq \Sigma(\mu^*)\)</span>. According to proposition 4, we know
+that <span class="math inline">\(\Sigma(\mu^*)\)</span> is a <span class="math inline">\(\sigma-\)</span>algebra, so we just need to show
+that <span class="math inline">\(\mathcal R \subseteq
+\Sigma(\mu^*)\)</span>.</p>
+<p>Let <span class="math inline">\(A \in \mathcal R\)</span> and <span class="math inline">\(T\subseteq \Omega\)</span>. According to the third
+property of outer measure <span class="math inline">\(\mu^*\)</span>,
+there is <span class="math inline">\(\mu^*(T) \leq \mu^* (T\cap A)+\mu^*
+(T\cap A^C)\)</span>.</p>
+<p>Let <span class="math inline">\((T_n)_{n \geq 1}\)</span> be an <span class="math inline">\(\mathcal R-\)</span>cover of <span class="math inline">\(T\)</span>, then <span class="math inline">\((T_n
+\cap A)_{n \geq 1}\)</span> and <span class="math inline">\((T_n \cap
+A^C)\)</span> are <span class="math inline">\(\mathcal R-\)</span>covers
+of <span class="math inline">\(T\cap A\)</span> and <span class="math inline">\(T \cap A^C\)</span> respectively. There is</p>
+<p><span class="math display">\[\mu^*(T\cap A) +\mu^*(T\cap A^C)\leq
+\Sigma_{n=1} ^{+\infty} \mu(T_n \cap A)+ \Sigma_{n=1} ^{+\infty} \mu(T_n
+\cap A^C) = \Sigma_{n=1}^{+\infty}\mu(T_n)\]</span></p>
+<p>holds for each <span class="math inline">\(\mathcal R-\)</span>cover
+<span class="math inline">\((T_n)_{n \geq 1}\)</span>, thus <span class="math inline">\(\mu^*(T)=\inf(\Sigma_{n=1}^{+\infty}\mu(T_n)) \leq
+\mu^*(T\cap A) +\mu^*(T\cap A^C)\leq \mu^*(T)\)</span>, the equalty
+meets.Then it leads to <span class="math inline">\(\mu^*(T) =
+\mu^*(T\cap A)+\mu^*(T\cap A^C)\)</span> holds for any <span class="math inline">\(T \subseteq \Omega\)</span>, thus <span class="math inline">\(A \in \Sigma(\mu^*)\)</span>.</p>
+<p>This being true for all <span class="math inline">\(A \in \mathcal
+R\)</span>, thus <span class="math inline">\(\mathcal R \subseteq
+\Sigma(\mu^*)\)</span>.</p>
+<h1 id="proposition-8-the-structure-of-the-sigma-extension-of-a-semi-ring">Proposition
+8 (the structure of the <span class="math inline">\(\sigma-\)</span>extension of a semi-ring)</h1>
+<p><strong>Proposition 8 (the structure of the <span class="math inline">\(\sigma-\)</span>extension of a
+semi-ring)</strong>:</p>
+<p>Assume that <span class="math inline">\(\mathcal S\)</span> is a
+semi-ring, its <span class="math inline">\(\sigma-\)</span>extension is
+<span class="math inline">\(\sigma(\mathcal S)\)</span>. Then <span class="math inline">\(\sigma(\mathcal S) = \sigma(\mathcal R(\mathcal
+S))\)</span>.</p>
+<p><strong>Proof</strong>:</p>
+<p>According to definition 3, we have <span class="math inline">\(\mathcal S \subseteq \mathcal R(\mathcal S)
+\subseteq \sigma(\mathcal R(\mathcal S))\)</span>, thus <span class="math inline">\(\sigma(\mathcal S) \subseteq \sigma(\mathcal
+R(\mathcal S))\)</span>.</p>
+<p>Moreover, <span class="math inline">\(\mathcal R(S)\)</span> is the
+set of all finite unions of elements of <span class="math inline">\(\mathcal S\)</span>, then <span class="math inline">\(\mathcal R(\mathcal S) \subseteq \sigma(\mathcal
+S)\)</span>. Consequently <span class="math inline">\(\sigma(\mathcal
+R(\mathcal S)) \subseteq \sigma(\mathcal S)\)</span>.</p>
+<p>Finally, we have proved that <span class="math inline">\(\sigma(\mathcal S) = \sigma(\mathcal R(\mathcal
+S))\)</span>.</p>
+<h1 id="theorem-1-carathéodorys-extension-theorem">Theorem 1
+(Carathéodory’s Extension Theorem)</h1>
+<p><strong>Theorem 1 (Carathéodory’s Extension Theorem)</strong>:</p>
+<p>Assume that <span class="math inline">\(\mathcal S\)</span> is a
+semi-ring, <span class="math inline">\(\mu : \mathcal S \to
+[0,+\infty]\)</span> is a <span class="math inline">\(\sigma-\)</span>additive function on <span class="math inline">\(\mathcal S\)</span>. Then:</p>
+<ul>
+<li><span class="math inline">\(\mu\)</span> has an extension measure
+<span class="math inline">\(\mu^*\)</span> on <span class="math inline">\(\sigma(\mathcal S)\)</span>.</li>
+<li>If the <span class="math inline">\(\mu\)</span> is <span class="math inline">\(\sigma-\)</span>finite, then the extension measure
+is unique.</li>
+</ul>
+<p><strong>Proof</strong>:</p>
+<ol type="1">
+<li></li>
+</ol>
+<ul>
+<li><p>First to show that <span class="math inline">\(\mu\)</span> is a
+measure on semi-ring <span class="math inline">\(\mathcal
+S\)</span>.</p>
+<p>The <span class="math inline">\(\sigma-\)</span>additivity meets the
+second property of measure, so we just need to prove that <span class="math inline">\(\mu(\emptyset)=0\)</span>. Take <span class="math inline">\(A_1 \in \mathcal S\)</span> as a non-empty set,
+and <span class="math inline">\(A_2 =A_3 =...=\emptyset\)</span>.</p>
+<p>According to the <span class="math inline">\(\sigma-\)</span>additivity of <span class="math inline">\(\mu\)</span>, there is <span class="math inline">\(\mu(\cup_{i=1}^{+\infty} A_i) = \mu(A_1) =
+\Sigma_{i=1} ^{+\infty} \mu(A_i)\)</span>, thus <span class="math inline">\(\mu(\emptyset) = 0\)</span>.</p></li>
+<li><p>According to proposition 1 and 2, we can extend semi-ring <span class="math inline">\(\mathcal S\)</span> to ring <span class="math inline">\(\mathcal R(\mathcal S)\)</span> and extend measure
+<span class="math inline">\(\mu\)</span> on <span class="math inline">\(\mathcal S\)</span> to measure <span class="math inline">\(\bar{\mu}\)</span> on ring <span class="math inline">\(\mathcal R(\mathcal S)\)</span>, which can keep
+<span class="math inline">\(\bar{\mu} | _{\mathcal S} =
+\mu\)</span>.</p>
+<p>From proposition 6, we can extend the measure <span class="math inline">\(\bar{\mu}\)</span> on ring <span class="math inline">\(\mathcal R(\mathcal S)\)</span> to the
+outer-measure <span class="math inline">\(\mu^*\)</span> on set <span class="math inline">\(\Omega\)</span>, which keeps <span class="math inline">\(\mu^*|_{\mathcal R(\mathcal S)} =
+\bar{\mu}\)</span>.</p>
+<p>From proposition 4 and 5, we can find the <span class="math inline">\(\sigma-\)</span>algebra <span class="math inline">\(\Sigma(\mu^*)\)</span> associated with the
+outer-measure <span class="math inline">\(\mu^*\)</span> on <span class="math inline">\(\Omega\)</span>. Also, the outer-measure <span class="math inline">\(\mu^*\)</span> on <span class="math inline">\(\Omega\)</span> is the measure on the <span class="math inline">\(\sigma-\)</span>algebra <span class="math inline">\(\Sigma(\mu^*)\)</span>, which means $^*| _{(^*)} $
+is a measure.</p>
+<p>According to proposition 7 and 8, the <span class="math inline">\(\sigma-\)</span>extension of the semi-ring <span class="math inline">\(\sigma(\mathcal S)=\sigma(\mathcal R(\mathcal S)
+)\subseteq \Sigma(\mu^*)\)</span>, and $^*| _{(S)}=^*| _{(R(S) )} $ is
+the measure on <span class="math inline">\(\sigma(\mathcal R(\mathcal S)
+)\)</span>. At the same time, <span class="math inline">\(\mu^*|
+_{\mathcal S} = \bar{\mu} |_{\mathcal S} = \mu\)</span>.</p></li>
+</ul>
+<p>We have extended the semi-ring <span class="math inline">\(\mathcal
+S\)</span> to the <span class="math inline">\(\sigma-\)</span>algebra
+<span class="math inline">\(\sigma(\mathcal S)\)</span>, and the <span class="math inline">\(\sigma-\)</span>additive function <span class="math inline">\(\mu\)</span> to the measure <span class="math inline">\(\mu^*| _{\sigma(\mathcal S)}\)</span>.</p>
+<ol start="2" type="1">
+<li></li>
+</ol>
+<p>As <span class="math inline">\(\mu\)</span> is <span class="math inline">\(\sigma-\)</span>finite and <span class="math inline">\(\mathcal S\)</span> is a semi-ring, we have <span class="math inline">\(\Omega = \uplus_{n=1}^{+\infty} A_n\)</span>,
+<span class="math inline">\(A_n \in \mathcal S\)</span> and <span class="math inline">\(\mu(A_n) &lt;+\infty\)</span>. We want to prove
+that <span class="math inline">\(\mu_1\)</span> and <span class="math inline">\(\mu_2\)</span> are two measures on <span class="math inline">\(\sigma(\mathcal S)\)</span> and <span class="math inline">\(\mu_1 |_{\mathcal S} = \mu_2 |_{\mathcal S} =
+\mu\)</span>, then <span class="math inline">\(\mu_1=\mu_2\)</span>.</p>
+<p>Define <span class="math inline">\(\mathcal G = \lbrace A \in
+\sigma(\mathcal S) : \mu_1(A_n \cap A) = \mu_2(A_n \cap A),\forall n \in
+\mathbb Z+ \rbrace\)</span>, it's easy to show that <span class="math inline">\(\mathcal S \subseteq \mathcal G\)</span>. We'd
+like to show that <span class="math inline">\(\mathcal G\)</span> is a
+<span class="math inline">\(\sigma-\)</span>algebra, thus <span class="math inline">\(\sigma(\mathcal S) \subseteq \mathcal G\)</span>,
+then there will be <span class="math inline">\(\mu_1 | _{\sigma(\mathcal
+S)} = \mu_2 | _{\sigma(\mathcal S)}\)</span>, which means <span class="math inline">\(\mu_1\)</span> and <span class="math inline">\(\mu_2\)</span> are the same on <span class="math inline">\(\sigma(\mathcal S)\)</span>.</p>
+<p>Suppose <span class="math inline">\(B_k \in \mathcal G\)</span>, for
+any <span class="math inline">\(k \in \mathbb N\)</span> there is <span class="math inline">\(B_k \subset B_{k+1}\)</span> and <span class="math inline">\(B_k \uparrow B\)</span>, then for each <span class="math inline">\(n\)</span>,</p>
+<p><span class="math display">\[ \mu_1(B \cap A_n) = \lim _{k} \uparrow
+\mu_1(B_k \cap A_n) =\lim_{k} \uparrow \mu_2(B_k \cap A_n) = \mu_2(B
+\cap A_n)\]</span></p>
+<p>thus <span class="math inline">\(B \in \mathcal G\)</span>. Similarly
+for <span class="math inline">\(C_k \downarrow C\)</span>,<span class="math inline">\(C_k \in \mathcal G\)</span>, there is <span class="math inline">\(C \in \mathcal G\)</span>. Then <span class="math inline">\(\mathcal G\)</span> is closed for increasing and
+decreasing limits, $G $ is a monotone class.</p>
+<p>Moreover, for <span class="math inline">\(K \in \mathcal G\)</span>,
+there is <span class="math inline">\(K^C \in \mathcal G\)</span>; for
+<span class="math inline">\(A,B \in \mathcal G\)</span> and <span class="math inline">\(A \subset B\)</span>, there is <span class="math inline">\(B-A \in \mathcal G\)</span>; <span class="math inline">\(\Omega \in \mathcal G\)</span>. These properties
+indicates <span class="math inline">\(\mathcal G\)</span> is a <span class="math inline">\(\lambda-\)</span>system, while <span class="math inline">\(\mathcal S\)</span> is a <span class="math inline">\(\pi-\)</span>system and <span class="math inline">\(\mathcal S \subset \mathcal G\)</span>, thus <span class="math inline">\(\sigma(\mathcal S) \subseteq \mathcal G\)</span>.
+Then we've proved that <span class="math inline">\(\mu_1 |
+_{\sigma(\mathcal S)} = \mu_2 | _{\sigma(\mathcal S)}\)</span>, the
+extended measure on <span class="math inline">\(\sigma(\mathcal
+S)\)</span> is unique.</p>
+<h1 id="summary-of-the-whole-story">Summary of the whole story</h1>
+<p>太抽象了，但我还是想把这个图发出来：</p>
+<p><img src="https://s2.loli.net/2023/03/16/JmU19EyKPkchDqg.jpg" alt="roadmap.jpg"></p>
+<p>Q.E.D.!</p>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>我很可爱 请给我钱（？）</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.jpg" alt="驰雨Chiyuru 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.jpg" alt="驰雨Chiyuru 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>驰雨Chiyuru
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://chiyuru.github.io/2023/03/13/Proof-of-Caratheodory-Extension-Theorem/" title="Proof of Carathéodory’s Extension Theorem">https://chiyuru.github.io/2023/03/13/Proof-of-Caratheodory-Extension-Theorem/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag"># 数学</a>
+              <a href="/tags/%E8%BF%99%E9%87%8C%E9%9D%A2%E7%9C%8B%E8%B5%B7%E6%9D%A5%E5%BE%88%E5%A5%BD%E7%8E%A9/" rel="tag"># 这里面看起来很好玩</a>
+              <a href="/tags/%E6%A6%82%E7%8E%87/" rel="tag"># 概率</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/03/01/Diary-2023-03/" rel="prev" title="日记·篇七·23年3月">
+      <i class="fa fa-chevron-left"></i> 日记·篇七·23年3月
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  
+  <div class="comments">
+  <script src="https://utteranc.es/client.js" repo="Chiyuru/chiyuru.github.io" issue-term="pathname" theme="github-light" crossorigin="anonymous" async></script>
+  </div>
+  
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#definition-1-semi-ring"><span class="nav-text">Definition 1 (semi-ring)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#definition-2-ring"><span class="nav-text">Definition 2 (ring)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#definition-3-ring-generated-by-set"><span class="nav-text">Definition 3 (ring generated
+by set)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#proposition-1-the-way-to-generate-a-ring-by-a-semi-ring"><span class="nav-text">Proposition
+1 (the way to generate a ring by a semi-ring)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#definition-4-measure-on-set"><span class="nav-text">Definition 4 (measure on set)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#proposition-2-measure-extended-from-semi-ring-to-ring"><span class="nav-text">Proposition 2
+(measure extended from semi-ring to ring)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#proposition-3-uniqueness-of-the-extension-barmu"><span class="nav-text">Proposition 3
+(Uniqueness of the extension \(\bar{\mu}\))</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#definition-5-outer-measure"><span class="nav-text">Definition 5 (outer-measure)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#definition-6-the-sigma-algebra-associated-with-outer-measure"><span class="nav-text">Definition
+6 (the \(\sigma-\)algebra associated
+with outer-measure)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#proposition-4-the-sigma-algebra-associated-with-outer-measure"><span class="nav-text">Proposition
+4 (the \(\sigma-\)algebra associated
+with outer-measure)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#proposition-5-the-measure-on-the-sigma-algebra-sigmamu"><span class="nav-text">Proposition
+5 (the measure on the \(\sigma-\)algebra \(\Sigma(\mu^*)\))</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#proposition-6-the-outer-measure-on-the-set-derived-from-a-measure-on-the-ring"><span class="nav-text">Proposition
+6 (the outer-measure on the set derived from a measure on the ring)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#proposition-7-the-sigma-extension-of-a-ring-and-its-measure"><span class="nav-text">Proposition
+7 (the \(\sigma-\)extension of a ring
+and its measure)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#proposition-8-the-structure-of-the-sigma-extension-of-a-semi-ring"><span class="nav-text">Proposition
+8 (the structure of the \(\sigma-\)extension of a semi-ring)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#theorem-1-carath%C3%A9odorys-extension-theorem"><span class="nav-text">Theorem 1
+(Carathéodory’s Extension Theorem)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#summary-of-the-whole-story"><span class="nav-text">Summary of the whole story</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="驰雨Chiyuru"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">驰雨Chiyuru</p>
+  <div class="site-description" itemprop="description">おはよう、朝だよ</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">27</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Chiyuru" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Chiyuru" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:mafy21@mails.tsinghua.edu.cn" title="E-Mail → mailto:mafy21@mails.tsinghua.edu.cn" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/Chiyuru_0417" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;Chiyuru_0417" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/ma-fei-yan-33" title="知乎 → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;ma-fei-yan-33" rel="noopener" target="_blank"><i class="fab fa-zhihu fa-fw"></i>知乎</a>
+      </span>
+  </div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="copyright">
+  
+  &copy; 2022 – 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">驰雨Chiyuru</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv1">
+  本站总访客数：<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300,"hOffset":-15,"vOffset":-15},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
+</html>

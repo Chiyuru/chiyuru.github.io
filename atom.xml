@@ -6,7 +6,7 @@
   <link href="https://chiyuru.github.io/atom.xml" rel="self"/>
   
   <link href="https://chiyuru.github.io/"/>
-  <updated>2023-03-15T15:21:26.317Z</updated>
+  <updated>2023-03-15T16:44:53.124Z</updated>
   <id>https://chiyuru.github.io/</id>
   
   <author>
@@ -17,11 +17,37 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Proof of Carathéodory’s Extension Theorem</title>
+    <link href="https://chiyuru.github.io/2023/03/13/Proof-of-Caratheodory-Extension-Theorem/"/>
+    <id>https://chiyuru.github.io/2023/03/13/Proof-of-Caratheodory-Extension-Theorem/</id>
+    <published>2023-03-13T13:18:06.000Z</published>
+    <updated>2023-03-15T16:44:53.124Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;《概率论 (1)》课程第一次
+bonus。一个略长的证明，我使用的证明框架来自&lt;a href=&quot;http://www.probability.net/WEBcaratheodory.pdf&quot;&gt;这里&lt;/a&gt;。感觉挺有意思，发出来&lt;del&gt;水一篇&lt;/del&gt;留作纪念（，&lt;del&gt;毕竟博客的数学
+tag 下面几乎全是统计，成何体统&lt;/del&gt;。&lt;/p&gt;
+&lt;p&gt;本文发布时已过本次加分作业设定的截止时间。&lt;/p&gt;
+&lt;p&gt;证完了才知道 Kai Lai Chung 附录和 lzx
+的课程笔记里都有提示是正常的吗（，有的人上课是真的一点都不听啊（&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="数学" scheme="https://chiyuru.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
+    
+    <category term="这里面看起来很好玩" scheme="https://chiyuru.github.io/tags/%E8%BF%99%E9%87%8C%E9%9D%A2%E7%9C%8B%E8%B5%B7%E6%9D%A5%E5%BE%88%E5%A5%BD%E7%8E%A9/"/>
+    
+    <category term="概率" scheme="https://chiyuru.github.io/tags/%E6%A6%82%E7%8E%87/"/>
+    
+  </entry>
+  
+  <entry>
     <title>日记·篇七·23年3月</title>
     <link href="https://chiyuru.github.io/2023/03/01/Diary-2023-03/"/>
     <id>https://chiyuru.github.io/2023/03/01/Diary-2023-03/</id>
     <published>2023-02-28T23:54:35.000Z</published>
-    <updated>2023-03-15T15:21:26.317Z</updated>
+    <updated>2023-03-16T14:00:23.807Z</updated>
     
     
     <summary type="html">&lt;p&gt;某些人学都学不完了，还有空写日记？（&lt;/p&gt;</summary>
@@ -61,7 +87,7 @@
     <link href="https://chiyuru.github.io/2023/02/21/Linear-Regression-Analysis/"/>
     <id>https://chiyuru.github.io/2023/02/21/Linear-Regression-Analysis/</id>
     <published>2023-02-21T11:12:18.000Z</published>
-    <updated>2023-03-15T02:20:33.682Z</updated>
+    <updated>2023-03-16T05:22:25.087Z</updated>
     
     
     <summary type="html">&lt;p&gt;本来真没打算连载这个，结果这课居然把课程笔记算成百分制里面的 10
@@ -391,27 +417,6 @@ MATLAB 的函数，那 Python 不亏。&lt;/p&gt;</summary>
     
     
     <category term="碎碎念" scheme="https://chiyuru.github.io/tags/%E7%A2%8E%E7%A2%8E%E5%BF%B5/"/>
-    
-    <category term="这里面看起来很好玩" scheme="https://chiyuru.github.io/tags/%E8%BF%99%E9%87%8C%E9%9D%A2%E7%9C%8B%E8%B5%B7%E6%9D%A5%E5%BE%88%E5%A5%BD%E7%8E%A9/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>刷 Python Crash Course 然后还有酒井暑培 AI Track</title>
-    <link href="https://chiyuru.github.io/2022/08/01/Python-Crash-Course/"/>
-    <id>https://chiyuru.github.io/2022/08/01/Python-Crash-Course/</id>
-    <published>2022-08-01T14:55:03.000Z</published>
-    <updated>2022-08-12T15:53:54.000Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;简单的自救以及#每日这里面看起来很好玩。&lt;/p&gt;
-&lt;p&gt;其实就是写了点刷书习题，然后暑培写了 AI Track
-的大作业。水个字数。&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="刷书" scheme="https://chiyuru.github.io/tags/%E5%88%B7%E4%B9%A6/"/>
     
     <category term="这里面看起来很好玩" scheme="https://chiyuru.github.io/tags/%E8%BF%99%E9%87%8C%E9%9D%A2%E7%9C%8B%E8%B5%B7%E6%9D%A5%E5%BE%88%E5%A5%BD%E7%8E%A9/"/>
     
