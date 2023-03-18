@@ -2337,372 +2337,6 @@ kora！太遗憾了罢</del></p>
       </tags>
   </entry>
   <entry>
-    <title>初等概率论与挣扎</title>
-    <url>/2022/09/24/Elementary-probability-theory/</url>
-    <content><![CDATA[<p>虽然 dwl
-老师确实很好，但是我感觉初概这课有点儿稀碎（个人意见，个人意见）。</p>
-<span id="more"></span>
-<p>先前把统辅当做很有趣的数学分支，被转数环的学长泼了冷水说“统计中心的风格可能会不大适应”，另一位学长也说“统辅不是你期待的样子”，目前看中心开课的意思也好像有点当工科的辅助来学。我到底多大程度上能接受严谨的数学推导？又能走多远？统辅还是数辅<del>还是我全都要</del>，这是一个问题。</p>
-<p>初概这玩意儿前八周上完，约等于梦回高中月考，我定义呢我证明呢啊怎么直接拿来用了？在考虑下学期去数学系重新上概（1），甚至考虑跟实复分析，但是数分的空缺真的没问题吗。当然，没有退初概还是为了跟上统辅的进度，毕竟后八周还有统计推断，我也没完全放弃统辅，目前或许是我目光短浅了。</p>
-<p>这门课和教材也没什么映射关系（而且看老师的意思是也没有教材，草），直接按照
-Lecture n
-的顺序写吧。本来想放进茴香豆篇，但概率论这边举例比较多，放在一起又很冗长，还是算了。</p>
-<h1 id="lecture-1">Lecture 1</h1>
-<ul>
-<li>概率模型：概率模型由样本空间和概率构成。每一个概率模型都关联着一个试验。
-<ul>
-<li>样本空间是一个集合，概率模型对应的试验产生的所有可能结果形成样本空间，记作
-<span class="math inline">\(\Omega\)</span>。比如说，概率模型为抛硬币，样本空间即为
-<span class="math inline">\(\lbrace head,tail
-\rbrace\)</span>。样本空间可以是离散的，也可以是连续的。</li>
-<li>事件 <span class="math inline">\(A\)</span>
-是样本空间的子集，也就是某些试验结果的集合。概率 <span class="math inline">\(P(A)\)</span> 分配到事件 <span class="math inline">\(A\)</span> 上。</li>
-</ul></li>
-<li>概率公理：非负性，归一化，可加性。</li>
-<li>概率的性质：两个技巧，归纳法和取补集。</li>
-</ul>
-<h1 id="lecture-2">Lecture 2</h1>
-<ul>
-<li><p>事件域（或称为 <span class="math inline">\(\sigma-\)</span>域，<span class="math inline">\(\sigma-\)</span>代数）：对于样本空间 <span class="math inline">\(\Omega\)</span>，<span class="math inline">\(F\)</span> 表示 <span class="math inline">\(\Omega\)</span> 的某些子集构成的集合，如果 <span class="math inline">\(F\)</span> 满足以下三个条件：</p>
-<ul>
-<li><span class="math inline">\(\Omega \in F\)</span> ；</li>
-<li>对于任意的 <span class="math inline">\(A\in F\)</span>，有 <span class="math inline">\(A^c \in F\)</span>；</li>
-<li>如果 <span class="math inline">\(A_n \in F\)</span>，<span class="math inline">\(n=1,2,...\)</span>，则 <span class="math inline">\(\cup_{n=1}^\infty A_n \in F\)</span>。</li>
-</ul>
-<p>那么称 <span class="math inline">\(F\)</span> 为 <span class="math inline">\(\Omega\)</span> 上的事件域，称 <span class="math inline">\(F\)</span> 中的元素为事件，称 <span class="math inline">\((\Omega,F)\)</span> 为可测空间。</p>
-<p>从而，有且只有 <span class="math inline">\(F\)</span>
-中的每个事件都能分配概率，这就圈定了我们所关心的事件的范围。</p>
-<p>事件域的一些性质如下：</p>
-<ul>
-<li>两个事件域的并集不一定是事件域，但交集一定是。（Trivial）</li>
-<li>事件域对集合的任何计算都是封闭的，包括事件列的极限运算。</li>
-</ul></li>
-<li><p>概率，也称为概率测度：设 <span class="math inline">\((\Omega,F)\)</span>
-为<strong>可测空间</strong>，<span class="math inline">\(P\)</span>
-是定义在 <span class="math inline">\(F\)</span> 上的函数，如果 <span class="math inline">\(P\)</span> 满足以下三个条件：</p>
-<ul>
-<li>非负性，完全性（Trivial）</li>
-<li>可列可加性（<span class="math inline">\(\sigma-additivity\)</span>）：对于 <span class="math inline">\(F\)</span> 中互不相交的事件 <span class="math inline">\(A_1,A_2,...\)</span> ，有 <span class="math inline">\(P(\cup _{n=1} ^\infty A_n) = \Sigma _{n=1} ^\infty
-P(A_n)\)</span>。</li>
-</ul>
-<p>那么称 <span class="math inline">\(P\)</span> 为 <span class="math inline">\(F\)</span> 上的概率测度，简称概率。</p></li>
-<li><p>对于上述定义的样本空间，事件域和概率测度，我们称 <span class="math inline">\((\Omega,F,P)\)</span> 为概率空间。</p>
-<p>简单举个例子，在掷硬币的概率模型中，样本空间是 <span class="math inline">\(\lbrace Head,Tail \rbrace\)</span>，事件域是 <span class="math inline">\(\lbrace \lbrace Head,Tail \rbrace, \lbrace Head
-\rbrace, \lbrace Tail \rbrace, \emptyset
-\rbrace\)</span>，此时样本空间和事件域构成可测空间。事件域中的每一个元素都是事件，概率测度为
-<span class="math inline">\(P(\lbrace Head \rbrace) = p\)</span>, <span class="math inline">\(P(\lbrace Tail \rbrace)=1-p\)</span>。（这是考虑了
-<span class="math inline">\(biased\)</span> <span class="math inline">\(coin\)</span> 的情况）</p></li>
-<li><p>概率测度的一些性质：</p>
-<ul>
-<li>对于单调增序列，有 <span class="math inline">\(\lim_{n \to \infty}
-A_n = \cup_{i=1} ^\infty A_i\)</span>， <span class="math inline">\(P(\lim_{n \to \infty}A_n) = \lim_{x \to
-\infty}P(A_n)\)</span>。</li>
-<li>单调减序列同理。</li>
-</ul></li>
-<li><p>条件概率（定义略）的若干性质：</p>
-<ul>
-<li><p>对互不相容的事件列 $B_i $，有 <span class="math inline">\(P(\cup
-_{i=1}^\infty B_i|A) = \Sigma _{i=1} ^\infty P(B_i
-|A)\)</span>。</p></li>
-<li><p>用 <span class="math inline">\(P_A(·)=P(·|A)\)</span> 表示在事件
-<span class="math inline">\(A\)</span>
-发生条件下的条件概率，这仍然是一个概率测度，<span class="math inline">\((\Omega,F,P_A)\)</span> 仍然是一个概率空间。</p>
-<p>当然，此时我们可以把 <span class="math inline">\(A\)</span>
-之外的结果排除掉，记作 <span class="math inline">\((A,A\cap
-F,P_A)\)</span>。</p></li>
-</ul></li>
-<li><p>乘法公式：设 <span class="math inline">\((\Omega, F,P)\)</span>
-是概率空间，<span class="math inline">\(A_i \in F\)</span>，<span class="math inline">\(i = 1,2,...,n\)</span>，且 <span class="math inline">\(P(A_1 \cap A_2 \cap ... \cap
-A_{n-1})&gt;0\)</span>，于是有<span class="math inline">\(P(\cap_{i=1}^n
-A_i) = P(A_1) \Pi_{i=2}^n P(A_i|A_1\cap A_2 \cap ... \cap
-A_{i-1})\)</span>。</p>
-<p>举个例子：某人写了 <span class="math inline">\(n\)</span>
-封信，将其装入 <span class="math inline">\(n\)</span>
-个写有地址的信封，全部装错的概率 <span class="math inline">\(q_0\)</span> 为？恰有 <span class="math inline">\(r\)</span> 个信封装对的概率 <span class="math inline">\(q_r\)</span> 为？</p>
-<ul>
-<li>在第一个问题下面，我们考虑记事件 <span class="math inline">\(A_i\)</span> 为第 <span class="math inline">\(i\)</span>
-个信封装对的事件，利用容斥原理即可。</li>
-<li>在第二个问题下面，其实问题主要在于怎么考虑是哪 <span class="math inline">\(r\)</span> 个信封放对了的问题。“指定的某 <span class="math inline">\(r\)</span> 个信封放对了”这一事件的概率等于“从
-<span class="math inline">\(n\)</span> 个信封里无放回地取出 <span class="math inline">\(r\)</span> 个正好是前 <span class="math inline">\(r\)</span> 号”的概率。又因为从 <span class="math inline">\(n\)</span> 个信封里指定 <span class="math inline">\(r\)</span> 个有 <span class="math inline">\(C_n
-^r\)</span> 种方式，于是这一部分的概率为 <span class="math inline">\(\frac{1}{r!}\)</span>。</li>
-</ul></li>
-<li><p>全概率公式：将 <span class="math inline">\(\Omega\)</span>
-分割成事件 <span class="math inline">\(A_1,A_2,...,A_n\)</span>
-的并，另有其中的事件 <span class="math inline">\(B\)</span>，可以对每个
-<span class="math inline">\(i\)</span> 得到 <span class="math inline">\(P(B|A_i)\)</span>，于是 <span class="math inline">\(P(B) = \Sigma_{i=1}^n P(A_i)P(B|Ai) =
-\Sigma_{i=1}^n P(B \cap A_i)\)</span>。</p>
-<p>这个时候，我们称 <span class="math inline">\(\lbrace A_i
-\rbrace\)</span> 是 <span class="math inline">\(\Omega\)</span>
-的一个分割。同时，式中的 <span class="math inline">\(n\)</span> 可以用
-<span class="math inline">\(\infty\)</span> 代替。</p>
-<p>举个例子：一个袋子里有 <span class="math inline">\(n\)</span>
-个白球和 <span class="math inline">\(m\)</span> 个黑球，从中无放回地取出
-<span class="math inline">\(k\)</span> 个球，求第 <span class="math inline">\(k\)</span> 次取得黑球的概率。</p>
-<ul>
-<li>递归：第一次取黑球的概率影响第二次，第二次影响第三次...简单列个数列可以看出来取黑球的概率是定值，即为
-<span class="math inline">\(\frac{m}{m+n}\)</span>。</li>
-<li>排队：把 <span class="math inline">\(m+n\)</span> 个球排成一列，算第
-<span class="math inline">\(k\)</span> 个恰为黑球的概率即可。</li>
-</ul></li>
-<li><p><span class="math inline">\(Bayes\)</span> 准则：设 <span class="math inline">\((\Omega,F,P)\)</span> 是概率空间，<span class="math inline">\(B,A_i \in F\)</span>，<span class="math inline">\(i=1,2,...,n\)</span>，<span class="math inline">\(\lbrace A_i \rbrace\)</span> 是 <span class="math inline">\(\Omega\)</span> 的一个分割。我们要用 <span class="math inline">\(P(B|A_i)\)</span> 算 <span class="math inline">\(P(A_i|B)\)</span>，就可以使用 <span class="math inline">\(Bayes\)</span> 准则：<span class="math inline">\(P(A_i|B)=\frac{P(A_i)P(B|A_i)}{\Sigma_{j=1}^n
-P(A_j)P(B|A_j)}\)</span> 。</p></li>
-</ul>
-<h1 id="lecture-3">Lecture 3</h1>
-<ul>
-<li><p>（两两）独立性，条件独立性和一组事件的相互独立性</p>
-<ul>
-<li><p>对于概率空间 <span class="math inline">\((\Omega,F,P)\)</span>，<span class="math inline">\(A,B,C \in F\)</span>，独立性指的是 <span class="math inline">\(P(A\cap B) = P(A)P(B)\)</span>，条件独立性指的是
-<span class="math inline">\(P(A\cap B|C)=P(A|C)P(B|C)\)</span>。</p>
-<p>那么这二者有什么关系呢？答案是没有关系（</p>
-<p>简单举个反例：抛掷两次均匀的硬币，令 <span class="math inline">\(H_1=\lbrace\)</span>第一枚正面朝上<span class="math inline">\(\rbrace\)</span>，<span class="math inline">\(H_2=\lbrace\)</span>第二枚正面朝上<span class="math inline">\(\rbrace\)</span>，<span class="math inline">\(D=\lbrace\)</span>两枚硬币结果相反<span class="math inline">\(\rbrace\)</span>。于是有 <span class="math inline">\(P(H_1 \cap H_2) = P(H_1)P(H_2)\)</span>，但是
-<span class="math inline">\(P(H_1 \cap H_2 |D) = 0,P(H_1|D) =
-\frac{1}{2}，P(H_2|D) =
-\frac{1}{2}\)</span>。也就是说，独立性不能推出条件独立性。</p></li>
-<li><p>一组事件的相互独立性涉及到概率空间 <span class="math inline">\((\Omega,F,P)\)</span> 中的一组事件 <span class="math inline">\(A_1,A_2,...,A_n\)</span>，如果对于任意非空子集
-<span class="math inline">\(S\subset \lbrace 1,2,...,n
-\rbrace\)</span>，都有<span class="math inline">\(P(\cap_{i \in S}
-A_i)=\Pi_{i\in S} P(A_i)\)</span>，那么称这一组事件是相互独立的。</p>
-<p>根据 <span class="math inline">\(S\)</span>
-的完备性可以知道，两两独立性也不能推出一组事件的相互独立性。</p></li>
-<li><p>TODO：记得复习一下赌徒破产模型。</p></li>
-</ul></li>
-<li><p>随机变量何种情况下是良定义的？</p>
-<ul>
-<li>设 <span class="math inline">\((\Omega,F)\)</span> 为可测空间，如果
-<span class="math inline">\(\Omega\)</span> 上的函数 <span class="math inline">\(X(\omega)\)</span> 满足：对 <span class="math inline">\(\forall x \in R\)</span>，<span class="math inline">\(\lbrace \omega | X(\omega) \leq x\rbrace \in
-F\)</span>，则称 <span class="math inline">\(X(\omega)\)</span> 为 <span class="math inline">\((\Omega,F)\)</span> 上的随机变量。</li>
-</ul></li>
-</ul>
-<h1 id="lecture-4">Lecture 4</h1>
-<ul>
-<li><p>对于离散型随机变量 <span class="math inline">\(X\)</span>，称
-<span class="math inline">\(P(X=x_k) = p_k\)</span> 为 <span class="math inline">\(X\)</span> 的概率分布，称 <span class="math inline">\(\lbrace p_k \rbrace\)</span> 为概率分布列，简称为
-<span class="math inline">\(PMF\)</span>。当其规律不够明显时可以写成表格形式。</p>
-<ul>
-<li><p>两点（<span class="math inline">\(Bernoulli\)</span>）分布：掷硬币或正或反，<span class="math inline">\(P(X=0)=p,P(X=1)=1-p\)</span>。</p></li>
-<li><p>二项（<span class="math inline">\(Binomial\)</span>）分布：试验成功的概率为 <span class="math inline">\(p\)</span>，重复 <span class="math inline">\(n\)</span> 次试验成功 <span class="math inline">\(k\)</span> 次的概率，<span class="math inline">\(P(X=k) = C_n ^k p^k
-(1-p)^{n-k}\)</span>。它是二项式展开的其中一项，故名二项分布。</p>
-<p>二项分布的最大可能值（即中心项）的推断：考虑二项式展开。</p></li>
-<li><p>......这里空间不够大，别的写不下了（其实是不需要记忆离散型分布的名字，会讲故事就行。</p></li>
-<li><p>泊松（<span class="math inline">\(Poission\)</span>）分布：<span class="math inline">\(P(X=k)=\frac{\lambda ^k}{k!}
-e^{-\lambda}\)</span>。一般来说，记随机变量 <span class="math inline">\(Y\sim P(\lambda)\)</span> 表示 <span class="math inline">\(Y\)</span> 服从参数为 <span class="math inline">\(\lambda\)</span> 的泊松分布。</p>
-<p>放射粒子模型揭示了二项分布可以用泊松分布近似的事实。</p>
-<p>TODO：复习粒子模型，做书上习题 <span class="math inline">\(2.2\)</span>。</p></li>
-</ul></li>
-<li><p>对于连续型随机变量的定义如下：设随机变量 <span class="math inline">\(X\)</span>，如果存在非负函数 <span class="math inline">\(f(x)\)</span> 满足对任意的 <span class="math inline">\(a&lt;b\)</span>，<span class="math inline">\(P(a&lt;X\leq b)=\int _a ^b f(x) dx\)</span>，则称
-<span class="math inline">\(X\)</span> 为连续型随机变量。称 <span class="math inline">\(f(x)\)</span> 为 <span class="math inline">\(X\)</span>
-的概率密度函数，简称概率密度或者密度（<span class="math inline">\(PDF\)</span>）。</p>
-<p>这并不意味着 <span class="math inline">\(X(\omega)\)</span>
-是连续函数，因为样本空间可能没有任何的拓扑结构，谈不上连续性。</p>
-<ul>
-<li><p>均匀（<span class="math inline">\(Uniform\)</span>）分布：<span class="math inline">\(f(x) = \frac{1}{b-a},x \in (a,b)\)</span>，此时记
-<span class="math inline">\(X \sim U(a,b)\)</span>。</p></li>
-<li><p>指数（<span class="math inline">\(Exponential\)</span>）分布：<span class="math inline">\(f(x) = \lambda e^{-\lambda x},x\geq
-0\)</span>，此时记 <span class="math inline">\(X\sim
-\epsilon(\lambda)\)</span>。</p>
-<p>如果 <span class="math inline">\(X\)</span> 是连续型非负随机变量，则
-<span class="math inline">\(X\)</span> 服从指数分布的充要条件是 <span class="math inline">\(X\)</span> 没有记忆性，也就是说 <span class="math inline">\(P(X&gt;s+t|X&gt;s) =
-P(X&gt;t)\)</span>。（可以由条件概率公式证出，Trivial.）</p>
-<p><span class="math inline">\(X\)</span>
-的失效率就是单位长度时间内失效的概率，可推知即为 <span class="math inline">\(\lambda\)</span>。也称其为尺度参数（rate
-parameter）。</p>
-<p>TODO：再推一遍 <span class="math inline">\(X\sim
-\epsilon(\lambda)\)</span> 时，<span class="math inline">\(Y=\lambda
-X\)</span>，则 <span class="math inline">\(Y\sim \epsilon
-(1)\)</span>。</p></li>
-<li><p>正态分布（<span class="math inline">\(Normal\)</span> <span class="math inline">\(Distribution\)</span>）：<span class="math inline">\(f(x)=\frac{1}{\sigma \sqrt{2 \pi}}
-exp(-\frac{(x-\mu)^2}{2\sigma ^2}),x \in R\)</span>，此时记 <span class="math inline">\(X\sim N(\mu ,\sigma^2)\)</span>。</p>
-<p>正态分布的函数图像关于 <span class="math inline">\(x=\mu\)</span>
-对称，在此处取最大值 <span class="math inline">\(f(\mu) = (\sigma
-\sqrt{2\pi})^{-1}\)</span>。关于 <span class="math inline">\(x=\mu \pm
-\sigma\)</span> 处有拐点。</p></li>
-</ul></li>
-</ul>
-<h1 id="lecture-5">Lecture 5</h1>
-<ul>
-<li><p>概率分布函数（<span class="math inline">\(CDF\)</span>）：对随机变量 <span class="math inline">\(X\)</span>，称 <span class="math inline">\(x\)</span> 的函数 <span class="math inline">\(F(x)
-= P(X\leq x),x \in R\)</span> 为 <span class="math inline">\(X\)</span>
-的概率分布函数，也称为累积分布函数，分布函数。</p>
-<ul>
-<li><p>对一个 <span class="math inline">\(PMF\)</span> 书写 <span class="math inline">\(CDF\)</span>，它一般是一个分段函数。</p></li>
-<li><p>对一个 <span class="math inline">\(PDF\)</span> 书写 <span class="math inline">\(CDF\)</span>，记随机变量 <span class="math inline">\(X\)</span> 的概率密度为 <span class="math inline">\(f(x)\)</span>，则其分布函数为 <span class="math inline">\(F(x) = \int_{-\infty}^x f(t) dt,x \in R\)</span>。
-对于一个已知的 <span class="math inline">\(F(x)\)</span>，只能确定连续点
-<span class="math inline">\(x\)</span> 处的概率密度为 <span class="math inline">\(f(x) =
-F&#39;(x)\)</span>，显然在不连续点处是无法确定的。</p>
-<ul>
-<li>注：连续型随机变量的概率密度不必为连续函数，允许可列个单点断开。那它为什么叫连续型呢？这与
-<span class="math inline">\(F(x)\)</span>
-的形式有关。同时离散型这一形容也与 <span class="math inline">\(F(x)\)</span> 有关。</li>
-</ul></li>
-<li><p>举个例子：标准正态分布的概率密度为 <span class="math inline">\(\phi(x)=\frac{1}{\sqrt{2 \pi}}
-exp(-\frac{x^2}{2}),x \in R\)</span>。其分布函数记为 <span class="math inline">\(\Phi(x)\)</span>，其值需要查表，当然也可以丢进
-MATLAB 算，但是不要求（</p>
-<p><img src="https://s2.loli.net/2022/09/29/lAWLBo8TXMfaQCK.png" alt="image-20220928155241878.png"></p></li>
-<li><p>再举个例子：正态分布函数的概率密度计算中，可以对 <span class="math inline">\(\frac{x-\mu}{\sigma}\)</span>
-进行换元，从而变为标准正态分布的情况。</p></li>
-<li><p>再再举个例子：指数分布的分布函数要注意分段，考虑 <span class="math inline">\(x&lt;0\)</span> 的情况。</p>
-<p>TODO：去看一下几何随机变量和指数随机变量的分布函数的逼近，这是利用
-<span class="math inline">\(CDF\)</span> 寻找 <span class="math inline">\(PMF,PDF\)</span> 之间关系的例子。</p></li>
-<li><p>分布函数对一切随机变量都适用，这是它相对 <span class="math inline">\(PMF,PDF\)</span> 的优势。</p></li>
-</ul></li>
-<li><p>对于一个随机变量 <span class="math inline">\(X\)</span> 的函数
-<span class="math inline">\(g(X)\)</span>，怎么去寻找 <span class="math inline">\(g(X)\)</span>
-的概率分布？（这一部分其实是做题方法）</p>
-<ul>
-<li><p>最简单的情形：<span class="math inline">\(X\)</span>
-是离散型随机变量，对每一个 <span class="math inline">\(X\)</span> 的取值
-<span class="math inline">\(x\)</span>，确定 <span class="math inline">\(Y=g(x)\)</span>
-时的概率分布列即可。有需要的话还可以化成 <span class="math inline">\(CDF\)</span>。</p></li>
-<li><p>曲线救国：考察 <span class="math inline">\(Y=g(X)\)</span>
-的分布，若 <span class="math inline">\(g(x)\)</span>
-是<strong>连续函数</strong>，那么可以先得到 <span class="math inline">\(Y\)</span> 的 <span class="math inline">\(CDF\)</span> 为 <span class="math inline">\(F_Y(y)=P(Y\leq y)\)</span>，再求导得到 <span class="math inline">\(f_Y(y)=F_Y&#39;(y)\)</span>。</p></li>
-<li><p>特殊情况 1：线性的 <span class="math inline">\(g(X)\)</span>
-可以直接从 <span class="math inline">\(f_X(x)\)</span> 得到 <span class="math inline">\(f_Y(y)\)</span> 而无需计算 <span class="math inline">\(CDF\)</span>。</p>
-<p>形如 <span class="math inline">\(Y=aX+b\)</span> ，有 <span class="math inline">\(f_Y(y)=\frac{1}{|a|}
-f_X(\frac{y-b}{a})\)</span>。（其实还是用 <span class="math inline">\(CDF\)</span> 证明的）</p></li>
-<li><p>特殊情况 2：对于严格单调的 <span class="math inline">\(g(x)\)</span>，考虑 <span class="math inline">\(Y=g(X)\)</span>。记 <span class="math inline">\(h(y)\)</span> 是 <span class="math inline">\(g(x)\)</span> 的逆映射，于是 <span class="math inline">\(f_Y(y)=f_X(h(y))|h&#39;(y)|\)</span>，这可以通过考虑事件
-<span class="math inline">\(\lbrace x&lt;X&lt;x+\delta \rbrace\)</span>
-来证明。</p></li>
-<li><p>特殊情况
-3：像正态分布这样的特殊分布，遇到的时候建议先考虑能不能在 <span class="math inline">\(\Phi(x)\)</span>
-的尺度先行利用对称性化简。</p></li>
-</ul></li>
-</ul>
-<h1 id="lecture-6">Lecture 6</h1>
-<ul>
-<li><p><span class="math inline">\(n\)</span> 维随机向量：如果 <span class="math inline">\(X_1,X_2,...,X_n\)</span> 都是概率空间 <span class="math inline">\((\Omega,F,P)\)</span> 上的随机变量，那么称 <span class="math inline">\(X=(X_1,X_2,...,X_n)\)</span> 为概率空间 <span class="math inline">\((\Omega,F,P)\)</span> 上的 <span class="math inline">\(n\)</span> 维随机向量。</p>
-<p>那么怎么从随机变量上迁移来诸多的概念呢？</p>
-<ul>
-<li><p>联合概率分布函数：设 <span class="math inline">\(X=(X_1,X_2,...,X_n)\)</span> 为随机向量，称 <span class="math inline">\(R^n\)</span> 上的 <span class="math inline">\(n\)</span> 元函数 <span class="math inline">\(F(x_1,x_2,...,x_n)=P(X_1&lt;x_1,...,X_n&lt;x_n)\)</span>
-为 <span class="math inline">\(X=(X_1,X_2,...,X_n)\)</span>
-的联合概率分布函数，简称为联合分布或者分布函数。</p></li>
-<li><p>有关离散型随机向量：如果 <span class="math inline">\(X_1,X_2,...,X_n\)</span> 都是离散型随机变量，则称
-<span class="math inline">\(X=(X_1,X_2,...,X_n)\)</span>
-为离散型随机向量。如果所有 <span class="math inline">\(X_i\)</span>
-的不同取值为 <span class="math inline">\(x(j_1,j_2,...,j_n)=(x_1(j_1),x_2(j_2),...,x_n(j_n))\)</span>，则称
-<span class="math inline">\(p_{j_1 j_2 ...
-j_n}=P(X=x(j_1,j_2,...,j_n))\)</span> 是 <span class="math inline">\(X\)</span> 的联合分布列。</p>
-<ul>
-<li><p>举个例子：设 <span class="math inline">\(F(x,y)\)</span> 是 <span class="math inline">\((X,Y)\)</span> 的联合分布，则 <span class="math inline">\(X,Y\)</span> 有概率分布：</p>
-<p><span class="math inline">\(F_X(x) = P(X \leq x,Y \leq \infty) =
-F(x,\infty)\)</span>，</p>
-<p><span class="math inline">\(F_Y(y) = P(X \leq \infty,Y \leq y) =
-F(\infty ,y)\)</span>。</p>
-<p>于是，对于矩形 <span class="math inline">\(D=\lbrace a&lt;X \leq b,c
-&lt; Y \leq d \rbrace\)</span>，有 <span class="math inline">\(P((X,Y)\in D) =
-F(b,d)-F(b,c)-F(a,d)+F(a,c)\)</span>。</p></li>
-</ul></li>
-<li><p>有关连续型随机向量：简单来说，考虑二维的情形，如果 <span class="math inline">\((X,Y)\)</span> 有联合密度 <span class="math inline">\(f(x,y)\)</span>，则 <span class="math inline">\(X\)</span> 和 <span class="math inline">\(Y\)</span> 分别有概率密度 <span class="math inline">\(f_X(x)=\int_{-\infty} ^{\infty}
-f(x,y)dy\)</span>，<span class="math inline">\(f_Y(y)=\int_{-\infty}^{\infty}
-f(x,y)dx\)</span>。</p>
-<p>延拓到 <span class="math inline">\(n\)</span> 维的情况，被积函数
-<span class="math inline">\(f_k(x_1,x_2,...,x_k)=\int_{R^{n-k}}
-f(x_1,x_2,...,x_k) dx_{k+1}...dx_n\)</span> 是为 <span class="math inline">\((X_1,...,X_n)\)</span>
-的联合密度，称之为边缘密度（Marginal PDF）。</p></li>
-<li><p>连续型随机向量的独立性：对每个 <span class="math inline">\(i(1\leq i \leq n)\)</span>，随机变量 <span class="math inline">\(X_i\)</span> 有概率密度 <span class="math inline">\(f_i(x_i)\)</span>，则 <span class="math inline">\(X_1,X_2,...,X_n\)</span>
-相互独立的充分必要条件为随机向量 <span class="math inline">\(X=(X_1,X_2,...,X_n)\)</span> 有联合密度 <span class="math inline">\(f_1(x_1)f_2(x_2)...f_n(x_n),(x_1,x_2,...,x_n)\in
-R^n\)</span>。</p></li>
-<li><p>经典连续型随机向量例：二元正态分布</p>
-<p>设 <span class="math inline">\(\mu_1,\mu_2\)</span> 为常数，<span class="math inline">\(\sigma_1,\sigma_2\)</span> 为正常数，<span class="math inline">\(\rho \in (-1,1)\)</span> 中的常数。如果随机向量
-<span class="math inline">\((X,Y)\)</span> 有概率密度</p>
-<p><span class="math inline">\(f(x,y)=\frac{1}{2\pi \sigma_1 \sigma_2
-\sqrt{1-\rho^2}}exp(-\frac{1} {2(1-\rho^2)} [\frac{(x-\mu_1)^2}{\sigma_1
-^2} + \frac{(y-\mu_2)^2}{\sigma_2 ^2} - \frac{2\rho
-(x-\mu_1)(y-\mu_2)}{\sigma_1 \sigma_2}])\)</span>，</p>
-<p>那么称 <span class="math inline">\((X,Y)\)</span>
-服从二元正态分布，记为 <span class="math inline">\((X,Y)\sim
-N(\mu_1,\mu_2,\sigma_1^2, \sigma_2^2, \rho)\)</span>。</p>
-<ul>
-<li>一些性质：<span class="math inline">\(X,Y\)</span> 独立的充要条件是
-<span class="math inline">\(\rho=0\)</span>。（Trivial）</li>
-</ul></li>
-<li><p>联合分布（Joint CDF）与联合密度（Joint PDF）：已知联合密度 <span class="math inline">\(f(x,y)\)</span>，于是有联合分布 <span class="math inline">\(F(x,y) = \int _{-\infty} ^x \int _{-\infty} ^y
-f(u,v)dudv\)</span>。</p>
-<p>当 <span class="math inline">\(f(x,y)\)</span> 连续时，有 <span class="math inline">\(f(x,y) = \frac{\partial^2 F(x,y)}{\partial x
-\partial y}\)</span>。更一般地，如果该混合偏导数不存在，那么 <span class="math inline">\(f(x,y)=0\)</span>。</p></li>
-<li><p>连续型条件概率分布：设随机向量 <span class="math inline">\((X,Y)\)</span> 有联合密度 <span class="math inline">\(f(x,y)\)</span>，<span class="math inline">\(Y\)</span> 有边缘密度 <span class="math inline">\(f_Y(y)\)</span>。若在确定的 <span class="math inline">\(y_0\)</span> 处 <span class="math inline">\(f_Y(y_0)&gt;0\)</span>，则称 <span class="math inline">\(P(X \leq x | Y=y_0) = \frac{\int_{-\infty} ^x
-f(s,y_0) ds}{f_Y(y_0)}\)</span> 为给定条件 <span class="math inline">\(Y=y_0\)</span> 下，<span class="math inline">\(X\)</span> 的条件分布函数（conditional CDF），记为
-<span class="math inline">\(F_{X|Y}(x|y_0)\)</span>。</p>
-<p>于是条件分布密度为 <span class="math inline">\(f_{X|Y}(x|y_0) =
-\frac{f(x,y_0)}{f_Y(y_0)}\)</span>。（conditional PDF）</p>
-<ul>
-<li><p>一些性质：</p>
-<p>$F_{X|Y}(x|y)=P(Xx|Y=y)=<em>{-} ^x f</em>{X|Y}(s|y)ds, x R $。</p>
-<p>如果 <span class="math inline">\(F_{X|Y}(x|y)\)</span> 关于 <span class="math inline">\(x\)</span>
-连续，且除去至少可列个点后有连续的导数，则在偏导数存在时，<span class="math inline">\(f_{X|Y}(x|y_0)=\frac{\partial
-F_{X|Y}(x|y)}{\partial x}\)</span>，否则为 <span class="math inline">\(0\)</span>。</p></li>
-</ul></li>
-</ul></li>
-</ul>
-<h1 id="期中插播提示">期中插播提示</h1>
-<ul>
-<li><p>关于连续型概率分布之前的误解：连续型的随机变量不能随便取单点的概率，因为单点处的概率就是
-<span class="math inline">\(0\)</span>，这就是为什么要定义一个概率密度的原因。概率密度的大小可以是任意的，不一定要小于
-<span class="math inline">\(1\)</span>，只要它的积分能够表示某一段（区域）的概率即可，这个在联合分布中有比较多的体现。</p>
-<p>总之，虽然 <span class="math inline">\(F(x,y) = \int_{-\infty}^x
-\int_{-\infty}^y f(u,v)dudv\)</span>，但是 <span class="math inline">\(f(u,v)\)</span> 不等同于 <span class="math inline">\(P(X=u,Y=v)\)</span>。同理，如果要算条件概率的话，可以用
-<span class="math inline">\(F_{X|Y}(x|y)=P(x_1\leq X\leq
-x_2|Y=y)=\int_{x_1}^{x_2} f_{X|Y} (s|y)ds\)</span>，也就是对 cond PDF
-来积分求解。</p>
-<p>（但是，出于记忆公式的方便考虑，我还是会把它当成单点处的概率来列写公式（</p></li>
-<li><p>关于随机变量的独立性，定义如下：设 <span class="math inline">\(X_1,X_2,...,X_n\)</span> 是 <span class="math inline">\((\Omega,F)\)</span> 上的随机变量，如果对任意的实数
-<span class="math inline">\(x_1,x_2,...,x_n\)</span> 有 <span class="math inline">\(P(X_1\leq x_1,X_2 \leq x_2,...,X_n \leq
-x_n)=P(X_1\leq x_1)...P(X_n\leq x_n)\)</span> 成立，则称随机变量 <span class="math inline">\(X_1,X_2,...,X_n\)</span> 相互独立。</p>
-<p>同时，设随机变量 <span class="math inline">\(X_1,X_2,...,X_n\)</span>
-相互独立，<span class="math inline">\(g_1(x),g_2(x),...,g_n(x)\)</span>
-是一元实可测函数，<span class="math inline">\(\phi(x_1,x_2,...,x_k)\)</span> 是 <span class="math inline">\(k\)</span> 元实可测函数，则：</p>
-<ul>
-<li>随机变量 <span class="math inline">\(g_1(X_1),...,g_n(X_n)\)</span>
-相互独立；</li>
-<li>随机变量 <span class="math inline">\(\phi(X_1,...,X_k),X_{k+1},...,X_n\)</span>
-相互独立。</li>
-</ul>
-<p>这在样题的某个判断题中，以离散型随机变量的形式出现了，于是我自己证明了一下。实际上是一个更一般的结论。</p></li>
-<li><p>单调事件列的概率极限问题：以单调增序列 <span class="math inline">\(\lbrace A_i\rbrace\)</span> 为例，有结论 <span class="math inline">\(lim_{n\to \infty} A_n=\cup _{i=1}^{\infty}
-A_i\)</span>，于是极限概率为：</p>
-<p><span class="math inline">\(P(\cup _{i=1}^{\infty} A_i) = P( lim
-_{n\to \infty} A_n) = lim _{n \to \infty} P(A_n)\)</span>。</p>
-<p>对于一些不单调的事件序列，可以用交并补构造一个单调序列，使得可以使用上述规律。</p></li>
-<li><p>事件列的上下极限的通俗说法：设 <span class="math inline">\(\lbrace A_i \rbrace\)</span> 是 <span class="math inline">\(\Omega\)</span>
-中的一个事件列，定义上下极限为：</p>
-<p><span class="math inline">\(lim_{n\to \infty} sup A _n = \cap
-_{n=1}^{\infty} \cup _{k=n}^{\infty} A_k =\lbrace \omega \in \Omega:
-\omega\)</span> 属于无穷多个 <span class="math inline">\(A_i\rbrace\)</span>。</p>
-<p><span class="math inline">\(lim_{n\to \infty} inf A _n = \cup
-_{n=1}^{\infty} \cap _{k=n}^{\infty} A_k =\lbrace \omega \in \Omega:
-\omega\)</span> 属于所有的 <span class="math inline">\(A_i\)</span>
-除去有限个<span class="math inline">\(\rbrace\)</span>。</p>
-<p>当上下极限相等时称 <span class="math inline">\(\lbrace A_i
-\rbrace\)</span> 的极限存在。</p></li>
-<li><p>条件概率中会忘记的常识：对互不相容的事件列 <span class="math inline">\(\lbrace B_i \rbrace\)</span>，有 <span class="math inline">\(P(\cup _{i=1}^{\infty} B_i | A) = \Sigma
-_{i=1}^{\infty} P(B_i | A)\)</span>。</p>
-<p>一个 insight：求条件概率时我们可以把 <span class="math inline">\(A\)</span> 之外的结果排除掉，记作 <span class="math inline">\((A,A\cap
-F,P_A)\)</span>，这个事件域上完全可以有概率分布，因此不必为折棒太郎题惊讶。</p></li>
-<li><p>注意一组事件“相互独立”所要求的完备性。</p></li>
-<li><p>复习指南：</p>
-<ul>
-<li><p>以上全部 TODO</p></li>
-<li><p>去看一下习题课中《一个有助于理解独立性的题目》和 Polya
-坛子问题第二问。</p></li>
-<li><p>Poisoner's Dilemma</p></li>
-<li><p>A family has two girls while at least one names Lilia</p></li>
-<li><p>记一下几个重要分布，以及二元正态</p></li>
-<li><p>过一遍离散型、连续型随机向量的独立性证明，二元正态分布的独立性证明。</p></li>
-<li><p><del>折棒太郎</del>折木棍问题的随机向量表述，Buffon 问题</p></li>
-</ul></li>
-<li><p>最后是一个我比较个人向的整理，根据考试重点和过往习题。<a href="https://cloud.tsinghua.edu.cn/f/4a371e0b38d64e178bc8/">Click
-Here</a></p></li>
-<li><p>记得多用归纳！</p></li>
-</ul>
-<h1 id="lecture-7">Lecture 7</h1>
-<p>又是全新的一门课辣（自我洗脑）</p>
-]]></content>
-      <tags>
-        <tag>刷书</tag>
-        <tag>数学</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>日记·篇五·23年1月</title>
     <url>/2023/01/01/Diary-2023-01/</url>
     <content><![CDATA[<p>日复一日，年复一年</p>
@@ -3177,306 +2811,6 @@ jk 了（</p>
       </tags>
   </entry>
   <entry>
-    <title>日记·篇七·23年3月</title>
-    <url>/2023/03/01/Diary-2023-03/</url>
-    <content><![CDATA[<p>某些人学都学不完了，还有空写日记？（</p>
-<span id="more"></span>
-<h1 id="月1日">3月1日</h1>
-<ul>
-<li><p>摘要是在骂我自己（</p></li>
-<li><p>昨晚睡得太少，早晨嗯撑着上完实分析之后来上统计学习导论，找了个有太阳的地方坐，照得我基本看不清电脑，不过还是想晒晒太阳，感觉会好很多。</p>
-<p>视野还是很好的，阳光透过百叶窗的这个效果真不错。这个仰角拍摄充分体现了我坐着时候的身高，悲（</p>
-<p><img src="https://s2.loli.net/2023/03/01/ZFbYnd6W9lgxjKo.jpg" alt="6A305.jpg"></p></li>
-<li><p>概率论 (1)
-特殊原因选课卡在院系审核两天了，我还以为我填的有什么问题，结果今天转数环友在环里问了才知道大家都一样。环友发了邮件，我打了电话，无果，最后想起来环里一年前有人转发过数学系两个教务的微信名片，试了一下还能加，于是加到了秦清老师，解决了。</p>
-<p>获得了一个冷知识：微信的好友名片分享是不会过期的。</p>
-<p>把环名片改成了名字 + 25 Fall 转，在一堆 21 转 22
-转之间格格不入但好像又统一了格式，莫名很好笑（</p></li>
-<li><p>把 surface
-和手写笔带出来本来是想拟合一点工程经济学的往年题，然后也没做题：</p>
-<p><img src="https://s2.loli.net/2023/03/01/xbPKvIg3EDdBMN9.png" alt="cats.png"></p>
-<p>为什么要把儿童画发出来丢人啊（（</p></li>
-</ul>
-<h1 id="月2日">3月2日</h1>
-<!--今天搁树洞看到一个这个，绷不住了：-->
-<blockquote>
-<!--列举一下求真我所知道的抽象操作：-->
-<!--将数学系和求真拆开，和数学系切割，然后诸多中心师资被调去上求真基础课，导致需要开很多重复的课（上学期三门《常微分方程》，包括两学期代拓 (2) 然后没有代拓 (1) ），双输。-->
-<!--“多元化培养”，声称要将求真成绩不好/跟不上进度的同学送入数学系进行“面向多元化数学人才需求”的培养，并在公布此通知数日内举办了一次心理健康讲座，最终是否实施有待考证，但此时求真已表现出明显拉踩数学系的倾向。-->
-<!--2023 年冬令营期间，求真声称数学系研究生课不能替代求真研究生课，说“我们的研究生课程体系比较完备”，也能表现出求真有拉踩数学系嫌疑，但目前相关政策未出，此条没有意义。-->
-<!--强制听课：可能是因为选修 birkar 双有理几何课程的人员过少，本学期求真大规模拉人去旁听这门课程，（一门课程课程群中助教说“【you know who】下了死命令，让选修本门课的人都去参加 Birkar 周四的课”，并不顾不同学生的研究方向和基础情况，强制所有参加求真冬令营并获得候补优秀营员的同学通过选修该课来进行进一步评定（此课程需要一定代数几何基础，但又不是所有基础数学方向的人都是要做代数几何的）。-->
-<!--金戈铁马，气吞万里如虎：来自【you know who】在求真本科生通知群中所发的消息，部分内容节选如下：“我们已经誓师，五年小成，十年大成，尽快追赶世界先进水平。金戈铁马，气吞万里如虎”。-->
-<!--现在数学系和数学中心这边有些课开不出来了；举个例子，春季学期本来应该有代数拓扑 1（同调论）的，但是没了。顺便一提，上学期数学系开了代数拓扑 2，这学期求真那边又开了个代数拓扑 2（都讲的是向量丛，示性类，指标定理等应用），这或多或少是一种浪费？这样安排是为了照顾求真书院的本科生，得给他们开课；并且求真开的课追求“小班教学”，每门课的容量四十顶天了，所以这需要相当的教学资源倾斜过去-->
-<!--【you know who】不把数学系的学生当人看，资源全部集中在求真上。听说中心的博后还要强制给求真学生当保姆，每周要请吃饭。以【you know who】的人品，如果求真的学生几年后达不到他的要求，会被当垃圾一样抛弃吧，就像他对以前的学生一样-->
-<!--目前研究生每年招百来人，但只提供 48 个工位(所有博士年级加起来)，博士生无处办公。中心博后办公室也是 10 人间。博士生需要自己做助教才有达到清华博士的最低补助 5 万 1。而隔壁北大数院博士生工位三到五人间，博后有双人间或单间，待遇差距太大了。在培养上，博士和博后招进来就是弃子，自生自灭，中心的师资都集中用于培养求真，往年每学期十几门高级研究生专题的公开课，现在只剩三门统计课。-->
-<!--鼓励纯数发展是一回事，限制非纯数发展是另一回事。【you know who】干的事很大程度上是独裁，把所有学生拱到他想发展的这些领域；过去数学系虽然也鼓励纯数，但大部分人从事非纯数的工作也不会受到院系方面的限制；而【you know who】现在干的事情，只是把这些学生当作筹码，赌赢了自己名利双收，赌输了换一批筹码再入场罢了。J 君看着也是懂数学的人，相比也明白数学领域的突破不是靠一小批人狠干十年就能干出来的吧-->
-<!--这个地方就要来点欧老师名言了：所以说 X 自信就是要允许 Y 才能有，以 X 自信为名打压 Y 到底是什么操作（-->
-<!--再来个段子，求真去三亚期间，【you know who】请技术人员查了三亚那个数学中心的网络流量消耗情况（我不懂技术，不知道具体可以查的多细），然后发现白天也有很多因为打游戏产生的流量/网络资源占用，于是就在通知群怒斥学生白天也打游戏，我确实不好评价-->
-<!--学生选课后的课表必须交给“学术导师”审核，目前暂未实施，但已有传言如此-->
-</blockquote>
-<!--草，这个 you know who 好好笑。我一直听说求真逆天，打压应数，倒是不知道这么逆天。此前求真切割带给我和身边人的最大影响无外乎这些：我被调剂到我院的时候，招生老师的解释是求真当年临时成立，从致理划走了一个班，虽然给过承诺但是没有办法，虽然我觉得这也不是理由，我认识的竞赛比我还拉但高考比我高的人也进了致理数学；转数环里的同学都很焦虑，从前数学系随便转，现在转系名额限原班级人数的 15%，也就是每年转进数学系只有 4 个名额，供不应求；虽然求真也可以转，但门槛太高，另外求真连数学系都拉踩，更别提外系转入，这就一博弈问题，sxt 和 hyx 转系的时候都没选求真，可见一斑。-->
-<!--说点阴暗的，求真切割之后倒是利好我申请了，唉。仅剩的两个可以出国和选应数的班级里，实力 top + 应数 + 出国的并不多，在统辅这边我也自认算基础扎实的，毕竟在跟着数学系挨揍，我还挺抗揍的嘛（x）。求真的选拔政策在我眼里还是很不错，之前也提过，结果招进来之后这么抽象，我其实觉得挺可惜的。-->
-<!--说点更阴暗的，未央保研政策出来之后我发现并不会限制我润去本校的数学方向（但限制不能去工工，所以统计中心是不可以的），还考虑了很久是否要努力一下直接本校保研算了，朋友们都在这里。然而数学系帮派林立，也没有概统方向的青年教师，要保就只能去 YMSC 少数几个老师那里，纯数氛围 + 转专业背景下很可能会被歧视，也就作罢了。今天知道 YMSC 的其余博士生不过是给科班这些人铺路的，科班也迟早成为代价，打死我也不会再考虑本校保研的问题。-->
-<ul>
-<li><blockquote>
-<p>实分析目前还算比较友善，但我听闻林勇给分一学期不如一学期，数分三似乎均分
-2.6 ，令人发指</p>
-</blockquote>
-<p>沃日，我倒是不怕绩点被削，给我 2.6
-也动不了我小数点后第一位，大不了多水点统辅课扯回来。我只在意实分析是概统方向要紧的一门基础课，拿个
-2.6 成负面 signaling 了，事实上未必那么拉啊（</p>
-<p>看期中排位吧，要是不行就别继续了，旁听然后明年选光叔保命。</p></li>
-<li><p>楼下正对着百团大战的鲁协，看起来他们要现场做饭的样子，锅碗瓢盆都带了，是要摊煎饼吗（</p>
-<p>犹豫了一下也没走近去看，我大概也不算山东人。往前走了一段没看到沪协，其实沪协我就更不感兴趣了，虽然一般为了方便我会说自己来自上海，但并不会说是上海人之类的话，毕竟最简单的，我连上海户口都没有（</p>
-<p>说到底对社团就不是很感兴趣...加过的唯一一个社团是天格计划，也并没有社交的打算，只是来看看是做什么的，待了一个学期就跑了。高考那年招生宣传片似乎就是拍了天格的故事，感觉把探测器送上太空这件事很有趣。至于他们在勘测什么，收集的数据有什么意义，我不喜欢物理，就觉得没意思了，只做过数据清洗和写文档的工作。这就和我对生统的态度差不多。</p></li>
-<li><p>我不打扰，我走了哈：</p>
-<p><img src="https://s2.loli.net/2023/03/02/L7C6RDiU2pH9AXf.jpg" alt="AE7865DE189F6DEC077114CEC86A1228.jpg"></p></li>
-<li><p>我的柜子像个无底洞，昨天从一堆纸巾里摸出一瓶咖啡以为是最后一瓶，今天翻了翻又找到一瓶。不过每天找到一瓶之后我就不再翻了，把能不能再找出一瓶的悬念留给第二天（</p>
-<p>光速又下单了一箱，这学期两节早八都不得不上，消耗还挺大。</p></li>
-<li><p>考完工程经济学，管他考得咋样呢，新学期总算开始了，cheers。</p>
-<!--UPD：寄了，3.6，看来工程经济学比抽代还难。--></li>
-</ul>
-<blockquote>
-<!--与此同时的是在润群看到了 n+e 结婚的消息。...但有些俗气的讲，我最吃惊的是他竟然能在这个年龄就能组建家庭，毕竟六字班最多也就 25 岁的样子，在这个年龄就结婚组建家庭，对清北华五级别的学生、甚至绝大多数 985211 的学生而言，几乎不可能。毕竟大部分人这个年龄要么就在读博，要么处于事业初期根本没有资产积累，剩下的人还有一大半找不到合适的配偶。对我而言，更是刘慈欣都写不出来的科幻小说。如果说社交方面我还有一丝乐观和希望的话，在未来的成家方面我只有无尽的悲观。-->
-<!--毕竟我博士只能出国，就清华数学如今糟糕的环境，已经不存在留在华子读博的可能；而对我而言，出国之后的人生轨迹，又是一个完全不可预测的混沌系统，可能博士毕业就会灰头土脸的回国找工；可能学术小有所成，读个博后再回国找教职也并非不可能；又有可能在国外对未来的认识有了改变，选择留在国外发展；又有可能遇上风波，导致我无法出国而又错过保研，或者博士未能毕业就被遣返甚至更坏的结果…总之，我的未来实在是完全未知的状态，而寻找配偶或是组建家庭需要的恰恰是确定性，更何况我并不善于交际，尤其是和异性的交际，这一来实在是悲观。-->
-<!-- ----LagrangeKMnO4-->
-</blockquote>
-<!--虽然也在骂我但我看得好乐啊，记之。骂我也骂不到，LagrangeKMnO4 和 Eren 显然是对此还抱有期待，和我就完全不一样。房子着火我拍照，人生乱套我睡觉。-->
-<h1 id="月3日">3月3日</h1>
-<ul>
-<li><p>emo 的时候就要多看源的 Tokyo Dome 演唱会。20 年和 21
-年我真的看了无数遍，一直都觉得 Tokyo Dome
-这一场单论歌曲的效果都比专辑还要好，源的演出也非常有感染力。</p>
-<p>但其实我现在也不怎么听源的新歌了，常听的还是 20
-年之前的一些，也主要就是 Tokyo Dome 这一场演出唱过的歌。和 Mili
-一样，虽然都喜欢了很多年，但我好像从某一个时刻开始就停在了从前，没有和他们再一起往前走了。</p>
-<p>之前提过 Mili
-近两年的新歌里我甚至只挑出来两首觉得好听的，一个是《Iron
-Lotus》，另一个是《Dandelion Boys, Dandelion Girls》，然而 18
-年左右发《Millennium
-Mother》这张专辑的时候我几乎每一首都喜欢。源也是一样的，《Pop
-Virus》这张专辑我也基本都喜欢，甚至为此去玩了死亡搁浅，大概也就是停在了
-19 年。</p>
-<p>那么后来的这几年我找到什么新的爱好、有新的喜欢的歌手了吗？哈哈，完全没有呢（</p></li>
-<li><p>昨晚在课咨委开会，讨论哪几个副主席今年负责带提案组的时候，听闻一位七字班的副主席大哥今年终于要毕业了，这学期光是上课就修了
-40 多个学分，附带两个毕设，一共 70 多个学分，草（</p>
-<p>群友之前调侃他说是因为关心课程改革而延毕两年多上了一堆课，听他的想法似乎也并不是完成不了培养方案而延毕，只是想多学点东西，挺有意思的。</p></li>
-</ul>
-<!--Quote from robinliu：-->
-<!--提醒一下大家，如果大家要留课到大三大四然后准备冲突选课，那一定要先把 sb 土木的课留着，先选土木的课，手选其他课。土木系的教务授意老师不会给任何冲突选课通过，即使毕不了业了-->
-<!--我和土木系教务拉扯一天了，被气哭了都，她和授课老师一并拷问我凭什么能同时上两门课，甚至只是 18:40 下课和 18:30 上课这种我觉得根本不算冲突的。真的是我是来上大学的，不是来被土木系恶心的-->
-<!--我只能说逆天。不负责任地攻击一下，越烂的院系教务越是脑子有问题，未央也是土木系也是，烦死了。-->
-<ul>
-<li>我到现在都没去过二教上课，还以为可以一直坚持到毕业都不用去（？，结果这周实分析习题课安排在二教了，悲（</li>
-</ul>
-<!--今天在统辅课上遇到了高中时候的一个强度惊人的学姐，不写注释的话开盒开太猛了，还是算了。除了因为强度知道她之外还有一些高中以前的别的没啥意思的渊源，大概就是她和我初中的一个学长谈了很多年恋爱。总之直到去年暑假之前，对她最后的印象大概就是听说她高考去了计金，来华子之后和我初中那位学长分手了，我从来没参加过高中校友的什么活动，别的都不清楚。-->
-<!--去年暑假友人参加了北大招生，回来告诉我有个从华二去清华的学姐，从他们那里抢走了一个高分考生，承诺来清华就可以给计金，最后骗进来就毁约，塞进了自动化。而原本北大给的是信科。我也算是被华子毁过约，听到这种事情就血压高，所以多问了一句这么缺德的事是谁干的。然后她和我说了这位学姐的名字，对着我愤愤不平了很久，甚至还 AOE 攻击了经管和贵系。后来的话我都没怎么听进去，只觉得，啊这，怎么会这样。-->
-<!--其实原本也不熟，只不过曾经在同一个楼道里待过一年，由于一些再往前的渊源互相认识，偶尔会打招呼，她和人打招呼的时候都笑得很温和。当时知道这件事的时候我突然有点难过，去年好几次拒绝参加招生，就是隐隐怀疑里面多少肮脏龌龊，不愿意插手，没想到我当时所想的这些事情是她做的。虽然不知道这之间是否有什么误会，或许她也只是给那两个天杀的上海招生组老师背了黑锅，也可能以讹传讹了，不知道。今天看到她的时候又觉得分明和高中的时候看起来一点也没有变，好矛盾啊。-->
-<!--省流：idol （疑似）塌房了（-->
-<!--我把这段注释截图给了友人看，结果她回我说，啊，你怎么还记得这件事啊，我都不记得了。我不明白。为什么不记得啊，为什么都这么健忘啊。-->
-<h1 id="月4日">3月4日</h1>
-<ul>
-<li><p>实分析作业写了半个通宵，想着写完就睡，结果真的写完再睡了。到最后已经纯纯变成了胜负欲的斗争，就是单纯的想写完再睡，其实并不好。但如果不是新学期周四才开始，倒也不至于这么赶。</p>
-<p>写到最后一题脑子已经转不动了，我觉得它毕竟是放在 Problem
-1，提示也就一句话，理应并不难，但就是卡住想不出来。上床之后上 Math
-StackExchange 查了一下，看到有人说它
-easy，一下子激起了胜负欲，关上手机闭眼想了两分钟就知道怎么做的了。看来下次有不会做的作业只要找个人来告诉我
-so easy 就能做出来了（</p>
-<p>白天起来把躺着想到的解答写下来发现没有伪，真是太好了（泪）。把作业交掉之后想到，大一的春季学期经常周末半夜写代码写到绷不住，要么对着电脑呜呜抹眼泪，要么写累了上床缩在被子里呜呜抹眼泪（，怀疑自己可能怎么样都解决不了问题，更害怕早晨起来也还是写不出来，然后就抱着这样的恐惧睡去。太惨了。虽然上学期为了写抽代
-bonus 也通过好几次宵，各种半夜上 MSE
-高强度冲浪，心情至少还挺平稳的（</p></li>
-<li><p>花了一天把概率论作业写完了，但是感觉并没有学会，很危。</p>
-<p>为啥室友周末永远约得到人出去玩，一到周末我就觉得自己进循环了。以后每个单周周六要做物理实验，每个周日还要上实分析习题课，约等于一周七天无休，除此之外就是赶作业，学一些学不会的东西。咋这么惨。那咋办，自找的嘛（（</p>
-<p>趁现在还是三月，空闲时间大概要赶紧往后推一推两门数学课的进度，希望人没事。</p></li>
-<li><p>自从上次提过之后连续观察了几天晚上六点半的天空，还是很不一样的，我谢罪，以及确实天黑得越来越晚了（废话）。除了
-P2
-之外都是同一个地方拍的，这个时间基本上就是我从教学楼爬出来去吃晚饭的时间，某种程度上来说也是过着一种非常规律的生活（</p>
-<p><img src="https://s2.loli.net/2023/03/04/prg6AvDZO5iR1qo.jpg" alt="sky.jpg"></p>
-<p>晚饭后买了春季学期的第一支甜筒（为什么这个也要记得是第一支啊草，一边舔一边走回教室，如果回去不用写
-Kai Lai Chung
-的习题的话还挺幸福的（。清青快餐的甜筒的话，冰激凌部分还不错就是稍微有点少，但蛋筒实在太甜了，吃完齁嗓子。下次试试七港九。</p></li>
-</ul>
-<h1 id="月5日">3月5日</h1>
-<ul>
-<li><p>解锁了二教地图（</p>
-<p>以前在树洞看过一些二教鬼故事，这几个学期也都没有排课到这里，感觉很神秘（，本来以为是什么阴暗破旧的大教室（，没想到还挺新的。椅子是软的，腰突（疑似）人士好评。</p>
-<p>昨晚睡前担心起来找不到 403
-在哪，还搜了下教室平面图，到了才知道其实指路指得很清楚，属于是毫无必要的担心。然后还特地上知乎找了一下二教鬼故事，看了一遍，满意地睡了（草（唯物主义战士.jpg</p></li>
-<li><p>和 runzhi
-交接了实变函数教材，<del>精北人就要用北大教材（其实是辅助，笑死）</del>，和
-MO 时代看过的黄皮初等数论一样的配方，泪目了，爷青回
-（x。<del>虽然社恐但还是努力鼓起勇气</del>一起吃了个饭，sync
-了一下现状，了解了一点隔壁数院的情况。<del>听说他也不会码我就放心了（数院同学的代码水平都那样.jpg</del></p>
-<p>吃饭的时候邮箱一直在跳消息（x），看到了一些去年暑培的时候知道的神的
-id（草，我居然还参加过贵系暑培，真蚌埠住了）出现在社友的博客评论区，一个吐槽了一句求真的（伪）数学人混在里面瑟瑟发抖（（</p>
-<p><img src="https://s2.loli.net/2023/03/05/bXKi5BtLWSGC1Tw.jpg" alt="84670501B286AFA082D8BDC324E82B69.jpg"></p>
-<p>来个很怪的改图（</p></li>
-</ul>
-<h1 id="月6日">3月6日</h1>
-<p>上课上着上着感觉有点难顶，statistical learning
-的作业也有点写不来，想来是我头铁没把它安排在线性回归之后的原因，正常情况下应该统辅第四学期再上。感觉迟早要退点课，但是看了看课表又觉得明明全都是任选课，却完全没有可以退的，要退只能退必修，怪事。</p>
-<p>下节课开始概率论目测要讲点初等的（我乱说的，我真的是目测的），这我熟，趁机缓一缓，补一下之前的东西吧。</p>
-<p>轻微破防，所以晚饭后光速测评了七港九甜筒：好吃，比清青快餐不知道高到哪里去了。不过今天这支甜筒从下面往外漏融化了的冰激凌，很怀疑是不是最下面的尖尖没闭合，实际上这个蛋筒只有一个面。走在路上手忙脚乱找纸巾的时候想起来，有点像画画的时候轮廓线没闭合就往里填色，结果整张图都填上了（</p>
-<p>胡思乱想着就一边走一边乐了，没心没肺活着不累。</p>
-<!--好吧，其实到晚上就又 emo 了。有时候觉得我就是干啥啥不行，来学数学了数学学不好，统辅课也寄，自己专业的专业课更学不会，即将延毕一年并且一事无成，乐。朋友们都是卡密的结果居然是我一直觉得自己也还行，而不是意识到自己是个废物，这是否有些（-->
-<!--寒假应该听 V1ncent19 的学一下线性回归的，但我寒假也不是什么都没干啊，我学数分去了。好像也没什么问题才对？既然没什么问题那怎么就是忙不过来啊 kora（-->
-<p>天气好热，是要放暑假了吗（错乱。过两天我都想穿裙子了，室友还在穿羽绒服，respect。</p>
-<h1 id="月7日">3月7日</h1>
-<p>非常累，浑身疼，晚上上线性回归整个人都是麻的，推断课上学得很熟的东西都反应不过来，应该是最近缺觉缺太多了。感觉有可能要考虑把
-statistical learning
-退掉，肝不动，而且也不用太急，重点还得是那两门数学课。</p>
-<!--看了下今天抽代终于登成绩了，虽然早知道是 4.0，但之前还在做一些 A+ 的梦（，果然还是期中拉胯了。想了想我觉得自己上得还可以的课基本都是稳定拿 A，既不是挂边拿 A-，也不是能展现强度的 A+，某种意义上来说属于是很平庸。数值分析、推断和抽代都是，还有个古早的逻辑专题也是（草（我现在想想当时还真的是一点基础没有，直接冲过来上这课，真的猛 -->
-<!--笑死了，强度可能确实有一点，但是是平凡的。无论做什么都有人比我做得更好而已，在竞赛的时候不早就接受了吗，现在怎么忘记了。小事。-->
-<!--算了，想想也别计较这个了，还是看看近处的实分析罢，最后绩点由 3 开头就是我赢了，或者说不退课遗憾离场就不错了。虽然我完全不理解数学系为什么要给成绩给成这个样子，为什么非要和学生过不去（或许下周例会可以去课咨委讨论一下，笑死）。想起来一个古早笑话，忘记是坚坚子还是齐齐子说的了，说绩点高低不重要，清华数学系已经很好了，大家没必要出国读书，本系保研就大家一样烂；C 和 D 不是放在那里看的，是要给出去的。乐。-->
-<!--草，今天看了下教学门户登的原始成绩才意识到，抽代每次的 bonus 是加在作业分里的，但我作业本来就是满分所以全做完了也没加，我怎么会做梦会因为 bonus 而拿到 A+ 的（，总成绩还得是期中期末两锤子买卖，这下白做了（x）。开玩笑的，其实 bonus 比书后习题设置得深刻多了，到后面还趁机学了些拓扑，以此为契机还和 Bowen L 认识了一下，对我来说是非常珍贵的记忆。-->
-<p>趁明天要上早八，找借口早点睡了，大家晚安。</p>
-<!--来点转数环里看的求真笑话再睡：-->
-<!-- - 据求真书院的同学说，数学史现在是六学期，每年一篇 50 页论文-->
-<!-- - 求真的花活越来越多了，而且为什么求真这么喜欢很多事情都强迫学生干-->
-<!-- - 为了十年大成-->
-<!--想想我之前还憧憬过保研到 YMSC 去，真是脑子有问题。虽然出国这个问题至今让我轻微难过，然而为了更好的发展，没有别的选择。前两天晚上看到一些东西，于是给一个我猜会直接保研的朋友手写了一小段话：-->
-<blockquote>
-<!--虽然我想在未来的动荡里，我的确很难和你再相遇。离开华子后，这个世界还有千千万万，很抱歉我无法停留。-->
-<!--但是，[someone] 的存在就已经证明了，我的拐弯抹角、难以表达的想法总有人能理解，而这便是我最大的愿望了。-->
-</blockquote>
-<!--写完之后又有点想笑：我还在落款里标好了时间，想着毕业之类的时间点能把它送出去，然而真的可以一直做朋友到那个时候吗？以及，到那个时候各自的计划真的顺利进行了吗，不如说，我真能有那么顺利？（-->
-<!--所以先贴在书架上了，万一真有机会送出去呢。-->
-<h1 id="月8日">3月8日</h1>
-<p>无事发生。只是一边焦虑一边做事情，才第三周就各种挫败，预感到了这个学期的艰难。想想还是不写下来释放负能量了（</p>
-<h1 id="月9日">3月9日</h1>
-<ul>
-<li><p>最近一直在考虑换个头像，但又不知道换什么。现在这个裁成圆形或者看小图似乎有点抽象，尤其小图看起来像意义不明的三个色块<del>（可以抬头看一眼
-favicon）</del>，<del>主要是，根本看不出来是个人啊！</del></p>
-<p>还有一些来自同学的吐槽，上次有同学告诉我没放大看之前一直以为我微信头像是美少女抽大烟，我真绷不住了，还有不少以为这疑似是个情头，<del>难道是背对着背，或者是把泡泡吹对面的人脸上吗（</del></p>
-<p>但是又用习惯了，恐怕认识我的人也看习惯了，<del>按头像和 id
-开盒也习惯了</del>。以及按我的强迫症要换必然是全平台换掉，好像根本找不全，有点麻烦啊。就算要换也不知道换点什么，<del>现在觉得换什么似乎都没那味儿</del>，毕竟想长期使用而且希望能有辨识度，这个也用了四年多了来着。<!--沃日，说到这个时间节点就想吐槽一句，还没和 ex 分手的时候我就在用这一套了，前两天看到他都又找到 npy 了（真是个奇迹），我怎么还在用这个（--></p>
-<!--说起来今天想了想我的青春疼痛文学连载（草）也该到此为止了，完结撒花。（？？-->
-<p>果然好麻烦，算了，这辈子很快就过完了，先忍一忍罢（草</p></li>
-<li><p>时间管理大师了一整天，什么都没做但反正挺忙的，怪事。</p>
-<p>晚上做物理实验一共四排座位，结果第四排就我一个人，在一个阴暗的角落里面壁做实验。现在还在做基物实验
-2
-的不是电机班的就是上学期退了课的，我这一组好像电机的同学格外多，实验课上大家像团建一样快乐，恐怖，还好有个角落可以给我面壁，没有被夹在人群中间（。不过面壁做实验倒是格外快，安排了
-4h 的时长，不到 2h 就速通完跑路了，下次还面壁。</p>
-<p>回教室坐了一个半钟头又来课咨委开会，大家以庆祝女生节和迎新的理由一起分了蛋糕和奶茶。把女生节单纯当团建就挺好的，<del>虽然不要有这个节日直接团建更好</del>，没有单独的礼物就是好文明（。越来越感觉我在课咨委的开会环节就是混吃混喝的，每次来吃完东西就开始一边和大家讨论一边写日记，写完日记就去写线性回归的代码作业，写完代码就该回寝室给电脑手机充电了（（</p></li>
-</ul>
-<h1 id="月10日">3月10日</h1>
-<!--来到了传说中的秋季学期成绩录入 ddl，我的体育课到底过没过啊，咋还不出分（。离散确实是让我白嫖了 GPA，虽然我上学期无数次怀疑自己是不是脑子有问题才选了这门课折腾自己。这学期一上来居然发现还好离散给我讲了可列集和基数，不然我缺的这块营养谁给我补啊.jpg-->
-<!--在寝室里跟室友开理发店痛骂工程经济学，同样是开学速成的，离散怎么就能 4.0，明明还多 1 个学分（x）。室友锐评说因为离散里面带了数学俩字，那我肯定会往 4.0 冲，我超，笑死了。-->
-<ul>
-<li><p>早晨去技科楼上课，路过中央主楼的时候看到门口的草坪上喷灌装置开了，室友特地绕到旁边骑了过去，溅了一身水，说很凉快。</p>
-<p>我一时不知道该不该告诉她，学校喷灌用的水是中水，大概就是把污水净化了一遍，水质在排水和给水之间，达不到自来水的标准。这可能是我认识实习学到的唯一一件事情，想了想打算下次在寝室吹水的时候假装随口说一下（</p>
-<!--草，又想起来去年社聚时候那个中水池了，茨月老师往假山上爬的时候我真的在想他要是掉进去怎么办（--></li>
-<li><p>上学期在<a href="https://mp.weixin.qq.com/s/4HQE2Hpq2sWjvxodKtfL9A">果壳的文章</a>里看到，玉兰花苞的手感像狗狗的额头（好怪，当时是秋天，不能立刻实验一下，就想着今年春天要记得去摸一摸玉兰花苞是什么手感。今天在人文学院旁边的斜坡上看到了玉兰树，去摸了一下才意识到，没摸过狗狗，好像也没法对照（</p>
-<p>一回头正对上一个路人看着我的疑惑的眼神，社死了。</p>
-<p><img src="https://s2.loli.net/2023/03/10/S4JdsMxfyUWPqe9.jpg" alt="magnolia.jpg"></p></li>
-<li><p>闲来无事扒拉统计中心的网页，发现 dwl
-老师从讲师升副教授了。所以这个是教学系列的副教授，还是她跨过 AP
-直接升了两级？她带科研吗？不是很懂诶。</p>
-<p>上学期在她初概课上记 PF
-开摆，今天在她多元统计课上做题的时候她还来和我聊天，还叫出了我的名字，我超，怎么还记得我（，绷不住了，越想越尴尬。</p></li>
-</ul>
-<h1 id="月11日">3月11日</h1>
-<p>这两天被《Young And Beautiful》戳到了：</p>
-<blockquote>
-<p>Will you still love me when I'm no longer young and beautiful?</p>
-<p>Will you still love me when I got nothing but my aching soul?</p>
-<p>I know you will, I know you will, I know that you will.</p>
-</blockquote>
-<!--晚上去面试了下答疑坊招新，坐在旁边等的时候听别人的问题：黎曼函数无理点连续性，指数分布无记忆性，听别人答不出来我还有点急，想着这不有手就行。轮到自己：上来一个当初就没学会的多元微积分，再来一个矩阵微分，后面一个要用特征值做的线代到底是看出来了，然后一点统计相关。-->
-<!--乐死了，感觉很寄，希望人没事。-->
-<h1 id="月12日">3月12日</h1>
-<p>植树节好耶。看到蚂蚁森林有新的树种了，准备继续解锁一个全图鉴。</p>
-<p>突然想起来一个 MO
-时代的同学的生日似乎就是植树节，不过之前发现他把我联系方式全删了，倒是没删明日方舟的好友（，寒假回坑的时候看到还挺感慨的。</p>
-<p>我到现在怎么还记得他的生日呢，但其实印象也不深刻，不确定是否真的是这一天。这段记忆可能本应到明年就彻底忘记了，但我今天写了这些话又加深了印象，就不会忘了。他又为什么要删我好友，因为看我已经远离了高中同学的圈子，或者太久不联系了觉得没必要保留联系方式吗，感觉应该没什么矛盾才对，<!--倒也可能是我太糙了，有矛盾但是并没有感觉到（悲），-->还是说觉得我太菜了（，天知道（</p>
-<h1 id="月13日">3月13日</h1>
-<!--今天在两边的日记里看到了 Eren 和 AQ 的割席，尽管我对 AQ 只是单向赛博认识，以及在 statistical learning 课上见过几次。又想到了 Eren 年终总结中真诚的话语，令人感叹。-->
-<!--我印象里的 AQ 是一个性格鲜明，生活饱满的人，大概是和我这种天天阴暗自闭爬行的人截然相反的类型，Eren 也一样。所以才会因为事关理想的争论而割席吗？以及因为认识 Eren，受到过一些关于交换、延毕方面信息的帮助，读他的文字也更多些，觉得他是一个善良真诚的人，或许他所认可的 AQ 也是一样的？-->
-<!--其实我不是非常能明白啦。倘若有朋友愿意和我谈论理想和未来，我大概是能包容多元的想法就尽量包容，能避免冲突就尽量避免的。不仅是因为我的性格没那么鲜明，只要是合理的想法我都能理解，我也实在害怕失去愿意和我谈论这些的朋友，太稀少了，对我来说相当珍贵。如果是面对和更亲近些的朋友的分歧（印象里倒也没怎么发生过），我真的不知道我会不会反复思考自己是否有问题，甚至愿意去改变自己。说得严重些的话，我实在是过着一种得过且过的生活（，这也没有办法。-->
-<ul>
-<li><p>右边智齿旁边的牙龈肿的越来越厉害了，昨天还因为发炎低烧了，以为是甲流，跑了一趟发热门诊，检查了半天最后开了一盒甲硝唑片被赶回来了，笑死。真神奇，我总是能在某一种传染病流行的时候，生一些其他症状类似的病来吓唬自己，实在不知道这算是身体好还是身体不好（</p>
-<p>去年这时候是左边智齿在发炎，痛得不行，三月某个下大雪的日子心怀愧疚地用美团买了一堆药，吃了一周才好。适逢上海封城家里一团乱，加上身体上的不适，天天自闭，看到玉兰树（白玉兰是上海市花，街上随处可见）都会
-emo
-的程度，笑死了。这次只是肿但并不痛，情况稍微好些，只是这几天大概不能吃辣了。</p>
-<p>所以吃点冰的可以给牙龈消肿吗，我指的是，冰激凌什么的（x</p></li>
-<li><blockquote>
-<p>其实我不是非常能明白啦。</p>
-<p>倘若有朋友愿意和我谈论理想和未来，我大概是能包容多元的想法就尽量包容，能避免冲突就尽量避免的。不仅是因为我的性格没那么鲜明，只要是合理的想法我都能理解，我也实在害怕失去愿意和我谈论这些的朋友，太稀少了，对我来说相当珍贵。</p>
-<p>如果是面对和更亲近些的朋友的分歧（印象里倒也没怎么发生过），我真的不知道我会不会反复思考自己是否有问题，甚至愿意去改变自己。说得严重些的话，我实在是过着一种得过且过的生活（，这也没有办法。</p>
-</blockquote>
-<!--这段话是可以完全公开的情报，只是叙述我自己的懦弱而已，想到说这些的原因还是塞注释吧（--></li>
-<li><p>抄了一天 Caratheodory Extension Theorem 的证明，用了<a href="http://www.probability.net/WEBcaratheodory.pdf">这个框架</a>，还参考了一下<a href="https://www.mat.univie.ac.at/~westra/caratheodory.pdf">这个注解</a>，拼拼凑凑做完了，感觉挺有意思，<del>之后还可以把解法发出来水一篇文章</del>。<!--感觉可以周五毛概课上写（，闲着也是闲着，就当练练打 LaTeX 也好啊，我写 LaTeX 的速度完全跟不上思考的进度，上次试着写了一次电子版的统辅作业，脑子比手快，太痛苦了。-->某次课上听到
-lzx 好像是说这个 bonus
-反正是不大可能独立做出来，能完整抄一遍就算是有收获，<del>所以这是否就是他把考试设置成默写的原因</del>，他讲话我也一直不是很能听得清（。我的收获大概就是觉得好玩吧，那倒也值了。</p>
-<p>实际上在实分析课上自己看书跟不上进度，想了想别人比我多学一年半又不是白学的，也正常。概率论一如既往不知道
-lzx 在说什么，写完 bonus
-回头一看发现正课一地鸡毛，全靠面向作业题看书，挺惨的。</p></li>
-</ul>
-<h1 id="月14日">3月14日</h1>
-<ul>
-<li><p>Happy <span class="math inline">\(\pi\)</span> day！</p></li>
-<li><p>本来觉得沙尘暴也没什么，今天在路上骑车看到被风卷起来的树叶渣子和灰尘对着我飞过来，突然明白了最近为什么头发油得这么快（，是否有点后知后觉了。</p>
-<p>上体育课手被毽子划破了，怎么听都很离谱但确实是这样，不愧是我；下午开始腰疼得像要断了一样，不知道是不是本来就腰肌劳损，上个体育课反复捡毽子还仰卧起坐，结果加重了。好痛的一天（</p></li>
-<li><p>（昨晚）睡前读完了《春琴抄》<del>不是写不完作业了来着吗</del>，还挺不错的，打算买本纸质版的留着。有空再去读一下《细雪》。</p>
-<p>我经常读书第一遍是读电子版或者是读借来的书，看完觉得很喜欢才会买纸质的收藏，买来可能就留着偶尔再翻看，或者朋友过生日之类的时候直接当礼物送出去（<del>经典除了送书之外不知道礼物还可以送什么</del>。<!--稍微暴论一下，其实吧，与其说是不知道送什么就直接送书了，不如说我根本是不想思考还能送点什么，就直接在几个朋友面前立了个直男（？）人设，于是送书也皆大欢喜了。以前给 ex 的各种礼物还真是没重过样。说好不写青春疼痛文学了（，只不过想起来还是觉得，莫过热忱少年心，可惜全被无视了。他真是不配（划掉-->数学书倒是反过来的，因为会一边读一边在上面写写画画，就直接买纸质版，也不会当二手再传给下一届什么的。</p>
-<blockquote>
-<p>一天清晨，佐助偷偷地到女仆的屋里拿取了女仆用的镜子和缝衣针，端端正正地在床铺上坐好，对镜把针插向自己的眼睛。佐助之所以这样做，并不是掌握了用针一刺眼睛就会看不见的常识，他无非是想试试可否用尽可能简便、痛苦又小的办法来变成盲人。他试着用针插入左眼的眼珠，但是要刺中眼珠，好像很不容易。而眼白部分较硬，针刺不进。眼珠毕竟软些，他轻轻刺了两三下，才咯吱一声响，刺进了两分光景，眼珠旋即一片白浊。他觉得失去了视力，既没有出血、发烧，也没有感到什么痛苦，这是因为水晶体组织遭到破坏，便成了外伤性的白内障。佐助又以同样的办法刺中了右眼珠，顿时双眼都瞎了。当然，听说刚刺瞎后的那几天，还能蒙蒙胧胧地看到物体的形象，但是过了十天光景，就完全看不见了。</p>
-</blockquote>
-<blockquote>
-<p>佐助能自然而然地领会春琴肚里的意思。佐助觉得，迄今为止，他俩虽然有着肉体关系，但是师徒关系一直使他俩不能心心相印，而今才真的合二而一，汇到一起来了。佐助想起了少年时期在壁橱中的黑暗世界里练习三味线的事，但是彼时的心境同现在是不可同日而语的。盲人大多只具有光的方向感，因此盲人的视野是朦胧有光的，而不是一片漆黑。佐助明白，自已今日虽然失去了观察外部世界的眼睛，却也同时睁开了审视内在世界的眼睛。“呜呼!
-这才真正是师傅居住着的世界呀! 我总算能和师傅居住在同一个世界里了。”</p>
-</blockquote>
-<blockquote>
-<p>春琴问:“佐助，痛吧?”</p>
-<p>佐助把瞎掉了的眼睛朝着能感觉到有春琴脸庞存在的发出浅白色光晕的方向，答道：“不，我没有感到痛。同师傅的大难相比，这一点儿事算得了什么呢?
-那天晚上，歹徒潜入房来，使师傅遭此大难，我却一无所知地睡着了。这实在是我的疏忽造成的。师傅命我每晚睡在隔壁，原是要我注意警戒，不料铸成了这样的大祸，使师傅蒙受苦难，我自己却安然无事。想及这一点，实在难以安下心来，唯希望得到惩罚。我朝夕向神灵叩拜，祷告着：‘务请也赐给我灾难吧。如此下去，我实在无地自容哪。’
-我有幸能感动上苍，遂了却了心中的夙愿。今天早晨起床，发现两眼就这么瞎了。这一定是上苍同情我的志向，使我如愿以偿的吧。师傅啊师傅，我已不能看到师傅受难后的面容了。而今我所见到的，只有师傅三十年来根植在我眼底深处的可亲的面容。请师傅像从前那样，放心地留我在左右伺候吧。唯猝然失明，可恨举止不能如意，伺候上会有欠敏捷。但是，师傅至少得把日常生活上的琐事交给我来伺候呀。”</p>
-</blockquote>
-<p>意犹未尽，去看了一些豆瓣书评：</p>
-<blockquote>
-<p>谷崎以闲笔写出了这个故事的本质：春琴嗜养黄莺，将野生的小雏鸟在尾巴还没长出来以前活捉，让其跟随师父黄莺练习啼唱。若等到尾巴长出来之后就为时晚矣，“因为已经学会母亲的粗笨啼声，再也无法矫正了。”佐助的境遇犹如黄莺，他的恋情全然建立在自己的盲目之上，不管盲的是心灵还是眼睛。这个爱情故事让人打心眼里哆嗦，谷崎真是太爱阴翳之美了。</p>
-</blockquote>
-<blockquote>
-<p>有些「不知怎的」实则是有意为之，有些「诞罔不经」原来只是习若自然，「雪中春来黄莺冻
-泪眼如今正模糊」以后告白可以用----你就是我的初音之鼓</p>
-</blockquote>
-<p>太会写了，笔能不能借我用用（落泪</p></li>
-</ul>
-<h1 id="月15日">3月15日</h1>
-<p>我总觉得实分析和概率论我都学得很云，实分析作业日常绷不住，概率论还好点，作业也老是被挑一堆小问题，麻了。</p>
-<!--哪天实在绷不住了就跑去搞实用统计罢，横扫数学做回工科生。今天看了一眼 V1ncent19 的 offer list 发现他还中了 UCB 的 MA 项目（虽然我不明白为什么会是个 Master of Art），是否说明统计真没那么难申请，虽然目测是一年制 + 就业导向，但还是震撼我。退路大概就是问家里借钱读个 MS 然后毕业找工还债算了（恼）。我不完全是开玩笑的，虽然不影响现在还是努力学啦。-->
-<p>花了半天紧急重制了 Proof of Carathéodory’s Extension Theorem
-顺带往前复习了一下，发现第一版写出来好多口胡，麻了。最后完全放弃了修改我也看不懂了的手写版答案，虽然手写理应更容易混过去（，打算交打印稿了。<del>逐渐被同化</del></p>
-<p>中午吃饭回来的路上已经开始第三节课了，于是在空无一人的六教车棚里一边走一边（用正常说话的音量）哼了几句歌（不好听x），回头一看角落里坐着一个看车的大爷在盯着我。很久没有这么极致的现实世界的社死体验了，记之（</p>
-<h1 id="月16日">3月16日</h1>
-<p>没啥可写的，一如既往、普通的写作业写得想死的一天（</p>
-<!--晚上来课咨委喝奶茶治愈了一下，点了杯加了麻薯的，黏黏糊糊，可能时间太晚了，喝得有点难受。喝完回寝室不久看到欧老师说去跑步了，绷不住了，负罪感拉满（x。想想我确实是缺乏一些身材管理，不过我并不是很 care 这个，~~另外穿衣合适的话还可以掩盖掩盖（草~~-->
-<!--这学期打算社工全面开摆，课咨委这里的工作量只有心情不好的时候找那门工程计算机制图的老师吵架。答疑坊的结果什么时候出啊，缺钱了（不是x -->
-<h1 id="月17日">3月17日</h1>
-<ul>
-<li><blockquote>
-<p>我每天都在“我想确定每日挽住同样的手臂”和“我不是火车不需要终点”之间起伏徘徊</p>
-</blockquote>
-<p>太会写了，笔能不能借我用用（落泪</p></li>
-<li><p>坏消息：发现包里随身揣的香水瓶子好像漏，可这明明是个玻璃瓶？</p>
-<p>更坏的消息：我看不出来它哪里漏，但就是漏一手（（</p></li>
-<li><p>昨天写概率论作业，看到书上有一个 direct mapping
-还打了引号，稍微有点不知道是什么意思。于是查了一下，啊，怎么看起来是个计算机术语？<del>还点进去看了一下，以为能从中获得什么启发，·草</del></p>
-<p>一定是我打开的方式不对，就去 MSE
-查了，结果只有随意用这个词的，没有解释它是什么的。自闭了，开始自我怀疑，不会是我缺的这一年半的某些课里讲过的概念吧，看着也不像啊，抽代里都没有这个，难道是什么黑话（？呜呜那怎么办，我好菜我为什么要来上这些课会不会被迫期中退课啊那我以后怎么办我真的要转数吗我行不行啊（虽然听起来很草但真的在这么想（</p>
-<p>直到今天翻到前面的定理，突然发现习题指向的定理里写的是 inverse
-mapping <span class="math inline">\(X^{-1}\)</span>，习题问的是 “direct
-mapping” <span class="math inline">\(X\)</span>。恍然大悟，看来就是指
-<span class="math inline">\(X\)</span>
-罢了，没有暗含什么性质的意思。可恶啊，直接说 <span class="math inline">\(X\)</span> 不好吗，非要讲 direct mapping
-也就算了，打引号干什么（</p></li>
-</ul>
-]]></content>
-      <tags>
-        <tag>碎碎念</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>日记·篇六·23年2月</title>
     <url>/2023/02/01/Diary-2023-02/</url>
     <content><![CDATA[<p>总感觉假期快结束了，但是假期真的开始过吗（</p>
@@ -3912,6 +3246,677 @@ interval（昏过去</p>
 <p>在线性回归课上一边敲这一段话一边思考这个月到底写了些什么，但好像没什么印象。实际上在公开连载之前我也一直有写日记的习惯，最开始的时候写的还是纸质版，写完了的日记只是存起来，基本也不会回来再看。唯一的用处是别人提到某一个时间点的时候如有需要可以回来查阅一下对应的时候我在做什么，尽管这也没有意义，只是我想让自己确信对生活是有把握的。</p>
 <p>咋这么沉重呢（，总之感谢你能读到这里。</p>
 <!--能看到的话也感谢你读到这里，写注释以来好像就在疯狂暴露阴暗面（，满意地离开.jpg（啥啊-->
+]]></content>
+      <tags>
+        <tag>碎碎念</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>初等概率论与挣扎</title>
+    <url>/2022/09/24/Elementary-probability-theory/</url>
+    <content><![CDATA[<p>虽然 dwl
+老师确实很好，但是我感觉初概这课有点儿稀碎（个人意见，个人意见）。</p>
+<span id="more"></span>
+<p>先前把统辅当做很有趣的数学分支，被转数环的学长泼了冷水说“统计中心的风格可能会不大适应”，另一位学长也说“统辅不是你期待的样子”，目前看中心开课的意思也好像有点当工科的辅助来学。我到底多大程度上能接受严谨的数学推导？又能走多远？统辅还是数辅<del>还是我全都要</del>，这是一个问题。</p>
+<p>初概这玩意儿前八周上完，约等于梦回高中月考，我定义呢我证明呢啊怎么直接拿来用了？在考虑下学期去数学系重新上概（1），甚至考虑跟实复分析，但是数分的空缺真的没问题吗。当然，没有退初概还是为了跟上统辅的进度，毕竟后八周还有统计推断，我也没完全放弃统辅，目前或许是我目光短浅了。</p>
+<p>这门课和教材也没什么映射关系（而且看老师的意思是也没有教材，草），直接按照
+Lecture n
+的顺序写吧。本来想放进茴香豆篇，但概率论这边举例比较多，放在一起又很冗长，还是算了。</p>
+<h1 id="lecture-1">Lecture 1</h1>
+<ul>
+<li>概率模型：概率模型由样本空间和概率构成。每一个概率模型都关联着一个试验。
+<ul>
+<li>样本空间是一个集合，概率模型对应的试验产生的所有可能结果形成样本空间，记作
+<span class="math inline">\(\Omega\)</span>。比如说，概率模型为抛硬币，样本空间即为
+<span class="math inline">\(\lbrace head,tail
+\rbrace\)</span>。样本空间可以是离散的，也可以是连续的。</li>
+<li>事件 <span class="math inline">\(A\)</span>
+是样本空间的子集，也就是某些试验结果的集合。概率 <span class="math inline">\(P(A)\)</span> 分配到事件 <span class="math inline">\(A\)</span> 上。</li>
+</ul></li>
+<li>概率公理：非负性，归一化，可加性。</li>
+<li>概率的性质：两个技巧，归纳法和取补集。</li>
+</ul>
+<h1 id="lecture-2">Lecture 2</h1>
+<ul>
+<li><p>事件域（或称为 <span class="math inline">\(\sigma-\)</span>域，<span class="math inline">\(\sigma-\)</span>代数）：对于样本空间 <span class="math inline">\(\Omega\)</span>，<span class="math inline">\(F\)</span> 表示 <span class="math inline">\(\Omega\)</span> 的某些子集构成的集合，如果 <span class="math inline">\(F\)</span> 满足以下三个条件：</p>
+<ul>
+<li><span class="math inline">\(\Omega \in F\)</span> ；</li>
+<li>对于任意的 <span class="math inline">\(A\in F\)</span>，有 <span class="math inline">\(A^c \in F\)</span>；</li>
+<li>如果 <span class="math inline">\(A_n \in F\)</span>，<span class="math inline">\(n=1,2,...\)</span>，则 <span class="math inline">\(\cup_{n=1}^\infty A_n \in F\)</span>。</li>
+</ul>
+<p>那么称 <span class="math inline">\(F\)</span> 为 <span class="math inline">\(\Omega\)</span> 上的事件域，称 <span class="math inline">\(F\)</span> 中的元素为事件，称 <span class="math inline">\((\Omega,F)\)</span> 为可测空间。</p>
+<p>从而，有且只有 <span class="math inline">\(F\)</span>
+中的每个事件都能分配概率，这就圈定了我们所关心的事件的范围。</p>
+<p>事件域的一些性质如下：</p>
+<ul>
+<li>两个事件域的并集不一定是事件域，但交集一定是。（Trivial）</li>
+<li>事件域对集合的任何计算都是封闭的，包括事件列的极限运算。</li>
+</ul></li>
+<li><p>概率，也称为概率测度：设 <span class="math inline">\((\Omega,F)\)</span>
+为<strong>可测空间</strong>，<span class="math inline">\(P\)</span>
+是定义在 <span class="math inline">\(F\)</span> 上的函数，如果 <span class="math inline">\(P\)</span> 满足以下三个条件：</p>
+<ul>
+<li>非负性，完全性（Trivial）</li>
+<li>可列可加性（<span class="math inline">\(\sigma-additivity\)</span>）：对于 <span class="math inline">\(F\)</span> 中互不相交的事件 <span class="math inline">\(A_1,A_2,...\)</span> ，有 <span class="math inline">\(P(\cup _{n=1} ^\infty A_n) = \Sigma _{n=1} ^\infty
+P(A_n)\)</span>。</li>
+</ul>
+<p>那么称 <span class="math inline">\(P\)</span> 为 <span class="math inline">\(F\)</span> 上的概率测度，简称概率。</p></li>
+<li><p>对于上述定义的样本空间，事件域和概率测度，我们称 <span class="math inline">\((\Omega,F,P)\)</span> 为概率空间。</p>
+<p>简单举个例子，在掷硬币的概率模型中，样本空间是 <span class="math inline">\(\lbrace Head,Tail \rbrace\)</span>，事件域是 <span class="math inline">\(\lbrace \lbrace Head,Tail \rbrace, \lbrace Head
+\rbrace, \lbrace Tail \rbrace, \emptyset
+\rbrace\)</span>，此时样本空间和事件域构成可测空间。事件域中的每一个元素都是事件，概率测度为
+<span class="math inline">\(P(\lbrace Head \rbrace) = p\)</span>, <span class="math inline">\(P(\lbrace Tail \rbrace)=1-p\)</span>。（这是考虑了
+<span class="math inline">\(biased\)</span> <span class="math inline">\(coin\)</span> 的情况）</p></li>
+<li><p>概率测度的一些性质：</p>
+<ul>
+<li>对于单调增序列，有 <span class="math inline">\(\lim_{n \to \infty}
+A_n = \cup_{i=1} ^\infty A_i\)</span>， <span class="math inline">\(P(\lim_{n \to \infty}A_n) = \lim_{x \to
+\infty}P(A_n)\)</span>。</li>
+<li>单调减序列同理。</li>
+</ul></li>
+<li><p>条件概率（定义略）的若干性质：</p>
+<ul>
+<li><p>对互不相容的事件列 $B_i $，有 <span class="math inline">\(P(\cup
+_{i=1}^\infty B_i|A) = \Sigma _{i=1} ^\infty P(B_i
+|A)\)</span>。</p></li>
+<li><p>用 <span class="math inline">\(P_A(·)=P(·|A)\)</span> 表示在事件
+<span class="math inline">\(A\)</span>
+发生条件下的条件概率，这仍然是一个概率测度，<span class="math inline">\((\Omega,F,P_A)\)</span> 仍然是一个概率空间。</p>
+<p>当然，此时我们可以把 <span class="math inline">\(A\)</span>
+之外的结果排除掉，记作 <span class="math inline">\((A,A\cap
+F,P_A)\)</span>。</p></li>
+</ul></li>
+<li><p>乘法公式：设 <span class="math inline">\((\Omega, F,P)\)</span>
+是概率空间，<span class="math inline">\(A_i \in F\)</span>，<span class="math inline">\(i = 1,2,...,n\)</span>，且 <span class="math inline">\(P(A_1 \cap A_2 \cap ... \cap
+A_{n-1})&gt;0\)</span>，于是有<span class="math inline">\(P(\cap_{i=1}^n
+A_i) = P(A_1) \Pi_{i=2}^n P(A_i|A_1\cap A_2 \cap ... \cap
+A_{i-1})\)</span>。</p>
+<p>举个例子：某人写了 <span class="math inline">\(n\)</span>
+封信，将其装入 <span class="math inline">\(n\)</span>
+个写有地址的信封，全部装错的概率 <span class="math inline">\(q_0\)</span> 为？恰有 <span class="math inline">\(r\)</span> 个信封装对的概率 <span class="math inline">\(q_r\)</span> 为？</p>
+<ul>
+<li>在第一个问题下面，我们考虑记事件 <span class="math inline">\(A_i\)</span> 为第 <span class="math inline">\(i\)</span>
+个信封装对的事件，利用容斥原理即可。</li>
+<li>在第二个问题下面，其实问题主要在于怎么考虑是哪 <span class="math inline">\(r\)</span> 个信封放对了的问题。“指定的某 <span class="math inline">\(r\)</span> 个信封放对了”这一事件的概率等于“从
+<span class="math inline">\(n\)</span> 个信封里无放回地取出 <span class="math inline">\(r\)</span> 个正好是前 <span class="math inline">\(r\)</span> 号”的概率。又因为从 <span class="math inline">\(n\)</span> 个信封里指定 <span class="math inline">\(r\)</span> 个有 <span class="math inline">\(C_n
+^r\)</span> 种方式，于是这一部分的概率为 <span class="math inline">\(\frac{1}{r!}\)</span>。</li>
+</ul></li>
+<li><p>全概率公式：将 <span class="math inline">\(\Omega\)</span>
+分割成事件 <span class="math inline">\(A_1,A_2,...,A_n\)</span>
+的并，另有其中的事件 <span class="math inline">\(B\)</span>，可以对每个
+<span class="math inline">\(i\)</span> 得到 <span class="math inline">\(P(B|A_i)\)</span>，于是 <span class="math inline">\(P(B) = \Sigma_{i=1}^n P(A_i)P(B|Ai) =
+\Sigma_{i=1}^n P(B \cap A_i)\)</span>。</p>
+<p>这个时候，我们称 <span class="math inline">\(\lbrace A_i
+\rbrace\)</span> 是 <span class="math inline">\(\Omega\)</span>
+的一个分割。同时，式中的 <span class="math inline">\(n\)</span> 可以用
+<span class="math inline">\(\infty\)</span> 代替。</p>
+<p>举个例子：一个袋子里有 <span class="math inline">\(n\)</span>
+个白球和 <span class="math inline">\(m\)</span> 个黑球，从中无放回地取出
+<span class="math inline">\(k\)</span> 个球，求第 <span class="math inline">\(k\)</span> 次取得黑球的概率。</p>
+<ul>
+<li>递归：第一次取黑球的概率影响第二次，第二次影响第三次...简单列个数列可以看出来取黑球的概率是定值，即为
+<span class="math inline">\(\frac{m}{m+n}\)</span>。</li>
+<li>排队：把 <span class="math inline">\(m+n\)</span> 个球排成一列，算第
+<span class="math inline">\(k\)</span> 个恰为黑球的概率即可。</li>
+</ul></li>
+<li><p><span class="math inline">\(Bayes\)</span> 准则：设 <span class="math inline">\((\Omega,F,P)\)</span> 是概率空间，<span class="math inline">\(B,A_i \in F\)</span>，<span class="math inline">\(i=1,2,...,n\)</span>，<span class="math inline">\(\lbrace A_i \rbrace\)</span> 是 <span class="math inline">\(\Omega\)</span> 的一个分割。我们要用 <span class="math inline">\(P(B|A_i)\)</span> 算 <span class="math inline">\(P(A_i|B)\)</span>，就可以使用 <span class="math inline">\(Bayes\)</span> 准则：<span class="math inline">\(P(A_i|B)=\frac{P(A_i)P(B|A_i)}{\Sigma_{j=1}^n
+P(A_j)P(B|A_j)}\)</span> 。</p></li>
+</ul>
+<h1 id="lecture-3">Lecture 3</h1>
+<ul>
+<li><p>（两两）独立性，条件独立性和一组事件的相互独立性</p>
+<ul>
+<li><p>对于概率空间 <span class="math inline">\((\Omega,F,P)\)</span>，<span class="math inline">\(A,B,C \in F\)</span>，独立性指的是 <span class="math inline">\(P(A\cap B) = P(A)P(B)\)</span>，条件独立性指的是
+<span class="math inline">\(P(A\cap B|C)=P(A|C)P(B|C)\)</span>。</p>
+<p>那么这二者有什么关系呢？答案是没有关系（</p>
+<p>简单举个反例：抛掷两次均匀的硬币，令 <span class="math inline">\(H_1=\lbrace\)</span>第一枚正面朝上<span class="math inline">\(\rbrace\)</span>，<span class="math inline">\(H_2=\lbrace\)</span>第二枚正面朝上<span class="math inline">\(\rbrace\)</span>，<span class="math inline">\(D=\lbrace\)</span>两枚硬币结果相反<span class="math inline">\(\rbrace\)</span>。于是有 <span class="math inline">\(P(H_1 \cap H_2) = P(H_1)P(H_2)\)</span>，但是
+<span class="math inline">\(P(H_1 \cap H_2 |D) = 0,P(H_1|D) =
+\frac{1}{2}，P(H_2|D) =
+\frac{1}{2}\)</span>。也就是说，独立性不能推出条件独立性。</p></li>
+<li><p>一组事件的相互独立性涉及到概率空间 <span class="math inline">\((\Omega,F,P)\)</span> 中的一组事件 <span class="math inline">\(A_1,A_2,...,A_n\)</span>，如果对于任意非空子集
+<span class="math inline">\(S\subset \lbrace 1,2,...,n
+\rbrace\)</span>，都有<span class="math inline">\(P(\cap_{i \in S}
+A_i)=\Pi_{i\in S} P(A_i)\)</span>，那么称这一组事件是相互独立的。</p>
+<p>根据 <span class="math inline">\(S\)</span>
+的完备性可以知道，两两独立性也不能推出一组事件的相互独立性。</p></li>
+<li><p>TODO：记得复习一下赌徒破产模型。</p></li>
+</ul></li>
+<li><p>随机变量何种情况下是良定义的？</p>
+<ul>
+<li>设 <span class="math inline">\((\Omega,F)\)</span> 为可测空间，如果
+<span class="math inline">\(\Omega\)</span> 上的函数 <span class="math inline">\(X(\omega)\)</span> 满足：对 <span class="math inline">\(\forall x \in R\)</span>，<span class="math inline">\(\lbrace \omega | X(\omega) \leq x\rbrace \in
+F\)</span>，则称 <span class="math inline">\(X(\omega)\)</span> 为 <span class="math inline">\((\Omega,F)\)</span> 上的随机变量。</li>
+</ul></li>
+</ul>
+<h1 id="lecture-4">Lecture 4</h1>
+<ul>
+<li><p>对于离散型随机变量 <span class="math inline">\(X\)</span>，称
+<span class="math inline">\(P(X=x_k) = p_k\)</span> 为 <span class="math inline">\(X\)</span> 的概率分布，称 <span class="math inline">\(\lbrace p_k \rbrace\)</span> 为概率分布列，简称为
+<span class="math inline">\(PMF\)</span>。当其规律不够明显时可以写成表格形式。</p>
+<ul>
+<li><p>两点（<span class="math inline">\(Bernoulli\)</span>）分布：掷硬币或正或反，<span class="math inline">\(P(X=0)=p,P(X=1)=1-p\)</span>。</p></li>
+<li><p>二项（<span class="math inline">\(Binomial\)</span>）分布：试验成功的概率为 <span class="math inline">\(p\)</span>，重复 <span class="math inline">\(n\)</span> 次试验成功 <span class="math inline">\(k\)</span> 次的概率，<span class="math inline">\(P(X=k) = C_n ^k p^k
+(1-p)^{n-k}\)</span>。它是二项式展开的其中一项，故名二项分布。</p>
+<p>二项分布的最大可能值（即中心项）的推断：考虑二项式展开。</p></li>
+<li><p>......这里空间不够大，别的写不下了（其实是不需要记忆离散型分布的名字，会讲故事就行。</p></li>
+<li><p>泊松（<span class="math inline">\(Poission\)</span>）分布：<span class="math inline">\(P(X=k)=\frac{\lambda ^k}{k!}
+e^{-\lambda}\)</span>。一般来说，记随机变量 <span class="math inline">\(Y\sim P(\lambda)\)</span> 表示 <span class="math inline">\(Y\)</span> 服从参数为 <span class="math inline">\(\lambda\)</span> 的泊松分布。</p>
+<p>放射粒子模型揭示了二项分布可以用泊松分布近似的事实。</p>
+<p>TODO：复习粒子模型，做书上习题 <span class="math inline">\(2.2\)</span>。</p></li>
+</ul></li>
+<li><p>对于连续型随机变量的定义如下：设随机变量 <span class="math inline">\(X\)</span>，如果存在非负函数 <span class="math inline">\(f(x)\)</span> 满足对任意的 <span class="math inline">\(a&lt;b\)</span>，<span class="math inline">\(P(a&lt;X\leq b)=\int _a ^b f(x) dx\)</span>，则称
+<span class="math inline">\(X\)</span> 为连续型随机变量。称 <span class="math inline">\(f(x)\)</span> 为 <span class="math inline">\(X\)</span>
+的概率密度函数，简称概率密度或者密度（<span class="math inline">\(PDF\)</span>）。</p>
+<p>这并不意味着 <span class="math inline">\(X(\omega)\)</span>
+是连续函数，因为样本空间可能没有任何的拓扑结构，谈不上连续性。</p>
+<ul>
+<li><p>均匀（<span class="math inline">\(Uniform\)</span>）分布：<span class="math inline">\(f(x) = \frac{1}{b-a},x \in (a,b)\)</span>，此时记
+<span class="math inline">\(X \sim U(a,b)\)</span>。</p></li>
+<li><p>指数（<span class="math inline">\(Exponential\)</span>）分布：<span class="math inline">\(f(x) = \lambda e^{-\lambda x},x\geq
+0\)</span>，此时记 <span class="math inline">\(X\sim
+\epsilon(\lambda)\)</span>。</p>
+<p>如果 <span class="math inline">\(X\)</span> 是连续型非负随机变量，则
+<span class="math inline">\(X\)</span> 服从指数分布的充要条件是 <span class="math inline">\(X\)</span> 没有记忆性，也就是说 <span class="math inline">\(P(X&gt;s+t|X&gt;s) =
+P(X&gt;t)\)</span>。（可以由条件概率公式证出，Trivial.）</p>
+<p><span class="math inline">\(X\)</span>
+的失效率就是单位长度时间内失效的概率，可推知即为 <span class="math inline">\(\lambda\)</span>。也称其为尺度参数（rate
+parameter）。</p>
+<p>TODO：再推一遍 <span class="math inline">\(X\sim
+\epsilon(\lambda)\)</span> 时，<span class="math inline">\(Y=\lambda
+X\)</span>，则 <span class="math inline">\(Y\sim \epsilon
+(1)\)</span>。</p></li>
+<li><p>正态分布（<span class="math inline">\(Normal\)</span> <span class="math inline">\(Distribution\)</span>）：<span class="math inline">\(f(x)=\frac{1}{\sigma \sqrt{2 \pi}}
+exp(-\frac{(x-\mu)^2}{2\sigma ^2}),x \in R\)</span>，此时记 <span class="math inline">\(X\sim N(\mu ,\sigma^2)\)</span>。</p>
+<p>正态分布的函数图像关于 <span class="math inline">\(x=\mu\)</span>
+对称，在此处取最大值 <span class="math inline">\(f(\mu) = (\sigma
+\sqrt{2\pi})^{-1}\)</span>。关于 <span class="math inline">\(x=\mu \pm
+\sigma\)</span> 处有拐点。</p></li>
+</ul></li>
+</ul>
+<h1 id="lecture-5">Lecture 5</h1>
+<ul>
+<li><p>概率分布函数（<span class="math inline">\(CDF\)</span>）：对随机变量 <span class="math inline">\(X\)</span>，称 <span class="math inline">\(x\)</span> 的函数 <span class="math inline">\(F(x)
+= P(X\leq x),x \in R\)</span> 为 <span class="math inline">\(X\)</span>
+的概率分布函数，也称为累积分布函数，分布函数。</p>
+<ul>
+<li><p>对一个 <span class="math inline">\(PMF\)</span> 书写 <span class="math inline">\(CDF\)</span>，它一般是一个分段函数。</p></li>
+<li><p>对一个 <span class="math inline">\(PDF\)</span> 书写 <span class="math inline">\(CDF\)</span>，记随机变量 <span class="math inline">\(X\)</span> 的概率密度为 <span class="math inline">\(f(x)\)</span>，则其分布函数为 <span class="math inline">\(F(x) = \int_{-\infty}^x f(t) dt,x \in R\)</span>。
+对于一个已知的 <span class="math inline">\(F(x)\)</span>，只能确定连续点
+<span class="math inline">\(x\)</span> 处的概率密度为 <span class="math inline">\(f(x) =
+F&#39;(x)\)</span>，显然在不连续点处是无法确定的。</p>
+<ul>
+<li>注：连续型随机变量的概率密度不必为连续函数，允许可列个单点断开。那它为什么叫连续型呢？这与
+<span class="math inline">\(F(x)\)</span>
+的形式有关。同时离散型这一形容也与 <span class="math inline">\(F(x)\)</span> 有关。</li>
+</ul></li>
+<li><p>举个例子：标准正态分布的概率密度为 <span class="math inline">\(\phi(x)=\frac{1}{\sqrt{2 \pi}}
+exp(-\frac{x^2}{2}),x \in R\)</span>。其分布函数记为 <span class="math inline">\(\Phi(x)\)</span>，其值需要查表，当然也可以丢进
+MATLAB 算，但是不要求（</p>
+<p><img src="https://s2.loli.net/2022/09/29/lAWLBo8TXMfaQCK.png" alt="image-20220928155241878.png"></p></li>
+<li><p>再举个例子：正态分布函数的概率密度计算中，可以对 <span class="math inline">\(\frac{x-\mu}{\sigma}\)</span>
+进行换元，从而变为标准正态分布的情况。</p></li>
+<li><p>再再举个例子：指数分布的分布函数要注意分段，考虑 <span class="math inline">\(x&lt;0\)</span> 的情况。</p>
+<p>TODO：去看一下几何随机变量和指数随机变量的分布函数的逼近，这是利用
+<span class="math inline">\(CDF\)</span> 寻找 <span class="math inline">\(PMF,PDF\)</span> 之间关系的例子。</p></li>
+<li><p>分布函数对一切随机变量都适用，这是它相对 <span class="math inline">\(PMF,PDF\)</span> 的优势。</p></li>
+</ul></li>
+<li><p>对于一个随机变量 <span class="math inline">\(X\)</span> 的函数
+<span class="math inline">\(g(X)\)</span>，怎么去寻找 <span class="math inline">\(g(X)\)</span>
+的概率分布？（这一部分其实是做题方法）</p>
+<ul>
+<li><p>最简单的情形：<span class="math inline">\(X\)</span>
+是离散型随机变量，对每一个 <span class="math inline">\(X\)</span> 的取值
+<span class="math inline">\(x\)</span>，确定 <span class="math inline">\(Y=g(x)\)</span>
+时的概率分布列即可。有需要的话还可以化成 <span class="math inline">\(CDF\)</span>。</p></li>
+<li><p>曲线救国：考察 <span class="math inline">\(Y=g(X)\)</span>
+的分布，若 <span class="math inline">\(g(x)\)</span>
+是<strong>连续函数</strong>，那么可以先得到 <span class="math inline">\(Y\)</span> 的 <span class="math inline">\(CDF\)</span> 为 <span class="math inline">\(F_Y(y)=P(Y\leq y)\)</span>，再求导得到 <span class="math inline">\(f_Y(y)=F_Y&#39;(y)\)</span>。</p></li>
+<li><p>特殊情况 1：线性的 <span class="math inline">\(g(X)\)</span>
+可以直接从 <span class="math inline">\(f_X(x)\)</span> 得到 <span class="math inline">\(f_Y(y)\)</span> 而无需计算 <span class="math inline">\(CDF\)</span>。</p>
+<p>形如 <span class="math inline">\(Y=aX+b\)</span> ，有 <span class="math inline">\(f_Y(y)=\frac{1}{|a|}
+f_X(\frac{y-b}{a})\)</span>。（其实还是用 <span class="math inline">\(CDF\)</span> 证明的）</p></li>
+<li><p>特殊情况 2：对于严格单调的 <span class="math inline">\(g(x)\)</span>，考虑 <span class="math inline">\(Y=g(X)\)</span>。记 <span class="math inline">\(h(y)\)</span> 是 <span class="math inline">\(g(x)\)</span> 的逆映射，于是 <span class="math inline">\(f_Y(y)=f_X(h(y))|h&#39;(y)|\)</span>，这可以通过考虑事件
+<span class="math inline">\(\lbrace x&lt;X&lt;x+\delta \rbrace\)</span>
+来证明。</p></li>
+<li><p>特殊情况
+3：像正态分布这样的特殊分布，遇到的时候建议先考虑能不能在 <span class="math inline">\(\Phi(x)\)</span>
+的尺度先行利用对称性化简。</p></li>
+</ul></li>
+</ul>
+<h1 id="lecture-6">Lecture 6</h1>
+<ul>
+<li><p><span class="math inline">\(n\)</span> 维随机向量：如果 <span class="math inline">\(X_1,X_2,...,X_n\)</span> 都是概率空间 <span class="math inline">\((\Omega,F,P)\)</span> 上的随机变量，那么称 <span class="math inline">\(X=(X_1,X_2,...,X_n)\)</span> 为概率空间 <span class="math inline">\((\Omega,F,P)\)</span> 上的 <span class="math inline">\(n\)</span> 维随机向量。</p>
+<p>那么怎么从随机变量上迁移来诸多的概念呢？</p>
+<ul>
+<li><p>联合概率分布函数：设 <span class="math inline">\(X=(X_1,X_2,...,X_n)\)</span> 为随机向量，称 <span class="math inline">\(R^n\)</span> 上的 <span class="math inline">\(n\)</span> 元函数 <span class="math inline">\(F(x_1,x_2,...,x_n)=P(X_1&lt;x_1,...,X_n&lt;x_n)\)</span>
+为 <span class="math inline">\(X=(X_1,X_2,...,X_n)\)</span>
+的联合概率分布函数，简称为联合分布或者分布函数。</p></li>
+<li><p>有关离散型随机向量：如果 <span class="math inline">\(X_1,X_2,...,X_n\)</span> 都是离散型随机变量，则称
+<span class="math inline">\(X=(X_1,X_2,...,X_n)\)</span>
+为离散型随机向量。如果所有 <span class="math inline">\(X_i\)</span>
+的不同取值为 <span class="math inline">\(x(j_1,j_2,...,j_n)=(x_1(j_1),x_2(j_2),...,x_n(j_n))\)</span>，则称
+<span class="math inline">\(p_{j_1 j_2 ...
+j_n}=P(X=x(j_1,j_2,...,j_n))\)</span> 是 <span class="math inline">\(X\)</span> 的联合分布列。</p>
+<ul>
+<li><p>举个例子：设 <span class="math inline">\(F(x,y)\)</span> 是 <span class="math inline">\((X,Y)\)</span> 的联合分布，则 <span class="math inline">\(X,Y\)</span> 有概率分布：</p>
+<p><span class="math inline">\(F_X(x) = P(X \leq x,Y \leq \infty) =
+F(x,\infty)\)</span>，</p>
+<p><span class="math inline">\(F_Y(y) = P(X \leq \infty,Y \leq y) =
+F(\infty ,y)\)</span>。</p>
+<p>于是，对于矩形 <span class="math inline">\(D=\lbrace a&lt;X \leq b,c
+&lt; Y \leq d \rbrace\)</span>，有 <span class="math inline">\(P((X,Y)\in D) =
+F(b,d)-F(b,c)-F(a,d)+F(a,c)\)</span>。</p></li>
+</ul></li>
+<li><p>有关连续型随机向量：简单来说，考虑二维的情形，如果 <span class="math inline">\((X,Y)\)</span> 有联合密度 <span class="math inline">\(f(x,y)\)</span>，则 <span class="math inline">\(X\)</span> 和 <span class="math inline">\(Y\)</span> 分别有概率密度 <span class="math inline">\(f_X(x)=\int_{-\infty} ^{\infty}
+f(x,y)dy\)</span>，<span class="math inline">\(f_Y(y)=\int_{-\infty}^{\infty}
+f(x,y)dx\)</span>。</p>
+<p>延拓到 <span class="math inline">\(n\)</span> 维的情况，被积函数
+<span class="math inline">\(f_k(x_1,x_2,...,x_k)=\int_{R^{n-k}}
+f(x_1,x_2,...,x_k) dx_{k+1}...dx_n\)</span> 是为 <span class="math inline">\((X_1,...,X_n)\)</span>
+的联合密度，称之为边缘密度（Marginal PDF）。</p></li>
+<li><p>连续型随机向量的独立性：对每个 <span class="math inline">\(i(1\leq i \leq n)\)</span>，随机变量 <span class="math inline">\(X_i\)</span> 有概率密度 <span class="math inline">\(f_i(x_i)\)</span>，则 <span class="math inline">\(X_1,X_2,...,X_n\)</span>
+相互独立的充分必要条件为随机向量 <span class="math inline">\(X=(X_1,X_2,...,X_n)\)</span> 有联合密度 <span class="math inline">\(f_1(x_1)f_2(x_2)...f_n(x_n),(x_1,x_2,...,x_n)\in
+R^n\)</span>。</p></li>
+<li><p>经典连续型随机向量例：二元正态分布</p>
+<p>设 <span class="math inline">\(\mu_1,\mu_2\)</span> 为常数，<span class="math inline">\(\sigma_1,\sigma_2\)</span> 为正常数，<span class="math inline">\(\rho \in (-1,1)\)</span> 中的常数。如果随机向量
+<span class="math inline">\((X,Y)\)</span> 有概率密度</p>
+<p><span class="math inline">\(f(x,y)=\frac{1}{2\pi \sigma_1 \sigma_2
+\sqrt{1-\rho^2}}exp(-\frac{1} {2(1-\rho^2)} [\frac{(x-\mu_1)^2}{\sigma_1
+^2} + \frac{(y-\mu_2)^2}{\sigma_2 ^2} - \frac{2\rho
+(x-\mu_1)(y-\mu_2)}{\sigma_1 \sigma_2}])\)</span>，</p>
+<p>那么称 <span class="math inline">\((X,Y)\)</span>
+服从二元正态分布，记为 <span class="math inline">\((X,Y)\sim
+N(\mu_1,\mu_2,\sigma_1^2, \sigma_2^2, \rho)\)</span>。</p>
+<ul>
+<li>一些性质：<span class="math inline">\(X,Y\)</span> 独立的充要条件是
+<span class="math inline">\(\rho=0\)</span>。（Trivial）</li>
+</ul></li>
+<li><p>联合分布（Joint CDF）与联合密度（Joint PDF）：已知联合密度 <span class="math inline">\(f(x,y)\)</span>，于是有联合分布 <span class="math inline">\(F(x,y) = \int _{-\infty} ^x \int _{-\infty} ^y
+f(u,v)dudv\)</span>。</p>
+<p>当 <span class="math inline">\(f(x,y)\)</span> 连续时，有 <span class="math inline">\(f(x,y) = \frac{\partial^2 F(x,y)}{\partial x
+\partial y}\)</span>。更一般地，如果该混合偏导数不存在，那么 <span class="math inline">\(f(x,y)=0\)</span>。</p></li>
+<li><p>连续型条件概率分布：设随机向量 <span class="math inline">\((X,Y)\)</span> 有联合密度 <span class="math inline">\(f(x,y)\)</span>，<span class="math inline">\(Y\)</span> 有边缘密度 <span class="math inline">\(f_Y(y)\)</span>。若在确定的 <span class="math inline">\(y_0\)</span> 处 <span class="math inline">\(f_Y(y_0)&gt;0\)</span>，则称 <span class="math inline">\(P(X \leq x | Y=y_0) = \frac{\int_{-\infty} ^x
+f(s,y_0) ds}{f_Y(y_0)}\)</span> 为给定条件 <span class="math inline">\(Y=y_0\)</span> 下，<span class="math inline">\(X\)</span> 的条件分布函数（conditional CDF），记为
+<span class="math inline">\(F_{X|Y}(x|y_0)\)</span>。</p>
+<p>于是条件分布密度为 <span class="math inline">\(f_{X|Y}(x|y_0) =
+\frac{f(x,y_0)}{f_Y(y_0)}\)</span>。（conditional PDF）</p>
+<ul>
+<li><p>一些性质：</p>
+<p>$F_{X|Y}(x|y)=P(Xx|Y=y)=<em>{-} ^x f</em>{X|Y}(s|y)ds, x R $。</p>
+<p>如果 <span class="math inline">\(F_{X|Y}(x|y)\)</span> 关于 <span class="math inline">\(x\)</span>
+连续，且除去至少可列个点后有连续的导数，则在偏导数存在时，<span class="math inline">\(f_{X|Y}(x|y_0)=\frac{\partial
+F_{X|Y}(x|y)}{\partial x}\)</span>，否则为 <span class="math inline">\(0\)</span>。</p></li>
+</ul></li>
+</ul></li>
+</ul>
+<h1 id="期中插播提示">期中插播提示</h1>
+<ul>
+<li><p>关于连续型概率分布之前的误解：连续型的随机变量不能随便取单点的概率，因为单点处的概率就是
+<span class="math inline">\(0\)</span>，这就是为什么要定义一个概率密度的原因。概率密度的大小可以是任意的，不一定要小于
+<span class="math inline">\(1\)</span>，只要它的积分能够表示某一段（区域）的概率即可，这个在联合分布中有比较多的体现。</p>
+<p>总之，虽然 <span class="math inline">\(F(x,y) = \int_{-\infty}^x
+\int_{-\infty}^y f(u,v)dudv\)</span>，但是 <span class="math inline">\(f(u,v)\)</span> 不等同于 <span class="math inline">\(P(X=u,Y=v)\)</span>。同理，如果要算条件概率的话，可以用
+<span class="math inline">\(F_{X|Y}(x|y)=P(x_1\leq X\leq
+x_2|Y=y)=\int_{x_1}^{x_2} f_{X|Y} (s|y)ds\)</span>，也就是对 cond PDF
+来积分求解。</p>
+<p>（但是，出于记忆公式的方便考虑，我还是会把它当成单点处的概率来列写公式（</p></li>
+<li><p>关于随机变量的独立性，定义如下：设 <span class="math inline">\(X_1,X_2,...,X_n\)</span> 是 <span class="math inline">\((\Omega,F)\)</span> 上的随机变量，如果对任意的实数
+<span class="math inline">\(x_1,x_2,...,x_n\)</span> 有 <span class="math inline">\(P(X_1\leq x_1,X_2 \leq x_2,...,X_n \leq
+x_n)=P(X_1\leq x_1)...P(X_n\leq x_n)\)</span> 成立，则称随机变量 <span class="math inline">\(X_1,X_2,...,X_n\)</span> 相互独立。</p>
+<p>同时，设随机变量 <span class="math inline">\(X_1,X_2,...,X_n\)</span>
+相互独立，<span class="math inline">\(g_1(x),g_2(x),...,g_n(x)\)</span>
+是一元实可测函数，<span class="math inline">\(\phi(x_1,x_2,...,x_k)\)</span> 是 <span class="math inline">\(k\)</span> 元实可测函数，则：</p>
+<ul>
+<li>随机变量 <span class="math inline">\(g_1(X_1),...,g_n(X_n)\)</span>
+相互独立；</li>
+<li>随机变量 <span class="math inline">\(\phi(X_1,...,X_k),X_{k+1},...,X_n\)</span>
+相互独立。</li>
+</ul>
+<p>这在样题的某个判断题中，以离散型随机变量的形式出现了，于是我自己证明了一下。实际上是一个更一般的结论。</p></li>
+<li><p>单调事件列的概率极限问题：以单调增序列 <span class="math inline">\(\lbrace A_i\rbrace\)</span> 为例，有结论 <span class="math inline">\(lim_{n\to \infty} A_n=\cup _{i=1}^{\infty}
+A_i\)</span>，于是极限概率为：</p>
+<p><span class="math inline">\(P(\cup _{i=1}^{\infty} A_i) = P( lim
+_{n\to \infty} A_n) = lim _{n \to \infty} P(A_n)\)</span>。</p>
+<p>对于一些不单调的事件序列，可以用交并补构造一个单调序列，使得可以使用上述规律。</p></li>
+<li><p>事件列的上下极限的通俗说法：设 <span class="math inline">\(\lbrace A_i \rbrace\)</span> 是 <span class="math inline">\(\Omega\)</span>
+中的一个事件列，定义上下极限为：</p>
+<p><span class="math inline">\(lim_{n\to \infty} sup A _n = \cap
+_{n=1}^{\infty} \cup _{k=n}^{\infty} A_k =\lbrace \omega \in \Omega:
+\omega\)</span> 属于无穷多个 <span class="math inline">\(A_i\rbrace\)</span>。</p>
+<p><span class="math inline">\(lim_{n\to \infty} inf A _n = \cup
+_{n=1}^{\infty} \cap _{k=n}^{\infty} A_k =\lbrace \omega \in \Omega:
+\omega\)</span> 属于所有的 <span class="math inline">\(A_i\)</span>
+除去有限个<span class="math inline">\(\rbrace\)</span>。</p>
+<p>当上下极限相等时称 <span class="math inline">\(\lbrace A_i
+\rbrace\)</span> 的极限存在。</p></li>
+<li><p>条件概率中会忘记的常识：对互不相容的事件列 <span class="math inline">\(\lbrace B_i \rbrace\)</span>，有 <span class="math inline">\(P(\cup _{i=1}^{\infty} B_i | A) = \Sigma
+_{i=1}^{\infty} P(B_i | A)\)</span>。</p>
+<p>一个 insight：求条件概率时我们可以把 <span class="math inline">\(A\)</span> 之外的结果排除掉，记作 <span class="math inline">\((A,A\cap
+F,P_A)\)</span>，这个事件域上完全可以有概率分布，因此不必为折棒太郎题惊讶。</p></li>
+<li><p>注意一组事件“相互独立”所要求的完备性。</p></li>
+<li><p>复习指南：</p>
+<ul>
+<li><p>以上全部 TODO</p></li>
+<li><p>去看一下习题课中《一个有助于理解独立性的题目》和 Polya
+坛子问题第二问。</p></li>
+<li><p>Poisoner's Dilemma</p></li>
+<li><p>A family has two girls while at least one names Lilia</p></li>
+<li><p>记一下几个重要分布，以及二元正态</p></li>
+<li><p>过一遍离散型、连续型随机向量的独立性证明，二元正态分布的独立性证明。</p></li>
+<li><p><del>折棒太郎</del>折木棍问题的随机向量表述，Buffon 问题</p></li>
+</ul></li>
+<li><p>最后是一个我比较个人向的整理，根据考试重点和过往习题。<a href="https://cloud.tsinghua.edu.cn/f/4a371e0b38d64e178bc8/">Click
+Here</a></p></li>
+<li><p>记得多用归纳！</p></li>
+</ul>
+<h1 id="lecture-7">Lecture 7</h1>
+<p>又是全新的一门课辣（自我洗脑）</p>
+]]></content>
+      <tags>
+        <tag>刷书</tag>
+        <tag>数学</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>日记·篇七·23年3月</title>
+    <url>/2023/03/01/Diary-2023-03/</url>
+    <content><![CDATA[<p>某些人学都学不完了，还有空写日记？（</p>
+<span id="more"></span>
+<h1 id="月1日">3月1日</h1>
+<ul>
+<li><p>摘要是在骂我自己（</p></li>
+<li><p>昨晚睡得太少，早晨嗯撑着上完实分析之后来上统计学习导论，找了个有太阳的地方坐，照得我基本看不清电脑，不过还是想晒晒太阳，感觉会好很多。</p>
+<p>视野还是很好的，阳光透过百叶窗的这个效果真不错。这个仰角拍摄充分体现了我坐着时候的身高，悲（</p>
+<p><img src="https://s2.loli.net/2023/03/01/ZFbYnd6W9lgxjKo.jpg" alt="6A305.jpg"></p></li>
+<li><p>概率论 (1)
+特殊原因选课卡在院系审核两天了，我还以为我填的有什么问题，结果今天转数环友在环里问了才知道大家都一样。环友发了邮件，我打了电话，无果，最后想起来环里一年前有人转发过数学系两个教务的微信名片，试了一下还能加，于是加到了秦清老师，解决了。</p>
+<p>获得了一个冷知识：微信的好友名片分享是不会过期的。</p>
+<p>把环名片改成了名字 + 25 Fall 转，在一堆 21 转 22
+转之间格格不入但好像又统一了格式，莫名很好笑（</p></li>
+<li><p>把 surface
+和手写笔带出来本来是想拟合一点工程经济学的往年题，然后也没做题：</p>
+<p><img src="https://s2.loli.net/2023/03/01/xbPKvIg3EDdBMN9.png" alt="cats.png"></p>
+<p>为什么要把儿童画发出来丢人啊（（</p></li>
+</ul>
+<h1 id="月2日">3月2日</h1>
+<!--今天搁树洞看到一个这个，绷不住了：-->
+<blockquote>
+<!--列举一下求真我所知道的抽象操作：-->
+<!--将数学系和求真拆开，和数学系切割，然后诸多中心师资被调去上求真基础课，导致需要开很多重复的课（上学期三门《常微分方程》，包括两学期代拓 (2) 然后没有代拓 (1) ），双输。-->
+<!--“多元化培养”，声称要将求真成绩不好/跟不上进度的同学送入数学系进行“面向多元化数学人才需求”的培养，并在公布此通知数日内举办了一次心理健康讲座，最终是否实施有待考证，但此时求真已表现出明显拉踩数学系的倾向。-->
+<!--2023 年冬令营期间，求真声称数学系研究生课不能替代求真研究生课，说“我们的研究生课程体系比较完备”，也能表现出求真有拉踩数学系嫌疑，但目前相关政策未出，此条没有意义。-->
+<!--强制听课：可能是因为选修 birkar 双有理几何课程的人员过少，本学期求真大规模拉人去旁听这门课程，（一门课程课程群中助教说“【you know who】下了死命令，让选修本门课的人都去参加 Birkar 周四的课”，并不顾不同学生的研究方向和基础情况，强制所有参加求真冬令营并获得候补优秀营员的同学通过选修该课来进行进一步评定（此课程需要一定代数几何基础，但又不是所有基础数学方向的人都是要做代数几何的）。-->
+<!--金戈铁马，气吞万里如虎：来自【you know who】在求真本科生通知群中所发的消息，部分内容节选如下：“我们已经誓师，五年小成，十年大成，尽快追赶世界先进水平。金戈铁马，气吞万里如虎”。-->
+<!--现在数学系和数学中心这边有些课开不出来了；举个例子，春季学期本来应该有代数拓扑 1（同调论）的，但是没了。顺便一提，上学期数学系开了代数拓扑 2，这学期求真那边又开了个代数拓扑 2（都讲的是向量丛，示性类，指标定理等应用），这或多或少是一种浪费？这样安排是为了照顾求真书院的本科生，得给他们开课；并且求真开的课追求“小班教学”，每门课的容量四十顶天了，所以这需要相当的教学资源倾斜过去-->
+<!--【you know who】不把数学系的学生当人看，资源全部集中在求真上。听说中心的博后还要强制给求真学生当保姆，每周要请吃饭。以【you know who】的人品，如果求真的学生几年后达不到他的要求，会被当垃圾一样抛弃吧，就像他对以前的学生一样-->
+<!--目前研究生每年招百来人，但只提供 48 个工位(所有博士年级加起来)，博士生无处办公。中心博后办公室也是 10 人间。博士生需要自己做助教才有达到清华博士的最低补助 5 万 1。而隔壁北大数院博士生工位三到五人间，博后有双人间或单间，待遇差距太大了。在培养上，博士和博后招进来就是弃子，自生自灭，中心的师资都集中用于培养求真，往年每学期十几门高级研究生专题的公开课，现在只剩三门统计课。-->
+<!--鼓励纯数发展是一回事，限制非纯数发展是另一回事。【you know who】干的事很大程度上是独裁，把所有学生拱到他想发展的这些领域；过去数学系虽然也鼓励纯数，但大部分人从事非纯数的工作也不会受到院系方面的限制；而【you know who】现在干的事情，只是把这些学生当作筹码，赌赢了自己名利双收，赌输了换一批筹码再入场罢了。J 君看着也是懂数学的人，相比也明白数学领域的突破不是靠一小批人狠干十年就能干出来的吧-->
+<!--这个地方就要来点欧老师名言了：所以说 X 自信就是要允许 Y 才能有，以 X 自信为名打压 Y 到底是什么操作（-->
+<!--再来个段子，求真去三亚期间，【you know who】请技术人员查了三亚那个数学中心的网络流量消耗情况（我不懂技术，不知道具体可以查的多细），然后发现白天也有很多因为打游戏产生的流量/网络资源占用，于是就在通知群怒斥学生白天也打游戏，我确实不好评价-->
+<!--学生选课后的课表必须交给“学术导师”审核，目前暂未实施，但已有传言如此-->
+</blockquote>
+<!--草，这个 you know who 好好笑。我一直听说求真逆天，打压应数，倒是不知道这么逆天。此前求真切割带给我和身边人的最大影响无外乎这些：我被调剂到我院的时候，招生老师的解释是求真当年临时成立，从致理划走了一个班，虽然给过承诺但是没有办法，虽然我觉得这也不是理由，我认识的竞赛比我还拉但高考比我高的人也进了致理数学；转数环里的同学都很焦虑，从前数学系随便转，现在转系名额限原班级人数的 15%，也就是每年转进数学系只有 4 个名额，供不应求；虽然求真也可以转，但门槛太高，另外求真连数学系都拉踩，更别提外系转入，这就一博弈问题，sxt 和 hyx 转系的时候都没选求真，可见一斑。-->
+<!--说点阴暗的，求真切割之后倒是利好我申请了，唉。仅剩的两个可以出国和选应数的班级里，实力 top + 应数 + 出国的并不多，在统辅这边我也自认算基础扎实的，毕竟在跟着数学系挨揍，我还挺抗揍的嘛（x）。求真的选拔政策在我眼里还是很不错，之前也提过，结果招进来之后这么抽象，我其实觉得挺可惜的。-->
+<!--说点更阴暗的，未央保研政策出来之后我发现并不会限制我润去本校的数学方向（但限制不能去工工，所以统计中心是不可以的），还考虑了很久是否要努力一下直接本校保研算了，朋友们都在这里。然而数学系帮派林立，也没有概统方向的青年教师，要保就只能去 YMSC 少数几个老师那里，纯数氛围 + 转专业背景下很可能会被歧视，也就作罢了。今天知道 YMSC 的其余博士生不过是给科班这些人铺路的，科班也迟早成为代价，打死我也不会再考虑本校保研的问题。-->
+<ul>
+<li><blockquote>
+<p>实分析目前还算比较友善，但我听闻林勇给分一学期不如一学期，数分三似乎均分
+2.6 ，令人发指</p>
+</blockquote>
+<p>沃日，我倒是不怕绩点被削，给我 2.6
+也动不了我小数点后第一位，大不了多水点统辅课扯回来。我只在意实分析是概统方向要紧的一门基础课，拿个
+2.6 成负面 signaling 了，事实上未必那么拉啊（</p>
+<p>看期中排位吧，要是不行就别继续了，旁听然后明年选光叔保命。</p></li>
+<li><p>楼下正对着百团大战的鲁协，看起来他们要现场做饭的样子，锅碗瓢盆都带了，是要摊煎饼吗（</p>
+<p>犹豫了一下也没走近去看，我大概也不算山东人。往前走了一段没看到沪协，其实沪协我就更不感兴趣了，虽然一般为了方便我会说自己来自上海，但并不会说是上海人之类的话，毕竟最简单的，我连上海户口都没有（</p>
+<p>说到底对社团就不是很感兴趣...加过的唯一一个社团是天格计划，也并没有社交的打算，只是来看看是做什么的，待了一个学期就跑了。高考那年招生宣传片似乎就是拍了天格的故事，感觉把探测器送上太空这件事很有趣。至于他们在勘测什么，收集的数据有什么意义，我不喜欢物理，就觉得没意思了，只做过数据清洗和写文档的工作。这就和我对生统的态度差不多。</p></li>
+<li><p>我不打扰，我走了哈：</p>
+<p><img src="https://s2.loli.net/2023/03/02/L7C6RDiU2pH9AXf.jpg" alt="AE7865DE189F6DEC077114CEC86A1228.jpg"></p></li>
+<li><p>我的柜子像个无底洞，昨天从一堆纸巾里摸出一瓶咖啡以为是最后一瓶，今天翻了翻又找到一瓶。不过每天找到一瓶之后我就不再翻了，把能不能再找出一瓶的悬念留给第二天（</p>
+<p>光速又下单了一箱，这学期两节早八都不得不上，消耗还挺大。</p></li>
+<li><p>考完工程经济学，管他考得咋样呢，新学期总算开始了，cheers。</p>
+<!--UPD：寄了，3.6，看来工程经济学比抽代还难。--></li>
+</ul>
+<blockquote>
+<!--与此同时的是在润群看到了 n+e 结婚的消息。...但有些俗气的讲，我最吃惊的是他竟然能在这个年龄就能组建家庭，毕竟六字班最多也就 25 岁的样子，在这个年龄就结婚组建家庭，对清北华五级别的学生、甚至绝大多数 985211 的学生而言，几乎不可能。毕竟大部分人这个年龄要么就在读博，要么处于事业初期根本没有资产积累，剩下的人还有一大半找不到合适的配偶。对我而言，更是刘慈欣都写不出来的科幻小说。如果说社交方面我还有一丝乐观和希望的话，在未来的成家方面我只有无尽的悲观。-->
+<!--毕竟我博士只能出国，就清华数学如今糟糕的环境，已经不存在留在华子读博的可能；而对我而言，出国之后的人生轨迹，又是一个完全不可预测的混沌系统，可能博士毕业就会灰头土脸的回国找工；可能学术小有所成，读个博后再回国找教职也并非不可能；又有可能在国外对未来的认识有了改变，选择留在国外发展；又有可能遇上风波，导致我无法出国而又错过保研，或者博士未能毕业就被遣返甚至更坏的结果…总之，我的未来实在是完全未知的状态，而寻找配偶或是组建家庭需要的恰恰是确定性，更何况我并不善于交际，尤其是和异性的交际，这一来实在是悲观。-->
+<!-- ----LagrangeKMnO4-->
+</blockquote>
+<!--虽然也在骂我但我看得好乐啊，记之。骂我也骂不到，LagrangeKMnO4 和 Eren 显然是对此还抱有期待，和我就完全不一样。房子着火我拍照，人生乱套我睡觉。-->
+<h1 id="月3日">3月3日</h1>
+<ul>
+<li><p>emo 的时候就要多看源的 Tokyo Dome 演唱会。20 年和 21
+年我真的看了无数遍，一直都觉得 Tokyo Dome
+这一场单论歌曲的效果都比专辑还要好，源的演出也非常有感染力。</p>
+<p>但其实我现在也不怎么听源的新歌了，常听的还是 20
+年之前的一些，也主要就是 Tokyo Dome 这一场演出唱过的歌。和 Mili
+一样，虽然都喜欢了很多年，但我好像从某一个时刻开始就停在了从前，没有和他们再一起往前走了。</p>
+<p>之前提过 Mili
+近两年的新歌里我甚至只挑出来两首觉得好听的，一个是《Iron
+Lotus》，另一个是《Dandelion Boys, Dandelion Girls》，然而 18
+年左右发《Millennium
+Mother》这张专辑的时候我几乎每一首都喜欢。源也是一样的，《Pop
+Virus》这张专辑我也基本都喜欢，甚至为此去玩了死亡搁浅，大概也就是停在了
+19 年。</p>
+<p>那么后来的这几年我找到什么新的爱好、有新的喜欢的歌手了吗？哈哈，完全没有呢（</p></li>
+<li><p>昨晚在课咨委开会，讨论哪几个副主席今年负责带提案组的时候，听闻一位七字班的副主席大哥今年终于要毕业了，这学期光是上课就修了
+40 多个学分，附带两个毕设，一共 70 多个学分，草（</p>
+<p>群友之前调侃他说是因为关心课程改革而延毕两年多上了一堆课，听他的想法似乎也并不是完成不了培养方案而延毕，只是想多学点东西，挺有意思的。</p></li>
+</ul>
+<!--Quote from robinliu：-->
+<!--提醒一下大家，如果大家要留课到大三大四然后准备冲突选课，那一定要先把 sb 土木的课留着，先选土木的课，手选其他课。土木系的教务授意老师不会给任何冲突选课通过，即使毕不了业了-->
+<!--我和土木系教务拉扯一天了，被气哭了都，她和授课老师一并拷问我凭什么能同时上两门课，甚至只是 18:40 下课和 18:30 上课这种我觉得根本不算冲突的。真的是我是来上大学的，不是来被土木系恶心的-->
+<!--我只能说逆天。不负责任地攻击一下，越烂的院系教务越是脑子有问题，未央也是土木系也是，烦死了。-->
+<ul>
+<li>我到现在都没去过二教上课，还以为可以一直坚持到毕业都不用去（？，结果这周实分析习题课安排在二教了，悲（</li>
+</ul>
+<!--今天在统辅课上遇到了高中时候的一个强度惊人的学姐，不写注释的话开盒开太猛了，还是算了。除了因为强度知道她之外还有一些高中以前的别的没啥意思的渊源，大概就是她和我初中的一个学长谈了很多年恋爱。总之直到去年暑假之前，对她最后的印象大概就是听说她高考去了计金，来华子之后和我初中那位学长分手了，我从来没参加过高中校友的什么活动，别的都不清楚。-->
+<!--去年暑假友人参加了北大招生，回来告诉我有个从华二去清华的学姐，从他们那里抢走了一个高分考生，承诺来清华就可以给计金，最后骗进来就毁约，塞进了自动化。而原本北大给的是信科。我也算是被华子毁过约，听到这种事情就血压高，所以多问了一句这么缺德的事是谁干的。然后她和我说了这位学姐的名字，对着我愤愤不平了很久，甚至还 AOE 攻击了经管和贵系。后来的话我都没怎么听进去，只觉得，啊这，怎么会这样。-->
+<!--其实原本也不熟，只不过曾经在同一个楼道里待过一年，由于一些再往前的渊源互相认识，偶尔会打招呼，她和人打招呼的时候都笑得很温和。当时知道这件事的时候我突然有点难过，去年好几次拒绝参加招生，就是隐隐怀疑里面多少肮脏龌龊，不愿意插手，没想到我当时所想的这些事情是她做的。虽然不知道这之间是否有什么误会，或许她也只是给那两个天杀的上海招生组老师背了黑锅，也可能以讹传讹了，不知道。今天看到她的时候又觉得分明和高中的时候看起来一点也没有变，好矛盾啊。-->
+<!--省流：idol （疑似）塌房了（-->
+<!--我把这段注释截图给了友人看，结果她回我说，啊，你怎么还记得这件事啊，我都不记得了。我不明白。为什么不记得啊，为什么都这么健忘啊。-->
+<h1 id="月4日">3月4日</h1>
+<ul>
+<li><p>实分析作业写了半个通宵，想着写完就睡，结果真的写完再睡了。到最后已经纯纯变成了胜负欲的斗争，就是单纯的想写完再睡，其实并不好。但如果不是新学期周四才开始，倒也不至于这么赶。</p>
+<p>写到最后一题脑子已经转不动了，我觉得它毕竟是放在 Problem
+1，提示也就一句话，理应并不难，但就是卡住想不出来。上床之后上 Math
+StackExchange 查了一下，看到有人说它
+easy，一下子激起了胜负欲，关上手机闭眼想了两分钟就知道怎么做的了。看来下次有不会做的作业只要找个人来告诉我
+so easy 就能做出来了（</p>
+<p>白天起来把躺着想到的解答写下来发现没有伪，真是太好了（泪）。把作业交掉之后想到，大一的春季学期经常周末半夜写代码写到绷不住，要么对着电脑呜呜抹眼泪，要么写累了上床缩在被子里呜呜抹眼泪（，怀疑自己可能怎么样都解决不了问题，更害怕早晨起来也还是写不出来，然后就抱着这样的恐惧睡去。太惨了。虽然上学期为了写抽代
+bonus 也通过好几次宵，各种半夜上 MSE
+高强度冲浪，心情至少还挺平稳的（</p></li>
+<li><p>花了一天把概率论作业写完了，但是感觉并没有学会，很危。</p>
+<p>为啥室友周末永远约得到人出去玩，一到周末我就觉得自己进循环了。以后每个单周周六要做物理实验，每个周日还要上实分析习题课，约等于一周七天无休，除此之外就是赶作业，学一些学不会的东西。咋这么惨。那咋办，自找的嘛（（</p>
+<p>趁现在还是三月，空闲时间大概要赶紧往后推一推两门数学课的进度，希望人没事。</p></li>
+<li><p>自从上次提过之后连续观察了几天晚上六点半的天空，还是很不一样的，我谢罪，以及确实天黑得越来越晚了（废话）。除了
+P2
+之外都是同一个地方拍的，这个时间基本上就是我从教学楼爬出来去吃晚饭的时间，某种程度上来说也是过着一种非常规律的生活（</p>
+<p><img src="https://s2.loli.net/2023/03/04/prg6AvDZO5iR1qo.jpg" alt="sky.jpg"></p>
+<p>晚饭后买了春季学期的第一支甜筒（为什么这个也要记得是第一支啊草，一边舔一边走回教室，如果回去不用写
+Kai Lai Chung
+的习题的话还挺幸福的（。清青快餐的甜筒的话，冰激凌部分还不错就是稍微有点少，但蛋筒实在太甜了，吃完齁嗓子。下次试试七港九。</p></li>
+</ul>
+<h1 id="月5日">3月5日</h1>
+<ul>
+<li><p>解锁了二教地图（</p>
+<p>以前在树洞看过一些二教鬼故事，这几个学期也都没有排课到这里，感觉很神秘（，本来以为是什么阴暗破旧的大教室（，没想到还挺新的。椅子是软的，腰突（疑似）人士好评。</p>
+<p>昨晚睡前担心起来找不到 403
+在哪，还搜了下教室平面图，到了才知道其实指路指得很清楚，属于是毫无必要的担心。然后还特地上知乎找了一下二教鬼故事，看了一遍，满意地睡了（草（唯物主义战士.jpg</p></li>
+<li><p>和 runzhi
+交接了实变函数教材，<del>精北人就要用北大教材（其实是辅助，笑死）</del>，和
+MO 时代看过的黄皮初等数论一样的配方，泪目了，爷青回
+（x。<del>虽然社恐但还是努力鼓起勇气</del>一起吃了个饭，sync
+了一下现状，了解了一点隔壁数院的情况。<del>听说他也不会码我就放心了（数院同学的代码水平都那样.jpg</del></p>
+<p>吃饭的时候邮箱一直在跳消息（x），看到了一些去年暑培的时候知道的神的
+id（草，我居然还参加过贵系暑培，真蚌埠住了）出现在社友的博客评论区，一个吐槽了一句求真的（伪）数学人混在里面瑟瑟发抖（（</p>
+<p><img src="https://s2.loli.net/2023/03/05/bXKi5BtLWSGC1Tw.jpg" alt="84670501B286AFA082D8BDC324E82B69.jpg"></p>
+<p>来个很怪的改图（</p></li>
+</ul>
+<h1 id="月6日">3月6日</h1>
+<p>上课上着上着感觉有点难顶，statistical learning
+的作业也有点写不来，想来是我头铁没把它安排在线性回归之后的原因，正常情况下应该统辅第四学期再上。感觉迟早要退点课，但是看了看课表又觉得明明全都是任选课，却完全没有可以退的，要退只能退必修，怪事。</p>
+<p>下节课开始概率论目测要讲点初等的（我乱说的，我真的是目测的），这我熟，趁机缓一缓，补一下之前的东西吧。</p>
+<p>轻微破防，所以晚饭后光速测评了七港九甜筒：好吃，比清青快餐不知道高到哪里去了。不过今天这支甜筒从下面往外漏融化了的冰激凌，很怀疑是不是最下面的尖尖没闭合，实际上这个蛋筒只有一个面。走在路上手忙脚乱找纸巾的时候想起来，有点像画画的时候轮廓线没闭合就往里填色，结果整张图都填上了（</p>
+<p>胡思乱想着就一边走一边乐了，没心没肺活着不累。</p>
+<!--好吧，其实到晚上就又 emo 了。有时候觉得我就是干啥啥不行，来学数学了数学学不好，统辅课也寄，自己专业的专业课更学不会，即将延毕一年并且一事无成，乐。朋友们都是卡密的结果居然是我一直觉得自己也还行，而不是意识到自己是个废物，这是否有些（-->
+<!--寒假应该听 V1ncent19 的学一下线性回归的，但我寒假也不是什么都没干啊，我学数分去了。好像也没什么问题才对？既然没什么问题那怎么就是忙不过来啊 kora（-->
+<p>天气好热，是要放暑假了吗（错乱。过两天我都想穿裙子了，室友还在穿羽绒服，respect。</p>
+<h1 id="月7日">3月7日</h1>
+<p>非常累，浑身疼，晚上上线性回归整个人都是麻的，推断课上学得很熟的东西都反应不过来，应该是最近缺觉缺太多了。感觉有可能要考虑把
+statistical learning
+退掉，肝不动，而且也不用太急，重点还得是那两门数学课。</p>
+<!--看了下今天抽代终于登成绩了，虽然早知道是 4.0，但之前还在做一些 A+ 的梦（，果然还是期中拉胯了。想了想我觉得自己上得还可以的课基本都是稳定拿 A，既不是挂边拿 A-，也不是能展现强度的 A+，某种意义上来说属于是很平庸。数值分析、推断和抽代都是，还有个古早的逻辑专题也是（草（我现在想想当时还真的是一点基础没有，直接冲过来上这课，真的猛 -->
+<!--笑死了，强度可能确实有一点，但是是平凡的。无论做什么都有人比我做得更好而已，在竞赛的时候不早就接受了吗，现在怎么忘记了。小事。-->
+<!--算了，想想也别计较这个了，还是看看近处的实分析罢，最后绩点由 3 开头就是我赢了，或者说不退课遗憾离场就不错了。虽然我完全不理解数学系为什么要给成绩给成这个样子，为什么非要和学生过不去（或许下周例会可以去课咨委讨论一下，笑死）。想起来一个古早笑话，忘记是坚坚子还是齐齐子说的了，说绩点高低不重要，清华数学系已经很好了，大家没必要出国读书，本系保研就大家一样烂；C 和 D 不是放在那里看的，是要给出去的。乐。-->
+<!--草，今天看了下教学门户登的原始成绩才意识到，抽代每次的 bonus 是加在作业分里的，但我作业本来就是满分所以全做完了也没加，我怎么会做梦会因为 bonus 而拿到 A+ 的（，总成绩还得是期中期末两锤子买卖，这下白做了（x）。开玩笑的，其实 bonus 比书后习题设置得深刻多了，到后面还趁机学了些拓扑，以此为契机还和 Bowen L 认识了一下，对我来说是非常珍贵的记忆。-->
+<p>趁明天要上早八，找借口早点睡了，大家晚安。</p>
+<!--来点转数环里看的求真笑话再睡：-->
+<!-- - 据求真书院的同学说，数学史现在是六学期，每年一篇 50 页论文-->
+<!-- - 求真的花活越来越多了，而且为什么求真这么喜欢很多事情都强迫学生干-->
+<!-- - 为了十年大成-->
+<!--想想我之前还憧憬过保研到 YMSC 去，真是脑子有问题。虽然出国这个问题至今让我轻微难过，然而为了更好的发展，没有别的选择。前两天晚上看到一些东西，于是给一个我猜会直接保研的朋友手写了一小段话：-->
+<blockquote>
+<!--虽然我想在未来的动荡里，我的确很难和你再相遇。离开华子后，这个世界还有千千万万，很抱歉我无法停留。-->
+<!--但是，[someone] 的存在就已经证明了，我的拐弯抹角、难以表达的想法总有人能理解，而这便是我最大的愿望了。-->
+</blockquote>
+<!--写完之后又有点想笑：我还在落款里标好了时间，想着毕业之类的时间点能把它送出去，然而真的可以一直做朋友到那个时候吗？以及，到那个时候各自的计划真的顺利进行了吗，不如说，我真能有那么顺利？（-->
+<!--所以先贴在书架上了，万一真有机会送出去呢。-->
+<h1 id="月8日">3月8日</h1>
+<p>无事发生。只是一边焦虑一边做事情，才第三周就各种挫败，预感到了这个学期的艰难。想想还是不写下来释放负能量了（</p>
+<h1 id="月9日">3月9日</h1>
+<ul>
+<li><p>最近一直在考虑换个头像，但又不知道换什么。现在这个裁成圆形或者看小图似乎有点抽象，尤其小图看起来像意义不明的三个色块<del>（可以抬头看一眼
+favicon）</del>，<del>主要是，根本看不出来是个人啊！</del></p>
+<p>还有一些来自同学的吐槽，上次有同学告诉我没放大看之前一直以为我微信头像是美少女抽大烟，我真绷不住了，还有不少以为这疑似是个情头，<del>难道是背对着背，或者是把泡泡吹对面的人脸上吗（</del></p>
+<p>但是又用习惯了，恐怕认识我的人也看习惯了，<del>按头像和 id
+开盒也习惯了</del>。以及按我的强迫症要换必然是全平台换掉，好像根本找不全，有点麻烦啊。就算要换也不知道换点什么，<del>现在觉得换什么似乎都没那味儿</del>，毕竟想长期使用而且希望能有辨识度，这个也用了四年多了来着。<!--沃日，说到这个时间节点就想吐槽一句，还没和 ex 分手的时候我就在用这一套了，前两天看到他都又找到 npy 了（真是个奇迹），我怎么还在用这个（--></p>
+<!--说起来今天想了想我的青春疼痛文学连载（草）也该到此为止了，完结撒花。（？？-->
+<p>果然好麻烦，算了，这辈子很快就过完了，先忍一忍罢（草</p></li>
+<li><p>时间管理大师了一整天，什么都没做但反正挺忙的，怪事。</p>
+<p>晚上做物理实验一共四排座位，结果第四排就我一个人，在一个阴暗的角落里面壁做实验。现在还在做基物实验
+2
+的不是电机班的就是上学期退了课的，我这一组好像电机的同学格外多，实验课上大家像团建一样快乐，恐怖，还好有个角落可以给我面壁，没有被夹在人群中间（。不过面壁做实验倒是格外快，安排了
+4h 的时长，不到 2h 就速通完跑路了，下次还面壁。</p>
+<p>回教室坐了一个半钟头又来课咨委开会，大家以庆祝女生节和迎新的理由一起分了蛋糕和奶茶。把女生节单纯当团建就挺好的，<del>虽然不要有这个节日直接团建更好</del>，没有单独的礼物就是好文明（。越来越感觉我在课咨委的开会环节就是混吃混喝的，每次来吃完东西就开始一边和大家讨论一边写日记，写完日记就去写线性回归的代码作业，写完代码就该回寝室给电脑手机充电了（（</p></li>
+</ul>
+<h1 id="月10日">3月10日</h1>
+<!--来到了传说中的秋季学期成绩录入 ddl，我的体育课到底过没过啊，咋还不出分（。离散确实是让我白嫖了 GPA，虽然我上学期无数次怀疑自己是不是脑子有问题才选了这门课折腾自己。这学期一上来居然发现还好离散给我讲了可列集和基数，不然我缺的这块营养谁给我补啊.jpg-->
+<!--在寝室里跟室友开理发店痛骂工程经济学，同样是开学速成的，离散怎么就能 4.0，明明还多 1 个学分（x）。室友锐评说因为离散里面带了数学俩字，那我肯定会往 4.0 冲，我超，笑死了。-->
+<ul>
+<li><p>早晨去技科楼上课，路过中央主楼的时候看到门口的草坪上喷灌装置开了，室友特地绕到旁边骑了过去，溅了一身水，说很凉快。</p>
+<p>我一时不知道该不该告诉她，学校喷灌用的水是中水，大概就是把污水净化了一遍，水质在排水和给水之间，达不到自来水的标准。这可能是我认识实习学到的唯一一件事情，想了想打算下次在寝室吹水的时候假装随口说一下（</p>
+<!--草，又想起来去年社聚时候那个中水池了，茨月老师往假山上爬的时候我真的在想他要是掉进去怎么办（--></li>
+<li><p>上学期在<a href="https://mp.weixin.qq.com/s/4HQE2Hpq2sWjvxodKtfL9A">果壳的文章</a>里看到，玉兰花苞的手感像狗狗的额头（好怪，当时是秋天，不能立刻实验一下，就想着今年春天要记得去摸一摸玉兰花苞是什么手感。今天在人文学院旁边的斜坡上看到了玉兰树，去摸了一下才意识到，没摸过狗狗，好像也没法对照（</p>
+<p>一回头正对上一个路人看着我的疑惑的眼神，社死了。</p>
+<p><img src="https://s2.loli.net/2023/03/10/S4JdsMxfyUWPqe9.jpg" alt="magnolia.jpg"></p></li>
+<li><p>闲来无事扒拉统计中心的网页，发现 dwl
+老师从讲师升副教授了。所以这个是教学系列的副教授，还是她跨过 AP
+直接升了两级？她带科研吗？不是很懂诶。</p>
+<p>上学期在她初概课上记 PF
+开摆，今天在她多元统计课上做题的时候她还来和我聊天，还叫出了我的名字，我超，怎么还记得我（，绷不住了，越想越尴尬。</p></li>
+</ul>
+<h1 id="月11日">3月11日</h1>
+<p>这两天被《Young And Beautiful》戳到了：</p>
+<blockquote>
+<p>Will you still love me when I'm no longer young and beautiful?</p>
+<p>Will you still love me when I got nothing but my aching soul?</p>
+<p>I know you will, I know you will, I know that you will.</p>
+</blockquote>
+<!--晚上去面试了下答疑坊招新，坐在旁边等的时候听别人的问题：黎曼函数无理点连续性，指数分布无记忆性，听别人答不出来我还有点急，想着这不有手就行。轮到自己：上来一个当初就没学会的多元微积分，再来一个矩阵微分，后面一个要用特征值做的线代到底是看出来了，然后一点统计相关。-->
+<!--乐死了，感觉很寄，希望人没事。-->
+<h1 id="月12日">3月12日</h1>
+<p>植树节好耶。看到蚂蚁森林有新的树种了，准备继续解锁一个全图鉴。</p>
+<p>突然想起来一个 MO
+时代的同学的生日似乎就是植树节，不过之前发现他把我联系方式全删了，倒是没删明日方舟的好友（，寒假回坑的时候看到还挺感慨的。</p>
+<p>我到现在怎么还记得他的生日呢，但其实印象也不深刻，不确定是否真的是这一天。这段记忆可能本应到明年就彻底忘记了，但我今天写了这些话又加深了印象，就不会忘了。他又为什么要删我好友，因为看我已经远离了高中同学的圈子，或者太久不联系了觉得没必要保留联系方式吗，感觉应该没什么矛盾才对，<!--倒也可能是我太糙了，有矛盾但是并没有感觉到（悲），-->还是说觉得我太菜了（，天知道（</p>
+<h1 id="月13日">3月13日</h1>
+<!--今天在两边的日记里看到了 Eren 和 AQ 的割席，尽管我对 AQ 只是单向赛博认识，以及在 statistical learning 课上见过几次。又想到了 Eren 年终总结中真诚的话语，令人感叹。-->
+<!--我印象里的 AQ 是一个性格鲜明，生活饱满的人，大概是和我这种天天阴暗自闭爬行的人截然相反的类型，Eren 也一样。所以才会因为事关理想的争论而割席吗？以及因为认识 Eren，受到过一些关于交换、延毕方面信息的帮助，读他的文字也更多些，觉得他是一个善良真诚的人，或许他所认可的 AQ 也是一样的？-->
+<!--其实我不是非常能明白啦。倘若有朋友愿意和我谈论理想和未来，我大概是能包容多元的想法就尽量包容，能避免冲突就尽量避免的。不仅是因为我的性格没那么鲜明，只要是合理的想法我都能理解，我也实在害怕失去愿意和我谈论这些的朋友，太稀少了，对我来说相当珍贵。如果是面对和更亲近些的朋友的分歧（印象里倒也没怎么发生过），我真的不知道我会不会反复思考自己是否有问题，甚至愿意去改变自己。说得严重些的话，我实在是过着一种得过且过的生活（，这也没有办法。-->
+<ul>
+<li><p>右边智齿旁边的牙龈肿的越来越厉害了，昨天还因为发炎低烧了，以为是甲流，跑了一趟发热门诊，检查了半天最后开了一盒甲硝唑片被赶回来了，笑死。真神奇，我总是能在某一种传染病流行的时候，生一些其他症状类似的病来吓唬自己，实在不知道这算是身体好还是身体不好（</p>
+<p>去年这时候是左边智齿在发炎，痛得不行，三月某个下大雪的日子心怀愧疚地用美团买了一堆药，吃了一周才好。适逢上海封城家里一团乱，加上身体上的不适，天天自闭，看到玉兰树（白玉兰是上海市花，街上随处可见）都会
+emo
+的程度，笑死了。这次只是肿但并不痛，情况稍微好些，只是这几天大概不能吃辣了。</p>
+<p>所以吃点冰的可以给牙龈消肿吗，我指的是，冰激凌什么的（x</p></li>
+<li><blockquote>
+<p>其实我不是非常能明白啦。</p>
+<p>倘若有朋友愿意和我谈论理想和未来，我大概是能包容多元的想法就尽量包容，能避免冲突就尽量避免的。不仅是因为我的性格没那么鲜明，只要是合理的想法我都能理解，我也实在害怕失去愿意和我谈论这些的朋友，太稀少了，对我来说相当珍贵。</p>
+<p>如果是面对和更亲近些的朋友的分歧（印象里倒也没怎么发生过），我真的不知道我会不会反复思考自己是否有问题，甚至愿意去改变自己。说得严重些的话，我实在是过着一种得过且过的生活（，这也没有办法。</p>
+</blockquote>
+<!--这段话是可以完全公开的情报，只是叙述我自己的懦弱而已，想到说这些的原因还是塞注释吧（--></li>
+<li><p>抄了一天 Caratheodory Extension Theorem 的证明，用了<a href="http://www.probability.net/WEBcaratheodory.pdf">这个框架</a>，还参考了一下<a href="https://www.mat.univie.ac.at/~westra/caratheodory.pdf">这个注解</a>，拼拼凑凑做完了，感觉挺有意思，<del>之后还可以把解法发出来水一篇文章</del>。<!--感觉可以周五毛概课上写（，闲着也是闲着，就当练练打 LaTeX 也好啊，我写 LaTeX 的速度完全跟不上思考的进度，上次试着写了一次电子版的统辅作业，脑子比手快，太痛苦了。-->某次课上听到
+lzx 好像是说这个 bonus
+反正是不大可能独立做出来，能完整抄一遍就算是有收获，<del>所以这是否就是他把考试设置成默写的原因</del>，他讲话我也一直不是很能听得清（。我的收获大概就是觉得好玩吧，那倒也值了。</p>
+<p>实际上在实分析课上自己看书跟不上进度，想了想别人比我多学一年半又不是白学的，也正常。概率论一如既往不知道
+lzx 在说什么，写完 bonus
+回头一看发现正课一地鸡毛，全靠面向作业题看书，挺惨的。</p></li>
+</ul>
+<h1 id="月14日">3月14日</h1>
+<ul>
+<li><p>Happy <span class="math inline">\(\pi\)</span> day！</p></li>
+<li><p>本来觉得沙尘暴也没什么，今天在路上骑车看到被风卷起来的树叶渣子和灰尘对着我飞过来，突然明白了最近为什么头发油得这么快（，是否有点后知后觉了。</p>
+<p>上体育课手被毽子划破了，怎么听都很离谱但确实是这样，不愧是我；下午开始腰疼得像要断了一样，不知道是不是本来就腰肌劳损，上个体育课反复捡毽子还仰卧起坐，结果加重了。好痛的一天（</p></li>
+<li><p>（昨晚）睡前读完了《春琴抄》<del>不是写不完作业了来着吗</del>，还挺不错的，打算买本纸质版的留着。有空再去读一下《细雪》。</p>
+<p>我经常读书第一遍是读电子版或者是读借来的书，看完觉得很喜欢才会买纸质的收藏，买来可能就留着偶尔再翻看，或者朋友过生日之类的时候直接当礼物送出去（<del>经典除了送书之外不知道礼物还可以送什么</del>。<!--稍微暴论一下，其实吧，与其说是不知道送什么就直接送书了，不如说我根本是不想思考还能送点什么，就直接在几个朋友面前立了个直男（？）人设，于是送书也皆大欢喜了。以前给 ex 的各种礼物还真是没重过样。说好不写青春疼痛文学了（，只不过想起来还是觉得，莫过热忱少年心，可惜全被无视了。他真是不配（划掉-->数学书倒是反过来的，因为会一边读一边在上面写写画画，就直接买纸质版，也不会当二手再传给下一届什么的。</p>
+<blockquote>
+<p>一天清晨，佐助偷偷地到女仆的屋里拿取了女仆用的镜子和缝衣针，端端正正地在床铺上坐好，对镜把针插向自己的眼睛。佐助之所以这样做，并不是掌握了用针一刺眼睛就会看不见的常识，他无非是想试试可否用尽可能简便、痛苦又小的办法来变成盲人。他试着用针插入左眼的眼珠，但是要刺中眼珠，好像很不容易。而眼白部分较硬，针刺不进。眼珠毕竟软些，他轻轻刺了两三下，才咯吱一声响，刺进了两分光景，眼珠旋即一片白浊。他觉得失去了视力，既没有出血、发烧，也没有感到什么痛苦，这是因为水晶体组织遭到破坏，便成了外伤性的白内障。佐助又以同样的办法刺中了右眼珠，顿时双眼都瞎了。当然，听说刚刺瞎后的那几天，还能蒙蒙胧胧地看到物体的形象，但是过了十天光景，就完全看不见了。</p>
+</blockquote>
+<blockquote>
+<p>佐助能自然而然地领会春琴肚里的意思。佐助觉得，迄今为止，他俩虽然有着肉体关系，但是师徒关系一直使他俩不能心心相印，而今才真的合二而一，汇到一起来了。佐助想起了少年时期在壁橱中的黑暗世界里练习三味线的事，但是彼时的心境同现在是不可同日而语的。盲人大多只具有光的方向感，因此盲人的视野是朦胧有光的，而不是一片漆黑。佐助明白，自已今日虽然失去了观察外部世界的眼睛，却也同时睁开了审视内在世界的眼睛。“呜呼!
+这才真正是师傅居住着的世界呀! 我总算能和师傅居住在同一个世界里了。”</p>
+</blockquote>
+<blockquote>
+<p>春琴问:“佐助，痛吧?”</p>
+<p>佐助把瞎掉了的眼睛朝着能感觉到有春琴脸庞存在的发出浅白色光晕的方向，答道：“不，我没有感到痛。同师傅的大难相比，这一点儿事算得了什么呢?
+那天晚上，歹徒潜入房来，使师傅遭此大难，我却一无所知地睡着了。这实在是我的疏忽造成的。师傅命我每晚睡在隔壁，原是要我注意警戒，不料铸成了这样的大祸，使师傅蒙受苦难，我自己却安然无事。想及这一点，实在难以安下心来，唯希望得到惩罚。我朝夕向神灵叩拜，祷告着：‘务请也赐给我灾难吧。如此下去，我实在无地自容哪。’
+我有幸能感动上苍，遂了却了心中的夙愿。今天早晨起床，发现两眼就这么瞎了。这一定是上苍同情我的志向，使我如愿以偿的吧。师傅啊师傅，我已不能看到师傅受难后的面容了。而今我所见到的，只有师傅三十年来根植在我眼底深处的可亲的面容。请师傅像从前那样，放心地留我在左右伺候吧。唯猝然失明，可恨举止不能如意，伺候上会有欠敏捷。但是，师傅至少得把日常生活上的琐事交给我来伺候呀。”</p>
+</blockquote>
+<p>意犹未尽，去看了一些豆瓣书评：</p>
+<blockquote>
+<p>谷崎以闲笔写出了这个故事的本质：春琴嗜养黄莺，将野生的小雏鸟在尾巴还没长出来以前活捉，让其跟随师父黄莺练习啼唱。若等到尾巴长出来之后就为时晚矣，“因为已经学会母亲的粗笨啼声，再也无法矫正了。”佐助的境遇犹如黄莺，他的恋情全然建立在自己的盲目之上，不管盲的是心灵还是眼睛。这个爱情故事让人打心眼里哆嗦，谷崎真是太爱阴翳之美了。</p>
+</blockquote>
+<blockquote>
+<p>有些「不知怎的」实则是有意为之，有些「诞罔不经」原来只是习若自然，「雪中春来黄莺冻
+泪眼如今正模糊」以后告白可以用----你就是我的初音之鼓</p>
+</blockquote>
+<p>太会写了，笔能不能借我用用（落泪</p></li>
+</ul>
+<h1 id="月15日">3月15日</h1>
+<p>我总觉得实分析和概率论我都学得很云，实分析作业日常绷不住，概率论还好点，作业也老是被挑一堆小问题，麻了。</p>
+<!--哪天实在绷不住了就跑去搞实用统计罢，横扫数学做回工科生。今天看了一眼 V1ncent19 的 offer list 发现他还中了 UCB 的 MA 项目（虽然我不明白为什么会是个 Master of Art），是否说明统计真没那么难申请，虽然目测是一年制 + 就业导向，但还是震撼我。退路大概就是问家里借钱读个 MS 然后毕业找工还债算了（恼）。我不完全是开玩笑的，虽然不影响现在还是努力学啦。-->
+<p>花了半天紧急重制了 Proof of Carathéodory’s Extension Theorem
+顺带往前复习了一下，发现第一版写出来好多口胡，麻了。最后完全放弃了修改我也看不懂了的手写版答案，虽然手写理应更容易混过去（，打算交打印稿了。<del>逐渐被同化</del></p>
+<p>中午吃饭回来的路上已经开始第三节课了，于是在空无一人的六教车棚里一边走一边（用正常说话的音量）哼了几句歌（不好听x），回头一看角落里坐着一个看车的大爷在盯着我。很久没有这么极致的现实世界的社死体验了，记之（</p>
+<h1 id="月16日">3月16日</h1>
+<p>没啥可写的，一如既往、普通的写作业写得想死的一天（</p>
+<!--晚上来课咨委喝奶茶治愈了一下，点了杯加了麻薯的，黏黏糊糊，可能时间太晚了，喝得有点难受。喝完回寝室不久看到欧老师说去跑步了，绷不住了，负罪感拉满（x。想想我确实是缺乏一些身材管理，不过我并不是很 care 这个，~~另外穿衣合适的话还可以掩盖掩盖（草~~-->
+<!--这学期打算社工全面开摆，课咨委这里的工作量只有心情不好的时候找那门工程计算机制图的老师吵架。答疑坊的结果什么时候出啊，缺钱了（不是x -->
+<h1 id="月17日">3月17日</h1>
+<ul>
+<li><blockquote>
+<p>我每天都在“我想确定每日挽住同样的手臂”和“我不是火车不需要终点”之间起伏徘徊</p>
+</blockquote>
+<p>太会写了，笔能不能借我用用（落泪</p></li>
+<li><p>坏消息：发现包里随身揣的香水瓶子好像漏，可这明明是个玻璃瓶？</p>
+<p>更坏的消息：我看不出来它哪里漏，但就是漏一手（（</p></li>
+<li><p>昨天写概率论作业，看到书上有一个 direct mapping
+还打了引号，稍微有点不知道是什么意思。于是查了一下，啊，怎么看起来是个计算机术语？<del>还点进去看了一下，以为能从中获得什么启发，草</del></p>
+<p>一定是我打开的方式不对，就去 MSE
+查了，结果只有随意用这个词的，没有解释它是什么的。自闭了，开始自我怀疑，不会是我缺的这一年半的某些课里讲过的概念吧，看着也不像啊，抽代里都没有这个，难道是什么黑话（？呜呜那怎么办，我好菜我为什么要来上这些课会不会被迫期中退课啊那我以后怎么办我真的要转数吗我行不行啊（虽然听起来很草但真的在这么想（</p>
+<p>直到今天翻到前面的定理，突然发现习题指向的定理里写的是 inverse
+mapping <span class="math inline">\(X^{-1}\)</span>，习题问的是 “direct
+mapping” <span class="math inline">\(X\)</span>。恍然大悟，看来就是指
+<span class="math inline">\(X\)</span>
+罢了，没有暗含什么性质的意思。可恶啊，直接说 <span class="math inline">\(X\)</span> 不好吗，非要讲 direct mapping
+也就算了，打引号干什么（</p></li>
+</ul>
+<h1 id="月18日">3月18日</h1>
+<p>我完全理解了，睡六个小时可以学统辅课，睡七个小时可以学概率论，只有睡八个小时才能学进去实分析，睡六个小时以下只能看物理实验（</p>
+<p>今天睡足了之后来教室看了一天实分析，感觉自己又行了。不过一写作业又不行了，乐（</p>
+<p>晚上去知乎<a href="https://www.zhihu.com/question/583634968/answer/2942599052">答了个题</a>，感觉肉眼可见迟早会变成我的知乎黑历史之一，但是无所谓，黑历史多到已经没有什么可害怕的了（（</p>
+<!--草，怎么也没想到第一个也是到现在唯一一个给这个回答点赞的会是 ex（虽然这样就开盒了，不过看他知乎也没什么，罢了），我真绷不住了（-->
 ]]></content>
       <tags>
         <tag>碎碎念</tag>
@@ -6220,10 +6225,20 @@ t_{\frac{\alpha}{2p},n-1} s_2,\bar{Z_2} + \sqrt n
 t_{\frac{\alpha}{2p},n-1} s_2 ) \times \cdots \times(\bar{Z_p} - \sqrt n
 t_{\frac{\alpha}{2p},n-1} s_p,\bar{Z_p} + \sqrt n
 t_{\frac{\alpha}{2p},n-1} s_p )\]</span></p>
-<p>即为一个符合条件的置信域。实际上这一置信域的置信系数比 <span class="math inline">\(\alpha\)</span> 更小，只是一个粗略的估计。</p>
+<p>即为一个符合条件的置信域。实际上这一置信域的置信系数比 <span class="math inline">\(\alpha\)</span> 更大，只是一个粗略的估计。</p>
 <h3 id="t2-interval"><span class="math inline">\(T^2\)</span>
 interval</h3>
-<p>没写完，先发了，待会继续写。</p>
+<p>实际上在上面的讨论里已经看到了，对 <span class="math inline">\(Z_i\)</span>
+随意做统一的线性变换，得到的置信区间仍然是 <span class="math inline">\(R(x)\)</span>。</p>
+<p>新的置信域是 <span class="math inline">\((a^T \bar{X} - c\sqrt{a^T
+\frac S n a},a^T \bar{X} + c\sqrt{a^T \frac S n a})\)</span>，其中 <span class="math inline">\(c^2 = T^2(\alpha) = \frac{p(n-1)}{n-p}
+F_{p,n-p}(\alpha)\)</span>。</p>
+<p>这个置信域比 Bonferroni's Method 得到的置信域更大。</p>
+<h3 id="real-world">Real World（？</h3>
+<p>实际上真正的置信域是一个椭圆，可以由 <span class="math inline">\(R(x)\)</span> 二次型的形状看出来。对 <span class="math inline">\(Z_i\)</span>
+做线性变换得到的椭圆会在形状和方向上有所变化，但是仍然与 <span class="math inline">\(T^2\)</span> interval
+得到的矩形相切。也就是说，这个椭圆在不同分量上的投影和上述置信域的区间是重合的。</p>
+<p><img src="https://s2.loli.net/2023/03/18/7zqKjhLmbZRWMf4.png" alt="regions.png"></p>
 ]]></content>
       <tags>
         <tag>课程实录</tag>
@@ -10176,53 +10191,6 @@ GPA 的努力。</p>
       </tags>
   </entry>
   <entry>
-    <title>躺平记——游戏篇</title>
-    <url>/2022/07/11/lying-flat-in-games/</url>
-    <content><![CDATA[<p>新鲜的 tag:
-躺平。<del>甚至想把之前的科协躺平篇改个标题，然后变成一个系列</del></p>
-<p>在 <a href="https://chiyuru.github.io/2022/06/16/Hello-World/#more">Hello
-World！</a>和 <a href="https://chiyuru.github.io/about/">About</a>
-里就提到过，我有很多游戏的坑。音游有
-Lanota、Arcaea，<del>抽卡类</del>塔防有明日方舟，其实也玩过若干国产乙女游戏，若干
-GalGame，棋牌类有雀魂，还有不知道该怎么分类的 Fate/Grand
-Order（FGO）。每次玩着玩着就会回到 FGO
-去，可能是别的游戏都有或挺大或不小的圈子，而<del>半死不活的</del> FGO
-没有。即使有，想要无视也很容易，因为身边没有玩 FGO 的朋友了。</p>
-<span id="more"></span>
-<p>五月初的时候方舟周年庆，于是一年一度回了坑，兴趣高涨。体验了一下这一年来漏掉的活动，新的肉鸽系统和保全派驻，还毕业了尘影余音这个不大不小的活动。只不过因为同学在七月新活动更新的时候，发消息讲了几句他已经打完第一波关卡看完剧情了，我就突然感觉无趣，草草卸载开始冬眠。就是一瞬间，开始对这个“需要"每天上线刷材料、和友人互动讨论玩梗、肝新剧情的系统感到疲倦。下次再来，可能就是明年五月了，也可能更晚。</p>
-<p>然后很快就是 Arcaea 4.0
-更新，更新之后的早晨大家惊呼对立被光反杀，我才知道两年后的今天终于有新剧情和突破既有定数的新歌了。然后今天上推偶然知道刺球（<span class="citation" data-cites="SkisK刺球">@SkisK刺球</span>）抢到了
-Testify BYD 全球首 PM（-33）和收到官方恭喜，更新后的几天内没有其他
-PM，更是离理论值很远。看了一眼<a href="https://www.bilibili.com/video/BV1xV4y1n71z?spm_id_from=333.999.0.0&amp;vd_source=6ae5c31a80120436d23cf7b7c7ceb3ba">手元</a>，感觉真的非常科幻，我一辈子可能也不会碰到这张谱了吧。<del>另外，官方的意思是全球范围内有PM就复活对立吗</del></p>
-<p>很久不玩 Arcaea
-了主要是因为条件不允许。在学校的话不想日常在寝室里表演爆敲手机屏，感觉会很吵。只是假期玩的话水平也上不去，所以偶尔想打歌了的话下回来敲一敲就好。“身边”玩音游的大多是以前的高中同学，不过我已经主动在母校毕业生中隐藏自己了，屏蔽和退出了一些群，不太像以前一样和他们互动，也就渐渐被忘记了；还有你清的一些音游人，都比我强很多，一般就是偶尔聊起来，或者碰巧刷到他们的视频。尽管你清音游相关社团印象里在我高中时就听说和憧憬过，但现如今也没有加入的打算。事实上，到现在为止我没有加入过任何社团，可能以后也不会。</p>
-<p>乙女游戏更容易厌倦，我也不是去体验恋爱的，单纯是欣赏一下美工；剧情也还算有点意思。不过国乙的通病还得是不氪金就当狗和任务繁琐，回坑很快就觉得像上班一样，没意思了。GalGame
-因为太挑剔，很难遇到喜欢的作品，朋友的推荐大多数也不合胃口，试错试多了就麻了。</p>
-<p>雀魂的话，
-惭愧地说我不是很会打。寒假的时候三人场刷到雀士然后发现还会掉回去，觉得好累，就没再上线过了。身边打雀的朋友人均很强，也没人注意到本菜狗的悄悄跑路。</p>
-<p>总之到最后就是会跑回 FGO。从前一起玩 FGO
-的朋友现在无一例外都弃坑了，而且都再也没回去过，缺乏社交性反而很惬意；活动关卡打不打也很无所谓，许多活动都是复刻，四五年前就体验过了；老玩家的原因，材料资源很充足，不需要肝，一段时间不登录也不会天塌下来；型月世界的设定很复杂，游戏和不同线路的番剧会相互呼应，刷着番打游戏体验很好（指路型月我最喜欢的一条线《<a href="https://zh.moegirl.org.cn/Fate/EXTRA_Last_Encore">Fate/EXTRA Last
-Encore</a>》）；另外，因为是手游的原因，很轻量。</p>
-<p>其中最要紧的还是“缺乏社交性”这一项。本来就不是很擅长社交，也不太想为了跟上朋友们讨论的梗而去打活动，不想再听到“你怎么跳过剧情啊，方舟的精髓就是剧情”这种评论。有的时候很疲惫了来玩游戏，就是只想暴力打打关卡而已。为了维持社交而每日登录、互动、活动肝到毕业这样的烦恼更是没有了。关卡也没有特别难的，要么蓝卡队总能苟过去，不能的话就不打了，反正也没有什么很特别的奖励。感兴趣的话可以看看
-B 站的花式打法，只是不知道这几年过去还有多少 up 在做这方面的视频。</p>
-<p>还记得初三的暑假在地铁上打
-FGO，有个上海大学的路人小哥激动地叫住我想看看我的
-box，只可惜我是小米渠道服，没有加到他的好友。或许当时这个游戏就已经不是那么热门了。</p>
-<p>说了这么多，一句话总结的话，就是：</p>
-<blockquote>
-<p>我又社恐自闭了。</p>
-</blockquote>
-<p>如果再要加一句，那就是：</p>
-<blockquote>
-<p>我觉得“连打游戏都在摆烂”其实是一件很正常的事情。</p>
-</blockquote>
-]]></content>
-      <tags>
-        <tag>碎碎念</tag>
-        <tag>躺平</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>数理统计初探——统计推断</title>
     <url>/2022/11/09/Statistical-Inference/</url>
     <content><![CDATA[<p>据说统计推断是统辅基础五大件里最难的，这门课也可以直接称为数理统计（基础）。我初概的体验并不是很好，甩锅给了不匹配的教材，还记了
@@ -12926,6 +12894,53 @@ b=ab+a+b\)</span>.</p></li>
         <tag>课程实录</tag>
         <tag>刷书</tag>
         <tag>数学</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>躺平记——游戏篇</title>
+    <url>/2022/07/11/lying-flat-in-games/</url>
+    <content><![CDATA[<p>新鲜的 tag:
+躺平。<del>甚至想把之前的科协躺平篇改个标题，然后变成一个系列</del></p>
+<p>在 <a href="https://chiyuru.github.io/2022/06/16/Hello-World/#more">Hello
+World！</a>和 <a href="https://chiyuru.github.io/about/">About</a>
+里就提到过，我有很多游戏的坑。音游有
+Lanota、Arcaea，<del>抽卡类</del>塔防有明日方舟，其实也玩过若干国产乙女游戏，若干
+GalGame，棋牌类有雀魂，还有不知道该怎么分类的 Fate/Grand
+Order（FGO）。每次玩着玩着就会回到 FGO
+去，可能是别的游戏都有或挺大或不小的圈子，而<del>半死不活的</del> FGO
+没有。即使有，想要无视也很容易，因为身边没有玩 FGO 的朋友了。</p>
+<span id="more"></span>
+<p>五月初的时候方舟周年庆，于是一年一度回了坑，兴趣高涨。体验了一下这一年来漏掉的活动，新的肉鸽系统和保全派驻，还毕业了尘影余音这个不大不小的活动。只不过因为同学在七月新活动更新的时候，发消息讲了几句他已经打完第一波关卡看完剧情了，我就突然感觉无趣，草草卸载开始冬眠。就是一瞬间，开始对这个“需要"每天上线刷材料、和友人互动讨论玩梗、肝新剧情的系统感到疲倦。下次再来，可能就是明年五月了，也可能更晚。</p>
+<p>然后很快就是 Arcaea 4.0
+更新，更新之后的早晨大家惊呼对立被光反杀，我才知道两年后的今天终于有新剧情和突破既有定数的新歌了。然后今天上推偶然知道刺球（<span class="citation" data-cites="SkisK刺球">@SkisK刺球</span>）抢到了
+Testify BYD 全球首 PM（-33）和收到官方恭喜，更新后的几天内没有其他
+PM，更是离理论值很远。看了一眼<a href="https://www.bilibili.com/video/BV1xV4y1n71z?spm_id_from=333.999.0.0&amp;vd_source=6ae5c31a80120436d23cf7b7c7ceb3ba">手元</a>，感觉真的非常科幻，我一辈子可能也不会碰到这张谱了吧。<del>另外，官方的意思是全球范围内有PM就复活对立吗</del></p>
+<p>很久不玩 Arcaea
+了主要是因为条件不允许。在学校的话不想日常在寝室里表演爆敲手机屏，感觉会很吵。只是假期玩的话水平也上不去，所以偶尔想打歌了的话下回来敲一敲就好。“身边”玩音游的大多是以前的高中同学，不过我已经主动在母校毕业生中隐藏自己了，屏蔽和退出了一些群，不太像以前一样和他们互动，也就渐渐被忘记了；还有你清的一些音游人，都比我强很多，一般就是偶尔聊起来，或者碰巧刷到他们的视频。尽管你清音游相关社团印象里在我高中时就听说和憧憬过，但现如今也没有加入的打算。事实上，到现在为止我没有加入过任何社团，可能以后也不会。</p>
+<p>乙女游戏更容易厌倦，我也不是去体验恋爱的，单纯是欣赏一下美工；剧情也还算有点意思。不过国乙的通病还得是不氪金就当狗和任务繁琐，回坑很快就觉得像上班一样，没意思了。GalGame
+因为太挑剔，很难遇到喜欢的作品，朋友的推荐大多数也不合胃口，试错试多了就麻了。</p>
+<p>雀魂的话，
+惭愧地说我不是很会打。寒假的时候三人场刷到雀士然后发现还会掉回去，觉得好累，就没再上线过了。身边打雀的朋友人均很强，也没人注意到本菜狗的悄悄跑路。</p>
+<p>总之到最后就是会跑回 FGO。从前一起玩 FGO
+的朋友现在无一例外都弃坑了，而且都再也没回去过，缺乏社交性反而很惬意；活动关卡打不打也很无所谓，许多活动都是复刻，四五年前就体验过了；老玩家的原因，材料资源很充足，不需要肝，一段时间不登录也不会天塌下来；型月世界的设定很复杂，游戏和不同线路的番剧会相互呼应，刷着番打游戏体验很好（指路型月我最喜欢的一条线《<a href="https://zh.moegirl.org.cn/Fate/EXTRA_Last_Encore">Fate/EXTRA Last
+Encore</a>》）；另外，因为是手游的原因，很轻量。</p>
+<p>其中最要紧的还是“缺乏社交性”这一项。本来就不是很擅长社交，也不太想为了跟上朋友们讨论的梗而去打活动，不想再听到“你怎么跳过剧情啊，方舟的精髓就是剧情”这种评论。有的时候很疲惫了来玩游戏，就是只想暴力打打关卡而已。为了维持社交而每日登录、互动、活动肝到毕业这样的烦恼更是没有了。关卡也没有特别难的，要么蓝卡队总能苟过去，不能的话就不打了，反正也没有什么很特别的奖励。感兴趣的话可以看看
+B 站的花式打法，只是不知道这几年过去还有多少 up 在做这方面的视频。</p>
+<p>还记得初三的暑假在地铁上打
+FGO，有个上海大学的路人小哥激动地叫住我想看看我的
+box，只可惜我是小米渠道服，没有加到他的好友。或许当时这个游戏就已经不是那么热门了。</p>
+<p>说了这么多，一句话总结的话，就是：</p>
+<blockquote>
+<p>我又社恐自闭了。</p>
+</blockquote>
+<p>如果再要加一句，那就是：</p>
+<blockquote>
+<p>我觉得“连打游戏都在摆烂”其实是一件很正常的事情。</p>
+</blockquote>
+]]></content>
+      <tags>
+        <tag>碎碎念</tag>
+        <tag>躺平</tag>
       </tags>
   </entry>
   <entry>
