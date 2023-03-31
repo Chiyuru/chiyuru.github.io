@@ -28,7 +28,7 @@
 <meta property="og:description" content="我都给统辅课笔记起了些什么破标题 选课的时候我还侥幸以为生统概论可以放松心情，来随便听听简单了解一下那种。可能是前置没学完的原因，倒也没那么水，ANOVA 还是花了不少时间看的。 wty 老师的英语口语真不错，可惜我听力一般，一走神就寄了。还是要感谢 V1ncent19 的统辅笔记救我，不过他看起来是前置都学完了来上的这个，写的有点抽象，我想写个废话多一点具体点的。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-03-20T05:28:58.000Z">
-<meta property="article:modified_time" content="2023-03-29T11:56:41.526Z">
+<meta property="article:modified_time" content="2023-03-31T06:32:43.581Z">
 <meta property="article:author" content="驰雨Chiyuru">
 <meta property="article:tag" content="课程实录">
 <meta property="article:tag" content="数学">
@@ -218,7 +218,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-03-29 19:56:41" itemprop="dateModified" datetime="2023-03-29T19:56:41+08:00">2023-03-29</time>
+                <time title="修改时间：2023-03-31 14:32:43" itemprop="dateModified" datetime="2023-03-31T14:32:43+08:00">2023-03-31</time>
               </span>
 
           
@@ -268,7 +268,7 @@ y_{i2}-y_{i1}\)</span>，希望利用这些数据观察药剂的有效程度。<
 <h3 id="cell-means-model">Cell means model</h3>
 <p>模型假设是 <span class="math inline">\(Y_{ij} = \mu_i +
 \varepsilon_{ij}\)</span>。</p>
-<p>其中，<span class="math inline">\(\mu_i\)</span> 是第 <span class="math inline">\(i\)</span> 组的理论均值，<span class="math inline">\(\varepsilon _{ij} i.i.d. \sim
+<p>其中，<span class="math inline">\(\mu_i\)</span> 是第 <span class="math inline">\(i\)</span> 组的理论均值，<span class="math inline">\(\varepsilon _{ij}\)</span> i.i.d. <span class="math inline">\(\sim
 N(0,\sigma^2)\)</span>。注意到在这一模型假设中有 <span class="math inline">\(r+1\)</span> 个参数，分别是 <span class="math inline">\(\mu_1,\mu_2,...,\mu_r,\sigma^2\)</span>，我们需要用得到的数据来对这些未知参数进行估计。考虑一些统计量作为参数的估计量：</p>
 <p><span class="math display">\[\bar{Y}_{i.} = \frac{1}{n_i} \Sigma_{j=1
 }^{n_i} Y_{ij}  = \hat \mu _i\]</span></p>
@@ -303,7 +303,7 @@ r}\)</span>，<span class="math inline">\(\frac{SSTR}{\sigma^2} \sim
 -r)\)</span> 时拒绝原假设，否则接受；<span class="math inline">\(Power =
 P(F^* &gt; F(1-\alpha , r-1,n_T -r)| \delta)\)</span>，其中 <span class="math inline">\(\delta\)</span> 是一个非中心偏移量，<span class="math inline">\(\delta = \frac{1}{\sigma} \sqrt{\frac 1 r \Sigma_i
 n_i (\mu_i - \mu_.)^2}\)</span>。</p>
-<h3 id="factors-effects-model">Factors Effects Model</h3>
+<h3 id="factor-effects-model">Factor Effects Model</h3>
 <p>Factor Effects Model 是 Cell Means Model
 的一个重新参数化的结果。模型假设是 <span class="math inline">\(Y_{ij} =
 \mu + \tau_i + \varepsilon_{ij}\)</span>。</p>
@@ -334,7 +334,7 @@ b\)</span>。由此我们得到 <span class="math inline">\(nab\)</span> 个数�
 <span class="math inline">\(Y_{ijk}\)</span>，<span class="math inline">\(i\)</span> 表示以 <span class="math inline">\(A\)</span> 因素分类的组别，<span class="math inline">\(j\)</span> 表示以 <span class="math inline">\(B\)</span> 因素分类的组别，<span class="math inline">\(k\)</span> 表示在某一组内的编号，<span class="math inline">\(1 \leq k \leq n\)</span>。</p>
 <p>每一组都是 <span class="math inline">\(n\)</span> 个人，这是一个
 balanced design。</p>
-<h3 id="factor-effects-model">Factor Effects Model</h3>
+<h3 id="factor-effects-model-1">Factor Effects Model</h3>
 <p>模型假设是 <span class="math inline">\(Y_{ijk} = \mu +\alpha_i +
 \beta_j +(\alpha \beta)_{ij} + \varepsilon_{ijk}\)</span>。</p>
 <p>其中，<span class="math inline">\(\mu\)</span> 是整体的均值，<span class="math inline">\(\alpha_i\)</span> 代表只和等级为 <span class="math inline">\(i\)</span> 的因素 <span class="math inline">\(A\)</span> 有关的变化，<span class="math inline">\(\beta_j\)</span> 表示只和等级为 <span class="math inline">\(j\)</span> 的因素 <span class="math inline">\(B\)</span> 有关的变化，<span class="math inline">\((\alpha \beta)_{ij}\)</span>
@@ -391,7 +391,57 @@ F_{(a-1)(b-1),ab(n-1)}\)</span></li>
 </ul>
 <h2 id="fixed-effect-random-effect">Fixed Effect &amp; Random
 Effect</h2>
-<p>咕咕咕</p>
+<p>事实上，有的时候对于一个 cell means model 或者 factor effects
+model，我们并不是很关心每个 <span class="math inline">\(\mu_i\)</span>
+的检验，而是关心整体的 <span class="math inline">\(\mu_.\)</span>
+的情况。同时，每一组的情况可能都带有随机性，所以需要改变一些模型假设，进行
+random effect 的检验。</p>
+<h3 id="cell-means-model-for-random-effect">Cell means model for random
+effect</h3>
+<p>回顾一下 cell means model：</p>
+<blockquote>
+<p>模型假设是 <span class="math inline">\(Y_{ij} = \mu_i +
+\varepsilon_{ij}\)</span>。</p>
+<p>其中，<span class="math inline">\(\mu_i\)</span> 是第 <span class="math inline">\(i\)</span> 组的理论均值，<span class="math inline">\(\varepsilon _{ij}\)</span> i.i.d. <span class="math inline">\(\sim
+N(0,\sigma^2)\)</span>。注意到在这一模型假设中有 <span class="math inline">\(r+1\)</span> 个参数，分别是 <span class="math inline">\(\mu_1,\mu_2,...,\mu_r,\sigma^2\)</span>，我们需要用得到的数据来对这些未知参数进行估计。</p>
+</blockquote>
+<p>对于 cell means model for random effect，需要把 <span class="math inline">\(\mu_i\)</span> 视作一组随机变量而非参数：</p>
+<blockquote>
+<p>模型假设是 <span class="math inline">\(Y_{ij} = \mu_i +
+\varepsilon_{ij}\)</span>。</p>
+<p>其中，<span class="math inline">\(\mu_i \sim N(\mu_., \sigma_\mu
+^2)\)</span> 不要求相互独立，<span class="math inline">\(\varepsilon_{ij}\)</span> i.i.d. <span class="math inline">\(\sim N(0,\sigma^2)\)</span>，且 <span class="math inline">\(\mu_i\)</span> 和 <span class="math inline">\(\varepsilon_{ij}\)</span> 之间是相互独立的。
+因此，这一模型中共有 <span class="math inline">\(3\)</span>
+个参数，分别是 <span class="math inline">\(\mu_., \sigma_\mu,
+\sigma\)</span>，而且 <span class="math inline">\(Y_{ij}\)</span>
+不相互独立。</p>
+</blockquote>
+<h3 id="random-factor-effects-model">Random factor effects model</h3>
+<p>相应地可以对 cell means model for random effect 做一些改进。回顾一下
+factor effects model：</p>
+<blockquote>
+<p>Factor Effects Model 是 Cell Means Model
+的一个重新参数化的结果。模型假设是 <span class="math inline">\(Y_{ij} =
+\mu + \tau_i + \varepsilon_{ij}\)</span>。</p>
+<p>其中，<span class="math inline">\(\mu_i\)</span>
+是整体的理论均值，<span class="math inline">\(\varepsilon _{ij}\)</span>
+i.i.d. <span class="math inline">\(\sim
+N(0,\sigma^2)\)</span>。它的参数比 cell mean model 多一个，分别是 <span class="math inline">\(\mu , \tau_1 , ..., \tau_r ,
+\sigma^2\)</span>，但是自由度是相同的，因为 <span class="math inline">\(\{ \tau _i \}_{i=1}^r\)</span> 存在一个约束 <span class="math inline">\(\Sigma_{i=1}^r \tau_i =
+0\)</span>，如果没有这个约束会导致存在多组解。</p>
+</blockquote>
+<p>Random factor effects model 也是 cell means model for random effects
+的一个重新参数化的结果。</p>
+<blockquote>
+<p>模型假设是 <span class="math inline">\(Y_{ij} = \mu + \tau_i
++\varepsilon_{ij}\)</span>，其中 <span class="math inline">\(i =
+1,2,...,a,j=1,2,...,n_i\)</span>。相对于 cell means model for random
+effect，这里将 <span class="math inline">\(\tau_i\)</span>
+都视作随机变量，满足 <span class="math inline">\(\tau_i \sim
+N(0,\sigma_\tau ^2)\)</span> 不要求相互独立，<span class="math inline">\(\varepsilon_{ij}\)</span> i.i.d. <span class="math inline">\(\sim N(0,\sigma^2)\)</span>，且 <span class="math inline">\(\tau_i\)</span> 和 <span class="math inline">\(\varepsilon_{ij}\)</span>
+之间是相互独立的。这一模型中也是三个参数，分别是 <span class="math inline">\(\mu_., \sigma_\mu, \sigma\)</span>，而且 <span class="math inline">\(Y_{ij}\)</span> 不相互独立。</p>
+<p>由于是随机变量，自然不再要求满足 <span class="math inline">\(\Sigma_{i=1}^a \tau_i =0\)</span> 的限制。</p>
+</blockquote>
 <h1 id="实验设计方法">实验设计方法</h1>
 <p>不如说是实验设计小知识（</p>
 <h2 id="observational-experimental-study">Observational &amp;
@@ -554,8 +604,9 @@ study 则需要实验者自行控制变量，在所需条件下收集数据，�
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
           <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#analysis-of-variance"><span class="nav-text">Analysis of Variance</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8Btreatment-of-lead-exposed-children-trial"><span class="nav-text">示例——Treatment of
-Lead-Exposed Children Trial</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#one-factor-anova"><span class="nav-text">One Factor ANOVA</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#cell-means-model"><span class="nav-text">Cell means model</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#factors-effects-model"><span class="nav-text">Factors Effects Model</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#two-factors-anova"><span class="nav-text">Two Factors ANOVA</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#factor-effects-model"><span class="nav-text">Factor Effects Model</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#fixed-effect-random-effect"><span class="nav-text">Fixed Effect &amp; Random
-Effect</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E8%AE%BE%E8%AE%A1%E6%96%B9%E6%B3%95"><span class="nav-text">实验设计方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#observational-experimental-study"><span class="nav-text">Observational &amp;
+Lead-Exposed Children Trial</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#one-factor-anova"><span class="nav-text">One Factor ANOVA</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#cell-means-model"><span class="nav-text">Cell means model</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#factor-effects-model"><span class="nav-text">Factor Effects Model</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#two-factors-anova"><span class="nav-text">Two Factors ANOVA</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#factor-effects-model-1"><span class="nav-text">Factor Effects Model</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#fixed-effect-random-effect"><span class="nav-text">Fixed Effect &amp; Random
+Effect</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#cell-means-model-for-random-effect"><span class="nav-text">Cell means model for random
+effect</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#random-factor-effects-model"><span class="nav-text">Random factor effects model</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E8%AE%BE%E8%AE%A1%E6%96%B9%E6%B3%95"><span class="nav-text">实验设计方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#observational-experimental-study"><span class="nav-text">Observational &amp;
 Experimental Study</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
