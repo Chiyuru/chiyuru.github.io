@@ -28,11 +28,11 @@
 <meta property="og:description" content="我都给统辅课笔记起了些什么破标题 选课的时候我还侥幸以为生统概论可以放松心情，来随便听听简单了解一下那种。可能是前置没学完的原因，倒也没那么水，ANOVA 还是花了不少时间看的。 wty 老师的英语口语真不错，可惜我听力一般，一走神就寄了。还是要感谢 V1ncent19 的统辅笔记救我，不过他看起来是前置都学完了来上的这个，写的有点抽象，我想写个废话多一点具体点的。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-03-20T05:28:58.000Z">
-<meta property="article:modified_time" content="2023-03-31T06:32:43.581Z">
+<meta property="article:modified_time" content="2023-03-31T19:27:44.374Z">
 <meta property="article:author" content="驰雨Chiyuru">
 <meta property="article:tag" content="课程实录">
-<meta property="article:tag" content="数学">
 <meta property="article:tag" content="统计">
+<meta property="article:tag" content="数学">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://chiyuru.github.io/2023/03/20/Introduction-to-Biostatistics/">
@@ -218,7 +218,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-03-31 14:32:43" itemprop="dateModified" datetime="2023-03-31T14:32:43+08:00">2023-03-31</time>
+                <time title="修改时间：2023-04-01 03:27:44" itemprop="dateModified" datetime="2023-04-01T03:27:44+08:00">2023-04-01</time>
               </span>
 
           
@@ -389,8 +389,7 @@ a,1\leq j \leq b\)</span>，在 <span class="math inline">\(H_0\)</span>
 下有 <span class="math inline">\(F^*=\frac{SSAB/(a-1)(b-1)}{SSE/(ab(n-1))} \sim
 F_{(a-1)(b-1),ab(n-1)}\)</span></li>
 </ul>
-<h2 id="fixed-effect-random-effect">Fixed Effect &amp; Random
-Effect</h2>
+<h2 id="random-effect-test">Random Effect Test</h2>
 <p>事实上，有的时候对于一个 cell means model 或者 factor effects
 model，我们并不是很关心每个 <span class="math inline">\(\mu_i\)</span>
 的检验，而是关心整体的 <span class="math inline">\(\mu_.\)</span>
@@ -408,14 +407,84 @@ N(0,\sigma^2)\)</span>。注意到在这一模型假设中有 <span class="math 
 <p>对于 cell means model for random effect，需要把 <span class="math inline">\(\mu_i\)</span> 视作一组随机变量而非参数：</p>
 <blockquote>
 <p>模型假设是 <span class="math inline">\(Y_{ij} = \mu_i +
-\varepsilon_{ij}\)</span>。</p>
+\varepsilon_{ij}\)</span>。其中有 <span class="math inline">\(i =
+1,2,...,r\)</span>，<span class="math inline">\(j
+=1,2,...,n\)</span>，暂时设定为一个 balanced test。</p>
 <p>其中，<span class="math inline">\(\mu_i \sim N(\mu_., \sigma_\mu
 ^2)\)</span> 不要求相互独立，<span class="math inline">\(\varepsilon_{ij}\)</span> i.i.d. <span class="math inline">\(\sim N(0,\sigma^2)\)</span>，且 <span class="math inline">\(\mu_i\)</span> 和 <span class="math inline">\(\varepsilon_{ij}\)</span> 之间是相互独立的。
 因此，这一模型中共有 <span class="math inline">\(3\)</span>
 个参数，分别是 <span class="math inline">\(\mu_., \sigma_\mu,
 \sigma\)</span>，而且 <span class="math inline">\(Y_{ij}\)</span>
 不相互独立。</p>
+<p>事实上，我们不要求关于特定的 <span class="math inline">\(\mu_i\)</span> 的结论，而是关心在 population <span class="math inline">\(\lbrace \mu_i \rbrace_{i=1} ^r\)</span>
+上的推断，以推断 <span class="math inline">\(\mu\)</span> 和 <span class="math inline">\(\sigma_\mu^2\)</span> 为主。</p>
 </blockquote>
+<p>简单推导可以得到以下结论：</p>
+<ul>
+<li><span class="math inline">\(\mathbb E(Y_{ij}) = \mu_.\)</span></li>
+<li><span class="math inline">\(Var(Y_{ij}) = \sigma^2 +\sigma_\mu
+^2\)</span></li>
+<li><span class="math inline">\(Cov(Y_{ij} , Y_{ij&#39;}) = \sigma_\mu
+^2, j \neq j&#39;\)</span></li>
+<li><span class="math inline">\(Cov(Y_{ij},Y_{i&#39;j&#39;}) = 0, i \neq
+i&#39;, j \neq j&#39;\)</span></li>
+<li><span class="math inline">\(\mathbb E(MSE) = \sigma^2\)</span></li>
+<li><span class="math inline">\(\mathbb E(MSTR) = \sigma^2 + n\sigma_\mu
+^2\)</span></li>
+</ul>
+<p>记 <span class="math inline">\(\sigma_Y^2 = \sigma_\mu^2 +
+\sigma^2\)</span>，有一个在推断中有意义的参数是 <span class="math inline">\(\frac{\sigma_\mu ^2}{\sigma_Y ^2} =
+\frac{\sigma_\mu ^2}{\sigma_\mu ^2 +
+\sigma^2}\)</span>。这表征了在整体方差中，由 <span class="math inline">\(Y_{ij}\)</span> 的随机性产生的比例。</p>
+<p>对此我们常做的一个检验是 <span class="math inline">\(H_0 :\sigma_\mu
+^2 = 0; H_a: \sigma_\mu ^2 &gt;0\)</span>，原假设的含义在于说明 <span class="math inline">\(\mu_i\)</span>​ 是相等的，事实上这和 fixed effect
+下的 cell means model 所做的检验是相同的。在 <span class="math inline">\(H_0\)</span> 成立时，<span class="math inline">\(\frac{SSE}{\sigma^2} \sim \chi^2
+_{r(n-1)}\)</span>，<span class="math inline">\(\frac{SSTR}{\sigma^2}
+\sim \chi^2_{r-1}\)</span>。因此 <span class="math inline">\(F=\frac{MSTR}{MSE} \sim F_{r-1,r(n-1)}\)</span>
+作为最终的检验统计量。</p>
+<p>当 <span class="math inline">\(F^* &gt; F(1-\alpha , r-1 ,
+r(n-1))\)</span> 时拒绝原假设，否则接受；<span class="math inline">\(Power = P(F^* &gt; F(1-\alpha , r-1,r(n-1))|
+\delta)\)</span>，其中 <span class="math inline">\(\delta\)</span>
+是一个非中心偏移量，<span class="math inline">\(\delta =
+\frac{1}{\sigma} \sqrt{\frac 1 r \Sigma_i n_i (\mu_i -
+\mu_.)^2}\)</span>。这里是暂时认为做的是 balanced test。</p>
+<p>如果实验并不是一个 balanced test，每一组的数据量为 <span class="math inline">\(n_1,n_2,...,n_r\)</span> 且有 <span class="math inline">\(n_T = \Sigma_{i=1} ^r n_i\)</span>，于是有：</p>
+<p><span class="math display">\[\mathbb E(MSTR) = \sigma^2 + n&#39;
+\sigma_\mu ^2, \quad n&#39; = \frac{1}{r-1} [n_T - \frac{\Sigma_{i=1}^r
+n_i ^2}{n_T}]\]</span></p>
+<p>对这一模型的参数做一些估计，上文中提到 cell means model for random
+effect 有三个参数 $_., ^2 $ 和 <span class="math inline">\(\sigma_\mu
+^2\)</span>，事实上对于后两个参数我们也关心 <span class="math inline">\(\frac{\sigma_\mu ^2}{\sigma_\mu ^2 +
+\sigma^2}\)</span> 的估计，以下还是在 balanced test
+的前提下分点来阐述技术细节：</p>
+<ul>
+<li><p><span class="math inline">\(\mu_.\)</span> 的一个无偏估计即为
+<span class="math inline">\(Y_{..} = \frac{\Sigma_{i=1}^r \Sigma_{j=1}^n
+Y_{ij} }{rn}\)</span>，它的方差是 <span class="math inline">\(Var(Y_{..}) = \frac{\sigma^2}{rn} +
+\frac{\sigma_\mu ^2}{r}\)</span>。</p>
+<p>因此 <span class="math inline">\(s^2(\bar{Y}_{..}) =
+\frac{MSTR}{rn}\)</span> 是 <span class="math inline">\(Y_{..}\)</span>
+的方差的无偏估计，<span class="math inline">\(\mu_.\)</span>
+的置信区间是 <span class="math inline">\(\bar{Y}_{..} \pm
+t(1-\alpha/2;r-1)s(\bar{Y}_{.. } )\)</span>。</p></li>
+<li><p>由于 <span class="math inline">\(\frac{MSTR/(n\sigma_\mu ^2 +
+\sigma^2)}{MSE/ \sigma^2} \sim F_{r-1,r(n-1)}\)</span>，因此有：</p>
+<p><span class="math display">\[L = \frac 1n [\frac{MSTR}{MSE}
+(\frac{1}{F[1-\alpha/2;r-1;r(n-1)]})-1]\]</span></p>
+<p><span class="math display">\[R = \frac 1n [\frac{MSTR}{MSE}
+(\frac{1}{F[\alpha/2; r-1,r(n-1)]})-1]\]</span></p>
+<p>此时 <span class="math inline">\(\frac{\sigma_\mu ^2}{\sigma_\mu ^2 +
+\sigma^2}\)</span> 的 <span class="math inline">\(100(1-\alpha)
+\%\)</span> 置信区间是 <span class="math inline">\([\frac{L}{1+L} ,
+\frac{R}{1+R}]\)</span>。</p></li>
+<li><p><span class="math inline">\(\sigma^2\)</span> 的无偏估计是 <span class="math inline">\(MSE = \frac{\Sigma_{i=1} ^r \Sigma_{j=1}^n (Y_{ij}
+- \bar Y_{i.})}{r(n-1)}\)</span>，置信区间的估计可以建立在 <span class="math inline">\(\frac{r(n-1)MSE}{\sigma^2} \sim
+\chi^2[r(n-1)]\)</span> 的基础上，于是有 <span class="math inline">\(\sigma^2\)</span> 的 <span class="math inline">\(100(1-\alpha) \%\)</span> 置信区间是 <span class="math inline">\([\frac{r(n-1)MSE}{\chi^2[1-\alpha /2; r(n-1)]},
+\frac{r(n-1)MSE}{\chi^2 [\alpha/2;r(n-1)]}]\)</span></p></li>
+<li><p><span class="math inline">\(\sigma_\mu^2\)</span> 的无偏估计是
+<span class="math inline">\(s_\mu ^2 = \frac{MSTR -
+MSE}{n}\)</span>，但有时数据点决定此处点估计值是负的，此时就用 <span class="math inline">\(0\)</span> 来代替 <span class="math inline">\(\sigma_\mu ^2\)</span> 的估计值。</p></li>
+</ul>
 <h3 id="random-factor-effects-model">Random factor effects model</h3>
 <p>相应地可以对 cell means model for random effect 做一些改进。回顾一下
 factor effects model：</p>
@@ -442,6 +511,30 @@ N(0,\sigma_\tau ^2)\)</span> 不要求相互独立，<span class="math inline">\
 之间是相互独立的。这一模型中也是三个参数，分别是 <span class="math inline">\(\mu_., \sigma_\mu, \sigma\)</span>，而且 <span class="math inline">\(Y_{ij}\)</span> 不相互独立。</p>
 <p>由于是随机变量，自然不再要求满足 <span class="math inline">\(\Sigma_{i=1}^a \tau_i =0\)</span> 的限制。</p>
 </blockquote>
+<p>实际上可以看到，在 random effect 意义下，factor effects model 和 cell
+means model
+的关系更紧密了，只是相差一个常数。因此所有的检验和推断可以类似的进行：</p>
+<ul>
+<li>咕咕</li>
+</ul>
+<h3 id="two-random-factors-effects-model">Two random factors effects
+model</h3>
+<p>回顾一下 two factors effects model：</p>
+<blockquote>
+<p>模型假设是 <span class="math inline">\(Y_{ijk} = \mu +\alpha_i +
+\beta_j +(\alpha \beta)_{ij} + \varepsilon_{ijk}\)</span>。</p>
+<p>其中，<span class="math inline">\(\mu\)</span> 是整体的均值，<span class="math inline">\(\alpha_i\)</span> 代表只和等级为 <span class="math inline">\(i\)</span> 的因素 <span class="math inline">\(A\)</span> 有关的变化，<span class="math inline">\(\beta_j\)</span> 表示只和等级为 <span class="math inline">\(j\)</span> 的因素 <span class="math inline">\(B\)</span> 有关的变化，<span class="math inline">\((\alpha \beta)_{ij}\)</span>
+表示和两个因素同时相关的变化，相当于一个交叉项。</p>
+<p>这里面有 <span class="math inline">\((a+1)(b+1)\)</span>
+个参数，对其也有一定的约束：<span class="math inline">\(\Sigma_i
+\alpha_i = \Sigma_j \beta_j = \Sigma_i (\alpha \beta)_{ij} = \Sigma_j
+(\alpha \beta)_{ij} =0\)</span>。</p>
+</blockquote>
+<h2 id="general-case-for-factor-model">General Case for Factor
+Model</h2>
+<p>事实上，一般的模型是往往既有 fixed effects，又有 random
+effects。为了方便进行建模和 ANOVA 检验，我们有如下的建立 ANOVA Table
+的方法：</p>
 <h1 id="实验设计方法">实验设计方法</h1>
 <p>不如说是实验设计小知识（</p>
 <h2 id="observational-experimental-study">Observational &amp;
@@ -524,8 +617,8 @@ study 则需要实验者自行控制变量，在所需条件下收集数据，�
       <footer class="post-footer">
           <div class="post-tags">
               <a href="/tags/%E8%AF%BE%E7%A8%8B%E5%AE%9E%E5%BD%95/" rel="tag"># 课程实录</a>
-              <a href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag"># 数学</a>
               <a href="/tags/%E7%BB%9F%E8%AE%A1/" rel="tag"># 统计</a>
+              <a href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag"># 数学</a>
           </div>
 
         
@@ -537,7 +630,10 @@ study 则需要实验者自行控制变量，在所需条件下收集数据，�
     <a href="/2023/03/13/Proof-of-Caratheodory-Extension-Theorem/" rel="prev" title="Proof of Carathéodory’s Extension Theorem">
       <i class="fa fa-chevron-left"></i> Proof of Carathéodory’s Extension Theorem
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2023/04/01/Diary-2023-04/" rel="next" title="日记·篇八·23年4月">
+      日记·篇八·23年4月 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -604,9 +700,10 @@ study 则需要实验者自行控制变量，在所需条件下收集数据，�
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
           <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#analysis-of-variance"><span class="nav-text">Analysis of Variance</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8Btreatment-of-lead-exposed-children-trial"><span class="nav-text">示例——Treatment of
-Lead-Exposed Children Trial</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#one-factor-anova"><span class="nav-text">One Factor ANOVA</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#cell-means-model"><span class="nav-text">Cell means model</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#factor-effects-model"><span class="nav-text">Factor Effects Model</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#two-factors-anova"><span class="nav-text">Two Factors ANOVA</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#factor-effects-model-1"><span class="nav-text">Factor Effects Model</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#fixed-effect-random-effect"><span class="nav-text">Fixed Effect &amp; Random
-Effect</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#cell-means-model-for-random-effect"><span class="nav-text">Cell means model for random
-effect</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#random-factor-effects-model"><span class="nav-text">Random factor effects model</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E8%AE%BE%E8%AE%A1%E6%96%B9%E6%B3%95"><span class="nav-text">实验设计方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#observational-experimental-study"><span class="nav-text">Observational &amp;
+Lead-Exposed Children Trial</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#one-factor-anova"><span class="nav-text">One Factor ANOVA</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#cell-means-model"><span class="nav-text">Cell means model</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#factor-effects-model"><span class="nav-text">Factor Effects Model</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#two-factors-anova"><span class="nav-text">Two Factors ANOVA</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#factor-effects-model-1"><span class="nav-text">Factor Effects Model</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#random-effect-test"><span class="nav-text">Random Effect Test</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#cell-means-model-for-random-effect"><span class="nav-text">Cell means model for random
+effect</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#random-factor-effects-model"><span class="nav-text">Random factor effects model</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#two-random-factors-effects-model"><span class="nav-text">Two random factors effects
+model</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#general-case-for-factor-model"><span class="nav-text">General Case for Factor
+Model</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E8%AE%BE%E8%AE%A1%E6%96%B9%E6%B3%95"><span class="nav-text">实验设计方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#observational-experimental-study"><span class="nav-text">Observational &amp;
 Experimental Study</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
@@ -623,7 +720,7 @@ Experimental Study</span></a></li></ol></li></ol></div>
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">28</span>
+          <span class="site-state-item-count">29</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
