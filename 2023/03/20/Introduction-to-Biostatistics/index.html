@@ -28,7 +28,7 @@
 <meta property="og:description" content="我都给统辅课笔记起了些什么破标题 选课的时候我还侥幸以为生统概论可以放松心情，来随便听听简单了解一下那种。可能是前置没学完的原因，倒也没那么水，ANOVA 还是花了不少时间看的。 wty 老师的英语口语真不错，可惜我听力一般，一走神就寄了。还是要感谢 V1ncent19 的统辅笔记救我，不过他看起来是前置都学完了来上的这个，写的有点抽象，我想写个废话多一点具体点的。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-03-20T05:28:58.000Z">
-<meta property="article:modified_time" content="2023-03-31T19:27:44.374Z">
+<meta property="article:modified_time" content="2023-04-04T17:33:53.854Z">
 <meta property="article:author" content="驰雨Chiyuru">
 <meta property="article:tag" content="课程实录">
 <meta property="article:tag" content="数学">
@@ -218,7 +218,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-04-01 03:27:44" itemprop="dateModified" datetime="2023-04-01T03:27:44+08:00">2023-04-01</time>
+                <time title="修改时间：2023-04-05 01:33:53" itemprop="dateModified" datetime="2023-04-05T01:33:53+08:00">2023-04-05</time>
               </span>
 
           
@@ -390,6 +390,7 @@ a,1\leq j \leq b\)</span>，在 <span class="math inline">\(H_0\)</span>
 F_{(a-1)(b-1),ab(n-1)}\)</span></li>
 </ul>
 <h2 id="random-effect-test">Random Effect Test</h2>
+<h3 id="why-random-effects">Why random effects?</h3>
 <p>事实上，有的时候对于一个 cell means model 或者 factor effects
 model，我们并不是很关心每个 <span class="math inline">\(\mu_i\)</span>
 的检验，而是关心整体的 <span class="math inline">\(\mu_.\)</span>
@@ -513,12 +514,8 @@ N(0,\sigma_\tau ^2)\)</span> 不要求相互独立，<span class="math inline">\
 </blockquote>
 <p>实际上可以看到，在 random effect 意义下，factor effects model 和 cell
 means model
-的关系更紧密了，只是相差一个常数。因此所有的检验和推断可以类似的进行：</p>
-<ul>
-<li>咕咕</li>
-</ul>
-<h3 id="two-random-factors-effects-model">Two random factors effects
-model</h3>
+的关系更紧密了，只是相差一个常数。因此所有的检验和推断可以类似的进行。</p>
+<h3 id="mixed-factors-effects-model">Mixed factors effects model</h3>
 <p>回顾一下 two factors effects model：</p>
 <blockquote>
 <p>模型假设是 <span class="math inline">\(Y_{ijk} = \mu +\alpha_i +
@@ -530,11 +527,170 @@ model</h3>
 \alpha_i = \Sigma_j \beta_j = \Sigma_i (\alpha \beta)_{ij} = \Sigma_j
 (\alpha \beta)_{ij} =0\)</span>。</p>
 </blockquote>
-<h2 id="general-case-for-factor-model">General Case for Factor
-Model</h2>
-<p>事实上，一般的模型是往往既有 fixed effects，又有 random
-effects。为了方便进行建模和 ANOVA 检验，我们有如下的建立 ANOVA Table
-的方法：</p>
+<p>类似地，mixed factors effects model 也是把模型假设进行了一些修改，将
+<span class="math inline">\(\alpha_i\)</span> 从参数改成了随机变量。注意
+<span class="math inline">\(\alpha_i , \beta_j\)</span> 中只要有一个改为
+random effect，其联合作用 <span class="math inline">\((\alpha
+\beta)_{ij}\)</span> 也变为随机变量而非参数。</p>
+<blockquote>
+<p>模型假设是 <span class="math inline">\(Y_{ijk} = \mu +\alpha_i +
+\beta_j +(\alpha \beta)_{ij} + \varepsilon_{ijk}\)</span>。</p>
+<p>其中，<span class="math inline">\(\mu\)</span> 是整体的均值，<span class="math inline">\(\alpha_i\)</span> 代表只和等级为 <span class="math inline">\(i\)</span> 的因素 <span class="math inline">\(A\)</span> 有关的变化，<span class="math inline">\(\beta_j\)</span> 表示只和等级为 <span class="math inline">\(j\)</span> 的因素 <span class="math inline">\(B\)</span> 有关的变化，<span class="math inline">\((\alpha \beta)_{ij}\)</span>
+表示和两个因素同时相关的变化，相当于一个交叉项。</p>
+<p>需要满足一定的约束：</p>
+<ul>
+<li><span class="math inline">\(\Sigma_{i=1} ^ a \alpha _i
+=0\)</span></li>
+<li><span class="math inline">\(\beta_j \sim N(0,\sigma_\beta
+^2)\)</span></li>
+<li><span class="math inline">\((\alpha \beta)_{ij} \sim
+N(0,\sigma_{\alpha \beta}^2)\)</span></li>
+</ul>
+</blockquote>
+<p>检验方式和统计量见 ANOVA table construction 环节。</p>
+<h2 id="anova-table-construction">ANOVA table construction</h2>
+<p>e.g: three factors model</p>
+<p><span class="math display">\[Y_{ijkl} = \mu + \alpha_i + \beta_j +
+\gamma _k +(\alpha \beta)_{ij} + (\alpha \gamma)_{ik} + (\beta
+\gamma)_{jk} + (\alpha \beta \gamma)_{ijk} +
+\varepsilon_{ijkl}\]</span></p>
+<p><span class="math display">\[i = 1,2,...,a\]</span></p>
+<p><span class="math display">\[j = 1,2,...,b\]</span></p>
+<p><span class="math display">\[k = 1,2,...,c\]</span></p>
+<p><span class="math display">\[l = 1,2,...,n\]</span></p>
+<p>其中 <span class="math inline">\(a\)</span> 是 fixed effect，而 <span class="math inline">\(b,c\)</span> 是 random effect。于是模型参数是
+<span class="math inline">\(\theta = \lbrace \mu ,
+\alpha_i^{i=1,2,...,a} , \sigma_\beta^2 , \sigma_\gamma ^2 ,
+\sigma_{\alpha \beta}^2 , \sigma_{\beta \gamma }^2 ,
+\sigma_{\alpha,\gamma}^2, \sigma_{\alpha,\beta,\gamma}^2,\sigma^2
+\rbrace\)</span></p>
+<p>ANOVA table construction 的过程详见 <a target="_blank" rel="noopener" href="https://v1ncent19.github.io/SummaryNotes/">Statistics Note</a> by
+<a target="_blank" rel="noopener" href="https://v1ncent19.github.io/">V1ncent19</a>，P212-215，这里仅给出结果：</p>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 27%">
+<col style="width: 3%">
+<col style="width: 3%">
+<col style="width: 3%">
+<col style="width: 3%">
+<col style="width: 57%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Random/Fix</th>
+<th>F</th>
+<th>R</th>
+<th>R</th>
+<th>R</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td># level</td>
+<td>a</td>
+<td>b</td>
+<td>c</td>
+<td>n</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Index</td>
+<td>i</td>
+<td>j</td>
+<td>k</td>
+<td>l</td>
+<td><span class="math inline">\(\mathbb E(MS)\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\alpha_i\)</span></td>
+<td>0</td>
+<td>b</td>
+<td>c</td>
+<td>n</td>
+<td><span class="math inline">\(\sigma^2 + cn \sigma_{\alpha \beta}^2 +
+bn \sigma_{\alpha \gamma}^2 + n \sigma_{\alpha \beta \gamma}^2 + bcn
+\frac{\Sigma \alpha_i ^2}{a-1}\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\beta_j\)</span></td>
+<td>a</td>
+<td>1</td>
+<td>c</td>
+<td>n</td>
+<td><span class="math inline">\(\sigma^2 + an \sigma_{\beta \gamma}^2 +
+acn \sigma_{\beta}^2\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\gamma_k\)</span></td>
+<td>a</td>
+<td>b</td>
+<td>1</td>
+<td>n</td>
+<td><span class="math inline">\(\sigma^2 + an \sigma_{\beta \gamma}^2 +
+abn \sigma_{\gamma}^2\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\((\alpha \beta)_{ij}\)</span></td>
+<td>0</td>
+<td>1</td>
+<td>c</td>
+<td>n</td>
+<td><span class="math inline">\(\sigma^2 + cn \sigma_{\alpha \beta}^2 +
+n \sigma_{\alpha \beta \gamma}^2\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\((\alpha \gamma)_{ik}\)</span></td>
+<td>0</td>
+<td>b</td>
+<td>1</td>
+<td>n</td>
+<td><span class="math inline">\(\sigma ^2 + bn \sigma_{\alpha \gamma}^2
++ n \sigma_{\alpha \beta \gamma}^2\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\((\beta \gamma)_{jk}\)</span></td>
+<td>a</td>
+<td>1</td>
+<td>1</td>
+<td>n</td>
+<td><span class="math inline">\(\sigma^2 + an\sigma_{\beta
+\gamma}^2\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\((\alpha \beta
+\gamma)_{ijk}\)</span></td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>n</td>
+<td><span class="math inline">\(\sigma^2 + n \sigma_{\alpha \beta
+\gamma}^2\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\varepsilon_{ijkl}\)</span></td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td><span class="math inline">\(\sigma^2\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>于是可以利用上述期望进行检验：</p>
+<ul>
+<li><span class="math inline">\(H_0 : \alpha_1 = \alpha_2 =
+...=\alpha_a\)</span>，检验 <span class="math inline">\(F_{\alpha_i} ^*
+= \frac{MS_\alpha + MS_{\alpha ]beta \gamma}}{MS_{\alpha \beta} +
+MS_{\alpha \gamma}} \sim ^{H_0} F_{(a-1)+(a-1)(b-1)(c-1),
+(a-1)(b-1)+(a-1)(c-1)}\)</span></li>
+<li><span class="math inline">\(H_0 : \sigma^2 =0\)</span></li>
+<li><span class="math inline">\(H_0 : \sigma_{\beta}^2 =0\)</span></li>
+<li>......</li>
+</ul>
+<h2 id="r-code-for-anova">R code for ANOVA</h2>
+<p>详见 <a target="_blank" rel="noopener" href="https://www.datanovia.com/en/lessons/mixed-anova-in-r/">Mixed
+ANOVA in R</a>，和课上讲的是同一个东西但是更精细一点（</p>
 <h1 id="实验设计方法">实验设计方法</h1>
 <p>不如说是实验设计小知识（</p>
 <h2 id="observational-experimental-study">Observational &amp;
@@ -700,10 +856,8 @@ study 则需要实验者自行控制变量，在所需条件下收集数据，�
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
           <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#analysis-of-variance"><span class="nav-text">Analysis of Variance</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8Btreatment-of-lead-exposed-children-trial"><span class="nav-text">示例——Treatment of
-Lead-Exposed Children Trial</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#one-factor-anova"><span class="nav-text">One Factor ANOVA</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#cell-means-model"><span class="nav-text">Cell means model</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#factor-effects-model"><span class="nav-text">Factor Effects Model</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#two-factors-anova"><span class="nav-text">Two Factors ANOVA</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#factor-effects-model-1"><span class="nav-text">Factor Effects Model</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#random-effect-test"><span class="nav-text">Random Effect Test</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#cell-means-model-for-random-effect"><span class="nav-text">Cell means model for random
-effect</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#random-factor-effects-model"><span class="nav-text">Random factor effects model</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#two-random-factors-effects-model"><span class="nav-text">Two random factors effects
-model</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#general-case-for-factor-model"><span class="nav-text">General Case for Factor
-Model</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E8%AE%BE%E8%AE%A1%E6%96%B9%E6%B3%95"><span class="nav-text">实验设计方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#observational-experimental-study"><span class="nav-text">Observational &amp;
+Lead-Exposed Children Trial</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#one-factor-anova"><span class="nav-text">One Factor ANOVA</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#cell-means-model"><span class="nav-text">Cell means model</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#factor-effects-model"><span class="nav-text">Factor Effects Model</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#two-factors-anova"><span class="nav-text">Two Factors ANOVA</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#factor-effects-model-1"><span class="nav-text">Factor Effects Model</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#random-effect-test"><span class="nav-text">Random Effect Test</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#why-random-effects"><span class="nav-text">Why random effects?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cell-means-model-for-random-effect"><span class="nav-text">Cell means model for random
+effect</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#random-factor-effects-model"><span class="nav-text">Random factor effects model</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mixed-factors-effects-model"><span class="nav-text">Mixed factors effects model</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#anova-table-construction"><span class="nav-text">ANOVA table construction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#r-code-for-anova"><span class="nav-text">R code for ANOVA</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E8%AE%BE%E8%AE%A1%E6%96%B9%E6%B3%95"><span class="nav-text">实验设计方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#observational-experimental-study"><span class="nav-text">Observational &amp;
 Experimental Study</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
