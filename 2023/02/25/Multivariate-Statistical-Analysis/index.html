@@ -35,7 +35,7 @@
 <meta property="og:image" content="https://s2.loli.net/2023/02/25/pRaLXMxUrKqOi5Q.png">
 <meta property="og:image" content="https://s2.loli.net/2023/03/18/7zqKjhLmbZRWMf4.png">
 <meta property="article:published_time" content="2023-02-25T01:36:52.000Z">
-<meta property="article:modified_time" content="2023-04-07T07:20:34.067Z">
+<meta property="article:modified_time" content="2023-04-09T19:32:42.607Z">
 <meta property="article:author" content="驰雨Chiyuru">
 <meta property="article:tag" content="课程实录">
 <meta property="article:tag" content="数学">
@@ -226,7 +226,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-04-07 15:20:34" itemprop="dateModified" datetime="2023-04-07T15:20:34+08:00">2023-04-07</time>
+                <time title="修改时间：2023-04-10 03:32:42" itemprop="dateModified" datetime="2023-04-10T03:32:42+08:00">2023-04-10</time>
               </span>
 
           
@@ -637,15 +637,17 @@ A^{-1}\]</span></p>
 = -A^{-1}B^TA^{-1}\]</span></p>
 <p>有点抽象（</p></li>
 <li><p>对于某一个 population <span class="math inline">\(c^T X =
-\begin{bmatrix} c_1 &amp; c_2 &amp; ... &amp;c_n \end{bmatrix}
-\begin{bmatrix} X_1 \\ X_2 \\...\\X_n \end{bmatrix}\)</span>, 其期望变为
+\begin{bmatrix} c_1 &amp; c_2 &amp; ... &amp;c_p \end{bmatrix}
+\begin{bmatrix} X_1 \\ X_2 \\...\\X_p \end{bmatrix}\)</span>, 其期望变为
 <span class="math inline">\(c^T \mu\)</span>，方差变为 <span class="math inline">\(c^T \Sigma c\)</span>；</p>
 <p>如果 <span class="math inline">\(c^TX\)</span> 是一个
 sample，同理样本均值变为 <span class="math inline">\(c^T
 \mu\)</span>，样本方差变为 <span class="math inline">\(c^T
 Sc\)</span>。</p>
 <p>对于两个 population <span class="math inline">\(b^TX\)</span> 和
-<span class="math inline">\(c^TX\)</span>，有 <span class="math inline">\(Cov(b^T X,c^TX) = b^TXc\)</span>。</p></li>
+<span class="math inline">\(c^TX\)</span>，有 <span class="math inline">\(Cov(b^T X,c^TX) = b^TXc\)</span>。</p>
+<p>注意这里是对一个随机向量的 <span class="math inline">\(p\)</span>
+个分量在做线性组合，而不是对若干个随机向量的组合，期望和方差都是标量而不是向量！</p></li>
 </ul>
 <h2 id="多元正态分布参数估计">多元正态分布参数估计</h2>
 <h3 id="极大似然估计">极大似然估计</h3>
@@ -667,9 +669,8 @@ Sc\)</span>。</p>
 <ul>
 <li><p><span class="math inline">\(X \sim N_p(\mu , \Sigma) \iff a^TX
 \sim N(a^T\mu,a^T\Sigma a)\)</span> 对任意的 <span class="math inline">\(a \in \mathbb R^p\)</span> 成立。</p>
-<p><span class="math inline">\(X\sim N_p(\mu ,\Sigma) \iff X+d \sim
-N_p(\mu +d , \Sigma)\)</span> 对任意的 <span class="math inline">\(d\in
-\mathbb R^p\)</span> 成立。</p></li>
+<p><span class="math inline">\(X\sim N_p(\mu ,\Sigma) \iff AX+d \sim
+N_p(A\mu +d , A\Sigma A^T)\)</span> 对任意的 <span class="math inline">\(d\in \mathbb R^p\)</span> 成立。</p></li>
 <li><p>对于特定的 <span class="math inline">\(N_p(\mu ,
 \Sigma)\)</span>，我们可以用 <span class="math inline">\(p\)</span>
 个标准正态分布捏出来。对于任意的 <span class="math inline">\(Z_1,Z_2,...,Z_p\)</span> i.i.d. <span class="math inline">\(\sim N(0,1)\)</span>，记 <span class="math inline">\(Z=(Z_1,Z_2,...,Z_p)^T\)</span>。对任意的对称正定矩阵
@@ -725,13 +726,15 @@ N_p(\mu,\Sigma)\)</span>，于是有 <span class="math inline">\((X-\mu) ^T
 , \Sigma)\)</span>，记 <span class="math inline">\(V_1 =
 c_1X_1+c_2X_2+...+c_nX_n = c^TX\)</span>。</p>
 <ul>
-<li><span class="math inline">\(V_1 \sim N(c^T \mu , c^Tc
+<li><span class="math inline">\(V_1 \sim N_p(c^T \mu , c^Tc
 \Sigma)\)</span>；</li>
 <li>对于 <span class="math inline">\(V_2 =
 b_1X_1+b_2X_2+...+b_nX_n\)</span>，有 <span class="math inline">\(V_1,V_2\)</span> 的协方差矩阵为 <span class="math inline">\(\begin{bmatrix} c^Tc\Sigma &amp; b^Tc\Sigma \\
 b^Tc\Sigma &amp; b^Tb\Sigma \end{bmatrix}\)</span>。</li>
 <li><span class="math inline">\(V_1,V_2\)</span> 相互独立 <span class="math inline">\(\iff b^Tc = 0\)</span>（由上一结论直接得出）</li>
-</ul></li>
+</ul>
+<p>尤其要注意此处与上一部分最后一段的关系，<span class="math inline">\(V_1,V_2\)</span>
+是在对若干随机向量做线性组合，上一部分最后一段是在对一个随机向量的全体分量做线性组合。也可以从所得结果的维数来判断。</p></li>
 </ul>
 <h1 id="lecture-4">Lecture 4</h1>
 <p>单正态分布总体的推断。</p>
@@ -764,8 +767,7 @@ F_{1,n-1}\)</span>，这些都是假设检验中常用的检验统计量。我�
 <p>对于一族 <span class="math inline">\(X_1,X_2,...,X_n \sim N_p(\mu ,
 \Sigma)\)</span>，假设 <span class="math inline">\(H_0 :\mu = \mu_0 ;
 H_1 :\mu \neq \mu_0\)</span>。</p>
-<p>取 $T^2 = ()^2 $，在 <span class="math inline">\(H_0\)</span>
-下有</p>
+<p>在 <span class="math inline">\(H_0\)</span> 下有</p>
 <p><span class="math display">\[\frac{T^2}{n-1} = \sqrt n (\bar{X} -
 \mu_0)^T (\Sigma (X_j - \bar X)(X_j - \bar X)^T)^{-1} \sqrt n (\bar{X} -
 \mu_0) = Z_1 (\Sigma_{i=1} ^n Z_iZ_i^T)^{-1}Z_i^T \sim \frac{p}{n-p}
@@ -796,10 +798,21 @@ C^{-T}(\Sigma (X_j - \bar X)(X_j - \bar X)^T)^{-1}C^{-1}C \sqrt n
 <p>可以看到与做线性变换之前是相同的，也即对于 <span class="math inline">\(Y_i = CX_i +d\)</span>，可以使用相同的 test
 statistic 进行检验。</p></li>
 <li><p>实际上，Hotelling test 和 likelihood ratio test
-是完全等价的，这个可以在一元的情况下看到，也可以推广到多元。</p></li>
+是完全等价的，这个可以在一元的情况下看到，也可以推广到多元。多元情况下的
+likelihood ratio 是：</p>
+<p><span class="math display">\[\Lambda = (\frac{|\hat \Sigma|}{|\hat
+\Sigma_0|}) ^{\frac n 2}= (\frac{|\Sigma_{j=1} ^n (x_j - \bar x)(x_j -
+\bar x)^T|}{|\Sigma_{j=1} ^ n (x_j - \mu_0)(x_j-\mu_0)^T|})^{\frac n
+2}\]</span></p>
+<p>由此得到 test statistic 的另一表示，不需要对矩阵 <span class="math inline">\(S\)</span> 求逆：</p>
+<p><span class="math display">\[T^2 = (n-1) \frac{|\Sigma_{j=1} ^n (x_j
+- \mu_0)(x_j - \mu_0)^T|}{|\Sigma_{j=1} ^ n (x_j - \bar x)(x_j-\bar
+x)^T|} - (n-1)\]</span></p></li>
 </ul>
 <h2 id="confidence-interval-of-mu_p-times-1">Confidence Interval of
 <span class="math inline">\(\mu_{p \times 1}\)</span></h2>
+<h3 id="confidence-region-of-the-mean">Confidence Region of the
+Mean</h3>
 <p>已知 <span class="math inline">\(Z_1,Z_2,...,Z_n i.i.d \sim
 N_p(\mu,\Sigma)\)</span>，对于已有的数据 <span class="math inline">\(z_1,z_2,...,z_n\)</span> 希望求得 <span class="math inline">\(\mu\)</span> 的置信区间，其中 <span class="math inline">\(\mu ,\Sigma\)</span> 均未知。在一元的情况下 (<span class="math inline">\(p=1\)</span>) 可以使用 <span class="math inline">\(\frac{\bar Z - \mu}{s / \sqrt n} \sim
 t_{n-1}\)</span> 进行估计。<span class="math inline">\(\mu\)</span> 的
@@ -811,35 +824,198 @@ Z +t_{n-1,\alpha /2} \frac{s}{\sqrt n})\)</span>。</p>
 <p><span class="math display">\[R(x) = \{\mu: n(\bar Z - \mu )^T S^{-1}
 (\bar Z -\mu) \leq c^2 , c^2 = T^2(\alpha) =
 \frac{p(n-1)}{n-p}F_{p,n-p}(\alpha) \}\]</span></p>
-<p>接下来我们考虑如何估计这个区域的大致范围。</p>
+<p>这是一个椭圆。</p>
+<h3 id="individual-coverage-intervals">Individual Coverage
+Intervals</h3>
+<p>接下来考虑 <span class="math inline">\(Z_1,Z_2,...,Z_n\)</span>
+的线性组合 <span class="math inline">\(a^T Z = a_1 Z_1 + ... +a_n
+Z_n\)</span>，我们希望估计它的均值 <span class="math inline">\(a^T
+\mu\)</span>，这是一个标量。</p>
+<p>由于 <span class="math inline">\(a^T Z \sim N(a^T \mu, a^T \Sigma
+a)\)</span>，因此 <span class="math inline">\(a^T \mu\)</span> 的 <span class="math inline">\(100 \% (1-\beta)\)</span> 置信区间是 <span class="math inline">\((a^T \bar Z - t_{n-1}(\beta/2) \sqrt{a^T \frac S n
+a},a^T \bar Z + t_{n-1}(\beta/2) \sqrt{a^T \frac S n a})\)</span></p>
+<p>以下继续考虑 <span class="math inline">\(Z_1,Z_2,...,Z_n\)</span>
+的一族共 <span class="math inline">\(m\)</span> 个线性组合 <span class="math inline">\(a_1 ^T Z,a_2 ^T Z,...,a_m ^TZ\)</span>
+的置信区间推断。</p>
 <h3 id="bonferronis-method">Bonferroni's Method</h3>
-<p>对于 <span class="math inline">\(\mu\)</span> 的 <span class="math inline">\(p\)</span> 个分量，分别对其做置信系数为 <span class="math inline">\(\alpha /p\)</span> 的置信区间，则这 <span class="math inline">\(p\)</span>
-个区间拼在一起得到的矩体就至少能够包含住真正的置信域。也就是说，对 <span class="math inline">\(\mu\)</span> 的每个分量 <span class="math inline">\(\mu _k\)</span> 做置信区间：<span class="math inline">\((\bar{Z_k} - \sqrt n t_{\frac{\alpha}{2p},n-1}
-s_k,\bar{Z_k} + \sqrt n t_{\frac{\alpha}{2p},n-1} s_k )\)</span></p>
+<p>对于 <span class="math inline">\(m\)</span> 个不同的线性组合 <span class="math inline">\(a_1^TZ,a_2^TZ,...,a_m^TZ\)</span>，分别对其做置信系数为
+<span class="math inline">\(\frac \alpha m\)</span> 的置信区间，则这
+<span class="math inline">\(m\)</span>
+个区间拼在一起得到的矩体就至少能够包含住真正的置信域。</p>
+<p>也就是说，对每个 <span class="math inline">\(a_i^T\mu\)</span>
+做置信区间：<span class="math inline">\((a_i ^T\bar{X} -
+t_{n-1}(\frac{\alpha}{2m}) \sqrt{a_i ^T \frac S n a_i},a_i ^T\bar{X} +
+t_{n-1}(\frac{\alpha}{2m}) \sqrt{a_i ^T \frac S n a_i} )\)</span></p>
 <p>拼在一起得到的矩体</p>
-<p><span class="math display">\[(\bar{Z_1} - \sqrt n
-t_{\frac{\alpha}{2p},n-1} s_1,\bar{Z_1} + \sqrt n
-t_{\frac{\alpha}{2p},n-1} s_1 ) \times (\bar{Z_2} - \sqrt n
-t_{\frac{\alpha}{2p},n-1} s_2,\bar{Z_2} + \sqrt n
-t_{\frac{\alpha}{2p},n-1} s_2 ) \times \cdots \times(\bar{Z_p} - \sqrt n
-t_{\frac{\alpha}{2p},n-1} s_p,\bar{Z_p} + \sqrt n
-t_{\frac{\alpha}{2p},n-1} s_p )\]</span></p>
+<p><span class="math display">\[(a_1 ^T\bar{X} -
+t_{n-1}(\frac{\alpha}{2m}) \sqrt{a_1 ^T \frac S n a_1},a_1 ^T\bar{X} +
+t_{n-1}(\frac{\alpha}{2m}) \sqrt{a_1 ^T \frac S n a_1} ) \times  \cdots
+\times(a_m ^T\bar{X} - t_{n-1}(\frac{\alpha}{2m}) \sqrt{a_m ^T \frac S n
+a_m},a_m ^T\bar{X} + t_{n-1}(\frac{\alpha}{2m}) \sqrt{a_m ^T \frac S n
+a_m} )\]</span></p>
 <p>即为一个符合条件的置信域。实际上这一置信域的置信系数比 <span class="math inline">\(\alpha\)</span> 更大，只是一个粗略的估计。</p>
 <h3 id="t2-interval"><span class="math inline">\(T^2\)</span>
 interval</h3>
-<p>实际上在上面的讨论里已经看到了，对 <span class="math inline">\(Z_i\)</span>
-随意做统一的线性变换，得到的置信区间仍然是 <span class="math inline">\(R(x)\)</span>。</p>
-<p>新的置信域是 <span class="math inline">\((a^T \bar{X} - c\sqrt{a^T
-\frac S n a},a^T \bar{X} + c\sqrt{a^T \frac S n a})\)</span>，其中 <span class="math inline">\(c^2 = T^2(\alpha) = \frac{p(n-1)}{n-p}
+<p>事实上，对任意的线性变换 <span class="math inline">\(a^TZ\)</span>
+都存在一个统一的 simultaneous coverage interval，也称作 <span class="math inline">\(T^2\)</span> interval，是</p>
+<p><span class="math inline">\((a^T \bar{X} - c\sqrt{a^T \frac S n
+a},a^T \bar{X} + c\sqrt{a^T \frac S n a})\)</span>，其中 <span class="math inline">\(c^2 = T^2(\alpha) = \frac{p(n-1)}{n-p}
 F_{p,n-p}(\alpha)\)</span>。</p>
 <p>这个置信域比 Bonferroni's Method 得到的置信域更大。</p>
+<p>注意当 <span class="math inline">\(a\)</span> 在 <span class="math inline">\(S^{-1}\bar X\)</span> 方向上时以上区间正好是一个
+<span class="math inline">\(100\%(1-\alpha)\)</span>
+的置信区间，也即这个时候区间取到最大。但这一方向会随着样本的变化而变化。</p>
 <h3 id="real-world">Real World（？</h3>
-<p>实际上真正的置信域是一个椭圆，可以由 <span class="math inline">\(R(x)\)</span> 二次型的形状看出来。对 <span class="math inline">\(Z_i\)</span>
-做线性变换得到的椭圆会在形状和方向上有所变化，但是仍然与 <span class="math inline">\(T^2\)</span> interval
-得到的矩形相切。也就是说，这个椭圆在不同分量上的投影和上述置信域的区间是重合的。</p>
+<p>对 <span class="math inline">\(Z_i\)</span>
+做线性变换得到的椭圆会在形状和方向上有所变化，但与 <span class="math inline">\(T^2\)</span> interval
+得到的矩形相切。不同置信区间的覆盖面积如图所示。</p>
 <p><img src="https://s2.loli.net/2023/03/18/7zqKjhLmbZRWMf4.png" alt="regions.png"></p>
 <h1 id="lecture-5">Lecture 5</h1>
-<p>咕掉了，草，下次一定补（</p>
+<h2 id="two-population-test">Two Population Test</h2>
+<h3 id="双正态同方差总体的均值比较">双正态同方差总体的均值比较</h3>
+<ul>
+<li><p>两个总体中随机抽样得到的样本和相关统计量分别表示如下：</p>
+<table>
+<colgroup>
+<col style="width: 16%">
+<col style="width: 41%">
+<col style="width: 41%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Sample</th>
+<th><span class="math inline">\(X_{11},X_{12},...,X_{1n_1}\)</span></th>
+<th><span class="math inline">\(X_{21},X_{22},...,X_{2n_2}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Sample Mean</td>
+<td><span class="math inline">\(\bar X_1 = \frac{1}{n_1} \Sigma_{j=1}
+^{n_1} X_{1j}\)</span></td>
+<td><span class="math inline">\(\bar X_2= \frac{1}{n_2} \Sigma_{j=1}
+^{n_2} X_{2j}\)</span></td>
+</tr>
+<tr class="even">
+<td>Sample Covariance Matrix</td>
+<td><span class="math inline">\(S_1 = \frac{1}{n_1 -1 }\Sigma_{j=1}
+^{n_1} (X_{1j} - \bar X_1)(X_{1j} - \bar X_1)^T\)</span></td>
+<td><span class="math inline">\(S_2= \frac{1}{n_2 -1 }\Sigma_{j=1}
+^{n_2} (X_{2j} - \bar X_2)(X_{2j} - \bar X_2)^T\)</span></td>
+</tr>
+</tbody>
+</table></li>
+<li><p>检验前对于两个总体的假设：</p>
+<ul>
+<li><span class="math inline">\(X_{11},X_{12},...,X_{1n_1}\)</span>
+i.i.d. <span class="math inline">\(\sim
+N_p(\mu_1,\Sigma_1)\)</span>，<span class="math inline">\(X_{21},X_{22},...,X_{2 n_2}\)</span> i.i.d. <span class="math inline">\(\sim N_p(\mu_2,\Sigma_2)\)</span></li>
+<li>两组样本之间相互独立</li>
+<li>在 <span class="math inline">\(n_1,n_2\)</span> 较小的情况下，假设
+<span class="math inline">\(\Sigma = \Sigma_1 = \Sigma_2\)</span></li>
+</ul></li>
+<li><p>Hypothesis: <span class="math inline">\(H_0 : \mu_1 - \mu_2 =
+\delta_0\)</span>，<span class="math inline">\(H_1 : \mu_1 - \mu_2 \neq
+\delta_0\)</span></p></li>
+<li><p>检验统计量的构造：</p>
+<p>由于 <span class="math inline">\(S_{pooled} = \frac{n_1 -1
+}{n_1+n_2-2}S_1 + \frac{n_2 -1}{n_1 + n_2 -2}S_2 \sim \frac{W_p(n_1 +n_2
+-2,\Sigma)}{n_1+n_2-2}\)</span>，可以以此构造 Test statistic：</p>
+<p><span class="math display">\[(\frac{1}{n_1} + \frac{1}{n_2})^{-1}
+(\bar X_1 - \bar X_2 - \delta_0)^T S_{pooled}^{-1} (\bar X_1 - \bar X_2
+- \delta_0) \sim \frac{p(n_1+n_2-2)}{n_1+n_2-p-1}
+F_{p,n_1+n_2-p-1}\]</span></p>
+<p>当 <span class="math inline">\(T_0 ^2 &gt;
+\frac{p(n_1+n_2-2)}{n_1+n_2-p-1} F_{p,n_1+n_2-p-1} (\alpha)\)</span>
+时拒绝原假设。</p></li>
+<li><p>置信区间的构造：</p>
+<p>对于任意的线性变换 <span class="math inline">\(a^T(\mu_1 -
+\mu_2)\)</span>，simultaneous confidence interval 是</p>
+<p><span class="math display">\[(a^T(\bar X_1 - \bar X_2) - c \sqrt{a^T
+(\frac{1}{n_1} + \frac{1}{n_2}) S_{pooled} a},a^T(\bar X_1 - \bar X_2) +
+c \sqrt{a^T (\frac{1}{n_1} + \frac{1}{n_2}) S_{pooled} a})\]</span></p>
+<p>其中 <span class="math inline">\(c^2 = \frac{p(n_1+n_2
+-2)}{n_1+n_2-p-1}\)</span>。</p>
+<p>注意到 <span class="math inline">\(a\)</span> 的任意性，可以通过取
+<span class="math inline">\(a_i=e_i\)</span> 的方式来求得 <span class="math inline">\(\mu_1 - \mu_2\)</span> 的各个分量的置信区间；当
+<span class="math inline">\(a\)</span> 与 <span class="math inline">\(S_{pooled}^{-1} (\bar X_1 - \bar X_2)\)</span>
+时上述置信区间的 confidence level 恰为 <span class="math inline">\(100
+\% (1-\alpha)\)</span>。</p></li>
+</ul>
+<h2 id="large-sample-test">Large Sample Test</h2>
+<h3 id="large-sample-behavior">Large Sample Behavior</h3>
+<p>在大样本场景下，类似于一元的中心极限定理，我们不需要正态性也可以推出一些关于
+<span class="math inline">\(\bar X,S\)</span> 在此时的近似分布。</p>
+<p>$X_1 , X_2 ,...,X_n $ i.i.d. 来自某一总体，其均值为 <span class="math inline">\(\mu\)</span>，协方差矩阵为 <span class="math inline">\(\Sigma\)</span>，不必要求正态分布。于是有：</p>
+<ul>
+<li><span class="math inline">\(\sqrt n (\bar X - \mu) \sim
+N_p(0,\Sigma)\)</span></li>
+<li><span class="math inline">\(n (\bar X - \mu) S^{-1} (\bar X - \mu)
+\sim \chi^2 _p\)</span></li>
+</ul>
+<p>注意其中 <span class="math inline">\(S = \frac{1}{n-1} \Sigma_{i=1}
+^n (X_i - \bar X)(X_i - \bar X)^T\)</span>，上述两式为近似分布，在 <span class="math inline">\(n\)</span> 远大于 <span class="math inline">\(p\)</span> 的条件下成立。</p>
+<p>这是我们进行后续推断的基础。</p>
+<h3 id="大样本单总体均值推断">大样本单总体均值推断</h3>
+<p>$X_1 , X_2 ,...,X_n $ i.i.d. 来自某一总体，其均值为 <span class="math inline">\(\mu\)</span>，协方差矩阵为 <span class="math inline">\(\Sigma\)</span>，不必要求正态分布。</p>
+<p>假设 <span class="math inline">\(H_0 : \mu = \mu_0; H_1 : \mu \neq
+\mu_0\)</span>，于是 test statistic 是 <span class="math inline">\(n(\bar x - \mu_0)^T S^{-1} (\bar x - \mu_0 ) \sim
+\chi^2 _p\)</span>，当 <span class="math inline">\(T_0^2 &gt; \chi_p ^2
+(\alpha)\)</span> 时拒绝原假设。</p>
+<p>对于任意的线性变换 <span class="math inline">\(a^TX\)</span>，<span class="math inline">\(a^T \mu\)</span> 的 simultaneous CI 是 <span class="math inline">\((a^T \bar X - \sqrt{\chi^2 _p (\alpha)}
+\sqrt{\frac{a^TSa}{n} },a^T \bar X + \sqrt{\chi^2 _p (\alpha)}
+\sqrt{\frac{a^TSa}{n} })\)</span></p>
+<h3 id="大样本双异方差总体均值推断">大样本双异方差总体均值推断</h3>
+<ul>
+<li><p>检验前对于两个总体的假设：</p>
+<ul>
+<li><span class="math inline">\(X_{11},X_{12},...,X_{1n_1}\)</span>
+i.i.d. <span class="math inline">\(\sim
+Population(\mu_1,\Sigma_1)\)</span>，<span class="math inline">\(X_{21},X_{22},...,X_{2 n_2}\)</span> i.i.d. <span class="math inline">\(\sim Population(\mu_2,\Sigma_2)\)</span></li>
+<li>两组样本之间相互独立</li>
+<li>在 <span class="math inline">\(n_1,n_2\)</span> 较大（均远大于 <span class="math inline">\(p\)</span>）的情况下，我们允许 <span class="math inline">\(\Sigma_1 \neq \Sigma_2\)</span></li>
+</ul></li>
+<li><p>Hypothesis: <span class="math inline">\(H_0 :\mu_1 - \mu_2 =
+\delta_0; H_1 : \mu_1 - \mu_2 \neq \delta_0\)</span></p></li>
+<li><p>Test statistic: <span class="math inline">\((\bar X_1 - \bar X_2
+- \delta_0 )^T (\frac{1}{n_1} S_1 + \frac{1}{n_2} S_2 )^{-1} (\bar X_1 -
+\bar X_2 - \delta_0) \sim ^{H_0} \chi^2 _p\)</span>，当 <span class="math inline">\(T_0 ^2 &gt; \chi^2_p(\alpha)\)</span>
+时拒绝原假设。</p></li>
+<li><p>标准的 <span class="math inline">\(\mu_1 - \mu_2\)</span> 的
+<span class="math inline">\(100\% (1-\alpha)\)</span>
+置信域是一个椭圆，由区域</p>
+<p><span class="math display">\[\{\mu_1 -\mu_2 : ( \bar X_1 - \bar X_2 -
+(\mu_1 - \mu_2))^T(\frac{1}{n_1}S_1 +\frac{1}{n_2}S_2)^{-1}(\bar X_1 -
+\bar X_2 - (\mu_1 - \mu_2)) \leq \chi^2_p(\alpha)=c^2 \}\]</span></p>
+<p>表示。</p>
+<p>类似地考虑 <span class="math inline">\(X_1,X_2\)</span>
+的线性变换，<span class="math inline">\(a^T(\mu_1 - \mu_2)\)</span> 的
+simultaneous CI 是</p>
+<p><span class="math display">\[(a^T(\bar X_1 - \bar X_2) - c
+\sqrt{a^T(\frac{1}{n_1} S_1 + \frac{1}{n_2} S_2)a},a^T(\bar X_1 - \bar
+X_2) + c \sqrt{a^T(\frac{1}{n_1} S_1 + \frac{1}{n_2} S_2)a} ),c^2 =
+\chi^2_p(\alpha)\]</span></p></li>
+</ul>
+<h3 id="大样本双总体方差推断">大样本双总体方差推断</h3>
+<ul>
+<li><p>检验前对于两个总体的假设：</p>
+<ul>
+<li><span class="math inline">\(X_{11},X_{12},...,X_{1n_1}\)</span>
+i.i.d. <span class="math inline">\(\sim
+Population(\mu_1,\Sigma_1)\)</span>，<span class="math inline">\(X_{21},X_{22},...,X_{2 n_2}\)</span> i.i.d. <span class="math inline">\(\sim Population(\mu_2,\Sigma_2)\)</span></li>
+<li>两组样本之间相互独立</li>
+</ul></li>
+<li><p>Hypothesis: <span class="math inline">\(H_0 : \Sigma_1 =
+\Sigma_2; H_1 : \Sigma_1 \neq \Sigma_2\)</span></p></li>
+<li><p>Test statistic：考虑 likelihood ratio <span class="math inline">\(\Lambda = \frac{max_{\theta \in \Theta_0}
+L(\theta)}{max_{\theta \in \Theta} L(\theta)} = \frac{|S_1|^{n_1 /2}
+|S_2|^{n_2/2}}{|S_{pooled}|^{n_1+n_2-2/2}}\)</span>，自由度之差为 <span class="math inline">\(v-v_0 = df(\Theta) - df(\Theta_0)\)</span>，于是在
+<span class="math inline">\(H_0\)</span> 假设下有 <span class="math inline">\(-2 \ln \Lambda \sim \chi^2_{v-v_0}\)</span>
+是为检验统计量。</p>
+<p>George Box 对其进行了修改，使得可以对 <span class="math inline">\(g\)</span> 个总体进行方差推断，具体略去。</p></li>
+</ul>
+<h2 id="assumption-check">Assumption Check</h2>
+<p>类似于线性回归中所讲的内容，此处略去。</p>
 <h1 id="lecture-6">Lecture 6</h1>
 <p>关于主成分分析（Principal Component Analysis）在 population
 上的理论和在 sample
@@ -1102,8 +1278,10 @@ assumption &amp; detect outliers</h3>
           <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-1"><span class="nav-text">Lecture 1</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E5%85%83%E6%95%B0%E6%8D%AE%E7%9A%84%E7%BB%84%E7%BB%87"><span class="nav-text">多元数据的组织</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8F%8F%E8%BF%B0%E6%80%A7%E7%BB%9F%E8%AE%A1%E9%87%8F"><span class="nav-text">描述性统计量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mahalanobis-distance"><span class="nav-text">Mahalanobis Distance</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#exploratory-data-analysis-eda"><span class="nav-text">Exploratory Data Analysis
 (EDA)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#boxplot"><span class="nav-text">Boxplot</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#histogram"><span class="nav-text">Histogram</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#scatter-plot"><span class="nav-text">Scatter Plot</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-2"><span class="nav-text">Lecture 2</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#linear-algebra"><span class="nav-text">Linear Algebra</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#matrix-interpretation-of-mahalanobis-distance"><span class="nav-text">Matrix
 Interpretation of Mahalanobis-distance</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#matrix-inequality"><span class="nav-text">Matrix Inequality</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8F%8F%E8%BF%B0%E6%80%A7%E7%BB%9F%E8%AE%A1%E9%87%8F%E7%9A%84%E7%9F%A9%E9%98%B5%E8%A1%A8%E7%A4%BA"><span class="nav-text">描述性统计量的矩阵表示</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-3"><span class="nav-text">Lecture 3</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E5%85%83%E6%AD%A3%E6%80%81%E5%88%86%E5%B8%83"><span class="nav-text">多元正态分布</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A1%A5%E5%85%85%E7%9F%A9%E9%98%B5%E5%90%91%E9%87%8F%E6%B1%82%E5%AF%BC%E6%9C%9F%E6%9C%9B"><span class="nav-text">补充：矩阵向量求导、期望</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E5%85%83%E6%AD%A3%E6%80%81%E5%88%86%E5%B8%83%E5%8F%82%E6%95%B0%E4%BC%B0%E8%AE%A1"><span class="nav-text">多元正态分布参数估计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9E%81%E5%A4%A7%E4%BC%BC%E7%84%B6%E4%BC%B0%E8%AE%A1"><span class="nav-text">极大似然估计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%A0%E5%81%8F%E4%BC%B0%E8%AE%A1"><span class="nav-text">无偏估计</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E5%85%83%E6%AD%A3%E6%80%81%E5%88%86%E5%B8%83%E7%9A%84%E6%80%A7%E8%B4%A8"><span class="nav-text">多元正态分布的性质</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-4"><span class="nav-text">Lecture 4</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#wishart-distribution"><span class="nav-text">Wishart Distribution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#one-sample-t-test"><span class="nav-text">One Sample T-test</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#confidence-interval-of-mu_p-times-1"><span class="nav-text">Confidence Interval of
-\(\mu_{p \times 1}\)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#bonferronis-method"><span class="nav-text">Bonferroni&#39;s Method</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#t2-interval"><span class="nav-text">\(T^2\)
-interval</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#real-world"><span class="nav-text">Real World（？</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-5"><span class="nav-text">Lecture 5</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-6"><span class="nav-text">Lecture 6</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#for-population"><span class="nav-text">For Population</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#pca-%E6%96%B9%E6%B3%95%E7%9A%84%E5%85%B7%E4%BD%93%E6%93%8D%E4%BD%9C"><span class="nav-text">PCA 方法的具体操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AD%A3%E8%A7%84%E5%8C%96%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E4%B8%8B%E7%9A%84-pca"><span class="nav-text">正规化随机变量下的 PCA</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E5%85%83%E6%AD%A3%E6%80%81%E5%88%86%E5%B8%83%E4%B8%8B%E7%9A%84-pca"><span class="nav-text">多元正态分布下的 PCA</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#for-sample"><span class="nav-text">For Sample</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#practical-issues"><span class="nav-text">Practical Issues</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#how-many-principal-components-to-retain"><span class="nav-text">How many principal
+\(\mu_{p \times 1}\)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#confidence-region-of-the-mean"><span class="nav-text">Confidence Region of the
+Mean</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#individual-coverage-intervals"><span class="nav-text">Individual Coverage
+Intervals</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bonferronis-method"><span class="nav-text">Bonferroni&#39;s Method</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#t2-interval"><span class="nav-text">\(T^2\)
+interval</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#real-world"><span class="nav-text">Real World（？</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-5"><span class="nav-text">Lecture 5</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#two-population-test"><span class="nav-text">Two Population Test</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%8C%E6%AD%A3%E6%80%81%E5%90%8C%E6%96%B9%E5%B7%AE%E6%80%BB%E4%BD%93%E7%9A%84%E5%9D%87%E5%80%BC%E6%AF%94%E8%BE%83"><span class="nav-text">双正态同方差总体的均值比较</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#large-sample-test"><span class="nav-text">Large Sample Test</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#large-sample-behavior"><span class="nav-text">Large Sample Behavior</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%A7%E6%A0%B7%E6%9C%AC%E5%8D%95%E6%80%BB%E4%BD%93%E5%9D%87%E5%80%BC%E6%8E%A8%E6%96%AD"><span class="nav-text">大样本单总体均值推断</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%A7%E6%A0%B7%E6%9C%AC%E5%8F%8C%E5%BC%82%E6%96%B9%E5%B7%AE%E6%80%BB%E4%BD%93%E5%9D%87%E5%80%BC%E6%8E%A8%E6%96%AD"><span class="nav-text">大样本双异方差总体均值推断</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%A7%E6%A0%B7%E6%9C%AC%E5%8F%8C%E6%80%BB%E4%BD%93%E6%96%B9%E5%B7%AE%E6%8E%A8%E6%96%AD"><span class="nav-text">大样本双总体方差推断</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#assumption-check"><span class="nav-text">Assumption Check</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-6"><span class="nav-text">Lecture 6</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#for-population"><span class="nav-text">For Population</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#pca-%E6%96%B9%E6%B3%95%E7%9A%84%E5%85%B7%E4%BD%93%E6%93%8D%E4%BD%9C"><span class="nav-text">PCA 方法的具体操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AD%A3%E8%A7%84%E5%8C%96%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E4%B8%8B%E7%9A%84-pca"><span class="nav-text">正规化随机变量下的 PCA</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E5%85%83%E6%AD%A3%E6%80%81%E5%88%86%E5%B8%83%E4%B8%8B%E7%9A%84-pca"><span class="nav-text">多元正态分布下的 PCA</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#for-sample"><span class="nav-text">For Sample</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#practical-issues"><span class="nav-text">Practical Issues</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#how-many-principal-components-to-retain"><span class="nav-text">How many principal
 components to retain</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#check-normality-assumption-detect-outliers"><span class="nav-text">Check normality
 assumption &amp; detect outliers</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#limitations"><span class="nav-text">Limitations</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-7"><span class="nav-text">Lecture 7</span></a></li></ol></div>
       </div>
