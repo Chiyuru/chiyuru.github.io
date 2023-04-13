@@ -6,7 +6,7 @@
   <link href="https://chiyuru.github.io/atom.xml" rel="self"/>
   
   <link href="https://chiyuru.github.io/"/>
-  <updated>2023-04-12T15:42:57.995Z</updated>
+  <updated>2023-04-13T14:47:22.373Z</updated>
   <id>https://chiyuru.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://chiyuru.github.io/2023/04/01/Diary-2023-04/"/>
     <id>https://chiyuru.github.io/2023/04/01/Diary-2023-04/</id>
     <published>2023-03-31T16:32:18.000Z</published>
-    <updated>2023-04-12T15:42:57.995Z</updated>
+    <updated>2023-04-13T14:47:22.373Z</updated>
     
     
     <summary type="html">&lt;p&gt;点击查看驰雨老师两年来最艰难的一个期中月 ↓&lt;/p&gt;</summary>
@@ -52,9 +52,9 @@
     
     <category term="课程实录" scheme="https://chiyuru.github.io/tags/%E8%AF%BE%E7%A8%8B%E5%AE%9E%E5%BD%95/"/>
     
-    <category term="数学" scheme="https://chiyuru.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
-    
     <category term="统计" scheme="https://chiyuru.github.io/tags/%E7%BB%9F%E8%AE%A1/"/>
+    
+    <category term="数学" scheme="https://chiyuru.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
     
   </entry>
   
@@ -118,9 +118,9 @@ tag 下面几乎全是统计，成何体统&lt;/del&gt;。&lt;/p&gt;
     
     <category term="课程实录" scheme="https://chiyuru.github.io/tags/%E8%AF%BE%E7%A8%8B%E5%AE%9E%E5%BD%95/"/>
     
-    <category term="数学" scheme="https://chiyuru.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
-    
     <category term="统计" scheme="https://chiyuru.github.io/tags/%E7%BB%9F%E8%AE%A1/"/>
+    
+    <category term="数学" scheme="https://chiyuru.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
     
   </entry>
   
@@ -144,9 +144,9 @@ tag 下面几乎全是统计，成何体统&lt;/del&gt;。&lt;/p&gt;
     
     <category term="课程实录" scheme="https://chiyuru.github.io/tags/%E8%AF%BE%E7%A8%8B%E5%AE%9E%E5%BD%95/"/>
     
-    <category term="数学" scheme="https://chiyuru.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
-    
     <category term="统计" scheme="https://chiyuru.github.io/tags/%E7%BB%9F%E8%AE%A1/"/>
+    
+    <category term="数学" scheme="https://chiyuru.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
     
   </entry>
   
@@ -252,9 +252,9 @@ cover
     
     
     
-    <category term="数学" scheme="https://chiyuru.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
-    
     <category term="统计" scheme="https://chiyuru.github.io/tags/%E7%BB%9F%E8%AE%A1/"/>
+    
+    <category term="数学" scheme="https://chiyuru.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
     
     <category term="这里面看起来很好玩" scheme="https://chiyuru.github.io/tags/%E8%BF%99%E9%87%8C%E9%9D%A2%E7%9C%8B%E8%B5%B7%E6%9D%A5%E5%BE%88%E5%A5%BD%E7%8E%A9/"/>
     
@@ -277,11 +277,11 @@ PF。但统计推断要洗心革面好好上，也打算做预习。不仅是因
     
     <category term="课程实录" scheme="https://chiyuru.github.io/tags/%E8%AF%BE%E7%A8%8B%E5%AE%9E%E5%BD%95/"/>
     
-    <category term="刷书" scheme="https://chiyuru.github.io/tags/%E5%88%B7%E4%B9%A6/"/>
+    <category term="统计" scheme="https://chiyuru.github.io/tags/%E7%BB%9F%E8%AE%A1/"/>
     
     <category term="数学" scheme="https://chiyuru.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
     
-    <category term="统计" scheme="https://chiyuru.github.io/tags/%E7%BB%9F%E8%AE%A1/"/>
+    <category term="刷书" scheme="https://chiyuru.github.io/tags/%E5%88%B7%E4%B9%A6/"/>
     
   </entry>
   
@@ -357,9 +357,9 @@ MATLAB 的函数，那 Python 不亏。&lt;/p&gt;</summary>
     
     
     
-    <category term="刷书" scheme="https://chiyuru.github.io/tags/%E5%88%B7%E4%B9%A6/"/>
-    
     <category term="数学" scheme="https://chiyuru.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
+    
+    <category term="刷书" scheme="https://chiyuru.github.io/tags/%E5%88%B7%E4%B9%A6/"/>
     
   </entry>
   
@@ -379,9 +379,9 @@ MATLAB 的函数，那 Python 不亏。&lt;/p&gt;</summary>
     
     <category term="课程实录" scheme="https://chiyuru.github.io/tags/%E8%AF%BE%E7%A8%8B%E5%AE%9E%E5%BD%95/"/>
     
-    <category term="刷书" scheme="https://chiyuru.github.io/tags/%E5%88%B7%E4%B9%A6/"/>
-    
     <category term="数学" scheme="https://chiyuru.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
+    
+    <category term="刷书" scheme="https://chiyuru.github.io/tags/%E5%88%B7%E4%B9%A6/"/>
     
   </entry>
   
