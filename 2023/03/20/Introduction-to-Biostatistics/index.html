@@ -28,7 +28,7 @@
 <meta property="og:description" content="我都给统辅课笔记起了些什么破标题 选课的时候我还侥幸以为生统概论可以放松心情，来随便听听简单了解一下那种。可能是前置没学完的原因，倒也没那么水，ANOVA 还是花了不少时间看的。 wty 老师的英语口语真不错，可惜我听力一般，一走神就寄了。还是要感谢 V1ncent19 的统辅笔记救我，不过他看起来是前置都学完了来上的这个，写的有点抽象，我想写个废话多一点具体点的。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-03-20T05:28:58.000Z">
-<meta property="article:modified_time" content="2023-04-04T17:33:53.854Z">
+<meta property="article:modified_time" content="2023-04-26T12:55:30.797Z">
 <meta property="article:author" content="驰雨Chiyuru">
 <meta property="article:tag" content="课程实录">
 <meta property="article:tag" content="数学">
@@ -218,7 +218,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-04-05 01:33:53" itemprop="dateModified" datetime="2023-04-05T01:33:53+08:00">2023-04-05</time>
+                <time title="修改时间：2023-04-26 20:55:30" itemprop="dateModified" datetime="2023-04-26T20:55:30+08:00">2023-04-26</time>
               </span>
 
           
@@ -693,6 +693,9 @@ MS_{\alpha \gamma}} \sim ^{H_0} F_{(a-1)+(a-1)(b-1)(c-1),
 ANOVA in R</a>，和课上讲的是同一个东西但是更精细一点（</p>
 <h1 id="实验设计方法">实验设计方法</h1>
 <p>不如说是实验设计小知识（</p>
+<p>Designed experiment 的主要目标是研究若干 explanatory factor 和
+response variable 之间的因果关系。在实验中变量控制情况（也就是所谓的
+treatments）和被试者的匹配之间是完全随机的，例如在试药时安慰剂和特效药是随机分发的，甚至会将实验条件对被试者保密。</p>
 <h2 id="observational-experimental-study">Observational &amp;
 Experimental Study</h2>
 <ul>
@@ -707,6 +710,126 @@ outcomes</p></li>
 <p>简单来说，直接研究通过观察收集来的数据就是 observational
 study，数据只来自于自然的观察，收集者对事物发生不作任何干涉；experimental
 study 则需要实验者自行控制变量，在所需条件下收集数据，再进行研究。</p>
+<h2 id="crossed-and-nested-factors">Crossed and Nested Factors</h2>
+<p>这是多因素分析中的一个概念。</p>
+<ul>
+<li><p>Crossed factors: all combinations of the levels of the two
+factors are included in the study. e.g.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Factor Combination</th>
+<th>Temperature</th>
+<th>Solvent Concentration</th>
+<th>Outcome</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>Low</td>
+<td>Low</td>
+<td>/</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>Low</td>
+<td>High</td>
+<td>/</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>High</td>
+<td>Low</td>
+<td>/</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>High</td>
+<td>High</td>
+<td>/</td>
+</tr>
+</tbody>
+</table></li>
+<li><p>Nested factors: the level of one factor are unique to a
+particular level of another factor. e.g.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Factor Combination</th>
+<th>Temperature</th>
+<th>Solvent Concentration</th>
+<th>Outcome</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>Low</td>
+<td>Low</td>
+<td>/</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>High</td>
+<td>High</td>
+<td>/</td>
+</tr>
+</tbody>
+</table></li>
+</ul>
+<h2 id="completely-randomized-design">Completely randomized design</h2>
+<ul>
+<li><p>对于一个有三个因素的 designed
+experiment，建立的模型包括三个部分：</p>
+<p><span class="math inline">\(Y=\)</span> overall constant + treatment
+effect + experimental error</p>
+<p>如果采用线性回归模型，以三个因素为例，全体被试者被分为 <span class="math inline">\(8\)</span> 组，使得</p>
+<p><span class="math display">\[Y_{ij} = \beta_0 + \beta_1 X_{ij1} +
+\beta_2 X_{ij2} + \beta_3 X_{ij3} + \varepsilon_{ij}\]</span></p>
+<p>可以轻松地将其和上述的三个模型组成部分对应起来。其中 <span class="math inline">\(X_1,X_2,X_3\)</span> 类似于示性函数，此处是一种
+categorical variable，$X_i = 1 $ if treatment <span class="math inline">\(i\)</span>，otherwise <span class="math inline">\(0\)</span>。</p></li>
+<li><p>仍然以上一部分中的 Treatment of Lead-Exposed Children Trial
+为例。</p>
+<p><span class="math inline">\(100\)</span>
+名被试被分成两组分别使用安慰剂和药剂，在实验开始前、实验第 <span class="math inline">\(1, 4, 6\)</span> 周分别检验了血液铅含量水平。第 i
+名被试的实验开始前水平为 <span class="math inline">\(y_{i1}\)</span>，实验结束后水平为 <span class="math inline">\(y_{i2}\)</span>，变化水平为 <span class="math inline">\(d_i =
+y_{i2}-y_{i1}\)</span>，希望利用这些数据观察药剂的有效程度。</p>
+<p>我们在这一实验中设定三个不同的 explanatory factor，分别是 treatment
+type (succimer or placebo)，children's ID (from <span class="math inline">\(1\)</span> to <span class="math inline">\(100\)</span>，用于展示个体间的差别)，time point
+(week <span class="math inline">\(0,1,4,6\)</span>)。其中，treatment
+type 和 time point 可能会协同作用。Outcome，也即 response variable
+设定为血铅浓度 <span class="math inline">\(Y\)</span>。</p>
+<p>模型为：</p>
+<p><span class="math display">\[Y_{ijt} = \mu + \alpha_i + \beta_{j(i)}
++ \gamma_t + (\alpha \gamma)_{it} + \varepsilon_{ijt}\]</span></p>
+<p>参数假设为：</p>
+<p><span class="math display">\[\beta_{j(i)} \sim N(0,\sigma_\beta
+^2)\]</span></p>
+<p><span class="math display">\[\varepsilon_{ijk} \sim
+N(0,\sigma^2)\]</span></p>
+<p>自由度和方差分解为：</p>
+<p><span class="math display">\[Y_{ijt} - Y_{...} = (\bar Y_{i..} - \bar
+Y_{...}) +(\bar Y_{..t} - \bar Y_{...}) +(\bar Y_{i.t} - \bar Y_{i..} -
+\bar Y_{..t} + \bar Y_{...}) + (\bar Y_{ij.} - \bar Y_{i..}) + (Y_{ijt}
+- \bar Y_{ij.} - \bar Y_{i.t} + \bar Y_{i..})\]</span></p>
+<p><span class="math display">\[df: Nn-1 =
+(a-1)+(n-1)+(a-1)(n-1)+(N-a)+(N-a)(n-1)\]</span></p>
+<p>可以提出并进行检验的问题有：</p>
+<ul>
+<li><p>安慰剂和药剂之间有无明显的区别？在第 <span class="math inline">\(0,1,4,6\)</span>
+周时，两组之间的血铅值是否有明显差异？</p>
+<p><span class="math inline">\(H_0: \mu_t(S) = \mu_t(P), \forall t=
+1,2,3,4\)</span>，其中 <span class="math inline">\(\mu_t = \mu +
+\gamma_t + (\alpha
+\gamma)_{it}\)</span>，也即取出全体和时间有关的项。</p></li>
+<li><p>也可以换一种表示方法：安慰剂和药剂是否在降低血铅方面有同等的效果？</p>
+<p><span class="math inline">\(H_0 : \mu_t(S) - \mu_1 (S) = \mu_t(P) -
+\mu_1(P),\forall t =2,3,4\)</span></p>
+<p>这等价于 <span class="math inline">\(H_0: (\alpha \gamma)_{it} =
+0,\forall i = 1,2, t=1,2,3,4\)</span>，这是因为参数假设中认为 <span class="math inline">\(\Sigma (\alpha \gamma)_{it}=0\)</span>。.</p></li>
+</ul></li>
+</ul>
 
     </div>
 
@@ -858,7 +981,7 @@ study 则需要实验者自行控制变量，在所需条件下收集数据，�
           <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#analysis-of-variance"><span class="nav-text">Analysis of Variance</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8Btreatment-of-lead-exposed-children-trial"><span class="nav-text">示例——Treatment of
 Lead-Exposed Children Trial</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#one-factor-anova"><span class="nav-text">One Factor ANOVA</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#cell-means-model"><span class="nav-text">Cell means model</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#factor-effects-model"><span class="nav-text">Factor Effects Model</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#two-factors-anova"><span class="nav-text">Two Factors ANOVA</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#factor-effects-model-1"><span class="nav-text">Factor Effects Model</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#random-effect-test"><span class="nav-text">Random Effect Test</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#why-random-effects"><span class="nav-text">Why random effects?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cell-means-model-for-random-effect"><span class="nav-text">Cell means model for random
 effect</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#random-factor-effects-model"><span class="nav-text">Random factor effects model</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mixed-factors-effects-model"><span class="nav-text">Mixed factors effects model</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#anova-table-construction"><span class="nav-text">ANOVA table construction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#r-code-for-anova"><span class="nav-text">R code for ANOVA</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E8%AE%BE%E8%AE%A1%E6%96%B9%E6%B3%95"><span class="nav-text">实验设计方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#observational-experimental-study"><span class="nav-text">Observational &amp;
-Experimental Study</span></a></li></ol></li></ol></div>
+Experimental Study</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#crossed-and-nested-factors"><span class="nav-text">Crossed and Nested Factors</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#completely-randomized-design"><span class="nav-text">Completely randomized design</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
