@@ -6,7 +6,7 @@
   <link href="https://chiyuru.github.io/atom.xml" rel="self"/>
   
   <link href="https://chiyuru.github.io/"/>
-  <updated>2023-05-11T15:10:44.713Z</updated>
+  <updated>2023-05-11T18:24:38.614Z</updated>
   <id>https://chiyuru.github.io/</id>
   
   <author>
@@ -17,11 +17,32 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>概率论 (1) 期末考点啥</title>
+    <link href="https://chiyuru.github.io/2023/05/12/Probability-Theory-I-Final-2023-Spring/"/>
+    <id>https://chiyuru.github.io/2023/05/12/Probability-Theory-I-Final-2023-Spring/</id>
+    <published>2023-05-11T16:05:42.000Z</published>
+    <updated>2023-05-11T18:24:38.614Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;不想存一堆照片复习还要靠翻相册，只是写在纸上的话又总是弄丢，&lt;del&gt;为什么不写到摸鱼学导论上呢&lt;/del&gt;，&lt;del&gt;水一篇吧&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;被这学期突然增加的期中整怕了，lzx
+的题不背一下的话还真不是每个都好做。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="数学" scheme="https://chiyuru.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
+    
+    <category term="概率" scheme="https://chiyuru.github.io/tags/%E6%A6%82%E7%8E%87/"/>
+    
+  </entry>
+  
+  <entry>
     <title>日记·篇九·23年5月</title>
     <link href="https://chiyuru.github.io/2023/05/01/Diary-2023-05/"/>
     <id>https://chiyuru.github.io/2023/05/01/Diary-2023-05/</id>
     <published>2023-04-30T17:35:47.000Z</published>
-    <updated>2023-05-11T15:10:44.713Z</updated>
+    <updated>2023-05-12T14:07:07.917Z</updated>
     
     
     <summary type="html">&lt;p&gt;是不是快期末了（&lt;/p&gt;</summary>
@@ -399,24 +420,6 @@ MATLAB 的函数，那 Python 不亏。&lt;/p&gt;</summary>
     <category term="刷书" scheme="https://chiyuru.github.io/tags/%E5%88%B7%E4%B9%A6/"/>
     
     <category term="数学" scheme="https://chiyuru.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>日记·篇一·22年9月</title>
-    <link href="https://chiyuru.github.io/2022/09/07/Diary-2022-09/"/>
-    <id>https://chiyuru.github.io/2022/09/07/Diary-2022-09/</id>
-    <published>2022-09-07T14:55:03.000Z</published>
-    <updated>2022-09-30T15:54:44.000Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;好无聊，写写日记（&lt;/p&gt;
-&lt;p&gt;博客彻底变成日常了。&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="碎碎念" scheme="https://chiyuru.github.io/tags/%E7%A2%8E%E7%A2%8E%E5%BF%B5/"/>
     
   </entry>
   
