@@ -32,7 +32,7 @@
 <meta property="og:image" content="https://s2.loli.net/2023/03/16/XO3Bt8FehprNz5q.png">
 <meta property="og:image" content="https://s2.loli.net/2023/03/16/3tpYiuFSd7Xw2vK.png">
 <meta property="article:published_time" content="2023-02-21T11:12:18.000Z">
-<meta property="article:modified_time" content="2023-03-28T17:16:50.450Z">
+<meta property="article:modified_time" content="2023-05-17T09:08:49.922Z">
 <meta property="article:author" content="驰雨Chiyuru">
 <meta property="article:tag" content="课程实录">
 <meta property="article:tag" content="数学">
@@ -223,7 +223,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-03-29 01:16:50" itemprop="dateModified" datetime="2023-03-29T01:16:50+08:00">2023-03-29</time>
+                <time title="修改时间：2023-05-17 17:08:49" itemprop="dateModified" datetime="2023-05-17T17:08:49+08:00">2023-05-17</time>
               </span>
 
           
@@ -755,6 +755,122 @@ Shapiro-Wilk 方法检验正态性。</p></li>
 outlier。然后可以尝试剔除这样的点再重新做回归，检查各系数。</p></li>
 </ul>
 <h1 id="lecture-6">Lecture 6</h1>
+<h1 id="lecture-12">Lecture 12</h1>
+<p>本节探讨 remedies for multiple linear
+regression，主要是异方差情况和多重共线性。</p>
+<h2 id="equal-variance-remedy">Equal Variance Remedy</h2>
+<p>这一部分主要处理模型发生异方差问题的情况。</p>
+<p>也就是说，实际上有 <span class="math inline">\(\varepsilon_1,
+\varepsilon_2, ..., \varepsilon_n\)</span> 的方差不全为 <span class="math inline">\(\sigma^2\)</span>，记方差为 <span class="math inline">\(\sigma_1 ^2,\sigma_2 ^2 , ..., \sigma_n
+^2\)</span>。此时的 likelihood function 是：</p>
+<p><span class="math display">\[L(\beta_1,\beta_2) = \Pi_{i=1} ^n
+f_i(\beta_1, \beta_2 |X_i,Y_i) = \Pi_{i=1}^n (\frac{1}{\sqrt{2\pi}
+\sigma_i} exp(-\frac 1 2 (\frac{Y_i - \beta_0 -\beta_1
+X_i}{\sigma_i})^2)) \]</span></p>
+<p>可以看到 ordinary least square 条件得到的 <span class="math inline">\(b_0 = \hat \beta_0,b_1 = \hat \beta_1\)</span>
+不再满足 MLE 的条件。但如果是在不知异方差的情况下仍然使用 OLS 或者 MLE
+条件得到的参数估计，仍然是可以满足无偏性的，但不满足最小方差性质。</p>
+<h3 id="weighted-regression">Weighted Regression</h3>
+<p>简单来说，通过选取 <span class="math inline">\(\{ w_i =
+\frac{1}{\sigma_i ^2} \}_{i=1} ^n\)</span> 作为权重，考虑 <span class="math inline">\(\Sigma_{i=1} ^n w_i e_i^2 = \Sigma_{i=1} ^n
+(\frac{Y_i - \beta_0 - \beta_1 X_{i,1} - ... - \beta_{p-1}
+X_{i,p-1}}{\sigma_i})^2\)</span> 的最小性问题。</p>
+<ul>
+<li><p>最简单的情况，<span class="math inline">\(\sigma_1,...,\sigma_n\)</span> 均已知，则有 <span class="math inline">\(w_i = \frac{1}{\sigma_i ^2}\)</span>，</p>
+<p>取 <span class="math inline">\(W = \begin{bmatrix} \frac{1}{\sigma_1
+^2} &amp; &amp; &amp; \\ &amp;...&amp; &amp; \\ &amp; &amp; &amp;
+\frac{1}{\sigma_n^2} \end{bmatrix}\)</span> 使得回归问题变为 <span class="math inline">\(W^{\frac 1 2} Y = W^{\frac 1 2} X \beta + W^{\frac
+1 2} \varepsilon\)</span>，记 <span class="math inline">\(Y^* = W^{\frac
+1 2} Y, X^* = W^{\frac 1 2} X, \varepsilon^* = W^{\frac 1 2}
+\varepsilon\)</span>，由于 <span class="math inline">\(Var(\varepsilon^*) = I_{n\times n}\)</span>
+满足同方差条件，因此新的回归问题是符合条件的。</p>
+<p>注意新的回归问题 <span class="math inline">\(Y^* = X^* \beta +
+\varepsilon^*\)</span> 事实上没有改变系数 <span class="math inline">\(\beta\)</span>，但系数估计 <span class="math inline">\(b_w = (X^TWX)^{-1} (X^TWY)\)</span>
+是改变了的，这是正常现象，因为对这一问题做 remedy
+的主要原因就是假设不满足，导致按照 OLS 做出的系数估计不准确，因此
+weighted regression 做出的修正也是相对于原系数 <span class="math inline">\(\beta\)</span> 的。</p>
+<p><span class="math inline">\(b_w\)</span> 仍然是无偏估计，也保证 <span class="math inline">\(Var(b_w) = (X^TWX)^{-1}\)</span>
+是最小方差。</p></li>
+<li><p>稍微复杂一点的情况，虽然 <span class="math inline">\(\sigma_i^2\)</span> 未知但 <span class="math inline">\(\sigma^2_i / \sigma_j ^2\)</span> 均已知，取 <span class="math inline">\(w_i = \frac{\sigma_1 ^2}{\sigma_i^2 }\)</span>
+即可。于是有：</p>
+<p>取 <span class="math inline">\(W = \sigma_1 ^2 \begin{bmatrix}
+\frac{1}{\sigma_1 ^2} &amp; &amp; &amp; \\ &amp;...&amp; &amp; \\ &amp;
+&amp; &amp; \frac{1}{\sigma_n^2} \end{bmatrix}\)</span> 使得回归问题变为
+<span class="math inline">\(W^{\frac 1 2} Y = W^{\frac 1 2} X \beta +
+W^{\frac 1 2} \varepsilon\)</span>，记 <span class="math inline">\(Y^* =
+W^{\frac 1 2} Y, X^* = W^{\frac 1 2} X, \varepsilon^* = W^{\frac 1 2}
+\varepsilon\)</span>，由于 <span class="math inline">\(Var(\varepsilon^*) = \sigma_1 ^2 I_{n\times
+n}\)</span> 满足同方差条件，因此新的回归问题是符合条件的。</p>
+<p>新的回归系数估计是 <span class="math inline">\(b_w =
+(X^TWX)^{-1}(X^TWY)\)</span>，<span class="math inline">\(Var(b_w) =
+\sigma_1^2(X^TWX)^{-1}\)</span>，由此还可以做出对 <span class="math inline">\(\sigma_1\)</span> 的参数估计，<span class="math inline">\(\hat \sigma_1 ^2 = MSE_{wls} = \frac{\Sigma(Y^*_i
+- \hat Y^*_i)^2}{n-p}= \frac{\Sigma w_i(Y_i - \hat Y_i)^2}{n-p} =
+\frac{\Sigma w_i e_i ^2}{n-p}\)</span>，其中 <span class="math inline">\(w_i =
+\frac{\sigma_1^2}{\sigma_i^2}\)</span>。</p></li>
+<li><p>一般情况下 <span class="math inline">\(\{ \sigma_i \}\)</span>
+是完全未知的，我们是在模型诊断中发现异方差的现象，因此不可能直接通过方差值推权重系数。这个时候一般有两种选择：</p>
+<ul>
+<li><p>重复试验取 <span class="math inline">\(Y_i\)</span> 的方差估计
+<span class="math inline">\(s_i^2\)</span>，于是权重系数为 <span class="math inline">\(w_i = \frac{1}{s_i ^2}\)</span>。</p></li>
+<li><p>先对 <span class="math inline">\(Y\sim X\)</span> 进行 OLS
+回归，取出此时的 residual <span class="math inline">\(\{e_i \}\)</span>
+作为 <span class="math inline">\(\{ \sigma _i \}\)</span> 的估计，取
+<span class="math inline">\(w_i = \frac{1}{e_i ^2}\)</span>
+作为权重即可。</p>
+<p>效果不明显时多迭代几次。</p></li>
+</ul></li>
+</ul>
+<p>在观察 weighted least square 和 ordinary least square
+模型差别时，注意：</p>
+<ul>
+<li><span class="math inline">\(R^2\)</span> 以及 adjusted <span class="math inline">\(R^2\)</span> 的数值差别没有很强的意义，WLS
+情况下原始数据 <span class="math inline">\(\{ Y_i \}\)</span>
+已经发生了变化，实际上 SST 也已经变了，没有什么比较的意义。</li>
+<li>需要关注的点是 residual standard error，越接近 <span class="math inline">\(1\)</span> 越说明异方差的调整是成功的。</li>
+<li>有时会观察到 WLS 情况下 <span class="math inline">\(\hat
+\sigma^2\)</span> 在减小，似乎数据的分散程度在减小，这是因为 MSE
+在减小。但是 WLS 和 OLS 情况下的 MSE 和 MST 都没有比较的意义，因此 <span class="math inline">\(\hat \sigma\)</span>
+的变化也没有研究的价值。唯一确定的是它会接近于 <span class="math inline">\(1\)</span>，这一点可以证明异方差的调整效果是成功的。</li>
+</ul>
+<h2 id="multicollinearity-remedy">Multicollinearity Remedy</h2>
+<p>如果存在多重共线性，主要发生的问题是 <span class="math inline">\(X^TX\)</span>
+求逆是一个病态的数值问题，误差很大。实际上极端来说如果存在完全共线性，<span class="math inline">\(X^TX\)</span> 会退化为不满秩的情况。</p>
+<p>可以用 ridge regression 对多重共线性进行弥补。</p>
+<h3 id="ridge-regression">Ridge Regression</h3>
+<p>主要的 idea 是如果 <span class="math inline">\((X^TX)\)</span>
+接近于不满秩，则在参数估计中将其改变为 <span class="math inline">\((X^TX
++\lambda I)\)</span>，<span class="math inline">\(\lambda\)</span>
+是待取的参数。对于矩阵的对角元进行改变如同突起的山脊，因此得名岭回归。</p>
+<p>Ridge regression 的本质是对优化问题进行了修改。OLS
+中的优化问题是求使得 <span class="math inline">\((Y-X\beta)^T
+(Y-X\beta)\)</span> 最小的 <span class="math inline">\(\beta\)</span>，ridge regression 中将 <span class="math inline">\(|| \beta ||_2 ^2 = \Sigma_{i=0} ^{p-1}
+\beta_i^2\)</span> 加入了优化，对 <span class="math inline">\(\beta\)</span> 的长度（事实上应该称之为 2-
+范数）做惩罚。因此，实际上是求使得 <span class="math inline">\((Y-X
+\beta )^T (Y-X \beta) + \lambda \Sigma_{i=0} ^{p-1}\beta_i ^2\)</span>
+最小的 <span class="math inline">\(\hat \beta = (X^TX + \lambda I)^{-1}
+X^TY\)</span>，这使得参数估计 <span class="math inline">\(b = \hat
+\beta\)</span> 呈现出比 OLS 下长度和方差都更小的特征。</p>
+<p>在实际应用中，需要通过确定最佳的 <span class="math inline">\(\lambda\)</span> 从而得到合适的参数估计，一般是对
+<span class="math inline">\(\lambda\)</span> 取一个 sequence
+进行尝试。如果发现某个 explanatory variable 的系数在 <span class="math inline">\(\lambda\)</span> 增大时很快下降到 <span class="math inline">\(0\)</span>，实际上它很有可能是不需要进入模型的。</p>
+<p>应用岭回归来弥补模型的多重共线性的时候，既是为了消除共线性，也是在牺牲一些
+<span class="math inline">\(\hat \beta\)</span>
+的无偏性来换取更小的方差。</p>
+<h3 id="lasso-elastic-net">LASSO &amp; Elastic Net</h3>
+<p>LASSO 中把惩罚的 <span class="math inline">\(\beta\)</span>
+长度替换为了 <span class="math inline">\(\beta\)</span> 的 1-
+范数，弹性网络则是对 LASSO 和 ridge regression 进行了结合。</p>
+<p>本质上都是 Bayesian modes。</p>
+<h2 id="influencial-cases-remedy">Influencial Cases Remedy</h2>
+<p>更改一些更 robust 的优化模型，例如 least absolute deviation 和 least
+median of squares，缺点是算起来会比较困难。</p>
+<p>或者考虑非参数模型。</p>
+<h2 id="nonlinearity-remedy">Nonlinearity Remedy</h2>
+<p>考虑局部多项式回归/局部回归，总之是对数据进行分块，所谓的
+lowess。</p>
+<h1 id="lecture-13">Lecture 13</h1>
+<h2 id="single-factor-model">Single Factor Model</h2>
+<p>生统概论学过了（喜</p>
 <h1 id="附录">附录</h1>
 <h2 id="常见重要分布">常见重要分布</h2>
 <p>From <a target="_blank" rel="noopener" href="https://v1ncent19.github.io/SummaryNotes/">Statistic
@@ -1119,7 +1235,7 @@ t-分布中的 <code>dt</code>，<code>pt</code>，<code>qt</code> 相似。</p>
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
           <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-1"><span class="nav-text">Lecture 1</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#galtons-experiment"><span class="nav-text">Galton&#39;s Experiment</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E6%9C%AF%E8%AF%AD"><span class="nav-text">一些术语</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-2"><span class="nav-text">Lecture 2</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#simple-linear-regression"><span class="nav-text">Simple Linear Regression</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%9A%84%E7%BB%84%E7%BB%87%E5%92%8C%E8%A1%A8%E7%A4%BA"><span class="nav-text">数据的组织和表示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E7%9A%84%E8%A1%A8%E7%A4%BA"><span class="nav-text">模型的表示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E7%9A%84%E6%84%8F%E4%B9%89%E5%92%8C%E6%B1%82%E7%AE%97"><span class="nav-text">参数的意义和求算</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#least-sum-of-square-%E6%96%B9%E6%B3%95"><span class="nav-text">Least Sum of Square 方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mle-%E6%96%B9%E6%B3%95"><span class="nav-text">MLE 方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%A8%E6%96%AD%E5%A4%8D%E4%B9%A0"><span class="nav-text">推断复习</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-3"><span class="nav-text">Lecture 3</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E4%B8%AD%E7%9A%84%E6%8E%A8%E6%96%AD"><span class="nav-text">线性回归中的推断</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E6%8E%A8%E6%96%AD"><span class="nav-text">参数推断</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#power-function"><span class="nav-text">Power Function</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#blue"><span class="nav-text">BLUE</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-4"><span class="nav-text">Lecture 4</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#estimation-prediction"><span class="nav-text">Estimation &amp; Prediction</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B9%B3%E5%9D%87%E5%93%8D%E5%BA%94%E7%9A%84%E6%8E%A8%E6%96%AD"><span class="nav-text">平均响应的推断</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%84%E6%B5%8B%E5%80%BC%E7%9A%84%E6%8E%A8%E6%96%AD"><span class="nav-text">预测值的推断</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%84%E6%B5%8B%E5%80%BC%E7%9A%84%E5%B9%B3%E5%9D%87%E7%9A%84%E6%8E%A8%E6%96%AD"><span class="nav-text">预测值的平均的推断</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#confidence-band-for-entire-regression-line"><span class="nav-text">Confidence Band for
-Entire Regression Line</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#summary"><span class="nav-text">Summary</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#analysis-of-variance-anova"><span class="nav-text">Analysis of Variance (ANOVA)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#variance-estimator"><span class="nav-text">Variance Estimator</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#f-%E6%A3%80%E9%AA%8C"><span class="nav-text">F-检验</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#general-linear-test"><span class="nav-text">General Linear Test</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pearson-correlation-r"><span class="nav-text">Pearson Correlation r</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-5"><span class="nav-text">Lecture 5</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E5%81%87%E8%AE%BE"><span class="nav-text">模型假设</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#diagnostics-and-remedies"><span class="nav-text">Diagnostics and Remedies</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#diagnostics-of-x"><span class="nav-text">Diagnostics of X</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E8%AF%8A%E6%96%AD"><span class="nav-text">模型诊断</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-6"><span class="nav-text">Lecture 6</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%99%84%E5%BD%95"><span class="nav-text">附录</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E9%87%8D%E8%A6%81%E5%88%86%E5%B8%83"><span class="nav-text">常见重要分布</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E4%BD%8D%E6%95%B0%E9%80%9F%E6%9F%A5"><span class="nav-text">分位数速查</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#t-%E5%88%86%E5%B8%83%E6%A8%A1%E6%8B%9F"><span class="nav-text">t-分布模拟</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AD%A3%E6%80%81%E5%88%86%E5%B8%83%E6%A8%A1%E6%8B%9F"><span class="nav-text">正态分布模拟</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#f-%E5%88%86%E5%B8%83%E6%A8%A1%E6%8B%9F"><span class="nav-text">F-分布模拟</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#chi-square-%E5%88%86%E5%B8%83%E6%A8%A1%E6%8B%9F"><span class="nav-text">Chi-square 分布模拟</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E5%B8%B8%E7%94%A8-r-%E5%91%BD%E4%BB%A4"><span class="nav-text">其他常用 R 命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#confidence-interval"><span class="nav-text">confidence interval</span></a></li></ol></li></ol></li></ol></div>
+Entire Regression Line</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#summary"><span class="nav-text">Summary</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#analysis-of-variance-anova"><span class="nav-text">Analysis of Variance (ANOVA)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#variance-estimator"><span class="nav-text">Variance Estimator</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#f-%E6%A3%80%E9%AA%8C"><span class="nav-text">F-检验</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#general-linear-test"><span class="nav-text">General Linear Test</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pearson-correlation-r"><span class="nav-text">Pearson Correlation r</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-5"><span class="nav-text">Lecture 5</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E5%81%87%E8%AE%BE"><span class="nav-text">模型假设</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#diagnostics-and-remedies"><span class="nav-text">Diagnostics and Remedies</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#diagnostics-of-x"><span class="nav-text">Diagnostics of X</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E8%AF%8A%E6%96%AD"><span class="nav-text">模型诊断</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-6"><span class="nav-text">Lecture 6</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-12"><span class="nav-text">Lecture 12</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#equal-variance-remedy"><span class="nav-text">Equal Variance Remedy</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#weighted-regression"><span class="nav-text">Weighted Regression</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#multicollinearity-remedy"><span class="nav-text">Multicollinearity Remedy</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ridge-regression"><span class="nav-text">Ridge Regression</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lasso-elastic-net"><span class="nav-text">LASSO &amp; Elastic Net</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#influencial-cases-remedy"><span class="nav-text">Influencial Cases Remedy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nonlinearity-remedy"><span class="nav-text">Nonlinearity Remedy</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-13"><span class="nav-text">Lecture 13</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#single-factor-model"><span class="nav-text">Single Factor Model</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%99%84%E5%BD%95"><span class="nav-text">附录</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E9%87%8D%E8%A6%81%E5%88%86%E5%B8%83"><span class="nav-text">常见重要分布</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E4%BD%8D%E6%95%B0%E9%80%9F%E6%9F%A5"><span class="nav-text">分位数速查</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#t-%E5%88%86%E5%B8%83%E6%A8%A1%E6%8B%9F"><span class="nav-text">t-分布模拟</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AD%A3%E6%80%81%E5%88%86%E5%B8%83%E6%A8%A1%E6%8B%9F"><span class="nav-text">正态分布模拟</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#f-%E5%88%86%E5%B8%83%E6%A8%A1%E6%8B%9F"><span class="nav-text">F-分布模拟</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#chi-square-%E5%88%86%E5%B8%83%E6%A8%A1%E6%8B%9F"><span class="nav-text">Chi-square 分布模拟</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E5%B8%B8%E7%94%A8-r-%E5%91%BD%E4%BB%A4"><span class="nav-text">其他常用 R 命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#confidence-interval"><span class="nav-text">confidence interval</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
