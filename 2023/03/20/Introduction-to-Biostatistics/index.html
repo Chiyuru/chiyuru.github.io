@@ -28,7 +28,7 @@
 <meta property="og:description" content="我都给统辅课笔记起了些什么破标题 选课的时候我还侥幸以为生统概论可以放松心情，来随便听听简单了解一下那种。可能是前置没学完的原因，倒也没那么水，ANOVA 还是花了不少时间看的。 wty 老师的英语口语真不错，可惜我听力一般，一走神就寄了。还是要感谢 V1ncent19 的统辅笔记救我，不过他看起来是前置都学完了来上的这个，写的有点抽象，我想写个废话多一点具体点的。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-03-20T05:28:58.000Z">
-<meta property="article:modified_time" content="2023-05-18T14:09:41.798Z">
+<meta property="article:modified_time" content="2023-05-19T15:13:20.527Z">
 <meta property="article:author" content="驰雨Chiyuru">
 <meta property="article:tag" content="课程实录">
 <meta property="article:tag" content="数学">
@@ -218,7 +218,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-05-18 22:09:41" itemprop="dateModified" datetime="2023-05-18T22:09:41+08:00">2023-05-18</time>
+                <time title="修改时间：2023-05-19 23:13:20" itemprop="dateModified" datetime="2023-05-19T23:13:20+08:00">2023-05-19</time>
               </span>
 
           
@@ -1204,7 +1204,7 @@ _{(I-1)(J-1)} $</p></li>
 <p>首先要明确一些概念，给我的感觉是像黑话一样（</p>
 <h3 id="concept">Concept</h3>
 <p>Event
-是指生存分析所研究的事件，大多数情况下是指某种治疗过程中患者死亡这样的事件发生，但其实生存分析的应用很广泛，甚至不只是在生医领域都有这些概念的使用。患者治疗后恢复/犯人被释放后再次犯罪/确诊新冠都可以作为研究所感兴趣的事件，这些时间发生就称为
+是指生存分析所研究的事件，大多数情况下是指某种治疗过程中患者死亡这样的事件发生，但其实生存分析的应用很广泛，甚至不只是在生医领域都有这些概念的使用。患者治疗后恢复/犯人被释放后再次犯罪/确诊新冠都可以作为研究所感兴趣的事件，这些事件发生就称为
 event。</p>
 <h3 id="function">Function</h3>
 <p>一些常用的函数：</p>
@@ -1245,7 +1245,130 @@ data。</li>
 survival time 为 <span class="math inline">\(T\)</span>，censor time 为
 <span class="math inline">\(C\)</span>，记 right-censored data 为 <span class="math inline">\((X,\delta)\)</span>，其中 <span class="math inline">\(X = \min(T,C)\)</span>。<span class="math inline">\(\delta\)</span> 是一个示性变量，如果 <span class="math inline">\(X = C\)</span> 则 <span class="math inline">\(\delta=0\)</span>，也就是 event 未发生；否则 <span class="math inline">\(\delta=1\)</span>，<span class="math inline">\(X =
 T\)</span>，也就是观察到了 event 发生。</p>
-<p>咕咕咕</p>
+<p>每一组数据贡献的 likelihood 是 <span class="math inline">\(\lambda
+(x)^\delta S(x)\)</span>，整体的 likelihood function 即为 $ L = _{i=1}
+^n (x_i )^{_i} S(x_i)$。</p>
+<h2 id="kaplan-meier-estimation">Kaplan &amp; Meier Estimation</h2>
+<h3 id="theory">Theory</h3>
+<p>一个估计 survival function 的方法。原理上来说是把 <span class="math inline">\(S(t) = P(T &gt;t)\)</span>
+分解成了一列条件概率的积：</p>
+<p><span class="math display">\[S(t) = P(T&gt;t) = P(T&gt;t_1) P(T&gt;t
+| T&gt;t_1) = P(T&gt;t_1) \{\Pi_{j=2} ^k P(T&gt;t_j | T&gt;t_{j-1}) \}
+P(T&gt;t|T&gt;t_k)\]</span></p>
+<p>与此同时重新组织数据，计算每个时刻的 items at risk 和 count of
+events，列表如下：</p>
+<table>
+<thead>
+<tr class="header">
+<th>Distinct Event Times</th>
+<th><span class="math inline">\(t_0\)</span></th>
+<th><span class="math inline">\(t_1\)</span></th>
+<th>...</th>
+<th><span class="math inline">\(t_k\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td># of events at <span class="math inline">\(t_j\)</span></td>
+<td><span class="math inline">\(0\)</span></td>
+<td><span class="math inline">\(d_1\)</span></td>
+<td>...</td>
+<td><span class="math inline">\(d_k\)</span></td>
+</tr>
+<tr class="even">
+<td># at risk at <span class="math inline">\(t_j\)</span></td>
+<td><span class="math inline">\(n\)</span></td>
+<td><span class="math inline">\(n_1\)</span></td>
+<td>...</td>
+<td><span class="math inline">\(n_k\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>此时认为条件概率的估计量为 <span class="math inline">\(\hat P (T&gt;
+t_j | T&gt; t_{j-1}) = \frac{n_j - d_j}{n_j}\)</span>，因此 survival
+function 的估计是：</p>
+<p><span class="math display">\[\hat S(t) = \Pi_{j=1}^k \frac{n_j -
+d_j}{n_j} = \Pi_{j=1} ^n (1- \frac{d_j}{n_j})\]</span></p>
+<h3 id="example">Example</h3>
+<p>对于一组生存数据：<span class="math inline">\(4 \quad 5+ \quad 6
+\quad 10+ \quad 6 \quad 2 \quad 6\)</span></p>
+<p>重新排序得到：<span class="math inline">\(2 \quad 4 \quad 5+ \quad 6
+\quad 6 \quad 6 \quad 10+\)</span></p>
+<p>按照 event time 重新组织数据，并计算 Kaplan-Meier Estimator：</p>
+<table>
+<colgroup>
+<col style="width: 31%">
+<col style="width: 6%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 21%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Distinct Event Times</th>
+<th>0</th>
+<th>2</th>
+<th>4</th>
+<th>6</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td># of events at <span class="math inline">\(t_j\)</span></td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>3</td>
+</tr>
+<tr class="even">
+<td># at risk at <span class="math inline">\(t_j\)</span></td>
+<td>7</td>
+<td>7</td>
+<td>6</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\hat S(t)\)</span></td>
+<td>1</td>
+<td><span class="math inline">\(\frac{6}{7}\)</span></td>
+<td><span class="math inline">\(\frac{5}{7}\)</span></td>
+<td><span class="math inline">\(\frac{5}{28}\)</span></td>
+</tr>
+</tbody>
+</table>
+<h2 id="cox-proportional-hazard-model">Cox Proportional Hazard
+Model</h2>
+<h3 id="theory-1">Theory</h3>
+<p>在生存分析中数据往往是 skewed
+的情况，希望分析变量（比如，患者的年龄，所用的药物，实验组别）对于生存期的影响时，一般对
+hazard function 采用 <span class="math inline">\(\lambda(t) = \lambda_0
+(t) e^{X^T\beta}\)</span> 模型，类似于一个 transformed linear
+regression。</p>
+<p>其中，<span class="math inline">\(\lambda_0(t)\)</span>
+作为一个调整参数，只和时间有关，和 explanatory variable <span class="math inline">\(X\)</span> 无关。</p>
+<p>以一元的 explanatory variable <span class="math inline">\(X\)</span>
+为例，不同数据之间的 hazard ratio 是：</p>
+<p><span class="math display">\[\frac{\lambda_i(t)}{\lambda_j (t)} =
+\frac{\lambda_0(t)}{\lambda_0(t)} \frac{exp(\beta_0 + \beta_1
+X_i)}{exp(\beta_0 + \beta_1 X_j)} = e^{(X_i - X_j)\beta_1}\]</span></p>
+<p>模型假设是 <span class="math inline">\((T_i ,C_i)\)</span> 在 <span class="math inline">\(X_i\)</span>
+给定的条件下是条件独立的，这是一个针对 censored data 的假设。</p>
+<p>另外一个结论是在时间 <span class="math inline">\(t\)</span>
+处，uncensored 对象 <span class="math inline">\(i\)</span> 发生 event
+的概率是 <span class="math inline">\(P_i(t) = \frac{ exp(x_i
+\beta)}{\Sigma_j I(T_j \geq t) exp(x_j
+\beta)}\)</span>。由此可知，用于估计 <span class="math inline">\(\beta\)</span> 的 likelihood function 是：</p>
+<p><span class="math display">\[L(\beta) = \Pi_{j=1}^ k \frac{ exp(x_i
+\beta)}{\Sigma_j I(T_j \geq t) exp(x_j \beta)}  = \Pi_{j=1} ^n (\frac{
+exp(x_i \beta)}{\Sigma_j I(T_j \geq t) exp(x_j \beta)})^{\delta
+_i}\]</span></p>
+<p>仍然是以一元的 explanatory variable <span class="math inline">\(X\)</span> 为例，hazard ratio 是 <span class="math inline">\(HR = \frac{\lambda(t |
+\text{exposure})}{\lambda(t| \text{not exposure})} = \frac{\lambda_0 (t)
+exp(\beta_1)}{\lambda_0(t)} = exp(\beta_1)\)</span></p>
+<h3 id="example-1">Example</h3>
+<p>绷不住了，怎么还是写不完</p>
+<h2 id="comparison-of-survival-curveslog-rank-test">Comparison of
+Survival Curves——Log Rank Test</h2>
 
     </div>
 
@@ -1401,7 +1524,9 @@ Experimental Study</span></a></li><li class="nav-item nav-level-2"><a class="nav
 trial</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#contingency-table-in-clinical-trials"><span class="nav-text">Contingency Table in
 Clinical Trials</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#prospective-clinical-trial"><span class="nav-text">Prospective clinical trial</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#retrospective-clinical-trial"><span class="nav-text">Retrospective clinical trial</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gehans-two-stage-design"><span class="nav-text">Gehan&#39;s Two-Stage Design</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#inference-on-contingency-table"><span class="nav-text">Inference on Contingency
 Table</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#motivation-example"><span class="nav-text">Motivation Example</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#contingency-table"><span class="nav-text">Contingency Table</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p-value-calculation-example-%E5%A5%B3%E5%A3%AB%E5%93%81%E8%8C%B6"><span class="nav-text">P-value Calculation
-Example: 女士品茶</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#inference-on-independence"><span class="nav-text">Inference on Independence</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#hypothesis"><span class="nav-text">Hypothesis</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#test-statistic"><span class="nav-text">Test Statistic</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#survival-analysis"><span class="nav-text">Survival Analysis</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#basic-concepts"><span class="nav-text">Basic Concepts</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#concept"><span class="nav-text">Concept</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#function"><span class="nav-text">Function</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#data"><span class="nav-text">Data</span></a></li></ol></li></ol></li></ol></div>
+Example: 女士品茶</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#inference-on-independence"><span class="nav-text">Inference on Independence</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#hypothesis"><span class="nav-text">Hypothesis</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#test-statistic"><span class="nav-text">Test Statistic</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#survival-analysis"><span class="nav-text">Survival Analysis</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#basic-concepts"><span class="nav-text">Basic Concepts</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#concept"><span class="nav-text">Concept</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#function"><span class="nav-text">Function</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#data"><span class="nav-text">Data</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#kaplan-meier-estimation"><span class="nav-text">Kaplan &amp; Meier Estimation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#theory"><span class="nav-text">Theory</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#example"><span class="nav-text">Example</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cox-proportional-hazard-model"><span class="nav-text">Cox Proportional Hazard
+Model</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#theory-1"><span class="nav-text">Theory</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#example-1"><span class="nav-text">Example</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#comparison-of-survival-curveslog-rank-test"><span class="nav-text">Comparison of
+Survival Curves——Log Rank Test</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
