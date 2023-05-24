@@ -31,8 +31,10 @@
 <meta property="og:image" content="https://s2.loli.net/2023/02/26/iRyejXI6TuSvroJ.png">
 <meta property="og:image" content="https://s2.loli.net/2023/03/16/XO3Bt8FehprNz5q.png">
 <meta property="og:image" content="https://s2.loli.net/2023/03/16/3tpYiuFSd7Xw2vK.png">
+<meta property="og:image" content="https://s2.loli.net/2023/05/24/TEoHhRmK7624v1Y.png">
+<meta property="og:image" content="https://chiyuru.github.io/.io//Users/85480/AppData/Roaming/Typora/typora-user-images/image-20230524201716285.png">
 <meta property="article:published_time" content="2023-02-21T11:12:18.000Z">
-<meta property="article:modified_time" content="2023-05-17T09:08:49.922Z">
+<meta property="article:modified_time" content="2023-05-24T12:22:01.038Z">
 <meta property="article:author" content="驰雨Chiyuru">
 <meta property="article:tag" content="课程实录">
 <meta property="article:tag" content="数学">
@@ -223,7 +225,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-05-17 17:08:49" itemprop="dateModified" datetime="2023-05-17T17:08:49+08:00">2023-05-17</time>
+                <time title="修改时间：2023-05-24 20:22:01" itemprop="dateModified" datetime="2023-05-24T20:22:01+08:00">2023-05-24</time>
               </span>
 
           
@@ -663,8 +665,6 @@ F_{(df_{ER}-df_{EF}),df_{EF}} $。实际上，在 simple linear regression
 被称为决定系数，事实上在 simple linear regression 下有 <span class="math inline">\(r^2=R^2\)</span>，因为 <span class="math inline">\(r = b_1 \frac{\sigma_X}{\sigma_Y}\)</span>。</p>
 <p><img src="https://s2.loli.net/2023/03/16/3tpYiuFSd7Xw2vK.png" alt="2dimtest.png"></p>
 <h1 id="lecture-5">Lecture 5</h1>
-<p>模型假设与诊断。</p>
-<h2 id="模型假设">模型假设</h2>
 <p>回顾一下简单线性回归的模型假设：<span class="math inline">\(Y_i =
 \beta_1 X_i + \beta_0 +\varepsilon _i\)</span></p>
 <ul>
@@ -677,12 +677,32 @@ F_{(df_{ER}-df_{EF}),df_{EF}} $。实际上，在 simple linear regression
 </ul>
 <p>可以总结成 LINE: linearity, independence, normality, equal
 variance</p>
-<h2 id="diagnostics-and-remedies">Diagnostics and Remedies</h2>
+<h2 id="diagnostics-of-x">Diagnostics of X</h2>
 <p>诊断的方式粗暴一点来说就是肉眼诊断，用一些可视化工具（主要是画图）和其他方式来检验模型的假设是否符合。如果违反了模型假设，结果很有可能不可靠。此时需要用一些弥补的方式来处理。</p>
-<h3 id="diagnostics-of-x">Diagnostics of X</h3>
+<h3 id="why-diagnosedistribution-and-confounding">Why
+diagnose——Distribution and Confounding</h3>
 <p>诊断过程需要关注的是 <span class="math inline">\(X\)</span> 而非
 <span class="math inline">\(Y\)</span>，因为 <span class="math inline">\(Y\)</span> 之间是独立异分布的。<span class="math inline">\(Y_i \sim N(\beta_0 +\beta_1 X_i ,
-\sigma^2)\)</span>。有一些可以关心的统计量：</p>
+\sigma^2)\)</span>。</p>
+<p><span class="math inline">\(X\)</span> 完全是常数，所谓的 <span class="math inline">\(X\)</span> 的分布指的仅仅是 <span class="math inline">\(X_1,X_2,...,X_n\)</span>
+在数轴上的排布，不是概率分布。但 <span class="math inline">\(X_i\)</span>
+的分布会影响到模型的效果，直观上举个例子来说，<span class="math inline">\(X_i\)</span> 的位置至少会影响到 <span class="math inline">\(Var(b_1) = \frac{1}{\Sigma_i (X_i - \bar X)^2}
+\sigma^2\)</span> 也就是 <span class="math inline">\(b_1\)</span>
+的分散程度，这是会影响到推断显著性的因素，所以即使是常数也还是要对 <span class="math inline">\(X\)</span> 进行一些诊断。</p>
+<p>我们一般希望 <span class="math inline">\(X\)</span>
+是类似于正态的分布，这样的数据比较有代表性。可以使用 qq-plot
+进行检查。</p>
+<p>除此之外诊断 <span class="math inline">\(X\)</span> 的另一意义在于
+<span class="math inline">\(X\)</span>
+本身可能也是和其他因素有混杂的。举个例子来说，如果高温既会导致冰激凌销量增加又会导致鲨鱼攻击人的次数增加，很可能会发现冰激凌销量和鲨鱼攻击行为次数之间有线性的关系，事实上这就是一个没有选对合适的
+explanatory variable <span class="math inline">\(X\)</span>
+却得到了看似合理的模型的例子，但这样的结论是有问题的，<span class="math inline">\(X\)</span> 本身和气温这一因素混杂。</p>
+<p>此时如果分别对冰激凌销量-气温和鲨鱼攻击行为-气温作一个 sequence
+plot，会发现二者都分别和气温有关系，那就有必要把气温作为一个 explanatory
+variable 加入模型的考虑，这是一种针对 confounding 的诊断方法。</p>
+<h3 id="四参数">四参数</h3>
+<p>有一些可以关心的量（甚至不能说是统计量，毕竟 <span class="math inline">\(X\)</span> 也不是随机变量），除了 range
+之外实际上就是一阶到四阶矩：</p>
 <ul>
 <li>sample mean 展现了 <span class="math inline">\(X\)</span>
 的主要位置</li>
@@ -697,8 +717,12 @@ n \Sigma_{i=1}^n (x_i -\bar x)^2)^\frac 3 2}\)</span>
 展现了数据相对于正态分布的尾迹</li>
 <li>range 展现了 <span class="math inline">\(X\)</span> 的分布范围</li>
 </ul>
-<p>其中值得关注的是偏度和峰度两个统计量，<del>因为之前没有提过</del></p>
-<p>关于偏度：</p>
+<p>其中值得关注的是偏度和峰度两个统计量，<del>因为之前没有提过</del>。想起来一个乐子，Pearson
+在《Lady Tasting
+Tea》里曾经认为一个分布只要有一阶到四阶矩的参数就可以完全确定，但实际上
+Poisson 分布的四个参数都是 <span class="math inline">\(\lambda\)</span>，是不行的。</p>
+<ul>
+<li><p>关于偏度：</p>
 <ul>
 <li><span class="math inline">\(g_1 &lt;0\)</span> 时称为 negatively
 skewed，左尾比较长，所以也会称为 skewed left</li>
@@ -706,20 +730,38 @@ skewed，左尾比较长，所以也会称为 skewed left</li>
 skewed，右尾比较长，所以也会称为 skewed right</li>
 </ul>
 <p>由图可见偏度是能够体现数据的对称程度的。实际上对称程度是相对正态分布而言的。</p>
-<p>这里有个图.jpg</p>
-<p>关于峰度：</p>
+<p>一般来说对于一个左偏的分布，会有 mean &lt; median &lt;
+mode（众数），如果右偏则会是 mode &lt; median &lt; mean。当然 mean 和
+median 的顺序不一定准确，以及对于完全对称的分布会有三者相等。</p>
+<p>注意如果分布有多个峰值，此时 skewness 不一定还适用。</p></li>
+<li><p>关于峰度：</p>
 <ul>
 <li><span class="math inline">\(g_2&gt;0\)</span> 时称为
-leptokurtic，尖峰态下双尾较大。</li>
+leptokurtic，尖峰态下双尾较长。</li>
 <li><span class="math inline">\(g_2 &lt;0\)</span> 时称为
-platykurtic，低峰态下双尾较小。</li>
+platykurtic，低峰态下双尾较短。</li>
 </ul>
-<p>这里还有个图.jpg</p>
-<p>注意峰度的所谓尖峰态低峰态和尾部数据性质也都是相对正态分布而言的。</p>
-<h3 id="模型诊断">模型诊断</h3>
+<p>注意峰度的所谓尖峰态低峰态和尾部数据性质也都是相对正态分布而言的。正态分布的峰度就是
+<span class="math inline">\(3\)</span>，因此峰度的公式里有一个减去 <span class="math inline">\(3\)</span> 的操作，作为和正态分布的比对。</p>
+<p>有的时候会把不减去 <span class="math inline">\(3\)</span> 的称为
+kurtosis，减去 <span class="math inline">\(3\)</span> 则称为 excess
+kurtosis，使用的时候要注意。</p>
+<p>实际上峰度带来的度量信息包括峰和尾两部分，单独出现尖峰的条件不能作为判断
+<span class="math inline">\(g_2\)</span> 正负性的依据，只是表征了 <span class="math inline">\(\bar X\)</span>
+附近的情况，和尾部情况综合起来看才可以；峰度的正负性和方差的大小无关。</p>
+<p>尾部的情况可以通过 Q-Q plot 查看：</p>
+<p><img src="https://s2.loli.net/2023/05/24/TEoHhRmK7624v1Y.png" alt="kurtosis.png"></p></li>
+</ul>
+<h2 id="诊断-assumptions">诊断 assumptions</h2>
+<p>最常用的 assumption
+诊断方法是使用残差图进行诊断，一元线性回归中我们可以直接使用 <span class="math inline">\(e_i \sim X\)</span> 图，也可以使用 <span class="math inline">\(e_i \sim \hat Y\)</span>
+图进行诊断，二者本质上只相差横轴的尺度和位置。在多元线性回归中就直接使用
+<span class="math inline">\(e_i \sim \hat Y\)</span> 图进行诊断。</p>
+<p>除此之外也有很多理论检验的方法，虽然听起来更
+concrete，但其实实际应用中还是肉眼检查最有效。</p>
 <p>模型诊断可能发现的一些问题：</p>
 <ul>
-<li><span class="math inline">\(Y\)</span> 和 <span class="math inline">\(X\)</span> 之间没有线性关系但是硬拟合了一个；</li>
+<li><span class="math inline">\(Y\)</span> 和 <span class="math inline">\(X\)</span> 之间没有线性关系但是硬拟合了一个</li>
 <li><span class="math inline">\(\sigma ^2\)</span>
 不能视作常数，也即异方差</li>
 <li><span class="math inline">\(\varepsilon _i\)</span>
@@ -728,33 +770,88 @@ platykurtic，低峰态下双尾较小。</li>
 之间彼此不独立</li>
 <li>模型可以拟合，但数据中有 outlier</li>
 </ul>
-<p>如何发现问题（主要是画图，然后用肉眼看）：</p>
-<ul>
-<li><p>使用 <span class="math inline">\(e_i \sim X_i\)</span> 诊断 <span class="math inline">\(Y\)</span> 和 <span class="math inline">\(X\)</span> 的线性关系是否过拟合。具体来说，给
+<p>以下给出一些发现问题的方法：</p>
+<h3 id="非线性关系">非线性关系</h3>
+<p>简而言之，<span class="math inline">\(Y\)</span> 和 <span class="math inline">\(X\)</span>
+之间可能并不是一个线性关系，但是我们采用了线性模型进行拟合。</p>
+<p>找出问题的手段是使用 <span class="math inline">\(e_i \sim
+X_i\)</span> 图诊断 <span class="math inline">\(Y\)</span> 和 <span class="math inline">\(X\)</span> 的线性关系是否过拟合。具体来说，给
 <span class="math inline">\(e_i \sim X_i\)</span> 再做一个拟合图线
-<code>scatter.smooth</code>，观察和 <span class="math inline">\(h=0\)</span> 是否偏离较大。</p></li>
-<li><p>举个例子，比如说 <span class="math inline">\(Y_i = 30 +100X_i +
-10X_i \varepsilon_i\)</span>，实际上是有 <span class="math inline">\(\varepsilon_i \sim N(0,10X_i
-\sigma^2)\)</span>，方差并不相同。但注意此时全体残差仍然满足无偏假设。</p>
-<p>有一些异方差的检验方法：</p>
-<p>pic 异方差检验</p></li>
-<li><p><span class="math inline">\(\varepsilon _i\)</span>
+<code>scatter.smooth</code>，观察和 <span class="math inline">\(h=0\)</span> 是否偏离较大。虽然通过 <span class="math inline">\(Y \sim X\)</span> 也可以看出来，但是 <span class="math inline">\(e_i \sim X\)</span> 图更加明显。</p>
+<p>即使线性关系是显著的（R 中得到 <span class="math inline">\(R^2\)</span> 较大、斜率 <span class="math inline">\(\beta_1\)</span>
+显著），也不说明线性模型是最好的拟合模型。</p>
+<h3 id="异方差问题">异方差问题</h3>
+<ul>
+<li><p>实际上的残差并不符合方差相等的假设，则称为异方差问题。即使发生这样的情况也未必会影响到
+<span class="math inline">\(\beta_1,\beta_0\)</span>
+的估计值，因为计算过程和这一假设实际上是无关的。但是，异方差问题会导致
+<span class="math inline">\(b_0,b_1\)</span>
+不再是使得方差最小的估计，失去了 BLUE
+性质，但仍然是无偏的估计。问题会反映在关于 <span class="math inline">\(\beta_1,\beta_0\)</span>
+的推断中，导致推断或者置信区间不是效率最高的。</p>
+<p>举个例子，比如说 <span class="math inline">\(Y_i = 30 +100X_i + 10X_i
+\varepsilon_i\)</span>，实际上是有 <span class="math inline">\(\varepsilon_i \sim N(0,10X_i
+\sigma^2)\)</span>，方差并不相同。</p>
+<p>画图检查最典型的异方差情况是画出 <span class="math inline">\(e_i \sim
+X\)</span> 图后发现 <span class="math inline">\(X\)</span> 越大，<span class="math inline">\(e_i\)</span>
+越分散，呈现出一个扇形的分布形态。</p></li>
+<li><p>模型的诊断也可以使用一些理论方法，异方差检验中常用的几种检验如下所示：</p>
+<ul>
+<li><p>Bartlett 方法，本质上是 likelihood ratio
+test，但非常依赖残差的正态假设。也即，如果检验结果是拒绝原假设，未必是真的发生了异方差现象，也可能是因为残差不服从正态分布造成了干扰。</p></li>
+<li><p>Levene &amp; modified Levene (B.F.) 方法，非常常见。</p></li>
+<li><p>对于可能影响方差导致异方差的因素 <span class="math inline">\(Z\)</span>，将 <span class="math inline">\(e_i
+^2\)</span> 相对于 <span class="math inline">\(Z\)</span>
+再做一次线性回归，得到的 SSR 记为 <span class="math inline">\(SSR^*\)</span>。</p>
+<p>此时 <span class="math inline">\(LM = \frac{SSR^*/2}{(SSE/n)^2} \sim
+\chi_1 ^2\)</span> 再进行检验。</p></li>
+</ul></li>
+</ul>
+<h3 id="正态性假设">正态性假设</h3>
+<p><span class="math inline">\(\varepsilon _i\)</span>
 并不服从正态分布，这可以通过 QQ-plot 观察是否有 <span class="math inline">\(\varepsilon_{(i)} = \mu + \sigma
-Z_i\)</span>，或者直接画 histogram 检查是否有正态的形状。也可以用
-Shapiro-Wilk 方法检验正态性。</p></li>
-<li><p><span class="math inline">\(\varepsilon_i\)</span>
-之间可能并不独立。</p>
-<p>pic dependency</p></li>
-<li><p>模型的数据里有 outlier，不同性质的 outlier
+Z_i\)</span>，或者直接画 histogram 检查是否有正态的形状。</p>
+<p><img src="/.io//Users\85480\AppData\Roaming\Typora\typora-user-images\image-20230524201716285.png" alt="image-20230524201716285"></p>
+<p>理论方法之中 Shapiro-Wilk 方法是最佳的，有最大的
+power，但是对于样本量是敏感的。也就是说，如果检验结果是 <span class="math inline">\(\varepsilon_i\)</span>
+不服从正态分布，也可能是因为样本量太大导致了错误判断。</p>
+<p>注意正态性检验是完全可以把 <span class="math inline">\(\{\varepsilon
+_i \}\)</span> 作为一组数据放在一起观察整体的分布的，但是对 <span class="math inline">\(\{Y_i \}\)</span>
+不可以这样做，它们彼此之间服从的是不同的条件分布。</p>
+<h3 id="相关性">相关性</h3>
+<p><span class="math inline">\(\varepsilon_i\)</span>
+之间可能并不独立，有可能都受到 <span class="math inline">\(t_i\)</span>
+的影响，等等。如果有类似可能考虑的因素可以对其做 sequence plot。</p>
+<p>理论方法中最常用的是 Durbin-Watson 方法。</p>
+<h3 id="outlier">Outlier</h3>
+<p>模型的数据里有 outlier，不同性质的 outlier
 对回归线的影响不尽相同，具体的在 Lecture 6
 中再细说。简单来说就是，outlier 的 <span class="math inline">\(X_i\)</span> 越接近 <span class="math inline">\(\bar{X}\)</span>，对于回归线的斜率影响越小，但如果距离
 <span class="math inline">\(\bar{X}\)</span>
 比较远，则会产生比较强的杠杆效应。</p>
-<p>可以使用 <span class="math inline">\(Y_i \sim X_i\)</span>
+<p>即使模型中存在 outlier，参数的估计也可以是比较准确的。做 <span class="math inline">\(e_i \sim X\)</span> 图可以查看是否存在
+outlier，也可以使用 <span class="math inline">\(Y_i \sim X_i\)</span>
 的图来观察是否有距离回归线很远的点，这是最明显的一类
-outlier。然后可以尝试剔除这样的点再重新做回归，检查各系数。</p></li>
+outlier。然后可以尝试剔除这样的点再重新做回归，检查各系数。</p>
+<h2 id="关于-r2">关于 <span class="math inline">\(R^2\)</span></h2>
+<p>如果在某一线性模型中得到 <span class="math inline">\(R^2 =
+0.69\)</span>，能否说明这一线性模型是显著的？</p>
+<ul>
+<li>事实上可以。<span class="math inline">\(R^2 = 0.69\)</span>
+已经是相对大的数值了，说明模型对于方差的解释能力是相对好的；另一方面考虑
+<span class="math inline">\(r = \sqrt{R^2} &gt;
+0.8\)</span>，相关系数其实是比较大的，可以认为这一模型是合适的。</li>
+<li>但是，这并不能说明线性模型是这一问题下最好的模型。<span class="math inline">\(R^2\)</span>
+想要多大就可以多大，例如给模型加入新的多项式型变量，总能更多地解释一些方差，不能单纯地追求
+<span class="math inline">\(R^2\)</span> 的大小。</li>
+<li>另外，如果在不同的模型比较中对 <span class="math inline">\(\{Y_i
+\}\)</span> 做了变换，比如进行了标准化或者 Box-Cox
+transform，此时是不能和原始的模型再进行 <span class="math inline">\(R^2\)</span> 的比较的，只能检查单个 <span class="math inline">\(R^2\)</span> 的值能否接受。这是因为 <span class="math inline">\(SST\)</span> 已经随着 <span class="math inline">\(\{Y_i \}\)</span>
+的变化而变化了，模型的方差解释能力 <span class="math inline">\(\frac{SSR}{SST}\)</span> 无法比较。</li>
 </ul>
 <h1 id="lecture-6">Lecture 6</h1>
+<h2 id="built-in-diagnostic-plots-in-r">Built-in Diagnostic Plots in
+R</h2>
 <h1 id="lecture-12">Lecture 12</h1>
 <p>本节探讨 remedies for multiple linear
 regression，主要是异方差情况和多重共线性。</p>
@@ -869,8 +966,177 @@ median of squares，缺点是算起来会比较困难。</p>
 <p>考虑局部多项式回归/局部回归，总之是对数据进行分块，所谓的
 lowess。</p>
 <h1 id="lecture-13">Lecture 13</h1>
-<h2 id="single-factor-model">Single Factor Model</h2>
-<p>生统概论学过了（喜</p>
+<h2 id="one-factor-anova">One Factor ANOVA</h2>
+<p>（从生统笔记复制来的）</p>
+<p>首先给出一个希望做检验的场景：<span class="math inline">\(n_T\)</span> 个实验对象被分成 <span class="math inline">\(r\)</span> 组，每组有 <span class="math inline">\(n_i\)</span> 个实验对象，有 <span class="math inline">\(n_T = \Sigma_{i=1} ^r n_i\)</span>。由此我们得到
+<span class="math inline">\(n_T\)</span> 个数据 <span class="math inline">\(Y_{ij}\)</span>，<span class="math inline">\(i\)</span> 表示组别，<span class="math inline">\(1\leq i \leq r\)</span>，<span class="math inline">\(j\)</span> 表示在某一组内的编号，<span class="math inline">\(1 \leq j \leq n_i\)</span>。</p>
+<h3 id="cell-means-model">Cell means model</h3>
+<ul>
+<li><p>模型假设是 <span class="math inline">\(Y_{ij} = \mu_i +
+\varepsilon_{ij}\)</span>。</p>
+<p>其中，<span class="math inline">\(\mu_i\)</span> 是第 <span class="math inline">\(i\)</span> 组的理论均值，<span class="math inline">\(\varepsilon _{ij}\)</span> i.i.d. <span class="math inline">\(\sim
+N(0,\sigma^2)\)</span>。注意到在这一模型假设中有 <span class="math inline">\(r+1\)</span> 个参数，分别是 <span class="math inline">\(\mu_1,\mu_2,...,\mu_r,\sigma^2\)</span>，我们需要用得到的数据来对这些未知参数进行估计。考虑一些统计量作为参数的估计量：</p>
+<p><span class="math display">\[\bar{Y}_{i.} = \frac{1}{n_i} \Sigma_{j=1
+}^{n_i} Y_{ij}  = \hat \mu _i\]</span></p>
+<p><span class="math display">\[\bar{Y}_{..} = \frac{1}{n_T}
+\Sigma_{i=1}^r \Sigma_{j=1} ^{n_i} Y_{ij} = \frac{1}{n_T} \Sigma_{i=1}^r
+n_i \bar{Y}_{i.}\]</span></p>
+<p><span class="math display">\[s_i ^2 = \Sigma_{j=1} ^{n_i} (Y_{ij} -
+\bar Y_{i.})^2 / (n_i -1) \]</span></p>
+<p><span class="math display">\[s^2 =\Sigma_{i=1} ^r \Sigma_{j=1} ^{n_i}
+(Y_{ij} - \bar Y_{i.})^2  =\frac{1}{n_T- r} \Sigma_{i=1}^r (n_i -1) s_i
+^2 = \hat \sigma^2\]</span></p></li>
+<li><p>在这一模型中，我们关注的假设检验是 <span class="math inline">\(i\)</span> 组实验之间是否存在差异，假设检验表示为
+<span class="math inline">\(H_0 : \mu_1= \mu_2 = ... = \mu_r =
+\mu\)</span>，对应的备择假设即为 <span class="math inline">\(\{ \mu_i
+\}_{i=1} ^r\)</span> 中存在不同的项。检验最经典的方法即为
+ANOVA，analysis of variance。核心是以下的分解：</p>
+<p><span class="math display">\[\begin{aligned} SSTO = \Sigma_i
+\Sigma_j(Y_{ij} - \bar Y_{..})^2 &amp;= \Sigma_i \Sigma_j (Y_{ij} - \bar
+Y_{i.} +\bar Y_{i.} - \bar Y_{..})^2 \\&amp; = \Sigma_i n_i (\bar Y_{i.}
+- \bar Y_{..})^2 + \Sigma_i \Sigma_j (Y_{ij} - \bar Y_{i.})^2 \\
+&amp;=SSTR + SSE \end{aligned}\]</span></p>
+<p>可以观察到，<span class="math inline">\(SSTR\)</span>
+是组间差距，体现了不同组别之间的差别，<span class="math inline">\(SSE\)</span>
+是组内差距，体现了同一组内各数据的偏差。注意 <span class="math inline">\(SSTR\)</span> 的自由度是 <span class="math inline">\(r-1\)</span>，<span class="math inline">\(SSE\)</span> 的自由度是 <span class="math inline">\(n_T - r\)</span>，<span class="math inline">\(SSTO\)</span> 的自由度是 <span class="math inline">\(n_T - 1\)</span>。</p>
+<p>由此可以求出 <span class="math inline">\(MSE= \frac{SSE}{n_T
+-r}\)</span>，<span class="math inline">\(MSTR =
+\frac{SSTR}{r-1}\)</span>。</p>
+<p>作业里证明了两个统计量的期望，<span class="math inline">\(\mathbb
+E(MSE) = \sigma^2\)</span>，<span class="math inline">\(\mathbb E(MSTR)
+= \sigma^2 +\frac{\Sigma_i n_i (\mu _i -\mu_.)^2}{r-1}\)</span>，其中
+<span class="math inline">\(\mu_. = \frac{\Sigma_i n_i
+\mu_i}{n_T}\)</span>。</p>
+<p>在 <span class="math inline">\(H_0\)</span> 成立时，<span class="math inline">\(\frac{SSE}{\sigma^2} \sim \chi^2 _{n_T -
+r}\)</span>，<span class="math inline">\(\frac{SSTR}{\sigma^2} \sim
+\chi^2_{r-1}\)</span>。因此 <span class="math inline">\(F=\frac{MSTR}{MSE} \sim F_{r-1,n_T -r}\)</span>
+作为最终的检验统计量。</p>
+<p>当 <span class="math inline">\(F^* &gt; F(1-\alpha , r-1 , n_T
+-r)\)</span> 时拒绝原假设，否则接受；<span class="math inline">\(Power =
+P(F^* &gt; F(1-\alpha , r-1,n_T -r)| \delta)\)</span>，其中 <span class="math inline">\(\delta\)</span> 是一个非中心偏移量，<span class="math inline">\(\delta = \frac{1}{\sigma} \sqrt{\frac 1 r \Sigma_i
+n_i (\mu_i - \mu_.)^2}\)</span>。</p></li>
+<li><p>也可以作为一个线性回归的问题来看待，design matrix 是 $ X =</p>
+<span class="math display">\[\begin{bmatrix} 1 &amp; 0  &amp; 0 &amp;
+... &amp; 0 \\ 0 &amp; 1  &amp; 0 &amp; ... &amp; 0 \\ ...
+&amp;...&amp;...&amp;...&amp;... \\ 0 &amp; 0 &amp; 0 &amp; ... &amp; 1
+\end{bmatrix}\]</span>
+<p>$，系数向量是 <span class="math inline">\(\mu = \begin{bmatrix} \mu_1
+\\ \mu_2 \\ ... \\ \mu_r \end{bmatrix}\)</span>，因此整体的回归方程是 $
+Y = X + $，注意这个回归问题是<strong>强迫过原点</strong>的。</p></li>
+</ul>
+<h3 id="factor-effects-model">Factor Effects Model</h3>
+<ul>
+<li><p>Factor Effects Model 是 Cell Means Model
+的一个重新参数化的结果。模型假设是 <span class="math inline">\(Y_{ij} =
+\mu + \tau_i + \varepsilon_{ij}\)</span>。</p>
+<p>其中，<span class="math inline">\(\mu_i\)</span>
+是整体的理论均值，<span class="math inline">\(\varepsilon _{ij} i.i.d.
+\sim N(0,\sigma^2)\)</span>。它的参数比 cell mean model 多一个，分别是
+<span class="math inline">\(\mu , \tau_1 , ..., \tau_r ,
+\sigma^2\)</span>，但是自由度是相同的，因为 <span class="math inline">\(\{ \tau _i \}_{i=1}^r\)</span> 存在一个约束 <span class="math inline">\(\Sigma_{i=1}^r \tau_i =
+0\)</span>，如果没有这个约束会导致存在多组解。考虑一些统计量作为参数的估计量：</p>
+<p><span class="math display">\[\bar{Y}_{i.} = \frac{1}{n_i} \Sigma_{j=1
+}^{n_i} Y_{ij}  = \hat \tau _i + \hat \mu\]</span></p>
+<p><span class="math display">\[\bar{Y}_{..} = \frac{1}{n_T}
+\Sigma_{i=1}^r \Sigma_{j=1} ^{n_i} Y_{ij} = \frac{1}{n_T} \Sigma_{i=1}^r
+n_i \bar{Y}_{i.} = \hat{\mu}\]</span></p>
+<p><span class="math display">\[s_i ^2 = \Sigma(Y_{ij} - \bar Y_{i.})^2
+/ (n_i -1) \]</span></p>
+<p><span class="math display">\[s^2 = \frac{1}{n_T- r} \Sigma_{i=1}^r
+(n_i -1) s_i ^2 = \hat \sigma^2\]</span></p></li>
+<li><p>在这一模型中，我们关注的假设检验仍然是 <span class="math inline">\(i\)</span> 组实验之间是否存在差异，假设检验表示为
+<span class="math inline">\(H_0 : \tau_1= \tau_2 = ... = \tau_r =
+0\)</span>，对应的备择假设即为 <span class="math inline">\(\{ \mu_i
+\}_{i=1} ^r\)</span> 中存在不同的项。factor effects model
+在参数的含义上比 cell mean model 更清晰。</p></li>
+<li><p>可以作为一个线性回归的问题来看待，design matrix 是 $ X =</p>
+<span class="math display">\[\begin{bmatrix} 1 &amp; 1  &amp; 0 &amp;
+... &amp; 0 \\ 1 &amp; 0  &amp; 1 &amp; ... &amp; 0 \\ ...
+&amp;...&amp;...&amp;...&amp;... \\ 1 &amp; -1 &amp; -1 &amp; ... &amp;
+-1 \end{bmatrix}\]</span>
+<p>$，系数向量是 <span class="math inline">\(\mu = \begin{bmatrix} \mu
+\\ \tau_1 \\ \tau_2 \\ ... \\ \tau_{r-1}
+\end{bmatrix}\)</span>，因此整体的回归方程是 $ Y = X +
+$，注意这个回归问题的截距就是 <span class="math inline">\(\mu\)</span>，不强迫过原点，相比 cell mean model
+算是做了一点点优化。</p></li>
+</ul>
+<h3 id="example">Example</h3>
+<ul>
+<li><p>在做回归之前要注明哪些变量是 factor：</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">&gt;</span> data<span class="operator">$</span>design <span class="operator">=</span> factor<span class="punctuation">(</span>data<span class="operator">$</span>design<span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line"><span class="operator">&gt;</span> fit <span class="operator">=</span> lm<span class="punctuation">(</span>cases <span class="operator">~</span> design<span class="punctuation">,</span> data <span class="operator">=</span> data<span class="punctuation">)</span></span><br><span class="line"><span class="operator">&gt;</span> summary<span class="punctuation">(</span>fit<span class="punctuation">)</span></span><br></pre></td></tr></table></figure></li>
+<li><p>方便查看 <span class="math inline">\(\hat \mu_i\)</span>
+的命令是过原点回归，但查看 MSR 的方式是不过原点回归。</p></li>
+<li><p><span class="math inline">\(Std.Error_i ^2 = Var(\hat \mu_i) =
+Var(\frac{\Sigma_{j=1}^{n_i} Y_{ij}}{n_i}) = \frac{\hat \sigma^2}{n_i}=
+\frac{s^2}{n_i}\)</span></p>
+<p><span class="math inline">\(sd_i ^2 = s_i ^2\)</span>，由此计算出
+<span class="math inline">\(s^2\)</span> 后再得到每个 <span class="math inline">\(Std.Error\)</span> 的值是 <span class="math inline">\(\frac{s}{\sqrt n_i}\)</span>。</p></li>
+</ul>
+<h2 id="inference-on-one-way-anova">Inference on One-Way ANOVA</h2>
+<h3 id="confidence-interval-for-mu_i">Confidence Interval for <span class="math inline">\(\mu_i\)</span></h3>
+<p>事实上这只是个理论上可做的问题而已，现实中不会对 <span class="math inline">\(\mu_i\)</span> 做推断，我们关注的是 <span class="math inline">\(\mu_i\)</span> 之间的差异。</p>
+<p>由于 <span class="math inline">\(\bar Y_{i.} \sim N(\mu_i , \sigma^2
+/ n_i)\)</span>，因此 <span class="math inline">\(\mu_i\)</span> 的
+pooled confidence interval 是 <span class="math inline">\((\bar Y_{i.} -
+t_c \frac{s}{\sqrt n_i} , \bar Y_{i.} + t_c \frac{s}{\sqrt
+n_i})\)</span>，其中 <span class="math inline">\(t_c =
+t(1-\frac{\alpha}{2}, n_T -r)\)</span>。注意其中的 <span class="math inline">\(s^2\)</span> 在上面已经有定义，实际上就是
+SSE。</p>
+<p>当然也可以认为是 <span class="math inline">\((\bar Y_{i.} - t_c s_i ,
+\bar Y_{i.} + t_c s_i)\)</span>，<span class="math inline">\(s_i\)</span> 是每个 <span class="math inline">\(\mu_i\)</span> 对应的 <span class="math inline">\(sd_i\)</span>。但是这样得到的置信区间一般来说较宽，准确性不如
+pooled confidence interval，我们不太会采用。</p>
+<p>实际上这样做 t-test 的话 family-wise error rate
+很大，即使做出显著的效果也很有可能是发生了 Type I Error。</p>
+<h3 id="bonferroni-confidence-intervals-for-mu_i">Bonferroni Confidence
+Intervals for <span class="math inline">\(\mu_i\)</span></h3>
+<p>想要同时估计所有的 <span class="math inline">\(\mu_i\)</span>
+的时候可以采用 Bonferroni method，但是也有明显的缺点是一旦 factor level
+<span class="math inline">\(r\)</span> 较大，就会导致每个 <span class="math inline">\(\mu_i\)</span> 都不显著，置信区间的 level of
+significance 只有 <span class="math inline">\(\alpha /
+2r\)</span>，几乎是无效的。</p>
+<p>同样是 t-test，但过于保守了。对于较小的 <span class="math inline">\(r\)</span> 可以进行尝试。</p>
+<h3 id="test-difference-in-means">Test Difference in Means</h3>
+<p>由于 <span class="math inline">\(\bar Y_{i.} - \bar Y_{j.} \sim
+N(\mu_i - \mu_k , \frac{\sigma^2}{n_i} + \frac{\sigma
+^2}{n_j})\)</span>，<span class="math inline">\(\mu_i - \mu_k\)</span>
+的 confidence interval 是 <span class="math inline">\((\bar Y_{i.} -
+\bar Y_{j.}-t_c s(\bar Y_{i.} - \bar Y_{k.}), \bar Y_{i.} - \bar
+Y_{j.}+t_c s(\bar Y_{i.} - \bar Y_{k.}))\)</span>，其中 <span class="math inline">\(s(\bar Y_i. - \bar Y_k.) = \sqrt{\frac{\hat
+\sigma^2}{n_i} + \frac{\hat \sigma^2}{n_j}} = s \sqrt{\frac{1}{n_i} +
+\frac{1}{n_j}}\)</span>，<span class="math inline">\(t_c\)</span>
+是和检验方法有关的常数。</p>
+<p>由于一共有 <span class="math inline">\(r\)</span> 个 mean <span class="math inline">\(\mu_i\)</span>，所以一共要做 <span class="math inline">\(\frac{r(r-1)}{2}\)</span>
+次检验来确定两两之间有无差异。</p>
+<ul>
+<li>Tukey's HSD Method: 使用 q-test，取 <span class="math inline">\(t_c
+= \frac{\bar y _{max} - \bar y_{min}}{\sqrt 2 s /\sqrt
+n}\)</span>；适用于两两检验。</li>
+<li>Scheffe's Method: 使用 F-test，取 <span class="math inline">\(t_c =
+\sqrt{(r-1)F(1-\alpha, r-1, n_T
+-r)}\)</span>，适用于线性组合的对照（contrast，见下）。实际上也过于保守了，导致
+power 比较低。</li>
+</ul>
+<h2 id="contrast">Contrast</h2>
+<h3 id="concept">Concept</h3>
+<p>关于对照的具体定义是，取一组均值为 <span class="math inline">\(0\)</span> 的常数作为权重，即为 <span class="math inline">\(\Sigma_{i=1} ^r c_i =0\)</span>，此时研究 <span class="math inline">\(L = \Sigma_{i=1} ^r c_i \mu_i\)</span>
+的推断。</p>
+<p>注意到 <span class="math inline">\(\hat L = \Sigma c_i \bar Y_i .
+\sim N(L, Var(\hat L))\)</span>，其中 <span class="math inline">\(Var(\hat L) = \Sigma c_i ^2 Var(\bar Y_i
+.)\)</span>，<span class="math inline">\(\hat Var (\hat L) = MSE \Sigma(
+c^2_i / n_i)\)</span>。</p>
+<p>test statistic 是 <span class="math inline">\(T= \frac{\hat L -
+L_0}{\sqrt{\hat Var(\hat L)}} \sim t(n_T-r)\)</span>。例如在 <span class="math inline">\(H_0 : L =0\)</span> 下有 <span class="math inline">\(T = \frac{\Sigma c_i \bar Y_i .}{\sqrt{MSE \Sigma
+c^2_i / n_i}} \sim t(n_T -r)\)</span>，于是 <span class="math inline">\(T^2 = \frac{(\Sigma c_i \bar Y_i.)^2}{MSE \Sigma
+c_i^2 /n_i} = \frac{SSC/1}{MSE} \sim F(1,n_T-r)\)</span>，其中定义 <span class="math inline">\(SSC = (\Sigma c_i \bar Y_i.)^2 / \Sigma
+(c_i^2/n_i)\)</span>，称为 sum of contrast。</p>
+<h3 id="multiple-contrasts">Multiple Contrasts</h3>
+<p>可以利用 R 同时检验若干组 contrast，比如同时检验 <span class="math inline">\(\mu_1 = \mu_2, \mu_3 = \mu_2 , \mu_1 =( \mu_1 +
+\mu_2+\mu_3 )/ 3\)</span></p>
+<p>实际上 linear hypothesis test 和 multiple comparison
+的主要差别在于自由度，比如说对于 <span class="math inline">\(\mu_1 =
+\mu_2 = \mu_3\)</span> 做检验，前者会将其拆成两个两两检验，自由度是
+<span class="math inline">\(2\)</span>，后者会作为一个整体的
+contrast，自由度是 <span class="math inline">\(1\)</span>。</p>
 <h1 id="附录">附录</h1>
 <h2 id="常见重要分布">常见重要分布</h2>
 <p>From <a target="_blank" rel="noopener" href="https://v1ncent19.github.io/SummaryNotes/">Statistic
@@ -1235,7 +1501,10 @@ t-分布中的 <code>dt</code>，<code>pt</code>，<code>qt</code> 相似。</p>
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
           <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-1"><span class="nav-text">Lecture 1</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#galtons-experiment"><span class="nav-text">Galton&#39;s Experiment</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E6%9C%AF%E8%AF%AD"><span class="nav-text">一些术语</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-2"><span class="nav-text">Lecture 2</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#simple-linear-regression"><span class="nav-text">Simple Linear Regression</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%9A%84%E7%BB%84%E7%BB%87%E5%92%8C%E8%A1%A8%E7%A4%BA"><span class="nav-text">数据的组织和表示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E7%9A%84%E8%A1%A8%E7%A4%BA"><span class="nav-text">模型的表示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E7%9A%84%E6%84%8F%E4%B9%89%E5%92%8C%E6%B1%82%E7%AE%97"><span class="nav-text">参数的意义和求算</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#least-sum-of-square-%E6%96%B9%E6%B3%95"><span class="nav-text">Least Sum of Square 方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mle-%E6%96%B9%E6%B3%95"><span class="nav-text">MLE 方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%A8%E6%96%AD%E5%A4%8D%E4%B9%A0"><span class="nav-text">推断复习</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-3"><span class="nav-text">Lecture 3</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E4%B8%AD%E7%9A%84%E6%8E%A8%E6%96%AD"><span class="nav-text">线性回归中的推断</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E6%8E%A8%E6%96%AD"><span class="nav-text">参数推断</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#power-function"><span class="nav-text">Power Function</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#blue"><span class="nav-text">BLUE</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-4"><span class="nav-text">Lecture 4</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#estimation-prediction"><span class="nav-text">Estimation &amp; Prediction</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B9%B3%E5%9D%87%E5%93%8D%E5%BA%94%E7%9A%84%E6%8E%A8%E6%96%AD"><span class="nav-text">平均响应的推断</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%84%E6%B5%8B%E5%80%BC%E7%9A%84%E6%8E%A8%E6%96%AD"><span class="nav-text">预测值的推断</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%84%E6%B5%8B%E5%80%BC%E7%9A%84%E5%B9%B3%E5%9D%87%E7%9A%84%E6%8E%A8%E6%96%AD"><span class="nav-text">预测值的平均的推断</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#confidence-band-for-entire-regression-line"><span class="nav-text">Confidence Band for
-Entire Regression Line</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#summary"><span class="nav-text">Summary</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#analysis-of-variance-anova"><span class="nav-text">Analysis of Variance (ANOVA)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#variance-estimator"><span class="nav-text">Variance Estimator</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#f-%E6%A3%80%E9%AA%8C"><span class="nav-text">F-检验</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#general-linear-test"><span class="nav-text">General Linear Test</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pearson-correlation-r"><span class="nav-text">Pearson Correlation r</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-5"><span class="nav-text">Lecture 5</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E5%81%87%E8%AE%BE"><span class="nav-text">模型假设</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#diagnostics-and-remedies"><span class="nav-text">Diagnostics and Remedies</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#diagnostics-of-x"><span class="nav-text">Diagnostics of X</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E8%AF%8A%E6%96%AD"><span class="nav-text">模型诊断</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-6"><span class="nav-text">Lecture 6</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-12"><span class="nav-text">Lecture 12</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#equal-variance-remedy"><span class="nav-text">Equal Variance Remedy</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#weighted-regression"><span class="nav-text">Weighted Regression</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#multicollinearity-remedy"><span class="nav-text">Multicollinearity Remedy</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ridge-regression"><span class="nav-text">Ridge Regression</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lasso-elastic-net"><span class="nav-text">LASSO &amp; Elastic Net</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#influencial-cases-remedy"><span class="nav-text">Influencial Cases Remedy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nonlinearity-remedy"><span class="nav-text">Nonlinearity Remedy</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-13"><span class="nav-text">Lecture 13</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#single-factor-model"><span class="nav-text">Single Factor Model</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%99%84%E5%BD%95"><span class="nav-text">附录</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E9%87%8D%E8%A6%81%E5%88%86%E5%B8%83"><span class="nav-text">常见重要分布</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E4%BD%8D%E6%95%B0%E9%80%9F%E6%9F%A5"><span class="nav-text">分位数速查</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#t-%E5%88%86%E5%B8%83%E6%A8%A1%E6%8B%9F"><span class="nav-text">t-分布模拟</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AD%A3%E6%80%81%E5%88%86%E5%B8%83%E6%A8%A1%E6%8B%9F"><span class="nav-text">正态分布模拟</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#f-%E5%88%86%E5%B8%83%E6%A8%A1%E6%8B%9F"><span class="nav-text">F-分布模拟</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#chi-square-%E5%88%86%E5%B8%83%E6%A8%A1%E6%8B%9F"><span class="nav-text">Chi-square 分布模拟</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E5%B8%B8%E7%94%A8-r-%E5%91%BD%E4%BB%A4"><span class="nav-text">其他常用 R 命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#confidence-interval"><span class="nav-text">confidence interval</span></a></li></ol></li></ol></li></ol></div>
+Entire Regression Line</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#summary"><span class="nav-text">Summary</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#analysis-of-variance-anova"><span class="nav-text">Analysis of Variance (ANOVA)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#variance-estimator"><span class="nav-text">Variance Estimator</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#f-%E6%A3%80%E9%AA%8C"><span class="nav-text">F-检验</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#general-linear-test"><span class="nav-text">General Linear Test</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pearson-correlation-r"><span class="nav-text">Pearson Correlation r</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-5"><span class="nav-text">Lecture 5</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#diagnostics-of-x"><span class="nav-text">Diagnostics of X</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#why-diagnosedistribution-and-confounding"><span class="nav-text">Why
+diagnose——Distribution and Confounding</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9B%E5%8F%82%E6%95%B0"><span class="nav-text">四参数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%8A%E6%96%AD-assumptions"><span class="nav-text">诊断 assumptions</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9D%9E%E7%BA%BF%E6%80%A7%E5%85%B3%E7%B3%BB"><span class="nav-text">非线性关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%82%E6%96%B9%E5%B7%AE%E9%97%AE%E9%A2%98"><span class="nav-text">异方差问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AD%A3%E6%80%81%E6%80%A7%E5%81%87%E8%AE%BE"><span class="nav-text">正态性假设</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E6%80%A7"><span class="nav-text">相关性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#outlier"><span class="nav-text">Outlier</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E-r2"><span class="nav-text">关于 \(R^2\)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-6"><span class="nav-text">Lecture 6</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#built-in-diagnostic-plots-in-r"><span class="nav-text">Built-in Diagnostic Plots in
+R</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-12"><span class="nav-text">Lecture 12</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#equal-variance-remedy"><span class="nav-text">Equal Variance Remedy</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#weighted-regression"><span class="nav-text">Weighted Regression</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#multicollinearity-remedy"><span class="nav-text">Multicollinearity Remedy</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ridge-regression"><span class="nav-text">Ridge Regression</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lasso-elastic-net"><span class="nav-text">LASSO &amp; Elastic Net</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#influencial-cases-remedy"><span class="nav-text">Influencial Cases Remedy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nonlinearity-remedy"><span class="nav-text">Nonlinearity Remedy</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-13"><span class="nav-text">Lecture 13</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#one-factor-anova"><span class="nav-text">One Factor ANOVA</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#cell-means-model"><span class="nav-text">Cell means model</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#factor-effects-model"><span class="nav-text">Factor Effects Model</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#example"><span class="nav-text">Example</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#inference-on-one-way-anova"><span class="nav-text">Inference on One-Way ANOVA</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#confidence-interval-for-mu_i"><span class="nav-text">Confidence Interval for \(\mu_i\)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bonferroni-confidence-intervals-for-mu_i"><span class="nav-text">Bonferroni Confidence
+Intervals for \(\mu_i\)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#test-difference-in-means"><span class="nav-text">Test Difference in Means</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#contrast"><span class="nav-text">Contrast</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#concept"><span class="nav-text">Concept</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#multiple-contrasts"><span class="nav-text">Multiple Contrasts</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%99%84%E5%BD%95"><span class="nav-text">附录</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E9%87%8D%E8%A6%81%E5%88%86%E5%B8%83"><span class="nav-text">常见重要分布</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E4%BD%8D%E6%95%B0%E9%80%9F%E6%9F%A5"><span class="nav-text">分位数速查</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#t-%E5%88%86%E5%B8%83%E6%A8%A1%E6%8B%9F"><span class="nav-text">t-分布模拟</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AD%A3%E6%80%81%E5%88%86%E5%B8%83%E6%A8%A1%E6%8B%9F"><span class="nav-text">正态分布模拟</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#f-%E5%88%86%E5%B8%83%E6%A8%A1%E6%8B%9F"><span class="nav-text">F-分布模拟</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#chi-square-%E5%88%86%E5%B8%83%E6%A8%A1%E6%8B%9F"><span class="nav-text">Chi-square 分布模拟</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E5%B8%B8%E7%94%A8-r-%E5%91%BD%E4%BB%A4"><span class="nav-text">其他常用 R 命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#confidence-interval"><span class="nav-text">confidence interval</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
