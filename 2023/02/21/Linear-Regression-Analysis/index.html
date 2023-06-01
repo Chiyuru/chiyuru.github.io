@@ -34,6 +34,7 @@
 <meta property="og:image" content="https://s2.loli.net/2023/05/29/VtZpD4vuSkA27eU.png">
 <meta property="og:image" content="https://s2.loli.net/2023/05/29/iQKNWpv8IseAoFj.png">
 <meta property="og:image" content="https://s2.loli.net/2023/05/29/Uy8JvP4eBmWS1GT.png">
+<meta property="og:image" content="https://s2.loli.net/2023/06/01/WTrmCsZ1oyLFzpQ.png">
 <meta property="og:image" content="https://s2.loli.net/2023/05/29/VwIlizq5vsEFot6.png">
 <meta property="og:image" content="https://s2.loli.net/2023/05/29/OJZi635KwUQ8quf.png">
 <meta property="og:image" content="https://s2.loli.net/2023/05/29/BkYA4IrhbLXjTna.png">
@@ -42,7 +43,7 @@
 <meta property="og:image" content="https://s2.loli.net/2023/05/31/g3Abuh529lnpV7r.png">
 <meta property="og:image" content="https://s2.loli.net/2023/05/31/iNHqIePg5rVKTQM.png">
 <meta property="article:published_time" content="2023-02-21T11:12:18.000Z">
-<meta property="article:modified_time" content="2023-05-31T14:56:16.783Z">
+<meta property="article:modified_time" content="2023-05-31T18:13:09.915Z">
 <meta property="article:author" content="驰雨Chiyuru">
 <meta property="article:tag" content="课程实录">
 <meta property="article:tag" content="数学">
@@ -233,7 +234,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-05-31 22:56:16" itemprop="dateModified" datetime="2023-05-31T22:56:16+08:00">2023-05-31</time>
+                <time title="修改时间：2023-06-01 02:13:09" itemprop="dateModified" datetime="2023-06-01T02:13:09+08:00">2023-06-01</time>
               </span>
 
           
@@ -911,6 +912,8 @@ X)^2}{\Sigma_j (X_i - \bar X)^2}\)</span>，<span class="math inline">\(h_{ii}\)
 influential point，直觉上来看是因为它的 <span class="math inline">\(X\)</span> 和 <span class="math inline">\(Y\)</span>
 都具有一定的特征，会对回归线造成较大的影响。</p></li>
 </ul>
+<p>如果 <span class="math inline">\(h_{ii} &gt; 2p/n\)</span>
+一般就称为高杠杆值点。</p>
 <h3 id="studentized-residual">Studentized Residual</h3>
 <p>一个 influential point
 造成回归线的巨大改变无法在残差图上体现出来，因此我们希望有一种手段能够体现出它和其他正常点的巨大差异。一个自然的想法是先移除它再做回归线，然后在这一模型上体现残差，即为
@@ -920,24 +923,27 @@ studentized residual。</p>
 <p>具体来说，studentized residual 和 standardized residual
 有一些差别：</p>
 <ul>
-<li>standardized residual: <span class="math inline">\(\frac{e_i}{s(e_i)}\)</span>，由于 <span class="math inline">\(Var(e_i) = (1-h_{ii})\sigma^2\)</span>，则 <span class="math inline">\(s^2 (e_i) =
-(1-h_{ii})MSE\)</span>，代入即可。</li>
-<li>deleted residual: <span class="math inline">\(d_i = Y_i - \hat
+<li><p>standardized residual: <span class="math inline">\(\frac{e_i}{s(e_i)}\)</span>，由于 <span class="math inline">\(Var(e_i) = (1-h_{ii})\sigma^2\)</span>，则 <span class="math inline">\(s^2 (e_i) =
+(1-h_{ii})MSE\)</span>，代入即可。</p></li>
+<li><p>deleted residual: <span class="math inline">\(d_i = Y_i - \hat
 Y_{i(-i)}\)</span>，其中 <span class="math inline">\(\hat
 Y_{i(-i)}\)</span> 是 <span class="math inline">\(X_i\)</span>
-在去除这一点的模型中所对应的响应。</li>
-<li>studentized residual: <span class="math inline">\(\frac{d_i}{s(d_i)}\)</span>，同理有 <span class="math inline">\(s^2(d_i) = (1-h_{ii})MSE_i\)</span>，<span class="math inline">\(MSE_i\)</span> 是去除第 <span class="math inline">\(i\)</span> 点的模型对应的 MSE。</li>
+在去除这一点的模型中所对应的响应。</p></li>
+<li><p>studentized residual: <span class="math inline">\(\frac{d_i}{s(d_i)}\)</span>，同理有 <span class="math inline">\(s^2(d_i) = (1-h_{ii})MSE_i\)</span>，<span class="math inline">\(MSE_i\)</span> 是去除第 <span class="math inline">\(i\)</span> 点的模型对应的 MSE。</p>
+<p>事实上 <span class="math inline">\(e_i^* = \frac{d_i}{s(d_i)} =
+\frac{e_i}{\sqrt{MSE(1-h_{ii})}}\)</span> 是 internal studentized
+residual，当 <span class="math inline">\(|e_i ^*| &gt;2\)</span>
+时认为是一个 outlier。</p>
+<p>studentized deleted residual 如下所示：</p>
+<p><img src="https://s2.loli.net/2023/06/01/WTrmCsZ1oyLFzpQ.png" alt="studentized-deleted-residual.png"></p></li>
 </ul>
 <h3 id="cooks-distance-1">Cook's Distance</h3>
 <p>考虑 <span class="math inline">\(D_i = \frac{\Sigma_j (\hat Y_j -
-\hat Y_{j(-i)})^2}{ps^2}\)</span>，其中 <span class="math inline">\(\hat
-Y_{j(-i)}\)</span> 指的是 <span class="math inline">\(X_j\)</span>
-在去除第 <span class="math inline">\(i\)</span>
-点的模型中对应的平均响应值。第 <span class="math inline">\(i\)</span>
-点的 Cook's distance <span class="math inline">\(D_i\)</span> 表征的是第
-<span class="math inline">\(i\)</span>
+\hat Y_{j(-i)})^2}{ps^2}= \frac{e_i^2}{p\cdot MSE}
+\frac{h_{ii}}{(1-h_{ii})^2}\)</span>，其中 <span class="math inline">\(\hat Y_{j(-i)}\)</span> 指的是 <span class="math inline">\(X_j\)</span> 在去除第 <span class="math inline">\(i\)</span> 点的模型中对应的平均响应值。第 <span class="math inline">\(i\)</span> 点的 Cook's distance <span class="math inline">\(D_i\)</span> 表征的是第 <span class="math inline">\(i\)</span>
 点的值对全体预测值（也就是回归线）的影响力。<span class="math inline">\(D_i\)</span> 越大越说明这是个 high influential
-point。</p>
+point，一般吧 threshold 作为 <span class="math inline">\(0.5\)</span>
+或者 <span class="math inline">\(\frac 4 n\)</span>。</p>
 <h2 id="lack-of-fit-test">Lack of fit test</h2>
 <p>怀疑某个模型并不符合线性，且其某一 <span class="math inline">\(X_i\)</span> 点处有多个对应的 <span class="math inline">\(Y\)</span>，也即这一点处存在 replicates 或者说
 repeated observation 的时候，可以进行失拟检验。具体来说，可以进一步细分
@@ -1453,7 +1459,87 @@ extra sum of squares
 <li><p>如果二者都是连续型变量也是类似的情况，相比之下类别型变量和连续型变量的交互效应有显著的分组意义。</p></li>
 </ul>
 <h1 id="lecture-11">Lecture 11</h1>
-<p>急死了（</p>
+<h2 id="模型选择方法">模型选择方法</h2>
+<h3 id="一些没那么数学的">一些没那么数学的</h3>
+<ul>
+<li>喜闻乐见的穷举，可惜只能处理不超过 <span class="math inline">\(n=40\)</span> 个变量的情况</li>
+<li>stepwise greedy method，不喜闻乐见的要写代码，理解 idea
+就好（心虚</li>
+</ul>
+<h3 id="一些准则">一些准则</h3>
+<p>假设可供选择的 explanatory variable 有 <span class="math inline">\(P-1\)</span> 个，从中选择 <span class="math inline">\(p-1\)</span> 个并进行判断。</p>
+<ul>
+<li><p>观察 <span class="math inline">\(R^2\)</span> 和 adjusted <span class="math inline">\(R^2\)</span>，取后者较大的模型</p></li>
+<li><p>观察 mallow's <span class="math inline">\(C_p\)</span>，<span class="math inline">\(\Gamma_p = \frac{E(SSE(p))}{\sigma^2} - (n-2p)
+\geq p\)</span>，实际上在操作中只能取 <span class="math inline">\(\hat
+\Gamma_p = \frac{SSE(p)}{MSE(P)}-(n-2p)\)</span>。</p>
+<ul>
+<li>如果 <span class="math inline">\(\hat \Gamma_p &gt;&gt; p\)</span>
+说明存在显著的误差，可能遗漏了重要的变量没有进入模型</li>
+<li>如果 <span class="math inline">\(\hat \Gamma_p &lt;&lt;p\)</span>
+说明过拟合了，导致 <span class="math inline">\(SSE(p)
+&lt;&lt;MSE(P)\)</span></li>
+<li>如果 <span class="math inline">\(\hat \Gamma_p \approx p\)</span>
+说明是 unbiased，取接近于 <span class="math inline">\(p\)</span> 的
+mallow's <span class="math inline">\(C_p\)</span>
+中最小的一个对应的模型。</li>
+</ul>
+<p>实际上理论的形式对于 <span class="math inline">\(P\)</span> 有 <span class="math inline">\(\Gamma_P =P\)</span>。</p></li>
+<li><p><span class="math inline">\(AIC = n \log (\frac{SSE(p)}{n}) +
+2p\)</span>，<span class="math inline">\(BIC = n \log (\frac{SSE(p)}{n})
++ (\log n)p\)</span>，二者都是最小值对应的模型最合适。</p>
+<p>注意 BIC 实际上相比 AIC
+加了一个更大的惩罚在模型的变量数上，更注重解释性；一般来说有 <span class="math inline">\(BIC&gt;AIC\)</span>。</p></li>
+<li><p>Predicted Residual Error Sum of Squares：<span class="math inline">\(PRESS(p) = \sum_{i=1}^n (Y_i - \hat
+Y_{i(-i)})^2\)</span>，实际上有 <span class="math inline">\(Y_i - \hat
+Y_{i(-i)} = \frac{e_i}{1-h_{ii}}\)</span>。</p>
+<p>取使得 <span class="math inline">\(PRESS(p)\)</span>
+最小的模型。用来观察过拟合与否。</p></li>
+<li><p>Prediction <span class="math inline">\(R_p^2\)</span>：<span class="math inline">\(R_p^2 =
+1-\frac{PRESS}{SST}\)</span>，如果模型里噪音过大，则有 <span class="math inline">\(PRESS &gt;SST\)</span>，此时 <span class="math inline">\(R_p^2&lt;0\)</span> 也是可以取负值的。如果有 <span class="math inline">\(R_p^2 &lt;&lt;R^2\)</span>
+则也可能是过拟合了，即使有些独立变量是显著的。</p></li>
+</ul>
+<p>我们选择模型一般会考虑 adjusted <span class="math inline">\(R^2\)</span>，AIC 或者 mallow's <span class="math inline">\(C_p\)</span>。</p>
+<h2 id="模型诊断">模型诊断</h2>
+<h3 id="partial-regression-plots">Partial Regression Plots</h3>
+<p>每个 <span class="math inline">\(X_i\)</span> 都可以做出一张 partial
+regression plot，也即所谓的 AV-plot，实际上就是对 <span class="math inline">\(Y|X_{-i} \sim X_i|X_{-i}\)</span>
+这两部分残差互相做回归得到的图，展示了完整模型中 <span class="math inline">\(Y \sim X_i\)</span>
+之间的边际关系。也可以用来检测非线性关系、异方差问题和 outliers。</p>
+<h3 id="studentized-residuals">Studentized Residuals</h3>
+<p>补充在 Lecture 6 里了。</p>
+<h3 id="assessing-outliers">Assessing Outliers</h3>
+<p>有以下指标可以考虑：</p>
+<ul>
+<li><p>Difference caused to fitted values：<span class="math inline">\((DFFIT)_i = \hat Y_i - \hat Y_{i(-i)} =
+\frac{h_{ii}}{1-h_{ii}} e_i\)</span></p></li>
+<li><p>Studentized DFFIT：<span class="math inline">\((DFFITS)_i =
+\frac{\hat Y_i - \hat Y_{i(-i)}}{\sqrt{MSE_{-i} h_{ii}}} = t_i
+\sqrt{\frac{h_{ii}}{1-h_{ii}}}\)</span>。</p>
+<p>对于不太大的数据量，如果 <span class="math inline">\(|DFFITS|&gt;1\)</span>
+则认为是强影响力点，大数据量时认为 <span class="math inline">\(|DFFITS|&gt;2\frac{\sqrt p}{\sqrt n}\)</span>
+是强影响力点。</p></li>
+<li><p>Cook's Distance：<span class="math inline">\(D_i = \frac{e_i^2}{p
+\cdot MSE} \frac{h_{ii}}{(1-h_{ii})^2}\)</span>，在 R
+中认为某个点有强影响力的 threshold 是 <span class="math inline">\(0.5\)</span>，事实上如果一个点的 Cook's distance
+分布距离其他点较远，就可以认为是强影响力点了。</p></li>
+<li><p>Difference in Beta Estimates：<span class="math inline">\((DFBETAS)_{k(-i)} = \frac{b_k -
+b_{k(-i)}}{\sqrt{MSE_{(-i)} c_{kk}}}\)</span>，其中 <span class="math inline">\(c_{kk}\)</span> 是 <span class="math inline">\((X^TX)^{-1}\)</span> 的第 <span class="math inline">\(k \times k\)</span> 个分量。</p>
+<p>对于大的数据量，如果 <span class="math inline">\(|DFFITS|&gt;1\)</span>
+则认为是对于回归系数估计值的强影响力点，不太大的数据量时认为 <span class="math inline">\(|DFFITS|&gt;\frac{2}{\sqrt n}\)</span>
+是对于回归系数估计值的强影响力点。</p></li>
+</ul>
+<h3 id="multicollinearity-diagnose">Multicollinearity Diagnose</h3>
+<p>有以下两个指标：</p>
+<ul>
+<li>Variance Inflation
+Factor：多重共线性经常导致方差膨胀，这是一个表征的指标，<span class="math inline">\((VIF)_k = (1- R_k^2)^{-1}\)</span>，其中 <span class="math inline">\(R_k^2\)</span> 指的是将 <span class="math inline">\(X_k\)</span> 相对于其他 <span class="math inline">\(p-2\)</span> 个 explanatory variable
+做回归得到的决定系数。如果 <span class="math inline">\((VIF)_k
+&gt;1\)</span> 则认为第 <span class="math inline">\(k\)</span> 个变量
+<span class="math inline">\(X_k\)</span> 是会发生多重共线性的变量。</li>
+<li>Tolerance：<span class="math inline">\(TOL =
+1/VIF\)</span>，判断准则类似上述。</li>
+</ul>
 <h1 id="lecture-12">Lecture 12</h1>
 <p>本节探讨 remedies for multiple linear
 regression，主要是异方差情况和多重共线性。</p>
@@ -2119,7 +2205,7 @@ diagnose——Distribution and Confounding</span></a></li><li class="nav-item na
 R</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#scale-location-plot"><span class="nav-text">Scale-Location Plot</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cooks-distance"><span class="nav-text">Cook&#39;s Distance</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#residuals-leverage"><span class="nav-text">Residuals &amp; Leverage</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#leverage"><span class="nav-text">Leverage</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#studentized-residual"><span class="nav-text">Studentized Residual</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cooks-distance-1"><span class="nav-text">Cook&#39;s Distance</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lack-of-fit-test"><span class="nav-text">Lack of fit test</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#remedy-methods"><span class="nav-text">Remedy Methods</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A1%A5%E6%95%91%E9%9D%9E%E7%BA%BF%E6%80%A7"><span class="nav-text">补救非线性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A1%A5%E6%95%91%E5%BC%82%E6%96%B9%E5%B7%AE"><span class="nav-text">补救异方差</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A1%A5%E6%95%91%E9%9D%9E%E6%AD%A3%E6%80%81"><span class="nav-text">补救非正态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#transformation"><span class="nav-text">Transformation</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#miscellaneous-topics"><span class="nav-text">Miscellaneous Topics</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#regression-through-the-origin"><span class="nav-text">Regression Through the
 Origin</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#inverse-predictions"><span class="nav-text">Inverse Predictions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#limitations-of-r2"><span class="nav-text">Limitations of \(R^2\)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-7"><span class="nav-text">Lecture 7</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9F%A9%E9%98%B5%E8%A1%A8%E8%BE%BE"><span class="nav-text">矩阵表达</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hat-matrix"><span class="nav-text">Hat Matrix</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#multiple-linear-regression"><span class="nav-text">Multiple Linear Regression</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-8"><span class="nav-text">Lecture 8</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#explanatory-data-analysistransformation"><span class="nav-text">Explanatory Data
 Analysis——Transformation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#why-look-at-y"><span class="nav-text">Why look at Y</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#why-log-transformation"><span class="nav-text">Why log Transformation</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mlr-vs-slr"><span class="nav-text">MLR vs SLR</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%98%E9%87%8F%E9%80%89%E6%8B%A9"><span class="nav-text">变量选择</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%A1%E5%BC%82%E7%9A%84%E7%8E%B0%E8%B1%A1"><span class="nav-text">诡异的现象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#inference"><span class="nav-text">Inference</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-9"><span class="nav-text">Lecture 9</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#extra-sum-of-squares"><span class="nav-text">Extra Sum of Squares</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#general-linear-test-1"><span class="nav-text">General Linear Test</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#test-reduced-model"><span class="nav-text">Test Reduced Model</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#test-linear-hypothesis"><span class="nav-text">Test Linear Hypothesis</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%81%8F%E5%86%B3%E5%AE%9A%E7%B3%BB%E6%95%B0-%E5%81%8F%E7%9B%B8%E5%85%B3%E7%B3%BB%E6%95%B0"><span class="nav-text">偏决定系数 &amp; 偏相关系数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%87%E5%87%86%E5%9B%9E%E5%BD%92"><span class="nav-text">标准回归</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#motivation"><span class="nav-text">Motivation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#methodcorrelation-transformation"><span class="nav-text">Method——Correlation
-Transformation</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#suppressor-variable"><span class="nav-text">Suppressor Variable</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-10"><span class="nav-text">Lecture 10</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#multicollinearity"><span class="nav-text">Multicollinearity</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#zero-collinearity"><span class="nav-text">Zero Collinearity</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#linearly-dependent"><span class="nav-text">Linearly Dependent</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#multicollinearity-1"><span class="nav-text">Multicollinearity</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#polynomial-regression"><span class="nav-text">Polynomial Regression</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%A4%E4%BA%92%E9%A1%B9"><span class="nav-text">交互项</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-11"><span class="nav-text">Lecture 11</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-12"><span class="nav-text">Lecture 12</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#equal-variance-remedy"><span class="nav-text">Equal Variance Remedy</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#weighted-regression"><span class="nav-text">Weighted Regression</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#multicollinearity-remedy"><span class="nav-text">Multicollinearity Remedy</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ridge-regression"><span class="nav-text">Ridge Regression</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lasso-elastic-net"><span class="nav-text">LASSO &amp; Elastic Net</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#influencial-cases-remedy"><span class="nav-text">Influencial Cases Remedy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nonlinearity-remedy"><span class="nav-text">Nonlinearity Remedy</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-13"><span class="nav-text">Lecture 13</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#one-factor-anova"><span class="nav-text">One Factor ANOVA</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#cell-means-model"><span class="nav-text">Cell means model</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#factor-effects-model"><span class="nav-text">Factor Effects Model</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#example"><span class="nav-text">Example</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#inference-on-one-way-anova"><span class="nav-text">Inference on One-Way ANOVA</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#confidence-interval-for-mu_i"><span class="nav-text">Confidence Interval for \(\mu_i\)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bonferroni-confidence-intervals-for-mu_i"><span class="nav-text">Bonferroni Confidence
+Transformation</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#suppressor-variable"><span class="nav-text">Suppressor Variable</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-10"><span class="nav-text">Lecture 10</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#multicollinearity"><span class="nav-text">Multicollinearity</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#zero-collinearity"><span class="nav-text">Zero Collinearity</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#linearly-dependent"><span class="nav-text">Linearly Dependent</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#multicollinearity-1"><span class="nav-text">Multicollinearity</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#polynomial-regression"><span class="nav-text">Polynomial Regression</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%A4%E4%BA%92%E9%A1%B9"><span class="nav-text">交互项</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-11"><span class="nav-text">Lecture 11</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E9%80%89%E6%8B%A9%E6%96%B9%E6%B3%95"><span class="nav-text">模型选择方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E6%B2%A1%E9%82%A3%E4%B9%88%E6%95%B0%E5%AD%A6%E7%9A%84"><span class="nav-text">一些没那么数学的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E5%87%86%E5%88%99"><span class="nav-text">一些准则</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E8%AF%8A%E6%96%AD"><span class="nav-text">模型诊断</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#partial-regression-plots"><span class="nav-text">Partial Regression Plots</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#studentized-residuals"><span class="nav-text">Studentized Residuals</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#assessing-outliers"><span class="nav-text">Assessing Outliers</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#multicollinearity-diagnose"><span class="nav-text">Multicollinearity Diagnose</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-12"><span class="nav-text">Lecture 12</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#equal-variance-remedy"><span class="nav-text">Equal Variance Remedy</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#weighted-regression"><span class="nav-text">Weighted Regression</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#multicollinearity-remedy"><span class="nav-text">Multicollinearity Remedy</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ridge-regression"><span class="nav-text">Ridge Regression</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lasso-elastic-net"><span class="nav-text">LASSO &amp; Elastic Net</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#influencial-cases-remedy"><span class="nav-text">Influencial Cases Remedy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nonlinearity-remedy"><span class="nav-text">Nonlinearity Remedy</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-13"><span class="nav-text">Lecture 13</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#one-factor-anova"><span class="nav-text">One Factor ANOVA</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#cell-means-model"><span class="nav-text">Cell means model</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#factor-effects-model"><span class="nav-text">Factor Effects Model</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#example"><span class="nav-text">Example</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#inference-on-one-way-anova"><span class="nav-text">Inference on One-Way ANOVA</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#confidence-interval-for-mu_i"><span class="nav-text">Confidence Interval for \(\mu_i\)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bonferroni-confidence-intervals-for-mu_i"><span class="nav-text">Bonferroni Confidence
 Intervals for \(\mu_i\)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#test-difference-in-means"><span class="nav-text">Test Difference in Means</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#contrast"><span class="nav-text">Contrast</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#concept"><span class="nav-text">Concept</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#multiple-contrasts"><span class="nav-text">Multiple Contrasts</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-14"><span class="nav-text">Lecture 14</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%99%84%E5%BD%95"><span class="nav-text">附录</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E9%87%8D%E8%A6%81%E5%88%86%E5%B8%83"><span class="nav-text">常见重要分布</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E4%BD%8D%E6%95%B0%E9%80%9F%E6%9F%A5"><span class="nav-text">分位数速查</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#t-%E5%88%86%E5%B8%83%E6%A8%A1%E6%8B%9F"><span class="nav-text">t-分布模拟</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AD%A3%E6%80%81%E5%88%86%E5%B8%83%E6%A8%A1%E6%8B%9F"><span class="nav-text">正态分布模拟</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#f-%E5%88%86%E5%B8%83%E6%A8%A1%E6%8B%9F"><span class="nav-text">F-分布模拟</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#chi-square-%E5%88%86%E5%B8%83%E6%A8%A1%E6%8B%9F"><span class="nav-text">Chi-square 分布模拟</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E5%B8%B8%E7%94%A8-r-%E5%91%BD%E4%BB%A4"><span class="nav-text">其他常用 R 命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#confidence-interval"><span class="nav-text">confidence interval</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
@@ -2136,7 +2222,7 @@ Intervals for \(\mu_i\)</span></a></li><li class="nav-item nav-level-3"><a class
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">31</span>
+          <span class="site-state-item-count">32</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
