@@ -42,12 +42,18 @@
 <meta property="og:image" content="https://s2.loli.net/2023/05/30/4hFWcryX6lbspt5.png">
 <meta property="og:image" content="https://s2.loli.net/2023/05/31/g3Abuh529lnpV7r.png">
 <meta property="og:image" content="https://s2.loli.net/2023/05/31/iNHqIePg5rVKTQM.png">
+<meta property="og:image" content="https://s2.loli.net/2023/06/02/Hb1oPSrA2IJFcmC.png">
+<meta property="og:image" content="https://s2.loli.net/2023/06/02/tjVnAgmPvwBoeQF.png">
+<meta property="og:image" content="https://s2.loli.net/2023/06/02/bAZXemT5kDncjoy.png">
+<meta property="og:image" content="https://s2.loli.net/2023/06/02/RP89DuvkNQlVUqi.png">
+<meta property="og:image" content="https://s2.loli.net/2023/06/02/McpX95nUsHYWRmT.png">
+<meta property="og:image" content="https://s2.loli.net/2022/12/21/6TEM1vSosXLcwOg.jpg">
 <meta property="article:published_time" content="2023-02-21T11:12:18.000Z">
-<meta property="article:modified_time" content="2023-05-31T18:13:09.915Z">
+<meta property="article:modified_time" content="2023-06-01T20:25:54.991Z">
 <meta property="article:author" content="驰雨Chiyuru">
 <meta property="article:tag" content="课程实录">
-<meta property="article:tag" content="数学">
 <meta property="article:tag" content="统计">
+<meta property="article:tag" content="数学">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://s2.loli.net/2023/02/26/AHxRkaSBD87fW3V.png">
 
@@ -234,7 +240,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-06-01 02:13:09" itemprop="dateModified" datetime="2023-06-01T02:13:09+08:00">2023-06-01</time>
+                <time title="修改时间：2023-06-02 04:25:54" itemprop="dateModified" datetime="2023-06-02T04:25:54+08:00">2023-06-02</time>
               </span>
 
           
@@ -1826,7 +1832,155 @@ c_i^2 /n_i} = \frac{SSC/1}{MSE} \sim F(1,n_T-r)\)</span>，其中定义 <span cl
 <span class="math inline">\(2\)</span>，后者会作为一个整体的
 contrast，自由度是 <span class="math inline">\(1\)</span>。</p>
 <h1 id="lecture-14">Lecture 14</h1>
-<p>好急，好急，但是快了，别急</p>
+<p>依旧来自生统概论的笔记。</p>
+<h2 id="two-way-anova">Two-Way ANOVA</h2>
+<p>首先给出一个希望做检验的场景：<span class="math inline">\(nab\)</span> 个实验对象被分成 <span class="math inline">\(a\times b\)</span> 组，每组有 <span class="math inline">\(n\)</span> 个实验对象。第 <span class="math inline">\(ij\)</span> 组的实验条件是 <span class="math inline">\(A\)</span> 因素的等级为 <span class="math inline">\(i\)</span>，<span class="math inline">\(B\)</span>
+因素的等级为 <span class="math inline">\(j\)</span>，其中有 <span class="math inline">\(1 \leq i \leq a, 1\leq j \leq
+b\)</span>。由此我们得到 <span class="math inline">\(nab\)</span> 个数据
+<span class="math inline">\(Y_{ijk}\)</span>，<span class="math inline">\(i\)</span> 表示以 <span class="math inline">\(A\)</span> 因素分类的组别，<span class="math inline">\(j\)</span> 表示以 <span class="math inline">\(B\)</span> 因素分类的组别，<span class="math inline">\(k\)</span> 表示在某一组内的编号，<span class="math inline">\(1 \leq k \leq n\)</span>。</p>
+<p>每一组都是 <span class="math inline">\(n\)</span> 个人，这是一个
+balanced design。</p>
+<h3 id="cell-mean-model">Cell Mean Model</h3>
+<p>模型假设是 <span class="math inline">\(Y_{ijk} = \mu_{ij} +
+\varepsilon_{ijk}\)</span>。</p>
+<p>其中，<span class="math inline">\(\mu_{ij}\)</span> 是第 <span class="math inline">\({i \times j}\)</span> 水平的均值，<span class="math inline">\(\varepsilon_{ijk}\)</span> i.i.d. <span class="math inline">\(\sim N(0,\sigma^2)\)</span>，模型中实际上有 <span class="math inline">\(ab+1\)</span> 个未知参数需要估计。</p>
+<p><span class="math inline">\(\mu_{ij}\)</span> 的估计量是 <span class="math inline">\(\bar Y_{ij.} = \sum_k Y_{ijk} /n\)</span>，对于
+<span class="math inline">\(i \times j\)</span> 水平的方差估计是 <span class="math inline">\(s_{ij}^2 = \sum_k (Y_{ijk} - \bar Y_{ij.})^2 /
+(n-1)\)</span>。但是想要估计 <span class="math inline">\(\sigma^2\)</span> 时必须要将所有的数值加权 pool
+起来做估计，是 <span class="math inline">\(s^2 = \sum_{ij} (n_{ij}-1)
+s_{ij} ^2 / \sum_{ij} (n_{ij}-1)\)</span>，注意到如果是 balanced test
+的情况实际上就是 <span class="math inline">\(s^2 = \sum_{ij} s^2_{ij} /
+ab\)</span> 直接做平均的结果。更倾向于 pooled <span class="math inline">\(s^2\)</span>
+是因为自由度更大，数据利用更充分。</p>
+<p>直接通过看图来观察两个因子之间是否存在交互效应、单因子是否显著这件事的时候，比较经典的情况就是以下两种：</p>
+<p><img src="https://s2.loli.net/2023/06/02/Hb1oPSrA2IJFcmC.png" alt="cell-mean-model.png"></p>
+<p>上面第一张图中可以发现两条回归线之间存在斜率的差异，说明 B 因子对于 A
+因子的效果存在影响，也就是存在交互效应；在 <span class="math inline">\(b_2\)</span> level 上 A 因子是不显著的，但在 <span class="math inline">\(b_1\)</span> level 上 A 因子显著；同理在 <span class="math inline">\(a_1\)</span> level 上 B 因子不显著，但在 <span class="math inline">\(a_2\)</span> level 上 B
+因子显著。实际上在这个情况下交互效应显著，主效应虽然显著但也没有太大意义了，不过想要解释也是可以的，可以认为
+A 因子带来的效应至少不是负效应。</p>
+<p>第二张图里更有两条回归线交叉，存在斜率的差异，交互效应显著；但主效应此时可能无法解释，尤其是如果两条回归线完全交叉成
+<span class="math inline">\(\times\)</span> 形状，A 因子会在不同的 B
+因子条件下起到相反的作用。所以一般是认为交互效应显著时主效应显著，但没有解释意义。显著性和解释性之间无关。</p>
+<p>在读 R code 的时候直接把所有的 estimation 读作 factor effect model
+的系数，再代回就可以理解系数的来源了。这一部分在 factor effects model
+里详述。</p>
+<h3 id="factor-effects-model-1">Factor Effects Model</h3>
+<p>模型假设是 <span class="math inline">\(Y_{ijk} = \mu +\alpha_i +
+\beta_j +(\alpha \beta)_{ij} + \varepsilon_{ijk}\)</span>。</p>
+<p>其中，<span class="math inline">\(\mu\)</span> 是整体的均值，<span class="math inline">\(\alpha_i\)</span> 代表只和等级为 <span class="math inline">\(i\)</span> 的因素 <span class="math inline">\(A\)</span> 有关的变化，<span class="math inline">\(\beta_j\)</span> 表示只和等级为 <span class="math inline">\(j\)</span> 的因素 <span class="math inline">\(B\)</span> 有关的变化，<span class="math inline">\((\alpha \beta)_{ij}\)</span>
+表示和两个因素同时相关的变化，相当于一个交叉项。</p>
+<p>这里面有 <span class="math inline">\((a+1)(b+1)\)</span>
+个参数，对其也有一定的约束：<span class="math inline">\(\Sigma_i
+\alpha_i = \Sigma_j \beta_j = \Sigma_i (\alpha \beta)_{ij} = \Sigma_j
+(\alpha \beta)_{ij} =0\)</span>，事实上有 <span class="math inline">\(a+b-1\)</span> 个关于交互效应的约束，有 <span class="math inline">\(2\)</span> 个关于单因子效应的约束，实际上包含
+<span class="math inline">\(\sigma^2\)</span> 后仍然是有 <span class="math inline">\(ab+1\)</span>
+个参数。做一些其他的参数假设，让参数含义更清晰：</p>
+<p><span class="math display">\[\mu_{i.} = \alpha_i
++\mu_{..}\]</span></p>
+<p><span class="math display">\[\mu_{.j} = \beta _j +
+\mu_{..}\]</span></p>
+<p><span class="math display">\[\mu_{ij} = \mu_{..} +\alpha_i + \beta_j
++(\alpha \beta)_{ij}\]</span></p>
+<p>如果 <span class="math inline">\((\alpha \beta)_{ij}=0\)</span>
+则说明因素 <span class="math inline">\(A,B\)</span>
+之间不存在相互作用的关系，这样的模型称为 additive model。</p>
+<p>考虑一些统计量作为参数的估计量：</p>
+<p><span class="math display">\[\bar{Y}_{ij.} = \frac{1}{n} \Sigma_{k=1
+}^{n} Y_{ijk}  = \hat \mu_{ij} = \hat \mu + \hat \alpha _i + \hat
+\beta_j + \hat{(\alpha \beta)}_{ij}\]</span></p>
+<p><span class="math display">\[\bar{Y}_{i..} = \frac{1}{bn}
+\Sigma_{j=1}^b \Sigma_{k=1} ^{n} Y_{ijk} = \hat{\mu} +\hat \alpha_i =
+\hat \mu_{i.}\]</span></p>
+<p><span class="math display">\[\bar{Y}_{.j.} = \frac{1}{an}
+\Sigma_{i=1}^a \Sigma_{k=1} ^{n} Y_{ijk} = \hat{\mu} +\hat \beta_j =
+\hat \mu_{.j}\]</span></p>
+<p><span class="math display">\[\bar{Y}_{...} =
+\frac{1}{abn}\Sigma_{i=1}^a \Sigma_{j=1}^b \Sigma_{k=1} ^{n} Y_{ijk} =
+\hat{\mu} \]</span></p>
+<p>Two factors ANOVA 的方差分解更复杂一些：</p>
+<p><span class="math display">\[\begin{aligned} SSTO &amp;= \Sigma_i
+\Sigma_j \Sigma_k (Y_{ijk} - \bar Y_{...})^2   \\ &amp;=  \Sigma_i
+\Sigma_j \Sigma_k ((\bar Y_{i..} - \bar Y_{...})+(\bar{Y}_{.j.} - \bar
+Y_{...}) +(\bar{Y}_{ij.} - \bar Y_{i..} -\bar Y_{.j.} +\bar Y_{...})
++(Y_{ijk} - \bar Y_{ij.}))^2 \\&amp;=bn\Sigma_i (\bar Y_{i..} - \bar
+Y_{...})^2+an\Sigma_j (\bar{Y}_{.j.} - \bar Y_{...})^2+n\Sigma_i
+\Sigma_j (\bar{Y}_{ij.} - \bar Y_{i..} -\bar Y_{.j.} +\bar Y_{...})^2+
+\Sigma_{i}\Sigma_j \Sigma_k (Y_{ijk} - \bar Y_{ij.})^2  \\&amp;=SSA
++SSB+SSAB+SSE  \end{aligned}\]</span></p>
+<p>其中，<span class="math inline">\(SSA\)</span> 的自由度是 <span class="math inline">\(a-1\)</span>，<span class="math inline">\(SSB\)</span> 的自由度是 <span class="math inline">\(b-1\)</span>，<span class="math inline">\(SSAB\)</span> 的自由度是 <span class="math inline">\((a-1)(b-1)\)</span>，<span class="math inline">\(SSE\)</span> 的自由度是 <span class="math inline">\(ab(n-1)\)</span>，<span class="math inline">\(SSTO\)</span> 的自由度是 <span class="math inline">\(abn-1\)</span>。在这一个复杂问题中我们关心不同的问题，可以做出三种不同的假设检验，有对应的检验统计量。</p>
+<ul>
+<li><span class="math inline">\(A\)</span> 因素是否会导致差异？<span class="math inline">\(H_0: \alpha_1 =\alpha_2=...=\alpha_a\)</span>，在
+<span class="math inline">\(H_0\)</span> 下有 <span class="math inline">\(F^* = \frac{SSA/(a-1)}{SSE/(ab(n-1))} \sim
+F_{a-1,ab(n-1)}\)</span></li>
+<li><span class="math inline">\(B\)</span> 因素是否会导致差异？<span class="math inline">\(H_0: \beta_1 =\beta_2=...=\beta_b\)</span>，在
+<span class="math inline">\(H_0\)</span> 下有 <span class="math inline">\(F^* = \frac{SSB/(b-1)}{SSE/(ab(n-1))} \sim
+F_{b-1,ab(n-1)}\)</span></li>
+<li><span class="math inline">\(A,B\)</span> 是否联合作用？<span class="math inline">\(H_0:(\alpha \beta)_{ij}=0, \forall 1 \leq i \leq
+a,1\leq j \leq b\)</span>，在 <span class="math inline">\(H_0\)</span>
+下有 <span class="math inline">\(F^*=\frac{SSAB/(a-1)(b-1)}{SSE/(ab(n-1))} \sim
+F_{(a-1)(b-1),ab(n-1)}\)</span></li>
+</ul>
+<p>不能直接用 chi-square 统计量作为检验统计量的原因是实际上 <span class="math inline">\(MSE,MSA\)</span> 等统计量中都带有未知的 <span class="math inline">\(\sigma^2\)</span> 参数项。</p>
+<p>注意 <span class="math inline">\(n_{ij}\)</span>
+是相等的也就是平衡设计，所以 Type I 和 Type III ANOVA
+的结果是一样的。</p>
+<h3 id="two-way-anova-in-r">Two-Way ANOVA in R</h3>
+<p>模型假设是 <span class="math inline">\(Y_{ijk} = \mu +\alpha_i +
+\beta_j +(\alpha \beta)_{ij} + \varepsilon_{ijk}\)</span>。</p>
+<p>其中，<span class="math inline">\(\mu\)</span> 是整体的均值，<span class="math inline">\(\alpha_i\)</span> 代表只和等级为 <span class="math inline">\(i\)</span> 的因素 <span class="math inline">\(A\)</span> 有关的变化，<span class="math inline">\(\beta_j\)</span> 表示只和等级为 <span class="math inline">\(j\)</span> 的因素 <span class="math inline">\(B\)</span> 有关的变化，<span class="math inline">\((\alpha \beta)_{ij}\)</span>
+表示和两个因素同时相关的变化，相当于一个交叉项。</p>
+<p>这里面有 <span class="math inline">\((a+1)(b+1)\)</span>
+个参数，对其也有一定的约束。R code 中的约束是和上述理论不同的，因此
+estimator 的读取也并不相同，认为 <span class="math inline">\(\alpha_1 =
+\beta_1 = (\alpha \beta)_{1j} = (\alpha
+\beta)_{i1}=0\)</span>，事实上也还是 <span class="math inline">\(a+b+1\)</span> 个约束条件，可以估计出 <span class="math inline">\(ab+1\)</span> 个不同参数。</p>
+<p>相应地，对应的 design matrix 也不尽相同。这里以 <span class="math inline">\(a=3,b=2,n=2\)</span> 为例，coefficient table
+如下所示：</p>
+<p><img src="https://s2.loli.net/2023/06/02/tjVnAgmPvwBoeQF.png" alt="coefficient-table.png"></p>
+<p>Coefficient table 里的 Intercept 代表的实际上是 <span class="math inline">\(\mu\)</span>，预设了 <span class="math inline">\(\beta_1=0\)</span>，height2 即为 <span class="math inline">\(\beta_2\)</span>，height3 即为 <span class="math inline">\(\beta_3\)</span>；预设了 <span class="math inline">\(\alpha_1=0\)</span>，width2 即为 <span class="math inline">\(\alpha_2\)</span>；关于交互效应项，由于预设了
+<span class="math inline">\((\alpha \beta)_{11} = (\alpha \beta)_{12} =
+(\alpha \beta)_{13} =(\alpha
+\beta)_{21}=0\)</span>，不为零的交互效应项只有两个，分别由
+height2:weight2 对应 <span class="math inline">\((\alpha
+\beta)_{22}\)</span>，height2:weight3 对应 <span class="math inline">\((\alpha \beta)_{23}\)</span>。</p>
+<p>由此我们可以依次按照 <span class="math inline">\(\mu_{ij} = \mu +
+\alpha_i + \beta_j +(\alpha \beta)_{ij}\)</span> 算出所有的 <span class="math inline">\(\mu_{ij}\)</span> 的估计量。</p>
+<p>在这之后我们希望得到一个关于 <span class="math inline">\(12\)</span>
+个数据的设计阵，实际上就是把数据和上述分析对应起来：</p>
+<p><img src="https://s2.loli.net/2023/06/02/bAZXemT5kDncjoy.png" alt="design-matrix.png"></p>
+<h2 id="least-square-means">Least Square Means</h2>
+<p>遇到非平衡设计，或者 covariates
+的情况（连续型变量和类别性变量产生交互效应的情况），需要考虑 least
+square means 而不是 pooled means。简单来说 least square means
+是均值的均值，达到了最小的方差，而 pooled means
+就是全体数据的均值，在非平衡设计的情况下很可能引入偏差。</p>
+<p><img src="https://s2.loli.net/2023/06/02/RP89DuvkNQlVUqi.png" alt="LSM.png"></p>
+<h3 id="balanced-test">Balanced Test</h3>
+<p>对于一个平衡设计来说，它本质上是一个正交设计，模型中进一个因子还是两个因子都不会改变彼此的系数估计，只有自由度会有改变。least
+square mean 就是普通的 pooled mean，one-way ANOVA 和 two-way ANOVA
+的结果一致。</p>
+<h3 id="unbalanced-test">Unbalanced Test</h3>
+<p>非平衡设计的时候 one-way ANOVA 的结果仍然是一样的，least square mean
+和 pooled mean 得到的都是这一组内所有的观测值的平均。在这里就是认为 A
+因子的 height1 level 的估计值是 <span class="math inline">\(\hat \mu_{1}
+= \frac 1 3(X_{11} +X_{12} +X_{13}) = 43\)</span>。</p>
+<p>但是新加入一个因子做 two-way ANOVA 就会导致 least square mean
+下的系数估计发生变化，从 coefficient table 可以看出 <span class="math inline">\(\mu_{i1}\)</span> 和 <span class="math inline">\(\mu_{i2}\)</span>
+都改变了（绷不住了，虽然并不知道是怎么变的，但是会从系数表读出每一个
+<span class="math inline">\(\mu_{ij}\)</span> 就可以了），仍然使用 <span class="math inline">\(\frac 1 2(\mu_{i1}+\mu_{i2})\)</span> 作为 <span class="math inline">\(\mu_{i.}\)</span>
+的估计，就也会相应地发生变化。</p>
+<p>事实上 least square mean 还可以称作 predicted mean 的原因就是，此处的
+<span class="math inline">\(\mu_{11}\)</span> 和 <span class="math inline">\(\mu_{12}\)</span> 分别作为 <span class="math inline">\(1\times 1,1\times 2\)</span>
+这两格的预测值出现，它们的平均就作为 <span class="math inline">\(\mu_{1.}\)</span> 这一个 A 因子的 height1 level
+对应的预测值出现。在具体的例子里，此处因为得到的估计是 <span class="math inline">\(\hat \mu_{11} = 41, \hat \mu_{12} =
+44\)</span>，于是认为 <span class="math inline">\(\hat \mu_{1.} = \frac
+1 2 (\hat \mu_{11} + \hat \mu_{12}) = 42.5\)</span>。</p>
+<p><img src="https://s2.loli.net/2023/06/02/McpX95nUsHYWRmT.png" alt="predicted-means.png"></p>
+<p>总之可以看到，unbalance test 会导致实验设计并不是正交的，B
+因子的加入会对 A 因子的均值估计产生影响，这也是我们一般希望使用 balanced
+test 的理由。</p>
+<h2 id="model-diagnose-remedy">Model Diagnose &amp; Remedy</h2>
+<p>马上要告别应统了，于是不考也就不想学了，摆烂。</p>
 <h1 id="附录">附录</h1>
 <h2 id="常见重要分布">常见重要分布</h2>
 <p>From <a target="_blank" rel="noopener" href="https://v1ncent19.github.io/SummaryNotes/">Statistic
@@ -2051,6 +2205,13 @@ t-分布中的 <code>dt</code>，<code>pt</code>，<code>qt</code> 相似。</p>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">model <span class="operator">&lt;-</span> lm<span class="punctuation">(</span>data<span class="punctuation">)</span></span><br><span class="line">confint<span class="punctuation">(</span>model<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">               <span class="number">2.5</span> <span class="operator">%    97.5 %</span></span><br><span class="line"><span class="punctuation">(</span>Intercept<span class="punctuation">)</span> <span class="number">8.670370</span> <span class="number">11.729630</span></span><br><span class="line">V2          <span class="number">2.918388</span>  <span class="number">5.081612</span></span><br></pre></td></tr></table></figure>
 <p>这个附录怎么全咕了啊，不过无所谓了，这课我本来就是在摆烂（</p>
+<h1 id="完结撒花">完结撒花</h1>
+<p>一点都不 happily ever
+after，说是找到了新的方向，谁知道概率又会不会很艰难呢。</p>
+<p>这课明显东西比统计推断多，但是导出成 PDF
+一看比统推笔记少了二十多页。</p>
+<p>总之都结束了，笑一个吧（</p>
+<p><img src="https://s2.loli.net/2022/12/21/6TEM1vSosXLcwOg.jpg" alt="HEA.jpg"></p>
 
     </div>
 
@@ -2117,8 +2278,8 @@ t-分布中的 <code>dt</code>，<code>pt</code>，<code>qt</code> 相似。</p>
       <footer class="post-footer">
           <div class="post-tags">
               <a href="/tags/%E8%AF%BE%E7%A8%8B%E5%AE%9E%E5%BD%95/" rel="tag"># 课程实录</a>
-              <a href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag"># 数学</a>
               <a href="/tags/%E7%BB%9F%E8%AE%A1/" rel="tag"># 统计</a>
+              <a href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag"># 数学</a>
           </div>
 
         
@@ -2206,7 +2367,7 @@ R</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav
 Origin</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#inverse-predictions"><span class="nav-text">Inverse Predictions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#limitations-of-r2"><span class="nav-text">Limitations of \(R^2\)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-7"><span class="nav-text">Lecture 7</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9F%A9%E9%98%B5%E8%A1%A8%E8%BE%BE"><span class="nav-text">矩阵表达</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hat-matrix"><span class="nav-text">Hat Matrix</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#multiple-linear-regression"><span class="nav-text">Multiple Linear Regression</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-8"><span class="nav-text">Lecture 8</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#explanatory-data-analysistransformation"><span class="nav-text">Explanatory Data
 Analysis——Transformation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#why-look-at-y"><span class="nav-text">Why look at Y</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#why-log-transformation"><span class="nav-text">Why log Transformation</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mlr-vs-slr"><span class="nav-text">MLR vs SLR</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%98%E9%87%8F%E9%80%89%E6%8B%A9"><span class="nav-text">变量选择</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%A1%E5%BC%82%E7%9A%84%E7%8E%B0%E8%B1%A1"><span class="nav-text">诡异的现象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#inference"><span class="nav-text">Inference</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-9"><span class="nav-text">Lecture 9</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#extra-sum-of-squares"><span class="nav-text">Extra Sum of Squares</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#general-linear-test-1"><span class="nav-text">General Linear Test</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#test-reduced-model"><span class="nav-text">Test Reduced Model</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#test-linear-hypothesis"><span class="nav-text">Test Linear Hypothesis</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%81%8F%E5%86%B3%E5%AE%9A%E7%B3%BB%E6%95%B0-%E5%81%8F%E7%9B%B8%E5%85%B3%E7%B3%BB%E6%95%B0"><span class="nav-text">偏决定系数 &amp; 偏相关系数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%87%E5%87%86%E5%9B%9E%E5%BD%92"><span class="nav-text">标准回归</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#motivation"><span class="nav-text">Motivation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#methodcorrelation-transformation"><span class="nav-text">Method——Correlation
 Transformation</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#suppressor-variable"><span class="nav-text">Suppressor Variable</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-10"><span class="nav-text">Lecture 10</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#multicollinearity"><span class="nav-text">Multicollinearity</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#zero-collinearity"><span class="nav-text">Zero Collinearity</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#linearly-dependent"><span class="nav-text">Linearly Dependent</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#multicollinearity-1"><span class="nav-text">Multicollinearity</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#polynomial-regression"><span class="nav-text">Polynomial Regression</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%A4%E4%BA%92%E9%A1%B9"><span class="nav-text">交互项</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-11"><span class="nav-text">Lecture 11</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E9%80%89%E6%8B%A9%E6%96%B9%E6%B3%95"><span class="nav-text">模型选择方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E6%B2%A1%E9%82%A3%E4%B9%88%E6%95%B0%E5%AD%A6%E7%9A%84"><span class="nav-text">一些没那么数学的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E5%87%86%E5%88%99"><span class="nav-text">一些准则</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E8%AF%8A%E6%96%AD"><span class="nav-text">模型诊断</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#partial-regression-plots"><span class="nav-text">Partial Regression Plots</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#studentized-residuals"><span class="nav-text">Studentized Residuals</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#assessing-outliers"><span class="nav-text">Assessing Outliers</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#multicollinearity-diagnose"><span class="nav-text">Multicollinearity Diagnose</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-12"><span class="nav-text">Lecture 12</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#equal-variance-remedy"><span class="nav-text">Equal Variance Remedy</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#weighted-regression"><span class="nav-text">Weighted Regression</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#multicollinearity-remedy"><span class="nav-text">Multicollinearity Remedy</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ridge-regression"><span class="nav-text">Ridge Regression</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lasso-elastic-net"><span class="nav-text">LASSO &amp; Elastic Net</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#influencial-cases-remedy"><span class="nav-text">Influencial Cases Remedy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nonlinearity-remedy"><span class="nav-text">Nonlinearity Remedy</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-13"><span class="nav-text">Lecture 13</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#one-factor-anova"><span class="nav-text">One Factor ANOVA</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#cell-means-model"><span class="nav-text">Cell means model</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#factor-effects-model"><span class="nav-text">Factor Effects Model</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#example"><span class="nav-text">Example</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#inference-on-one-way-anova"><span class="nav-text">Inference on One-Way ANOVA</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#confidence-interval-for-mu_i"><span class="nav-text">Confidence Interval for \(\mu_i\)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bonferroni-confidence-intervals-for-mu_i"><span class="nav-text">Bonferroni Confidence
-Intervals for \(\mu_i\)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#test-difference-in-means"><span class="nav-text">Test Difference in Means</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#contrast"><span class="nav-text">Contrast</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#concept"><span class="nav-text">Concept</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#multiple-contrasts"><span class="nav-text">Multiple Contrasts</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-14"><span class="nav-text">Lecture 14</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%99%84%E5%BD%95"><span class="nav-text">附录</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E9%87%8D%E8%A6%81%E5%88%86%E5%B8%83"><span class="nav-text">常见重要分布</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E4%BD%8D%E6%95%B0%E9%80%9F%E6%9F%A5"><span class="nav-text">分位数速查</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#t-%E5%88%86%E5%B8%83%E6%A8%A1%E6%8B%9F"><span class="nav-text">t-分布模拟</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AD%A3%E6%80%81%E5%88%86%E5%B8%83%E6%A8%A1%E6%8B%9F"><span class="nav-text">正态分布模拟</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#f-%E5%88%86%E5%B8%83%E6%A8%A1%E6%8B%9F"><span class="nav-text">F-分布模拟</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#chi-square-%E5%88%86%E5%B8%83%E6%A8%A1%E6%8B%9F"><span class="nav-text">Chi-square 分布模拟</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E5%B8%B8%E7%94%A8-r-%E5%91%BD%E4%BB%A4"><span class="nav-text">其他常用 R 命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#confidence-interval"><span class="nav-text">confidence interval</span></a></li></ol></li></ol></li></ol></div>
+Intervals for \(\mu_i\)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#test-difference-in-means"><span class="nav-text">Test Difference in Means</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#contrast"><span class="nav-text">Contrast</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#concept"><span class="nav-text">Concept</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#multiple-contrasts"><span class="nav-text">Multiple Contrasts</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-14"><span class="nav-text">Lecture 14</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#two-way-anova"><span class="nav-text">Two-Way ANOVA</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#cell-mean-model"><span class="nav-text">Cell Mean Model</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#factor-effects-model-1"><span class="nav-text">Factor Effects Model</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#two-way-anova-in-r"><span class="nav-text">Two-Way ANOVA in R</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#least-square-means"><span class="nav-text">Least Square Means</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#balanced-test"><span class="nav-text">Balanced Test</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#unbalanced-test"><span class="nav-text">Unbalanced Test</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#model-diagnose-remedy"><span class="nav-text">Model Diagnose &amp; Remedy</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%99%84%E5%BD%95"><span class="nav-text">附录</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E9%87%8D%E8%A6%81%E5%88%86%E5%B8%83"><span class="nav-text">常见重要分布</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E4%BD%8D%E6%95%B0%E9%80%9F%E6%9F%A5"><span class="nav-text">分位数速查</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#t-%E5%88%86%E5%B8%83%E6%A8%A1%E6%8B%9F"><span class="nav-text">t-分布模拟</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AD%A3%E6%80%81%E5%88%86%E5%B8%83%E6%A8%A1%E6%8B%9F"><span class="nav-text">正态分布模拟</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#f-%E5%88%86%E5%B8%83%E6%A8%A1%E6%8B%9F"><span class="nav-text">F-分布模拟</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#chi-square-%E5%88%86%E5%B8%83%E6%A8%A1%E6%8B%9F"><span class="nav-text">Chi-square 分布模拟</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E5%B8%B8%E7%94%A8-r-%E5%91%BD%E4%BB%A4"><span class="nav-text">其他常用 R 命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#confidence-interval"><span class="nav-text">confidence interval</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%8C%E7%BB%93%E6%92%92%E8%8A%B1"><span class="nav-text">完结撒花</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
