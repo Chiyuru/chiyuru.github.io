@@ -49,7 +49,7 @@
 <meta property="og:image" content="https://s2.loli.net/2023/06/02/McpX95nUsHYWRmT.png">
 <meta property="og:image" content="https://s2.loli.net/2022/12/21/6TEM1vSosXLcwOg.jpg">
 <meta property="article:published_time" content="2023-02-21T11:12:18.000Z">
-<meta property="article:modified_time" content="2023-06-06T09:41:07.882Z">
+<meta property="article:modified_time" content="2023-06-06T17:45:26.080Z">
 <meta property="article:author" content="驰雨Chiyuru">
 <meta property="article:tag" content="课程实录">
 <meta property="article:tag" content="数学">
@@ -240,7 +240,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-06-06 17:41:07" itemprop="dateModified" datetime="2023-06-06T17:41:07+08:00">2023-06-06</time>
+                <time title="修改时间：2023-06-07 01:45:26" itemprop="dateModified" datetime="2023-06-07T01:45:26+08:00">2023-06-07</time>
               </span>
 
           
@@ -369,11 +369,8 @@ _i\)</span> 是随机变量。</p>
 的估计，使用残差 <span class="math inline">\(e_1,...,e_n\)</span>
 来考虑。</p>
 <p>取 <span class="math inline">\(\hat{\sigma ^2} = \frac{\Sigma _{i=1}
-^n e_i ^2}{n-2}\)</span>。这是因为 <span class="math inline">\(e_1,e_2,...,e_n\)</span> 的 degree of
-freedom（自由度） 记为 <span class="math inline">\(df_E =
-n-2\)</span>，由此考虑 sum of square <span class="math inline">\(SSE=
-\Sigma_{i=1} ^n (Y_i - \hat{Y_i})^2=\Sigma _{i=1} ^n e_i
-^2\)</span>，定义 mean of squared errors <span class="math inline">\(MSE= \frac{SSE}{df_E} = \frac{\Sigma_{i=1}^n e_i
+^n e_i ^2}{n-2}\)</span>。这是因为 <span class="math inline">\(e_1,e_2,...,e_n\)</span> 的自由度为 <span class="math inline">\(df_E = n-2\)</span>，由此考虑 sum of square <span class="math inline">\(SSE= \Sigma_{i=1} ^n (Y_i - \hat{Y_i})^2=\Sigma
+_{i=1} ^n e_i ^2\)</span>，定义 mean of squared errors <span class="math inline">\(MSE= \frac{SSE}{df_E} = \frac{\Sigma_{i=1}^n e_i
 ^2}{n-2}\)</span> 为 <span class="math inline">\(\hat{\sigma
 ^2}\)</span>。</p>
 <h4 id="mle-方法">MLE 方法</h4>
@@ -381,7 +378,7 @@ n-2\)</span>，由此考虑 sum of square <span class="math inline">\(SSE=
 MLE 方法进行估计。</p>
 <p>在正态假设下，我们可以将 <span class="math inline">\(n\)</span>
 组数据视作 <span class="math inline">\(n\)</span>
-个互相独立的随机变量，取使得其likelihood function 最大的一组 <span class="math inline">\(\beta_-,\beta_1,\sigma^2\)</span>
+个互相独立的随机变量，取使得其likelihood function 最大的一组 <span class="math inline">\(\beta_0,\beta_1,\sigma^2\)</span>
 作为估计量。likelihood function 即为 <span class="math inline">\(f(y_1,y_2,...,y_n) =
 f_1(y_1)...f_n(y_n)\)</span>，得到的 estimator 中 <span class="math inline">\(\hat{\beta_0},\hat{\beta_1}\)</span> 与 least sum
 of square 中得出的估计量相同，但 <span class="math inline">\(\hat{\sigma
@@ -1471,11 +1468,11 @@ extra sum of squares
 \geq p\)</span>，实际上在操作中只能取 <span class="math inline">\(\hat
 \Gamma_p = \frac{SSE(p)}{MSE(P)}-(n-2p)\)</span>。</p>
 <ul>
-<li>如果 <span class="math inline">\(\hat \Gamma_p &gt;&gt; p\)</span>
+<li>如果 <span class="math inline">\(\hat \Gamma_p \gg p\)</span>
 说明存在显著的误差，可能遗漏了重要的变量没有进入模型</li>
-<li>如果 <span class="math inline">\(\hat \Gamma_p &lt;&lt;p\)</span>
-说明过拟合了，导致 <span class="math inline">\(SSE(p)
-&lt;&lt;MSE(P)\)</span></li>
+<li>如果 <span class="math inline">\(\hat \Gamma_p \ll p\)</span>
+说明过拟合了，导致 <span class="math inline">\(SSE(p) \ll
+MSE(P)\)</span></li>
 <li>如果 <span class="math inline">\(\hat \Gamma_p \approx p\)</span>
 说明是 unbiased，取接近于 <span class="math inline">\(p\)</span> 的
 mallow's <span class="math inline">\(C_p\)</span>
@@ -1493,7 +1490,7 @@ Y_{i(-i)} = \frac{e_i}{1-h_{ii}}\)</span>。</p>
 <p>取使得 <span class="math inline">\(PRESS(p)\)</span>
 最小的模型。用来观察过拟合与否。</p></li>
 <li><p>Prediction <span class="math inline">\(R_p^2\)</span>：<span class="math inline">\(R_p^2 =
-1-\frac{PRESS}{SST}\)</span>，如果模型里噪音过大，则有 <span class="math inline">\(PRESS &gt;SST\)</span>，此时 <span class="math inline">\(R_p^2&lt;0\)</span> 也是可以取负值的。如果有 <span class="math inline">\(R_p^2 &lt;&lt;R^2\)</span>
+1-\frac{PRESS}{SST}\)</span>，如果模型里噪音过大，则有 <span class="math inline">\(PRESS &gt;SST\)</span>，此时 <span class="math inline">\(R_p^2&lt;0\)</span> 也是可以取负值的。如果有 <span class="math inline">\(R_p^2 \ll R^2\)</span>
 则也可能是过拟合了，即使有些独立变量是显著的。</p></li>
 </ul>
 <p>我们选择模型一般会考虑 adjusted <span class="math inline">\(R^2\)</span>，AIC 或者 mallow's <span class="math inline">\(C_p\)</span>。</p>
@@ -1531,9 +1528,8 @@ b_{k(-i)}}{\sqrt{MSE_{(-i)} c_{kk}}}\)</span>，其中 <span class="math inline"
 <ul>
 <li>Variance Inflation
 Factor：多重共线性经常导致方差膨胀，这是一个表征的指标，<span class="math inline">\((VIF)_k = (1- R_k^2)^{-1}\)</span>，其中 <span class="math inline">\(R_k^2\)</span> 指的是将 <span class="math inline">\(X_k\)</span> 相对于其他 <span class="math inline">\(p-2\)</span> 个 explanatory variable
-做回归得到的决定系数。如果 <span class="math inline">\((VIF)_k
-&gt;1\)</span> 则认为第 <span class="math inline">\(k\)</span> 个变量
-<span class="math inline">\(X_k\)</span> 是会发生多重共线性的变量。</li>
+做回归得到的决定系数。如果 <span class="math inline">\((VIF)_k \gg
+1\)</span> 则认为第 <span class="math inline">\(k\)</span> 个变量 <span class="math inline">\(X_k\)</span> 是会发生多重共线性的变量。</li>
 <li>Tolerance：<span class="math inline">\(TOL =
 1/VIF\)</span>，判断准则类似上述。</li>
 </ul>
@@ -1684,12 +1680,9 @@ Y_{i.} +\bar Y_{i.} - \bar Y_{..})^2 \\&amp; = \Sigma_i n_i (\bar Y_{i.}
 <p>可以观察到，<span class="math inline">\(SSTR\)</span>
 是组间差距，体现了不同组别之间的差别，<span class="math inline">\(SSE\)</span>
 是组内差距，体现了同一组内各数据的偏差。注意 <span class="math inline">\(SSTR\)</span> 的自由度是 <span class="math inline">\(r-1\)</span>，<span class="math inline">\(SSE\)</span> 的自由度是 <span class="math inline">\(n_T - r\)</span>，<span class="math inline">\(SSTO\)</span> 的自由度是 <span class="math inline">\(n_T - 1\)</span>。</p>
-<p>由此可以求出 <span class="math inline">\(MSE= \frac{SSE}{n_T
--r}\)</span>，<span class="math inline">\(MSTR =
-\frac{SSTR}{r-1}\)</span>。</p>
-<p>作业里证明了两个统计量的期望，<span class="math inline">\(\mathbb
-E(MSE) = \sigma^2\)</span>，<span class="math inline">\(\mathbb E(MSTR)
-= \sigma^2 +\frac{\Sigma_i n_i (\mu _i -\mu_.)^2}{r-1}\)</span>，其中
+<p>两个统计量的期望是 <span class="math inline">\(\mathbb E(MSE) =
+\sigma^2\)</span>，<span class="math inline">\(\mathbb E(MSTR) =
+\sigma^2 +\frac{\Sigma_i n_i (\mu _i -\mu_.)^2}{r-1}\)</span>，其中
 <span class="math inline">\(\mu_. = \frac{\Sigma_i n_i
 \mu_i}{n_T}\)</span>。</p>
 <p>在 <span class="math inline">\(H_0\)</span> 成立时，<span class="math inline">\(\frac{SSE}{\sigma^2} \sim \chi^2 _{n_T -

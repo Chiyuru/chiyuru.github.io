@@ -29,7 +29,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://s2.loli.net/2022/12/21/6TEM1vSosXLcwOg.jpg">
 <meta property="article:published_time" content="2023-03-20T05:28:58.000Z">
-<meta property="article:modified_time" content="2023-05-21T15:23:47.363Z">
+<meta property="article:modified_time" content="2023-06-06T18:09:10.439Z">
 <meta property="article:author" content="驰雨Chiyuru">
 <meta property="article:tag" content="课程实录">
 <meta property="article:tag" content="数学">
@@ -220,7 +220,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-05-21 23:23:47" itemprop="dateModified" datetime="2023-05-21T23:23:47+08:00">2023-05-21</time>
+                <time title="修改时间：2023-06-07 02:09:10" itemprop="dateModified" datetime="2023-06-07T02:09:10+08:00">2023-06-07</time>
               </span>
 
           
@@ -396,8 +396,9 @@ F_{(a-1)(b-1),ab(n-1)}\)</span></li>
 <p>事实上，有的时候对于一个 cell means model 或者 factor effects
 model，我们并不是很关心每个 <span class="math inline">\(\mu_i\)</span>
 的检验，而是关心整体的 <span class="math inline">\(\mu_.\)</span>
-的情况。同时，每一组的情况可能都带有随机性，所以需要改变一些模型假设，进行
-random effect 的检验。</p>
+的情况；这种情况下一般 level of factor
+也是随机从一个总体里取出的。所以需要改变一些模型假设，进行 random effect
+的检验。</p>
 <h3 id="cell-means-model-for-random-effect">Cell means model for random
 effect</h3>
 <p>回顾一下 cell means model：</p>
@@ -693,6 +694,9 @@ MS_{\alpha \gamma}} \sim ^{H_0} F_{(a-1)+(a-1)(b-1)(c-1),
 <h2 id="r-code-for-anova">R code for ANOVA</h2>
 <p>详见 <a target="_blank" rel="noopener" href="https://www.datanovia.com/en/lessons/mixed-anova-in-r/">Mixed
 ANOVA in R</a>，和课上讲的是同一个东西但是更精细一点（</p>
+<p>期末考前又去看我第二次作业的那个
+project，绷不住了，我怎么做了个不合理的 mixed effect model
+还拿了满分（</p>
 <h1 id="实验设计方法">实验设计方法</h1>
 <p>不如说是实验设计小知识（</p>
 <p>Designed experiment 的主要目标是研究若干 explanatory factor 和
@@ -790,7 +794,10 @@ effect + experimental error</p>
 <p><span class="math display">\[Y_{ij} = \beta_0 + \beta_1 X_{ij1} +
 \beta_2 X_{ij2} + \beta_3 X_{ij3} + \varepsilon_{ij}\]</span></p>
 <p>可以轻松地将其和上述的三个模型组成部分对应起来。其中 <span class="math inline">\(X_1,X_2,X_3\)</span> 类似于示性函数，此处是一种
-categorical variable，$X_i = 1 $ if treatment <span class="math inline">\(i\)</span>，otherwise <span class="math inline">\(0\)</span>。</p></li>
+categorical variable，$X_i = 1 $ if treatment <span class="math inline">\(i\)</span>，otherwise <span class="math inline">\(0\)</span>。</p>
+<p>也可以用因子效应模型来考虑这个问题，表示起来会比较容易；另外要注意的是，regression
+model 关心平均响应的预测，但 factor effect model
+更关心平均响应的差别。</p></li>
 <li><p>仍然以上一部分中的 Treatment of Lead-Exposed Children Trial
 为例。</p>
 <p><span class="math inline">\(100\)</span>
@@ -929,6 +936,8 @@ n_{1+}}{n_{21}/ n_{2+}}\]</span></p>
 <p><span class="math display">\[\hat{Var} ( \log \hat \theta) =
 \frac{1}{n_{11}} + \frac{1}{n_{12}} + \frac{1}{n_{21}} +
 \frac{1}{n_{22}}\]</span></p>
+<p>注意一些参数含义：<span class="math inline">\(\phi\)</span> 和 <span class="math inline">\(\theta\)</span>
+都表示了组间差距，如果这两个参数比较大就说明 <span class="math inline">\(Y\)</span> 对 <span class="math inline">\(Z\)</span> 和 <span class="math inline">\(Z^C\)</span> 的影响不同。</p>
 <h3 id="retrospective-clinical-trial">Retrospective clinical trial</h3>
 <p>招募了许多产生了不良反应和未产生不良反应的患者，<span class="math inline">\(Z = D/D^C\)</span>
 是是否有不良反应的组在实验开始之前就对被试者划分好了。再对他们发放问卷或者进行采访，了解出现不良反应之前的用药历史。</p>
@@ -948,6 +957,8 @@ p_2}\]</span></p>
 <p><span class="math display">\[\hat{Var} ( \log \hat \theta) =
 \frac{1}{n_{11}} + \frac{1}{n_{12}} + \frac{1}{n_{21}} +
 \frac{1}{n_{22}}\]</span></p>
+<p>可以发现 odds ratio 在两种 clinical trial
+里是一致的，因此这一参数更佳。</p>
 <h2 id="gehans-two-stage-design">Gehan's Two-Stage Design</h2>
 <p>如果某一实验看起来完全达不到我们的最低期望，那我们希望能够尽早在临床试验的早期抛弃这一选择。比如说，对于
 <span class="math inline">\(n\)</span>
