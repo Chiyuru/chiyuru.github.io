@@ -6,7 +6,7 @@
   <link href="https://chiyuru.github.io/atom.xml" rel="self"/>
   
   <link href="https://chiyuru.github.io/"/>
-  <updated>2023-07-24T15:42:34.718Z</updated>
+  <updated>2023-07-25T16:08:14.582Z</updated>
   <id>https://chiyuru.github.io/</id>
   
   <author>
@@ -17,11 +17,33 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>感觉要长脑子了</title>
+    <link href="https://chiyuru.github.io/2023/07/25/sparkle-or-cliche/"/>
+    <id>https://chiyuru.github.io/2023/07/25/sparkle-or-cliche/</id>
+    <published>2023-07-25T06:23:25.000Z</published>
+    <updated>2023-07-25T16:08:14.582Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;随便记录一下之前的一些零碎的非常 trivial
+的想法&lt;del&gt;，简称正确的废话，经由我破碎的叙述之后正常人应该是理解不了&lt;/del&gt;。翻翻书上的批注还是能感觉到每次想到这些的时候，都有一种要长脑子了的，喜悦感（&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="数学" scheme="https://chiyuru.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
+    
+    <category term="统计" scheme="https://chiyuru.github.io/tags/%E7%BB%9F%E8%AE%A1/"/>
+    
+    <category term="概率" scheme="https://chiyuru.github.io/tags/%E6%A6%82%E7%8E%87/"/>
+    
+  </entry>
+  
+  <entry>
     <title>日记·篇十一·23年7月</title>
     <link href="https://chiyuru.github.io/2023/07/01/Diary-2023-07/"/>
     <id>https://chiyuru.github.io/2023/07/01/Diary-2023-07/</id>
     <published>2023-07-01T05:12:20.000Z</published>
-    <updated>2023-07-24T15:42:34.718Z</updated>
+    <updated>2023-07-25T16:09:43.252Z</updated>
     
     
     <summary type="html">&lt;p&gt;恭喜日记篇数进入两位数时代（&lt;/p&gt;</summary>
@@ -124,9 +146,9 @@
     
     <category term="课程实录" scheme="https://chiyuru.github.io/tags/%E8%AF%BE%E7%A8%8B%E5%AE%9E%E5%BD%95/"/>
     
-    <category term="统计" scheme="https://chiyuru.github.io/tags/%E7%BB%9F%E8%AE%A1/"/>
-    
     <category term="数学" scheme="https://chiyuru.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
+    
+    <category term="统计" scheme="https://chiyuru.github.io/tags/%E7%BB%9F%E8%AE%A1/"/>
     
   </entry>
   
@@ -190,9 +212,9 @@ tag 下面几乎全是统计，成何体统&lt;/del&gt;。&lt;/p&gt;
     
     <category term="课程实录" scheme="https://chiyuru.github.io/tags/%E8%AF%BE%E7%A8%8B%E5%AE%9E%E5%BD%95/"/>
     
-    <category term="统计" scheme="https://chiyuru.github.io/tags/%E7%BB%9F%E8%AE%A1/"/>
-    
     <category term="数学" scheme="https://chiyuru.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
+    
+    <category term="统计" scheme="https://chiyuru.github.io/tags/%E7%BB%9F%E8%AE%A1/"/>
     
   </entry>
   
@@ -216,9 +238,9 @@ tag 下面几乎全是统计，成何体统&lt;/del&gt;。&lt;/p&gt;
     
     <category term="课程实录" scheme="https://chiyuru.github.io/tags/%E8%AF%BE%E7%A8%8B%E5%AE%9E%E5%BD%95/"/>
     
-    <category term="统计" scheme="https://chiyuru.github.io/tags/%E7%BB%9F%E8%AE%A1/"/>
-    
     <category term="数学" scheme="https://chiyuru.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
+    
+    <category term="统计" scheme="https://chiyuru.github.io/tags/%E7%BB%9F%E8%AE%A1/"/>
     
   </entry>
   
@@ -324,9 +346,9 @@ cover
     
     
     
-    <category term="统计" scheme="https://chiyuru.github.io/tags/%E7%BB%9F%E8%AE%A1/"/>
-    
     <category term="数学" scheme="https://chiyuru.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
+    
+    <category term="统计" scheme="https://chiyuru.github.io/tags/%E7%BB%9F%E8%AE%A1/"/>
     
     <category term="这里面看起来很好玩" scheme="https://chiyuru.github.io/tags/%E8%BF%99%E9%87%8C%E9%9D%A2%E7%9C%8B%E8%B5%B7%E6%9D%A5%E5%BE%88%E5%A5%BD%E7%8E%A9/"/>
     
@@ -349,11 +371,11 @@ PF。但统计推断要洗心革面好好上，也打算做预习。不仅是因
     
     <category term="课程实录" scheme="https://chiyuru.github.io/tags/%E8%AF%BE%E7%A8%8B%E5%AE%9E%E5%BD%95/"/>
     
-    <category term="统计" scheme="https://chiyuru.github.io/tags/%E7%BB%9F%E8%AE%A1/"/>
+    <category term="刷书" scheme="https://chiyuru.github.io/tags/%E5%88%B7%E4%B9%A6/"/>
     
     <category term="数学" scheme="https://chiyuru.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
     
-    <category term="刷书" scheme="https://chiyuru.github.io/tags/%E5%88%B7%E4%B9%A6/"/>
+    <category term="统计" scheme="https://chiyuru.github.io/tags/%E7%BB%9F%E8%AE%A1/"/>
     
   </entry>
   
@@ -395,23 +417,6 @@ MATLAB 的函数，那 Python 不亏。&lt;/p&gt;</summary>
     <category term="数学" scheme="https://chiyuru.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
     
     <category term="这里面看起来很好玩" scheme="https://chiyuru.github.io/tags/%E8%BF%99%E9%87%8C%E9%9D%A2%E7%9C%8B%E8%B5%B7%E6%9D%A5%E5%BE%88%E5%A5%BD%E7%8E%A9/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>日记·篇二·22年10月</title>
-    <link href="https://chiyuru.github.io/2022/10/01/Diary-2022-10/"/>
-    <id>https://chiyuru.github.io/2022/10/01/Diary-2022-10/</id>
-    <published>2022-09-30T16:20:54.000Z</published>
-    <updated>2022-10-31T18:22:39.000Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;不知道能坚持写多久呢？&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="碎碎念" scheme="https://chiyuru.github.io/tags/%E7%A2%8E%E7%A2%8E%E5%BF%B5/"/>
     
   </entry>
   
