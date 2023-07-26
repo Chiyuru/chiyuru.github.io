@@ -28,7 +28,7 @@
 <meta property="og:description" content="随便记录一下之前的一些零碎的非常 trivial 的想法，简称正确的废话，经由我破碎的叙述之后正常人应该是理解不了。翻翻书上的批注还是能感觉到每次想到这些的时候，都有一种要长脑子了的，喜悦感（">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-07-25T06:23:25.000Z">
-<meta property="article:modified_time" content="2023-07-26T13:01:29.124Z">
+<meta property="article:modified_time" content="2023-07-26T18:43:38.918Z">
 <meta property="article:author" content="驰雨Chiyuru">
 <meta property="article:tag" content="数学">
 <meta property="article:tag" content="统计">
@@ -223,7 +223,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-07-26 21:01:29" itemprop="dateModified" datetime="2023-07-26T21:01:29+08:00">2023-07-26</time>
+                <time title="修改时间：2023-07-27 02:43:38" itemprop="dateModified" datetime="2023-07-27T02:43:38+08:00">2023-07-27</time>
               </span>
 
           
@@ -240,6 +240,7 @@
         <p>随便记录一下之前的一些零碎的非常 trivial
 的想法<del>，简称正确的废话，经由我破碎的叙述之后正常人应该是理解不了</del>。翻翻书上的批注还是能感觉到每次想到这些的时候，都有一种要长脑子了的，喜悦感（</p>
 <span id="more"></span>
+<p>虽然我 tag 打的是概率和统计，但是我感觉这其实又是一篇实分析（挠头</p>
 <h1 id="lebesgues-decomposition-theorem">Lebesgue's Decomposition
 Theorem</h1>
 <p>在读 Radon-Nikodym Theorem 的时候看到过 mutually singular
@@ -383,7 +384,7 @@ lemma：</p>
 可以自取，就能用截断构造出各种趋于 <span class="math inline">\(f\)</span> 的可测函数列。</p>
 <p>听起来很有用！但稍微试了下除了证明一些基本的性质（比如<span class="math inline">\(\int (f +g) d\mu= \int f d\mu + \int g
 d\mu\)</span>
-的半边不等式）之外还没见过太多的用法（，只不过证出来这个之后我也一下子觉得自己要长脑子了（</p>
+的半边不等式，以及法图引理）之外还没见过太多的用法（，只不过证出来这个之后我也一下子觉得自己要长脑子了（</p>
 <h2 id="who-is-dense-on-l1-space">Who is Dense on <span class="math inline">\(L^1\)</span> Space</h2>
 <p>首先复习一下什么叫做 <span class="math inline">\(A\)</span> is dense
 on <span class="math inline">\(L^1\)</span>
@@ -423,8 +424,8 @@ Steps Procedure Elegently</h2>
 <p>我写证明其实很口胡，这样不好。如果是遇到 four steps procedure
 可以搞定的问题（指的是 simple function/step function 可以
 work，然后直接能从 density/convergent sequence 推出 general function
-works 或者至少是 nonnegative function
-works的情况）会非常开心。然而这听起来就很口胡，也不可能是一个万能的方法，稍有不慎真的口胡了的话后果很严重。</p>
+works 或者至少是 nonnegative function works
+的情况）会非常开心。然而这听起来就很口胡，也不可能是一个万能的方法，稍有不慎真的口胡了的话后果很严重。</p>
 <p>举两个我比较喜欢用来复习和脑内提示的例子，分别代表了 density 和
 convergent sequence
 两种方法，对应上一个标题下的两组结论，我个人认为至少对我是稍微有点指导意义的（怎么这也要叠甲呢</p>
@@ -461,6 +462,130 @@ E(X_k^+ Y|\mathcal F) =  \mathbb E(X^+ Y|\mathcal F)\]</span></p>
 <p><span class="math display">\[X^-\mathbb E(Y|\mathcal F)=\lim_{k \to
 \infty} X_k^- \mathbb E(Y|\mathcal F) =\lim_{k \to \infty} \mathbb
 E(X_k^- Y|\mathcal F) =  \mathbb E(X^- Y|\mathcal F)\]</span></p>
+<h2 id="littlewoods-three-principles">Littlewood's Three Principles</h2>
+<p>学的时候也不知道是因为 Stein
+的翻译逆天还是因为什么，总之觉得这个本来应该很形象的东西是真的抽象。</p>
+<blockquote>
+<ul>
+<li>Every measurable set is nearly a finite sum of intervals;</li>
+<li>Every function (of class <span class="math inline">\(L^p\)</span>)
+is nearly continuous;</li>
+<li>Every convergent sequence of functions is nearly uniformly
+convergent.</li>
+</ul>
+</blockquote>
+<p>第一条代入外测度和开覆盖就挺好理解的，第三条到现在我其实也不是很能直观上理解，只知道一个
+Egorov 定理，脑子长了一半还没完全长出来。</p>
+<p>第二条当时也是嗯记了 Lusin 定理，其实也不是非常明白为什么要倒退一步取
+bounded and finitely supported function 来做，或许就只是为了说明 <span class="math inline">\(m(E-F_\varepsilon) &lt; \varepsilon\)</span>
+吗。看了 Durrett Ex.1.4.3 上对 <span class="math inline">\(q\)</span>
+进行一些 linearly round 的操作得到 <span class="math inline">\(r\)</span> 的这道题才想起来其实就是一个关于 <span class="math inline">\(f\)</span> 的近似，直观上就所谓 <span class="math inline">\(f\)</span> is nearly
+continuous。虽然很显然但还是要长脑子了（（</p>
+<h1 id="miscellaneous-topics-in-convergence-theorems">Miscellaneous
+Topics in Convergence Theorems</h1>
+<p>关于实分析中一些收敛定理（有界收敛、单调收敛、法图引理和控制收敛）的杂谈，<del>大多数是解决
+Stein 带来的困惑</del></p>
+<h2 id="bounded-convergence-theorem">Bounded Convergence Theorem</h2>
+<p>有一个因为不是很常用所以我都快忘记了的收敛定理叫做有界收敛，它是对于
+bounded and finitely supported
+function（事实上函数列的支撑比这更严格一些，要求全体函数的支撑的并集有限）特化的。</p>
+<h3 id="convergence-type">Convergence Type</h3>
+<p>在 Durrett 上这一定理的叙述是：</p>
+<blockquote>
+<p>Let <span class="math inline">\(E\)</span> be a set with <span class="math inline">\(\mu (E) &lt; \infty\)</span>. Suppose <span class="math inline">\(f_n\)</span> vanished on <span class="math inline">\(E^c\)</span>, <span class="math inline">\(|f_n|
+\leq M\)</span> and <span class="math inline">\(f_n \to f\)</span> in
+measure.</p>
+<p>Then <span class="math inline">\(\int f \, \mathrm d \mu = \lim
+\limits_{n \to \infty} \int f_n \, \mathrm d \mu\)</span>.</p>
+</blockquote>
+<p>我感觉到有点不对是因为知识太贫乏，Stein 并没有教过我什么叫做 converge
+in measure，还是概率论学到 converge in probability
+的时候当场补课的。如果在 bounded convergence theorem
+的时候就学过那我就把 Stein 吃下去（</p>
+<p>于是查了一下 Stein 的叙述，的确是 a.e. 收敛，幸免于吃书：</p>
+<blockquote>
+<p>Let <span class="math inline">\(E\)</span> be a set with <span class="math inline">\(\mu (E) &lt; \infty\)</span>. Suppose <span class="math inline">\(f_n\)</span> vanished on <span class="math inline">\(E^c\)</span>, <span class="math inline">\(|f_n|
+\leq M\)</span> and <span class="math inline">\(f_n \to f\)</span> a.e.
+.</p>
+<p>Then <span class="math inline">\(\int f \, \mathrm d \mu = \lim
+\limits_{n \to \infty} \int f_n \, \mathrm d \mu\)</span>.</p>
+</blockquote>
+<p>虽然 converge a.e. 比 converge in measure 更强，但是这个问题在
+converge in measure 的时候其实更好证，不需要用到 Egorov Theorem
+就可以完成。所以说其实 Durrett 又给出了一个更强的结论。</p>
+<h3 id="refinement-in-probability">Refinement in Probability</h3>
+<p>解决了 convergence type 的问题之后，因为 converge in measure
+这件事情戳到了 DNA，所以我突然开始思考把 Durrett 上这个 bounded
+convergence theorem 推广成随机变量列的形式的问题。它会变成：</p>
+<blockquote>
+<p>Let <span class="math inline">\(E\)</span> be a set with <span class="math inline">\(\mathbb P (E) &lt; \infty\)</span>. Suppose <span class="math inline">\(X_n\)</span> vanished on <span class="math inline">\(E^c\)</span>, <span class="math inline">\(|X_n|
+\leq M\)</span> and <span class="math inline">\(X_n \to X\)</span> in
+probability.</p>
+<p>Then <span class="math inline">\(\mathbb E X = \lim \limits_{n \to
+\infty} \mathbb EX_n\)</span>.</p>
+</blockquote>
+<p>事实上 <span class="math inline">\(\mathbb P (E) &lt; \infty\)</span>
+这个条件完全没必要存在，也不需要再考虑所有随机变量的支撑之并可能测度无限这样的危险；另外的条件
+<span class="math inline">\(|X_n | \leq M\)</span>
+以及依概率收敛仍然需要保留。然而这个结论弱到让人大跌眼镜，甚至可以通过依概率收敛推出弱收敛，再通过弱收敛直接推出，所以事实上是一句废话。而且
+<span class="math inline">\(|X_n| \leq M\)</span>
+这一条件本质上是不需要的，只要强调所有的 <span class="math inline">\(X_n\)</span> 的期望都存在即可。</p>
+<p>代入概率测度的场景下唯一的区别就在于相比一般的测度多出了一个 <span class="math inline">\(\mathbb P(\Omega) =1\)</span> 的条件；lzx
+上课的时候经常说弱收敛才是四个收敛类型中最值得研究的，因为是概率独有的，在学到一些特征函数表示法和
+Helly's Theorem
+这些东西的时候我都深以为然，这一次倒是更加强了这样一个想法。</p>
+<p>而这一切的源头其实只是概率测度多出了一个 <span class="math inline">\(\mathbb P(\Omega) =1\)</span>
+的条件，感觉要长脑子了。或许 free probability
+也会带有类似的性质吗？<del>我第一次接触 free probability 这个概念是在
+ypk
+给我的论文里，看起来似乎除了不是归一化的测度之外没有太多区别。</del></p>
+<h2 id="misunderstanding-of-fatous-lemma">Misunderstanding of Fatou's
+Lemma</h2>
+<p>在读 Stein 学法图引理的时候给出的形式是这样的：</p>
+<blockquote>
+<p>If <span class="math inline">\(f_n \geq 0\)</span> and <span class="math inline">\(f_n \to f\)</span> a.e., then <span class="math inline">\(\lim \limits_{n \to \infty} \inf \int f_n \,
+\mathrm d x \geq \int f \, \mathrm d x\)</span>.</p>
+</blockquote>
+<p>我当时非常摸不着<del>头发</del>头脑，为什么会想出来这么一个形式，用一个
+<span class="math inline">\(\lim \inf\)</span> 来控制 <span class="math inline">\(\int f \, \mathrm
+dx\)</span>，是为了显示这个控制实际上已经很紧了吗？直到某次读 Durrett
+Chapter 1 的时候才知道原始的结论是这样的：</p>
+<blockquote>
+<p>If <span class="math inline">\(f_n \geq 0\)</span>, then <span class="math inline">\(\lim \limits_{n \to \infty} \inf \int f_n \,
+\mathrm d x \geq \int \lim \limits_{n \to \infty} \inf f_n \, \mathrm d
+x\)</span>.</p>
+</blockquote>
+<p>这就非常好看以及非常能够理解了，实际上是处理了一个积分号和下极限的交换问题，而
+Stein
+上面的形式是一个自然的推广。在这一问题的证明里，非常有幸，又看到了一个当初让我觉得长脑子了的技巧（指路
+Four Steps Procedure in Integration - For Nonnegative
+Function），然后就觉得更长脑子了（</p>
+<blockquote>
+<p><strong>Proof</strong>:</p>
+<p>Let <span class="math inline">\(g_n = \inf_{m \geq n} f_m(x) \leq
+f_n(x)\)</span> and as <span class="math inline">\(n \uparrow
+\infty\)</span>, <span class="math inline">\(g_n (x) \uparrow g(x) =
+\lim \limits_{n \to \infty} \inf f_n(x)\)</span></p>
+<p>Since <span class="math inline">\(\int f_n \, \mathrm d \mu \geq \int
+g_n \, \mathrm d \mu\)</span>, there is <span class="math inline">\(\lim
+\limits_{n \to \infty} \inf \int f_n \mathrm d \mu \geq \lim \limits_{n
+\to \infty} \inf \int g_n \mathrm d \mu\)</span>. It suffices then to
+show that <span class="math inline">\(\lim \limits_{n \to \infty} \inf
+\int g_n \mathrm d \mu \geq \int g \, \mathrm d \mu\)</span>.</p>
+<p>Let <span class="math inline">\(E_m \uparrow \Omega\)</span> be sets
+of finite measure. Since <span class="math inline">\(g_n \geq 0\)</span>
+and for fixed <span class="math inline">\(m\)</span>, <span class="math inline">\((g_n \wedge m ) \cdot \mathbb 1_{E_m} \to (g
+\wedge m ) \cdot \mathbb 1_{E_m} a.e.\)</span>.</p>
+<p>The bounded convergence theorem implies <span class="math inline">\(\lim \limits_{n \to \infty} \inf \int g_n \,
+\mathrm d \mu \geq \int_{E_m} (g_n \wedge m ) \, \mathrm d \mu \to
+\int_{E_m} (g \wedge m ) \, \mathrm d \mu\)</span>,</p>
+<p>and <strong>the second definition of the integration of nonnegative
+function</strong> implies <span class="math inline">\(\int_{E_m} (g
+\wedge m ) \, \mathrm d \mu \uparrow \int g \, \mathrm d
+\mu\)</span>.</p>
+<p>Take sup over <span class="math inline">\(m\)</span> and the desired
+result follows.</p>
+</blockquote>
 
     </div>
 
@@ -610,7 +735,9 @@ E(X_k^- Y|\mathcal F) =  \mathbb E(X^- Y|\mathcal F)\]</span></p>
 Theorem</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#four-steps-procedure-in-integration"><span class="nav-text">Four Steps Procedure in
 Integration</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#for-nonnegative-function"><span class="nav-text">For Nonnegative Function</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#who-is-dense-on-l1-space"><span class="nav-text">Who is Dense on \(L^1\) Space</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#how-to-apply-four-steps-procedure-elegently"><span class="nav-text">How to Apply Four
 Steps Procedure Elegently</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#riemann-lebesgue-lemma"><span class="nav-text">Riemann-Lebesgue lemma</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lemma-in-conditional-expectation"><span class="nav-text">Lemma in Conditional
-Expectation</span></a></li></ol></li></ol></li></ol></div>
+Expectation</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#littlewoods-three-principles"><span class="nav-text">Littlewood&#39;s Three Principles</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#miscellaneous-topics-in-convergence-theorems"><span class="nav-text">Miscellaneous
+Topics in Convergence Theorems</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#bounded-convergence-theorem"><span class="nav-text">Bounded Convergence Theorem</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#convergence-type"><span class="nav-text">Convergence Type</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#refinement-in-probability"><span class="nav-text">Refinement in Probability</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#misunderstanding-of-fatous-lemma"><span class="nav-text">Misunderstanding of Fatou&#39;s
+Lemma</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
