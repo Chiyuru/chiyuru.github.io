@@ -28,7 +28,7 @@
 <meta property="og:description" content="随便记录一下之前的一些零碎的非常 trivial 的想法，简称正确的废话，经由我破碎的叙述之后正常人应该是理解不了。翻翻书上的批注还是能感觉到每次想到这些的时候，都有一种要长脑子了的，喜悦感（">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-07-25T06:23:25.000Z">
-<meta property="article:modified_time" content="2023-07-25T16:08:14.582Z">
+<meta property="article:modified_time" content="2023-07-26T13:01:29.124Z">
 <meta property="article:author" content="驰雨Chiyuru">
 <meta property="article:tag" content="数学">
 <meta property="article:tag" content="统计">
@@ -223,7 +223,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-07-26 00:08:14" itemprop="dateModified" datetime="2023-07-26T00:08:14+08:00">2023-07-26</time>
+                <time title="修改时间：2023-07-26 21:01:29" itemprop="dateModified" datetime="2023-07-26T21:01:29+08:00">2023-07-26</time>
               </span>
 
           
@@ -285,10 +285,13 @@ F(x,y) = \begin{cases} (1-\alpha)x^{-\alpha} &amp; x^\alpha &gt; y^\beta
 \frac{\alpha}{\alpha+\beta - \alpha \beta} y ^{\frac{\alpha + \beta -
 \alpha \beta}{\alpha}} &amp; x^\alpha &gt; y^\beta \end{cases} \quad
 \forall (x,y) \in (0,1)^2\]</span></p>
-<p><span class="math display">\[F_s(x,y) = \frac{\alpha
-\beta}{\alpha+\beta - \alpha \beta} [\min\{x^\alpha ,y^\beta
-\}]^{\frac{\alpha+\beta - \alpha \beta}{\alpha \beta}}, \forall (x,y)\in
-[0,1]^2\]</span></p>
+<p><span class="math display">\[F_s(x,y) =\begin{cases} \frac{\alpha
+\beta}{\alpha+\beta - \alpha \beta} x^{\frac{\alpha+\beta - \alpha
+\beta}{\beta}} &amp; x^\alpha = y^\beta \\ \frac{\beta}{\alpha+\beta -
+\alpha \beta} x^{\frac{\alpha + \beta - \alpha \beta}{\beta}} &amp;
+x^\alpha &lt; y^\beta \\ \frac{\alpha}{\alpha+\beta - \alpha \beta} y
+^{\frac{\alpha + \beta - \alpha \beta}{\alpha}} &amp; x^\alpha &gt;
+y^\beta \end{cases}  \quad \forall (x,y)\in [0,1]^2\]</span></p>
 <p>另外可以注意到 <span class="math inline">\(P(X^\alpha = Y^\beta) =
 F_s(1,1) = \frac{\alpha \beta}{\alpha+\beta - \alpha
 \beta}\)</span>。</p>
@@ -351,6 +354,8 @@ decomposition，也给出了线性组合形式系数的来历。</p>
 <p>查了下 wiki 发现的确是正确的废话，另外还有个<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Lebesgue%27s_decomposition_theorem#L%C3%A9vy%E2%80%93It%C5%8D_decomposition">随机过程的类似推广</a>但我现在看不懂，<del>前面的区域下次再来探索吧</del>（</p>
 <h1 id="four-steps-procedure-in-integration">Four Steps Procedure in
 Integration</h1>
+<p>本质上来说，是一些我经常弄混的东西的换个角度的翻来覆去的梳理。</p>
+<h2 id="for-nonnegative-function">For Nonnegative Function</h2>
 <p>在实分析中熟知的是，对一般可测函数的积分有一个四步构造法，简单复习一个：</p>
 <blockquote>
 <ul>
@@ -361,15 +366,15 @@ Integration</h1>
 </ul>
 </blockquote>
 <p>（<del>相信这四行字就足够了</del>）</p>
-<p>其中第三步对于 nonnegative function <span class="math inline">\(f
-\geq 0\)</span>，定义 <span class="math inline">\(\int f d\mu = \sup
-\{\int h d\mu : 0 \leq h \leq f, h \text{ is bounded and finitely
+<p>第三步对于 nonnegative function <span class="math inline">\(f \geq
+0\)</span>，定义 <span class="math inline">\(\int f d\mu = \sup \{\int h
+\,\mathrm d \mu : 0 \leq h \leq f, h \text{ is bounded and finitely
 supported} \}\)</span>，这显然 well-defined；与此同时还有一个
 lemma：</p>
 <blockquote>
 <p>Let <span class="math inline">\(E_n \uparrow \Omega\)</span> have
-<span class="math inline">\(\mu(E_n) &lt; +\infty\)</span>, then <span class="math inline">\(\int _{E_n} (f \wedge n) d\mu \uparrow \int f
-d\mu\)</span> as <span class="math inline">\(n \to
+<span class="math inline">\(\mu(E_n) &lt; +\infty\)</span>, then <span class="math inline">\(\int _{E_n} (f \wedge n) \,\mathrm d \mu \uparrow
+\int f \,\mathrm d \mu\)</span> as <span class="math inline">\(n \to
 +\infty\)</span>。</p>
 </blockquote>
 <p>某天想起这个 lemma 的时候突然想到，其实完全可以看成 <span class="math inline">\(\int f d\mu\)</span>
@@ -379,10 +384,83 @@ d\mu\)</span> as <span class="math inline">\(n \to
 <p>听起来很有用！但稍微试了下除了证明一些基本的性质（比如<span class="math inline">\(\int (f +g) d\mu= \int f d\mu + \int g
 d\mu\)</span>
 的半边不等式）之外还没见过太多的用法（，只不过证出来这个之后我也一下子觉得自己要长脑子了（</p>
-<p>顺带一复习另外有一个构造 simple function 来逼近 <span class="math inline">\(f \geq 0\)</span> 的方式就是常见的取 <span class="math inline">\(E_{m,n} = \{x: m2^{-n} \leq f(x) \leq (m+1)2^{-n}
-\}\)</span> 毕竟 simple function 是 <span class="math inline">\(L^1\)</span> 稠密的。如果把拐角 linearly round
-一下还可以修成连续函数。</p>
-<p>没写完就倒了（</p>
+<h2 id="who-is-dense-on-l1-space">Who is Dense on <span class="math inline">\(L^1\)</span> Space</h2>
+<p>首先复习一下什么叫做 <span class="math inline">\(A\)</span> is dense
+on <span class="math inline">\(L^1\)</span>
+space，我感觉这种东西真的是学了之后不用就会变成名词党。类比 <span class="math inline">\(\mathbb Q\)</span> 在 <span class="math inline">\(\mathbb R\)</span> 上稠密就是对任意的 <span class="math inline">\(g \in L^1\)</span> 存在 <span class="math inline">\(A\)</span> 中序列 <span class="math inline">\(\{\psi_n \} \stackrel{L^1}{\rightarrow}
+g\)</span>，也就是 <span class="math inline">\(\| \psi_n - g
+\|_{L^1}=\int |\psi_n -g | \,\mathrm d \mu \to
+0\)</span>；或者说，对任意的 <span class="math inline">\(\varepsilon
+&gt;0\)</span> 都存在 <span class="math inline">\(\varphi \in
+A\)</span>，使得 <span class="math inline">\(\| \varphi - g \|_{L^1} =
+\int |\varphi - g| \,\mathrm d\mu &lt; \varepsilon\)</span>。</p>
+<p>Stein 告诉我们应该熟知以下三种 density：</p>
+<blockquote>
+<ul>
+<li>simple function</li>
+<li>step function</li>
+<li>compactly supported continuous function</li>
+</ul>
+</blockquote>
+<p>另外一个（一组）我会弄混的结论是这样的，实质上是一个 convergence
+sequence，只有第一条是重要的：</p>
+<blockquote>
+<ul>
+<li>For any nonnegative measurable function <span class="math inline">\(f\)</span>, there exists a sequence of increasing
+nonnegative simple function <span class="math inline">\(\{\varphi_k
+\}_{k=1}^{+\infty}\)</span> which converges to <span class="math inline">\(f\)</span> pointwise.</li>
+<li>For any measurable function <span class="math inline">\(f\)</span>,
+there exists a sequence of simple function <span class="math inline">\(\{\varphi_k \}_{k=1}^{+\infty}\)</span> which
+converges to <span class="math inline">\(f\)</span> pointwise, and <span class="math inline">\(|\varphi_k (x) | \leq |\varphi_{k+1}
+(x)|\)</span>.</li>
+<li>For any measurable function <span class="math inline">\(f\)</span>,
+there exists a sequence of step function <span class="math inline">\(\{\varphi_k \}_{k=1}^{+\infty}\)</span> which
+converges to <span class="math inline">\(f\)</span> pointwise.</li>
+</ul>
+</blockquote>
+<h2 id="how-to-apply-four-steps-procedure-elegently">How to Apply Four
+Steps Procedure Elegently</h2>
+<p>我写证明其实很口胡，这样不好。如果是遇到 four steps procedure
+可以搞定的问题（指的是 simple function/step function 可以
+work，然后直接能从 density/convergent sequence 推出 general function
+works 或者至少是 nonnegative function
+works的情况）会非常开心。然而这听起来就很口胡，也不可能是一个万能的方法，稍有不慎真的口胡了的话后果很严重。</p>
+<p>举两个我比较喜欢用来复习和脑内提示的例子，分别代表了 density 和
+convergent sequence
+两种方法，对应上一个标题下的两组结论，我个人认为至少对我是稍微有点指导意义的（怎么这也要叠甲呢</p>
+<h3 id="riemann-lebesgue-lemma">Riemann-Lebesgue lemma</h3>
+<blockquote>
+<p>If <span class="math inline">\(g\)</span> is integrable then <span class="math inline">\(\lim_{n \to \infty} \int g(x) \cos nx \,\mathrm d
+x =0\)</span></p>
+</blockquote>
+<p><strong>Proof</strong>: It's easy to prove that the conclusion holds
+for step functions. For any integrable function <span class="math inline">\(g\)</span> and any <span class="math inline">\(\varepsilon &gt;0\)</span>, there exists a step
+function <span class="math inline">\(f\)</span> that <span class="math inline">\(\| f-g \|_{L^1} = \int |f-g| \,\mathrm dx &lt;
+\varepsilon\)</span>.(density)</p>
+<p>Note that:</p>
+<p><span class="math display">\[|\int g(x) \cos nx \,\mathrm d x |
+=|\int( g(x)-f(x))\cos nx \,\mathrm d x| \leq \int|( g(x)-f(x))||\cos nx
+|\,\mathrm d x \leq \int|( g(x)-f(x))|\,\mathrm d x  &lt;
+\varepsilon\]</span></p>
+<h3 id="lemma-in-conditional-expectation">Lemma in Conditional
+Expectation</h3>
+<blockquote>
+<p>If <span class="math inline">\(X \in \mathcal F\)</span> and <span class="math inline">\(\mathbb E|Y|, \mathbb E|XY| &lt; +\infty\)</span>
+then <span class="math inline">\(\mathbb E(XY|\mathcal F) = X \mathbb
+E(Y|\mathcal F)\)</span></p>
+</blockquote>
+<p><strong>Proof</strong>: It's easy to prove that the conclusion holds
+for <span class="math inline">\(X = \mathbb 1_A\)</span>, where <span class="math inline">\(A \in \mathcal F\)</span>, thus it holds for
+simple random variables.</p>
+<p>Take <span class="math inline">\(X = X^+ - X^-\)</span>, there exist
+two increasing simple random variable sequences <span class="math inline">\(\{X_k^+\}\uparrow X^+\)</span> and <span class="math inline">\(\{X_k^-\}\uparrow X^-\)</span>. According to the
+monotone convergence theorem,</p>
+<p><span class="math display">\[X^+\mathbb E(Y|\mathcal F)=\lim_{k \to
+\infty} X_k^+ \mathbb E(Y|\mathcal F) =\lim_{k \to \infty} \mathbb
+E(X_k^+ Y|\mathcal F) =  \mathbb E(X^+ Y|\mathcal F)\]</span></p>
+<p><span class="math display">\[X^-\mathbb E(Y|\mathcal F)=\lim_{k \to
+\infty} X_k^- \mathbb E(Y|\mathcal F) =\lim_{k \to \infty} \mathbb
+E(X_k^- Y|\mathcal F) =  \mathbb E(X^- Y|\mathcal F)\]</span></p>
 
     </div>
 
@@ -530,7 +608,9 @@ d\mu\)</span>
       <div class="post-toc-wrap sidebar-panel">
           <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#lebesgues-decomposition-theorem"><span class="nav-text">Lebesgue&#39;s Decomposition
 Theorem</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#four-steps-procedure-in-integration"><span class="nav-text">Four Steps Procedure in
-Integration</span></a></li></ol></div>
+Integration</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#for-nonnegative-function"><span class="nav-text">For Nonnegative Function</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#who-is-dense-on-l1-space"><span class="nav-text">Who is Dense on \(L^1\) Space</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#how-to-apply-four-steps-procedure-elegently"><span class="nav-text">How to Apply Four
+Steps Procedure Elegently</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#riemann-lebesgue-lemma"><span class="nav-text">Riemann-Lebesgue lemma</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lemma-in-conditional-expectation"><span class="nav-text">Lemma in Conditional
+Expectation</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
