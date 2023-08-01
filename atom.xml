@@ -6,7 +6,7 @@
   <link href="https://chiyuru.github.io/atom.xml" rel="self"/>
   
   <link href="https://chiyuru.github.io/"/>
-  <updated>2023-07-27T15:55:32.940Z</updated>
+  <updated>2023-08-01T15:09:47.080Z</updated>
   <id>https://chiyuru.github.io/</id>
   
   <author>
@@ -15,6 +15,42 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>日记·篇十二·23年8月</title>
+    <link href="https://chiyuru.github.io/2023/08/01/Diary-2023-08/"/>
+    <id>https://chiyuru.github.io/2023/08/01/Diary-2023-08/</id>
+    <published>2023-08-01T04:10:34.000Z</published>
+    <updated>2023-08-01T15:09:47.080Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;别来无恙&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="碎碎念" scheme="https://chiyuru.github.io/tags/%E7%A2%8E%E7%A2%8E%E5%BF%B5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>本科第二年相册里多了些什么</title>
+    <link href="https://chiyuru.github.io/2023/07/31/2023-photos-and-fragments/"/>
+    <id>https://chiyuru.github.io/2023/07/31/2023-photos-and-fragments/</id>
+    <published>2023-07-31T15:13:45.000Z</published>
+    <updated>2023-08-01T14:51:45.842Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;不知道为什么就成了一种传统的年度整理照片环节（&lt;/p&gt;
+&lt;p&gt;去年打开相册：这个好有意思，那个也发一下好了&lt;/p&gt;
+&lt;p&gt;今年打开相册：这都什么乱七八糟的，怎么全是自拍，这也不能发啊（&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="碎碎念" scheme="https://chiyuru.github.io/tags/%E7%A2%8E%E7%A2%8E%E5%BF%B5/"/>
+    
+  </entry>
   
   <entry>
     <title>感觉要长脑子了</title>
@@ -376,47 +412,6 @@ PF。但统计推断要洗心革面好好上，也打算做预习。不仅是因
     <category term="数学" scheme="https://chiyuru.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
     
     <category term="统计" scheme="https://chiyuru.github.io/tags/%E7%BB%9F%E8%AE%A1/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>日记·篇三·22年11月</title>
-    <link href="https://chiyuru.github.io/2022/11/01/Diary-2022-11/"/>
-    <id>https://chiyuru.github.io/2022/11/01/Diary-2022-11/</id>
-    <published>2022-10-31T18:27:34.000Z</published>
-    <updated>2022-11-30T15:21:16.000Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;聊以对抗记忆的变形。&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="碎碎念" scheme="https://chiyuru.github.io/tags/%E7%A2%8E%E7%A2%8E%E5%BF%B5/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>数值实验顺便 Python 复健</title>
-    <link href="https://chiyuru.github.io/2022/10/16/Numerical-Analysis-Experiments/"/>
-    <id>https://chiyuru.github.io/2022/10/16/Numerical-Analysis-Experiments/</id>
-    <published>2022-10-15T18:10:58.000Z</published>
-    <updated>2022-12-26T18:48:59.000Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;数值分析的上机实验难度为 &lt;span class=&quot;math inline&quot;&gt;\(10\)&lt;/span&gt;
-的话，纸笔题的难度恐怕就是碘化银的 &lt;span class=&quot;math inline&quot;&gt;\(K_{sp}\)&lt;/span&gt;（大致是 &lt;span class=&quot;math inline&quot;&gt;\(4.2×10^{−51}\)&lt;/span&gt;（&lt;/p&gt;
-&lt;p&gt;我不会 MATLAB，又懒得学，就选了 Python。反正作业就是造轮子，也不能用
-MATLAB 的函数，那 Python 不亏。&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="课程实录" scheme="https://chiyuru.github.io/tags/%E8%AF%BE%E7%A8%8B%E5%AE%9E%E5%BD%95/"/>
-    
-    <category term="数学" scheme="https://chiyuru.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
-    
-    <category term="这里面看起来很好玩" scheme="https://chiyuru.github.io/tags/%E8%BF%99%E9%87%8C%E9%9D%A2%E7%9C%8B%E8%B5%B7%E6%9D%A5%E5%BE%88%E5%A5%BD%E7%8E%A9/"/>
     
   </entry>
   
