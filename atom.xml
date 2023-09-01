@@ -6,7 +6,7 @@
   <link href="https://chiyuru.github.io/atom.xml" rel="self"/>
   
   <link href="https://chiyuru.github.io/"/>
-  <updated>2023-08-31T14:08:53.041Z</updated>
+  <updated>2023-09-01T13:58:23.696Z</updated>
   <id>https://chiyuru.github.io/</id>
   
   <author>
@@ -17,11 +17,29 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>日记·篇十三·23年9月</title>
+    <link href="https://chiyuru.github.io/2023/09/01/Diary-2023-09/"/>
+    <id>https://chiyuru.github.io/2023/09/01/Diary-2023-09/</id>
+    <published>2023-09-01T13:10:34.000Z</published>
+    <updated>2023-09-01T13:58:23.696Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;公开写了一年日记了，从抽代算起的话学数学也一年了&lt;/p&gt;
+&lt;p&gt;但还是啥也不会（&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="碎碎念" scheme="https://chiyuru.github.io/tags/%E7%A2%8E%E7%A2%8E%E5%BF%B5/"/>
+    
+  </entry>
+  
+  <entry>
     <title>日记·篇十二·23年8月</title>
     <link href="https://chiyuru.github.io/2023/08/01/Diary-2023-08/"/>
     <id>https://chiyuru.github.io/2023/08/01/Diary-2023-08/</id>
     <published>2023-08-01T04:10:34.000Z</published>
-    <updated>2023-08-31T14:08:53.041Z</updated>
+    <updated>2023-08-31T14:10:32.261Z</updated>
     
     
     <summary type="html">&lt;p&gt;别来无恙&lt;/p&gt;</summary>
@@ -387,31 +405,6 @@ cover
     <category term="统计" scheme="https://chiyuru.github.io/tags/%E7%BB%9F%E8%AE%A1/"/>
     
     <category term="这里面看起来很好玩" scheme="https://chiyuru.github.io/tags/%E8%BF%99%E9%87%8C%E9%9D%A2%E7%9C%8B%E8%B5%B7%E6%9D%A5%E5%BE%88%E5%A5%BD%E7%8E%A9/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>数理统计初探——统计推断</title>
-    <link href="https://chiyuru.github.io/2022/11/09/Statistical-Inference/"/>
-    <id>https://chiyuru.github.io/2022/11/09/Statistical-Inference/</id>
-    <published>2022-11-09T13:51:08.000Z</published>
-    <updated>2022-12-21T17:44:44.000Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;据说统计推断是统辅基础五大件里最难的，这门课也可以直接称为数理统计（基础）。我初概的体验并不是很好，甩锅给了不匹配的教材，还记了
-PF。但统计推断要洗心革面好好上，也打算做预习。不仅是因为不打算再去数学系回炉重造，也是担心留下一种隐隐怀疑自己并不是很适合学统计的感觉，本科过半又换方向的试错成本就略高了。&lt;/p&gt;
-&lt;p&gt;不过，我确实也很好奇到底适不适合、有多感兴趣呢？真不行的话，该换还得换呀。&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="课程实录" scheme="https://chiyuru.github.io/tags/%E8%AF%BE%E7%A8%8B%E5%AE%9E%E5%BD%95/"/>
-    
-    <category term="刷书" scheme="https://chiyuru.github.io/tags/%E5%88%B7%E4%B9%A6/"/>
-    
-    <category term="数学" scheme="https://chiyuru.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
-    
-    <category term="统计" scheme="https://chiyuru.github.io/tags/%E7%BB%9F%E8%AE%A1/"/>
     
   </entry>
   
