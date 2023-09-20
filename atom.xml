@@ -6,7 +6,7 @@
   <link href="https://chiyuru.github.io/atom.xml" rel="self"/>
   
   <link href="https://chiyuru.github.io/"/>
-  <updated>2023-09-19T15:15:07.170Z</updated>
+  <updated>2023-09-20T12:16:06.476Z</updated>
   <id>https://chiyuru.github.io/</id>
   
   <author>
@@ -17,11 +17,30 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>高等数理统计 I 比统计推断多了啥</title>
+    <link href="https://chiyuru.github.io/2023/09/20/Advanced-Mathematical-Statistics-I/"/>
+    <id>https://chiyuru.github.io/2023/09/20/Advanced-Mathematical-Statistics-I/</id>
+    <published>2023-09-20T02:08:14.000Z</published>
+    <updated>2023-09-20T12:16:06.476Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;挂机养生了，统计中心的课在这学期乱七八糟的课中间显得像个弟弟（x&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="数学" scheme="https://chiyuru.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
+    
+    <category term="统计" scheme="https://chiyuru.github.io/tags/%E7%BB%9F%E8%AE%A1/"/>
+    
+  </entry>
+  
+  <entry>
     <title>日记·篇十三·23年9月</title>
     <link href="https://chiyuru.github.io/2023/09/01/Diary-2023-09/"/>
     <id>https://chiyuru.github.io/2023/09/01/Diary-2023-09/</id>
     <published>2023-09-01T13:10:34.000Z</published>
-    <updated>2023-09-19T15:15:07.170Z</updated>
+    <updated>2023-09-20T13:21:55.430Z</updated>
     
     
     <summary type="html">&lt;p&gt;公开写了一年日记了，从抽代算起的话学数学也一年了&lt;/p&gt;
@@ -198,11 +217,11 @@
     
     
     
-    <category term="课程实录" scheme="https://chiyuru.github.io/tags/%E8%AF%BE%E7%A8%8B%E5%AE%9E%E5%BD%95/"/>
-    
     <category term="数学" scheme="https://chiyuru.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
     
     <category term="统计" scheme="https://chiyuru.github.io/tags/%E7%BB%9F%E8%AE%A1/"/>
+    
+    <category term="课程实录" scheme="https://chiyuru.github.io/tags/%E8%AF%BE%E7%A8%8B%E5%AE%9E%E5%BD%95/"/>
     
   </entry>
   
@@ -264,11 +283,11 @@ tag 下面几乎全是统计，成何体统&lt;/del&gt;。&lt;/p&gt;
     
     
     
-    <category term="课程实录" scheme="https://chiyuru.github.io/tags/%E8%AF%BE%E7%A8%8B%E5%AE%9E%E5%BD%95/"/>
-    
     <category term="数学" scheme="https://chiyuru.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
     
     <category term="统计" scheme="https://chiyuru.github.io/tags/%E7%BB%9F%E8%AE%A1/"/>
+    
+    <category term="课程实录" scheme="https://chiyuru.github.io/tags/%E8%AF%BE%E7%A8%8B%E5%AE%9E%E5%BD%95/"/>
     
   </entry>
   
@@ -290,11 +309,11 @@ tag 下面几乎全是统计，成何体统&lt;/del&gt;。&lt;/p&gt;
     
     
     
-    <category term="课程实录" scheme="https://chiyuru.github.io/tags/%E8%AF%BE%E7%A8%8B%E5%AE%9E%E5%BD%95/"/>
-    
     <category term="数学" scheme="https://chiyuru.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
     
     <category term="统计" scheme="https://chiyuru.github.io/tags/%E7%BB%9F%E8%AE%A1/"/>
+    
+    <category term="课程实录" scheme="https://chiyuru.github.io/tags/%E8%AF%BE%E7%A8%8B%E5%AE%9E%E5%BD%95/"/>
     
   </entry>
   
@@ -381,30 +400,6 @@ tag 下面几乎全是统计，成何体统&lt;/del&gt;。&lt;/p&gt;
     
     
     <category term="碎碎念" scheme="https://chiyuru.github.io/tags/%E7%A2%8E%E7%A2%8E%E5%BF%B5/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>统辅课程测评搬运</title>
-    <link href="https://chiyuru.github.io/2022/11/10/Statistic-Minor-Repo/"/>
-    <id>https://chiyuru.github.io/2022/11/10/Statistic-Minor-Repo/</id>
-    <published>2022-11-09T18:14:58.000Z</published>
-    <updated>2023-02-27T12:15:05.652Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;一月余之前树洞上看到的统计辅修课程测评，来自物理系 9 字班的学长 &lt;a href=&quot;https://v1ncent19.github.io&quot;&gt;V1ncent19&lt;/a&gt;，已得到授权转载。希望在选课期间
-cover
-到一些阅读我博客的、对统计学感兴趣的同学，也是一个重新排版后给我自己参考的方式。&lt;/p&gt;
-&lt;p&gt;本文同样遵守文末提到的 CC BY-NC-SA 4.0 协议，版权归原作者所有。&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="数学" scheme="https://chiyuru.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
-    
-    <category term="统计" scheme="https://chiyuru.github.io/tags/%E7%BB%9F%E8%AE%A1/"/>
-    
-    <category term="这里面看起来很好玩" scheme="https://chiyuru.github.io/tags/%E8%BF%99%E9%87%8C%E9%9D%A2%E7%9C%8B%E8%B5%B7%E6%9D%A5%E5%BE%88%E5%A5%BD%E7%8E%A9/"/>
     
   </entry>
   

@@ -20,17 +20,21 @@
     var CONFIG = {"hostname":"chiyuru.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="おはよう、朝だよ">
-<meta property="og:type" content="website">
-<meta property="og:title" content="『姑妄言之姑妄听之』">
-<meta property="og:url" content="https://chiyuru.github.io/archives/2022/11/index.html">
+  <meta name="description" content="挂机养生了，统计中心的课在这学期乱七八糟的课中间显得像个弟弟（x">
+<meta property="og:type" content="article">
+<meta property="og:title" content="高等数理统计 I 比统计推断多了啥">
+<meta property="og:url" content="https://chiyuru.github.io/2023/09/20/Advanced-Mathematical-Statistics-I/index.html">
 <meta property="og:site_name" content="『姑妄言之姑妄听之』">
-<meta property="og:description" content="おはよう、朝だよ">
+<meta property="og:description" content="挂机养生了，统计中心的课在这学期乱七八糟的课中间显得像个弟弟（x">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-09-20T02:08:14.000Z">
+<meta property="article:modified_time" content="2023-09-20T12:16:06.476Z">
 <meta property="article:author" content="驰雨Chiyuru">
+<meta property="article:tag" content="数学">
+<meta property="article:tag" content="统计">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://chiyuru.github.io/archives/2022/11/">
+<link rel="canonical" href="https://chiyuru.github.io/2023/09/20/Advanced-Mathematical-Statistics-I/">
 
 
 <script id="page-configurations">
@@ -38,12 +42,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>归档 | 『姑妄言之姑妄听之』</title>
+  <title>高等数理统计 I 比统计推断多了啥 | 『姑妄言之姑妄听之』</title>
   
 
 
@@ -181,97 +185,183 @@
         <div class="content-wrap">
           
 
-          <div class="content archive">
+          <div class="content post posts-expand">
             
 
+    
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        
-        <span class="collection-header">还行! 目前共计 38 篇日志。 继续努力。</span>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://chiyuru.github.io/2023/09/20/Advanced-Mathematical-Statistics-I/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="驰雨Chiyuru">
+      <meta itemprop="description" content="おはよう、朝だよ">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="『姑妄言之姑妄听之』">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          高等数理统计 I 比统计推断多了啥
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-09-20 10:08:14 / 修改时间：20:16:06" itemprop="dateCreated datePublished" datetime="2023-09-20T10:08:14+08:00">2023-09-20</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2022</span>
+        <p>挂机养生了，统计中心的课在这学期乱七八糟的课中间显得像个弟弟（x</p>
+<span id="more"></span>
+<h1 id="lecture-1">Lecture 1</h1>
+<p>我为了这门课给 Weichi Wu
+发过两封邮件，一封是上学期问这课有多高等、能不能手选，另一封是前两天因为实在查不到上课教室问了他一下，然后都被已读不回了。最后是找一个去了统计中心的九字班环友问了教室线下偷袭的。</p>
+<p>本来以为他是不欢迎手选，课后问了一句他说没看到邮件（，想选就选，怎么回事。然后他问我有没有学过今天的内容，跟我说这课到后面可能会很难，可能以为我是统辅的，我又懒得再解释一遍也不知道怎么说能让他放心点（，脑子一卡就说了一句“没事我是数学系的”（，挺起腰杆体验卡了属于是。</p>
+<!--虽然很菜，虽然很多东西都没有学过，然而接触过一些真·数学系的同学之后（，我还是觉得也不是没有资格说这句话。-->
+<p>第一节课非常典，讲 probability theory &amp; Lebesgue
+measure，挂机了，在写生导思考题（</p>
+<p>但还是学到一个之前没怎么注意过的 abuse of
+notation（写完感觉中英混杂写得好丑）：</p>
+<h2 id="product-measure">Product Measure</h2>
+<p>对于一组 measure space <span class="math inline">\((\Omega_i,
+\mathcal F_i,m_i)_{i=1}^n\)</span> 存在唯一的 product measure <span class="math inline">\(\mu_1 \times \mu_2 \times \cdots \times
+\mu_n\)</span> on <span class="math inline">\(\Omega_1 \times \Omega_2
+\times \cdots \times \Omega_n\)</span> 使得</p>
+<p><span class="math display">\[\mu_1 \times \mu_2 \times \cdots \times
+\mu_n (A_1 \times A_2 \times \cdots \times A_n) = \mu_1(A_1)  \mu_2(A_2)
+\cdots \mu_n(A_n)\]</span></p>
+<p>这是一个非常常见的定理，里面主要可能在记号上有点问题的是一个 <span class="math inline">\(\sigma-\)</span>field 的写法。</p>
+<p>最常用的 product measure 就是在 <span class="math inline">\(\mathbb
+R^d\)</span> 上的 Lebesgue product measure，一般我会直接写成 <span class="math inline">\((\mathbb R^d , \mathcal
+R^d,m)\)</span>，但是注意这里的 <span class="math inline">\(\mathcal
+R^d\)</span> 并不是常见的 Cartesian product（显然对于 <span class="math inline">\(d\)</span> 个 <span class="math inline">\(\mathcal
+R\)</span> 直接做 Cartesian product 得到的并不是一个 <span class="math inline">\(\sigma-\)</span>field，至少对取补是不封闭的），实际上是
+<span class="math inline">\(\sigma(\mathcal R \times \mathcal R \times
+\cdots \mathcal R) = \sigma(\mathcal R^d)\)</span>。</p>
+<p>更一般的形式可能会产生的问题同理。</p>
+<p>但实际上我是没啥误解（，只是之前没想过这个问题。而且我理解 <span class="math inline">\(\mathcal R^d\)</span> 从来都是从
+basis（迫真）的角度理解的，就类似于一维的情况先定义一个 <span class="math inline">\(\mathcal A = \{(a_1 ,b_1) \times (a_2, b_2) \times
+\cdots \times (a_n ,b_n) \}\)</span> 然后直接认为 <span class="math inline">\(\mathcal R^d = \sigma(\mathcal
+A)\)</span>，或者有的时候会把 <span class="math inline">\(\mathcal
+R^d\)</span> 写成 <span class="math inline">\(\mathcal B(\mathbb
+R^d)\)</span> 的形式，毕竟手写的话其实写快了可能看不太出来我的 <span class="math inline">\(\mathcal R\)</span> 和 <span class="math inline">\(\mathbb R\)</span> 有什么区别（</p>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-11-10T02:14:58+08:00"
-              content="2022-11-10">
-          11-10
-        </time>
+    
+    
+    
+        <div class="reward-container">
+  <div>我很可爱 请给我钱（？）</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.jpg" alt="驰雨Chiyuru 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.jpg" alt="驰雨Chiyuru 支付宝">
+        <p>支付宝</p>
       </div>
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/11/10/Statistic-Minor-Repo/" itemprop="url">
-            <span itemprop="name">统辅课程测评搬运</span>
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>驰雨Chiyuru
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://chiyuru.github.io/2023/09/20/Advanced-Mathematical-Statistics-I/" title="高等数理统计 I 比统计推断多了啥">https://chiyuru.github.io/2023/09/20/Advanced-Mathematical-Statistics-I/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
           </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-11-09T21:51:08+08:00"
-              content="2022-11-09">
-          11-09
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/11/09/Statistical-Inference/" itemprop="url">
-            <span itemprop="name">数理统计初探——统计推断</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-11-01T02:27:34+08:00"
-              content="2022-11-01">
-          11-01
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/11/01/Diary-2022-11/" itemprop="url">
-            <span itemprop="name">日记·篇三·22年11月</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-
+        </div>
     </div>
   </div>
-  
-  
-  
 
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag"># 数学</a>
+              <a href="/tags/%E7%BB%9F%E8%AE%A1/" rel="tag"># 统计</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/09/01/Diary-2023-09/" rel="prev" title="日记·篇十三·23年9月">
+      <i class="fa fa-chevron-left"></i> 日记·篇十三·23年9月
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
   
 
 
 
           </div>
           
+    
+  
+  <div class="comments">
+  <script src="https://utteranc.es/client.js" repo="Chiyuru/chiyuru.github.io" issue-term="pathname" theme="github-light" crossorigin="anonymous" async></script>
+  </div>
+  
+  
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -318,6 +408,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-1"><span class="nav-text">Lecture 1</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#product-measure"><span class="nav-text">Product Measure</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
