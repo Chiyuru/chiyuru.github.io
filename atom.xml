@@ -6,7 +6,7 @@
   <link href="https://chiyuru.github.io/atom.xml" rel="self"/>
   
   <link href="https://chiyuru.github.io/"/>
-  <updated>2023-09-27T12:52:30.781Z</updated>
+  <updated>2023-09-29T14:42:17.168Z</updated>
   <id>https://chiyuru.github.io/</id>
   
   <author>
@@ -15,6 +15,24 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>三点几了，饮茶先啦</title>
+    <link href="https://chiyuru.github.io/2023/09/29/tea/"/>
+    <id>https://chiyuru.github.io/2023/09/29/tea/</id>
+    <published>2023-09-29T03:50:56.000Z</published>
+    <updated>2023-09-29T14:42:17.168Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;咖啡喝腻了，最近在尝试用茶饮料作为替代，猫超有两排货架卖的都是茶，闲的没事进行了一次超过一个月的测评。&lt;/p&gt;
+&lt;p&gt;&lt;del&gt;写着写着就变成说相声了&lt;/del&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="碎碎念" scheme="https://chiyuru.github.io/tags/%E7%A2%8E%E7%A2%8E%E5%BF%B5/"/>
+    
+  </entry>
   
   <entry>
     <title>年轻人的第一门 optimization 是茶园课</title>
@@ -42,7 +60,7 @@ bonus&lt;/del&gt;（确信&lt;/p&gt;
     <link href="https://chiyuru.github.io/2023/09/20/Advanced-Mathematical-Statistics-I/"/>
     <id>https://chiyuru.github.io/2023/09/20/Advanced-Mathematical-Statistics-I/</id>
     <published>2023-09-20T02:08:14.000Z</published>
-    <updated>2023-09-28T15:11:53.748Z</updated>
+    <updated>2023-09-28T18:37:25.947Z</updated>
     
     
     <summary type="html">&lt;p&gt;挂机养生了，统计中心的课在这学期乱七八糟的课中间显得像个弟弟（x&lt;/p&gt;</summary>
@@ -61,7 +79,7 @@ bonus&lt;/del&gt;（确信&lt;/p&gt;
     <link href="https://chiyuru.github.io/2023/09/01/Diary-2023-09/"/>
     <id>https://chiyuru.github.io/2023/09/01/Diary-2023-09/</id>
     <published>2023-09-01T13:10:34.000Z</published>
-    <updated>2023-09-28T15:10:29.119Z</updated>
+    <updated>2023-09-29T14:42:55.251Z</updated>
     
     
     <summary type="html">&lt;p&gt;公开写了一年日记了，从抽代算起的话学数学也一年了&lt;/p&gt;
@@ -387,23 +405,6 @@ tag 下面几乎全是统计，成何体统&lt;/del&gt;。&lt;/p&gt;
     
     
     <category term="数学" scheme="https://chiyuru.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>日记·篇五·23年1月</title>
-    <link href="https://chiyuru.github.io/2023/01/01/Diary-2023-01/"/>
-    <id>https://chiyuru.github.io/2023/01/01/Diary-2023-01/</id>
-    <published>2023-01-01T04:34:52.000Z</published>
-    <updated>2023-01-31T15:25:41.518Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;日复一日，年复一年&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="碎碎念" scheme="https://chiyuru.github.io/tags/%E7%A2%8E%E7%A2%8E%E5%BF%B5/"/>
     
   </entry>
   
