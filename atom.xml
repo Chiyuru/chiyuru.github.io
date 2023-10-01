@@ -6,7 +6,7 @@
   <link href="https://chiyuru.github.io/atom.xml" rel="self"/>
   
   <link href="https://chiyuru.github.io/"/>
-  <updated>2023-09-29T14:42:17.168Z</updated>
+  <updated>2023-10-01T17:58:40.327Z</updated>
   <id>https://chiyuru.github.io/</id>
   
   <author>
@@ -15,6 +15,23 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>日记·篇十四·23年10月</title>
+    <link href="https://chiyuru.github.io/2023/10/01/Diary-2023-10/"/>
+    <id>https://chiyuru.github.io/2023/10/01/Diary-2023-10/</id>
+    <published>2023-10-01T15:09:23.000Z</published>
+    <updated>2023-10-01T17:58:40.327Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;好热又好冷，然而这已经算是北京比较舒服的天气了，受不了一点。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="碎碎念" scheme="https://chiyuru.github.io/tags/%E7%A2%8E%E7%A2%8E%E5%BF%B5/"/>
+    
+  </entry>
   
   <entry>
     <title>三点几了，饮茶先啦</title>
@@ -387,24 +404,6 @@ tag 下面几乎全是统计，成何体统&lt;/del&gt;。&lt;/p&gt;
     
     
     <category term="碎碎念" scheme="https://chiyuru.github.io/tags/%E7%A2%8E%E7%A2%8E%E5%BF%B5/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>数学分析 I 速通日志（上）</title>
-    <link href="https://chiyuru.github.io/2023/01/15/Learn-Mathematical-Analysis-or-Die/"/>
-    <id>https://chiyuru.github.io/2023/01/15/Learn-Mathematical-Analysis-or-Die/</id>
-    <published>2023-01-15T04:34:52.000Z</published>
-    <updated>2023-02-01T18:35:01.512Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;大二的寒假，我居然为了下学期不在概率论和复分析课上被爆杀，而在这儿速通数分。&lt;/p&gt;
-&lt;p&gt;转数环环友：你可以以任意顺序完成培养方案（&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="数学" scheme="https://chiyuru.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
     
   </entry>
   
