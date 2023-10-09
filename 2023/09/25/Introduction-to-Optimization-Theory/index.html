@@ -30,7 +30,7 @@
 <meta property="og:image" content="https://s2.loli.net/2023/09/26/PEzuQl2MOW37Jr1.jpg">
 <meta property="og:image" content="https://s2.loli.net/2023/09/26/Q9FIPLlzdce5aux.jpg">
 <meta property="article:published_time" content="2023-09-25T02:28:52.000Z">
-<meta property="article:modified_time" content="2023-09-27T12:52:30.781Z">
+<meta property="article:modified_time" content="2023-10-09T15:21:36.967Z">
 <meta property="article:author" content="驰雨Chiyuru">
 <meta property="article:tag" content="数学">
 <meta property="article:tag" content="统计">
@@ -225,7 +225,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-09-27 20:52:30" itemprop="dateModified" datetime="2023-09-27T20:52:30+08:00">2023-09-27</time>
+                <time title="修改时间：2023-10-09 23:21:36" itemprop="dateModified" datetime="2023-10-09T23:21:36+08:00">2023-10-09</time>
               </span>
 
           
@@ -428,11 +428,149 @@ degenerate basic solution。</p>
 <p>很明显的一点是在 polyhedron 里如果一个 basic solution 有多于 <span class="math inline">\(n-m\)</span> 个分量是 <span class="math inline">\(0\)</span>，那么它一定
 degenerate。由矩阵解的唯一性，这也是 degenerate basic solution
 的唯一情形。</p>
+<h3 id="existence-of-vertex">Existence of Vertex</h3>
+<p>非常口胡地说，要有 basic feasible solution
+至少区域的边界上要先有个角吧（比划</p>
+<ul>
+<li>A polyhedron <span class="math inline">\(P \subset \Re^n\)</span>
+<span class="math inline">\(\textbf{contains a line}\)</span> if there
+exists a vector <span class="math inline">\(x \in P\)</span> and a
+nonzero vector <span class="math inline">\(d \in \Re^n\)</span> such
+that <span class="math inline">\(x + \lambda d \in P\)</span> holds for
+all scalar <span class="math inline">\(\lambda\)</span>.</li>
+</ul>
+<p>也就是说范围里面不能有直线才能有 vertex。</p>
+<ul>
+<li><p>Suppose that the polyhedron <span class="math inline">\(P = \{x
+\in \Re^n \mid \textbf{a}_i^T x \geqslant b_i , i=1,2, \cdots, m
+\}\)</span> is nonempty. Then the following is equivalent:</p>
+<ul>
+<li><p>The polyhedron <span class="math inline">\(P\)</span> has at
+least one extreme point.</p></li>
+<li><p>The polyhedron does not contain a line.</p></li>
+<li><p>There exist <span class="math inline">\(n\)</span> vectors out of
+the family <span class="math inline">\(\textbf{a}_1, \textbf{a}_2,
+\cdots, \textbf{a}_m\)</span>, which are linearly independent.</p></li>
+</ul></li>
+</ul>
 <h1 id="lecture-2">Lecture 2</h1>
-<p>TBD，下节课还真是我做 scribing。</p>
-<p>虽然我报名这节课 scribe
-的原因是觉得在前半学期完事比较好，但其实也是因为下节课是袁洋上课，有
-PPT（</p>
+<p>这节课和 Ruizhe Shi 合作了 scribing，还存在很多问题，10/13
+之前都在持续修改：https://www.overleaf.com/read/hwpxppmfnjbk</p>
+<p>说实话我觉得 scribing 是写给队友和老师看的罢了，所以当然还要有个
+<del>从里面复制然后暴论的</del> 废话版本写给自己看。</p>
+<h2 id="simplex-method">Simplex Method</h2>
+<p>简单来说 simplex method 是从一个 basic feasible solution
+出发，用最简单的计算方法寻找下一个 basic feasible solution
+的方法。从几何的角度来说从多边形的一个顶点出发到另一个顶点，当然是沿着中间连接的边走过去最方便，所以也就是在寻找
+adjacent basic feasible solution。</p>
+<blockquote>
+<p>Recap: Two basic solutions are said <strong>adjacent</strong> iff
+there are <span class="math inline">\(n-1\)</span> linearly independent
+constraints that are active at both of them. We also say that two bases
+are adjacent if they share all but one column.</p>
+</blockquote>
+<p>也就是说，修改 solution vector 中的一对 component 即可。</p>
+<h3 id="find-the-initial-solution">Find the Initial Solution</h3>
+<p>想开始一个循环的算法得先有个 initial solution
+才能开始罢（，为了计算复杂性不如选个最简单的。</p>
+<p>在 LP 问题的标准化中经常会有加入一些 artificial variable
+来把不等号改成等号的行为，比如说 <span class="math inline">\(a^T x \geq
+b\)</span> 完全可以写成 <span class="math inline">\(a_1 x_1 + \cdots +
+a_n x_n + y_1 = b\)</span>，里面这个 <span class="math inline">\(y_1\)</span> 就是一个 artificial
+variable。它的系数是 <span class="math inline">\(1\)</span>，放在整个矩阵里其实可以作为最简单的
+linearly independent column 选出来计算 basic feasible solution。</p>
+<p>即使是在标准形式下也可以用这个思路来找一个简单的 initial
+solution，考虑：</p>
+<p><span class="math display">\[\begin{aligned}
+    \text{minimize} \quad &amp; \textbf{c}^T x  \\
+    \text{subject to} \quad &amp; \textbf{Ax} = \textbf{b} \\
+                     &amp; \textbf{x} \geqslant \textbf{0}
+\end{aligned}\]</span></p>
+<p>By multiplying some rows of <span class="math inline">\(\textbf{A}\)</span> by <span class="math inline">\(-1\)</span>, we can assume without loss of
+generality that <span class="math inline">\(\textbf{b} \geqslant
+\textbf{0}\)</span>. We now introduce a vector of artificial variables
+<span class="math inline">\(\textbf{y}\)</span> and consider the
+auxiliary problem:</p>
+<p><span class="math display">\[\begin{aligned}
+    \text{minimize} \quad &amp; y_1 + y_2 + \cdots  + y_m \\
+    \text{subject to} \quad &amp; \textbf{Ax} + \textbf{y} = b \\
+                            &amp; \textbf{x} \geqslant 0 \\
+                            &amp; \textbf{y} \geqslant 0
+\end{aligned}\]</span></p>
+<p>这个 auxiliary problem 的初始化很容易，让 <span class="math inline">\(\textbf {x} =0\)</span> 且 <span class="math inline">\(\textbf {y} = b\)</span> 就是 basic feasible
+solution，对应 basis 为 <span class="math inline">\(\textbf {I}_{m
+\times m}\)</span>。 某种程度上 auxiliary problem 等同于 original
+problem。首先，如果 <span class="math inline">\(\textbf {x}\)</span> 是
+original problem 的 basic feasible solution，则将 <span class="math inline">\(\textbf {x}\)</span> 和 <span class="math inline">\(\textbf {y} =0\)</span> 结合起来会产生 auxiliary
+problem 的 optimal solution。另一方面，如果能获得 auxiliary problem 的
+optimal solution，则根据约束 <span class="math inline">\(\textbf {y}
+\geqslant 0\)</span>，它必须满足 <span class="math inline">\(\textbf
+{y}=0\)</span>。于是 <span class="math inline">\(\textbf {x}\)</span> 是
+original problem 的 basic feasible solution。</p>
+<p>另外如果auxiliary problem 的 optimal cost 不是零，那么 original
+problem 是 infeasible 的。所以我们可以直接考虑下面的 auxiliary problem
+来解 original problem 的 optimal solution，用它简单形式下的 initial
+solution 开始 simplex method。</p>
+<h3 id="develop-feasible-direction">Develop Feasible Direction</h3>
+<p>所谓的 feasible direction 其实就是我们希望“沿着边来移动 solution
+point”的那个边。当然移动的时候未必会沿着边来移动，可能就直接按照两个顶点的连线移动，但是怎么说呢，就是个形象点的说法（</p>
+<ul>
+<li>Let <span class="math inline">\(\textbf{x}\)</span> be an element of
+a polyhedron <span class="math inline">\(P\)</span>. A vector <span class="math inline">\(\textbf{d} \in \Re^n\)</span> is said to be a
+<strong>feasible direction</strong> at <span class="math inline">\(x\)</span>, if there exists a positive scalar
+<span class="math inline">\(\theta\)</span> for which <span class="math inline">\(\textbf{x}+\theta  \textbf{d} \in P\)</span>.</li>
+</ul>
+<p>在上一次得到的 basic feasible solution 里假设 basis <span class="math inline">\(B\)</span> 的下标是 <span class="math inline">\(B(1),B(2),\cdots, B(m)\)</span>，记 <span class="math inline">\(I = \{B(1) , B(2), \cdots ,
+B(m)\}\)</span>。本质上每一次希望的移动就是在 <span class="math inline">\(I^c\)</span> 里面挑选一个新的下标 <span class="math inline">\(j\)</span> 然后将 <span class="math inline">\(x_j\)</span> 变为 <span class="math inline">\(1\)</span>，为了保证 basic feasible solution 的
+<span class="math inline">\(n\)</span> 个 active constraints
+的条件，还需要再在 <span class="math inline">\(I\)</span>
+里面挑选一个下标 <span class="math inline">\(B(i)\)</span> 然后将 <span class="math inline">\(x_{B(i)}\)</span> 变为 <span class="math inline">\(0\)</span>。</p>
+<p>从 applicable 的角度来说，具体的计算步骤是：</p>
+<ul>
+<li>选择一个 <span class="math inline">\(I^c\)</span> 中的 <span class="math inline">\(j\)</span> 作为新的下标，计算 <span class="math inline">\(B^{-1}A_j\)</span> 作为 <span class="math inline">\(d_{B(1)}, d_{B(2)}, \cdots, d_{B(m)}\)</span>
+的值，记 <span class="math inline">\(d_j=1\)</span>，其余的分量保持
+<span class="math inline">\(0\)</span>。</li>
+<li>寻找一个合适的 <span class="math inline">\(\theta\)</span> 使得
+<span class="math inline">\(x +\theta d\)</span> 是一个最合适的 basic
+feasible solution</li>
+</ul>
+<p>实际上如果确定了 <span class="math inline">\(j\)</span>，这里的 <span class="math inline">\(\theta\)</span>
+的选择范围就是有限的了，只有对于小于 <span class="math inline">\(0\)</span> 的 <span class="math inline">\(d_{B(i)}\)</span> 才能作为移动到 <span class="math inline">\(0\)</span> 的方向。</p>
+<p><span class="math display">\[\begin{aligned}
+      \theta =\left(-\frac{x_{B(i)}}{d_{B(i)}}\right), \;
+\{i=1,\ldots,m,d_{B(i)}&lt;0\}
+  \end{aligned}\]</span></p>
+<p>然而其实连 <span class="math inline">\(j\)</span>
+都没确定呢，一开始是随便取的，嘿嘿。所以下面要考虑怎么选择 <span class="math inline">\(j\)</span>，其后怎么选择 <span class="math inline">\(\theta\)</span>，或者两个其实也可以一起选就是了，但是计算复杂度可能又会提高。</p>
+<h3 id="choice-of-adjacent-basic-feasible-solution">Choice of Adjacent
+Basic Feasible Solution</h3>
+<p>Feasible direction
+确认了之后就要考虑到底按照哪个下标来移动，最朴素的想法是突然想起来这是个优化问题（，然后按照单次移动的
+cost 相关的问题来考虑。</p>
+<ul>
+<li><p>Let <span class="math inline">\(\textbf{x}\)</span> be a basic
+solution, let <span class="math inline">\(\textbf{B}\)</span> be an
+associated basis matrix, and let <span class="math inline">\(\textbf{c}_B\)</span> be the vector of costs of
+the basic variables. For each <span class="math inline">\(j\)</span>, we
+define the <strong>reduced cost</strong> <span class="math inline">\(\bar c_j\)</span> of the variables <span class="math inline">\(x_j\)</span> according to the formula</p>
+<p><span class="math display">\[\begin{aligned}
+    \bar c_j=c_j-\textbf{c}_B \textbf{B}^{-1}\textbf{A}_j.
+  \end{aligned}\]</span></p></li>
+</ul>
+<p>这样定义了一个关于各个 <span class="math inline">\(j\)</span>
+对应的单位 reduced cost，也就是 <span class="math inline">\(x_j\)</span>
+每增加 <span class="math inline">\(1\)</span> 会导致 cost
+减少的量，当然是减得越多越好。另外 <span class="math inline">\(\bar
+c_j\)</span> 在 <span class="math inline">\(j\)</span> 取 <span class="math inline">\(I\)</span> 中的下标时等于 <span class="math inline">\(0\)</span>，这其实很能 make sense，毕竟不能再按照
+<span class="math inline">\(B(i)\)</span> 来作为加入 basis
+的下标了，会导致的 cost 变化也只能是 <span class="math inline">\(0\)</span>。</p>
+<p>所以 reduced cost 是一个 general
+definition，可以再用它们来定义一个向量 <span class="math inline">\(\bar
+c\)</span>，其各个分量就是 reduced cost。</p>
+<p>待续</p>
+<h2 id="introduction-to-duality">Introduction to Duality</h2>
+<p>下次写，张景昭做的 PPT 还有一张插图是太极图（，虽然他大概想说的是
+dual 的 dual 还是自己之类的事情，但总感觉在 neta 来代课的<a target="_blank" rel="noopener" href="https://people.iiis.tsinghua.edu.cn/~yuanyang/">袁洋</a>（来个链接（x</p>
 
     </div>
 
@@ -584,7 +722,8 @@ PPT（</p>
 Programming</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#reduce-to-standardized-format"><span class="nav-text">Reduce to Standardized
 Format</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#other-optimization-problems"><span class="nav-text">Other Optimization Problems</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#solutions-to-lp-problems"><span class="nav-text">Solutions to LP Problems</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#notations"><span class="nav-text">Notations</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#how-to-describe-optimal-solutions"><span class="nav-text">How to Describe Optimal
 Solutions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#algebraic-approach-to-optimal-solutions"><span class="nav-text">Algebraic Approach to
-Optimal Solutions</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-2"><span class="nav-text">Lecture 2</span></a></li></ol></div>
+Optimal Solutions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#existence-of-vertex"><span class="nav-text">Existence of Vertex</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-2"><span class="nav-text">Lecture 2</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#simplex-method"><span class="nav-text">Simplex Method</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#find-the-initial-solution"><span class="nav-text">Find the Initial Solution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#develop-feasible-direction"><span class="nav-text">Develop Feasible Direction</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#choice-of-adjacent-basic-feasible-solution"><span class="nav-text">Choice of Adjacent
+Basic Feasible Solution</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#introduction-to-duality"><span class="nav-text">Introduction to Duality</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
