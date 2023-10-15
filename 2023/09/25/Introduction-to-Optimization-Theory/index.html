@@ -30,7 +30,7 @@
 <meta property="og:image" content="https://s2.loli.net/2023/09/26/PEzuQl2MOW37Jr1.jpg">
 <meta property="og:image" content="https://s2.loli.net/2023/09/26/Q9FIPLlzdce5aux.jpg">
 <meta property="article:published_time" content="2023-09-25T02:28:52.000Z">
-<meta property="article:modified_time" content="2023-10-12T12:37:57.500Z">
+<meta property="article:modified_time" content="2023-10-15T14:10:12.677Z">
 <meta property="article:author" content="驰雨Chiyuru">
 <meta property="article:tag" content="数学">
 <meta property="article:tag" content="统计">
@@ -225,7 +225,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-10-12 20:37:57" itemprop="dateModified" datetime="2023-10-12T20:37:57+08:00">2023-10-12</time>
+                <time title="修改时间：2023-10-15 22:10:12" itemprop="dateModified" datetime="2023-10-15T22:10:12+08:00">2023-10-15</time>
               </span>
 
           
@@ -477,9 +477,50 @@ the family <span class="math inline">\(\textbf{a}_1, \textbf{a}_2,
 \cdots, \textbf{a}_m\)</span>, which are linearly independent.</p></li>
 </ul></li>
 </ul>
+<p>一个更重要的定理是关于 bounded polyhedron 和 standardized problem
+的：</p>
+<ul>
+<li>Every nonempty bounded polyhedron and every nonempty polyhedron in
+standard form has at least one basic feasible solution.</li>
+</ul>
+<p>这是因为前者显然不含直线，后者定义在 <span class="math inline">\(\{x
+\geq 0\}\)</span> 的区域里也不含直线。注意到所有的 LP problem
+其实都可以转化为后者的形式，所以说实际上都是有 basic feasible solution
+的。这话比较模糊，意思是对于新的 standardized problem 一定会有 basic
+feasible solution，然而把这个解限制到原来问题的维度中得到的解未必会是
+basic feasible solution。</p>
+<p>不过没有关系，我们会在后面看到实际上这已经够用了，因为目的不是解
+basic feasible solution，而是找出 optimal cost。在 standardized problem
+下的 optimal cost 可以用 basic feasible solution 得到，而它和原问题的
+optimal cost 一致。</p>
+<h3 id="why-is-vertex-important">Why is Vertex Important?</h3>
+<p>说了这么多，为啥要解 basic feasible solution，对做 optimal cost
+有什么好处吗？事实上，optimal cost 要么 unbounded，要么是在 basic
+feasible solution 处取到，所以说只要 optimal cost 不是 <span class="math inline">\(-\infty\)</span> 就就把所有的 basic feasible
+solution 找出来溜一遍就好了。</p>
+<p>严肃一点用定理来说明的话是以下几条，对应书上 Section 2.6：</p>
+<ul>
+<li>Suppose the linear programming problem <span class="math inline">\(P\)</span> has at least one extreme point, and
+there exists at least one optimal solution. Then there exist one optimal
+solution and is the extreme point of <span class="math inline">\(P\)</span>.</li>
+<li>Suppose the linear programming problem <span class="math inline">\(P\)</span> has at least one extreme point. Then,
+either the optimal cost is <span class="math inline">\(-\infty\)</span>
+or there exist one extreme point, and it's also one of the optimal
+solution.</li>
+</ul>
+<p>注意到任意一个 LP problem 都可以转化为标准形式并保持 cost
+不变，每个标准形式都有 extreme point，所以说上一条定理实际上是对任意 LP
+problem 成立的。</p>
+<p>另外，第一个定理并不能推出第二个，因为并非 optimal cost 不是 <span class="math inline">\(-\infty\)</span> 就能推出有 optimal
+solution，比如说在 <span class="math inline">\(x &gt;0\)</span> 上找
+<span class="math inline">\(\frac 1x\)</span> 的最小值，既不是 <span class="math inline">\(-\infty\)</span> 也不存在 optimal solution。zjz 的
+PPT 还有 yy 讲课的时候都说
+trivial，实际上是不能这么推的。但可以通过沿特定方向移动到下一个 basic
+feasible solution 的方法证明这种情况在 LP problem
+里不会出现，这也就是第二个定理的证明。</p>
 <h1 id="lecture-2">Lecture 2</h1>
-<p>这节课和 Ruizhe Shi 合作了 scribing，还存在很多问题，10/13
-之前都在持续修改：https://www.overleaf.com/read/hwpxppmfnjbk</p>
+<p>这节课和 Ruizhe Shi 合作的 scribing 见
+https://www.overleaf.com/read/hwpxppmfnjbk。</p>
 <p>说实话我觉得 scribing 是写给队友和老师看的罢了，所以当然还要有个
 <del>从里面复制然后暴论的</del> 废话版本写给自己看。</p>
 <h2 id="simplex-method">Simplex Method</h2>
@@ -587,14 +628,88 @@ define the <strong>reduced cost</strong> <span class="math inline">\(\bar c_j\)<
 减少的量，当然是减得越多越好。另外 <span class="math inline">\(\bar
 c_j\)</span> 在 <span class="math inline">\(j\)</span> 取 <span class="math inline">\(I\)</span> 中的下标时等于 <span class="math inline">\(0\)</span>，这其实很能 make sense，毕竟不能再按照
 <span class="math inline">\(B(i)\)</span> 来作为加入 basis
-的下标了，会导致的 cost 变化也只能是 <span class="math inline">\(0\)</span>。</p>
-<p>所以 reduced cost 是一个 general
+的下标了，会导致的 cost 变化也只能是 <span class="math inline">\(0\)</span>。所以 reduced cost 是一个 general
 definition，可以再用它们来定义一个向量 <span class="math inline">\(\bar
 c\)</span>，其各个分量就是 reduced cost。</p>
-<p>待续</p>
+<p>寻找下一个 basic feasible solution
+的最好的选择就是找一个绝对值最大（实际上最小）的 <span class="math inline">\(\bar c_j\)</span>，沿着这个方向移动最大的一个
+<span class="math inline">\(\theta^*&gt;0\)</span>，然后 cost 就减少了
+<span class="math inline">\(\theta^* \bar c_j\)</span>。这样选择 <span class="math inline">\(\bar c_j\)</span> 和对应的下标 <span class="math inline">\(j\)</span> 从直觉上来说可以经历更少的步数到达
+optimal solution，降低算法复杂度。</p>
+<p>另外，也可以从某个点处的 reduced cost vector <span class="math inline">\(\bar c\)</span>
+看出一些东西，主要有关这个点有没有达到 optimal cost，等等。</p>
+<ul>
+<li>Consider a basic feasible solution <span class="math inline">\(x\)</span> associated with a basis matrix <span class="math inline">\(B\)</span>, and let <span class="math inline">\(\bar c\)</span> be the corresponding vector of
+reduced costs.
+<ul>
+<li>If <span class="math inline">\(\bar c \geq 0\)</span>, then <span class="math inline">\(x\)</span> is optimal.</li>
+<li>If <span class="math inline">\(x\)</span> is optimal and
+nondegenerate, then <span class="math inline">\(\bar c \geq
+0\)</span>.</li>
+</ul></li>
+<li>A basis matrix <span class="math inline">\(B\)</span> is optimal iff
+<ul>
+<li><span class="math inline">\(B^{-1}b \geq 0\)</span></li>
+<li><span class="math inline">\(\bar c^T = c^T - c^T _B B^{-1} A \geq
+0^T\)</span></li>
+</ul></li>
+</ul>
+<h3 id="termination">Termination</h3>
+<p>最后两个问题是：算法会不会进入循环？会不会找不到 optimal solution
+就停下来？答案是都不会。</p>
+<p>因为只有有限个 basic feasible
+solution，所以只要不经过同一个点两遍，就可以遍历所有的可能性。不经过同一个点两遍这件事通过
+lexicographic pivoting rule
+来决定，保证从字典序上来说所有的解是递增的，就不会出现循环。</p>
+<p>另外既然 optimal solution 要么是 <span class="math inline">\(-\infty\)</span> 要么是在某个 basic feasible
+solution 处取到，那么既然遍历（注意并不是真正的遍历，并不会走到 cost
+比较大的一些 basic feasible solution，比如说比 initial solution 的 cost
+更大的解就不可能取到，这能提高效率且不遗漏）了 basic feasible solution
+就一定能找到 optimal solution，所以说 simplex method
+是个非常完满的算法。</p>
+<h3 id="summary">Summary</h3>
+<p>最后总结一下 simplex method 的步骤。</p>
+<ul>
+<li>通过解 auxiliary problem 找到一个本质 trivial 的 initial
+solution；它可能不存在，此时原问题 infeasible；</li>
+<li>通过做 <span class="math inline">\(\bar c^T = c^T - c^T_B
+B^{-1}A\)</span> 得到在此处的 reduced cost vector，
+<ul>
+<li>如果 <span class="math inline">\(\bar c \geq
+0\)</span>，说明目前的解就是 optimal solution</li>
+<li>否则找出绝对值最大的 <span class="math inline">\(\bar
+c_j\)</span>，确定下标 <span class="math inline">\(j\)</span>，再找出对应的 feasible direction 是
+<span class="math inline">\(d_B = -B^{-1}A, d_j=1\)</span>.</li>
+</ul></li>
+<li>通过找 <span class="math inline">\(\theta^* = \max \{\theta \geq 0
+\mid x +\theta d \in P \}\)</span> 来更新 basic feasible solution 为
+<span class="math inline">\(y = x+\theta d\)</span>，可能遇到：
+<ul>
+<li>如果 <span class="math inline">\(\theta\)</span> unbounded，则
+optimal cost 也是 <span class="math inline">\(-\infty\)</span>；</li>
+<li>否则可以更新 optimal cost 和对应的 basic feasible
+solution，然后重复以上步骤直到找到 optimal solution。</li>
+</ul></li>
+</ul>
 <h2 id="introduction-to-duality">Introduction to Duality</h2>
-<p>下次写，张景昭做的 PPT 还有一张插图是太极图（，虽然他大概想说的是
-dual 的 dual 还是自己之类的事情，但总感觉在 neta 来代课的<a target="_blank" rel="noopener" href="https://people.iiis.tsinghua.edu.cn/~yuanyang/">袁洋</a>（来个链接（x</p>
+<p>把 LP problem 变成它的 dual problem 的 motivation
+其实来自拉格朗日乘子法，本质上是对 cost function 的形式 penalize
+一个条件，如果不满足条件的话 cost function
+就会变大，从而找到最小值。</p>
+<p><del>想必这个过程推起来很简单吧我就不写了</del></p>
+<p>简单来说，primal problem 和 dual problem 的对应关系是这样的：</p>
+<p><span class="math display">\[\begin{aligned} \text{minimize}
+\quad  &amp; c^T x \\ \text{subject to} \quad &amp; a_i ^T x \geq b
+\quad  i \in M_1 \\ &amp; a_i ^T x \leq b_i \quad  i \in M_2  \\ &amp;
+a_i ^T x = b_i \quad  i \in M_3  \\ &amp; x_j  \geq 0 \quad  j \in
+N_1  \\ &amp; x_j  \leq 0 \quad  j \in N_2  \\ &amp; x_j \; \text{free}
+\quad  j \in N_3   \end{aligned} \quad \quad \quad \begin{aligned}
+\text{maximize} \quad  &amp; p^T b \\ \text{subject to} \quad &amp;
+p_i  \geq 0 \quad  i \in M_1 \\ &amp; p_i \leq 0 \quad  i \in M_2  \\
+&amp; p_i \; \text{free} \quad  i \in M_3  \\ &amp; p^TA_j \leq c_j
+\quad  j \in N_1  \\ &amp; p^TA_j  \geq c_j \quad  j \in N_2  \\ &amp;
+p^TA_j = c_j \quad  j \in N_3   \end{aligned}\]</span></p>
+<p>可以看出来 dual 的 dual 就是 primal。</p>
 
     </div>
 
@@ -746,8 +861,8 @@ dual 的 dual 还是自己之类的事情，但总感觉在 neta 来代课的<a 
 Programming</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#reduce-to-standardized-format"><span class="nav-text">Reduce to Standardized
 Format</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#other-optimization-problems"><span class="nav-text">Other Optimization Problems</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#solutions-to-lp-problems"><span class="nav-text">Solutions to LP Problems</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#notations"><span class="nav-text">Notations</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#how-to-describe-optimal-solutions"><span class="nav-text">How to Describe Optimal
 Solutions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#algebraic-approach-to-optimal-solutions"><span class="nav-text">Algebraic Approach to
-Optimal Solutions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#existence-of-vertex"><span class="nav-text">Existence of Vertex</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-2"><span class="nav-text">Lecture 2</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#simplex-method"><span class="nav-text">Simplex Method</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#find-the-initial-solution"><span class="nav-text">Find the Initial Solution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#develop-feasible-direction"><span class="nav-text">Develop Feasible Direction</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#choice-of-adjacent-basic-feasible-solution"><span class="nav-text">Choice of Adjacent
-Basic Feasible Solution</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#introduction-to-duality"><span class="nav-text">Introduction to Duality</span></a></li></ol></li></ol></div>
+Optimal Solutions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#existence-of-vertex"><span class="nav-text">Existence of Vertex</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#why-is-vertex-important"><span class="nav-text">Why is Vertex Important?</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-2"><span class="nav-text">Lecture 2</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#simplex-method"><span class="nav-text">Simplex Method</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#find-the-initial-solution"><span class="nav-text">Find the Initial Solution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#develop-feasible-direction"><span class="nav-text">Develop Feasible Direction</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#choice-of-adjacent-basic-feasible-solution"><span class="nav-text">Choice of Adjacent
+Basic Feasible Solution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#termination"><span class="nav-text">Termination</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#summary"><span class="nav-text">Summary</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#introduction-to-duality"><span class="nav-text">Introduction to Duality</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
