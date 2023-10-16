@@ -30,7 +30,7 @@
 <meta property="og:image" content="https://s2.loli.net/2023/09/26/PEzuQl2MOW37Jr1.jpg">
 <meta property="og:image" content="https://s2.loli.net/2023/09/26/Q9FIPLlzdce5aux.jpg">
 <meta property="article:published_time" content="2023-09-25T02:28:52.000Z">
-<meta property="article:modified_time" content="2023-10-15T14:10:12.677Z">
+<meta property="article:modified_time" content="2023-10-16T16:22:02.433Z">
 <meta property="article:author" content="驰雨Chiyuru">
 <meta property="article:tag" content="数学">
 <meta property="article:tag" content="统计">
@@ -225,7 +225,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-10-15 22:10:12" itemprop="dateModified" datetime="2023-10-15T22:10:12+08:00">2023-10-15</time>
+                <time title="修改时间：2023-10-17 00:22:02" itemprop="dateModified" datetime="2023-10-17T00:22:02+08:00">2023-10-17</time>
               </span>
 
           
@@ -710,6 +710,164 @@ p_i  \geq 0 \quad  i \in M_1 \\ &amp; p_i \leq 0 \quad  i \in M_2  \\
 \quad  j \in N_1  \\ &amp; p^TA_j  \geq c_j \quad  j \in N_2  \\ &amp;
 p^TA_j = c_j \quad  j \in N_3   \end{aligned}\]</span></p>
 <p>可以看出来 dual 的 dual 就是 primal。</p>
+<p>除此之外还需要一些定理来说明 dual 和 primal 的 cost 之间的关系。</p>
+<h3 id="duality-theorems">Duality Theorems</h3>
+<ul>
+<li><p>(Weak Duality) If <span class="math inline">\(x\)</span> is a
+feasible solution to the primal problem and <span class="math inline">\(p\)</span> is a feasible solution to the dual
+problem, then <span class="math inline">\(p^Tb\leqslant
+c^Tx\)</span>.</p>
+<p><strong>Proof</strong>: Set <span class="math inline">\(u_i = p_i
+(a_i^Tx - b_i), v_j = (c_j - p^TA_j) x_j\)</span>, then by feasibility
+<span class="math inline">\(u_i \geq 0, v_i \geq 0\)</span>.</p>
+<p>Therefore <span class="math inline">\(\sum_{i,j}u_i +v_j = p^T(Ax-b)
++ (c^T- p^TA)x = c^Tx - p^Tb \geq 0\)</span>.</p>
+<ul>
+<li>If the optimal cost in the primal is <span class="math inline">\(-\infty\)</span>, then the dual one must be
+infeasible.</li>
+<li>If the optimal cost in the dual is <span class="math inline">\(+\infty\)</span>, then the primal one must be
+infeasible.</li>
+<li>Let <span class="math inline">\(x\)</span> and <span class="math inline">\(p\)</span> be feasible solutions to the primal and
+the dual problem respectively, and suppose that <span class="math inline">\(p^T b = c^Tx\)</span> holds. Then <span class="math inline">\(x\)</span> and <span class="math inline">\(p\)</span> are optimal solutions to the primal and
+the dual respectively.</li>
+</ul></li>
+</ul>
+<p>Weak duality 引出的第三条最重要，如果 <span class="math inline">\(x\)</span> 不是 optimal solution 则对任意的
+feasible solution <span class="math inline">\(x&#39;\)</span> 都有 <span class="math inline">\(c^Tx&#39; \geq p^Tb =
+c^Tx\)</span>，导致矛盾，<span class="math inline">\(p\)</span> 的
+optimality 同理。这说明了 <span class="math inline">\(c^Tx =
+p^Tb\)</span> 可以导出二者分别在此处取到 optimal
+cost，这引出了更重要的一条 strong duality，保证其一有 optimal solution
+的时候另一个也有。</p>
+<ul>
+<li><p>(Strong Duality) If a linear programming problem has an optimal
+solution, so does its dual, and the respective optimal costs are
+equal.</p>
+<p><strong>Proof</strong>: Consider the problem in standard form. The
+simplex method (with lexicographic pivoting rule) terminates with an
+optimal solution <span class="math inline">\(x^*\)</span> and an optimal
+basis <span class="math inline">\(B\)</span>, then <span class="math display">\[\begin{aligned}
+    \bar c^T=c^T-c_B^TB^{-1}A\geqslant0.
+\end{aligned}\]</span></p>
+<p>Let <span class="math inline">\(p^*=(c_B^T B^{-1})^T\)</span> as the
+corresponding optimal solution <span class="math inline">\(p\)</span>,
+then <span class="math display">\[\begin{aligned}
+    (p^*)^TA=c_B^T B^{-1}A\leqslant c^T,
+\end{aligned}\]</span> and <span class="math display">\[\begin{aligned}
+(p^*)^Tb=c_B^TB^{-1}b=c_B^Tx_B=c^Tx^*.
+\end{aligned}\]</span> So the strong duality holds.</p></li>
+</ul>
+<p>最后来个 Farka's lemma，把 constraints
+作为一个矩阵从原来的优化问题里面抽出来看：</p>
+<ul>
+<li>(Farka's lemma) Let <span class="math inline">\(A\)</span> be a
+matrix of dimensions <span class="math inline">\(m\times n\)</span> and
+let <span class="math inline">\(b\)</span> be a vector in <span class="math inline">\(\Re ^m\)</span>. Then exactly one of the following
+two alternative holds:
+<ul>
+<li>There exists some <span class="math inline">\(x\geqslant 0\)</span>
+such that <span class="math inline">\(Ax=b\)</span>.</li>
+<li>There exists some vector <span class="math inline">\(p\)</span> such
+that <span class="math inline">\(p^TA\geqslant 0\)</span> and <span class="math inline">\(p^Tb&lt;0\)</span>.</li>
+</ul></li>
+<li>(Farka's corollary) Let <span class="math inline">\(A_1,\ldots,A_n\)</span> and <span class="math inline">\(b\)</span> be given vectors and suppose that any
+vector <span class="math inline">\(p\)</span> that satisfies <span class="math inline">\(p^TA_i\geqslant 0\)</span>, <span class="math inline">\(i=1,\ldots,n\)</span>, must also satisfy <span class="math inline">\(p^Tb\geqslant 0\)</span>. Then <span class="math inline">\(b\)</span> can be expressed as a nonnegative
+linear combination of the vectors <span class="math inline">\(A_1,\ldots, A_n\)</span>.</li>
+</ul>
+<p>就变成了很普通但是又看着有点奇怪的矩阵变换问题，谁知道背后还有个优化问题.jpg。事实上对于不同形式的
+primal 和 dual problem
+我们都可以写出来一对相反的条件，让它们二者成立其一。</p>
+<h1 id="lecture-3">Lecture 3</h1>
+<p>在上这节课之前我把 HW2 写完了，相应地其实就把 Nash equilibrium
+那道题做了。是周二晚上吃饭之前写完的，吃饭之前多花了五分钟写成 LaTeX
+然后超级开心地离开四教，吃完回来又读了一遍感觉证得很好，真的很喜欢这个方法还有这整个问题。</p>
+<p>所以我还是忍不住在 acknowledge 里面写了 MashPlant 日记里那段话：</p>
+<blockquote>
+<p>All exercises but Ex 4.29 are finished on my own. Among them I
+appreciate the solution of Ex 4.10 most (though trivial), as this is
+actually quite a triumph, even if it's hard to explain to your friends
+or family members.</p>
+</blockquote>
+<p><del>好了现在大家都知道我不会做 Ex 4.29 了</del></p>
+<p>然后 Lecture 3
+上又把这个问题拿出来讲了，顺便把这个作业题也证明了，有点不爽（（x</p>
+<h2 id="nash-equilibrium">Nash Equilibrium</h2>
+<p>Consider the standard form problem of minimizing <span class="math inline">\(c^Tx\)</span> subject to <span class="math inline">\(Ax = b, x \geq 0\)</span>. We define the
+Lagrangean by</p>
+<p><span class="math display">\[L(x,p) = c^Tx + p^T(b-Ax)\]</span></p>
+<p>Consider the following game: player 1 chooses some <span class="math inline">\(x \geq 0\)</span>, and player 2 chooses some <span class="math inline">\(p\)</span>; then, player 1 pays to player 2 the
+amount <span class="math inline">\(L(x,p)\)</span>. Player 1 would like
+to minimize <span class="math inline">\(L(x,p)\)</span>, while player 2
+would like to maximize it.</p>
+<p>A pair <span class="math inline">\((x^*,p^*)\)</span> with <span class="math inline">\(x^* \geq 0\)</span>, is called an equilibrium
+point if <span class="math inline">\(L(x^*,p) \leq L(x^*,p^*) \leq
+L(x,p^*), \; \forall x \geq 0, \forall p\)</span>.</p>
+<p>(Thus, we have an equilibrium if no player is able to prove her
+performance by unilaterally modifying her choice.)</p>
+<p>Show that a pair (<span class="math inline">\(x^*,p^*\)</span>) is an
+equilibrium if and only if <span class="math inline">\(x^*\)</span> and
+<span class="math inline">\(p^*\)</span> are optimal solutions to the
+standard form problem under consideration and its dual respectively.</p>
+<p><strong>Proof</strong>:</p>
+<p>Consider the primal problem and the dual problem in the following
+form:</p>
+<p><span class="math display">\[\begin{aligned}
+    \textbf{minimize} \quad &amp; c^Tx \\
+    \textbf{subject to} \quad &amp; Ax = b \\
+    &amp; x \geq 0
+\end{aligned} \quad \quad \quad
+\begin{aligned}
+    \textbf{maximize} \quad &amp; p^Tb \\
+    \textbf{subject to} \quad &amp; A^T b \leq c \\
+    \\
+\end{aligned}\]</span></p>
+<ol type="1">
+<li>If <span class="math inline">\(x^*\)</span> and <span class="math inline">\(p^*\)</span> are optimal solutions to the primal
+problem and the dual problem respectively, then there is:</li>
+</ol>
+<p><span class="math display">\[L(x^*, p) = c^Tx^* + p^T(b -Ax^*) =
+c^Tx^* = L(x^*, p^*)\]</span></p>
+<p><span class="math display">\[L(x,p^*) = c^Tx + p^{*T} (b-Ax) = (c^T -
+p^{*T} A)x + p^{*T} b \geq p^{*T} b = c^Tx^*\]</span></p>
+<p>according to the strong duality theorem.</p>
+<p>Therefore <span class="math inline">\(L(x^*,p) \leq L(x^*,p^*) \leq
+L(x,p^*)\)</span> holds, and <span class="math inline">\((x^*,p^*)\)</span> is an equilibrium.</p>
+<ol start="2" type="1">
+<li>If <span class="math inline">\((x^*,p^*)\)</span> is an equilibrium,
+first to prove that <span class="math inline">\(x^*\)</span> is a
+feasible solution to the primal problem. Consider the first inequality
+<span class="math inline">\(L(x^*, p ) \leq L(x^*, p^*)\)</span> which
+holds for any <span class="math inline">\(p\)</span>. If <span class="math inline">\(b - Ax^* \neq 0\)</span>, by taking <span class="math inline">\(p = b - Ax^* +p^*\)</span>, we can obtain</li>
+</ol>
+<p><span class="math display">\[L(x^*,p) - L(x^*, p^*) = (p-
+p^*)^T(b-Ax^*) = (b-Ax^*)(b-Ax^*) &gt;0,\]</span></p>
+<p>which leads to contradiction. Therefore <span class="math inline">\(Ax^* = b\)</span> holds, <span class="math inline">\(x^*\)</span> is a feasible solution to the primal
+problem and <span class="math inline">\(L(x^*, p^*) = c^T
+x^*\)</span>.</p>
+<p>Next step we prove that <span class="math inline">\(p^*\)</span> is a
+feasible solution to the dual problem. Consider the second inequality
+<span class="math inline">\(c^T x^* = L(x^*,p^*) \leq L(x, p^*)\)</span>
+which holds for any <span class="math inline">\(x \geq 0\)</span>. By
+taking <span class="math inline">\(x =0\)</span> we can obtain that
+<span class="math inline">\(c^T x^* \leq L(0,p^*) = p^{*T}b\)</span>
+holds.</p>
+<p>Moreover, if there exists <span class="math inline">\(i\)</span> s.t.
+<span class="math inline">\(c_i - p^T A_i &lt;0\)</span>, we can take
+<span class="math inline">\(x_i = -\frac{p^{*T}b - c^Tx^*}{c_i - p^{*T}
+A_i} +1\)</span> and <span class="math inline">\(x_j =0\)</span> for all
+<span class="math inline">\(j \neq i\)</span>, then <span class="math inline">\(x \geq 0\)</span>. Take such <span class="math inline">\(x\)</span> to the inequality and there is:</p>
+<p><span class="math display">\[c^Tx^* = L(x^*,p^*) \leq L(x,p^*) =
+p^{*T} b + (c_i - p^{*T} A_i) x_i &lt;  p^{*T} b  - (p^{*T}b - c^Tx^*) =
+c^Tx^* ,\]</span></p>
+<p>which leads to contradiction. Thus <span class="math inline">\(c_i -
+p^{*T} A_i \geq 0\)</span> holds for any subscript <span class="math inline">\(i\)</span>, i.e. <span class="math inline">\(c -
+p^{*T}A \geq 0\)</span>. Therefore <span class="math inline">\(p^*\)</span> is a feasible solution to the dual
+problem.</p>
+<p>According to the inequality <span class="math inline">\(c^T x^* \leq
+p^{*T}b\)</span> we obtained before and the weak duality theorem, there
+is <span class="math inline">\(c^T x^* = p^{*T} b\)</span>, and
+therefore <span class="math inline">\(x^*, p^*\)</span> are optimal
+solutions to the primal problem and the dual problem respectively.</p>
 
     </div>
 
@@ -862,7 +1020,7 @@ Programming</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a 
 Format</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#other-optimization-problems"><span class="nav-text">Other Optimization Problems</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#solutions-to-lp-problems"><span class="nav-text">Solutions to LP Problems</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#notations"><span class="nav-text">Notations</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#how-to-describe-optimal-solutions"><span class="nav-text">How to Describe Optimal
 Solutions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#algebraic-approach-to-optimal-solutions"><span class="nav-text">Algebraic Approach to
 Optimal Solutions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#existence-of-vertex"><span class="nav-text">Existence of Vertex</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#why-is-vertex-important"><span class="nav-text">Why is Vertex Important?</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-2"><span class="nav-text">Lecture 2</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#simplex-method"><span class="nav-text">Simplex Method</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#find-the-initial-solution"><span class="nav-text">Find the Initial Solution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#develop-feasible-direction"><span class="nav-text">Develop Feasible Direction</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#choice-of-adjacent-basic-feasible-solution"><span class="nav-text">Choice of Adjacent
-Basic Feasible Solution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#termination"><span class="nav-text">Termination</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#summary"><span class="nav-text">Summary</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#introduction-to-duality"><span class="nav-text">Introduction to Duality</span></a></li></ol></li></ol></div>
+Basic Feasible Solution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#termination"><span class="nav-text">Termination</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#summary"><span class="nav-text">Summary</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#introduction-to-duality"><span class="nav-text">Introduction to Duality</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#duality-theorems"><span class="nav-text">Duality Theorems</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-3"><span class="nav-text">Lecture 3</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#nash-equilibrium"><span class="nav-text">Nash Equilibrium</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
