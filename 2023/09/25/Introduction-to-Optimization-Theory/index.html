@@ -29,8 +29,11 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://s2.loli.net/2023/09/26/PEzuQl2MOW37Jr1.jpg">
 <meta property="og:image" content="https://s2.loli.net/2023/09/26/Q9FIPLlzdce5aux.jpg">
+<meta property="og:image" content="https://s2.loli.net/2023/10/21/AzN5LGkDotKBbFh.png">
+<meta property="og:image" content="https://s2.loli.net/2023/09/26/PEzuQl2MOW37Jr1.jpg">
+<meta property="og:image" content="https://s2.loli.net/2023/10/21/Y79yhqJDgElijmI.png">
 <meta property="article:published_time" content="2023-09-25T02:28:52.000Z">
-<meta property="article:modified_time" content="2023-10-17T07:43:43.696Z">
+<meta property="article:modified_time" content="2023-10-21T12:42:39.918Z">
 <meta property="article:author" content="驰雨Chiyuru">
 <meta property="article:tag" content="数学">
 <meta property="article:tag" content="统计">
@@ -225,7 +228,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-10-17 15:43:43" itemprop="dateModified" datetime="2023-10-17T15:43:43+08:00">2023-10-17</time>
+                <time title="修改时间：2023-10-21 20:42:39" itemprop="dateModified" datetime="2023-10-21T20:42:39+08:00">2023-10-21</time>
               </span>
 
           
@@ -875,10 +878,158 @@ solutions to the primal problem and the dual problem respectively.</p>
 <p>其实已经挺清楚的了，就是说 <span class="math inline">\(\max_p \min_x
 L(x,p) = \min_x \max_p L(x,p)\)</span> 这样子，所以说 dual 和 primal
 得到的结果是一致的。</p>
+<h3 id="application-of-farkas-lemma">Application of Farka's Lemma</h3>
+<p>先回顾下 Farka's lemma：</p>
+<p>(Farka's lemma) Let <span class="math inline">\(A\)</span> be a
+matrix of dimensions <span class="math inline">\(m\times n\)</span> and
+let <span class="math inline">\(b\)</span> be a vector in <span class="math inline">\(\Re ^m\)</span>. Then exactly one of the following
+two alternative holds:</p>
+<ul>
+<li>There exists some <span class="math inline">\(x\geqslant 0\)</span>
+such that <span class="math inline">\(Ax=b\)</span>.</li>
+<li>There exists some vector <span class="math inline">\(p\)</span> such
+that <span class="math inline">\(p^TA\geqslant 0\)</span> and <span class="math inline">\(p^Tb&lt;0\)</span>.</li>
+</ul>
+<p>除了用一对 primal problem 和 dual problem
+记这个结论之外，还可以用一个图来直观地理解：</p>
+<p><img src="https://s2.loli.net/2023/10/21/AzN5LGkDotKBbFh.png" alt="farka.png"></p>
+<p>当 <span class="math inline">\(b\)</span> 不落在 <span class="math inline">\(A_i\)</span> 和 <span class="math inline">\(x \geq
+0\)</span>
+构造出的阴影范围内，也就是说第一个条件不满足的时候，就一定存在 <span class="math inline">\(p\)</span> 使得 <span class="math inline">\(p\)</span> 和 <span class="math inline">\(b\)</span> 的夹角是“钝角”，而且 <span class="math inline">\(p\)</span> 和每个 <span class="math inline">\(A_i\)</span> 的夹角是“锐角”。</p>
+<p>考虑一个有 <span class="math inline">\(n\)</span>
+种商品的贸易过程，每次购买的份额是一个 asset vector <span class="math inline">\(x =
+(x_1,x_2,...,x_n)\)</span>，初始状态下的价格是一个 price vector <span class="math inline">\(p =
+(p_1,p_2,...,p_n)\)</span>，因此初始状态下投入的资金是 <span class="math inline">\(p^Tx\)</span>。一段时间后会呈现出 <span class="math inline">\(m\)</span> 种状态之一，第 <span class="math inline">\(i\)</span> 种状态下这 <span class="math inline">\(n\)</span> 种商品的售价是一个 payoff vector <span class="math inline">\((r_{i1},r_{i2},...,r_{in})\)</span>。由此构造一个
+payoff matrix：</p>
+<p><span class="math display">\[R= \begin{bmatrix} r_{11} &amp; r_{12}
+&amp; \cdots &amp; r_{1n} \\ \cdots &amp; \cdots &amp; \cdots &amp;
+\cdots \\\cdots &amp; \cdots &amp; \cdots &amp; \cdots \\ r_{m1} &amp;
+r_{m2} &amp; \cdots &amp;  r_{mn} \end{bmatrix}\]</span></p>
+<p>取 <span class="math inline">\(w = Rx = (w_1,w_2,\cdots,w_m)\)</span>
+作为购买份额为 <span class="math inline">\(x\)</span> 时，最终在 <span class="math inline">\(m\)</span> 个状态下分别得到的收入。有一个 absence
+of arbitrage
+condition，大概就是说不可能在负投资的状态下得到正收益，也就是说 <span class="math inline">\(Rx \geq 0\)</span> 可以推出 <span class="math inline">\(p^Tx \geq 0\)</span>。</p>
+<p>由 Farka's lemma 可知此时第二条不成立，一定存在 <span class="math inline">\(q \geq 0\)</span> 使得 <span class="math inline">\(R ^T q = p\)</span>。</p>
 <h2 id="computation-complexity-of-lp-and-the-ellipsoid-method">Computation
 Complexity of LP and the Ellipsoid Method</h2>
-<p>讲这个的时候我太困了，上楼找了个教室睡觉，没听。我估计我困成那样听也听不懂，他这个手稿太抽象了也看不大懂，貌似书上也没这一部分，哥们有点子崩溃（。等
-scribing 了。</p>
+<p><del>讲这个的时候我太困了，上楼找了个教室睡觉，没听。我估计我困成那样听也听不懂，他这个手稿太抽象了也看不大懂，貌似书上也没这一部分，哥们有点子崩溃（。等
+scribing 了。</del></p>
+<p>我都学会了 scribing 还没出来，自己写一个吧。</p>
+<h3 id="notations-1">Notations</h3>
+<p>首先是一些记号：</p>
+<p><img src="https://s2.loli.net/2023/09/26/PEzuQl2MOW37Jr1.jpg" alt="mi1.jpg"></p>
+<ul>
+<li><p>A set <span class="math inline">\(E\)</span> of vectors in <span class="math inline">\(\mathbb R^N\)</span> of the form <span class="math inline">\(E = E(z,D) = \{x \in \mathbb R^n \mid (x- z)^T
+D^{-1} (x-z) \leq1 \}\)</span>, where <span class="math inline">\(D\)</span> is an <span class="math inline">\(n
+\times n\)</span> positive definite symmetric matrix, is called an
+ellipsoid with center <span class="math inline">\(z \in \mathbb
+R^n\)</span>.</p></li>
+<li><p>If <span class="math inline">\(D\)</span> is a <span class="math inline">\(n \times n\)</span> nonsingular matrix and <span class="math inline">\(b \in \mathbb R^n\)</span>, then the mapping <span class="math inline">\(S: \mathbb R^n \to \mathbb R^n\)</span> defined by
+<span class="math inline">\(S(x) = Dx + b\)</span>, is called an affine
+transformation.</p></li>
+</ul>
+<p>注意到仿射变换都是可逆的，所以可以把仿射变换的像定义成</p>
+<ul>
+<li><span class="math inline">\(S(L) = \{y \in \mathbb R^n \mid y = Dx
++b, \text{for some } x\in L \}\)</span></li>
+<li>The volume of a set <span class="math inline">\(L \in \mathbb
+R^n\)</span>, which is denoted by <span class="math inline">\(Vol(L)\)</span>, is defined as <span class="math inline">\(Vol(L) = \int_{x \in L}dx\)</span></li>
+</ul>
+<p>然后就可以得到仿射变换后的体积是</p>
+<ul>
+<li><p>If <span class="math inline">\(S(x) = Dx + b\)</span> then <span class="math inline">\(Vol(S(L)) = |det(D)| Vol(L)\)</span></p>
+<p><strong>Proof</strong>: <span class="math inline">\(Vol(S(L)) =
+\int_{y \in S(L)} dy = \int_{x \in L} |det(D)| dx = |det(D)|
+Vol(L)\)</span></p></li>
+</ul>
+<h3 id="algorithm">Algorithm</h3>
+<p>目标是考虑一个 <span class="math inline">\(Ax \geq b\)</span>
+形式的优化问题的 feasible set，也就是一个 polyhedron <span class="math inline">\(P\)</span> 是否是空集的问题，可以用一个 Ellipsoid
+Algorithm
+来解决。既然是用迭代算法解决，其实就不能太苛求精细程度，我们约定最后得到的覆盖椭圆的面积小于
+<span class="math inline">\(\varepsilon\)</span> 时就认为 <span class="math inline">\(P\)</span> 是一个空集。</p>
+<p>首先考虑一个覆盖所求 polyhedron <span class="math inline">\(P\)</span> 的椭圆 <span class="math inline">\(E_t\)</span>，如果其中心 <span class="math inline">\(x_t \in P\)</span> 则找到了一个 <span class="math inline">\(P\)</span> 中的解，可以得出 <span class="math inline">\(P\)</span> 是非空的；如果 <span class="math inline">\(x_t \notin P\)</span> 那么 <span class="math inline">\(x_t\)</span> 一定违反了其中的某个 constraint <span class="math inline">\(a_i ^Tx \geq b_i\)</span>，<span class="math inline">\(P\)</span> 一定在 halfspace <span class="math inline">\(\{x \in \mathbb R^n \mid a_i^T x \geq a_i^Tx_t
+\}\)</span> 和 <span class="math inline">\(E_t\)</span>
+的交集里，这样我们再做一个新的更小的椭圆 <span class="math inline">\(E_{t+1}\)</span>
+来覆盖这一部分，就可以继续这一算法。</p>
+<p>来个我非常喜欢的图！</p>
+<p><img src="https://s2.loli.net/2023/10/21/Y79yhqJDgElijmI.png" alt="ellipsoid_method.png"></p>
+<p>现在需要解决的问题仍然是 termination 问题，也就是是否 <span class="math inline">\(E_{t+1}\)</span> 的体积一定比 <span class="math inline">\(E_t\)</span>
+更小。以下定理保证了它们的体积之间一定有一个指数级的减少：</p>
+<ul>
+<li><p>Let <span class="math inline">\(E = E(z,D)\)</span> be an
+ellipsoid in <span class="math inline">\(\mathbb R^n\)</span>, and let
+<span class="math inline">\(a\)</span> be a nonzero vector. Consider the
+halfspace <span class="math inline">\(H = \{x \in \mathbb R ^n \mid a^Tx
+\geq a^T z \}\)</span> and let</p>
+<p><span class="math display">\[\bar z = z +
+\frac{1}{n+1}  \frac{Da}{\sqrt{a^TDa}}\]</span></p>
+<p><span class="math display">\[\bar D = \frac{n^2}{n^2-1} (D -
+\frac{2}{n+1} \frac{Daa^TD}{a^TDa})\]</span></p>
+<p>Then <span class="math inline">\(\bar D\)</span> is positive definite
+and the new ellipsoid <span class="math inline">\(\bar E = E(\bar z,
+\bar D)\)</span> satisfies the following properties:</p>
+<ul>
+<li><span class="math inline">\(E \cap H \subset \bar E\)</span></li>
+<li><span class="math inline">\(Vol(\bar E) &lt; e^{-1/(2(n+1))}
+Vol(E)\)</span></li>
+</ul>
+<p><strong>Proof</strong>: First consider <span class="math inline">\(a
+= e_1. D = I_{n \times n}\)</span> and the center of <span class="math inline">\(E_0\)</span> as <span class="math inline">\(z =
+0\)</span>. It's trivial to see that the first property holds. In this
+case the positive definite matrix of <span class="math inline">\(\bar
+E_0\)</span> is <span class="math inline">\(D = diag((\frac{n}{n+1})^2,
+\frac{n^2}{n^2-1}, \cdots,\frac{n^2}{n^2-1})\)</span>, and the center is
+<span class="math inline">\(a =
+(\frac{1}{n+1},0,\cdots,0)^T\)</span>.</p>
+<p>Now by constructing an affine transformation we can consider the
+general case. The transformation T should let <span class="math inline">\(T(E) = E_0, T(H) = H_0\)</span> and <span class="math inline">\(T(\bar E) = \bar E_0\)</span>. By some elementary
+observations we can obtain that affine transformations preserve set
+inclusion, i.e. if <span class="math inline">\(E_0 \cap H_0 \subset \bar
+E_0\)</span>, then there is <span class="math inline">\(T(E_0) \cap
+T(H_0) \subset T(\bar E_0)\)</span>, therefore the first property holds
+naturally.</p>
+<p>Let <span class="math inline">\(R\)</span> be the rotation matrix
+corresponding to the vector <span class="math inline">\(u = D^{\frac 1
+2} a\)</span>, i.e.,</p>
+<p><span class="math display">\[R^TR = I, \quad RD^{\frac 1 2}a_i =
+\|D^{\frac 1 2} a_i \| e_1\]</span></p>
+<p>Consider the following affine transformation:</p>
+<p><span class="math display">\[T(x) = R(D^{-\frac 1
+2}(x-z))\]</span></p>
+<p>Therefore,</p>
+<p><span class="math inline">\(\begin{aligned} x \in E &amp; \iff
+(x-z)^TD^{-1}(x-z)\leq 1 \\ &amp; \iff (x-z)^TD^{-\frac 1
+2}R^TRD^{-\frac 1 2}(x-z)\leq 1 \\ &amp; \iff T(x)^T T(x) \leq 1 \\
+&amp; \iff T(x) \in E_0, \end{aligned}\)</span></p>
+<p>which implies that <span class="math inline">\(T(E) =
+E_0\)</span>.</p>
+<p>Similarly,</p>
+<p><span class="math display">\[\begin{aligned} x \in H &amp; \iff
+a_i^T(x-z )\geq 0 \\ &amp; \iff \|D^{-\frac 1 2}a_i \| e_1 ^T RD^{-\frac
+1 2} (x-z) \geq 0 \\ &amp; \iff e_1 ^T T(x) \geq 0 \\ &amp; \iff T(x)
+\in H_0,  \end{aligned}\]</span></p>
+<p>which implies <span class="math inline">\(T(H) = H_0\)</span>.</p>
+<p>Moreover there is also <span class="math inline">\(T(\bar E) = \bar
+E_0\)</span> and we omit the complicated algebraic manipulations.
+Therefore <span class="math inline">\(E \cap H \subset \bar E\)</span>
+holds according to the properties of affine transformation. Next we
+prove the conclusion about the volume.</p>
+<p><span class="math inline">\(\frac{Vol(\bar E)}{Vol(E)} =
+\frac{Vol(T(\bar E))}{Vol(T(E))} = \frac{Vol(\bar E_0)}{Vol(E_0)} =
+det(D_0 ^{\frac 1 2}) =
+(\frac{n}{\sqrt{n^2-1}})^{n-1}(\frac{n}{n+1})\)</span></p>
+<p>Consider</p>
+<p><span class="math display">\[(\frac{n^2}{n^2-1})^{\frac{n-1}{2}}(\frac{n}{n+1})
+= (1+\frac{1}{n^2-1})^{\frac{n-1}{2}}(1-\frac{1}{n+1}) \leq
+(e^{\frac{1}{n^2-1}})^{\frac{n-1}{2}} e^{-\frac{1}{n+1}}
+=  e^{-\frac{1}{2(n+1)}},\]</span></p>
+<p>and the desired result follows.</p></li>
+</ul>
+<p>所以只要初始状态的 ellipsoid
+体积有限，算法一定会在有限时间内终止。</p>
+<h1 id="lecture-4">Lecture 4</h1>
+<p>睡了（，等个笔记（（</p>
 
     </div>
 
@@ -1031,8 +1182,8 @@ Programming</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a 
 Format</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#other-optimization-problems"><span class="nav-text">Other Optimization Problems</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#solutions-to-lp-problems"><span class="nav-text">Solutions to LP Problems</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#notations"><span class="nav-text">Notations</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#how-to-describe-optimal-solutions"><span class="nav-text">How to Describe Optimal
 Solutions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#algebraic-approach-to-optimal-solutions"><span class="nav-text">Algebraic Approach to
 Optimal Solutions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#existence-of-vertex"><span class="nav-text">Existence of Vertex</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#why-is-vertex-important"><span class="nav-text">Why is Vertex Important?</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-2"><span class="nav-text">Lecture 2</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#simplex-method"><span class="nav-text">Simplex Method</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#find-the-initial-solution"><span class="nav-text">Find the Initial Solution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#develop-feasible-direction"><span class="nav-text">Develop Feasible Direction</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#choice-of-adjacent-basic-feasible-solution"><span class="nav-text">Choice of Adjacent
-Basic Feasible Solution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#termination"><span class="nav-text">Termination</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#summary"><span class="nav-text">Summary</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#introduction-to-duality"><span class="nav-text">Introduction to Duality</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#duality-theorems"><span class="nav-text">Duality Theorems</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-3"><span class="nav-text">Lecture 3</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#nash-equilibrium"><span class="nav-text">Nash Equilibrium</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#theory"><span class="nav-text">Theory</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#application"><span class="nav-text">Application</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#computation-complexity-of-lp-and-the-ellipsoid-method"><span class="nav-text">Computation
-Complexity of LP and the Ellipsoid Method</span></a></li></ol></li></ol></div>
+Basic Feasible Solution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#termination"><span class="nav-text">Termination</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#summary"><span class="nav-text">Summary</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#introduction-to-duality"><span class="nav-text">Introduction to Duality</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#duality-theorems"><span class="nav-text">Duality Theorems</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-3"><span class="nav-text">Lecture 3</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#nash-equilibrium"><span class="nav-text">Nash Equilibrium</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#theory"><span class="nav-text">Theory</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#application"><span class="nav-text">Application</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#application-of-farkas-lemma"><span class="nav-text">Application of Farka&#39;s Lemma</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#computation-complexity-of-lp-and-the-ellipsoid-method"><span class="nav-text">Computation
+Complexity of LP and the Ellipsoid Method</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#notations-1"><span class="nav-text">Notations</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#algorithm"><span class="nav-text">Algorithm</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-4"><span class="nav-text">Lecture 4</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
