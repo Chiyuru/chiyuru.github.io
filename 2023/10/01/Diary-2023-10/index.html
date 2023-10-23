@@ -30,7 +30,7 @@
 <meta property="og:image" content="https://s2.loli.net/2023/10/14/Jhue2dEy3BXq4xn.jpg">
 <meta property="og:image" content="https://s2.loli.net/2023/10/21/KAFBEDomyTJihlC.jpg">
 <meta property="article:published_time" content="2023-10-01T15:09:23.000Z">
-<meta property="article:modified_time" content="2023-10-22T15:14:44.216Z">
+<meta property="article:modified_time" content="2023-10-23T15:19:43.996Z">
 <meta property="article:author" content="驰雨Chiyuru">
 <meta property="article:tag" content="碎碎念">
 <meta name="twitter:card" content="summary">
@@ -224,7 +224,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-10-22 23:14:44" itemprop="dateModified" datetime="2023-10-22T23:14:44+08:00">2023-10-22</time>
+                <time title="修改时间：2023-10-23 23:19:43" itemprop="dateModified" datetime="2023-10-23T23:19:43+08:00">2023-10-23</time>
               </span>
 
           
@@ -606,6 +606,7 @@ G1 一胜，我有六胜，希望你能达到七胜.jpg，<del>但是想代表 G
 <p><del>大家围着小北鼓掌和 omedeto 的时候很难不联想到 EVA（</del></p>
 <p><del>然而船跑完开始喊要在梦之杯击败巨匠和贵妇人，很难不怀疑梦之杯指的是配种（</del></p>
 <p><del>制作组你太懂我想看什么了，我就想看船的颜艺，她不管突然发出什么奇怪的声音都很合理（</del></p>
+<p>感觉到这里已经图穷匕见了，第三季就是粉丝向作品，<del>幸亏是在第二季入的坑，</del>希望评分没事。</p>
 <h1 id="月22日">10月22日</h1>
 <p>教室友写概率论作业，证明题我看一眼就 chua chua chua
 写，<del>小学奥数</del>
@@ -620,10 +621,39 @@ separating hyperplane theorem 再去读 Bubeck
 black box model 展开还是给了我一点小小的 TCS 震撼（。再看第二章怎么又是
 center of gravity method 和 ellipsoid method，原来上周五那节优化讲的不是
 Bertsimas 的 Chapter 8 而是已经开始讲凸优化了啊，学到许多（（</p>
-<p>这两本书关于 ellipsoid method 的一个 bound 还略有不同，一个是 <span class="math inline">\(\exp(-\frac 1 n)\)</span>，另一个是 <span class="math inline">\(\exp(-\frac{1}{n+1})\)</span>，放缩的细致程度有非常细微的差别。哥们以后周四晚上还是早点睡吧，这课真没边没沿的，handout
+<p>这两本书关于 ellipsoid method 的一个 bound 还略有不同，一个是 <span class="math inline">\(\exp(-\frac{1}{2n})\)</span>，另一个是 <span class="math inline">\(\exp(-\frac{1}{2(n+1)})\)</span>，放缩的细致程度有非常细微的差别。哥们以后周四晚上还是早点睡吧，这课真没边没沿的，handout
 又很咕，scribing
 更是不知道咕到哪里去了，不仔细听一下的话直接就变成那个自学三本加起来一千多页的书。说起来哥们国庆之前写完的
 HW1 到现在还没批呢，有一种助教和老师上课时间外完全失踪的美感（</p>
+<h1 id="月23日">10月23日</h1>
+<p>我以前一直以为 strong Markov property <span class="math inline">\(E_\mu(Y_N \circ \theta_N \mid \mathcal F_N) =
+E_{X_N}Y_N\)</span> 右边式子展开写是要写成 <span class="math inline">\(E_{X_{N(\omega)}(\omega)}
+Y_{N(\omega)}(\omega)\)</span>（救命，实际上今天课上 yf 一说才注意到
+<span class="math inline">\(Y\)</span> 本身所在的 <span class="math inline">\(\omega\)</span> 和 <span class="math inline">\(N\)</span>
+所在的并不是同一个，原因很简单就是因为这里的 <span class="math inline">\(Y\)</span> 从 <span class="math inline">\(X_N\)</span> 开始，而 <span class="math inline">\(X_N\)</span> 这条 chain 是从 <span class="math inline">\(x_0\)</span> 开始的。所以应该是 <span class="math inline">\(E_{X_{N(\omega)}(\omega)}
+Y_{N(\omega)}(\omega^\prime)\)</span>。只不过这个其实不写也无所谓（，只是不能乱写，考虑
+<span class="math inline">\(\varphi(x,n) = E_{x}Y_n\)</span>
+的话实际上右边就是 <span class="math inline">\(E_{X_N}Y_N =
+\varphi(X_N,N)\)</span>，<span class="math inline">\(Y\)</span>
+本身的取值不重要，只是取它在初态是 <span class="math inline">\(X_N\)</span> 下的期望而已。</p>
+<p>感觉学到很多，Markov property construction
+初学的时候我看了很久很久，然而今天听了课发现还是有一点误解。虽然 yf
+说了好几遍今天讲的东西都是 abstract and useless junk, but let us stand
+on solid ground（，真的假的（</p>
+<!--令人后悔的是第二个课间我点开了真故计划今天的更新(指路 https://mp.weixin.qq.com/s/7j2MXAgWP37wwTWwra8J0Q)，然后第三小节就没怎么听，一直在忍着不要掉眼泪，麻了（（ -->
+<p>高统是周三的课，不知道为什么总是喜欢在周一布置作业，然后把 ddl
+放在七天后（。wwc
+讲课属实有点折磨了，主要是他这课真没什么逻辑，就是在堆定理，堆了五周了。也可能就是在给没学过高概的同学补习概率论所以也没什么逻辑可言，看看后面这课上得怎么样吧。</p>
+<p>ODE PF 了，感觉现在已经不是因为讨论班花时间所以要把它 PF
+掉了，而是哥们如果不 PF
+或者直接退掉一门数学课，而且又想认真学概率论高统和优化这三门的话真的很难活到
+2024 年（，思来想去唯一的口子就是这门课罢了。</p>
+<blockquote>
+<p>慢报：求真和生命学院等签署（博士）联合培养计划</p>
+<p>和求真联合培养的院系有：经管，自动化，生命学院</p>
+<p>BIMSA 刚发了一篇大的，用同调方法处理疾病数据</p>
+</blockquote>
+<p>啊？（</p>
 
     </div>
 
@@ -767,7 +797,7 @@ HW1 到现在还没批呢，有一种助教和老师上课时间外完全失踪�
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%881%E6%97%A5"><span class="nav-text">10月1日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%882%E6%97%A5"><span class="nav-text">10月2日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%883%E6%97%A5"><span class="nav-text">10月3日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%884%E6%97%A5"><span class="nav-text">10月4日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%885%E6%97%A5"><span class="nav-text">10月5日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%886%E6%97%A5"><span class="nav-text">10月6日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%887%E6%97%A5"><span class="nav-text">10月7日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%888%E6%97%A5"><span class="nav-text">10月8日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%889%E6%97%A5"><span class="nav-text">10月9日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%8810%E6%97%A5"><span class="nav-text">10月10日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%8811%E6%97%A5"><span class="nav-text">10月11日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%8812%E6%97%A5"><span class="nav-text">10月12日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%8813%E6%97%A5"><span class="nav-text">10月13日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%8814%E6%97%A5"><span class="nav-text">10月14日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%8815%E6%97%A5"><span class="nav-text">10月15日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%8816%E6%97%A5"><span class="nav-text">10月16日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%8817%E6%97%A5"><span class="nav-text">10月17日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%8818%E6%97%A5"><span class="nav-text">10月18日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%8819%E6%97%A5"><span class="nav-text">10月19日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%8820%E6%97%A5"><span class="nav-text">10月20日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%8821%E6%97%A5"><span class="nav-text">10月21日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%8822%E6%97%A5"><span class="nav-text">10月22日</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%881%E6%97%A5"><span class="nav-text">10月1日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%882%E6%97%A5"><span class="nav-text">10月2日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%883%E6%97%A5"><span class="nav-text">10月3日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%884%E6%97%A5"><span class="nav-text">10月4日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%885%E6%97%A5"><span class="nav-text">10月5日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%886%E6%97%A5"><span class="nav-text">10月6日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%887%E6%97%A5"><span class="nav-text">10月7日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%888%E6%97%A5"><span class="nav-text">10月8日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%889%E6%97%A5"><span class="nav-text">10月9日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%8810%E6%97%A5"><span class="nav-text">10月10日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%8811%E6%97%A5"><span class="nav-text">10月11日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%8812%E6%97%A5"><span class="nav-text">10月12日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%8813%E6%97%A5"><span class="nav-text">10月13日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%8814%E6%97%A5"><span class="nav-text">10月14日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%8815%E6%97%A5"><span class="nav-text">10月15日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%8816%E6%97%A5"><span class="nav-text">10月16日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%8817%E6%97%A5"><span class="nav-text">10月17日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%8818%E6%97%A5"><span class="nav-text">10月18日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%8819%E6%97%A5"><span class="nav-text">10月19日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%8820%E6%97%A5"><span class="nav-text">10月20日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%8821%E6%97%A5"><span class="nav-text">10月21日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%8822%E6%97%A5"><span class="nav-text">10月22日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%8823%E6%97%A5"><span class="nav-text">10月23日</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

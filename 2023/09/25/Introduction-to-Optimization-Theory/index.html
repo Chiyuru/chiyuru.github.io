@@ -33,7 +33,7 @@
 <meta property="og:image" content="https://s2.loli.net/2023/09/26/PEzuQl2MOW37Jr1.jpg">
 <meta property="og:image" content="https://s2.loli.net/2023/10/21/Y79yhqJDgElijmI.png">
 <meta property="article:published_time" content="2023-09-25T02:28:52.000Z">
-<meta property="article:modified_time" content="2023-10-21T12:42:39.918Z">
+<meta property="article:modified_time" content="2023-10-23T15:12:44.768Z">
 <meta property="article:author" content="驰雨Chiyuru">
 <meta property="article:tag" content="数学">
 <meta property="article:tag" content="统计">
@@ -228,7 +228,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-10-21 20:42:39" itemprop="dateModified" datetime="2023-10-21T20:42:39+08:00">2023-10-21</time>
+                <time title="修改时间：2023-10-23 23:12:44" itemprop="dateModified" datetime="2023-10-23T23:12:44+08:00">2023-10-23</time>
               </span>
 
           
@@ -910,8 +910,50 @@ r_{m2} &amp; \cdots &amp;  r_{mn} \end{bmatrix}\]</span></p>
 of arbitrage
 condition，大概就是说不可能在负投资的状态下得到正收益，也就是说 <span class="math inline">\(Rx \geq 0\)</span> 可以推出 <span class="math inline">\(p^Tx \geq 0\)</span>。</p>
 <p>由 Farka's lemma 可知此时第二条不成立，一定存在 <span class="math inline">\(q \geq 0\)</span> 使得 <span class="math inline">\(R ^T q = p\)</span>。</p>
-<h2 id="computation-complexity-of-lp-and-the-ellipsoid-method">Computation
-Complexity of LP and the Ellipsoid Method</h2>
+<h2 id="the-center-of-gravity-method">The Center of Gravity Method</h2>
+<p>实际上就是一个不断切割已有的 polyhedron 来找到 optimal solution
+的过程。简单来说从初始状态开始，每个状态下手里有一个多边形 <span class="math inline">\(S_t\)</span>（feasible set 的 subset）和它的质心
+<span class="math inline">\(x_t\)</span>，然后把使得取值大于 <span class="math inline">\(c^Tx_t\)</span> 的部分切掉，也就是取 <span class="math inline">\(S_t\)</span> 和 hyperapce <span class="math inline">\(\{x \in \mathbb R^n \mid c^T(x-x^T) &gt; 0
+\}\)</span> 的交这一部分作为不可能取到 optimal cost
+的区域，余下的部分是下一状态的多边形 <span class="math inline">\(S_{t+1}\)</span> 和相应的质心 <span class="math inline">\(x_{t+1}\)</span>，由此按照所需的精度来逼近 optimal
+cost。</p>
+<p>写成算法的步骤来说也非常简单，实际上每次就操作两步。先取整个 feasible
+set 作为 <span class="math inline">\(S_1\)</span>，然后：</p>
+<ol type="1">
+<li>Take <span class="math inline">\(x_t = \frac{1}{Vol(S_t)} \int_{x
+\in S_t} x \; dx\)</span> as the center of gravity of the polyhedron
+<span class="math inline">\(S_t\)</span>;</li>
+<li>Take <span class="math inline">\(S_{t+1} = S_t \cap \{x \mid
+c^T(x-x_t) \leq 0 \}\)</span> as the new polyhedron.</li>
+</ol>
+<p>一直重复直到 <span class="math inline">\(S_t\)</span> 足够小，此时
+<span class="math inline">\(c^T x_t\)</span> 和 optimal cost <span class="math inline">\(c^Tx^*\)</span>
+的误差也会足够小。这由一些定理保证。</p>
+<ul>
+<li><p>Let <span class="math inline">\(K\)</span> be a centered convex
+set (i.e. <span class="math inline">\(\int_{x \in K} xdx=0\)</span>),
+then for any <span class="math inline">\(w \in \mathbb R^n\)</span>,
+<span class="math inline">\(w \neq 0\)</span>, one has</p>
+<p><span class="math display">\[Vol(\mathcal K \cap \{x \in \mathbb R^n
+: x^T w \geq 0\}) \geq \frac 1 e Vol(\mathcal K)\]</span></p></li>
+</ul>
+<p>这告诉我们每个新的多边形和原多边形之间有一个体积关系是 <span class="math inline">\(Vol(S_{t+1}) \leq (1-\frac 1 e) Vol(S_t) \leq
+\cdots \leq (1-\frac 1 e)^t Vol(S_1)\)</span>，再对于 <span class="math inline">\(\varepsilon = (1-\frac 1 e)^{t/n}\)</span> 取
+<span class="math inline">\(\mathcal S_\varepsilon = \{(1-\varepsilon
+)x^* + \varepsilon x, \forall x \in S_1\}\)</span>，实际上是对 <span class="math inline">\(S_1\)</span> 做了一个仿射变换。此时有 <span class="math inline">\(Vol(S_\varepsilon)=\varepsilon^n Vol(S_1) =
+(1-\frac 1 e)^tVol(S_1) \geq Vol(S_{t+1})\)</span>，于是可以找到一个
+<span class="math inline">\(x_\varepsilon \in S_\varepsilon\)</span>
+使其在 <span class="math inline">\(t\)</span> 时刻时仍在 <span class="math inline">\(S_t\)</span> 中，而 <span class="math inline">\(t+1\)</span> 时刻就被“裁剪”了出去。</p>
+<p>所以有</p>
+<p><span class="math display">\[c^Tx_{t+1} &lt; c^Tx_\varepsilon =
+c^T((1-\varepsilon)x^*+ \varepsilon x) \leq c^Tx^* + 2B\varepsilon
+=c^Tx^*+2B(1-\frac 1 e)^{t/n}\]</span></p>
+<p>也就是说 <span class="math inline">\(c^Tx_{t+1} - c^Tx^* &lt;
+2B(1-\frac 1 e)^{t/n}\)</span> 作为 <span class="math inline">\(t+1\)</span> 时刻下取值距离 optimal cost
+的误差可以被控制，并且我们可以在 <span class="math inline">\(O(n
+\log(\frac{1}{\varepsilon}))\)</span> 时间下得到误差为 <span class="math inline">\(\varepsilon\)</span> 的 cost 和 solution。这比
+simplex method 误差大一些，但是 polynomial time algorithm。</p>
+<h2 id="the-ellipsoid-method">The Ellipsoid Method</h2>
 <p><del>讲这个的时候我太困了，上楼找了个教室睡觉，没听。我估计我困成那样听也听不懂，他这个手稿太抽象了也看不大懂，貌似书上也没这一部分，哥们有点子崩溃（。等
 scribing 了。</del></p>
 <p>我都学会了 scribing 还没出来，自己写一个吧。</p>
@@ -1026,10 +1068,40 @@ det(D_0 ^{\frac 1 2}) =
 =  e^{-\frac{1}{2(n+1)}},\]</span></p>
 <p>and the desired result follows.</p></li>
 </ul>
+<p>另外如果估计得再精细一点的话下界其实是 <span class="math inline">\(\exp(-\frac{1}{2n})\)</span>（详见
+Bubeck），可以对函数求导做。</p>
 <p>所以只要初始状态的 ellipsoid
-体积有限，算法一定会在有限时间内终止。</p>
+体积有限，算法一定会在有限时间内终止，可以用来解决 feasiblility
+的问题，这是一个可以在 <span class="math inline">\(O(n \log
+\varepsilon)\)</span> 时间内结束的算法，实际上对于找 feasible solution
+来说还是很快的。但 feasible solution
+一个单点对于优化问题来说其实没什么用，我们的目标仍然是寻找 optimal
+cost，为此需要一些类似于 center of gravity method 的方法。</p>
+<p>另外 ellipsoid method 也可以用来解决 optimal cost
+的逼近，有这样一个体积关系了之后原理和 center of gravity method
+类似：</p>
+<p>每个新的 ellipsoid 和上一时刻 ellipsoid 之间有一个体积关系是 <span class="math inline">\(Vol(S_{t+1}) \leq \exp(-\frac{1}{2n}) Vol(S_t)
+\leq \cdots \leq \exp(-\frac{t}{2n}) Vol(S_1)\)</span>，再对于 <span class="math inline">\(\varepsilon = \exp(-\frac{t}{2n^2})\)</span> 取
+<span class="math inline">\(\mathcal S_\varepsilon = \{(1-\varepsilon
+)x^* + \varepsilon x, \forall x \in S_1\}\)</span>，实际上是对 <span class="math inline">\(S_1\)</span> 做了一个仿射变换。此时有 <span class="math inline">\(Vol(S_\varepsilon)=\varepsilon^n Vol(S_1) =
+\exp(-\frac{t}{2n}) Vol(S_1) \geq
+Vol(S_{t+1})\)</span>，于是可以找到一个 <span class="math inline">\(x_\varepsilon \in S_\varepsilon\)</span> 使其在
+<span class="math inline">\(t\)</span> 时刻时仍在 <span class="math inline">\(S_t\)</span> 中，而 <span class="math inline">\(t+1\)</span> 时刻就被“裁剪”了出去。</p>
+<p>所以有：</p>
+<p><span class="math display">\[c^Tx_{t+1} &lt; c^Tx_\varepsilon =
+c^T((1-\varepsilon)x^*+ \varepsilon x) \leq c^Tx^* + 2B\varepsilon
+=c^Tx^*+2B \exp(-\frac{t}{2n^2}),\]</span></p>
+<p>也就是说 <span class="math inline">\(c^Tx_{t+1} - c^Tx^* &lt; 2B
+\exp(-\frac{t}{2n^2})\)</span> 作为 <span class="math inline">\(t+1\)</span> 时刻下取值距离 optimal cost
+的误差可以被控制，并且我们可以在 <span class="math inline">\(O(n^2
+\log(\frac{1}{\varepsilon}))\)</span> 时间下得到误差为 <span class="math inline">\(\varepsilon\)</span> 的 cost 和
+solution。同样是得到的 cost 比 simplex method 误差大一些并非精确值，但是
+polynomial time algorithm，虽然比起 center of gravity method
+来说消耗更大，但也有它的优势。</p>
 <h1 id="lecture-4">Lecture 4</h1>
 <p>睡了（，等个笔记（（</p>
+<p>10.23 UPD：今天布置了个优化 HW3
+但又迅速删掉了，我也不知道为什么要同时把讲义也删掉，当时正好在贴所以也没来得及下（。这助教是否也是一个优化算法控制的，要传就把所有的东西都传上来要删就全部删掉，来保证要么所有人都满意要么所有人都不满意（。</p>
 
     </div>
 
@@ -1182,8 +1254,7 @@ Programming</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a 
 Format</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#other-optimization-problems"><span class="nav-text">Other Optimization Problems</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#solutions-to-lp-problems"><span class="nav-text">Solutions to LP Problems</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#notations"><span class="nav-text">Notations</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#how-to-describe-optimal-solutions"><span class="nav-text">How to Describe Optimal
 Solutions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#algebraic-approach-to-optimal-solutions"><span class="nav-text">Algebraic Approach to
 Optimal Solutions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#existence-of-vertex"><span class="nav-text">Existence of Vertex</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#why-is-vertex-important"><span class="nav-text">Why is Vertex Important?</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-2"><span class="nav-text">Lecture 2</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#simplex-method"><span class="nav-text">Simplex Method</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#find-the-initial-solution"><span class="nav-text">Find the Initial Solution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#develop-feasible-direction"><span class="nav-text">Develop Feasible Direction</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#choice-of-adjacent-basic-feasible-solution"><span class="nav-text">Choice of Adjacent
-Basic Feasible Solution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#termination"><span class="nav-text">Termination</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#summary"><span class="nav-text">Summary</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#introduction-to-duality"><span class="nav-text">Introduction to Duality</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#duality-theorems"><span class="nav-text">Duality Theorems</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-3"><span class="nav-text">Lecture 3</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#nash-equilibrium"><span class="nav-text">Nash Equilibrium</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#theory"><span class="nav-text">Theory</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#application"><span class="nav-text">Application</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#application-of-farkas-lemma"><span class="nav-text">Application of Farka&#39;s Lemma</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#computation-complexity-of-lp-and-the-ellipsoid-method"><span class="nav-text">Computation
-Complexity of LP and the Ellipsoid Method</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#notations-1"><span class="nav-text">Notations</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#algorithm"><span class="nav-text">Algorithm</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-4"><span class="nav-text">Lecture 4</span></a></li></ol></div>
+Basic Feasible Solution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#termination"><span class="nav-text">Termination</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#summary"><span class="nav-text">Summary</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#introduction-to-duality"><span class="nav-text">Introduction to Duality</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#duality-theorems"><span class="nav-text">Duality Theorems</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-3"><span class="nav-text">Lecture 3</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#nash-equilibrium"><span class="nav-text">Nash Equilibrium</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#theory"><span class="nav-text">Theory</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#application"><span class="nav-text">Application</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#application-of-farkas-lemma"><span class="nav-text">Application of Farka&#39;s Lemma</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#the-center-of-gravity-method"><span class="nav-text">The Center of Gravity Method</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#the-ellipsoid-method"><span class="nav-text">The Ellipsoid Method</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#notations-1"><span class="nav-text">Notations</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#algorithm"><span class="nav-text">Algorithm</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-4"><span class="nav-text">Lecture 4</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

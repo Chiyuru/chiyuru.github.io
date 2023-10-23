@@ -28,7 +28,7 @@
 <meta property="og:description" content="挂机养生了，统计中心的课在这学期乱七八糟的课中间显得像个弟弟（x">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-09-20T02:08:14.000Z">
-<meta property="article:modified_time" content="2023-10-21T14:31:21.291Z">
+<meta property="article:modified_time" content="2023-10-23T12:05:06.207Z">
 <meta property="article:author" content="驰雨Chiyuru">
 <meta property="article:tag" content="数学">
 <meta property="article:tag" content="统计">
@@ -222,7 +222,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-10-21 22:31:21" itemprop="dateModified" datetime="2023-10-21T22:31:21+08:00">2023-10-21</time>
+                <time title="修改时间：2023-10-23 20:05:06" itemprop="dateModified" datetime="2023-10-23T20:05:06+08:00">2023-10-23</time>
               </span>
 
           
@@ -401,9 +401,171 @@ E(X|Y_1)dP &amp;= \int E(X|Y_1) \mathbb 1_{(Y_1 \in B_1)} \mathbb
 <p>The second equality above is a resslt of independence.</p>
 <h1 id="lecture-4">Lecture 4</h1>
 <p>不是我说不会有人已经把依分布收敛那些个分析结论忘完了吧？（</p>
+<p>报一下菜名好了，就，不然也没啥可写的，大部分都学过只是忘了（</p>
 <h2 id="weak-convergence">Weak Convergence</h2>
-<p>在写了在写了</p>
+<h3 id="analytical-properties">Analytical Properties</h3>
+<ul>
+<li><p>(Polya's Theorem) If <span class="math inline">\(F_n
+\stackrel{w}{\to} F\)</span> and <span class="math inline">\(F\)</span>
+is continuous in <span class="math inline">\(R^k\)</span>, then <span class="math inline">\(\lim_{n\to \infty} \sup_{x \in R^k}|F_n(x) - F(x)|
+=0\)</span>.</p>
+<p>Proof: Truncate <span class="math inline">\(-\infty = x_0 &lt; x_1
+&lt; \cdots &lt; x_k = +\infty\)</span> s.t. <span class="math inline">\(F(x_i) = \frac i k\)</span>, therefore we can
+bound <span class="math inline">\(|F_n(x) - F(x)|\)</span> with finitely
+many upper bounds.</p>
+<p>for any <span class="math inline">\(x \in R\)</span>, consider <span class="math inline">\(x_i \leq x &lt; x_{i+1}\)</span>, therefore</p>
+<p><span class="math display">\[F_n(x) - F(x) \leq F_n(x_{i+1})-
+F_n(x_i) = F_n(x_{i+1})- F_n(x_{i+1})+\frac 1 k\]</span></p>
+<p><span class="math display">\[F_n(x)-F(x) \geq F_n(x_i) - F(x_{i+1}) =
+F_n(x_i) - F(x_{i})-\frac 1k,\]</span></p>
+<p>and <span class="math inline">\(|F_n(x)-F(x)| \leq
+\max_{i=0,1,\cdots,k} |F_n(x_i) - F(x_i)|+\frac 1k\)</span>. By taking
+<span class="math inline">\(n \to \infty\)</span> the desired result
+follows.</p></li>
+<li><p>(Skorohod's Theorem) If <span class="math inline">\(X_n
+\stackrel{w}{\to}X\)</span>, then there are random vectors <span class="math inline">\(Y,Y_1,\cdots\)</span> defined on a common
+probability space such that <span class="math inline">\(P_Y =
+P_X\)</span>, <span class="math inline">\(P_{Y_n} = P_{X_n}\)</span>
+holds for any <span class="math inline">\(n \in \mathbb Z^+\)</span>,
+and <span class="math inline">\(Y_n \stackrel{a.s.}{\to}
+Y\)</span>.</p></li>
+<li><p>If <span class="math inline">\(X_n \stackrel{w}{\to} X\)</span>,
+then there is a subsequence <span class="math inline">\(\{X_{nj}, j
+=1,2,\cdots\}\)</span> such that <span class="math inline">\(X_{nj}
+\stackrel{a.s.}{\to} X\)</span> as <span class="math inline">\(j \to
+\infty\)</span>.</p></li>
+</ul>
+<h3 id="tightness">Tightness</h3>
+<p>A sequence <span class="math inline">\(\{P_n\}\)</span> of
+probability measures on <span class="math inline">\((R^k,B^k)\)</span>
+is tight iff for every <span class="math inline">\(\varepsilon
+&gt;0\)</span>, there exists a compact set <span class="math inline">\(C
+\subset R^k\)</span> s.t. <span class="math inline">\(\inf_n P_n (C)
+&gt; 1-\varepsilon\)</span>. That is, <span class="math inline">\(P(C)\)</span> is large uniformly for any <span class="math inline">\(n\)</span>.</p>
+<p>If <span class="math inline">\(\{X_n\}\)</span> is a sequence of
+random <span class="math inline">\(k\)</span>-vectors, then the
+tightness of <span class="math inline">\(\{P_{X_n}\}\)</span> is the
+same as the boundedness of <span class="math inline">\(\{\|X_n\|\}\)</span> in probability.</p>
+<ul>
+<li>Tightness of <span class="math inline">\(\{P_n\}\)</span> is a
+necessary and sufficient condition that for every subsequence <span class="math inline">\(\{P_{ni}\}\)</span> there exists a further
+subsequence <span class="math inline">\(\{P_{nij}\}\)</span> that
+converges to <span class="math inline">\(P\)</span> in distribution as
+<span class="math inline">\(j \to \infty\)</span>.</li>
+<li>If <span class="math inline">\(\{P_n\}\)</span> is tight and if each
+subsequence that converges weakly converges to the same probability
+measure <span class="math inline">\(P\)</span>, then <span class="math inline">\(P_n \stackrel{w}{\to} P\)</span>.</li>
+</ul>
+<h3 id="characteristic-function">Characteristic Function</h3>
+<ul>
+<li><p><span class="math inline">\(X_n \stackrel{w}{\to} X\)</span> is
+equivalent to any of the following conditions:</p>
+<ul>
+<li><span class="math inline">\(E[h(X_n)] \to E[h(X)]\)</span> for every
+bounded continuous function <span class="math inline">\(h\)</span>.</li>
+<li><span class="math inline">\(\lim \sup_n P_{X_n}(C) \leq
+P_X(C)\)</span> holds for any closed set <span class="math inline">\(C
+\in R^k\)</span>.</li>
+<li><span class="math inline">\(\lim \inf_n P_{X_n}(C) \geq
+P_X(C)\)</span> holds for any open set <span class="math inline">\(C\in
+R^k\)</span>.</li>
+</ul></li>
+<li><p>(Cramer-Wold) <span class="math inline">\(X_n
+\stackrel{d}{\to}X\)</span> iff <span class="math inline">\(c^TX_n \to
+c^TX\)</span> for every <span class="math inline">\(c \in
+R^k\)</span>.</p></li>
+<li><p>(Levy-Cramer) Let <span class="math inline">\(\phi_X, \phi_{X_1},
+\cdots\)</span> be the ch.f.'s of <span class="math inline">\(X,X_1,X_2,\cdots\)</span> respectively. <span class="math inline">\(X_n \stackrel{d}{\to} X\)</span> iff <span class="math inline">\(\lim_{n\to \infty} \phi_{X_n}(t) =
+\phi_X(t)\)</span> for all <span class="math inline">\(t \in
+R^k\)</span>.</p>
+<p>The proof should be remembered.</p></li>
+<li><p>(Scheffe) Let <span class="math inline">\(\{f_n\}\)</span> be a
+sequence of p.d.f.'s on <span class="math inline">\(R^k\)</span> w.r.t.
+a measure <span class="math inline">\(\nu\)</span>. Suppose that <span class="math inline">\(\lim_{n \to \infty}f_n(x) = f(x)\)</span>
+a.e.<span class="math inline">\(\nu\)</span> and <span class="math inline">\(f(x)\)</span> is a p.d.f. w.r.t. <span class="math inline">\(\nu\)</span>. Then <span class="math inline">\(\lim_{n \to \infty} \int|f_n(x)-f(x)| d
+\nu=0\)</span>.</p></li>
+</ul>
+<h3 id="mapping">Mapping</h3>
+<ul>
+<li>Let <span class="math inline">\(X,X_1,\cdots\)</span> be random
+<span class="math inline">\(k\)</span>-vectors defined on a probability
+space and <span class="math inline">\(g\)</span> be a measurable
+function from <span class="math inline">\((R^k, B^k)\)</span> to <span class="math inline">\((R^i, B^i)\)</span>. Suppose that <span class="math inline">\(g\)</span> is continuous a.s <span class="math inline">\(P_X\)</span>, then:
+<ul>
+<li><span class="math inline">\(X_n \stackrel{a.s.}{\to} X\)</span>
+implies <span class="math inline">\(g(X_n)
+\stackrel{a.s.}{\to}g(X)\)</span></li>
+<li><span class="math inline">\(X_n \stackrel{p}{\to} X\)</span> implies
+<span class="math inline">\(g(X_n) \stackrel{p}{\to}g(X)\)</span></li>
+<li><span class="math inline">\(X_n \stackrel{w}{\to} X\)</span> implies
+<span class="math inline">\(g(X_n) \stackrel{w}{\to}g(X)\)</span></li>
+</ul></li>
+<li>(Slutsky) Let <span class="math inline">\(X,X_1,\cdots, Y,
+Y_1,\cdots\)</span> be random variables on a probability space. Suppose
+<span class="math inline">\(X_n \stackrel{w}{\to} X\)</span> and <span class="math inline">\(Y_n \stackrel{w}{\to} c\)</span>, where <span class="math inline">\(c\)</span> is a real number. Then
+<ul>
+<li><span class="math inline">\(X_n + Y_n \stackrel{w}{\to} X_n
++c\)</span></li>
+<li><span class="math inline">\(X_nY_n \stackrel{w}{\to}
+cX_n\)</span></li>
+<li><span class="math inline">\(X_n / Y_n \stackrel{w}{\to} X_n
+/c\)</span> if <span class="math inline">\(c \neq 0\)</span></li>
+</ul></li>
+</ul>
+<h2 id="notations-from-calculus">Notations from Calculus</h2>
+<p>就，我真的不是很喜欢大 O 小 o 这些，但是就是很常用（</p>
+<p>一般来说对于数列也有这样的记号，如果两个数列 <span class="math inline">\(\{a_n\}, \{b_n\}\)</span> 满足 <span class="math inline">\(|a_n| \leq C|b_n|\)</span> 对任意的 <span class="math inline">\(n\)</span> 成立，那么称 <span class="math inline">\(a_n = O(b_n)\)</span>；如果满足 <span class="math inline">\(a_n / b_n \to \infty, n\to \infty\)</span>，则称
+<span class="math inline">\(a_n =
+o(b_n)\)</span>。在概率里也有类似的用法：</p>
+<p>Let <span class="math inline">\(X_1, X_2, \cdots\)</span> be random
+vectors and <span class="math inline">\(Y_1,Y_2,\cdots\)</span> be
+random variables defined on a common probability space.</p>
+<ul>
+<li><span class="math inline">\(X_n = O(Y_n)\)</span> a.s. iff <span class="math inline">\(P(\omega: \|X_n(\omega)\| \leq C|Y_n(\omega)|
+\text{ holds for any }n \geq 1)=1\)</span></li>
+<li><span class="math inline">\(X_n = o(Y_n)\)</span> a.s. iff <span class="math inline">\(X_n / Y_n \stackrel{a.s.}{\to} 0\)</span>.</li>
+<li><span class="math inline">\(X_n = O_p(Y_n)\)</span> iff for any
+<span class="math inline">\(\varepsilon&gt;0\)</span>, there is a
+constant <span class="math inline">\(C_\varepsilon&gt;0\)</span> s.t.
+<span class="math inline">\(\sup_n P(\omega : \|X_n(\omega) \| \geq
+C_\varepsilon |Y_n(\omega)|) &lt;\varepsilon\)</span></li>
+<li><span class="math inline">\(X_n = o_p(Y_n)\)</span> iff <span class="math inline">\(X_n / Y_n \stackrel{p}{\to} 0\)</span>.</li>
+</ul>
+<p>Therefore</p>
+<ul>
+<li><span class="math inline">\(X_n = o_p(Y_n)\)</span> implies <span class="math inline">\(X_n = O_p(Y_n)\)</span></li>
+<li><span class="math inline">\(X_n = O_p(Y_n)\)</span> and <span class="math inline">\(Y_n = O_p(Z_n)\)</span> implies <span class="math inline">\(X_n = O_p(Z_n)\)</span></li>
+<li><span class="math inline">\(X_n = O_p(Y_n)\)</span> does not imply
+<span class="math inline">\(Y_n = O_p(X_n)\)</span></li>
+<li>The same conclusions can be obtained if <span class="math inline">\(O_p(\cdot),o_p(\cdot)\)</span> are replaced by
+<span class="math inline">\(O(\cdot)\)</span> a.s., <span class="math inline">\(o(\cdot)\)</span> a.s..</li>
+<li>If <span class="math inline">\(X_n \stackrel{w}{\to} X\)</span> then
+<span class="math inline">\(X_n = O_p(1)\)</span></li>
+<li>Since <span class="math inline">\(a_n = O(1)\)</span> means <span class="math inline">\(\{a_n\}\)</span> is bounded, <span class="math inline">\(\{X_n\}\)</span> is said to be bounded in
+probability iff <span class="math inline">\(X_n = O_p(1)\)</span>.</li>
+</ul>
 <h2 id="delta-method">Delta Method</h2>
+<p>Let <span class="math inline">\(X_1,X_2,\cdots\)</span> and <span class="math inline">\(Y\)</span> be random <span class="math inline">\(k\)</span>-vectors satisfying <span class="math inline">\(a_n(X_n - c) \stackrel{w}{\to}Y\)</span>, where
+<span class="math inline">\(c \in R^k\)</span> and <span class="math inline">\(\{a_n\}\)</span> is a sequence of positive numbers
+with <span class="math inline">\(\lim_{n \to \infty} a_n
+=\infty\)</span>. Let <span class="math inline">\(g\)</span> be a
+function from <span class="math inline">\(R^k\)</span> to <span class="math inline">\(R\)</span>.</p>
+<ul>
+<li><p>If <span class="math inline">\(g\)</span> is differentiable at
+<span class="math inline">\(c\)</span>, then <span class="math inline">\(a_n [g(X_n) - g(c)] \stackrel{w}{\to} [\nabla
+g(c)]^TY\)</span>.</p></li>
+<li><p>Suppose <span class="math inline">\(g\)</span> has continuous
+partial derivatives of order <span class="math inline">\(m
+&gt;1\)</span> in a neighborhood of <span class="math inline">\(c\)</span>, with all the partial derivatives of
+order <span class="math inline">\(j\)</span>, <span class="math inline">\(1 \leq j \leq m-1\)</span> vanishing at <span class="math inline">\(c\)</span>, but with the <span class="math inline">\(m\)</span>-th order partial derivatives not all
+vanishing at <span class="math inline">\(c\)</span>. Then</p>
+<p><span class="math display">\[a_n^m [g(X_n)-g(c)] \stackrel{w}{\to}
+\frac{1}{m!} \sum_{i_1=1}^k \cdots \sum_{i_m=1}^k \frac{\partial^m
+g}{\partial x_{i_1} \cdots \partial x_{i_m}}\mid _{x=c} Y_{i_1}\cdots
+Y_{i_m} \]</span></p></li>
+<li><p>If <span class="math inline">\(Y\)</span> has the <span class="math inline">\(N_k(0,\Sigma)\)</span> distribution, then <span class="math inline">\(a_n [g(X_n) - g(c)] \stackrel{w}{\to} N(0,[\nabla
+g(c)]^T\Sigma \nabla g(c))\)</span></p></li>
+</ul>
 
     </div>
 
@@ -553,7 +715,7 @@ E(X|Y_1)dP &amp;= \int E(X|Y_1) \mathbb 1_{(Y_1 \in B_1)} \mathbb
       <div class="post-toc-wrap sidebar-panel">
           <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-1"><span class="nav-text">Lecture 1</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#product-measure"><span class="nav-text">Product Measure</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-2"><span class="nav-text">Lecture 2</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#radon-nikodym-derivative"><span class="nav-text">Radon-Nikodym Derivative</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#interchange-of-differentiation-and-integration"><span class="nav-text">Interchange of
 Differentiation and Integration</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-3"><span class="nav-text">Lecture 3</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#conditional-expectation"><span class="nav-text">Conditional Expectation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dominated-convergence-theorem"><span class="nav-text">Dominated Convergence
-Theorem</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#conditional-independence"><span class="nav-text">Conditional Independence</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-4"><span class="nav-text">Lecture 4</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#weak-convergence"><span class="nav-text">Weak Convergence</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#delta-method"><span class="nav-text">Delta Method</span></a></li></ol></li></ol></div>
+Theorem</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#conditional-independence"><span class="nav-text">Conditional Independence</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-4"><span class="nav-text">Lecture 4</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#weak-convergence"><span class="nav-text">Weak Convergence</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#analytical-properties"><span class="nav-text">Analytical Properties</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tightness"><span class="nav-text">Tightness</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#characteristic-function"><span class="nav-text">Characteristic Function</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mapping"><span class="nav-text">Mapping</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#notations-from-calculus"><span class="nav-text">Notations from Calculus</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#delta-method"><span class="nav-text">Delta Method</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
