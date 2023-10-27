@@ -33,8 +33,9 @@
 <meta property="og:image" content="https://s2.loli.net/2023/09/26/PEzuQl2MOW37Jr1.jpg">
 <meta property="og:image" content="https://s2.loli.net/2023/10/21/Y79yhqJDgElijmI.png">
 <meta property="og:image" content="https://s2.loli.net/2023/09/26/PEzuQl2MOW37Jr1.jpg">
+<meta property="og:image" content="https://s2.loli.net/2023/09/26/PEzuQl2MOW37Jr1.jpg">
 <meta property="article:published_time" content="2023-09-25T02:28:52.000Z">
-<meta property="article:modified_time" content="2023-10-25T18:01:03.769Z">
+<meta property="article:modified_time" content="2023-10-27T10:58:50.585Z">
 <meta property="article:author" content="驰雨Chiyuru">
 <meta property="article:tag" content="数学">
 <meta property="article:tag" content="统计">
@@ -229,7 +230,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-10-26 02:01:03" itemprop="dateModified" datetime="2023-10-26T02:01:03+08:00">2023-10-26</time>
+                <time title="修改时间：2023-10-27 18:58:50" itemprop="dateModified" datetime="2023-10-27T18:58:50+08:00">2023-10-27</time>
               </span>
 
           
@@ -1180,9 +1181,10 @@ Vol(B(x_0,r)) = \varepsilon^n (\frac{r}{R})^n Vol(B(x_0^\prime ,R)) =
 \exp(-\frac{t}{2n^2}) Vol(B(x_0^\prime, R)) &gt; Vol(\mathcal
 E_t)\]</span></p>
 <p>This inequality implies that there exists one time <span class="math inline">\(r \in \{1,2,\cdots,t\}\)</span> s.t. there exists
-$ x_K_$, <span class="math inline">\(x_\varepsilon \in \mathcal
-E_{r-1}\)</span>, but <span class="math inline">\(x_\varepsilon \notin
-\mathcal E_r\)</span>, therefore <span class="math inline">\(x_\varepsilon\)</span> is not optimal. According
+<span class="math inline">\(x_\varepsilon \in \mathcal
+K_\varepsilon\)</span>, <span class="math inline">\(x_\varepsilon \in
+\mathcal E_{r-1}\)</span>, but <span class="math inline">\(x_\varepsilon
+\notin \mathcal E_r\)</span>, therefore <span class="math inline">\(x_\varepsilon\)</span> is not optimal. According
 to the convexity of <span class="math inline">\(f(x)\)</span>, there is
 <span class="math display">\[f(x_t) &lt; f(c_r)
 \leq  f(x_\varepsilon)  = f((1-\varepsilon)x^* + \varepsilon x_r) \leq
@@ -1255,6 +1257,181 @@ s.t. <span class="math inline">\(\forall x \in C\)</span>, <span class="math inl
 </ul>
 <p>别的没什么了，convex function
 的性质什么的真没必要再写一遍了，他又不讲 subgradient。</p>
+<h1 id="lecture-5">Lecture 5</h1>
+<p>才隔了两周，今天怎么又是哥们在做 scribing 啊（。read-only 的链接在<a target="_blank" rel="noopener" href="https://www.overleaf.com/read/tvswmtjkgtsp#b147f8">这里</a>。</p>
+<p>今天讲一些 convex optimization 里的例子，给哥们整的一愣一愣的。</p>
+<h2 id="examples-in-convex-optimization">Examples in Convex
+Optimization</h2>
+<h3 id="notations-3">Notations</h3>
+<p>#每日迷神</p>
+<p><img src="https://s2.loli.net/2023/09/26/PEzuQl2MOW37Jr1.jpg" alt="mi1.jpg"></p>
+<p>你还别说现在还真不一定书上都有了，那个 max cut 给哥们整不会了，Boyd
+上面没写，Bubeck 就写了一点而且还把课上的内容跳过去了。而且 Bubeck
+本来就简略，看了个寂寞。</p>
+<ul>
+<li><p>The following optimization problem is called a convex
+optimization problem if <span class="math inline">\(x_0, f_i\)</span>
+are convex, and <span class="math inline">\(h_i\)</span> are linear:</p>
+<p><span class="math display">\[\begin{aligned}
+\textbf{minimize}  \quad &amp; f_0(x) \\
+\textbf{subject to} \quad &amp; f_i(x) \leq 0 \\
+&amp; h_i (x) =0
+\end{aligned}\]</span></p></li>
+<li><p><span class="math inline">\(x\)</span> is a <span class="math inline">\(\varepsilon\)</span>-suboptimal if <span class="math inline">\(f_0(x) \leq p^* + \varepsilon\)</span>, in which
+<span class="math inline">\(p^*\)</span> is the optimal value of the
+convex optimization problem.</p></li>
+<li><p><span class="math inline">\(x_0\)</span> is locally optimal if
+there exists <span class="math inline">\(R &gt;0\)</span> s.t. <span class="math inline">\(x_0\)</span> is the optimal solution to:</p></li>
+</ul>
+<p>​ <span class="math display">\[\begin{aligned}
+   \textbf{minimize}  \quad &amp; f_0(x) \\
+   \textbf{subject to} \quad &amp; f_i(x) \leq 0 \\
+   &amp; h_i (x) =0 \\
+   &amp; \|x-x_0\| \leq R \end{aligned}\]</span></p>
+<h3 id="why-convex-optimization">Why Convex Optimization?</h3>
+<p>为什么研究凸优化？一个是 linear programming problem
+有它的局限性，许多问题只能往凸优化的方向转化。另外凸性质实际上是非常美妙的。下面是一个很
+trivial 的例子，我们对 convex optimization
+的转化问题的探究远不止于此。</p>
+<p>Why is convex optimization important? That's because some non-convex
+problems have underlying convexity. For example, we consider the
+following optimization problem:</p>
+<p><span class="math display">\[\begin{aligned}
+\textbf{minimize}  \quad &amp; f_0(x)=x_1^2+x_2^2 \\
+\textbf{subject to} \quad &amp; f_1(x) = \frac{x_1}{1+x_2^2} \leq 0 \\
+&amp; h_i (x) = (x_1+x_2)^2 =0
+\end{aligned}\]</span></p>
+<p>which can easily be transformed into a standard convex optimization
+problem.</p>
+<h2 id="example-max-cut-problem">Example: Max Cut Problem</h2>
+<p>别 TCS 了求你了求你了求你了（</p>
+<p>通过一个 max cut problem 来体现从 nonconvex optimization 向 convex
+optimization 的转化，从方法论的层面上来说是两步。</p>
+<p>Why are convex optimization problems important? That's because many
+non-convex optimization problems can be transformed into convex ones,
+and we can solve convex optimization problems through mature
+technologies. Generally speaking, the process contains two steps:</p>
+<ol type="1">
+<li>First, transform the non-convex problem into convex ones through
+relaxation.</li>
+<li>Next recover a solution from the convex problem to the non-convex
+one through random rounding.</li>
+</ol>
+<h3 id="notations-4">Notations</h3>
+<ul>
+<li>A cut in an undirected graph <span class="math inline">\(G = (V,
+\mathcal E)\)</span> is defined as <span class="math inline">\(A
+\subseteq V\)</span>.The capacity of a cut <span class="math inline">\(A\)</span> is defined as <span class="math inline">\(c(A) = | \{(u,v)\in \mathcal E \mid u \in A, u \in
+A^c\}|\)</span>.</li>
+</ul>
+<p>而 max cut 问题就是寻找最大的 <span class="math inline">\(c(A)\)</span>，尽管我不知道这样做有什么意义，但它是
+NP-hard 的。所以我们只需要找到一个 polynomial time
+的算法就可以证明...（逃</p>
+<ul>
+<li>​ An <span class="math inline">\(\alpha\)</span>-approximate max cut
+is a cut <span class="math inline">\(A\)</span> s.t. <span class="math inline">\(c(A) \geq \alpha \max_{U \subseteq V}
+c(U)\)</span>.</li>
+</ul>
+<h3 id="frac-1-2-approximate-approach"><span class="math inline">\(\frac
+1 2\)</span>-Approximate Approach</h3>
+<p>怎么是概率做法，真稀奇。</p>
+<p>To be more specific, we can give a <span class="math inline">\(\frac{1}{2}\)</span>-approximate max cut by
+randomly adding each point <span class="math inline">\(v\)</span> in
+<span class="math inline">\(V\)</span> to the cut <span class="math inline">\(A\)</span> with probability <span class="math inline">\(\frac{1}{2}\)</span>. Consider the expectation of
+<span class="math inline">\(c(A)\)</span> here and we can get:</p>
+<p><span class="math display">\[\mathbb E_A(c(A)) = \mathbb E_A
+\sum_{(u,v)\in \mathcal E} 1_{(u \in A,v \in A^c)} = \sum_{(u,v) \in
+\mathcal E} P(u \in A, v \in A^c) = \sum_{(u,v) \in \mathcal E}
+\frac{1}{2} = \frac{|\mathcal E|}{2}.\]</span></p>
+<p>然而这还是很粗糙。</p>
+<h3 id="linear-approach">Linear Approach</h3>
+<p>如果没有 convex optimization 的话就是考虑一些 linear programming
+的近似，举两个失败的 approach 说明这很困难：</p>
+<ul>
+<li><p>Consider the following formulation of the problem:</p>
+<p><span class="math display">\[\begin{aligned}
+    \textbf{maximize}_{x\in \mathbb R^n} \quad &amp; \sum_{(u,v)\in
+\mathcal E} \frac{1}{2}(1-x_ux_v) \\
+    \textbf{subject to} \quad &amp; x_v \in \{-1,1\}
+\end{aligned}\]</span></p></li>
+<li><p>This is not a linear programming problem, and we can transform it
+by denoting <span class="math inline">\(z_e = x_ux_v, e=(u,v) \in
+\mathcal{E}\)</span>:</p>
+<p><span class="math display">\[\begin{aligned}
+    \textbf{maximize}_{x,z} \quad &amp; \sum_{e \in E} \frac{1}{2 }
+(1-z_e) \\
+    \textbf{subject to} \quad &amp; z_{(u,v)} \geq -x_u -x_v -1 \\
+     &amp; z_{(u,v)} \geq x_u +x_v -1 \\
+     &amp; x_v \in [-1,1]
+\end{aligned}\]</span></p></li>
+</ul>
+<p>However, this still fails for we can choose <span class="math inline">\(x_v =x_u=0\)</span> and <span class="math inline">\(z_{(u,v)} =-1\)</span> in the feasible set, which
+means the approach will only give a randomized choice of <span class="math inline">\(A\)</span>. Now turn to convex optimization for
+help.</p>
+<h3 id="convex-transformation">Convex Transformation</h3>
+<ul>
+<li><p>The basic idea is to replace <span class="math inline">\(x_u.x_v\)</span> with <span class="math inline">\(n-1\)</span> dimensional vectors and construct an
+auxiliary problem, which is called semi-definite relaxation:</p>
+<p><span class="math display">\[\begin{aligned}
+    \textbf{maximize} \quad &amp; \sum_{(u,v) \in \mathcal E}
+\frac{1}{2} (1-x_u^Tx_v) \\
+    \textbf{subject to} \quad &amp; x_u \in S^{n-1} \text{ for any
+}u=1,2,\cdots,n
+\end{aligned}\]</span></p>
+<p>in which <span class="math inline">\(S^{n-1}\)</span> is the unit
+sphere in <span class="math inline">\(\mathbb R^{n-1}\)</span>. Observe
+that <span class="math inline">\(\frac{1}{4}\|x_u-x_v\|^2 =\frac{1}{4}
+(x_u -x_v)^T(x_u-x_v) = \frac{1}{2} (1-x_ux_v)\)</span>, and <span class="math inline">\(\frac{1}{2} \sum_{e \in \mathcal E} (1-z_e) =
+\frac{1}{4} \sum_{(u,v)\in \mathcal E} \|x_u - x_v\|^2\)</span>.</p>
+<p>Now we take <span class="math inline">\(\text{Maxcut}^\circ
+(C)\)</span> as the optimal cost of the auxiliary problem and denote
+<span class="math inline">\(\text{Maxcut} (C)\)</span> as the optimal
+cost of the original problem. Then there is <span class="math inline">\(\text{Maxcut} (C) \leq \text{Maxcut}^\circ
+(C)\)</span> because any optimal solution of the original problem can be
+transformed into a feasible solution in the auxiliary one.</p>
+<p>To be more precise, if <span class="math inline">\(\{x_u\}\)</span>
+is an optimal solution to the original problem, then for any <span class="math inline">\(x_u = 1\)</span> there is <span class="math inline">\(x_v = -1\)</span> for each <span class="math inline">\(v \in \{v \mid (u,v) \in \mathcal E\}\)</span>.
+Therefore we can take <span class="math inline">\(x_u = e_1\)</span>,
+<span class="math inline">\(x_v = -e_1\)</span> for any <span class="math inline">\(v \in \{v \mid (u,v) \in \mathcal E\}\)</span> as
+a feasible solution to the auxiliary problem, and the cost is equal to
+the optimal cost of the original one.</p></li>
+<li><p>However the auxiliary problem is still non-convex, we'd like to
+consider another optimization problem as follows:</p>
+<p><span class="math display">\[\begin{aligned}
+    \textbf{minimize} \quad &amp; X \cdot A = \sum_{i,j \in V} X_{ij}
+A_{ij} \\
+    \textbf{subject to} \quad &amp; X \geq 0 \;  \\
+     &amp; X_{ii}=1
+\end{aligned}\]</span></p>
+<p>in which <span class="math inline">\(X \geq 0\)</span> means <span class="math inline">\(X\)</span> is semi-definite, i.e. <span class="math inline">\(X \in S_+^n, X \in \mathbb R^{n \times
+n}\)</span>.</p>
+<p>We set <span class="math inline">\(A_{ij}=1\)</span> if <span class="math inline">\((i,j) \in \mathcal E\)</span>, else <span class="math inline">\(A_{ij}=0\)</span>. Now we prove that the two
+problems above are equivalent.</p></li>
+<li><p>The following two max-cut optimization problems are
+equivalent:</p></li>
+</ul>
+<p>​ <span class="math display">\[\begin{aligned}
+  ​            \textbf{maximize} \quad &amp; \sum_{(u,v) \in \mathcal E}
+\frac{1}{2} (1-x_u^Tx_v) \\
+  ​    \textbf{subject to} \quad &amp; x_u \in S^{n-1} \\
+  ​    \\
+  ​    \end{aligned} \quad \quad \quad
+  ​    \begin{aligned}
+  ​        \textbf{minimize} \quad &amp; X \cdot A = \sum_{i,j \in V}
+X_{ij} A_{ij} \\
+  ​    \textbf{subject to} \quad &amp; X \geq 0 \;  \\
+  ​     &amp; X_{ii}=1
+  ​    \end{aligned}\]</span></p>
+<p><strong>Proof</strong>: Note that <span class="math inline">\(X_{ij}
+= x_i^T x_j\)</span> (and sometimes <span class="math inline">\(X\)</span> is called the gram matrix),
+therefore</p>
+<p><span class="math display">\[\begin{aligned}
+          X \in S_+^n \text{ is feasible } &amp; \iff X_{ij}=1 \text{
+for any } i \in V \\
+          &amp; \iff \|x_u \|=1 \text{ for any } u \in V \\
+          &amp; \iff x_u \in S^{n-1} \text{ for any } u \in V
+      \end{aligned}\]</span></p>
+<p>and the desired result follows.</p>
 
     </div>
 
@@ -1407,7 +1584,9 @@ Programming</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a 
 Format</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#other-optimization-problems"><span class="nav-text">Other Optimization Problems</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#solutions-to-lp-problems"><span class="nav-text">Solutions to LP Problems</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#notations"><span class="nav-text">Notations</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#how-to-describe-optimal-solutions"><span class="nav-text">How to Describe Optimal
 Solutions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#algebraic-approach-to-optimal-solutions"><span class="nav-text">Algebraic Approach to
 Optimal Solutions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#existence-of-vertex"><span class="nav-text">Existence of Vertex</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#why-is-vertex-important"><span class="nav-text">Why is Vertex Important?</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-2"><span class="nav-text">Lecture 2</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#simplex-method"><span class="nav-text">Simplex Method</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#find-the-initial-solution"><span class="nav-text">Find the Initial Solution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#develop-feasible-direction"><span class="nav-text">Develop Feasible Direction</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#choice-of-adjacent-basic-feasible-solution"><span class="nav-text">Choice of Adjacent
-Basic Feasible Solution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#termination"><span class="nav-text">Termination</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#summary"><span class="nav-text">Summary</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#introduction-to-duality"><span class="nav-text">Introduction to Duality</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#duality-theorems"><span class="nav-text">Duality Theorems</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-3"><span class="nav-text">Lecture 3</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#nash-equilibrium"><span class="nav-text">Nash Equilibrium</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#theory"><span class="nav-text">Theory</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#application"><span class="nav-text">Application</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#application-of-farkas-lemma"><span class="nav-text">Application of Farka&#39;s Lemma</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#the-center-of-gravity-method"><span class="nav-text">The Center of Gravity Method</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#the-ellipsoid-method"><span class="nav-text">The Ellipsoid Method</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#notations-1"><span class="nav-text">Notations</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#algorithm"><span class="nav-text">Algorithm</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-4"><span class="nav-text">Lecture 4</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#convex-optimization"><span class="nav-text">Convex Optimization</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#notations-2"><span class="nav-text">Notations</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#basic-theorems"><span class="nav-text">Basic Theorems</span></a></li></ol></li></ol></li></ol></div>
+Basic Feasible Solution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#termination"><span class="nav-text">Termination</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#summary"><span class="nav-text">Summary</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#introduction-to-duality"><span class="nav-text">Introduction to Duality</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#duality-theorems"><span class="nav-text">Duality Theorems</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-3"><span class="nav-text">Lecture 3</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#nash-equilibrium"><span class="nav-text">Nash Equilibrium</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#theory"><span class="nav-text">Theory</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#application"><span class="nav-text">Application</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#application-of-farkas-lemma"><span class="nav-text">Application of Farka&#39;s Lemma</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#the-center-of-gravity-method"><span class="nav-text">The Center of Gravity Method</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#the-ellipsoid-method"><span class="nav-text">The Ellipsoid Method</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#notations-1"><span class="nav-text">Notations</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#algorithm"><span class="nav-text">Algorithm</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-4"><span class="nav-text">Lecture 4</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#convex-optimization"><span class="nav-text">Convex Optimization</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#notations-2"><span class="nav-text">Notations</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#basic-theorems"><span class="nav-text">Basic Theorems</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-5"><span class="nav-text">Lecture 5</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#examples-in-convex-optimization"><span class="nav-text">Examples in Convex
+Optimization</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#notations-3"><span class="nav-text">Notations</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#why-convex-optimization"><span class="nav-text">Why Convex Optimization?</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#example-max-cut-problem"><span class="nav-text">Example: Max Cut Problem</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#notations-4"><span class="nav-text">Notations</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#frac-1-2-approximate-approach"><span class="nav-text">\(\frac
+1 2\)-Approximate Approach</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#linear-approach"><span class="nav-text">Linear Approach</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#convex-transformation"><span class="nav-text">Convex Transformation</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
