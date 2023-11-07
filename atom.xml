@@ -6,7 +6,7 @@
   <link href="https://chiyuru.github.io/atom.xml" rel="self"/>
   
   <link href="https://chiyuru.github.io/"/>
-  <updated>2023-11-06T15:13:52.403Z</updated>
+  <updated>2023-11-07T16:07:05.843Z</updated>
   <id>https://chiyuru.github.io/</id>
   
   <author>
@@ -17,11 +17,30 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>整数规划</title>
+    <link href="https://chiyuru.github.io/2023/11/07/Integer-Programming/"/>
+    <id>https://chiyuru.github.io/2023/11/07/Integer-Programming/</id>
+    <published>2023-11-07T05:08:03.000Z</published>
+    <updated>2023-11-07T16:07:05.843Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;我觉得我写草稿纸上的笔记肯定过两天就不见了，存个档用来复习运筹期中，以及止增笑耳。&lt;/p&gt;
+&lt;p&gt;参考了《&lt;a href=&quot;https://web.mit.edu/15.053/www/AMP.htm&quot;&gt;Applied
+Mathematical Programming&lt;/a&gt;》Chapter 9,10 和一份相应的 &lt;a href=&quot;https://www.math.clemson.edu/~mjs/courses/mthsc.440/integer.pdf&quot;&gt;notes&lt;/a&gt;。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="数学" scheme="https://chiyuru.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
+    
+  </entry>
+  
+  <entry>
     <title>日记·篇十五·23年11月</title>
     <link href="https://chiyuru.github.io/2023/11/01/Diary-2023-11/"/>
     <id>https://chiyuru.github.io/2023/11/01/Diary-2023-11/</id>
     <published>2023-10-31T18:11:13.000Z</published>
-    <updated>2023-11-06T15:13:52.403Z</updated>
+    <updated>2023-11-07T15:33:34.946Z</updated>
     
     
     <summary type="html">&lt;p&gt;别来暖气别来暖气别来暖气别来暖气别来暖气别来暖气（悲&lt;/p&gt;</summary>
@@ -387,23 +406,6 @@ tag 下面几乎全是统计，成何体统&lt;/del&gt;。&lt;/p&gt;
     <category term="统计" scheme="https://chiyuru.github.io/tags/%E7%BB%9F%E8%AE%A1/"/>
     
     <category term="课程实录" scheme="https://chiyuru.github.io/tags/%E8%AF%BE%E7%A8%8B%E5%AE%9E%E5%BD%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>数学分析 I 速通日志（下）</title>
-    <link href="https://chiyuru.github.io/2023/02/01/Learn-Mathematical-Analysis-or-Die-2/"/>
-    <id>https://chiyuru.github.io/2023/02/01/Learn-Mathematical-Analysis-or-Die-2/</id>
-    <published>2023-02-01T10:31:21.000Z</published>
-    <updated>2023-03-09T14:37:28.144Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;隔了几天才发是因为想不出来摘要可以写些什么，现在也还没想出来，所以就这样吧。差不多得了（&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="数学" scheme="https://chiyuru.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
     
   </entry>
   

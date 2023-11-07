@@ -20,21 +20,22 @@
     var CONFIG = {"hostname":"chiyuru.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="你不会摆烂了一个暑假吧？ 确实，不然我暑假回家干嘛？">
+  <meta name="description" content="我觉得我写草稿纸上的笔记肯定过两天就不见了，存个档用来复习运筹期中，以及止增笑耳。 参考了《Applied Mathematical Programming》Chapter 9,10 和一份相应的 notes。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="躺平记——暑假特别篇">
-<meta property="og:url" content="https://chiyuru.github.io/2022/09/01/lying-flat-in-holiday/index.html">
+<meta property="og:title" content="整数规划">
+<meta property="og:url" content="https://chiyuru.github.io/2023/11/07/Integer-Programming/index.html">
 <meta property="og:site_name" content="『姑妄言之姑妄听之』">
-<meta property="og:description" content="你不会摆烂了一个暑假吧？ 确实，不然我暑假回家干嘛？">
+<meta property="og:description" content="我觉得我写草稿纸上的笔记肯定过两天就不见了，存个档用来复习运筹期中，以及止增笑耳。 参考了《Applied Mathematical Programming》Chapter 9,10 和一份相应的 notes。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-09-01T14:55:03.000Z">
-<meta property="article:modified_time" content="2022-09-07T09:43:30.000Z">
+<meta property="og:image" content="https://s2.loli.net/2023/11/07/s3LfDpAbhGFmCj8.png">
+<meta property="article:published_time" content="2023-11-07T05:08:03.000Z">
+<meta property="article:modified_time" content="2023-11-07T16:07:05.843Z">
 <meta property="article:author" content="驰雨Chiyuru">
-<meta property="article:tag" content="碎碎念">
-<meta property="article:tag" content="躺平">
+<meta property="article:tag" content="数学">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2023/11/07/s3LfDpAbhGFmCj8.png">
 
-<link rel="canonical" href="https://chiyuru.github.io/2022/09/01/lying-flat-in-holiday/">
+<link rel="canonical" href="https://chiyuru.github.io/2023/11/07/Integer-Programming/">
 
 
 <script id="page-configurations">
@@ -47,7 +48,7 @@
   };
 </script>
 
-  <title>躺平记——暑假特别篇 | 『姑妄言之姑妄听之』</title>
+  <title>整数规划 | 『姑妄言之姑妄听之』</title>
   
 
 
@@ -192,7 +193,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://chiyuru.github.io/2022/09/01/lying-flat-in-holiday/">
+    <link itemprop="mainEntityOfPage" href="https://chiyuru.github.io/2023/11/07/Integer-Programming/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -205,7 +206,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          躺平记——暑假特别篇
+          整数规划
         </h1>
 
         <div class="post-meta">
@@ -215,14 +216,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2022-09-01 22:55:03" itemprop="dateCreated datePublished" datetime="2022-09-01T22:55:03+08:00">2022-09-01</time>
+              <time title="创建时间：2023-11-07 13:08:03" itemprop="dateCreated datePublished" datetime="2023-11-07T13:08:03+08:00">2023-11-07</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-09-07 17:43:30" itemprop="dateModified" datetime="2022-09-07T17:43:30+08:00">2022-09-07</time>
+                <time title="修改时间：2023-11-08 00:07:05" itemprop="dateModified" datetime="2023-11-08T00:07:05+08:00">2023-11-08</time>
               </span>
 
           
@@ -236,106 +237,138 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="你不会摆烂了一个暑假吧">你不会摆烂了一个暑假吧？</h1>
-<p>确实，不然我暑假回家干嘛？</p>
+        <p>我觉得我写草稿纸上的笔记肯定过两天就不见了，存个档用来复习运筹期中，以及止增笑耳。</p>
+<p>参考了《<a target="_blank" rel="noopener" href="https://web.mit.edu/15.053/www/AMP.htm">Applied
+Mathematical Programming</a>》Chapter 9,10 和一份相应的 <a target="_blank" rel="noopener" href="https://www.math.clemson.edu/~mjs/courses/mthsc.440/integer.pdf">notes</a>。</p>
 <span id="more"></span>
-<h1 id="躺平">躺平</h1>
-<p>六月五日学期没结束就乘车回家了。原本打算九月十二号返校，结果为了三天灰码提前到了九月九日，又因为临近喜提了一次弹窗再提前到了九月六日返校。没能在家过中秋节。</p>
-<p>一共在家里躺平了三个月零一天，合计 93 天。按照每天平均 7
-小时睡眠，在家躺平（物理）了差不多四周。</p>
-<h1 id="出游">出游</h1>
-<p>考虑到大概率要润出去读研，再往后的日子根本不知道人在哪里，现在就已经感觉到在家、在上海的时间越来越少。所以出去玩未尝不是一种未雨绸缪（啥啊</p>
-<p>和友人出去一起吃饭，逛中华艺术宫<del>然后写了几句北京欢迎你塞进意见箱里</del>，debug，借电脑跑神经网络，学习一些北大开学才考的线性代数，以及单纯地逛街。今年夏天实在太热了，而我本来就怕热，所以出去的时间并不多。多数时间也是在商场里走走然后在咖啡厅坐坐，聊聊天。还有和老母亲一起出门逛街，陪她去看病或者她陪我拔牙什么的。</p>
-<p>静安大悦城，长宁龙之梦，五角场，徐家汇&amp;天玥桥路，中华艺术宫，世博源，虹口龙之梦，七宝万科，第九人民医院。</p>
-<p>在静安大悦城的星巴克陪友人写线代的时候，从 lib-pku 仓库的 PR
-里找到了<a target="_blank" rel="noopener" href="https://github.com/lib-pku/libpku/pull/70">北大的最新往年题</a>，感觉出的不错，比华子的人肉计算器考法不知道高到哪儿去了。印象里有个证明矩阵可以奇异值分解的题，想来他们没讲过这个，也不会像华子一样出在卷子里算半天。还有个介绍半天对偶空间然后写写基就行了的压轴题，蛮好玩的。往前翻翻零几年的卷子，怎么线代里还出张量，他们四学分的课这么能塞吗。</p>
-<p>不过遗憾是今年秋季学期，交大和华子同时开学，没来得及去找同学玩。寒假还是错开的，到时候再去聚吧。</p>
-<h1 id="读闲书">读闲书</h1>
-<p>老母亲在家有个习惯，看到我总会问问我在做什么。我也不想一副天天在看手机摸鱼的样子，或者对着电脑眼睛瞎掉，也不想真的天天看数学书。所以把家里的闲书，看过的或者没看过的，挑一些轻薄的小册子拿出来读读，大概这样。</p>
-<p>其实我喜欢在开学的时候，带一些富有启发性的小册子，或者非常喜爱的书回学校。一个学期可能都没什么时间或者心情去看它们，但是摆在书架上就让我安慰一些。如果很喜欢的话可能还会假期再带回家看看。</p>
+<p>为什么要做 integer programming？一般来说 linear programming
+也可以得到一个答案，把它 round
+一下不就好了？但其实有一些很实际的理由导致 integer programming
+是必须的，就像线性回归中 dummy variable 也是必须的一样（啥</p>
+<p>一般来说把 integer programming 的 integer condition 移除后的 linear
+programming problem 称为其相应的 relaxed problem，integer programming 的
+feasible set 一定是其 relax problem feasible set 的子集，其 optimal cost
+也不会超过 relaxed problem 的 optimal
+cost。这很好理解，就是取了个限定更强的形式。</p>
 <ul>
-<li>大一入学的时候从家里寄了个顺丰大件去学校，带了几本比较厚的《枪炮、病菌与钢铁》，《一个陌生女人的来信》，《线》（维多利亚·希斯洛普），还有《万历十五年》。</li>
-<li>寒假回去带了《面纱》（毛姆），《汴京残梦》，《文城》，《恋爱的犀牛》，《病毒来袭》。</li>
-<li>这次带上了《中国历代政治得失》，《人类存在的意义》，《英语写作手册——风格的要素》，《日出酒店》（维多利亚·希斯洛普）。</li>
+<li><p>round 得到的结果未必还是最优的。比如：</p>
+<p><span class="math display">\[\begin{aligned}\textbf{maximize} \quad
+&amp; 8x_1+11x_2+ 6x_3 +4x_4 \\ \textbf{subject to} \quad
+&amp;  5x_1+7x_2+4x_3+3x_4 \leq 14 \\ \quad &amp;x_j \in \{0,1\}, \quad
+j=1,2,3,4 \end{aligned}\]</span></p>
+<p>如果用 linear programming 会得到 optimal solution 是 <span class="math inline">\((1,1,0.5,0)^T\)</span>，round 一下得到 <span class="math inline">\((1,1,1,0)\)</span> 并不在 feasible set
+中。与此同时实际上的 optimal solution 是 <span class="math inline">\((0,1,1,1)^T\)</span>，哪怕反向 round
+也是没用的。</p></li>
+<li><p>integer programming
+可以反映许多很难描述的条件。例如两个条件至多成立一个，用某个 integer
+variable 表示选择与否，等等。</p></li>
+<li><p>哪怕真的可以用 round 的方法得到解，也不知道反向/正向 round
+的结果是不是最好的，而在一些实际问题里哪怕只是相差 <span class="math inline">\(1\)</span> 也会造成成本/效益的巨大差异。</p></li>
 </ul>
-<h1 id="看剧">看剧</h1>
+<p>另外 integer programming 的困难在于 optimal solution
+不再一定在顶点处取到，而且 feasible set
+是离散的点集，其数量远大于顶点数量，不太可能用枚举得到答案。</p>
+<h1 id="standard-settings">Standard Settings</h1>
+<p>Interger programming 的标准形式一般来说相对简单，但和 linear
+programming 稍有不同：</p>
+<p><span class="math display">\[\begin{aligned} \textbf{maximize} \quad
+&amp; c^Tx \\ \textbf{subject to} \quad &amp; Ax \leq b  \\ \quad &amp;
+x_j \in \{0,1\} \end{aligned}\]</span></p>
+<p>其中要求 <span class="math inline">\(c \geq 0, A \geq 0, b \geq
+0\)</span>（指的是 <span class="math inline">\(A\)</span> 的每个分量
+<span class="math inline">\(a_{ij}\)</span> 都要是非负的
+<del>而不是正定什么的要求</del>）。</p>
+<p>这样写相对粗糙。事实上，如果 <span class="math inline">\(A\)</span>
+只表示一个一维的 constraint 则称为 knapsack problem，否则是
+multidimensional knapsack problem；如果所有的 <span class="math inline">\(x_j\)</span> 均在 <span class="math inline">\(0,1\)</span> 上取值则称为 pure integer
+programming，否则是 mixed linear programming。</p>
+<h2 id="standardize-to-knapsack-problem">Standardize to Knapsack
+Problem</h2>
+<p>最明显的一些要求是 <span class="math inline">\(c\geq 0,A\geq
+0\)</span>，至于 <span class="math inline">\(b\)</span>
+谋事在人成事在天（。</p>
+<p>对于 1-dimension 来说一般来说如果有看到 <span class="math inline">\(c_i \geq 0, a_i \leq 0\)</span> 的话直接把 <span class="math inline">\(x_i\)</span> 取为 <span class="math inline">\(1\)</span>，因为这变相的扩容了 constraint
+的上限；如果 <span class="math inline">\(c_i \leq 0 ,a_i \geq 0\)</span>
+则置为 <span class="math inline">\(0\)</span>，显然它的存在既会占用资源又减小上限。如果
+<span class="math inline">\(c_i ,a_i \leq 0\)</span> 同时成立就用 <span class="math inline">\(y_i = 1-x_i\)</span>
+代替原变量即可，从而得到标准形式。</p>
+<p>Multidimension 咋办，他也没说啊（挠头（</p>
+<p>感觉可能就不用动了，反正后面的求解里面都还是考虑 relaxed LP
+问题，直接按照 LP 的 standardized form 来化简就可以。当然如果有一溜
+<span class="math inline">\(\{a_{ij}\}_{i=1}^m \leq 0, c_i \geq
+0\)</span> 这种情况的话直接把 <span class="math inline">\(x_{i}\)</span>
+置 <span class="math inline">\(1\)</span>
+即可，少一个变量是一个。或者也可能是用 <span class="math inline">\(x_1\)</span> 和 <span class="math inline">\(1-x_i\)</span> 替换来保证所有的 <span class="math inline">\(c_i\)</span> 为正。</p>
+<h1 id="solving-integer-program">Solving Integer Program</h1>
+<h2 id="relaxed-linear-programming">Relaxed Linear Programming</h2>
+<p>比较符合直觉的一种方案就是把它和对应的 linear programming problem
+结合起来看，它们之间的确存在一定的关系，甚至在某一些情况下可以得到对于
+integer programming 的估计（未必是精确值）。</p>
+<p><span class="math display">\[\begin{aligned} \textbf{maximize} \quad
+&amp; c^Tx \\ \textbf{subject to} \quad &amp; Ax \leq b  \\ \quad &amp;
+x_j \in \{0,1\} \end{aligned} \quad \quad \quad \begin{aligned}
+\textbf{maximize} \quad &amp; c^Tx \\ \textbf{subject to} \quad &amp; Ax
+\leq b  \\ \quad &amp; x_j \geq 0 \end{aligned}\]</span></p>
+<p>注意在实际计算中想要解出（比如用 simplex method）relaxed problem
+还需要再做一步 standardize，此处略去。</p>
+<p>此时有：</p>
 <ul>
-<li>为了看周迅，去看了剧版《红高粱》，日剧《母亲》的改编《不完美的她》（可惜是烂剧），还有电影《苏州河》。</li>
-<li>五月的时候在北京没有看成话剧《恋爱的犀牛》，于是把当年<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1ct411k7Vj?spm_id_from=333.337.search-card.all.click">在高中看的话剧社版</a>，还有<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Ku411f7Vy?spm_id_from=333.337.search-card.all.click">段奕宏郝蕾版</a>的都刷了几遍。</li>
-<li>还有陪老母亲看的《康熙王朝》，童年回忆了，虽然现在看感觉剧本挺一般，但是演员演技都真不错。</li>
+<li>如果 LP 的 optimal solution 恰好是个 integer solution 那么也一定是
+IP 的 optimal solution；</li>
+<li>LP 的 optimal cost 一定比 IP 的 optimal cost 更大；</li>
+<li>如果 <span class="math inline">\(c\)</span> 的所有分量也是整数，则将
+LP 的 optimal solution 向下取整得到的解也在 feasible set 里，而且至少比
+IP 的 optimal cost 更大（因为 round 之后的结果未必是 <span class="math inline">\(0,1\)</span> 取值的，不一定是 IP 的解）。</li>
 </ul>
-<h1 id="码">码</h1>
+<h2 id="bound-and-branch">Bound and Branch</h2>
+<p>本质上就是，利用 relaxed linear programming 来寻找一组 optimal
+solution（一般用 simplex method）<span class="math inline">\(x=
+(x_1,x_2,\cdots,x_n)\)</span>，其中会有若干个是非整数解，记为 <span class="math inline">\(x_{m1},x_{m2},\cdots,x_{mk}\)</span>。此时可以对每个
+<span class="math inline">\(x_{mi}\)</span> 是向上 round 还是向下 round
+做一个分割，就回到了 seperating hyperplane theorem。这样我们就得到了一棵
+binary
+tree，它的每一组分叉都多加了一个条件，解出所有分叉上点的解即可。</p>
+<p>来个示意图，我也不知道为什么这个图在书上就是颈椎病图，凑合看吧（</p>
+<p><img src="https://s2.loli.net/2023/11/07/s3LfDpAbhGFmCj8.png" alt="tree.png"></p>
+<p>某种程度上来说和 ellipsoid method
+非常相似，都是在原条件的基础上继续用 cutting plane
+加条件然后继续往下解。所以说需要考虑的问题也是相似的，也即算法何时终止、time
+usage 如何、这棵树上的 optimal solution 是否就是真正的 optimal
+solution（只是在对每个非整数变量做
+round，听起来不是特别靠谱）。特别地，还有树上所有的分支应该以什么样的顺序求解才最优、能否中途去掉一些
+inactive
+的分支来保证计算量最小、将这棵二叉树上所有的分支解出来之后获得的解是否能满足
+<span class="math inline">\(0-1\)</span> problem。</p>
 <ul>
-<li>带了软院程设教材回家，重刷 C/C++
-的过程中感觉自己真的菜。其实那是一篇没有写完就弃坑了的博客来着...于是打算退了下学期的数据结构，仍然怀疑自己不适合、貌似也不是特别喜欢干这个。
+<li><p>首先观察到所有的 <span class="math inline">\(c_i\)</span>
+都是正的（如果不是正的请把 <span class="math inline">\(x_i\)</span> 换成
+<span class="math inline">\((1-y_i)\)</span>），所以可以用 dual problem
+来解 <del>但总觉得没啥必要</del></p></li>
+<li><p>在计算的过程中，如果已经有某个 subproblem 得到了 integer solution
+和相应的 optimal cost <span class="math inline">\(c^*\)</span> (rounded
+down)，则如果在其他 active subproblem with fractional solution
+中得到了更小的 optimal cost <span class="math inline">\(c \leq
+c^*\)</span>，则说明无论如何分划，这一 active subproblem
+所对应的平面区域上都不可能找到 optimal cost，直接将其置为 inactive
+即可。</p>
+<p>这也是 bound and branch 中 bound 的来源。</p></li>
+<li><p>没写完呢，别急</p></li>
+</ul>
+<p>最后得到的 algorithm 大致是：</p>
+<ol type="1">
+<li>Solve the linear relaxation of the problem. If the solution is
+integer, then we are done. Otherwise create two new subproblems by
+branching on a fractional variable.</li>
+<li>A subproblem is not active when any of the following occurs:
 <ul>
-<li>那我应该干点什么呢？</li>
+<li>You used the subproblem to branch on</li>
+<li>All variables in the solution are integer</li>
+<li>The subproblem is infeasible</li>
+<li>You can fathom the subproblem by a bounding argument</li>
 </ul></li>
-<li>参加了 SAST 暑培的 AI
-Track，了解了一点神经网络的知识，为此还重学了一下 Python，刷了《Python
-Crash Course》，收获良多。之前的博客写到过。《DS
-Tutorial》翻了一部分，没事就看两眼。所以，或许努努力还可以成为数据科学家？（x</li>
-<li>有点担心下学期的统辅课和数值分析实验，浅看了一下 R
-的文档，大概可能也许是会了。MATLAB
-还没动，之前答应好同学说暑假去了解一下数学建模，寒假完打美赛，也咕了。</li>
-<li>说到建模比赛，本来是<del>为了奖金</del>想参加九月的高教社建模比赛的。结果一查获奖名单，好几百个一等奖和好几百个二等奖里，每年就两三个华子的队伍。于是开始怀疑<del>参加了恐怕会成为人生污点</del>，在这方面也打不过专门准备这个比赛的学校，遂作罢。</li>
-</ul>
-<h1 id="数学">数学</h1>
-<ul>
-<li><p>初概要来了
-PPT，看了一点感觉不难就没下文了。统推在后八周，需要前置，所以彻底没看。</p></li>
-<li><p>数值分析看了两章，总感觉自学就有点人肉计算器，不知道上课会怎么讲，实验怎么搞，打算等开学。（对华子的教学水平抱有最后的信心</p></li>
-<li><p>抽代看的最多，群看完了环开了头，不过看的是复旦姚慕生，习题很水，翻译翻得我怀疑人生，还没有索引。比如一上来的么元，懂了，断么九（这个“么”在
-QQ 的聊天字体里还挺像“幺”的，笑死。</p></li>
-<li><p>ODE
-没选数学系的，两学分的课权当辅助数值分析了，问题不大。</p></li>
-<li><p>本来想退了数据结构换成离散的，但又觉得冲不动了，于是打算换个通识课。离散正好有未央计划的网课，大不了之后去水个绩点。</p></li>
-</ul>
-<p>总结：基本没学，不负责任地把一切交给学期中的自己。</p>
-<p>其实也一直在纠结，比如我毫无分析基础，微积分摆烂了，有没有必要补一下数分？然后又想茶园也就是上了微积分线代就开抽代了，想来问题不大。读抽代的时候感觉它在骂我之前学的竞赛和代数都是
-trivial 情况，有被骂到。然后还去翻了翻以前的竞赛笔记，上 <a target="_blank" rel="noopener" href="https://artofproblemsolving.com/">AOPS</a>
-看了一眼，发现古早的时候我的用户名并没有那么整整齐齐地叫
-“驰雨Chiyuru”，可惜改不了了。给自己的账号补了补个人简介，回了一封高二时候发出去的关于
-VMO 题目私信的回复（</p>
-<h1 id="发呆摸鱼和杂项">发呆摸鱼和杂项</h1>
-<ul>
-<li>反复调整选课策略，比如思考到最后决定退掉基础拓扑学（浪费了任选一志愿），灵机一动打算补退选加塞一门经管学院的社科通识《工程经济学》（我的必修是土木系的工程经济学，想来差别不会巨大，可以摸鱼），数据结构也想退掉了。还在犹豫离散、ODE
-二选一的话要选谁。试了试选北大课，意料之中地失败了，下学期再来吧.jpg</li>
-<li>听歌，打了几次音游和
-FGO，歌单加了十几首歌。闭社个人页面里的“最近爱听”更新速度总是追不上我换歌的速度。</li>
-<li>和朋友们一起写了 Sharygin
-2022，在此之前还研究了一下下学期的物理实验。</li>
-<li>在想怎么做
-SRT，现有的院系里的几个朋友在这方面靠不太住，我自己也立不出项，坐等报名。另外就是进实验室打工的问题，打算上几节课之后约
-OOH
-和初概的老师聊聊，或者去找抽代老师聊聊？但我本人并不是学纯数的料就是了（</li>
-<li>玩了玩 thuservice 里的东西，给自己开了个闭社校友站的号。发现了 <a target="_blank" rel="noopener" href="https://rekcarc-tsc-uht.readthedocs.io/en/latest/index.html">THU-CST-Cracker</a>，才知道原来高代选讲是贵系必修，难怪上学期班里那么多贵系的，我还以为都是来凑热闹的。这样的话会不会其实有很多人和我一样，微积分
-A2 拿 B+，但是高代选拿 A 的呢ww。</li>
-</ul>
-<h1 id="突然想起来还有个夏季小学期">突然想起来还有个夏季小学期</h1>
-<ul>
-<li>没报程设是我的失误，不过反正我也不是第一回失误了。</li>
-<li>逻辑讲座上得很开心。</li>
-<li>制图无疑要喜提 3.6，但是不 3.3 就是大好事。</li>
-<li>毛概不至于 F。</li>
-<li>认识实习在家/在高铁上/在寝室通过腾讯会议看别人上工地，爽死。虽然周末就要交两份报告了，但我还没开始也不知道怎么开始，摆烂。</li>
-</ul>
-<p>暑期学期绩点好像肯定会有点低，不过这只是 GPA
-下行的开始，习惯就好。</p>
-<h1 id="后记爬回学校">后记·爬回学校</h1>
-<p>回学校收拾完寝室的第一件事，是验证 GitHub 学生身份（</p>
-<p>前前后后被 Reject 了近十次，理由分别有：</p>
-<ul>
-<li>开了梯子所以 ip 地址不在学校所在地</li>
-<li>人在上海所以 ip 地址不在学校所在地</li>
-<li>校园卡上的学校英文名用前置摄像头拍出来太糊，识别不了</li>
-<li>虽然有直接上传高清学生证照片而不是当场拍照的选项，但是传了也会被
-reject，建议当场拍照（</li>
-<li>虽然录取通知书上的 Tsinghua University
-字够大，但是在校生不能用录取通知书认证（</li>
-</ul>
-<p>最后的解决方案是把录取通知书垫在校园卡后面拍了个照，秒过，什么人工智障（</p>
-<p>然后到学校一天多了还没去注册，差点忘记这事了。</p>
+<li>Choose an active subproblem and branch on a fractional variable.
+Repeat until there are no active subproblems.</li>
+</ol>
 
     </div>
 
@@ -371,7 +404,7 @@ reject，建议当场拍照（</li>
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://chiyuru.github.io/2022/09/01/lying-flat-in-holiday/" title="躺平记——暑假特别篇">https://chiyuru.github.io/2022/09/01/lying-flat-in-holiday/</a>
+    <a href="https://chiyuru.github.io/2023/11/07/Integer-Programming/" title="整数规划">https://chiyuru.github.io/2023/11/07/Integer-Programming/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -401,8 +434,7 @@ reject，建议当场拍照（</li>
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E7%A2%8E%E7%A2%8E%E5%BF%B5/" rel="tag"># 碎碎念</a>
-              <a href="/tags/%E8%BA%BA%E5%B9%B3/" rel="tag"># 躺平</a>
+              <a href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag"># 数学</a>
           </div>
 
         
@@ -411,13 +443,10 @@ reject，建议当场拍照（</li>
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2022/08/17/2022-photos-and-fragments/" rel="prev" title="用相册细碎地回忆一下在 THU 的第一年">
-      <i class="fa fa-chevron-left"></i> 用相册细碎地回忆一下在 THU 的第一年
+    <a href="/2023/11/01/Diary-2023-11/" rel="prev" title="日记·篇十五·23年11月">
+      <i class="fa fa-chevron-left"></i> 日记·篇十五·23年11月
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2022/09/07/Diary-2022-09/" rel="next" title="日记·篇一·22年9月">
-      日记·篇一·22年9月 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -483,7 +512,8 @@ reject，建议当场拍照（</li>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%A0%E4%B8%8D%E4%BC%9A%E6%91%86%E7%83%82%E4%BA%86%E4%B8%80%E4%B8%AA%E6%9A%91%E5%81%87%E5%90%A7"><span class="nav-text">你不会摆烂了一个暑假吧？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BA%BA%E5%B9%B3"><span class="nav-text">躺平</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%87%BA%E6%B8%B8"><span class="nav-text">出游</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AF%BB%E9%97%B2%E4%B9%A6"><span class="nav-text">读闲书</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%9C%8B%E5%89%A7"><span class="nav-text">看剧</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A0%81"><span class="nav-text">码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E5%AD%A6"><span class="nav-text">数学</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%91%E5%91%86%E6%91%B8%E9%B1%BC%E5%92%8C%E6%9D%82%E9%A1%B9"><span class="nav-text">发呆摸鱼和杂项</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AA%81%E7%84%B6%E6%83%B3%E8%B5%B7%E6%9D%A5%E8%BF%98%E6%9C%89%E4%B8%AA%E5%A4%8F%E5%AD%A3%E5%B0%8F%E5%AD%A6%E6%9C%9F"><span class="nav-text">突然想起来还有个夏季小学期</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%90%8E%E8%AE%B0%E7%88%AC%E5%9B%9E%E5%AD%A6%E6%A0%A1"><span class="nav-text">后记·爬回学校</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#standard-settings"><span class="nav-text">Standard Settings</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#standardize-to-knapsack-problem"><span class="nav-text">Standardize to Knapsack
+Problem</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#solving-integer-program"><span class="nav-text">Solving Integer Program</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#relaxed-linear-programming"><span class="nav-text">Relaxed Linear Programming</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bound-and-branch"><span class="nav-text">Bound and Branch</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
