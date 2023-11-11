@@ -6,7 +6,7 @@
   <link href="https://chiyuru.github.io/atom.xml" rel="self"/>
   
   <link href="https://chiyuru.github.io/"/>
-  <updated>2023-11-08T01:26:12.339Z</updated>
+  <updated>2023-11-11T21:14:48.673Z</updated>
   <id>https://chiyuru.github.io/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>请为 maxcut problem 找一个 polynomial time solution</title>
+    <link href="https://chiyuru.github.io/2023/11/11/The-Max-Cut-Problem/"/>
+    <id>https://chiyuru.github.io/2023/11/11/The-Max-Cut-Problem/</id>
+    <published>2023-11-10T17:57:10.000Z</published>
+    <updated>2023-11-11T21:14:48.673Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;就是说我这学期为什么会学到这么个东西呢（挠头&lt;/p&gt;
+&lt;p&gt;这什么破标题（&lt;/p&gt;
+&lt;p&gt;包含一些当初做 Intro to Optimization Theory Lecture 5 的 scribing
+的时候想加又没加的私货，主要参考这份 &lt;a href=&quot;https://www.iitgoa.ac.in/~sreejithav/misc/maxcut.pdf&quot;&gt;note&lt;/a&gt;
+和另一份
+slide，但我好像找不到了。虽然也很粗浅但超出了课堂讲授的和期中涉及的范围，之前本来就有一份草稿，整理出来图一乐。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="数学" scheme="https://chiyuru.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
+    
+  </entry>
   
   <entry>
     <title>整整整整个活儿啊不是整数规划</title>
@@ -41,7 +63,7 @@ Mathematical Programming&lt;/a&gt;》Chapter 9,10 和一份相应的 &lt;a href=
     <link href="https://chiyuru.github.io/2023/11/01/Diary-2023-11/"/>
     <id>https://chiyuru.github.io/2023/11/01/Diary-2023-11/</id>
     <published>2023-10-31T18:11:13.000Z</published>
-    <updated>2023-11-11T17:02:17.753Z</updated>
+    <updated>2023-11-11T18:31:03.305Z</updated>
     
     
     <summary type="html">&lt;p&gt;别来暖气别来暖气别来暖气别来暖气别来暖气别来暖气（悲&lt;/p&gt;</summary>
@@ -310,11 +332,11 @@ bonus&lt;/del&gt;（确信&lt;/p&gt;
     
     
     
+    <category term="课程实录" scheme="https://chiyuru.github.io/tags/%E8%AF%BE%E7%A8%8B%E5%AE%9E%E5%BD%95/"/>
+    
     <category term="数学" scheme="https://chiyuru.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
     
     <category term="统计" scheme="https://chiyuru.github.io/tags/%E7%BB%9F%E8%AE%A1/"/>
-    
-    <category term="课程实录" scheme="https://chiyuru.github.io/tags/%E8%AF%BE%E7%A8%8B%E5%AE%9E%E5%BD%95/"/>
     
   </entry>
   
@@ -376,37 +398,11 @@ tag 下面几乎全是统计，成何体统&lt;/del&gt;。&lt;/p&gt;
     
     
     
-    <category term="数学" scheme="https://chiyuru.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
-    
-    <category term="统计" scheme="https://chiyuru.github.io/tags/%E7%BB%9F%E8%AE%A1/"/>
-    
     <category term="课程实录" scheme="https://chiyuru.github.io/tags/%E8%AF%BE%E7%A8%8B%E5%AE%9E%E5%BD%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>还就那个线性回归分析</title>
-    <link href="https://chiyuru.github.io/2023/02/21/Linear-Regression-Analysis/"/>
-    <id>https://chiyuru.github.io/2023/02/21/Linear-Regression-Analysis/</id>
-    <published>2023-02-21T11:12:18.000Z</published>
-    <updated>2023-06-06T17:45:26.080Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;本来真没打算连载这个，结果这课居然把课程笔记算成百分制里面的 10
-分（，那就写罢。&lt;/p&gt;
-&lt;p&gt;有参考 &lt;a href=&quot;https://blog.vicayang.cc/tags/statistics/&quot;&gt;Vica Yang
-的统辅笔记&lt;/a&gt;，&lt;a href=&quot;https://www.zhihu.com/column/c_1332050772843511808&quot;&gt;JhZhang
-的课堂笔记&lt;/a&gt;和 &lt;a href=&quot;https://v1ncent19.github.io/SummaryNotes/&quot;&gt;V1ncent19
-的统辅笔记&lt;/a&gt;，如有引用均会在文中注明，在此向前辈表示感谢。&lt;/p&gt;</summary>
-    
-    
-    
     
     <category term="数学" scheme="https://chiyuru.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
     
     <category term="统计" scheme="https://chiyuru.github.io/tags/%E7%BB%9F%E8%AE%A1/"/>
-    
-    <category term="课程实录" scheme="https://chiyuru.github.io/tags/%E8%AF%BE%E7%A8%8B%E5%AE%9E%E5%BD%95/"/>
     
   </entry>
   
