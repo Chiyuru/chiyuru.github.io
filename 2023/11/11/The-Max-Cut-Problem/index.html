@@ -28,7 +28,7 @@
 <meta property="og:description" content="就是说我这学期为什么会学到这么个东西呢（挠头 这什么破标题（ 包含一些当初做 Intro to Optimization Theory Lecture 5 的 scribing 的时候想加又没加的私货，主要参考这份 note 和另一份 slide，但我好像找不到了。虽然也很粗浅但超出了课堂讲授的和期中涉及的范围，之前本来就有一份草稿，整理出来图一乐。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-11-10T17:57:10.000Z">
-<meta property="article:modified_time" content="2023-11-11T21:14:48.673Z">
+<meta property="article:modified_time" content="2023-11-12T05:21:04.485Z">
 <meta property="article:author" content="驰雨Chiyuru">
 <meta property="article:tag" content="数学">
 <meta name="twitter:card" content="summary">
@@ -221,7 +221,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-11-12 05:14:48" itemprop="dateModified" datetime="2023-11-12T05:14:48+08:00">2023-11-12</time>
+                <time title="修改时间：2023-11-12 13:21:04" itemprop="dateModified" datetime="2023-11-12T13:21:04+08:00">2023-11-12</time>
               </span>
 
           
@@ -363,12 +363,12 @@ for any } i =1,2,\cdots,n \end{aligned}\]</span></p>
 \{+1,-1\}\)</span> 这一整数规划的条件舍弃了，改为 <span class="math inline">\(\textbf x_i \in \mathbb S^{n-1}\)</span>。</p>
 <p>称这一问题是 maxcut 问题的 relaxation，顾名思义放松了一些条件。</p>
 <p>因此，记 step 4 中问题的 optimal cost 是 <span class="math inline">\(\mathrm{Maxcut}^0(S)\)</span>，原 maxcut problem
-的 optimal cost 记为 <span class="math inline">\(\mathrm{Maxcut}(S)\)</span>，于是有</p>
+的 optimal cost 记为 <span class="math inline">\(\mathrm{OPT}(G)\)</span>，于是有</p>
 <p><span class="math display">\[\mathrm{Maxcut^0(S)} \geq
-\mathrm{Maxcut}(S),\]</span></p>
+\mathrm{OPT}(G),\]</span></p>
 <p>也就是说如果找到一个上述问题的 <span class="math inline">\(\alpha\)</span>-approximation <span class="math inline">\(W^0(S)\)</span>也就有了原问题的 <span class="math inline">\(\alpha\)</span>-approximation，这是因为</p>
 <p><span class="math display">\[W^0(S) \geq \alpha \
-\mathrm{Maxcut^0(S)} \geq \alpha \ \mathrm{Maxcut}(S).\]</span></p>
+\mathrm{Maxcut^0(S)} \geq \alpha \ \mathrm{OPT}(G).\]</span></p>
 <h2 id="step-5">Step 5</h2>
 <p>通过在上述问题中取 <span class="math inline">\(X_{ij} = \textbf x_i
 ^T \textbf x_j\)</span> 可以得到一个新的更抽象化的优化问题：</p>
@@ -409,8 +409,29 @@ R^n\)</span> 上通过估算内积得到的。</p>
 <p>在 maxcut problem 中有一个著名的 <span class="math inline">\(0.878\)</span>-approximation，也即已经证明了</p>
 <p><span class="math display">\[E(W(S)) \geq 0.878 \mathrm \
 \mathrm{OPT}(G)\]</span></p>
-<p>不详述证明了因为我也不是很会（，只是讨论一下为什么这个看起来有点怪的
-approximation 参数值是重要的，以及回收标题。</p>
+<p><del>不详述证明了因为我也不是很会（</del>，也不是不会因为写出来其实很简洁，下面给出了证明，但这个东西是我一边写
+cheatsheet 一边肝到五点多写完的所以当时是实在没心情了（x</p>
+<p>然后讨论一下为什么这个看起来有点怪的 approximation
+参数值是重要的，以及回收标题。</p>
+<h2 id="proof">Proof</h2>
+<p>前面已经说明了所有的 <span class="math inline">\(\textbf x_i\)</span>
+都在单位球上，当它们都已知时以下给出一个构造 cut
+的手段并计算其期望。</p>
+<p>任过单位球作一个割平面 <span class="math inline">\(\{\textbf u^T
+\textbf x =0 \mid \textbf x \in \mathbb S^{n-1}\}\)</span>，对于所有
+<span class="math inline">\(\textbf x_i \in \{\textbf u ^Tx &gt;0\} \cap
+\mathbb S^{n-1}\)</span> 取 <span class="math inline">\(i\in
+S\)</span>，其余放入 <span class="math inline">\(T\)</span>。于是一对
+<span class="math inline">\((i,j) \in S \times T\)</span>
+当且仅当割平面穿过 <span class="math inline">\(\textbf x_i,\textbf
+x_j\)</span> 的夹角。这一分割得到的 sum of weight 的期望是：</p>
+<p><span class="math display">\[E(W(S)) = \sum_{i,j \in V}
+w_{ij}P((i,j)\in S\times T) = \sum_{i,j \in V}w_{ij} \left(\frac{\arccos
+\textbf x_i^T \textbf x_j}{\pi}\right)\]</span></p>
+<p>和 symmetric semi-definite matrix 的结果 <span class="math inline">\(\mathrm{Maxcut} ^0(S) = \frac 1 2 \sum_{i,j \in V}
+w_{ij}(1-\textbf x_i^T\textbf x_j)\)</span> 相比，考虑函数 <span class="math inline">\(\arccos x\)</span> 和 <span class="math inline">\(\frac 1 2(1-x)\)</span> 的最小比值是 <span class="math inline">\(0.878\)</span>，则有</p>
+<p><span class="math display">\[E(W(S)) \geq 0.878 \
+\mathrm{Maxcut}^0(S) \geq 0.878 \ \mathrm{OPT}(G).\]</span></p>
 <h2 id="why-is-0.878-important">Why is 0.878 important?</h2>
 <p>首先考虑一个 maxcut problem 的 decision version：对于给定的图 <span class="math inline">\(G=(V,E)\)</span> 和给定的 <span class="math inline">\(k&gt;0\)</span>，能否找到一个 sum of weight <span class="math inline">\(W(S) \geq k\)</span> 的 cut <span class="math inline">\(S\)</span>？这个问题 NP-complete，只要把所有的 cut
 枚举出来然后逐个验证 sum of weight 是否大于等于 <span class="math inline">\(k\)</span> 即可。</p>
@@ -568,7 +589,7 @@ algorithm。比较强的结果是 <span class="math inline">\(\varepsilon &gt;
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
           <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#construction"><span class="nav-text">Construction</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#max-cut-problem"><span class="nav-text">Max Cut Problem</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#notations"><span class="nav-text">Notations</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#approximate-algorithm"><span class="nav-text">1&#x2F;2-approximate Algorithm</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#transformation-into-a-convex-problem"><span class="nav-text">Transformation into a
-Convex Problem</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#step-1"><span class="nav-text">Step 1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#step-2"><span class="nav-text">Step 2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#step-3"><span class="nav-text">Step 3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#step-4"><span class="nav-text">Step 4</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#step-5"><span class="nav-text">Step 5</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#remark"><span class="nav-text">Remark</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#approximation"><span class="nav-text">0.878-approximation</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#why-is-0.878-important"><span class="nav-text">Why is 0.878 important?</span></a></li></ol></li></ol></div>
+Convex Problem</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#step-1"><span class="nav-text">Step 1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#step-2"><span class="nav-text">Step 2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#step-3"><span class="nav-text">Step 3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#step-4"><span class="nav-text">Step 4</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#step-5"><span class="nav-text">Step 5</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#remark"><span class="nav-text">Remark</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#approximation"><span class="nav-text">0.878-approximation</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#proof"><span class="nav-text">Proof</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#why-is-0.878-important"><span class="nav-text">Why is 0.878 important?</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
