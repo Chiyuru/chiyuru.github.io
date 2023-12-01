@@ -6,7 +6,7 @@
   <link href="https://chiyuru.github.io/atom.xml" rel="self"/>
   
   <link href="https://chiyuru.github.io/"/>
-  <updated>2023-11-13T16:21:09.636Z</updated>
+  <updated>2023-12-01T16:42:30.901Z</updated>
   <id>https://chiyuru.github.io/</id>
   
   <author>
@@ -15,6 +15,23 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>日记·篇十六·23年12月</title>
+    <link href="https://chiyuru.github.io/2023/12/01/Diary-2023-12/"/>
+    <id>https://chiyuru.github.io/2023/12/01/Diary-2023-12/</id>
+    <published>2023-12-01T04:19:54.000Z</published>
+    <updated>2023-12-01T16:42:30.901Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;​&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="碎碎念" scheme="https://chiyuru.github.io/tags/%E7%A2%8E%E7%A2%8E%E5%BF%B5/"/>
+    
+  </entry>
   
   <entry>
     <title>请为 max cut problem 找一个 polynomial time solution</title>
@@ -332,11 +349,11 @@ bonus&lt;/del&gt;（确信&lt;/p&gt;
     
     
     
-    <category term="课程实录" scheme="https://chiyuru.github.io/tags/%E8%AF%BE%E7%A8%8B%E5%AE%9E%E5%BD%95/"/>
-    
     <category term="数学" scheme="https://chiyuru.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
     
     <category term="统计" scheme="https://chiyuru.github.io/tags/%E7%BB%9F%E8%AE%A1/"/>
+    
+    <category term="课程实录" scheme="https://chiyuru.github.io/tags/%E8%AF%BE%E7%A8%8B%E5%AE%9E%E5%BD%95/"/>
     
   </entry>
   
@@ -380,29 +397,6 @@ tag 下面几乎全是统计，成何体统&lt;/del&gt;。&lt;/p&gt;
     
     
     <category term="碎碎念" scheme="https://chiyuru.github.io/tags/%E7%A2%8E%E7%A2%8E%E5%BF%B5/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>多元问题对我来说太难了，但是多元统计分析</title>
-    <link href="https://chiyuru.github.io/2023/02/25/Multivariate-Statistical-Analysis/"/>
-    <id>https://chiyuru.github.io/2023/02/25/Multivariate-Statistical-Analysis/</id>
-    <published>2023-02-25T01:36:52.000Z</published>
-    <updated>2023-04-26T16:05:18.686Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;既然线性回归都写了，怎么能没有多元统计呢（？&lt;/p&gt;
-&lt;p&gt;其实是在课上同步写笔记体验很不错，dwl
-老师的风格一如既往的稳健，课堂节奏正好。在课上敲笔记总比摸鱼好。&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="课程实录" scheme="https://chiyuru.github.io/tags/%E8%AF%BE%E7%A8%8B%E5%AE%9E%E5%BD%95/"/>
-    
-    <category term="数学" scheme="https://chiyuru.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
-    
-    <category term="统计" scheme="https://chiyuru.github.io/tags/%E7%BB%9F%E8%AE%A1/"/>
     
   </entry>
   
