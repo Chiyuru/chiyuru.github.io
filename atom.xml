@@ -6,7 +6,7 @@
   <link href="https://chiyuru.github.io/atom.xml" rel="self"/>
   
   <link href="https://chiyuru.github.io/"/>
-  <updated>2023-12-06T11:24:13.681Z</updated>
+  <updated>2023-12-07T09:00:07.918Z</updated>
   <id>https://chiyuru.github.io/</id>
   
   <author>
@@ -17,11 +17,33 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>别惦记你那 pivot rule 了</title>
+    <link href="https://chiyuru.github.io/2023/12/06/Hypothesis_Testing_and_Statistical_Decision_Theory/"/>
+    <id>https://chiyuru.github.io/2023/12/06/Hypothesis_Testing_and_Statistical_Decision_Theory/</id>
+    <published>2023-12-06T00:16:45.000Z</published>
+    <updated>2023-12-07T09:00:07.918Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;去年秋季学期的最后四分之一学假设检验的时候我就很疑惑，人类要怎么才能记住这些规则，这有什么道理吗（&lt;/p&gt;
+&lt;p&gt;于是最后在作业期中期末占比约各三分之一、期中考了 94、wjd
+老师海底捞调分的情况下考了个 A-（，就挺耻辱的。&lt;/p&gt;
+&lt;p&gt;时隔一年学了 statistical decision theory 之后我逐渐理解一切（&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="数学" scheme="https://chiyuru.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
+    
+    <category term="统计" scheme="https://chiyuru.github.io/tags/%E7%BB%9F%E8%AE%A1/"/>
+    
+  </entry>
+  
+  <entry>
     <title>日记·篇十六·23年12月</title>
     <link href="https://chiyuru.github.io/2023/12/01/Diary-2023-12/"/>
     <id>https://chiyuru.github.io/2023/12/01/Diary-2023-12/</id>
     <published>2023-12-01T04:19:54.000Z</published>
-    <updated>2023-12-06T11:24:13.681Z</updated>
+    <updated>2023-12-07T16:02:59.945Z</updated>
     
     
     <summary type="html">&lt;p&gt;喵喵喵喵喵喵喵喵喵（&lt;/p&gt;
@@ -350,11 +372,11 @@ bonus&lt;/del&gt;（确信&lt;/p&gt;
     
     
     
-    <category term="课程实录" scheme="https://chiyuru.github.io/tags/%E8%AF%BE%E7%A8%8B%E5%AE%9E%E5%BD%95/"/>
-    
     <category term="数学" scheme="https://chiyuru.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
     
     <category term="统计" scheme="https://chiyuru.github.io/tags/%E7%BB%9F%E8%AE%A1/"/>
+    
+    <category term="课程实录" scheme="https://chiyuru.github.io/tags/%E8%AF%BE%E7%A8%8B%E5%AE%9E%E5%BD%95/"/>
     
   </entry>
   
@@ -381,23 +403,6 @@ tag 下面几乎全是统计，成何体统&lt;/del&gt;。&lt;/p&gt;
     <category term="这里面看起来很好玩" scheme="https://chiyuru.github.io/tags/%E8%BF%99%E9%87%8C%E9%9D%A2%E7%9C%8B%E8%B5%B7%E6%9D%A5%E5%BE%88%E5%A5%BD%E7%8E%A9/"/>
     
     <category term="概率" scheme="https://chiyuru.github.io/tags/%E6%A6%82%E7%8E%87/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>日记·篇七·23年3月</title>
-    <link href="https://chiyuru.github.io/2023/03/01/Diary-2023-03/"/>
-    <id>https://chiyuru.github.io/2023/03/01/Diary-2023-03/</id>
-    <published>2023-02-28T23:54:35.000Z</published>
-    <updated>2023-03-31T15:50:04.141Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;某些人学都学不完了，还有空写日记？（&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="碎碎念" scheme="https://chiyuru.github.io/tags/%E7%A2%8E%E7%A2%8E%E5%BF%B5/"/>
     
   </entry>
   

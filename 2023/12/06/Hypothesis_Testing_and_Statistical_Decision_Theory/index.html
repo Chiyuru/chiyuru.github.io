@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"chiyuru.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="去年秋季学期的最后四分之一学假设检验的时候我就很疑惑，人类要怎么才能记住这些规则，这有什么道理吗（ 于是最后在作业期中期末占比约各三分之一、期中考了 94、wjd 老师海底捞调分的情况下考了个 A-（，就挺耻辱的。 时隔一年学了 statistical decision theory 之后我逐渐理解一切（">
+<meta property="og:type" content="article">
+<meta property="og:title" content="别惦记你那 pivot rule 了">
+<meta property="og:url" content="https://chiyuru.github.io/2023/12/06/Hypothesis_Testing_and_Statistical_Decision_Theory/index.html">
+<meta property="og:site_name" content="『姑妄言之姑妄听之』">
+<meta property="og:description" content="去年秋季学期的最后四分之一学假设检验的时候我就很疑惑，人类要怎么才能记住这些规则，这有什么道理吗（ 于是最后在作业期中期末占比约各三分之一、期中考了 94、wjd 老师海底捞调分的情况下考了个 A-（，就挺耻辱的。 时隔一年学了 statistical decision theory 之后我逐渐理解一切（">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-12-06T00:16:45.000Z">
+<meta property="article:modified_time" content="2023-12-07T09:00:07.918Z">
+<meta property="article:author" content="驰雨Chiyuru">
+<meta property="article:tag" content="数学">
+<meta property="article:tag" content="统计">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://chiyuru.github.io/2023/12/06/Hypothesis_Testing_and_Statistical_Decision_Theory/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>别惦记你那 pivot rule 了 | 『姑妄言之姑妄听之』</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="『姑妄言之姑妄听之』" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">『姑妄言之姑妄听之』</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-link">
+
+    <a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>链接</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://chiyuru.github.io/2023/12/06/Hypothesis_Testing_and_Statistical_Decision_Theory/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="驰雨Chiyuru">
+      <meta itemprop="description" content="おはよう、朝だよ">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="『姑妄言之姑妄听之』">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          别惦记你那 pivot rule 了
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-12-06 08:16:45" itemprop="dateCreated datePublished" datetime="2023-12-06T08:16:45+08:00">2023-12-06</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-12-07 17:00:07" itemprop="dateModified" datetime="2023-12-07T17:00:07+08:00">2023-12-07</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>去年秋季学期的最后四分之一学假设检验的时候我就很疑惑，人类要怎么才能记住这些规则，这有什么道理吗（</p>
+<p>于是最后在作业期中期末占比约各三分之一、期中考了 94、wjd
+老师海底捞调分的情况下考了个 A-（，就挺耻辱的。</p>
+<p>时隔一年学了 statistical decision theory 之后我逐渐理解一切（</p>
+<span id="more"></span>
+<p>非常短的一集，我随便喵两句。</p>
+<h1 id="statistical-decision-theory">Statistical Decision Theory</h1>
+<p>多快好省的 decision theory 复习。</p>
+<h2 id="nonrandomized-decision">Nonrandomized Decision</h2>
+<ul>
+<li><p>Let <span class="math inline">\(X\)</span> be a sample from a
+population <span class="math inline">\(P \in \mathcal P\)</span>. A
+statistical decision theory is an action that we take after observing
+<span class="math inline">\(X\)</span>, for example, a conclusion about
+<span class="math inline">\(P\)</span> or a characteristic about <span class="math inline">\(P\)</span> according to the observation. We use
+<span class="math inline">\(\mathbb A\)</span> to denote the set of
+allowable actions, and let <span class="math inline">\(\mathcal
+F_{\mathbb A}\)</span> be a <span class="math inline">\(\sigma\)</span>-field on <span class="math inline">\(\mathbb A\)</span>. Then the measurable space
+<span class="math inline">\((\mathbb A, \mathcal F_{\mathbb A})\)</span>
+is called the action space.</p></li>
+<li><p>Let <span class="math inline">\(\mathcal X\)</span> be the range
+of <span class="math inline">\(X\)</span> and <span class="math inline">\(\mathcal F_{\mathcal X}\)</span> be a <span class="math inline">\(\sigma\)</span>-field on <span class="math inline">\(\mathcal X\)</span>. A decision rule is a
+measurable function (actually a statistic) <span class="math inline">\(T\)</span> from <span class="math inline">\((\mathcal X, \mathcal F_{\mathcal X})\)</span> to
+<span class="math inline">\((\mathbb A, \mathcal F_{\mathbb
+A})\)</span>. If a decision rule <span class="math inline">\(T\)</span>
+is chosen, then we take the action <span class="math inline">\(T(X)\)</span> whence <span class="math inline">\(X\)</span> is observed. That's where the name
+"decision rule" comes from.</p></li>
+<li><p>In statistical decision theory, we set a criterion using a loss
+function <span class="math inline">\(L\)</span>, which is a function
+from <span class="math inline">\(\mathcal P \times \mathbb A\)</span> to
+<span class="math inline">\([0, +\infty)\)</span>, and is Borel on <span class="math inline">\((\mathbb A, \mathcal F_{\mathbb A})\)</span> for
+each fixed <span class="math inline">\(P \in \mathcal P\)</span>. If
+<span class="math inline">\(X=x\)</span> is observed and our decision
+rule is <span class="math inline">\(T(X)\)</span>, then our "loss" in
+making the decision <span class="math inline">\(T(X)\)</span> is <span class="math inline">\(L(P, T(x))\)</span>, which is still random
+according to <span class="math inline">\(P\)</span>.</p></li>
+<li><p>The average loss for the decision rule <span class="math inline">\(T\)</span>, which is called the risk of <span class="math inline">\(T\)</span>, is defined to be</p>
+<p><span class="math display">\[R_T(P) = E[L(P,T(X))] = \int_{\mathcal
+X} L(P, T(x)) dP_X(x).\]</span></p>
+<p>If the family <span class="math inline">\(\mathcal P\)</span> is a
+parameter family then the loss function and the risk can also be denoted
+as <span class="math inline">\(L(\theta, T(X))\)</span> and <span class="math inline">\(R_T(\theta)\)</span>.</p></li>
+</ul>
+<h2 id="randomized-decision">Randomized Decision</h2>
+<ul>
+<li><p>Sometimes it is more useful to consider the randomized decision
+rules. A randomized decision rule is a function <span class="math inline">\(\delta\)</span> on <span class="math inline">\(\mathcal X \times \mathcal F_{\mathbb A}\)</span>
+such that, for every <span class="math inline">\(A \in \mathcal
+F_{\mathbb A}\)</span>, <span class="math inline">\(\delta(\cdot,
+A)\)</span> is a Borel function and, for every <span class="math inline">\(x \in \mathcal X\)</span>, <span class="math inline">\(\delta(x, \cdot)\)</span> is a probability measure
+on <span class="math inline">\((\mathbb A, \mathcal F_{\mathbb
+A})\)</span>.</p>
+<p>The nonrandomized decision rule <span class="math inline">\(T\)</span> previously discussed can be viewed as a
+special randomized decision rule with <span class="math inline">\(\delta
+(x, \{a\}) = I_{\{a\}}(T(x)), a \in \mathbb A, x \in \mathcal
+X\)</span>.</p>
+<p>The loss function for a randomized rule <span class="math inline">\(\delta\)</span> is defined as <span class="math inline">\(L(P,\delta,x) = \int_{\mathbb A} L(P,a) d\delta
+(x,a)\)</span>, and the risk is then</p>
+<p><span class="math display">\[R_\delta(P) = E[L(P,\delta,X)] =
+\int_{\mathcal X} \int_{\mathbb A} L(P,a) d\delta (x,a)
+dP_X(x).\]</span></p></li>
+</ul>
+<h2 id="test-evaluation">Test Evaluation</h2>
+<ul>
+<li><p>A rule <span class="math inline">\(T_1(X)\)</span> is as good as
+<span class="math inline">\(T_2(X)\)</span> if and only if <span class="math inline">\(R_{T_1}(P) \leq R_{T_2}(P)\)</span> for any <span class="math inline">\(P \in \mathcal P\)</span>.</p>
+<p>A rule <span class="math inline">\(T_1(X)\)</span> is better than
+<span class="math inline">\(T_2(X)\)</span> if and only if <span class="math inline">\(R_{T_2}(P)\)</span> if and only if <span class="math inline">\(R_{T_1}(P) \leq R_{T_2}(P)\)</span> for any <span class="math inline">\(P \in \mathcal P\)</span>, and there exists at
+least one <span class="math inline">\(P \in \mathcal P\)</span> s.t.
+<span class="math inline">\(R_{T_1} (P) &lt; R_{T_2}(P)\)</span>.</p>
+<p>Two decision rules are equivalent if and only if <span class="math inline">\(R_{T_1}(P) = R_{T_2}(P)\)</span> holds for any
+<span class="math inline">\(P\in \mathcal P\)</span>.</p>
+<p>If there is a decision rule <span class="math inline">\(T^*\)</span>
+that is as good as any other rule in <span class="math inline">\(\mathfrak F\)</span>, a class of allowable
+decision rules, then <span class="math inline">\(T^*\)</span> is said to
+be <span class="math inline">\(\mathfrak F\)</span>-optimal (or optimal
+if <span class="math inline">\(\mathfrak F\)</span> contains all
+possible rules).</p></li>
+</ul>
+<h1 id="hypothesis-testing">Hypothesis Testing</h1>
+<h2 id="fundamental-settings-of-nonrandomized-testing">Fundamental
+Settings of Nonrandomized Testing</h2>
+<p>都见过但陌生又熟悉.jpg</p>
+<h3 id="hypothesis-testing-problem">Hypothesis Testing Problem</h3>
+<ul>
+<li><p>Let <span class="math inline">\(\mathcal P\)</span> be a family
+of distributions, <span class="math inline">\(\mathcal P_0 \subset
+P\)</span> and <span class="math inline">\(\mathcal P_1 = \mathcal P
+\setminus \mathcal P_0\)</span>. A hypothesis testing problem can be
+formulated as that of deciding which of the following two statements are
+true:</p>
+<p><span class="math display">\[H_0 : P \in  \mathcal P_1 \quad
+\text{versus} \quad H_1 : P \in \mathcal P_1\]</span></p></li>
+<li><p>The action space for this problem contains only two elements,
+i.e., <span class="math inline">\(\mathbb A = \{0,1\}\)</span>, where
+<span class="math inline">\(0\)</span> is the action of accepting <span class="math inline">\(H_0\)</span> and <span class="math inline">\(1\)</span> is the action of accepting <span class="math inline">\(H_1\)</span>. A decision rule is called a test,
+and must has the form <span class="math inline">\(T(X) =
+I_C(X)\)</span>, in which <span class="math inline">\(C \in \mathcal
+F_{\mathcal X}\)</span> is called the rejection region (because if <span class="math inline">\(X\in C\)</span> we take <span class="math inline">\(T(X) = 1\)</span>, i.e. reject <span class="math inline">\(H_0\)</span>).</p></li>
+</ul>
+<h3 id="loss-and-risk">Loss and Risk</h3>
+<ul>
+<li><p>A simple loss function for the problem is the <span class="math inline">\(0-1\)</span> loss: <span class="math inline">\(L(P,a)=0\)</span> if a correct decision is made
+and <span class="math inline">\(L(P,a)=1\)</span> otherwise. Under this
+loss, the risk is</p>
+<p><span class="math display">\[R_T(P) = \begin{cases}  P(T(X)=1) =
+P(X\in C)&amp; \quad P \in \mathcal P_0 \\ P(T(X)=0) = P(X \in C^c)
+&amp;\quad P \in \mathcal P_1 \end{cases} = P(X \in C) I_{\mathcal
+P_0}(P) + P(X \notin C)I_{\mathcal P_1}(P).\]</span></p></li>
+<li><p>There are two types of statistical errors we may commit:
+rejecting <span class="math inline">\(H_0\)</span> when <span class="math inline">\(H_0\)</span> is true (called the type I error) and
+accepting <span class="math inline">\(H_0\)</span> when <span class="math inline">\(H_0\)</span> is wrong (called the type II
+error).</p>
+<p>In statistical inference, a test <span class="math inline">\(T\)</span>, which is a statistic from <span class="math inline">\(\mathcal X\)</span> to <span class="math inline">\(\{0,1\}\)</span>, is assessed by the probabilities
+of making two types of errors (w.r.t. the <span class="math inline">\(0-1\)</span> loss function):</p>
+<p><span class="math display">\[\alpha_T(P) = P(T(X)=1) = P(X\in C)
+\quad P\in P_0\]</span></p>
+<p><span class="math display">\[1-\alpha_T(P) = P(T(X)=0) = P(X \notin
+C) \quad P \in \mathcal P_1\]</span></p>
+<p>These two error probabilities cannot be minimized or even bounded by
+a fixed <span class="math inline">\(\alpha \in (0,1)\)</span>
+simultaneouly when we have a fixed sample size.</p></li>
+</ul>
+<h3 id="how-to-reach-the-optimal-test">How to Reach the Optimal
+Test</h3>
+<ul>
+<li><p>A common approach to finding an optimal test is to assign a small
+bound <span class="math inline">\(\alpha\)</span> to one of the error
+probabilities (which will also leads to a small rejection region/), say,
+<span class="math inline">\(\alpha_T(P), P \in \mathcal P_0\)</span>,
+and then attempt to minimize the other one subject to</p>
+<p><span class="math display">\[\sup_{P \in \mathcal P_0} \alpha_T(P)
+\leq \alpha.\]</span></p>
+<p>The small bound <span class="math inline">\(\alpha\)</span> is called
+the level of significance, and the left side is called the size of the
+test <span class="math inline">\(T\)</span>.</p>
+<p>Actually we're using the minimax rule w.r.t. the type II error, i.e.
+to minimize <span class="math inline">\(\sup_{P \in \mathcal P_1} 1-
+\alpha_T(P)\)</span> under the constraint <span class="math inline">\(\sup_{P\in \mathcal P_0} \alpha_T(P) \leq
+\alpha\)</span>, which will give a minimax rule <span class="math inline">\(T_\alpha^*(X)\)</span> as the test at level of
+significance <span class="math inline">\(\alpha\)</span>.</p></li>
+</ul>
+<h3 id="the-famous-p-value">The Famous P-value</h3>
+<ul>
+<li><p>It's a good practice to assess the smallest possible level of
+significance at which <span class="math inline">\(H_0\)</span> would be
+rejected for the computed <span class="math inline">\(T_\alpha^*(x)\)</span> after observing <span class="math inline">\(x\)</span>, i.e. <span class="math inline">\(\hat
+\alpha(x) = \inf \{\alpha \in (0,1) : T_\alpha^*(x)=1 \}\)</span>. Such
+<span class="math inline">\(\hat \alpha (x)\)</span> is also a statistic
+depending on observed <span class="math inline">\(x\)</span>, and is
+called the p-value for the test <span class="math inline">\(T_\alpha
+^*\)</span>.</p>
+<p>The test can also be interpreted as <span class="math inline">\(T_\alpha^* (x) = I_{(0,\alpha)} (\hat
+\alpha(x))\)</span>, thus we can find the p-value here.</p></li>
+</ul>
+<h2 id="example-of-nonrandomized-parameter-test">Example of
+Nonrandomized Parameter Test</h2>
+<p>举个例子来结束这些神神叨叨。</p>
+<p><strong>Example 1</strong>: Let <span class="math inline">\(X_1,X_2,
+\cdots, X_n\)</span> be i.i.d. from the <span class="math inline">\(N(\mu,\sigma^2)\)</span> distribution with an
+unknown <span class="math inline">\(\mu \in \mathbb R\)</span> and a
+known <span class="math inline">\(\sigma^2 &gt;0\)</span>. Consider the
+hypothesis <span class="math inline">\(H_0 : \mu \leq \mu_0 \quad
+\text{versus} \quad H_1 : \mu &gt; \mu_0\)</span>, where <span class="math inline">\(\mu_0\)</span> is a fixed constant. Since the
+sample mean <span class="math inline">\(\bar X\)</span> is sufficient
+for <span class="math inline">\(\mu \in \mathbb R\)</span>, it is
+reasonable to consider the following class of tests: <span class="math inline">\(T_c(X) = I_{(c,\infty)}(\bar X)\)</span>.</p>
+<p>By the property of normal distributions, <span class="math inline">\(\alpha_{T_c}(\mu) = P(T_c(X)=1) = 1-\Phi
+\left(\frac{\sqrt n (c - \mu)}{\sigma} \right)\)</span>, and for some
+level of significance <span class="math inline">\(\alpha\)</span> we
+consider the type I error constraint <span class="math inline">\(\sup
+_{\mu \leq \mu_0} \alpha_{T_c}(\mu) = 1-\Phi \left(\frac{\sqrt n
+(c-\mu_0)}{\sigma} \right) \leq \alpha\)</span>, then the optimal test
+should satisfy <span class="math inline">\(c_\alpha \geq \sigma
+z_{1-\alpha} / \sqrt n + \mu_0\)</span>.</p>
+<p>The next step is to minimize <span class="math inline">\(1-\alpha_{T_c}(\mu)=\Phi \left(\frac{\sqrt n (c -
+\mu)}{\sigma} \right)\)</span> under the constraints <span class="math inline">\(c_\alpha \geq \sigma z_{1-\alpha} / \sqrt n +
+\mu_0\)</span> and <span class="math inline">\(\mu &gt; \mu_0\)</span>,
+the optimal test is <span class="math inline">\(c_\alpha ^*= \sigma
+z_{1-\alpha} / \sqrt n + \mu_0\)</span>, and <span class="math inline">\(T_{c_\alpha ^*} (X) = I_{(c_\alpha ^*,
+\infty)}(\bar X)\)</span>.</p>
+<p>According to the definition of p-value <span class="math inline">\(\hat \alpha(x) = \inf\{\alpha \in (0,1):
+T_{c_\alpha ^*} (x) =1\}\)</span>, we can obtain <span class="math inline">\(\sigma z_{1-\hat \alpha(x)} / \sqrt n + \mu_0=
+\bar x\)</span> for any observed <span class="math inline">\(x\)</span>.
+Thus <span class="math inline">\(\hat \alpha(x) =1-\Phi(\frac{\sqrt
+n}{\sigma} \left(\bar x - \mu_0 \right))\)</span> as a function of the
+observed data.</p>
+<h2 id="randomized-test">Randomized Test</h2>
+<p>In Example 1, the equality in <span class="math inline">\(\sup_{P \in
+\mathcal P_0} \alpha_T(P) \leq \alpha\)</span> can always be achieved by
+a suitable choice of <span class="math inline">\(c\)</span>. This is not
+true in general. In such cases where the equality can't be attained, we
+may consider randomized tests.</p>
+<ul>
+<li><p>A randomized decision rule is a probability measure <span class="math inline">\(\delta(x,\cdot)\)</span> on the action space for
+any fixed <span class="math inline">\(x\)</span>. Since the action space
+<span class="math inline">\((\mathbb A, \mathcal F_{\mathbb A}
+)\)</span> contains only two points <span class="math inline">\(\mathbb
+A = \{0,1 \}\)</span>, then any randomized test of a hypothesis testing
+problem is equivalent to a statistic <span class="math inline">\(T(X)
+\in [0,1]\)</span>, with <span class="math inline">\(T(x) =
+\delta(x,\{1\})\)</span> and <span class="math inline">\(1-T(x) = \delta
+(x,\{0\})\)</span>. In other words the expectation of <span class="math inline">\(T(X)I_{(0,1)}\)</span> must be <span class="math inline">\(0\)</span>.</p>
+<p>In contrast, a nonrandomized test is a special case of randomized
+test, where <span class="math inline">\(T(X)\)</span> doesn't take value
+in <span class="math inline">\((0,1)\)</span>.</p></li>
+<li><p>For any randomized test <span class="math inline">\(T(X)\)</span>, we define the type I error
+probability to be <span class="math inline">\(\alpha_T(P) = ET(X), P \in
+\mathcal P_0\)</span>, and the type II error probability to be <span class="math inline">\(1-\alpha_T(P) = 1-ET(X), P \in \mathcal
+P_1\)</span>. The optimization rules are the same as the nonrandomized
+case.</p></li>
+</ul>
+<p><strong>Example 2</strong>: Assume that the sample <span class="math inline">\(X\)</span> from a binomial distribution <span class="math inline">\(B(\theta,n)\)</span> with an unknown <span class="math inline">\(\theta \in (0,1)\)</span> and a fixed integer
+<span class="math inline">\(n &gt;1\)</span>. Consider the hypothesis
+<span class="math inline">\(H_0 : \theta \in (0, \theta_0] \quad
+\text{versus} \quad H_1 : \theta \in (\theta_0 ,1)\)</span> and the
+following class of randomized tests:</p>
+<p><span class="math display">\[T_{j,q}(X) = \begin{cases} 1 \quad &amp;
+X&gt;j \\ q \quad &amp; X=j \\ 0 \quad &amp; X &lt;j
+\end{cases}\]</span></p>
+<p>where <span class="math inline">\(j=0,1,\cdots,n-1\)</span> and <span class="math inline">\(q \in [0,1]\)</span>. Then</p>
+<p><span class="math display">\[\alpha_{T_{j,q}}(\theta) = P(X&gt;j) +
+qP(X=j), \; 0 &lt; \theta \leq \theta_0.\]</span></p>
+<p>For any <span class="math inline">\(\alpha \in (0,1)\)</span> there
+exists an integer <span class="math inline">\(j\)</span> and <span class="math inline">\(q \in (0,1)\)</span> such that the size of <span class="math inline">\(T_{j,q}\)</span> is exactly <span class="math inline">\(\alpha\)</span>, i.e. the upper bound is attained
+through randomized test.</p>
+<h1 id="confidence-sets">Confidence Sets</h1>
+<p>Let <span class="math inline">\(\theta\)</span> be a <span class="math inline">\(k\)</span>-vector of unknown parameters related to
+the unknown population <span class="math inline">\(P \in \mathcal
+P\)</span>, <span class="math inline">\(C(X)\)</span> in the range of
+<span class="math inline">\(\theta\)</span> and only depends on the
+sample <span class="math inline">\(X\)</span>. If <span class="math inline">\(\inf_{P \in \mathcal P} P(\theta \in C(X)) \geq
+1-\alpha\)</span>, then <span class="math inline">\(C(X)\)</span> is
+called a confidence set for <span class="math inline">\(\theta\)</span>
+with level of significance <span class="math inline">\(1-\alpha\)</span>.</p>
+<p>Actually if the constraint above holds, the coverage probability of
+<span class="math inline">\(C(X)\)</span> is at least <span class="math inline">\(1-\alpha\)</span>, though <span class="math inline">\(C(x)\)</span> either covers or doesn't cover <span class="math inline">\(\theta\)</span> whence we observe <span class="math inline">\(X=x\)</span>. To be more , the coverage
+probability implies that when we make <span class="math inline">\(n\)</span> random observations of <span class="math inline">\(X=x\)</span> from the population and <span class="math inline">\(n\)</span> confidence regions correspondingly,
+then there are about <span class="math inline">\(n (1-\alpha)\)</span>
+among them covers <span class="math inline">\(\theta\)</span>.</p>
+<h1 id="comments">Comments</h1>
+<p>一些不负责任的暴论/吐槽（</p>
+<ul>
+<li><p>上统推的时候 wjd 说“一般情况下倾向于拒绝 <span class="math inline">\(H_0\)</span>”的时候就给我整震撼了，那我把 <span class="math inline">\(H_0\)</span> 和 <span class="math inline">\(H_1\)</span> 换一下不行吗（。你早说 decision rule
+就是个示性函数，<span class="math inline">\(0\)</span> 对应 <span class="math inline">\(H_0\)</span>，<span class="math inline">\(1\)</span> 对应 <span class="math inline">\(H_1\)</span> 的话我还至于一年来都没记清楚 type I
+error 和 type II error 分别是什么吗（x</p></li>
+<li><p>另一个不能理解的点是 randomized
+test，看她举的例子还以为这个东西就是用来做 <span class="math inline">\(H_0: \theta = \theta _0 \; \text{versus} \; H_1 :
+\theta \neq \theta_0\)</span> 这种检验的，然后给 <span class="math inline">\(\theta = \theta_0\)</span> 一个 <span class="math inline">\(q \in (0,1)\)</span>
+的值。感觉没怎么说过是因为达不到 upper bound
+有点浪费所以用单点处来补足的这个想法，<del>可能也不排除当时已经是网课了所以是我听课不认真</del>（</p>
+<p>但也不可能先把 randomized rule 讲一遍，再把 minimax rule
+讲一下说明为什么是缩小 <span class="math inline">\(\sup
+\alpha_T(P)\)</span>，在这之前总得把 measure
+是啥说清楚，我说实话很怀疑很多人修统辅到最后连概率空间和 <span class="math inline">\(\sigma\)</span>-field
+都没完全搞清楚，<del>一直在安慰大家这个不考那个不考的 dwl
+全责</del>。但有的时候也很佩服统辅这些课能把故事完全限制在初等上还能讲明白<del>（大概吧，我经常是听不明白，但看起来大家都很明白）</del>的功力（</p></li>
+<li><p>感觉就是之前一直没学本质，当时前四周的 statistics
+看起来有点难但学会了 exponential family
+的算法之后就薄纱一切了，反正大家也不会条件期望 <del>dwl 全责</del>
+不可能真拿定义算 sufficient statistics 和
+UMVUE；后半学期我就在疑惑这统计真的和数学有关系吗（，讲完基本概念之后就开始讲那些个
+normal distribution family
+上假设检验的例子，最后还要像八股文一样地考，可能确实是限制在初等上的话实在没什么可学的（</p></li>
+<li><p>总之虽然吐槽了很多，我还是很认可去年统计推断这门课的，但只能说真想学点数学
+<del>而不只是薄纱大家来愉悦身心（有的时候可能只会被反杀罢）</del>
+的话还是别修统辅课了，调性不合（。</p>
+<p><del>所以说去年这时候确实是对自己很没信心啊（</del></p>
+<p><del>今年也没有啊（</del></p></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>我很可爱 请给我钱（？）</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.jpg" alt="驰雨Chiyuru 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.jpg" alt="驰雨Chiyuru 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>驰雨Chiyuru
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://chiyuru.github.io/2023/12/06/Hypothesis_Testing_and_Statistical_Decision_Theory/" title="别惦记你那 pivot rule 了">https://chiyuru.github.io/2023/12/06/Hypothesis_Testing_and_Statistical_Decision_Theory/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag"># 数学</a>
+              <a href="/tags/%E7%BB%9F%E8%AE%A1/" rel="tag"># 统计</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/12/01/Diary-2023-12/" rel="prev" title="日记·篇十六·23年12月">
+      <i class="fa fa-chevron-left"></i> 日记·篇十六·23年12月
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  
+  <div class="comments">
+  <script src="https://utteranc.es/client.js" repo="Chiyuru/chiyuru.github.io" issue-term="pathname" theme="github-light" crossorigin="anonymous" async></script>
+  </div>
+  
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#statistical-decision-theory"><span class="nav-text">Statistical Decision Theory</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#nonrandomized-decision"><span class="nav-text">Nonrandomized Decision</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#randomized-decision"><span class="nav-text">Randomized Decision</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#test-evaluation"><span class="nav-text">Test Evaluation</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hypothesis-testing"><span class="nav-text">Hypothesis Testing</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#fundamental-settings-of-nonrandomized-testing"><span class="nav-text">Fundamental
+Settings of Nonrandomized Testing</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#hypothesis-testing-problem"><span class="nav-text">Hypothesis Testing Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#loss-and-risk"><span class="nav-text">Loss and Risk</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#how-to-reach-the-optimal-test"><span class="nav-text">How to Reach the Optimal
+Test</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#the-famous-p-value"><span class="nav-text">The Famous P-value</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#example-of-nonrandomized-parameter-test"><span class="nav-text">Example of
+Nonrandomized Parameter Test</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#randomized-test"><span class="nav-text">Randomized Test</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#confidence-sets"><span class="nav-text">Confidence Sets</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#comments"><span class="nav-text">Comments</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="驰雨Chiyuru"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">驰雨Chiyuru</p>
+  <div class="site-description" itemprop="description">おはよう、朝だよ</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">46</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Chiyuru" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Chiyuru" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:chiyuruu@gmail.com" title="E-Mail → mailto:chiyuruu@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/Chiyuru_0417" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;Chiyuru_0417" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/chiyuruu" title="知乎 → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;chiyuruu" rel="noopener" target="_blank"><i class="fab fa-zhihu fa-fw"></i>知乎</a>
+      </span>
+  </div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="copyright">
+  
+  &copy; 2022 – 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">驰雨Chiyuru</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv1">
+  本站总访客数：<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300,"hOffset":-15,"vOffset":-15},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
+</html>
