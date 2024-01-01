@@ -39,6 +39,23 @@
   </entry>
   
   <entry>
+    <title>日记·篇十七·24年1月</title>
+    <link href="https://chiyuru.github.io/2023/12/01/Diary-2024-01/"/>
+    <id>https://chiyuru.github.io/2023/12/01/Diary-2024-01/</id>
+    <published>2023-12-01T04:19:54.000Z</published>
+    <updated>2024-01-01T15:57:39.112Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;日月不居，一误难再&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="碎碎念" scheme="https://chiyuru.github.io/tags/%E7%A2%8E%E7%A2%8E%E5%BF%B5/"/>
+    
+  </entry>
+  
+  <entry>
     <title>日记·篇十六·23年12月</title>
     <link href="https://chiyuru.github.io/2023/12/01/Diary-2023-12/"/>
     <id>https://chiyuru.github.io/2023/12/01/Diary-2023-12/</id>
@@ -377,32 +394,6 @@ bonus&lt;/del&gt;（确信&lt;/p&gt;
     <category term="数学" scheme="https://chiyuru.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
     
     <category term="统计" scheme="https://chiyuru.github.io/tags/%E7%BB%9F%E8%AE%A1/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Proof of Carathéodory’s Extension Theorem</title>
-    <link href="https://chiyuru.github.io/2023/03/13/Proof-of-Caratheodory-Extension-Theorem/"/>
-    <id>https://chiyuru.github.io/2023/03/13/Proof-of-Caratheodory-Extension-Theorem/</id>
-    <published>2023-03-13T13:18:06.000Z</published>
-    <updated>2023-03-15T16:44:53.124Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;《概率论 (1)》课程第一次
-bonus。一个略长的证明，我使用的证明框架来自&lt;a href=&quot;http://www.probability.net/WEBcaratheodory.pdf&quot;&gt;这里&lt;/a&gt;。感觉挺有意思，发出来&lt;del&gt;水一篇&lt;/del&gt;留作纪念（，&lt;del&gt;毕竟博客的数学
-tag 下面几乎全是统计，成何体统&lt;/del&gt;。&lt;/p&gt;
-&lt;p&gt;本文发布时已过本次加分作业设定的截止时间。&lt;/p&gt;
-&lt;p&gt;证完了才知道 Kai Lai Chung 附录和 lzx
-的课程笔记里都有提示是正常的吗（，有的人上课是真的一点都不听啊（&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="数学" scheme="https://chiyuru.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
-    
-    <category term="这里面看起来很好玩" scheme="https://chiyuru.github.io/tags/%E8%BF%99%E9%87%8C%E9%9D%A2%E7%9C%8B%E8%B5%B7%E6%9D%A5%E5%BE%88%E5%A5%BD%E7%8E%A9/"/>
-    
-    <category term="概率" scheme="https://chiyuru.github.io/tags/%E6%A6%82%E7%8E%87/"/>
     
   </entry>
   
