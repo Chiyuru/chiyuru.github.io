@@ -6,7 +6,7 @@
   <link href="https://chiyuru.github.io/atom.xml" rel="self"/>
   
   <link href="https://chiyuru.github.io/"/>
-  <updated>2024-01-31T16:51:34.970Z</updated>
+  <updated>2024-02-01T13:20:33.410Z</updated>
   <id>https://chiyuru.github.io/</id>
   
   <author>
@@ -15,6 +15,23 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>日记·篇十八·24年2月</title>
+    <link href="https://chiyuru.github.io/2024/02/01/Diary-2024-02/"/>
+    <id>https://chiyuru.github.io/2024/02/01/Diary-2024-02/</id>
+    <published>2024-02-01T13:11:35.000Z</published>
+    <updated>2024-02-01T13:20:33.410Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;感觉做什么都没有头猪啊不是头绪是怎么一回事呢&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="碎碎念" scheme="https://chiyuru.github.io/tags/%E7%A2%8E%E7%A2%8E%E5%BF%B5/"/>
+    
+  </entry>
   
   <entry>
     <title>日记·篇十七·24年1月</title>
@@ -369,31 +386,6 @@ bonus&lt;/del&gt;（确信&lt;/p&gt;
     
     
     <category term="碎碎念" scheme="https://chiyuru.github.io/tags/%E7%A2%8E%E7%A2%8E%E5%BF%B5/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>详论生物统计学概论</title>
-    <link href="https://chiyuru.github.io/2023/03/20/Introduction-to-Biostatistics/"/>
-    <id>https://chiyuru.github.io/2023/03/20/Introduction-to-Biostatistics/</id>
-    <published>2023-03-20T05:28:58.000Z</published>
-    <updated>2023-06-26T14:22:33.590Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;&lt;del&gt;我都给统辅课笔记起了些什么破标题&lt;/del&gt;&lt;/p&gt;
-&lt;p&gt;选课的时候我还侥幸以为生统概论可以放松心情，来随便听听简单了解一下那种。可能是前置没学完的原因，倒也没那么水，ANOVA
-还是花了不少时间看的。&lt;/p&gt;
-&lt;p&gt;wty 老师的英语口语真不错，可惜我听力一般，一走神就寄了。还是要感谢 &lt;a href=&quot;https://v1ncent19.github.io/SummaryNotes/&quot;&gt;V1ncent19
-的统辅笔记&lt;/a&gt;救我，不过他看起来是前置都学完了来上的这个，写的有点抽象，我想写个&lt;del&gt;废话多一点&lt;/del&gt;具体点的。&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="课程实录" scheme="https://chiyuru.github.io/tags/%E8%AF%BE%E7%A8%8B%E5%AE%9E%E5%BD%95/"/>
-    
-    <category term="数学" scheme="https://chiyuru.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
-    
-    <category term="统计" scheme="https://chiyuru.github.io/tags/%E7%BB%9F%E8%AE%A1/"/>
     
   </entry>
   
