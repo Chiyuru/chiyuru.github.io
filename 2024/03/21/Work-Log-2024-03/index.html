@@ -1,0 +1,1591 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"chiyuru.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="三周看了两篇 Biometrika，此前还没见过 spectral clustering，写总结发现很多地方完全理解错误，真是令人感叹（ 下次还是一边看一边写吧，感觉可以少花点时间，但好像又不保证能发现一开始理解错的地方（（">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2024 年 3 月论文阅读笔记">
+<meta property="og:url" content="https://chiyuru.github.io/2024/03/21/Work-Log-2024-03/index.html">
+<meta property="og:site_name" content="『姑妄言之姑妄听之』">
+<meta property="og:description" content="三周看了两篇 Biometrika，此前还没见过 spectral clustering，写总结发现很多地方完全理解错误，真是令人感叹（ 下次还是一边看一边写吧，感觉可以少花点时间，但好像又不保证能发现一开始理解错的地方（（">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2024/04/02/4pgL81zDtCYZ3Vv.png">
+<meta property="og:image" content="https://s2.loli.net/2024/04/02/egNWnSoPxO7bmBG.png">
+<meta property="article:published_time" content="2024-03-21T15:49:33.000Z">
+<meta property="article:modified_time" content="2024-04-01T16:14:31.165Z">
+<meta property="article:author" content="驰雨Chiyuru">
+<meta property="article:tag" content="数学">
+<meta property="article:tag" content="统计">
+<meta property="article:tag" content="概率">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2024/04/02/4pgL81zDtCYZ3Vv.png">
+
+<link rel="canonical" href="https://chiyuru.github.io/2024/03/21/Work-Log-2024-03/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>2024 年 3 月论文阅读笔记 | 『姑妄言之姑妄听之』</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="『姑妄言之姑妄听之』" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">『姑妄言之姑妄听之』</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-link">
+
+    <a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>链接</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://chiyuru.github.io/2024/03/21/Work-Log-2024-03/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="驰雨Chiyuru">
+      <meta itemprop="description" content="おはよう、朝だよ">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="『姑妄言之姑妄听之』">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          2024 年 3 月论文阅读笔记
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2024-03-21 23:49:33" itemprop="dateCreated datePublished" datetime="2024-03-21T23:49:33+08:00">2024-03-21</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-04-02 00:14:31" itemprop="dateModified" datetime="2024-04-02T00:14:31+08:00">2024-04-02</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>三周看了两篇 Biometrika，此前还没见过 spectral
+clustering，写总结发现很多地方完全理解错误，真是令人感叹（</p>
+<p>下次还是一边看一边写吧，感觉可以少花点时间，但好像又不保证能发现一开始理解错的地方（（</p>
+<span id="more"></span>
+<h1 id="background">Background</h1>
+<h2 id="general-basic-settings">General Basic Settings</h2>
+<p>In Network-Adjusted Covariates for Community Detection and Local
+Linear Graphon Estimation Using Covariates we consider unweighted,
+undirected network data with node-wise covariates.</p>
+<p>Basic settings are represented as follows.</p>
+<p>A network data is often represented as a graph <span class="math inline">\(\mathcal A = (\mathcal V, \mathcal E)\)</span>,
+where <span class="math inline">\(\mathcal V\)</span> denotes the set of
+<span class="math inline">\(n\)</span> nodes, and <span class="math inline">\(\mathcal E\)</span> denotes the set of edges
+between nodes. The adjacency matrix <span class="math inline">\(A \in
+\{0,1\} ^{n \times n}\)</span> shows the structure of the graph, where
+<span class="math inline">\(A_{ij} = A_{ji} =1\)</span> if <span class="math inline">\((i,j) \in \mathcal E\)</span> and <span class="math inline">\(A_{ij} = A_{ji} =0\)</span> otherwise. Note that
+self-loop is not allowed, then <span class="math inline">\(A_{ii} =
+0\)</span> holds for any node <span class="math inline">\(i \in
+[n]\)</span> (here <span class="math inline">\([n] = \{1,2, \cdots,
+n\}\)</span> for simplexity). Let <span class="math inline">\(d_j =
+\sum_{j=1}^n A_{ij}\)</span> denote the degree of node <span class="math inline">\(i\)</span> and <span class="math inline">\(\bar d
+= \sum_{i=1}^n d_i/n\)</span> be the average degree of the graph.</p>
+<p>For a statistical network with node-wise covariates, denote the
+covariate vector of node <span class="math inline">\(i \in [n]\)</span>
+as <span class="math inline">\(x_i \in \mathbb R^p\)</span>. Then the
+covariate matrix <span class="math inline">\(X \in \mathbb R^{n \times
+p}\)</span> is constructed with the <span class="math inline">\(i\)</span>-th row in <span class="math inline">\(X\)</span> as <span class="math inline">\(x_i\)</span>.</p>
+<h2 id="community-classifying">Community Classifying</h2>
+<p>In a community classifying process, let <span class="math inline">\(K\)</span> be the number of communities. Define a
+<span class="math inline">\(n\)</span>-vector as the community label
+vector <span class="math inline">\(l \in [K]^n\)</span> by denoting
+<span class="math inline">\(l(i) = k\)</span>, if the node <span class="math inline">\(i\)</span> is in the <span class="math inline">\(k\)</span>-th community. This can also be
+represented in the matrix form <span class="math inline">\(\Pi \in
+\{0,1\}^{n \times K}\)</span> (which will be used to construct the
+Laplacian matrix), where <span class="math inline">\(\Pi_{ij}
+=1\)</span> if <span class="math inline">\(l(i) = j\)</span>, i.e. node
+<span class="math inline">\(i\)</span> is a member of community <span class="math inline">\(j\)</span>. We aim to recover <span class="math inline">\(\Pi\)</span> in the classification problem.</p>
+<h2 id="spectral-clustering-method-k-mean-clustering-method">Spectral
+Clustering Method &amp; K-mean Clustering Method</h2>
+<p>I hadn't learned these two methods before, so I took some notes.</p>
+<h3 id="compactness-and-connectivity">Compactness and Connectivity</h3>
+<p>Firstly, we need to distinguish between two concepts - compactness
+and connectivity.</p>
+<p>Compactness --- Points that lie close to each other fall in the same
+cluster and are compact around the cluster center. The closeness can be
+measured by the distance between the observations. E.g.: K-Means
+Clustering</p>
+<p>Connectivity --- Points that are connected or immediately next to
+each other are put in the same cluster. Even if the distance between 2
+points is less, if they are not connected, they are not clustered
+together. Spectral Clustering is a technique that follows this
+approach.</p>
+<p><img src="https://s2.loli.net/2024/04/02/4pgL81zDtCYZ3Vv.png" alt="clustering.png"></p>
+<h3 id="principle-of-k-means-clustering">Principle of K-means
+Clustering</h3>
+<p>K-means stores <span class="math inline">\(k\)</span> centroids that
+it uses to define clusters. A point is considered to be in a particular
+cluster if it is closer to that cluster's centroid than any other
+centroid. K-Means finds the best centroids by alternating between (1)
+assigning data points to clusters based on the current centroids and (2)
+choosing centroids (points which are the center of a cluster) based on
+the current assignment of data points to clusters.</p>
+<p>The algorithm is shown below.</p>
+<p><strong>Algorithm 1</strong> Repeat until convergence:{</p>
+<ol type="1">
+<li><p>For every <span class="math inline">\(i \in [n]\)</span>, set
+<span class="math inline">\(c^{(i)} = \arg \min _j \| x^{(i)} -
+\mu_j\|^2\)</span>;</p></li>
+<li><p>For each <span class="math inline">\(j \in [k]\)</span>, set
+<span class="math inline">\(\mu_j = \frac{\sum_{i=1}^n
+\mathbf{1}_{c^{(i)} = j}x^{(i)}}{\sum_{i=1}^n \mathbf{1}_{c^{(i)} =
+j}}\)</span>. }</p></li>
+</ol>
+<h3 id="principle-of-spectral-clustering">Principle of Spectral
+Clustering</h3>
+<p>Denote <span class="math inline">\(D = \text{diag} \{d_1,d_2,\cdots,
+d_n\}\)</span> as the degree matrix, <span class="math inline">\(A\)</span> as the adjacency matrix. Then the
+Laplacian of the graph is denoted as <span class="math inline">\(L =
+D-A\)</span>.</p>
+<p>Note that for any <span class="math inline">\(f \in \mathbb
+R^n\)</span>, we have</p>
+<p><span class="math display">\[\begin{aligned}
+    \frac{1}{2} \sum_{i=1}^n \sum_{j=1}^n A_{ij} (f_i - f_j)^2  &amp;
+=\frac{1}{2}( \sum_{i=1}^ n (\sum_{j=1}^n A_{ij})f_i ^2 + \sum_{j=1}^ n
+(\sum_{i=1}^n A_{ij})f_j ^2 - 2\sum_{i=1} \sum _{j=1} A_{ij} f_i f_j )
+\\ &amp;= \sum_{i=1} d_i f_i^2 - \sum_{i=1}^n \sum_{j=1}^n f_i f_j
+A_{ij} = f^T Df - f^T Af =  f^T L f.
+\end{aligned}\]</span></p>
+<p>Consider minimizing <span class="math inline">\(\frac{1}{2}
+\sum_{i=1}^n \sum_{j=1}^n A_{ij} (f_i - f_j)^2 = f^T L f\)</span> under
+the embedding <span class="math inline">\(f^TDf =1\)</span>. (From the
+perspective of solving the min-cut problem， it's equivalent to
+minimizing <span class="math inline">\(\frac{f^T L
+f}{f^TDf}\)</span>.)</p>
+<p>The Lagrangian is <span class="math inline">\(L(\lambda ; f) = f^TLf
+- \lambda f^T Df = f^T(L-\lambda D)f\)</span>. By differentiating w.r.t.
+<span class="math inline">\(f\)</span>, it is equivalent to solve <span class="math inline">\((L-\lambda D)f =0\)</span>, i.e. to solve the
+eigenvalues and eigenvectors of <span class="math inline">\(L^\prime =
+D^{-1}L = I - D^{-1} A\)</span>.</p>
+<p>The algorithm of spectral clustering is listed below.</p>
+<p><strong>Algorithm 2</strong> 1. Compute <span class="math inline">\(D
+= \text{diag}\{d_1, \cdots, d_n\}, L^\prime = I - D^{-1} A\)</span>.</p>
+<ol start="2" type="1">
+<li><p>Compute the first <span class="math inline">\(K\)</span>
+eigenvectors <span class="math inline">\(v_1,v_2, \cdots , v_K\)</span>
+of the matrix <span class="math inline">\(L^\prime\)</span>.</p></li>
+<li><p>Build the matrix <span class="math inline">\(V \in \mathbb R^{n
+\times K}\)</span> with the <span class="math inline">\(K\)</span>
+eigenvectors as columns.</p></li>
+<li><p>Interpret the rows of <span class="math inline">\(V\)</span> as
+new data points <span class="math inline">\(Z_i \in \mathbb
+R^K\)</span>.</p></li>
+<li><p>Clustering the points <span class="math inline">\(Z_i\)</span>
+with <span class="math inline">\(K\)</span>-means clustering in <span class="math inline">\(\mathbb R^K\)</span>.</p></li>
+</ol>
+<h2 id="graphon-function">Graphon Function</h2>
+<p>In classical graphon theory, a graphon is a bivariate and symmetric
+<span class="math inline">\([0,1]\)</span>-valued function <span class="math inline">\(f(u,v): [0,1] ^2 \to [0,1]\)</span> defined on a
+probability space. In particular, the graphon model can be formulated as
+a data-generating process through the following two successive
+steps.</p>
+<ol type="1">
+<li><p>First, we draw the node-specific latent quantities <span class="math inline">\(\xi_1, \xi_2, \cdots , \xi_n\)</span> i.i.d. <span class="math inline">\(\sim\)</span> Uniform <span class="math inline">\([0,1]\)</span>.</p></li>
+<li><p>Secondly, condition on the realizations of the latent quantities,
+i.e. given <span class="math inline">\(\xi_1, \xi_2, \cdots,
+\xi_n\)</span>, the adjacent matrix items follow certain conditional
+distribution as</p>
+<p><span class="math display">\[A_{ij} | \xi_i , \xi_j \sim
+\text{Bernoulli} (f(\xi_1, \xi_j)),\]</span></p>
+<p>where the graphon <span class="math inline">\(f\)</span> satisfies
+<span class="math inline">\(f(u,v) = f(v,u)\)</span> for any <span class="math inline">\((u,v) \in [0,1]^2\)</span>.</p></li>
+</ol>
+<p>The Local Linear Graphon Estimation Using Covariates introduces some
+adjustments to the graphon function, to make emphasis the effect of
+<span class="math inline">\(n\)</span> and node heterogeneity.</p>
+<h2 id="stochastic-block-model">Stochastic Block Model</h2>
+<p>The stochastic block model is actually a construction of the graphon
+estimation, i.e., the graphon <span class="math inline">\(f\)</span> is
+formulated as a piecewise constant step function with a rectangular
+pattern, i.e.</p>
+<p><span class="math display">\[f(u,v) = \sum_{i=1}^K \sum_{j=1}^K
+\mathbf{1}_{\{\zeta_{i-1} \leq u &lt; \zeta_i\}}
+\mathbf{1}_{\{\zeta_{j-1} \leq v &lt; \zeta_j\}} P(i,j).\]</span></p>
+<p>Specifically, for node pair <span class="math inline">\((i,j)\)</span> from community <span class="math inline">\((l(i),l(j))\)</span>, the distribution of <span class="math inline">\(A_{ij}\)</span> is</p>
+<p><span class="math display">\[A_{ij} | l(i), l(j) \sim
+\text{Bernoulli}( P(l(i),l(j))).\]</span></p>
+<p>In Network-Adjusted Covariates for Community Detection, we utilize
+the degree-corrected stochastic model concerning the popularity of each
+node. The degree-corrected graphon is represented as:</p>
+<p><span class="math display">\[f(u, \cdot) = a_k(u) w(\zeta_{k-1},
+\cdot) \; \text{for all }u \in (\zeta_{k-1}, \zeta_k),\]</span></p>
+<p>where <span class="math inline">\(a_k : [0,1] \to \mathbb
+R_+\)</span> is a continuous non-decreasing function with <span class="math inline">\(a_k(\zeta_{k-1}) =1\)</span>. This setting entails
+that two nodes from the same group will reveal the same basic
+connectivity behavior (stochastically) but differ in the expected degree
+by introducing <span class="math inline">\(a_k\)</span> for each
+community <span class="math inline">\(k \in [K]\)</span>.</p>
+<p>Specifically, for node pair <span class="math inline">\((i,j)\)</span> from community <span class="math inline">\((l(i),l(j))\)</span>, the distribution of <span class="math inline">\(A_{ij}\)</span> is</p>
+<p><span class="math display">\[A_{ij} | l(i), l(j) \sim
+\text{Bernoulli}( \theta _i \theta _j P(l(i),l(j))),\]</span></p>
+<p>where the coefficient <span class="math inline">\(\theta_i\)</span>
+represents the popularity of node <span class="math inline">\(i\)</span>
+itself.</p>
+<p>Denote <span class="math inline">\(\Theta = \text{diag} \{\theta_1,
+\cdots, \theta_n\} \in \mathbb R^{n \times n}\)</span>, <span class="math inline">\(P = \{ P(i,j)\}_{n \times n} \in \mathbb R^{n
+\times n}\)</span>, and the adjacency matrix <span class="math inline">\(A\)</span> can be identified by</p>
+<p><span class="math display">\[E(A |\Pi) = \Omega_A - \text{diag}
+(\Omega _A), \; \Omega_A = \Omega \Pi P \Pi^T \Theta.\]</span></p>
+<p>Here the subtraction of <span class="math inline">\(\text{diag}(\Omega_A)\)</span> is to eliminate
+self-loops in the network.</p>
+<h2 id="covariates-modelling">Covariates Modelling</h2>
+<p>To highlight the integrity of the network model, we always start from
+a simple situation: the total model scale is large, and the mean degree
+is dominated by dense communities. In the subsequent analysis, we have
+drawn two intuitive conclusions from this.</p>
+<p>The adjusted covariates of nodes in different communities are
+affected by <span class="math inline">\(\sum_{j: A_{ij}=1} x_j\)</span>
+and <span class="math inline">\(\alpha_i x_i\)</span>, respectively.
+Furthermore, when <span class="math inline">\(x_i \sim ^{\text{approx}}
+F_D, x_j \sim ^{\text{approx}} F_S, i \in D, j \in S\)</span> is true,
+the results obtained using spectral clustering exhibit similar central
+distributions.</p>
+<p>Thus, we keep this setting and adjust it similarly to a
+community-wise identity distribution setting, i.e. the covariates <span class="math inline">\(x_i\)</span> are generated by a standard
+clustering model, and they are independently distributed as</p>
+<p><span class="math display">\[x_i | \Pi \sim F_k, \; l(i) = k \in
+[K].\]</span></p>
+<p>Moreover, we assume that given the label vector <span class="math inline">\(l\)</span>, <span class="math inline">\(X\)</span>
+is independent of <span class="math inline">\(A\)</span>.</p>
+<h2 id="block-assignment-according-to-bandwidth">Block Assignment
+According to Bandwidth</h2>
+<p>Given a suitable bandwidth <span class="math inline">\(1 &lt; h \leq
+n\)</span>, denote <span class="math inline">\(n = kh + r\)</span> where
+<span class="math inline">\(r \equiv n \pmod h\)</span>. Then we assign
+<span class="math inline">\(n\)</span> nodes into <span class="math inline">\(k\)</span> blocks, with the first <span class="math inline">\(k-1\)</span> blocks having <span class="math inline">\(h\)</span> nodes each, and the last block has
+<span class="math inline">\(h+r\)</span>.</p>
+<p>To represent this assignment, let <span class="math inline">\(\mathcal Z_{n,h} \subseteq [k]^n \subset \mathcal
+R^n\)</span> contain all block assignment vectors <span class="math inline">\(z = (z_1, \cdots, z_n)^T\)</span>, where <span class="math inline">\(z_i = j\)</span> implies that node <span class="math inline">\(i\)</span> is in the <span class="math inline">\(j\)</span>-th block, <span class="math inline">\(1
+\leq i \leq n, 1 \leq j \leq k\)</span>.</p>
+<p>Actually, in Local Linear Graphon Estimation Using Covariates we
+assign oracle into <span class="math inline">\(k\)</span> blocks with
+order statistics.</p>
+<h1 id="network-adjusted-covariates-for-community-detection">Network-Adjusted
+Covariates for Community Detection</h1>
+<p>This work introduces a network-adjusted covariate (based on the
+community density) and applies the spectral clustering method to the
+adjusted covariate matrix in two ways according to the different inputs.
+Through orthogonal matrix transformation, the error between the two
+outputs can be controlled. This indicates that this method has good
+consistency.</p>
+<h2 id="network-adjusted-covariates">Network-Adjusted Covariates</h2>
+<p>This work introduces a network-adjusted covariate <span class="math inline">\(\{y_i\}\)</span> based on the effect of community
+density and the node-wise covariates <span class="math inline">\(\{x_i\}\)</span>:</p>
+<p><span class="math display">\[y_i = \alpha_i x_i + \sum_{j : A_{ij}
+=1} x_j, \; \forall x \in [n],\]</span></p>
+<p>and the weight</p>
+<p><span class="math display">\[\alpha _i =\frac{\bar d /2}{d_i / \log n
++1}\]</span> is</p>
+<p>chosen to balance the effect of neighbors (i.e., <span class="math inline">\(\sum_{j \neq i} x_j\)</span>.</p>
+<p>This seems reasonable because neighbors are the most likely potential
+members of the community that <span class="math inline">\(i\)</span> is
+in), and the effect of the node itself (i.e. <span class="math inline">\(x_i\)</span>) according to the density of
+community it is in.</p>
+<p>To see how <span class="math inline">\(\alpha_i\)</span> balance two
+parts, we need to define the sparsity and density of a certain
+community.</p>
+<p><strong>Definition 2.1</strong> (Sparse/Dense Community).
+<em>Consider a network <span class="math inline">\(\mathcal A =
+(\mathcal V, \mathcal E)\)</span> and constants <span class="math inline">\(c_d &gt; c_s &gt;0\)</span>. Consider community
+<span class="math inline">\(k\)</span>, we call it a</em></p>
+<ol type="1">
+<li><p><em>(Relatively) dense community, if <span class="math inline">\(E(d_i) \geq c_d \log n\)</span> for any node <span class="math inline">\(i\)</span> s.t. <span class="math inline">\(l(i) =
+k\)</span> (i.e. node <span class="math inline">\(i\)</span> is a member
+of the community <span class="math inline">\(k\)</span>).</em></p></li>
+<li><p><em>(Extremely) sparse community, if <span class="math inline">\(E(d_i) \leq c_s \log n\)</span> for any node <span class="math inline">\(i\)</span> s.t. <span class="math inline">\(l(i) =
+k\)</span> (i.e. node <span class="math inline">\(i\)</span> is a member
+of the community <span class="math inline">\(k\)</span>).</em></p></li>
+</ol>
+<p>This definition will be slightly adjusted later according to the
+stochastic block model.</p>
+<p><em>Question</em>: Why we can assume that the <span class="math inline">\(K\)</span> communities are either sparse or dense
+ones (according to the setting in the paper)?</p>
+<p>I think this assumption can be satisfied through proper selection of
+<span class="math inline">\(c_D, c_S\)</span> (in extreme cases they are
+almost the same), but this will somehow weaken the definition. Or this
+is just an assumption on the network structure itself. (unimportant)</p>
+<p>Intuitively, we consider the case where the community sizes are
+comparable, then the average degree <span class="math inline">\(\bar
+d\)</span> is dominated by dense communities. Then for node <span class="math inline">\(i\)</span> in dense communities we have <span class="math inline">\(\alpha _i \approx \log n /2 &lt; n\)</span>, then
+the focus of weighting was on <span class="math inline">\(\sum_{j :
+A_{ij}=1} x_j\)</span>, i.e. the potential community members of node
+<span class="math inline">\(i\)</span>. Similarly, for node <span class="math inline">\(i\)</span> in sparse communities, we have <span class="math inline">\(\alpha _i \geq \frac{\bar d /2}{c_S +1} \approx
+\frac{c_D}{2(c_S+1)} \log n\)</span>, which will let <span class="math inline">\(\alpha _i x\)</span> be considerably large with
+respect to <span class="math inline">\(\sum_{j : A_{ij}=1}
+x_j\)</span>.</p>
+<p>Therefore, for nodes in dense communities, the adjusted covariates
+focus on connections with potential community members to imply density.
+And for sparse community members, the emphasis should be put on the node
+itself because the network may not give much meaningful information.</p>
+<p>Let <span class="math inline">\(Y = (y_1 ,\cdots , y_n)^T\)</span> be
+the network-adjusted covariate matrix, then <span class="math display">\[Y = AX + D_\alpha X = (A+D_\alpha)X,\]</span>
+where <span class="math inline">\(A\)</span> is the adjacency matrix,
+<span class="math inline">\(X\)</span> is the covariate matrix, and
+<span class="math inline">\(D_\alpha = \text{diag} \{\alpha_1, \cdots,
+\alpha_n\}\)</span> as the matrix of weights.</p>
+<h2 id="direct-spectral-clustering">Direct Spectral Clustering</h2>
+<p>Here the graph <span class="math inline">\(\mathcal A = (\mathcal V,
+\mathcal E)\)</span>, the adjacent matrix <span class="math inline">\(A\)</span> and the covariates <span class="math inline">\(X\)</span> are known. We operate the spectral
+clustering method on the network-adjusted covariates <span class="math inline">\(Y\)</span> (also the generalized form) to give an
+estimated community assignment <span class="math inline">\(\hat
+l(i)\)</span>, <span class="math inline">\(i \in [n]\)</span>.</p>
+<h3 id="spectral-clustering-on-network-adjusted-covariates">Spectral
+Clustering on Network-Adjusted Covariates</h3>
+<p>We can apply the spectral clustering method to the network-adjusted
+covariate matrix <span class="math inline">\(Y\)</span> directly when
+<span class="math inline">\((A,X)\)</span> are both known. The algorithm
+is shown below.</p>
+<p><strong>Algorithm 3</strong> 1. Compute <span class="math inline">\(Y
+= AX + D_\alpha X\)</span>.</p>
+<ol start="2" type="1">
+<li><p>Compute the first <span class="math inline">\(K\)</span>
+normalized left singular vectors <span class="math inline">\(\hat
+\xi_1,\hat \xi_2, \cdots , \hat \xi_K\)</span> of the matrix <span class="math inline">\(Y\)</span>.</p></li>
+<li><p>Build the matrix <span class="math inline">\(\hat \Xi \in \mathbb
+R^{n \times K}\)</span> with the <span class="math inline">\(K\)</span>
+eigenvectors as columns.</p></li>
+<li><p>Interpret the rows of <span class="math inline">\(\hat
+\Xi\)</span> as new data points <span class="math inline">\(\hat Z_i \in
+\mathbb R^K\)</span>.</p></li>
+<li><p>Clustering the points <span class="math inline">\(\hat
+Z_i\)</span> with <span class="math inline">\(K\)</span>-means
+clustering in <span class="math inline">\(\mathbb R^K\)</span>, and get
+the community label vector <span class="math inline">\(\hat l\)</span>
+according to the result.</p></li>
+</ol>
+<p>Note that the network-adjusted covariates are dominated by <span class="math inline">\(\sum_{j: A_{ij}=1} x_j\)</span> for node <span class="math inline">\(i\)</span> in dense communities, and by <span class="math inline">\(\alpha_i x_i\)</span> for <span class="math inline">\(i\)</span> in sparse communities. Then for the
+large-scale community condition, we considered in the previous section,
+for node <span class="math inline">\(i\)</span> in dense communities,
+<span class="math inline">\(y_i \approx \sum_{j :A_{ij}=1} x_i \approx
+d_i F_D\)</span> if <span class="math inline">\(\{x_i\}_{i \in
+D}\)</span> follows similar distribution. Similarly, for node <span class="math inline">\(i\)</span> in sparse communities, <span class="math inline">\(y_i \approx \alpha_i x_i \approx
+\frac{c_D}{2(c_S+1)} \log n F_S\)</span> if <span class="math inline">\(\{x_i\}_{i \in S}\)</span> follows similar
+distribution.</p>
+<p>Hence, the central distribution of adjusted covariates is
+approximately the same up to degree heterogeneity factor <span class="math inline">\(d_i\)</span> in dense communities and constant
+factor in sparse communities. This consistency will be inherited by the
+left singular matrix <span class="math inline">\(\hat \Xi\)</span>, and
+so are the rows of <span class="math inline">\(\hat \Xi\)</span>, which
+is used as data in k-mean clustering.</p>
+<h3 id="spectral-clustering-on-generalized-adjusted-covariates">Spectral
+Clustering on Generalized Adjusted Covariates</h3>
+<p>In the case the covariate matrix <span class="math inline">\(X\)</span> is uninformative, it should not be
+included in the spectral clustering matrix <span class="math inline">\(Y
+= (A+D_\alpha )X\)</span>. Then we leverage <span class="math inline">\(YY^T\)</span> with the adjacency matrix <span class="math inline">\(AA^T\)</span>, by denoting the "Laplacian matrix"
+as <span class="math inline">\(L = YY^T + \beta n AA^T\)</span> and
+performing the spectral clustering algorithm as follows.</p>
+<p><strong>Algorithm 4</strong> 1. Compute <span class="math inline">\(Y
+= AX + D_\alpha X\)</span>, <span class="math inline">\(L= YY^T + \beta
+n AA^T\)</span>.</p>
+<ol start="2" type="1">
+<li><p>Compute the first <span class="math inline">\(K\)</span>
+normalized left singular vectors <span class="math inline">\(\hat
+\xi_1,\hat \xi_2, \cdots , \hat \xi_K\)</span> of the matrix <span class="math inline">\(L\)</span>.</p></li>
+<li><p>Build the matrix <span class="math inline">\(\hat \Xi \in \mathbb
+R^{n \times K}\)</span> with the <span class="math inline">\(K\)</span>
+eigenvectors as columns.</p></li>
+<li><p>Interpret the rows of <span class="math inline">\(\hat
+\Xi\)</span> as new data points <span class="math inline">\(\hat Z_i \in
+\mathbb R^K\)</span>.</p></li>
+<li><p>Clustering the points <span class="math inline">\(\hat
+Z_i\)</span> with <span class="math inline">\(K\)</span>-means
+clustering in <span class="math inline">\(\mathbb R^K\)</span>, and get
+the community label vector <span class="math inline">\(\hat l\)</span>
+according to the result.</p></li>
+</ol>
+<p><span class="math inline">\(\beta\)</span> is selected as <span class="math inline">\(\| \hat x\|^2\)</span>. Actually larger <span class="math inline">\(\beta\)</span> is often preferred.</p>
+<h2 id="degree-corrected-stochastic-blockmodel">Degree-Corrected
+Stochastic Blockmodel</h2>
+<p>According to the basic settings in the Background section, we apply
+the degree-corrected stochastic block model with known parameters <span class="math inline">\((\Theta, K, P, \Pi, F_{[K]})\)</span> here as
+follows. Note that <span class="math inline">\((A,X)\)</span> are
+unknown and will be estimated by their mean. Also, <span class="math inline">\(\mathcal D, \mathcal S\)</span> are both unknown
+as a basic setting.</p>
+<p><em>Basic Ideas</em>: This is another way to perform the clustering,
+but the adjacent matrix <span class="math inline">\(A\)</span> and the
+covariate matrix <span class="math inline">\(X\)</span> are both
+unknown. However, <span class="math inline">\((\Theta, K, P, \Pi,
+F_{[K]})\)</span> are known parameters. We replace both of them with
+their expectation to get the estimated network-adjusted covariate matrix
+<span class="math inline">\(\hat Y\)</span> used for spectral
+clustering, which can be calculated under the setting of a
+degree-corrected stochastic block model.</p>
+<p>Then we're going to compare the output with <span class="math inline">\(\hat l\)</span> estimated by <span class="math inline">\((A,X)\)</span> previously, and show that there
+exists consistency even though the inputs are totally different (one
+with <span class="math inline">\((\mathcal A,X, A)\)</span> and another
+with <span class="math inline">\((\Theta, K, P, \Pi, F_{[K]})\)</span>).
+This implies that the spectral clustering on network-adjusted covariates
+is powerful.</p>
+<p>Moreover, there may be mis-specified nodes in the given community
+membership matrix <span class="math inline">\(\Pi\)</span>. We'll show
+that the spectral clustering method on network-adjusted covariates will
+correct some of them.</p>
+<p>The process is shown as follows.</p>
+<h3 id="model-establishment-and-spectral-clustering">Model Establishment
+and Spectral Clustering</h3>
+<p>For node pair <span class="math inline">\((i,j)\)</span> from
+community <span class="math inline">\((l(i),l(j))\)</span>, the
+distribution of <span class="math inline">\(A_{ij}\)</span> is</p>
+<p><span class="math display">\[A_{ij} | l(i), l(j) \sim
+\text{Bernoulli}( \theta _i \theta _j P(l(i),l(j))),\]</span></p>
+<p>where the coefficient <span class="math inline">\(\theta_i\)</span>
+represents the popularity of node <span class="math inline">\(i\)</span>
+itself.</p>
+<p>Denote <span class="math inline">\(\Theta = \text{diag} \{\theta_1,
+\cdots, \theta_n\} \in \mathbb R^{n \times n}\)</span>, <span class="math inline">\(P = \{ P(i,j)\}_{n \times n} \in \mathbb R^{n
+\times n}\)</span>, and the adjacency matrix <span class="math inline">\(A\)</span> can be identified by</p>
+<p><span class="math display">\[E(A |\Pi) = \Omega_A - \text{diag}
+(\Omega _A), \; \Omega_A = \Omega \Pi P \Pi^T \Theta.\]</span></p>
+<p>Moreover, we suppose that <span class="math inline">\(X\)</span> is
+independent of <span class="math inline">\(A\)</span> given the label
+vector <span class="math inline">\(l\)</span> as a covariate modeling
+assumption, i.e. they are independently distributed as</p>
+<p><span class="math display">\[x_i | \Pi \sim F_k, \; l(i) = k \in
+[K].\]</span></p>
+<p>A standard stochastic block model generates the covariates <span class="math inline">\(x_i\)</span> according to the <span class="math inline">\(F_{[K]}\)</span>, and the estimation of <span class="math inline">\(X\)</span> we use later is</p>
+<p><span class="math display">\[E(X) = [E(x_{i})]_{i \in [n]} =
+[E(F_{l(i)})]_{i \in [n]}.\]</span></p>
+<p>Under the above settings, note that</p>
+<p><span class="math display">\[E(d_i) = E(\sum_{j=1}^n A_{ij}) = \theta
+_i \sum_{j \neq i} \theta_j P(i,j) \leq n \theta_i \max_{i \in
+[n]}\{\theta_i\},\]</span></p>
+<p>we refine the definition of dense and sparse communities by
+approximating the degree with the upper bound <span class="math inline">\(n \theta_i \theta_{\text{max}}\)</span> as
+follows.</p>
+<p><strong>Definition 2.2</strong> (Sparse/Dense Community Adjusted for
+Stochastic Blockmodel). <em>Consider a network <span class="math inline">\(\mathcal A = (\mathcal V, \mathcal E)\)</span>
+that follows the degree-corrected stochastic blockmodel with parameters
+<span class="math inline">\((\Theta, K,P, \Pi, \theta)\)</span> and
+<span class="math inline">\(\theta_{\text{max}} = \|\theta
+\|_{\infty}\)</span>. Consider community <span class="math inline">\(k\)</span>, we call it a</em></p>
+<ol type="1">
+<li><p><em>(Relatively) dense community, if there exist constants <span class="math inline">\(c,c_d\)</span> s.t. <span class="math inline">\(\theta _i \geq c \theta_{\text{max}}\)</span>, and
+<span class="math inline">\(n \theta _i \theta_{\text{max}} \geq c_d
+\log n\)</span> for any node <span class="math inline">\(i\)</span> s.t.
+<span class="math inline">\(l(i) = k\)</span> (i.e. node <span class="math inline">\(i\)</span> is a member of the community <span class="math inline">\(k\)</span>).</em></p></li>
+<li><p><em>(Extremely) sparse community, if there exist constants <span class="math inline">\(0&lt;c_s &lt; c_d\)</span> <span class="math inline">\(n \theta_i \theta_{\text{max}} \leq c_s \log
+n\)</span> for any node <span class="math inline">\(i\)</span> s.t.
+<span class="math inline">\(l(i) = k\)</span> (i.e. node <span class="math inline">\(i\)</span> is a member of the community <span class="math inline">\(k\)</span>).</em></p></li>
+</ol>
+<p><em>Question</em>: Here <span class="math inline">\(E(d_i) = \theta
+_i \sum_{j \neq i} \theta_j P(i,j)\)</span> is dominated by <span class="math inline">\(n \theta_i \| \theta \|_{\infty}\)</span>, however
+this is a bit rough. We can replace this upper bound by <span class="math inline">\(\theta_i \sum_{i=1} ^n = \theta _i \| \theta
+\|_1\)</span>. Will this make much difference? (I think not.)</p>
+<p>To set up an oracle matrix for the network-adjusted covariate matrix,
+we consider the dominated terms only. If <span class="math inline">\(i
+\in \mathcal D\)</span>, the dominated term of <span class="math inline">\(y_i\)</span> is <span class="math inline">\(\sum_{j : A_{ij} =1} x_j\)</span>, which can be
+estimated by the i-th row of <span class="math inline">\(E(A)
+E(X)\)</span>. If <span class="math inline">\(i \in \mathcal S\)</span>,
+the dominated term of <span class="math inline">\(y_i\)</span> is <span class="math inline">\(\alpha_i x_i\)</span>, which can be estimated by
+the i-th row of <span class="math inline">\(\hat \alpha_i E(X)\)</span>.
+Here the estimated weight is</p>
+<p><span class="math display">\[\hat \alpha_i = \frac{E(\bar d) \log
+n}{2(E(d_i) + \log n)}.\]</span></p>
+<p>Denote <span class="math inline">\(I_{\mathcal D}\)</span> as the
+identity matrix where only diagonals on <span class="math inline">\(\mathcal D\)</span> are preserved and others are
+set as 0. This definition can be extended to other matrices. Hence</p>
+<p><span class="math display">\[\Omega = \hat Y = (I_{\mathcal D} E(A)
+I_{\mathcal D})E(X) + I_{\mathcal S} \hat D_\alpha E(X) = (I_{\mathcal
+D} E(A) T_{\mathcal D} + I_{\mathcal S} \hat D_\alpha) E(X)\]</span></p>
+<p>is the "network-adjusted covariate matrix" under population settings,
+where <span class="math inline">\(\hat D_\alpha = \text{diag} \{\hat
+\alpha _1, \cdots, \hat \alpha_n\}\)</span>.</p>
+<h3 id="mis-specifying-of-nodes-and-recovery-methods">Mis-specifying of
+Nodes and Recovery Methods</h3>
+<p>Under the setting of the degree-corrected stochastic block model, we
+define mis-specifying by the distribution of <span class="math inline">\(x_i\)</span>. Note that the conditional
+distribution of <span class="math inline">\(x_i | \Pi\)</span> is
+denoted as <span class="math inline">\(F_k\)</span> for <span class="math inline">\(l(i) = k\)</span>. However, the membership in
+<span class="math inline">\(\Pi\)</span> may be wrong, which causes
+mis-specifying and will result in:</p>
+<p><span class="math display">\[x_i | \Pi \sim F_k, \; \; \text{but  }
+x_i \sim G_i \neq F_k.\]</span></p>
+<p>Such nodes <span class="math inline">\(x_i\)</span> are called
+mis-specified nodes, and the corresponding row in <span class="math inline">\(E(X)\)</span> will be affected by such error. The
+set of mis-specified nodes is denoted as <span class="math inline">\(\mathcal M\)</span>.</p>
+<p><img src="https://s2.loli.net/2024/04/02/egNWnSoPxO7bmBG.png" alt="goodnodes.png"></p>
+<p>Though the set <span class="math inline">\(\mathcal D, \mathcal
+S\)</span> are unknown, we can classify the nodes into the three sets
+above. Denote <span class="math inline">\(\mathcal G = D \cup (S \cap
+M^c)\)</span> as the "good" nodes that can be recovered (this is
+guaranteed by Theorem 2.2).</p>
+<p>Similar to the process of directly applying spectral clustering to
+<span class="math inline">\(Y\)</span>, we consider the adjusted
+covariates and the generalized adjusted covariates as follows.</p>
+<h3 id="oracle-based-network-adjusted-covariate-clustering">Oracle Based
+Network-Adjusted Covariate Clustering</h3>
+<p>Consider the spectral clustering on the oracle matrix <span class="math inline">\(\Omega _{\mathcal G} = I_{\mathcal G}
+\Omega\)</span>, we have the following lemma.</p>
+<p><strong>Lemma 1</strong> (Spectral Analysis on Oracle Matrix).
+<em>Consider <span class="math inline">\(\Omega_{\mathcal G} =
+I_{\mathcal G} \Omega\)</span> as the oracle matrix with rows restricted
+on <span class="math inline">\(\mathcal G\)</span>. Denote the singular
+value decomposition of <span class="math inline">\(\Omega _{\mathcal
+G}\)</span> as <span class="math inline">\(\Omega_{\mathcal G} = \Xi
+\Lambda U^T\)</span>, where <span class="math inline">\(\Xi \in \mathbb
+R^{n \times K}, U \in \mathbb R^{p \times K}\)</span>, and <span class="math inline">\(\Lambda \in \mathbb R^{K \times K}\)</span>. Then
+there is</em></p>
+<p><span class="math display">\[\Xi_ i =   \begin{cases}
+        \theta _i v_{l(i)}, \; &amp; i \in \mathcal D \\
+        \hat \alpha_i u_{l(i)}, \; &amp; i \in \mathcal S \cap \mathcal
+M^c \\
+        0 , \; &amp; i \in S \cap M = \mathcal G^c,
+    \end{cases}\]</span></p>
+<p>where <span class="math inline">\(\{v_k\}\)</span>'s and <span class="math inline">\(\{u_k\}\)</span>'s are <span class="math inline">\(K\)</span>-dimensional vectors.</p>
+<p><em>Question</em>: This is just an oracle analysis even based on
+known <span class="math inline">\(\mathcal M\)</span>, how can we reach
+the conclusion that "the label of nodes in <span class="math inline">\(\mathcal G\)</span> can be exactly recovered"?</p>
+<p>I think by "recovery" the author means that, under the setting of the
+stochastic block model, even if there are some mis-specified nodes in
+<span class="math inline">\(\Pi\)</span> (i.e. the distribution of
+covariates <span class="math inline">\(x_i\)</span> is wrongly assigned
+as <span class="math inline">\(F_{l(i)}\)</span>), <span class="math inline">\(\hat l(i)\)</span> and <span class="math inline">\(\Pi_{i,j}\)</span> can correspond to each other
+for nodes in <span class="math inline">\(\mathcal G\)</span>.</p>
+<p>The lemma implies that by separating the centers (i.e. <span class="math inline">\(u_k\)</span> 's and <span class="math inline">\(v_k\)</span> 's), the label of nodes in <span class="math inline">\(\mathcal G\)</span> can be exactly recovered.
+Actually, the central distribution can be identified through the
+orthogonal transformation between <span class="math inline">\(\hat
+\Xi\)</span> and <span class="math inline">\(\Xi\)</span> with high
+probability and slight error. This can be guaranteed by the following
+theorem.</p>
+<p><strong>Theorem 2.1</strong> (Row-wise empirical and oracle singular
+matrix distance). <em>Consider the degree-corrected stochastic block
+model with covariates with parameters <span class="math inline">\((\Omega, K, P, \Pi , F_{[K]}, \mathcal
+M)\)</span>, where <span class="math inline">\(p&gt;0\)</span> is
+constant, <span class="math inline">\(\mathcal G\)</span> is the set of
+good nodes and <span class="math inline">\(\varepsilon = |\mathcal G^c|
+/n\)</span>. Let <span class="math inline">\(\Omega\)</span> be the
+oracle matrix, <span class="math inline">\(\Xi\)</span> is the left
+singular matrix of <span class="math inline">\(\Omega_{\mathcal G} =
+I_{\mathcal G} \Omega\)</span>, and <span class="math inline">\(\hat
+\Xi\)</span> consists of the top <span class="math inline">\(K\)</span>
+left singular vectors of <span class="math inline">\(Y\)</span>.</em></p>
+<p><em>Let <span class="math inline">\(c,C&gt;0\)</span> be constants
+that vary case by case. We assume:</em></p>
+<ol type="1">
+<li><p><em>the sub-matrix of <span class="math inline">\(P\)</span> that
+restricted to dense communities <span class="math inline">\(P_{\mathcal
+D} = I_{\mathcal D} P\)</span> is full-rank;</em></p></li>
+<li><p><em><span class="math inline">\(\| x _i \| \leq R\)</span> almost
+surely, and for <span class="math inline">\(i \in \mathcal S \cap
+\mathcal G\)</span>, with high probability <span class="math inline">\(\| x_i \ E(x_i)\| \leq \delta_X
+R\)</span>;</em></p></li>
+<li><p><em><span class="math inline">\(\lambda _K E(X) \geq c \sqrt n
+R\)</span>;</em></p></li>
+<li><p><em>the number of nodes in any community <span class="math inline">\(n_k / n \geq c &gt;0\)</span>.</em></p></li>
+</ol>
+<p><em>Then there are threshold constants <span class="math inline">\(C_\theta, \varepsilon _0, n_0\)</span>, and <span class="math inline">\(\delta_0\)</span>, s.t. if <span class="math inline">\(\delta_X \leq \delta _0\)</span>, <span class="math inline">\(\varepsilon \leq \varepsilon_0\)</span>, <span class="math inline">\(n \geq n_0\)</span>, <span class="math inline">\(n
+\theta_{\text{max}}^2 \geq C_\theta \log n\)</span>, there exists an
+orthogonal matrix <span class="math inline">\(O\)</span> and a constant
+<span class="math inline">\(C&gt;0\)</span> with probability <span class="math inline">\(1 - O(1/n)\)</span> s.t.</em></p>
+<p><span class="math display">\[\max _{i \in \mathcal G} \|\hat \Xi_i  -
+O \xi_i\| \leq C(\delta_X + \sqrt \varepsilon + 1/ \sqrt{C_\theta}) /
+\sqrt{n},\]</span></p>
+<p>where <span class="math inline">\(\hat \Xi_i\)</span> and <span class="math inline">\(\Xi_i\)</span> are vectors formed by i-th row of
+<span class="math inline">\(\hat \Xi\)</span> and <span class="math inline">\(\Xi\)</span>.</p>
+<p>Hence, the algorithm of spectral clustering based on network-adjusted
+covariates shows strong consistency. <span class="math inline">\(\hat
+l(i)\)</span> and <span class="math inline">\(\Pi_{i,j}\)</span> can
+correspond to each other for each node in the good set <span class="math inline">\(\mathcal G\)</span>. Note that the bound is
+row-wise instead of the Frobenius norm bound using the Davis-Kahan
+approach (haven't read yet).</p>
+<p><strong>Theorem 2.2</strong> (Strong Consistency). <em>Suppose the
+conditions 1 <span class="math inline">\(\sim\)</span> 4 in Theorem 2.1
+hold. Let <span class="math inline">\(\hat l\)</span> be the estimated
+labels by the spectral clustering method in <span class="math inline">\(Y\)</span>. Then there is a constant <span class="math inline">\(C_\theta\)</span> independent of <span class="math inline">\(n\)</span>, so that if <span class="math inline">\(n \theta_{\max} \geq C_\theta \log n\)</span>,
+there exists a permutation <span class="math inline">\(\pi\)</span> s.t.
+with probability <span class="math inline">\(1-
+O(1/n)\)</span>,</em></p>
+<p><span class="math display">\[\pi(\hat l(i)) = l(i), \; \; \text{all }
+i \in \mathcal G.\]</span></p>
+<p>Therefore the community detection error rate is bounded by <span class="math inline">\(|\mathcal G^c|/ n =\varepsilon\)</span>.</p>
+<p>Hence we have <span class="math inline">\(E(\text{Err}_n) \leq
+(1-O(1/n))\cdot \varepsilon + O(1/n) \cdot 1 = \varepsilon +
+O(1/n)\)</span>. This will meet the statistical lower bound in the next
+section.</p>
+<h3 id="oracle-based-generalized-adjusted-covariate-clustering">Oracle
+Based Generalized Adjusted Covariate Clustering</h3>
+<p>In the direct application of spectral clustering method on the NAC,
+we considered the case that <span class="math inline">\(X\)</span> is
+uninformative, i.e. the covariate matrix <span class="math inline">\(X\)</span> is not of full-rank, and add <span class="math inline">\(AA^T\)</span> to <span class="math inline">\(YY^T\)</span> to achieve good clustering results.
+This algorithm also shows consistency with the stochastic block model
+settings.</p>
+<p>In the previous section we assume that <span class="math inline">\(E(X)\)</span> is of full-rank. If <span class="math inline">\(\text{rank} (E(X)) &lt; K\)</span>, we should add
+a weighted <span class="math inline">\(AA^T\)</span> to <span class="math inline">\(YY^T\)</span> as what we did in the direct
+application of spectral clustering. Here we only add <span class="math inline">\(AA^T\)</span> restricted to rows in dense
+communities, i.e.</p>
+<p><span class="math display">\[\hat L = \Omega \Omega^T + \beta n
+(I_{\mathcal D} E(A) I_{\mathcal D})^2.\]</span></p>
+<p>Here, by extending the covariates to <span class="math inline">\(\mathbb R^{p+1}\)</span>, we still have the
+Cholesky decomposition of <span class="math inline">\(\hat L = \tilde
+\Omega \tilde \Omega ^T\)</span> as follows.</p>
+<p>Define the extended covariates <span class="math inline">\(\{\tilde
+x_i\}\)</span> as follows:</p>
+<p><span class="math display">\[\tilde x_i = \begin{cases}
+    (x_i , \sqrt \beta_i T_{l(i)}), \; &amp; i \in \mathcal D \\
+    (x_i , 0) , \; &amp; i \notin \mathcal D
+\end{cases} \in \mathbb R^{p+K_{\mathcal D}}.\]</span></p>
+<p>where <span class="math inline">\(T_{l(i)}\)</span> is the row of
+<span class="math inline">\(T = (\Pi^T \Theta \Pi)^{-1} (n \Pi^T \Theta
+^2 \Pi)^{1/2} \in \mathbb R^{K_{\mathcal D} \times K_{\mathcal
+D}}\)</span>. (Note that the rows and columns are restricted to dense
+communities in <span class="math inline">\(T\)</span>, and <span class="math inline">\(T\)</span> is a diagonal matrix.)</p>
+<p><strong>Question (not yet solved)</strong>: By computing <span class="math inline">\(T\)</span> and <span class="math inline">\(\hat
+\Omega \hat \Omega^T\)</span> I find that the coefficient of <span class="math inline">\(T_{l(i)}\)</span> should change with the subscript
+<span class="math inline">\(l(i)\)</span>. It seems that the calculation
+results in the article may appear incorrect (or I misunderstand
+something), but it does not affect the fact that <span class="math inline">\(\Omega \Omega^T + \beta n (I_{\mathcal{D}} E(A)
+I_{\mathcal D})^2\)</span> can be represented as a Cholesky
+decomposition <span class="math inline">\(\tilde \Omega \tilde \Omega
+^T\)</span>.</p>
+<p>Denote <span class="math inline">\(\tilde X \in \mathbb R^{n \times
+(p+K_{\mathcal D})}\)</span> as the extended covariate matrix and <span class="math inline">\(E(\tilde X) \in \mathbb R^{n \times (p+K_{\mathcal
+D})}\)</span> as its expectation. Denote <span class="math inline">\(\tilde \Omega = (I_{\mathcal D}E(A) I_{\mathcal D}
++ I_{\mathcal S} \hat D_\alpha) E(\tilde X) \in \mathbb R^{n \times
+(p+K_{\mathcal D})}\)</span>, we have</p>
+<p><span class="math display">\[\begin{aligned}
+    \tilde \Omega \tilde \Omega ^T &amp; = (I_{\mathcal D}E(A)
+I_{\mathcal D} + I_{\mathcal S} \hat D_\alpha) E(\tilde X) E(\tilde
+X)^T  (I_{\mathcal D}E(A) I_{\mathcal D} + I_{\mathcal S} \hat D_\alpha)
+    \\ &amp; =  (I_{\mathcal D}E(A) I_{\mathcal D} + I_{\mathcal S} \hat
+D_\alpha) (E(X)E(X)^T + \tilde{TT^T}) (I_{\mathcal D}E(A) I_{\mathcal D}
++ I_{\mathcal S} \hat D_\alpha) \\
+    &amp; = \Omega \Omega ^T + (I_{\mathcal D}E(A) I_{\mathcal D} +
+I_{\mathcal S} \hat D_\alpha) (\tilde{TT^T}) (I_{\mathcal D}E(A)
+I_{\mathcal D} + I_{\mathcal S} \hat D_\alpha) \\
+    &amp; = \Omega \Omega ^T + \beta n (I_{\mathcal D}E(A) I_{\mathcal
+D})^2.
+\end{aligned}\]</span></p>
+<p>Note that <span class="math inline">\(\tilde{TT^T}\)</span> is a
+matrix in <span class="math inline">\(\mathbb R^{n \times n}\)</span>,
+where the rows and columns in sparse communities are set as <span class="math inline">\(0\)</span>. For row <span class="math inline">\(i\)</span> where node <span class="math inline">\(i\)</span> is in a dense community, we have the
+i-th row as <span class="math inline">\(TT^T_{i} = T_{l(i)} ^T \tilde
+T\)</span>. Hence <span class="math inline">\(\tilde{TT^T}\)</span> is
+composed of <span class="math inline">\(TT^T\)</span> and <span class="math inline">\(0\)</span>'s as other items.</p>
+<p>Hence by relaxing the third condition in Theorem 2.1, we get the
+consistency result on oracle-based spectral clustering on generalized
+NAC as follows.</p>
+<p><strong>Theorem 2.3</strong> (Consistency of Algorithm 4).
+<em>Consider the degree-corrected stochastic block model with covariates
+with parameters <span class="math inline">\((\Omega, K, P, \Pi ,
+F_{[K]}, \mathcal M)\)</span>. Let <span class="math inline">\(\Omega\)</span> be the oracle matrix, <span class="math inline">\(\Xi\)</span> is the eigenvectors of <span class="math inline">\(\tilde \Omega \tilde \Omega ^T\)</span>, and <span class="math inline">\(\hat \Xi\)</span> consists of the top <span class="math inline">\(K\)</span> left singular vectors of <span class="math inline">\(L = YY^T + \beta n AA^T\)</span>.</em></p>
+<p><em>Let <span class="math inline">\(c,C&gt;0\)</span> be constants
+that vary case by case. We assume:</em></p>
+<ol type="1">
+<li><p><em>the sub-matrix of <span class="math inline">\(P\)</span> that
+restricted to dense communities <span class="math inline">\(P_{\mathcal
+D} = I_{\mathcal D} P\)</span> is full-rank;</em></p></li>
+<li><p><em><span class="math inline">\(\| x _i \| \leq R\)</span> almost
+surely, and for <span class="math inline">\(i \in \mathcal S \cap
+\mathcal G\)</span>, with high probability <span class="math inline">\(\| x_i \ E(x_i)\| \leq \delta_X
+R\)</span>;</em></p></li>
+<li><p><em><span class="math inline">\(^\prime\)</span> Let <span class="math inline">\(K_{\mathcal S}\)</span> be the number of sparse
+communities. There is a constant <span class="math inline">\(c&gt;0\)</span>, s.t. <span class="math inline">\(\lambda _{K_{\mathcal S}} (I_{\mathcal S} E(X))
+\geq c \sqrt n R\)</span>;</em></p></li>
+<li><p><em>the number of nodes in any community <span class="math inline">\(n_k / n \geq c &gt;0\)</span>.</em></p></li>
+</ol>
+<p>Then there are threshold constants <span class="math inline">\(C_\theta, \varepsilon _0, n_0\)</span>, and <span class="math inline">\(\delta_0\)</span>, s.t. if <span class="math inline">\(\delta_X \leq \delta _0\)</span>, <span class="math inline">\(\varepsilon \leq \varepsilon_0\)</span>, <span class="math inline">\(n \geq n_0\)</span>, <span class="math inline">\(n
+\theta_{\text{max}}^2 \geq C_\theta \log n\)</span>, there are constants
+<span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span>, so that when <span class="math inline">\(\beta_0 &lt; \beta &lt; \beta_1\)</span>, with
+probability <span class="math inline">\(1- O(1/n)\)</span>, there exists
+an orthogonal matrix <span class="math inline">\(O\)</span> and a
+constant <span class="math inline">\(C &gt;0\)</span> that</p>
+<p><span class="math display">\[\| \hat \Xi - O\Xi \| _F \leq C(\delta_X
++ \sqrt \varepsilon + 1/ \sqrt{C_\theta}).\]</span></p>
+<p>Let <span class="math inline">\(\delta_{\text{net}} = \frac{\max _{i
+\in \mathcal S} n \theta _i \theta_{\max}}{\min _{i \in \mathcal D} n
+\theta _i \theta_{\max}}\)</span>. Let <span class="math inline">\(\text{Err}_n = \frac{1}{n} \min _{\pi : [K] \to
+[K]} |\{i : \pi(\hat l(i)) \neq L(i)\}|\)</span> (i.e., the number of
+nodes that are wrongly recovered). Then there exists a permutation <span class="math inline">\(\pi\)</span>, s.t. with probability <span class="math inline">\(1- O(1/n)\)</span>, the clustering error rate by
+spectral clustering on generalized NAS (Algorithm 4) follows</p>
+<p><span class="math display">\[\text{Err} _n \leq C(\delta_X + 1/
+\sqrt{C_\theta} + \delta_{\text{net}} + \sqrt \varepsilon).\]</span></p>
+<p>This is a weak consistency result because the noise caused by added
+<span class="math inline">\(AA^T\)</span> is relatively large. Hence the
+row-wise control is hardly available, and the error rate cannot be
+controlled by a single constant <span class="math inline">\(\varepsilon\)</span>.</p>
+<h2 id="statistical-lower-bound">Statistical Lower Bound</h2>
+<p>Consider a simplified model <span class="math inline">\(SM(\theta_0,
+\theta_{\max}, P, \mu_{[3]},\sigma)\)</span> .with <span class="math inline">\(K=3\)</span>. Nodes fall into each community
+equally likely. Furthermore, nodes in community <span class="math inline">\(1,2\)</span> have <span class="math inline">\(\theta_1 = \theta_2 = \theta_0\)</span>, and nodes
+in community 3 have <span class="math inline">\(\theta_3 =
+\theta_{\max}\)</span>. Hence community 3 is dense, community 1,2 have
+the flexibility to be either dense or sparse. The covariates are
+generated by <span class="math inline">\(x_i \sim N(\mu_{l(i)}, \sigma^2
+I_p) = F_{l(i)}\)</span>. Thus, we can derive a statistical lower bound
+with such simplified model.</p>
+<p><strong>Theorem 2.4</strong> (Statistical Lower Bound). <em>Consider
+the <span class="math inline">\(SM(\theta_0, \theta_{\max}, P,
+\mu_{[3]},\sigma)\)</span> with <span class="math inline">\(K=3\)</span>. There is a constant <span class="math inline">\(C&gt;0\)</span> and a constant <span class="math inline">\(c_p\)</span> on <span class="math inline">\(P\)</span>, s.t. if</em></p>
+<ol type="1">
+<li><p><em><span class="math inline">\(n \theta_0 \theta_{\max} &lt;
+Cc_p\)</span>,</em></p></li>
+<li><p><em><span class="math inline">\(\|\mu_2 - \mu_1 \| /\sigma_n &lt;
+\sqrt{C \log n}\)</span>,</em></p></li>
+</ol>
+<p><em>then for any estimator <span class="math inline">\(\hat
+l\)</span>, <span class="math inline">\(E(\text{Err}_n (\hat l, l)) \geq
+1/n\)</span>, which implies that the exact recovery cannot be
+achieved.</em></p>
+<p>Note that the statistical lower bound meets the upper bound in
+Theorem 2.2 up to a constant factor. Then the spectral clustering
+approach on NAC is optimal.</p>
+<h1 id="local-linear-graphon-estimation-using-covariates">Local Linear
+Graphon Estimation Using Covariates</h1>
+<h2 id="adjusted-conditional-distribution-of-the-adjacency-matrix-items">Adjusted
+Conditional Distribution of the Adjacency Matrix Items</h2>
+<p>The conditional distribution is slightly adjusted in a common
+approach (the same as in Network histograms and universality of
+blockmodel approximation) as</p>
+<p><span class="math display">\[A_{ij} | \xi_i, \xi_j \sim
+\text{Bernoulli} (p_{ij}) = \text{Bernoulli} (\rho_n f(\xi_i,
+\xi_j)),\]</span></p>
+<p>where the range of <span class="math inline">\(f\)</span> is extended
+to <span class="math inline">\([0,+\infty)\)</span>, and <span class="math inline">\(\rho_n\)</span> is used to restrict the
+conditional probability on <span class="math inline">\([0,1]\)</span>.</p>
+<p>Moreover, we have <span class="math inline">\(n \to \rho_n\)</span>
+as a non-increasing mapping, and <span class="math inline">\(\int \int
+_{[0,1]^2 } f(x,y) dxdy =1\)</span> as a unity condition. Therefore,
+noting that</p>
+<p><span class="math display">\[\begin{aligned}
+    E(A_{ij}) &amp; = E (E(A_{ij} | \xi _i , \xi _j) ) = E(P(A_{ij}=1 |
+\xi _i , \xi _j)) = E(\rho_n f(\xi_i, \xi_j)) = \rho_n \int_{[0,1]^2}
+f(u,v) dudv =\rho_n,
+\end{aligned}\]</span></p>
+<p>the coefficient <span class="math inline">\(\rho_n\)</span> which
+also represents scale <span class="math inline">\(n\)</span> can be
+estimated by the unbiased sample mean</p>
+<p><span class="math display">\[\hat \rho_n = \frac{2}{n(n-1)} \sum_{1
+\leq i &lt; j \leq n} A_{ij}.\]</span></p>
+<p><em>Question</em>: Since unbiasedness seems weak (as I've learned
+these days in a Bayesian lecture), is it necessary for us to make
+another estimation of <span class="math inline">\(\rho_n\)</span>? This
+estimation seems not to affect the graphon estimation and the bandwidth
+selection. Also, this seems to be a common approach according to other
+papers I've read. (unimportant)</p>
+<p>The non-decreasing <span class="math inline">\(\{\rho_n\}\)</span>
+seems to be reasonable, because when the scale of the network <span class="math inline">\(n\)</span> increases, the probability that two
+nodes in the network are connected will decrease. Also, the graphon
+function <span class="math inline">\(f(\xi_i , \xi_j)\)</span> focus on
+the node heterogeneity by taking variables as node-specified latent
+quantities <span class="math inline">\(\xi_1, \xi_2, \cdots,
+\xi_n\)</span>. Thus the conditional distribution illustrates the
+effects of both.</p>
+<h2 id="local-linear-estimation">Local Linear Estimation</h2>
+<h3 id="basic-ideas-and-representation">Basic Ideas and
+Representation</h3>
+<p>We do the local linear estimation with respect to fixed block pairs
+<span class="math inline">\((a,b)\)</span> as:</p>
+<p><span class="math display">\[p_{ij} = \rho_n f(\xi_i , \xi_j) =
+\kappa_{ab, 0} + \kappa _{ab,1} \xi_i + \kappa _{ab,2}
+\xi_j,\]</span></p>
+<p>for any node <span class="math inline">\(i\)</span> in block <span class="math inline">\(a\)</span> and any node <span class="math inline">\(j\)</span> in block <span class="math inline">\(b\)</span>, i.e., for any <span class="math inline">\((i,j) \in [n]^2\)</span> s.t. <span class="math inline">\(z_i =a ,z_j = b\)</span>.</p>
+<p>Also, the node-wise covariates <span class="math inline">\(\{x_i \in
+\mathbb R\}\)</span> are applied to illustrate latent variables <span class="math inline">\(\{\xi_i\}\)</span>, i.e.</p>
+<p><span class="math display">\[\xi_i = x_i + \varepsilon _i,\]</span>
+where <span class="math inline">\(\{ \varepsilon _i \}\)</span> are
+white noise <span class="math inline">\((0, \sigma^2)\)</span>, and
+assume that <span class="math inline">\((\xi_i , \varepsilon_i)\)</span>
+are mutually independent. Hence, the latent node variables <span class="math inline">\(\{\xi_i\}\)</span> in the local linear estimation
+model can be replaced by <span class="math inline">\(\{x_i
+\}\)</span>.</p>
+<p>Question (not yet solved): Does this approach introduce additional
+noise, i.e. <span class="math inline">\(\kappa _{ab, 1} \varepsilon_i +
+\kappa_{ab,2} \varepsilon_j\)</span> into the regression model? Will
+this cause heteroscedasticity? Or this is something that we just replace
+the latent variables with covariates for simplexity without these
+concerns. So we just treat observed covariares <span class="math inline">\(\{x_i\}\)</span> as an observation of the latent
+variables <span class="math inline">\(\{\xi_i\}\)</span>?</p>
+<p>In a word, what's the point of introducing a white noise sequence
+<span class="math inline">\(\{\varepsilon _i \}\)</span> here? Maybe
+only for completeness and rigorousness for the replacement, or we just
+have no better approaches to estimated the linear coefficients under
+such heteroscedasticity, so we just omitted it. In all, it did not
+appear again in subsequent derivations.</p>
+<p>The natural estimation approach based on data <span class="math inline">\((p_{ij}, x_i ,x_j)\)</span> is to apply squared
+error. Note that <span class="math inline">\(p_{ij}\)</span> is unknown,
+and it can approximately be replaced by <span class="math inline">\(A_{ij}\)</span> according to the conditional
+Bernoulli distribution. Therefore, the loss function is defined as</p>
+<p><span class="math display">\[l_{ab} =\sum_{(i,j) \in z^{-1}(a) \times
+z^{-1}(b)} (A_{ij} - \kappa_{ab, 0} - \kappa_{ab,1} x_i - \kappa_{ab,2}
+x_j)^2 = \sum_{(i,j) \in z^{-1}(a) \times z^{-1}(b)} (A_{ij} -
+\kappa_{ab}^T X_{ij})^2,\]</span></p>
+<p><span class="math display">\[L(\kappa, z; A,X) = \sum_{(a,b) \in
+[k]^2 } l_{ab} = \sum_{(a,b) \in [k]^2 }\sum_{(i,j) \in z^{-1}(a) \times
+z^{-1}(b)} (A_{ij} - \kappa_{ab}^T X_{ij})^2,\]</span></p>
+<p>where <span class="math inline">\(\kappa_{ab} = (\kappa_{ab, 0},
+\kappa_{ab,1}, \kappa_{ab,2})^T, X_{ij} = (1, x_i ,x_j)^T\)</span>,
+<span class="math inline">\(\kappa = (\kappa_{ab}) \in \mathbb R^{3
+\times k \times k}\)</span>, <span class="math inline">\(X =
+(X_{ij})\)</span>.</p>
+<p>The optimal solution is denoted as</p>
+<p><span class="math display">\[(\hat \kappa, \hat z ) = \arg \min
+_{\kappa \in \mathbb R^{3 \times k \times k}, z \in \mathcal Z_{n,h}}
+L(\kappa, z ; A,X),\]</span></p>
+<p>where the block pairwise coefficient <span class="math inline">\(\kappa\)</span> is uncorrelated with the block
+assignment function <span class="math inline">\(z\)</span>.</p>
+<p>Then by given the least square estimation <span class="math inline">\((\hat \kappa, \hat z )\)</span>, we can derive the
+estimation of <span class="math inline">\(\{f(x_i ,x_j)\}_{(i,j) \in
+[n]^2}\)</span> as:</p>
+<p><span class="math display">\[\hat f(x_i , x_j ) = \hat \rho_n ^{-1}
+\hat p_{ij} = \hat \rho_n ^{-1} \hat \kappa_{\hat z(i), \hat z(j)}^T
+X_{ij},\]</span></p>
+<p>which is actually a discrete estimation of the graphon function <span class="math inline">\(f\)</span> on <span class="math inline">\(n^2\)</span> points <span class="math inline">\(\{(i,j) : i, j \in [n]\}\)</span>.</p>
+<p>However, we aim to estimate the graphon function <span class="math inline">\(f\)</span> on any point in <span class="math inline">\([0,1]^2\)</span>, so some approximation is
+required.</p>
+<p><em>Question</em>: Do we expect the estimation <span class="math inline">\(\hat f\)</span> to have some good properties, such
+as continuity, differentiability, etc. ?</p>
+<p>Actually not, the estimated graphon is organized with grids.</p>
+<p>We can take the simplest approach by dividing the interval <span class="math inline">\([0,1]^2\)</span> into <span class="math inline">\(k^2\)</span> blocks, and assign each point <span class="math inline">\((u,v) \in [0,1]^2\)</span> to the nearest block
+<span class="math inline">\((a,b) = (\min \{[nu/h]+1, k\} , \min
+\{[nv/h]+1, k\})\)</span>. Then the natural estimation of <span class="math inline">\(f\)</span> at <span class="math inline">\((u,v)\)</span> is interpreted as <span class="math inline">\(\hat f(u,v) = \hat \rho_n ^{-1} (\hat
+\kappa_{ab,0} + \hat \kappa_{ab, 1} u + \hat \kappa_{ab,2} v)\)</span>.
+This approach is reasonable because <span class="math inline">\(x_i =
+\xi_i + \varepsilon_i\)</span> is nearly a uniform distribution on <span class="math inline">\([0,1]\)</span>, then we can approximate <span class="math inline">\((u,v)\)</span> according to the nearby <span class="math inline">\((x_i , x_j)\)</span>.</p>
+<p>Till then, there are two problems remain to solve:</p>
+<ol type="1">
+<li><p>How to select a proper bandwidth <span class="math inline">\(h\)</span> according to the network? This may
+relate to some trade-off between the bias and the variance.</p></li>
+<li><p>How to get the least square estimation <span class="math inline">\((\hat \kappa, \hat z )\)</span>? Note that the
+<span class="math inline">\(z^{-1}\)</span> in the subscript of
+summation is difficult to handle.</p></li>
+</ol>
+<p>The next section introduces some analysis based on oracle.</p>
+<h3 id="oracle-based-local-linear-estimation">Oracle Based Local Linear
+Estimation</h3>
+<p>Given a network <span class="math inline">\(\mathcal A = (\mathcal V,
+\mathcal E)\)</span> and its node-wise covariates <span class="math inline">\(\{x_i\}_{i=1}^n\)</span>, consider the oracle that
+provides order statistics of the unobserved node positions <span class="math inline">\(\{\xi_i\}\)</span>, i.e. we are given <span class="math inline">\(\xi_{(1)} \leq \xi_{(2)} \leq \cdots \leq
+\xi_{(n)}\)</span>.</p>
+<p><em>Question</em>: Why this makes sense? This seems to be a common
+approach in former papers And I think it makes sense according to the
+trivial estimation in the previous section, i.e. we treat covariates
+<span class="math inline">\(\{x_i\}\)</span> as an approximation of
+<span class="math inline">\(\{\xi_i\}\)</span>, and assign any point
+<span class="math inline">\((u,v)\)</span> to the nearest block in <span class="math inline">\([0,1]^2\)</span> because <span class="math inline">\(\{\xi_1,\xi_2, \cdots, \xi_n\}\)</span> are i.i.d.
+Uniform[0,1]. Also, the order statistics are sufficient in nonparametric
+models.</p>
+<p>Similar to what we did in the previous section, we assign <span class="math inline">\(\{\xi_{(i)}\}\)</span> into <span class="math inline">\(k\)</span> blocks according to the order. To be
+more precise, we take <span class="math inline">\(\{\xi_{(1)} ,
+\xi_{(2)}, \cdots, \xi_{(h)}\}\)</span> as block <span class="math inline">\(1\)</span>, <span class="math inline">\(\{\xi_{(h+1)} , \xi_{(h+2)}, \cdots,
+\xi_{(2h)}\}\)</span> as block <span class="math inline">\(2\)</span>,
+<span class="math inline">\(\cdots\)</span> , <span class="math inline">\(\{\xi_{((k-2)h+1)} , \xi_{((k-2)h+2)}, \cdots,
+\xi_{((k-1)h)}\}\)</span> as block <span class="math inline">\(k-1\)</span>, and <span class="math inline">\(\{\xi_{((k-1)h+1)} , \xi_{((k-1)h+2)}, \cdots,
+\xi_{(n)}\}\)</span> as block <span class="math inline">\(k\)</span>.
+This way we actually construct an oracle block assignment vector <span class="math inline">\(\hat z ^* = (\hat z_1 ^* \cdots, \hat z_n
+^*)^T\)</span>, where node <span class="math inline">\(i\)</span> is
+assigned according to <span class="math inline">\(\xi_i = \xi_{(j)}
+\triangleq \xi_{((i)^{-1})}\)</span> to the <span class="math inline">\(\min\{[j/h], k\} = \min\{[(i)^{-1}/h],
+k\}\)</span> -th block. Mathematically we construct <span class="math inline">\(\hat z ^* = (\hat z_i ^* )_{i \in [n]}=
+(\min\{[(i)^{-1}/h], k\})_{ i \in [k]}\)</span> as the oracle lock
+assignment vector.</p>
+<p>To estimate the graphon <span class="math inline">\(f\)</span> at any
+point <span class="math inline">\((u,v) \in [0,1]^2\)</span>, it's
+natural to consider fitting the nodes nearby into the local linear model
+specifically for point <span class="math inline">\((u,v)\)</span>.
+Denote <span class="math inline">\(B^*(u) = [u - \frac{h}{2n}, u
++\frac{h}{2n}]\)</span> as a block generated by <span class="math inline">\(u \in (\frac{h}{2n}, 1- \frac{h}{2n})\)</span>.
+Then the closed ball <span class="math inline">\(B^*(u)\)</span> is
+approximately a block with width <span class="math inline">\(\frac{h}{n}
+\approx \frac{1}{k}\)</span>, similar to the original division of
+blocks. Nodes "in" this area are considered as points nearby, and they
+can be used to fit the local linear model for <span class="math inline">\((u,v)\)</span>. To describe what kind of nodes are
+next to <span class="math inline">\((u,v)\)</span>, use the oracle to
+assign such points into the interval.</p>
+<p>Note that <span class="math inline">\(E(\xi_{(i)}) =
+\frac{i}{n+1}\)</span>, we replace <span class="math inline">\(\xi_{i} =
+\xi_{(i)^{-1}}\)</span> with the expectation of its corresponding order
+statistic, i.e. <span class="math inline">\(\frac{(i)^{-1}}{n+1} = \hat
+\xi_{i}\)</span>, and assign it to the block generate by any <span class="math inline">\(u \in [0,1]\)</span>. That is, if <span class="math inline">\(\hat \xi_{i} = \frac{(i)^{-1}}{n+1} \in
+B^*(u)\)</span>, then <span class="math inline">\(\xi_i\)</span>
+(actually node <span class="math inline">\(i\)</span>) is assigned into
+the block generated by <span class="math inline">\(u\)</span>, and we
+take the "block assignment vector" (adjusted for any <span class="math inline">\(u \in [0,1]\)</span>) as <span class="math inline">\(z_i^*(u) =1\)</span>, otherwise <span class="math inline">\(0\)</span>. Hence the Oracle neighborhood
+indicator vector (according to the bandwidth <span class="math inline">\(h\)</span> because the measure of the closed ball
+<span class="math inline">\(B^*(u)\)</span> is <span class="math inline">\(\frac{h}{n}\)</span>) is defined as <span class="math inline">\(z^*(u;h) = \{z_1 ^*(u), \cdots,
+z_n^*(u)\}^T\)</span>.</p>
+<p>Hence, the local linear model of any <span class="math inline">\((u,v) \in [0,1]^2\)</span> is derived from</p>
+<p><span class="math display">\[A_{ij} \approx \rho_n f(\xi_i, \xi_j) =
+p_{ij} = \gamma_{uv, 0} + \gamma _{uv,1} \xi_i + \gamma_{uv, 2} \xi_j
+\approx  \gamma_{uv, 0} + \gamma _{uv,1} x_i + \gamma_{uv, 2} x_j
+.\]</span></p>
+<p>for any node <span class="math inline">\(i\)</span> in block
+generated by <span class="math inline">\(u\)</span>, node <span class="math inline">\(j\)</span> in block generated by <span class="math inline">\(v\)</span> correspondingly. Then the loss caused
+by each pair of such <span class="math inline">\((i,j)\)</span> is
+approximately interpreted as</p>
+<p><span class="math display">\[l_{ij}(u,v) = (A_{ij} - \gamma_{uv,0} -
+\gamma_{uv, 1} x_i -\gamma_{uv,2} x_j)^2.\]</span></p>
+<p>To estimate the loss, it's natural to sum the loss caused by such
+pairs of <span class="math inline">\((i,j)\)</span> together, i.e.</p>
+<p><span class="math display">\[\begin{aligned}
+    L(u,v) &amp; = \sum_{\frac{(i)^{-1}}{n+1} \in B^*(u),
+\frac{(j)^{-1}}{n+1} \in B^*(v)} l_{ij} (u,v) = \sum_{1 \leq i &lt; j
+\leq n} l_{ij} (u,v) z_i^*(u) z_j^*(v) \\ &amp; = \sum_{1 \leq i &lt; j
+\leq n} (A_{ij} - \gamma_{uv,0} - \gamma_{uv, 1} x_i -\gamma_{uv,2}
+x_j)^2 z_i^*(u) z_j^*(v).
+\end{aligned}\]</span></p>
+<p>The least-squares estimator</p>
+<p><span class="math display">\[\hat \gamma_{uv} = (\hat \gamma_{uv,0} ,
+\hat \gamma_{uv,1}, \hat \gamma_{uv,2}) = \arg \min _{\gamma_{uv}}
+L(u,v),\]</span></p>
+<p>and the according graphon estimation at point <span class="math inline">\((u,v) \ in [0,1]^2\)</span> is</p>
+<p><span class="math display">\[\hat f(u,v) = (\hat \rho _n)^{-1} \hat
+p(u,v) = (\hat \rho _n)^{-1} (\hat \gamma_{uv,0} + \hat \gamma_{uv,1} u
++ \hat \gamma_{uv,2} v).\]</span></p>
+<p><em>Question</em>: During this process, what steps may introduce
+error into the result?</p>
+<p>Many approximations are made to make the estimation possible and
+intuitive, the following are some of them:</p>
+<ol type="1">
+<li><p>According to the local linear regression, we estimated the
+graphon by <span class="math inline">\(\hat f(u,v) = (\hat \rho _n)^{-1}
+(\hat \gamma_{uv,0} + \hat \gamma_{uv,1} u + \hat \gamma_{uv,2}
+v)\)</span> with the nearby nodes <span class="math inline">\((i,j)\)</span> according to the order statistics
+oracle.</p>
+<p>The model itself will introduce errors to the prediction as linear
+models do.</p></li>
+<li><p>Still the issue of replacing <span class="math inline">\(\xi_i\)</span> with observed covariates <span class="math inline">\(x_i\)</span> with error <span class="math inline">\(\xi_i = x_i +\varepsilon _i\)</span>, and
+introduce it into the local linear model <span class="math inline">\(p_{ij} = \gamma_{uv, 0 } + \gamma_{uv,1} \xi_i +
+\gamma _{uv, 2} \xi_j\)</span> without adding the noise as <span class="math inline">\(\gamma_{uv,1} \varepsilon _i + \gamma_{uv, j }
+\varepsilon _j\)</span>. The error increases with the scale of estimated
+<span class="math inline">\(\hat \gamma_{uv}\)</span>.</p></li>
+<li><p>To simplify the estimation, we take <span class="math inline">\(A_{ij} \approx p_{ij} = \gamma_{uv, 0 } +
+\gamma_{uv,1} \xi_i + \gamma _{uv, 2} \xi_j\)</span>, while <span class="math inline">\(E(A_{ij} | \xi_i , \xi_j ) = p_{ij}\)</span>.
+Actually, <span class="math inline">\(A_{ij}\)</span> is even not an
+unbiased estimator of <span class="math inline">\(p_{ij}\)</span>. But
+how to do better?</p></li>
+<li><p>To assign nearby nodes to the block generated by any <span class="math inline">\(u \in (0,1)\)</span>, we replace <span class="math inline">\(\xi_{i} = \xi_{(i)^{-1}}\)</span> with the
+expectation of the order statistic <span class="math inline">\(\frac{(i)^{-1}}{n+1}\)</span>, i.e. for any <span class="math inline">\(u \in (0,1)\)</span>, the generated block contains
+about <span class="math inline">\(k\)</span> nodes.</p>
+<p>And, for example, for <span class="math inline">\(u_1, u_2 \in
+[\frac{h}{2n}, \frac{h}{2n} + \frac{1}{n+1}]\)</span>, <span class="math inline">\(v_1 , v_2 \in [\frac{h}{2n}, \frac{h}{2n} +
+\frac{1}{n+1}]\)</span>, the node pairs <span class="math inline">\((i,j)\)</span> contained in the blocks generated
+by <span class="math inline">\((u_1, v_1), (u_2, v_2)\)</span> are
+almost the same up to one single node in the right "boundary" (e.g.,
+there may exist some <span class="math inline">\(\frac{i}{n+1} \in
+[\frac{h}{n}, \frac{h}{n} + \frac{1}{n+1}]\)</span>, then the numbers of
+nodes in block generated by <span class="math inline">\(u_1 =
+\frac{h}{2n}, u_2 = \frac{h}{2n} + \frac{1}{n+1}\)</span> will even
+differ), so the estimated coefficients <span class="math inline">\(\hat
+\gamma_{u_1, v_1}, \hat \gamma_{u_2, v_2}\)</span> may have a certain
+degree of consistency.</p>
+<p>Ideally, <span class="math inline">\(\hat f(u,v)= (\hat \rho _n)^{-1}
+(\hat \gamma_{uv,0} + \hat \gamma_{uv,1} u + \hat \gamma_{uv,2}
+v)\)</span> is linear in the region taken for example. However, if there
+exist some points, like, with high leverage, it will have a significant
+impact on the estimated regression coefficients <span class="math inline">\(\hat \gamma_{uv}\)</span>. This may lead to abrupt
+changes in the estimated graphon value <span class="math inline">\(\hat
+f(u,v)\)</span> of adjacent regions, i.e. will result in discontinuous
+points with large oscillation with respect to the true graphon <span class="math inline">\(f\)</span> (assumed continuous).</p>
+<p>This may contribute to severe errors when we use MISE to measure the
+difference between the real graphon <span class="math inline">\(f\)</span> and the estimated <span class="math inline">\(\hat f\)</span>.</p></li>
+</ol>
+<p>However, the upper bound of MISE, bias and variance given by this
+work shows that all these errors are controlled.</p>
+<h2 id="error-estimation-and-bandwidth-selection-conclusions">Error
+Estimation and Bandwidth Selection Conclusions</h2>
+<p>With the graphon function <span class="math inline">\(\hat f\)</span>
+estimated at each point <span class="math inline">\((u,v)\)</span>, it
+suffices to illustrate that the estimation is good, and give the
+selection rule of bandwidth <span class="math inline">\(h\)</span> since
+it is the only remaining variable in the oracle-based analysis.</p>
+<p><strong>Theorem 3.1</strong> (Upper bound for the bias and variance
+of the linear graphon estimation). Given a bandwidth <span class="math inline">\(h &gt; 1\)</span>, assume that <span class="math inline">\(\frac{h}{n} \to 0\)</span> as <span class="math inline">\(n \to \infty\)</span>, <span class="math inline">\(h = \omega (\sqrt n)\)</span>, and the graphon
+<span class="math inline">\(f : [0,1]^2 \to [0,\infty )\)</span> is
+twice differentiable with continuous second-order partial derivatives.
+Let <span class="math inline">\(f_u\)</span> and <span class="math inline">\(f_v\)</span> denote the first-order partial
+derivatives with respect to the first and second variables,
+respectively. Then, as <span class="math inline">\(n \to
+\infty\)</span>, for any interior point <span class="math inline">\((u,v) \in (0,1)^2\)</span>,</p>
+<p><span class="math display">\[\text{bias} (\hat f(u,v;h))  =
+\frac{1}{24} \frac{h^2}{n^2} (\frac{\partial ^2 f}{\partial u^2} (u,v) +
+\frac{\partial ^2 f}{\partial v ^2} (u,v)) (1+ o(1)),\]</span></p>
+<p>and</p>
+<p><span class="math display">\[\text{Var} (\hat f(u,v;h)) = [\frac{\bar
+f_\omega -\rho_n \bar f_\omega ^2}{\rho_n h^2} + 2 \bar f_{u;\omega}
+\bar f_{v;\omega}\frac{u+v}{n+2}(\frac{2n}{n+1} - (u+v))](1+
+o(1)).\]</span></p>
+<p>We denote by</p>
+<p><span class="math display">\[\bar f_\omega  = \frac{1}{|\omega_{uv}|}
+\int \int _{\omega_{uv}} f(x,y) dxdy,\]</span></p>
+<p><span class="math display">\[\bar f_\omega ^2 \frac{1}{|\omega_{uv}|}
+\int \int _{\omega_{uv}} f^2(x,y) dxdy,\]</span></p>
+<p><span class="math display">\[\bar f_{u;\omega} =
+\frac{1}{|\omega_{uv}|} \int \int _{\omega_{uv}} f_u(x,y)
+dxdy,\]</span></p>
+<p><span class="math display">\[\bar f_{v;\omega} =
+\frac{1}{|\omega_{uv}|} \int \int _{\omega_{uv}} f_v(x,y)
+dxdy\]</span></p>
+<p>the corresponding local averages over the size-<span class="math inline">\(h\)</span> oracle region <span class="math inline">\(\omega _{uv} = B^*(u) \times B^*(v)\)</span>.</p>
+<p><em>Question</em>: The paper gives that " The variance given by the
+first term in scales as the inverse of the effective degrees of freedom,
+i.e., <span class="math inline">\((\rho _n h^2)^{-1}\)</span> in each
+neighborhood.", but how to get such effective degrees of freedom? (It
+seems to be an unimportant question)</p>
+<p><strong>Theorem 3.2</strong>. Under the conditions of Theorem 3.1, as
+<span class="math inline">\(n \to \infty\)</span>, the mean integrated
+squared error <span class="math inline">\(\text{MISE}(\hat f)\)</span>
+of the oracle local linear estimator satisfies</p>
+<p><span class="math display">\[\text{MISE}(\hat f) \leq (\frac{1}{144}
+\frac{h^4}{4n^4} \psi_{2,f} + (\rho_n h^2)^{-1}+ \frac{5n}{3 (n+1)(n+2)}
+\max_{(u,v) \in [0,1]^2} \bar f_{u;\omega} \bar f_{v; \omega}) (1+
+o(1)),\]</span></p>
+<p>where <span class="math inline">\(\psi _{2,f} = \int \int _{[0,1]^2}
+\Delta f(u,v)^2dudv\)</span>, with <span class="math inline">\(\Delta\)</span> denoting the Laplacian of <span class="math inline">\(f\)</span> at <span class="math inline">\((u,v)\)</span>. This leads to the mean integrated
+squared error optimal bandwidth</p>
+<p><span class="math display">\[h^* = (\frac{288}{\rho_n
+\psi_{2,f}})^{1/6} n^{2/3}.\]</span></p>
+<p>This bandwidth is a kind of trade-off between the sparsity of the
+network and its structural variability as measured in <span class="math inline">\(\psi_{2,f}\)</span>. Under such bandwidth <span class="math inline">\(h = h^*\)</span>, it follows that</p>
+<p><span class="math display">\[\text{MISE} (\hat f) \leq (C \frac{
+\psi_{2,f} ^{1/3}}{\rho_n ^{2/3} n^{4/3} } +  \frac{5n}{3 (n+1)(n+2)}
+\max_{(u,v) \in [0,1]^2} \bar f_{u;\omega} \bar f_{v; \omega}) (1+
+o(1)),\]</span></p>
+<p>i.e. the mean integrated squared error of the local linear estimator
+decays at a rate of <span class="math inline">\((n^{4/3} \rho_n
+^{2/3})^{-1}\)</span>.</p>
+<p>However, <span class="math inline">\(\psi _{2,f}\)</span> of an
+unknown function <span class="math inline">\(f\)</span> should be
+estimated by given data. (I hadn't understand the principle of this
+algorithm yet :(</p>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>我很可爱 请给我钱（？）</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.jpg" alt="驰雨Chiyuru 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.jpg" alt="驰雨Chiyuru 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>驰雨Chiyuru
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://chiyuru.github.io/2024/03/21/Work-Log-2024-03/" title="2024 年 3 月论文阅读笔记">https://chiyuru.github.io/2024/03/21/Work-Log-2024-03/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag"># 数学</a>
+              <a href="/tags/%E7%BB%9F%E8%AE%A1/" rel="tag"># 统计</a>
+              <a href="/tags/%E6%A6%82%E7%8E%87/" rel="tag"># 概率</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2024/03/01/Diary-2024-03/" rel="prev" title="日记·篇十九·24年3月">
+      <i class="fa fa-chevron-left"></i> 日记·篇十九·24年3月
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2024/04/01/Diary-2024-04/" rel="next" title="日记·篇二十·24年4月">
+      日记·篇二十·24年4月 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  
+  <div class="comments">
+  <script src="https://utteranc.es/client.js" repo="Chiyuru/chiyuru.github.io" issue-term="pathname" theme="github-light" crossorigin="anonymous" async></script>
+  </div>
+  
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#background"><span class="nav-text">Background</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#general-basic-settings"><span class="nav-text">General Basic Settings</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#community-classifying"><span class="nav-text">Community Classifying</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#spectral-clustering-method-k-mean-clustering-method"><span class="nav-text">Spectral
+Clustering Method &amp; K-mean Clustering Method</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#compactness-and-connectivity"><span class="nav-text">Compactness and Connectivity</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#principle-of-k-means-clustering"><span class="nav-text">Principle of K-means
+Clustering</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#principle-of-spectral-clustering"><span class="nav-text">Principle of Spectral
+Clustering</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#graphon-function"><span class="nav-text">Graphon Function</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#stochastic-block-model"><span class="nav-text">Stochastic Block Model</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#covariates-modelling"><span class="nav-text">Covariates Modelling</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#block-assignment-according-to-bandwidth"><span class="nav-text">Block Assignment
+According to Bandwidth</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#network-adjusted-covariates-for-community-detection"><span class="nav-text">Network-Adjusted
+Covariates for Community Detection</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#network-adjusted-covariates"><span class="nav-text">Network-Adjusted Covariates</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#direct-spectral-clustering"><span class="nav-text">Direct Spectral Clustering</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#spectral-clustering-on-network-adjusted-covariates"><span class="nav-text">Spectral
+Clustering on Network-Adjusted Covariates</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#spectral-clustering-on-generalized-adjusted-covariates"><span class="nav-text">Spectral
+Clustering on Generalized Adjusted Covariates</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#degree-corrected-stochastic-blockmodel"><span class="nav-text">Degree-Corrected
+Stochastic Blockmodel</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#model-establishment-and-spectral-clustering"><span class="nav-text">Model Establishment
+and Spectral Clustering</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mis-specifying-of-nodes-and-recovery-methods"><span class="nav-text">Mis-specifying of
+Nodes and Recovery Methods</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#oracle-based-network-adjusted-covariate-clustering"><span class="nav-text">Oracle Based
+Network-Adjusted Covariate Clustering</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#oracle-based-generalized-adjusted-covariate-clustering"><span class="nav-text">Oracle
+Based Generalized Adjusted Covariate Clustering</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#statistical-lower-bound"><span class="nav-text">Statistical Lower Bound</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#local-linear-graphon-estimation-using-covariates"><span class="nav-text">Local Linear
+Graphon Estimation Using Covariates</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#adjusted-conditional-distribution-of-the-adjacency-matrix-items"><span class="nav-text">Adjusted
+Conditional Distribution of the Adjacency Matrix Items</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#local-linear-estimation"><span class="nav-text">Local Linear Estimation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#basic-ideas-and-representation"><span class="nav-text">Basic Ideas and
+Representation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#oracle-based-local-linear-estimation"><span class="nav-text">Oracle Based Local Linear
+Estimation</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#error-estimation-and-bandwidth-selection-conclusions"><span class="nav-text">Error
+Estimation and Bandwidth Selection Conclusions</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="驰雨Chiyuru"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">驰雨Chiyuru</p>
+  <div class="site-description" itemprop="description">おはよう、朝だよ</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">53</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Chiyuru" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Chiyuru" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:chiyuruu@gmail.com" title="E-Mail → mailto:chiyuruu@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/Chiyuru_0417" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;Chiyuru_0417" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/chiyuruu" title="知乎 → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;chiyuruu" rel="noopener" target="_blank"><i class="fab fa-zhihu fa-fw"></i>知乎</a>
+      </span>
+  </div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="copyright">
+  
+  &copy; 2022 – 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">驰雨Chiyuru</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv1">
+  本站总访客数：<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300,"hOffset":-15,"vOffset":-15},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
+</html>

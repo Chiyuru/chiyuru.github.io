@@ -6,7 +6,7 @@
   <link href="https://chiyuru.github.io/atom.xml" rel="self"/>
   
   <link href="https://chiyuru.github.io/"/>
-  <updated>2024-03-31T15:46:32.107Z</updated>
+  <updated>2024-04-01T16:22:53.545Z</updated>
   <id>https://chiyuru.github.io/</id>
   
   <author>
@@ -15,6 +15,46 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>日记·篇二十·24年4月</title>
+    <link href="https://chiyuru.github.io/2024/04/01/Diary-2024-04/"/>
+    <id>https://chiyuru.github.io/2024/04/01/Diary-2024-04/</id>
+    <published>2024-03-31T16:27:19.000Z</published>
+    <updated>2024-04-01T16:22:53.545Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;我超怎么现在就有蚊子了啊啊啊啊啊啊啊啊啊&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="碎碎念" scheme="https://chiyuru.github.io/tags/%E7%A2%8E%E7%A2%8E%E5%BF%B5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>2024 年 3 月论文阅读笔记</title>
+    <link href="https://chiyuru.github.io/2024/03/21/Work-Log-2024-03/"/>
+    <id>https://chiyuru.github.io/2024/03/21/Work-Log-2024-03/</id>
+    <published>2024-03-21T15:49:33.000Z</published>
+    <updated>2024-04-01T16:14:31.165Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;三周看了两篇 Biometrika，此前还没见过 spectral
+clustering，写总结发现很多地方完全理解错误，真是令人感叹（&lt;/p&gt;
+&lt;p&gt;下次还是一边看一边写吧，感觉可以少花点时间，但好像又不保证能发现一开始理解错的地方（（&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="数学" scheme="https://chiyuru.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
+    
+    <category term="统计" scheme="https://chiyuru.github.io/tags/%E7%BB%9F%E8%AE%A1/"/>
+    
+    <category term="概率" scheme="https://chiyuru.github.io/tags/%E6%A6%82%E7%8E%87/"/>
+    
+  </entry>
   
   <entry>
     <title>日记·篇十九·24年3月</title>
@@ -362,40 +402,6 @@ bonus&lt;/del&gt;（确信&lt;/p&gt;
     <category term="统计" scheme="https://chiyuru.github.io/tags/%E7%BB%9F%E8%AE%A1/"/>
     
     <category term="概率" scheme="https://chiyuru.github.io/tags/%E6%A6%82%E7%8E%87/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>日记·篇十一·23年7月</title>
-    <link href="https://chiyuru.github.io/2023/07/01/Diary-2023-07/"/>
-    <id>https://chiyuru.github.io/2023/07/01/Diary-2023-07/</id>
-    <published>2023-07-01T05:12:20.000Z</published>
-    <updated>2023-07-31T15:25:27.917Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;恭喜日记篇数进入两位数时代（&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="碎碎念" scheme="https://chiyuru.github.io/tags/%E7%A2%8E%E7%A2%8E%E5%BF%B5/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>日记·篇十·23年6月</title>
-    <link href="https://chiyuru.github.io/2023/06/01/Diary-2023-06/"/>
-    <id>https://chiyuru.github.io/2023/06/01/Diary-2023-06/</id>
-    <published>2023-05-31T18:12:20.000Z</published>
-    <updated>2023-06-30T15:05:50.895Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;西郊有密林，助君出重围&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="碎碎念" scheme="https://chiyuru.github.io/tags/%E7%A2%8E%E7%A2%8E%E5%BF%B5/"/>
     
   </entry>
   
