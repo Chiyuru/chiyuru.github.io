@@ -1,0 +1,1912 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"chiyuru.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="2024 ICM Problem E: Sustainability of Property Insurance 还在比赛的时候我就想好了，赛后一定要向全世界公布这令人绝望的 S 奖预定论文影像（最后实际上是 H，我真觉得组委会目害了啊不是我们真的很牛逼了），让大家看到一个痛苦的文盲、用嘴建模的废物写出的 25 页论文（喜 最后一天凌晨四点左右才发现要求 summary sheet 字">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2024 ICM Problem E Thesis">
+<meta property="og:url" content="https://chiyuru.github.io/2024/04/30/2024-ICM-Problem-E/index.html">
+<meta property="og:site_name" content="『姑妄言之姑妄听之』">
+<meta property="og:description" content="2024 ICM Problem E: Sustainability of Property Insurance 还在比赛的时候我就想好了，赛后一定要向全世界公布这令人绝望的 S 奖预定论文影像（最后实际上是 H，我真觉得组委会目害了啊不是我们真的很牛逼了），让大家看到一个痛苦的文盲、用嘴建模的废物写出的 25 页论文（喜 最后一天凌晨四点左右才发现要求 summary sheet 字">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2024/02/06/Ts9YOzZGr53ckXR.png">
+<meta property="og:image" content="https://s2.loli.net/2024/02/06/iLPfYuHtSIaNxTZ.png">
+<meta property="og:image" content="https://s2.loli.net/2024/02/06/vlxWpu2qr7Dmdyh.png">
+<meta property="og:image" content="https://s2.loli.net/2024/02/06/dwGmJ5Xal8fPKj4.png">
+<meta property="og:image" content="https://s2.loli.net/2024/02/06/2gZ9hv6K57bxtRy.png">
+<meta property="og:image" content="https://s2.loli.net/2024/02/06/u8iQGmlg15sntax.png">
+<meta property="og:image" content="https://s2.loli.net/2024/02/06/GLxCZUeQNMSqWOJ.png">
+<meta property="og:image" content="https://s2.loli.net/2024/02/06/7TLGFwCJa2WkKyg.png">
+<meta property="og:image" content="https://s2.loli.net/2024/02/06/oXbpzfj4Jgl8xuF.png">
+<meta property="og:image" content="https://s2.loli.net/2024/02/06/DnZ9BcQ2RWMoYeU.png">
+<meta property="og:image" content="https://s2.loli.net/2024/02/06/eIZXjlbWOBQrCa6.png">
+<meta property="og:image" content="https://s2.loli.net/2024/02/06/kQwBqUv8Rrb1Ajg.png">
+<meta property="og:image" content="https://s2.loli.net/2024/02/06/27N8rEgZvuF36VG.png">
+<meta property="article:published_time" content="2024-04-30T11:45:30.000Z">
+<meta property="article:modified_time" content="2024-05-04T18:07:20.228Z">
+<meta property="article:author" content="驰雨Chiyuru">
+<meta property="article:tag" content="这里面看起来很好玩">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2024/02/06/Ts9YOzZGr53ckXR.png">
+
+<link rel="canonical" href="https://chiyuru.github.io/2024/04/30/2024-ICM-Problem-E/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>2024 ICM Problem E Thesis | 『姑妄言之姑妄听之』</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="『姑妄言之姑妄听之』" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">『姑妄言之姑妄听之』</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-link">
+
+    <a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>链接</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://chiyuru.github.io/2024/04/30/2024-ICM-Problem-E/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="驰雨Chiyuru">
+      <meta itemprop="description" content="おはよう、朝だよ">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="『姑妄言之姑妄听之』">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          2024 ICM Problem E Thesis
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2024-04-30 19:45:30" itemprop="dateCreated datePublished" datetime="2024-04-30T19:45:30+08:00">2024-04-30</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-05-05 02:07:20" itemprop="dateModified" datetime="2024-05-05T02:07:20+08:00">2024-05-05</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>2024 ICM Problem E: <a target="_blank" rel="noopener" href="https://www.contest.comap.com/undergraduate/contests/mcm/contests/2024/problems/2024_ICM_Problem_E.pdf">Sustainability
+of Property Insurance</a></p>
+<p>还在比赛的时候我就想好了，赛后一定要向全世界公布这令人绝望的 S
+奖预定论文影像（最后实际上是
+H，我真觉得组委会目害了啊不是我们真的很牛逼了），让大家看到一个痛苦的文盲、用嘴建模的废物写出的
+25 页论文（喜</p>
+<p>最后一天凌晨四点左右才发现要求 summary sheet 字体必须是 Times New
+Roman，看了下往年论文也没有用 palatino 的就全文都改了，然后就只有撑满的
+24 页了，枉费我写的时候感觉可能不妙就一直压行。</p>
+<span id="more"></span>
+<h1 id="summary">Summary</h1>
+<p>The growing threat of frequent meteorological disasters is
+endangeringour planet. To promote the healthy development of the
+insurance industry, we established an <strong>Insurance Model</strong>
+to measure the impact of weather disasters, and implemented gradient
+insurance policies in two different regions. We have also established a
+<strong>Landmark Preservation Model</strong> and proposed relocation
+suggestions for the <strong>Vizcaya Museum and Gardens</strong> to
+evaluate preservation measure, and protect people's beloved
+landmarks.</p>
+<p>Firstly, we utilized <strong>Entropy Weight Method</strong> to assess
+hurricane disaster risk in <strong>Florida</strong> and rainstorm
+disaster risk in <strong>Indonesia</strong>. We constructed a climate
+risk index (WDRI) with universality in meteorological aspects.
+Subsequently, we respectively employed <strong>ARIMA</strong> and
+<strong>prophet models</strong> to forecast the <strong>Style Risk
+Factor</strong> for both regions. Conducting single-factor analysis and
+multivariate analysis at both the logical and empirical levels, we
+eliminated or equally weighted factors where risk exposure was not
+significant, negatively impacting the goodness of fit (<span class="math inline">\(\textbf{R}^2 &gt; \textbf{0.98}\)</span>), and VIF
+indicators (final <span class="math inline">\(\textbf{VIF} &lt;
+\textbf{2}\)</span>) of the model. Following this, we performed multiple
+regressions of premium pricing on several factors, achieving a model
+confidence level of over <span class="math inline">\(\textbf{90}
+\textbf{\%}\)</span>.</p>
+<p>Furthermore, we devised <strong>graded underwriting
+strategies</strong> and obtained a baseline CDVI for insurance companies
+targeting regions experiencing an increasing frequency of extreme
+weather events. Under the condition of maintaining the <strong>loss
+ratio</strong> for insurance companies <strong>among</strong> <span class="math inline">\(\textbf{60}\textbf{\%}\)</span>
+<strong>to</strong> <span class="math inline">\(\textbf{100}\textbf{\%}\)</span>, we aimed to
+minimize the <strong>insurance protection gap</strong> to the greatest
+extent possible.</p>
+<p>Then, based on the premium pricing result of the insurance model and
+climate risk index (WDRI), we incorporated repair costs to provide a
+<strong>multiple linear regression</strong> calculation method and
+theoretical explanation for the <strong>Local Livability Index</strong>
+(LVI). Furthermore, we presented different land use scenarios under
+various LVI conditions, making it possible to better utilize land
+resources in the context of population growth.</p>
+<p>Afterwards, by understanding the assessment scheme for historic
+landmarks in the latest <strong>MAHT model</strong>, we established the
+Landmark Preservation Model based on four indicators: historical and
+cultural significance, resident satisfaction, disaster risk measurement
+WDRI, and building damage level. We developed a <strong>decision
+flowchart</strong> for implementing protection measures for landmark
+buildings under different circumstances.</p>
+<p>Finally, we used this model with <strong>over</strong> <strong>60
+sub-indicators</strong> to evaluate the protection measures for the
+<strong>Vizcaya Museum and Gardens</strong> in Miami, with a WDRI of
+<strong>0.825</strong> thus cannot be insured. By calculating the
+corresponding Landmark Weather Disaster Vulnerability Index (LWDVI) as
+<strong>2.554</strong>, which indicates a relatively high level, we
+identified the need for relocation due to the inability to implement
+adequate protection measures and the predicted future submergence. A
+community letter was also written accordingly.</p>
+<p>Keywords: Property Insurance Model, Prophet Model, Entropy Weight
+Method</p>
+<h1 id="introduction">Introduction</h1>
+<h2 id="problem-background">Problem Background</h2>
+<p>Climate change is leading to an increase in the frequency and
+severity of extreme weather events across the globe. This phenomenon has
+profound implications for property owners, insurers and communities. The
+cost of damages from natural disasters is skyrocketing, leading to
+escalating insurance premiums and, in some cases, insurers withdrawing
+coverage altogether in high-risk areas. This crisis threatens the
+affordability of homeownership and the financial stability of the
+insurance industry.</p>
+<p>To cope with challenges brought by climate change, it's important to
+seek methodologies to guide decision-making for both insurance companies
+and community leaders. The overarching goal is to promote a sustainable
+property insurance system that balances the need for affordable coverage
+with the long-term viability of insurance providers, all while
+considering the preservation of communities and their cultural
+heritage.</p>
+<h2 id="restatement-of-the-tasks">Restatement of the Tasks</h2>
+<p>Considering the background information and restricted conditions
+identified in the problem statement, we need to solve the following
+tasks:</p>
+<ul>
+<li><p><strong>Task 1</strong>: Develop an index to measure the risk of
+meteorological disasters in a given location with historical data.
+Determine the factors of the insurance model. Devise a rule to obtain
+the insurance coverage provided by an insurance company in a particular
+region.</p></li>
+<li><p><strong>Task 2</strong>: Utilize this index to measure the risk
+of specific disaster losses in two different continents (we select
+Florida in the United States and Indonesia), calculate and predict
+future premiums, and assist insurance companies in determining the
+coverage scope of insurance services.</p></li>
+<li><p><strong>Task 3</strong>: Apply the developed insurance model to
+assist community decision-makers in planning future property
+construction, including site selection, construction techniques, and
+other aspects in a future where the local population continues to grow
+and faces increasing meteorological uncertainties.</p></li>
+<li><p><strong>Task 4</strong>: Compare the costs and social value of
+protecting buildings by estimating the economic and cultural value of
+buildings within a community, and using existing indexes to assess the
+severity of disasters.</p></li>
+</ul>
+<h2 id="our-work">Our Work</h2>
+<p>To address the multi-dimensional estimation problem in such a complex
+system, we referenced a large amount of relevant work and established
+two models: the Insurance Model and the Landmark Preservation Model. The
+schematic diagram of our study is shown in Figure 1. First, we
+constructed a measure called WDRI to reflect the severity level of
+meteorological disasters in a region. The WDRI was obtained through
+standardizing data related to specific meteorological disaster factors
+and applying the Entropy Weight Method. Next, we used this measure along
+with Section/Style Risk Factors to develop a model for predicting
+changes in local insurance costs using multiple linear regression and
+prophet. Based on this model, we devised a method for calculating
+insurance premiums in different regions for insurance companies.</p>
+<p>Subsequently, we demonstrated this model using examples from two
+different regions and designed a new measure called LVI, which helps
+real estate companies determine the geographical location for property
+development and strategies for development in various locations based on
+empirical rules from relevant literature. Finally, by referencing
+relevant literature, we utilized the MAHT model <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> to
+design a measure, LV, for calculating the value of landmark buildings.
+By combining the previously obtained WDRI, we calculated a measure,
+LCDVR, for determining the protection needed for landmark buildings, and
+established a decision-making flowchart for protection measures to
+assist decision-makers.</p>
+<p><img src="https://s2.loli.net/2024/02/06/Ts9YOzZGr53ckXR.png" alt="1.png"></p>
+<h1 id="assumptions-and-justifications">Assumptions and
+Justifications</h1>
+<ul>
+<li><p><strong>Assumption</strong>: The average housing rental prices
+and insurance premiums in an area change proportionally at the same
+time.</p>
+<p><strong>Justification</strong>: During severe disasters, risks are
+generally positively correlated with property values. Therefore, using
+the average rental prices in the housing market to represent insurance
+premiums is considered a reasonable proxy.</p></li>
+<li><p><strong>Assumption</strong>: The duration of the hurricane
+exhibits an exponential relationship with the pressure difference (<span class="math inline">\(P_{normal} - P_{min}\)</span>).</p>
+<p><strong>Justification</strong>: We assume that the process of
+pressure recovery in the hurricane center from its minimum to normal
+pressure follows the Exponential Decay equation<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>
+<span class="math inline">\(P(t) = P + (P_{normal} - P) \times (1 -
+exp(-t \tau))\)</span>, where <span class="math inline">\(P(t)\)</span>
+denotes pressure at time t, <span class="math inline">\(P_{min}\)</span>
+represents the minimum pressure in the center of the hurricane, <span class="math inline">\(P_{normal}\)</span> is the normal pressure, and
+<span class="math inline">\(\tau\)</span> is the time constant
+characterizing the rate of pressure recovery. Also, we assume that <span class="math inline">\(\tau\)</span> remains consistent across
+hurricanes.</p></li>
+<li><p><strong>Assumption</strong>: The residents' satisfaction and
+local viability index (LVI) in an area change proportionally at the same
+time.</p>
+<p><strong>Justification</strong>: Recent studies show that the life
+satisfaction of local residents is mainly related to community density,
+population size, economic development level, age distribution of
+residents, and per capita income<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>. These factors can be
+approximated as measures of the local viability index (LVI) and used as
+such after standardization<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>. This is consistent with
+common sense, as there is a very high correlation between residents'
+satisfaction and the livability of an area.</p></li>
+</ul>
+<h1 id="notations">Notations</h1>
+<p>The key mathematical notations used in this paper are listed in the
+following table.</p>
+<table>
+<colgroup>
+<col style="width: 27%">
+<col style="width: 72%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Symbol</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(WDRI\)</span></td>
+<td>Weather Disaster Risk Index</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(BWDRI\)</span></td>
+<td>Baseline Weather Disaster Risk Index for Insurance</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(LRT\)</span></td>
+<td>Loss Ratio for insurance companies</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(LV\)</span></td>
+<td>Landmark Values</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(LR\)</span></td>
+<td>Landmark Risks</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(IPP\)</span></td>
+<td>Insurance premium plan</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(RC\)</span></td>
+<td>Projected costs of repairs/rebuilds under potential climate event
+scenarios</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(LVI\)</span></td>
+<td>Local Viability Index</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(LIR\)</span></td>
+<td>Inherent Risk of the Landmark</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(LWDVI\)</span></td>
+<td>Landmark weather disaster vulnerability index</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(r_x\)</span></td>
+<td>Radius of Maximum Wind (in nautical miles) in x</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(p_x\)</span></td>
+<td>Minimum Pressure (in millibars) in x</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(w_x\)</span></td>
+<td>Maximum sustained wind (in knots) in x</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(t_x\)</span></td>
+<td>Temperature in x</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(pop\)</span></td>
+<td>Population in an area (million people)</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(age\)</span></td>
+<td>Median age of an area (year)</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(GDP\)</span></td>
+<td>Annual GDP of an area (thousand dollars)</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\text{property price}\)</span></td>
+<td>Residential Property Prices for Indonesia (Index 2010=100)</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(RH_{avg}\)</span></td>
+<td>Average humidity (%)</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(RR\)</span></td>
+<td>Rainfall (mm)</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(T_{avg}\)</span></td>
+<td>Average temperature(<span class="math inline">\(^\circ
+C\)</span>)</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(ff_{avg}\)</span></td>
+<td>Average wind speed (m/s)</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(ss\)</span></td>
+<td>Duration of sunshine (hour)</td>
+</tr>
+</tbody>
+</table>
+<h1 id="insurance-model">Insurance Model</h1>
+<p>We can categorize risk pricing performance into the following four
+implications:</p>
+<ol type="1">
+<li><p><strong>Return Forecast</strong>: Formulating reasonable and
+effective predictions of returns.</p></li>
+<li><p><strong>Process Control</strong>: Monitoring the entire insurance
+premium pricing process to maintain consistency between pricing and
+actual production.</p></li>
+<li><p><strong>Cost Control</strong>: Avoiding excessive or inefficient
+transactions.</p></li>
+<li><p><strong>Risk Control</strong>: Capturing market opportunities
+under prudent considerations.</p></li>
+</ol>
+<p>Taking into account various factors, we can express the claims risk
+in the following multiple-factor model, and is interpreted more vividly
+in</p>
+<p><span class="math display">\[\text{insurance price} = \sum_{k=1}^n
+\beta_k x_k +\varepsilon\]</span></p>
+<p>In the model, <span class="math inline">\(x_k\)</span> represents the
+original values of the factors, <span class="math inline">\(\beta_k\)</span> represents the risk exposure of
+insurance price to the <span class="math inline">\(x_k\)</span> factor,
+and <span class="math inline">\(\varepsilon\)</span> is the model
+residual. Moreover, in the premium pricing model there are three
+categories of risk factors: climate risk factors, sector risk factors,
+and style risk factors (see Figure 3).</p>
+<p><img src="https://s2.loli.net/2024/02/06/iLPfYuHtSIaNxTZ.png" alt="2-3.png"></p>
+<p>The <strong>Weather Disaster Risk Factor</strong> reflects the
+severity of certain or multiple meteorological disasters on the local
+area. This should be quantified by collecting relevant historical data
+on disasters and analyzing potential influencing factors
+specifically.</p>
+<p>The <strong>Sector Risk Factor</strong> mainly include the
+characteristics of the insured property, such as the structure of
+buildings, materials used, construction age, etc. In other words, we can
+assess insurance prices based on the nature of the insured property.
+Logically, this assumption is plausible. For example, concerning the
+construction age, older buildings are more susceptible to damage,
+leading to higher compensations for the property. In subsequent
+empirical verification, the establishment of dummy variables for factors
+like building materials, structure, and construction age being greater
+than a specific reference value to access the overall risk
+characteristics of insured buildings in a region.</p>
+<p>The third category of factors is <strong>Style Risk Factors</strong>,
+including population density, population age, regional gross domestic
+product (GDP), and other elements. Logically, we can understand that a
+region with a higher population density often indicates a higher level
+of economic development and more concentrated housing, resulting in more
+assets affected by disasters, which should lead to higher premiums. The
+same reasoning applies to factors like GDP. However, it is worth noting
+that these factors may exhibit multicollinearity, leading to potentially
+inflated estimates of correlation.</p>
+<p>After establishing the premium pricing model, we can conduct a
+cost-benefit analysis for insurance companies and determine underwriting
+policies and reference standards based on the risk index and regional
+economic development. The first evaluation metric is the WDRI, and the
+second is the loss ratio (LRT) defined as follows:</p>
+<p><span class="math display">\[LRT = \frac{\text{Losses
+Incured}}{\text{Earned Premium}} \times 100 \%.\]</span></p>
+<p>According to relevant surveys, residents' insurance expenses are
+roughly around <span class="math inline">\(5\%\)</span> of their average
+personal income. Therefore, if, under a given disaster risk scenario,
+the predicted premium (denoted as predicted price) exceeds <span class="math inline">\(5\%\)</span> of the average personal income, it is
+recommended that the insurance company refrains from underwriting in
+that region. The rationale is that residents in that area are likely to
+perceive the insurance cost as excessively high, discouraging them from
+purchasing insurance.</p>
+<p>After obtaining the residents' insurance expenses, we can apply it to
+the insurance model and inversely get the corresponding baseline WDRI
+(BWDRI). It is advised that the insurance company does not underwrite in
+areas with higher WDRI than the baseline.</p>
+<p>To access the recommend policies concretely, the loss ratio (LRT)
+should be taken into consideration. The lower the value of the loss
+ratio, the better the performance of the insurance company in claims
+handling.Generally, the profitability of insurance companies relies on
+accurate pricing and claims management. If the loss ratio doesn't exceed
+<span class="math inline">\(100\%\)</span>, the insurance company has a
+surplus in claims expenditures, meaning there is a remainder between the
+received premiums and the claims paid, and is acceptable.</p>
+<h1 id="application-of-the-insurance-model-in-two-areas">Application of
+the Insurance Model in Two Areas</h1>
+<p>To illustrate our model, we have selected two regions, Indonesia in
+Asia and Florida State in North America, for analysis. Florida is known
+to be prone to hurricanes, while Indonesia is susceptible to rainstorms
+and earthquakes.</p>
+<h2 id="analysis-of-florida-state-usa">Analysis of Florida State,
+USA</h2>
+<h3 id="background">Background</h3>
+<p>Florida is located in the northwestern part of the Atlantic Ocean and
+is frequently affected by weather disasters. Home insurance costs in
+Florida are increasing substantially, causing concern among
+propertyowners, community managers, and potential buyers about the
+future of the insurance market in the state.</p>
+<p>Among the weather disasters affecting Florida, the most severe ones
+are hurricanes. According to data collected by the National Oceanic and
+Atmospheric Administration (NOAA), a heat map (see Figure 4) and a
+histogram (see Figure 5) both reveal that the severity of hurricane
+damage in Florida in the eastern United States is extremely strong.</p>
+<p><img src="https://s2.loli.net/2024/02/06/vlxWpu2qr7Dmdyh.png" alt="4-5.png"></p>
+<h3 id="conclusions-obtained-by-insurance-model">Conclusions Obtained by
+Insurance Model</h3>
+<p>Firstly, we construct the Weather Disaster Risk Index (WDRI) to
+quantify the <strong>Climate Risk Disaster Factor</strong>. Data on
+hurricane trajectories of Northern Atlantic from 1994-2022 was
+collected, where Radius of Maximum Wind (<span class="math inline">\(r_i\)</span>, in nautical miles) ,Minimum Pressure
+(<span class="math inline">\(p\)</span>, in millibars) ,Maximum
+sustained wind (<span class="math inline">\(w\)</span>, in knots) and
+temperature (<span class="math inline">\(t\)</span>, in Fahrenheit
+degrees) are known. Normalization was applied to the data in order to
+balance discrepancies among different measurement units.</p>
+<p>The WDRI is accessed through Entropy Weight Method, which determines
+the weight of each coefficients. The desired model construction is as
+follows<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>:</p>
+<p><span class="math display">\[WDRI = r_i^2 \times (\log (p_0 - p_i)+
+c_1 \times t) \times w_i^3\]</span></p>
+<p>We assume that <span class="math inline">\(r^2\)</span> is
+proportional to the hurricane's force range and <span class="math inline">\(\log(p_0-p_i)\)</span> is proportional to the
+hurricane's duration. Furthermore, given that a hurricane is powered by
+the condensation from heat, <span class="math inline">\(c_1 \times
+t\)</span> is used to represent the weakening effect of low temperatures
+on the hurricane. The wind force (F) is proportional to the cube of the
+wind speed (V), i.e., <span class="math inline">\(F\propto
+w^3\)</span>.</p>
+<p>Given the climate data of each area in the Florida State, we can
+calculate the WDRI index for various regions in the state of Florida. At
+the same time, by collecting data on the local population (pop), average
+age (age), and GDP to represent the Style Risk Factor, and assuming the
+use of local real estate rental prices as the insurance cost indicator,
+we can use a multiple linear regression model to estimate and predict
+insurance costs.</p>
+<p>Now try to identify the effectiveness of the factors by conducting a
+correlation analysis among the existing factor sequences (see Figure
+6).</p>
+<p><img src="https://s2.loli.net/2024/02/06/dwGmJ5Xal8fPKj4.png" alt="6.png"></p>
+<p>All four factors exhibit relatively high correlations with insurance
+prices, indicating predictive potential. Notably, the correlation
+between pop and age is remarkably high at 0.9881, and the correlations
+among pop, age, and GDP all exceed 0.9. In light of these high
+correlations, we may consider synthesizing these factors for subsequent
+calculations.</p>
+<p>If we proceed with a multiple regression using the four factors
+directly, the model's <span class="math inline">\(R^2\)</span> is close
+to <span class="math inline">\(1\)</span>, indicating an excellent fit.
+However the average <span class="math inline">\(VIF\)</span> for this
+model exceeds <span class="math inline">\(10\)</span>, suggesting the
+possibility of multicollinearity among factors.</p>
+<p>By continuously adjusting the number of factors and interaction
+relationships in the model, we ultimately obtain the model:</p>
+<p><span class="math display">\[\text{insurance price} = 19591.13 +
+255.7892 WDRI - 496.4459 age + 2.34 \times 10^{-6} GDP +
+\varepsilon.\]</span></p>
+<p>Its advantage lies in minimizing the <span class="math inline">\(VIF\)</span> value as much as possible, thereby
+eliminating the impact of multicollinearity on the model. At the same
+time, as a trade-off, there is a slight decrease in the <span class="math inline">\(R^2\)</span> value, but it does not greatly affect
+the power of explanation.</p>
+<p>By individually predicting the values for each factor and then using
+the above model to calculate the predicted price, we obtain the results
+shown in the following table:</p>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 7%">
+<col style="width: 20%">
+<col style="width: 13%">
+<col style="width: 13%">
+<col style="width: 15%">
+<col style="width: 20%">
+<col style="width: 10%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>year</th>
+<th>insurance price</th>
+<th>WDRI</th>
+<th>age</th>
+<th>GDP</th>
+<th>predicted price</th>
+<th>bias</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(2023\)</span></td>
+<td><span class="math inline">\(2082.748864\)</span></td>
+<td><span class="math inline">\(0.164995\)</span></td>
+<td>$ 44.58478$</td>
+<td><span class="math inline">\(1458543489\)</span></td>
+<td>$2012.396311 $</td>
+<td><span class="math inline">\(3.38\%\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(2024\)</span></td>
+<td><span class="math inline">\(2200.818663\)</span></td>
+<td>$ 0.140109$</td>
+<td><span class="math inline">\(44.80708\)</span></td>
+<td>$1468596527 $</td>
+<td>$2119.191825 $</td>
+<td><span class="math inline">\(3.71\%\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(2025\)</span></td>
+<td>$2318.888461 $</td>
+<td><span class="math inline">\(0.294665\)</span></td>
+<td><span class="math inline">\(45.02939\)</span></td>
+<td>$1470572644 $</td>
+<td>$2252.986414 $</td>
+<td>$2.84% $</td>
+</tr>
+</tbody>
+</table>
+<p>The bias between the predicted price obtained from the model and the
+officially predicted insurance price is approximately <span class="math inline">\(3\%\)</span>, within an acceptable margin of
+error. Therefore, we consider the model pricing to be effective.</p>
+<p>Based on statistical data, the typical annual income for residents in
+Florida is <span class="math inline">\(\$52,000\)</span> USD. Using this
+data, with <span class="math inline">\(5\%\)</span> as the maximum
+predicted premium value, the regression model calculates that the WDRI
+should be less than or equal to <span class="math inline">\(0.74\)</span>.</p>
+<p>In cases where the predicted premium price is greater than <span class="math inline">\(1\%\)</span> but less than <span class="math inline">\(5\%\)</span> of the average annual income, the
+corresponding storm risk range should be between <span class="math inline">\(0.34\)</span> and <span class="math inline">\(0.74\)</span>. It is recommended that the
+insurance company can maintain a loss ratio below <span class="math inline">\(100 \%\)</span> (profitable) and selectively
+decrease the loss ratio, for example, setting it at <span class="math inline">\(60\%\)</span>. Under this standard, the insurance
+company can introduce an insurance product: charging <span class="math inline">\(\$492\)</span> USD per square meter of property at
+one time and paying a premium of <span class="math inline">\(\$1560\)</span> USD during a five-year insurance
+period.</p>
+<p>In situations where the predicted premium price is less than <span class="math inline">\(1\%\)</span> of the average annual income, the
+corresponding WDRI is less than <span class="math inline">\(0.34\)</span>, indicating a lower probability of
+hurricanes damage. In such cases, the insurance company slightly
+increase the loss ratio to enhance its commercial competitiveness, for
+instance, setting the loss ratio at <span class="math inline">\(70\%\)</span>. Under this standard, the insurance
+company can introduce an insurance product: charging <span class="math inline">\(\$162\)</span> USD per square meter of property at
+one time and paying a premium of <span class="math inline">\(\$520\)</span> USD during a five-year insurance
+period.</p>
+<p>It is important to note that in a specific market environment,
+insurance companies may adopt different strategies to adjust the loss
+ratio to maintain competitiveness and profitability.</p>
+<p>Crucially, a low loss ratio is not always favorable, as it may
+indicate the company is overly conservative in risk assessment, leading
+to excessively high premium pricing and potential loss of
+competitiveness. Also, the establishment of the loss ratio also
+reflects, to some extent, the social responsibility of insurance
+companies. In areas where residents' annual income is relatively low, we
+recommend insurance companies adopt a higher loss ratio insurance policy
+to help reduce <strong>Insurance Protection Gap</strong> for vulnerable
+people in disasters. This policy not only yields the effect of profits
+but also helps to establish the responsible social image of the
+insurance company, contributing to the sustainable development of the
+enterprise.</p>
+<h2 id="analysis-of-indonesia">Analysis of Indonesia</h2>
+<h3 id="background-1">Background</h3>
+<p>Indonesia, a country made up of thousands of islands, is prone to
+severe rainstorm disasters due to its location. The country experiences
+frequent flooding, land-slides, and other related disasters, which lead
+to destruction to infrastructure, homes, and agricultural land, as well
+as loss of lives and displacement of communities. (see Figure 7, 8)</p>
+<p><img src="https://s2.loli.net/2024/02/06/2gZ9hv6K57bxtRy.png" alt="7-8.png"></p>
+<h3 id="conclusions-obtained-by-insurance-model-1">Conclusions Obtained
+by Insurance Model</h3>
+<p>We continue to employ a multi-factor model to assess the predicted
+insurance premium pricing situation in Indonesia. In the design of this
+model, we incorporate three factors to evaluate insurance prices
+(substituting Property Prices for Indonesia as the dependent variable,
+take Index <span class="math inline">\(2010=100\)</span>), namely WDRI
+again, GDP, and population.</p>
+<p>First, we create the Weather Disaster Risk Index (WDRI) to quantify
+the factors related to Climate Risk Disaster. Indonesia daily climate
+data from 2010 to 2022 were gathered to calculate it, focusing on key
+factors including the average humidity (<span class="math inline">\(RH_{avg}\)</span>, in %), rainfall (<span class="math inline">\(RR\)</span>, in mm), average temperature (<span class="math inline">\(T_{avg}\)</span>, in degrees of Celsius), average
+wind speed (<span class="math inline">\(ff_{avg}\)</span>) and duration
+of sunshine (<span class="math inline">\(ss\)</span>, in hour).
+Standardization was applied during data processing.</p>
+<p>Firstly, <span class="math inline">\(RR\)</span> (rainfall data) is
+directly related to floods according to common sense. Secondly, we
+investigated the relationship between Temperature and Rainfall, finding
+that rainfall peaked near 26 degrees Celsius, so we took <span class="math inline">\(|T_{avg}-26|\)</span> as a related influencing
+factor (see Figure 9). According to online materials<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>,
+there is a positive correlation between cloud cover and floods. Assuming
+the appearance of clouds is negatively correlated with sunlight, we
+built -<span class="math inline">\(ss\)</span> as a positively
+correlated factor. The desired model construction is as follows:</p>
+<p><span class="math display">\[WDRI = c(\alpha |T_{avg}-26| + \beta
+(-ss) + \gamma RH_{avg} + \sigma ff_{avg})RR.\]</span></p>
+<p>Where <span class="math inline">\(c\)</span> is the scaling factor,
+<span class="math inline">\(RR\)</span> is considered as a key factor
+indicating the amount of rainfall, and <span class="math inline">\(|T_{avg}-26|\)</span> is applied with reference to
+the statistical information shown in Figure 9 that rainfall has a peak
+distribution around <span class="math inline">\(26 ^\text{o}\)</span>C.
+<span class="math inline">\(\alpha , \beta , \gamma ,\sigma\)</span> are
+coefficients to be determined by Entropy Weight Method. The coefficients
+obtained are:</p>
+<p><span class="math display">\[\alpha = 0.303696, \beta=0.239401 ,
+\gamma=0.186802 ,\sigma=0.270101.\]</span></p>
+<p>Given the climate data of each area in Indonesia, we can calculate
+the WDRI index for various regions here. At the same time, by collecting
+data on the local population (pop) and GDP to represent the Style Risk
+Factor, and assuming the use of property price as the insurance cost
+indicator, we can use a multiple linear regression model to estimate and
+predict insurance costs.</p>
+<p>Now try to identify the effectiveness of the factors by conducting a
+correlation analysis among the existing factor sequences (see Figure
+10).</p>
+<p><img src="https://s2.loli.net/2024/02/06/u8iQGmlg15sntax.png" alt="9-10.png"></p>
+<p>We observe a relatively low correlation between the climate factor
+and the dependent variable, suggesting that it may be considered for
+exclusion in the regression analysis. The GDP and population factors
+exhibit a high correlation, indicating a potential issue of
+multicollinearity. In our empirical testing, we will monitor the
+Variance Inflation Factor (VIF) values to address this concern.
+Regarding the heteroscedasticity of the model, we will not consider it
+in the prediction problem at the moment.</p>
+<p>When attempting to model predictions simultaneously with all three
+factors, we find that the risk exposure on the dependent variable
+concerning the GDP factor is not significant. Additionally, the GDP
+factor contributes significantly to the VIF. Therefore, we initially
+exclude the GDP factor. Subsequently, we conduct a regression using the
+climate and population factors, resulting in the following model:</p>
+<p><span class="math display">\[\text{insurance price} = -78.36633 WDRI
++6.69 \times 10^{-6} population - 1026.793+ \varepsilon.\]</span></p>
+<p>The average <span class="math inline">\(VIF = 1.10\)</span> and <span class="math inline">\(R^2 = 0.9831\)</span>, indicates a good fit of the
+model without severe multicollinearity.</p>
+<p>Then we utilize the prophet model to forecast future values for
+population and property prices. Comparing these forecasts with the
+predicted prices calculated using the insurance model, we obtain the
+bias as presented in the following table:</p>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 8%">
+<col style="width: 23%">
+<col style="width: 15%">
+<col style="width: 18%">
+<col style="width: 21%">
+<col style="width: 11%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Year</th>
+<th>Property price</th>
+<th>WDRI</th>
+<th>Population</th>
+<th>Predicted Price</th>
+<th>Bias</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(2023\)</span></td>
+<td><span class="math inline">\(653.8139981\)</span></td>
+<td>$ 2.37908 $</td>
+<td><span class="math inline">\(275225919\)</span></td>
+<td><span class="math inline">\(628.0286297\)</span></td>
+<td><span class="math inline">\(3.94\%\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(2024\)</span></td>
+<td>$665.8297629 $</td>
+<td><span class="math inline">\(2.47889\)</span></td>
+<td>$274957915 $</td>
+<td><span class="math inline">\(618.4139396\)</span></td>
+<td><span class="math inline">\(7.12\%\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(2025\)</span></td>
+<td>$675.4485198 $</td>
+<td><span class="math inline">\(2.57856\)</span></td>
+<td><span class="math inline">\(274697125\)</span></td>
+<td>$ 608.8584824 $</td>
+<td><span class="math inline">\(9.86\%\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Therefore we have at least <span class="math inline">\(90\%\)</span>
+confident that the model is accurate and reasonable.</p>
+<p>Statistical data indicates that the per capita GDP of Indonesia in
+2022 was <span class="math inline">\(\$4,788\)</span>, and a reasonable
+estimate for future per capita GDP is around <span class="math inline">\(\$5,000\)</span>. In a given risk scenario, if the
+predicted premium (represented as the predicted price) exceeds <span class="math inline">\(5\%\)</span> of the average personal income, it is
+recommended that the insurance company refrains from underwriting in
+that region.</p>
+<p>Using <span class="math inline">\(5\%\)</span> as the maximum
+predicted premium value, the regression model calculates that the
+climate risk index should be less than or equal to <span class="math inline">\(0.82\)</span>. This data suggests that if the
+calculated climate risk index for a province in Indonesia exceeds <span class="math inline">\(0.82\)</span>, it is advisable for the insurance
+company to abstain from underwriting in that region.</p>
+<p>In cases where the predicted premium price is greater than <span class="math inline">\(1\%\)</span> but less than <span class="math inline">\(5\%\)</span> of the average annual income, the
+corresponding risk index range should be between <span class="math inline">\(0.48\)</span> and <span class="math inline">\(0.82\)</span>. It is recommended that the
+insurance company selectively lowers the loss ratio, keeping it below
+<span class="math inline">\(100 \%\)</span> (profitable), for example,
+setting it at <span class="math inline">\(60\%\)</span>. Under this
+standard, the insurance company can introduce an insurance product:
+charging <span class="math inline">\(\$38\)</span> per square meter of
+property at one time and paying a premium of <span class="math inline">\(\$150\)</span> during a five-year insurance
+period.</p>
+<p>In situations where the predicted premium price is less than <span class="math inline">\(1\%\)</span> of the average annual income, the
+corresponding risk index range is less than <span class="math inline">\(0.48\)</span>, indicating a lower probability of
+rainstorm disasters. In such cases, it is suggested that the insurance
+company slightly increases the loss ratio to enhance its commercial
+competitiveness in the regional insurance industry, for instance,
+setting the loss ratio at <span class="math inline">\(70\%\)</span>.
+Under this standard, the insurance company can introduce an insurance
+product: charging <span class="math inline">\(\$12\)</span> per square
+meter of property at one time and paying a premium of <span class="math inline">\(\$50\)</span> during a five-year insurance
+period.</p>
+<p>Crucially, a low loss ratio is not always favorable, as it may
+indicate the company is overly conservative in risk assessment, leading
+to excessively high premium pricing and potential loss of
+competitiveness. Also, the establishment of the loss ratio also
+reflects, to some extent, the social responsibility of insurance
+companies. In areas like Indonesia where residents' annual income is
+relatively low with respective to the world average, we recommend
+insurance companies adopt a higher loss ratio insurance policy to help
+reduce <strong>Insurance Protection Gap</strong> for vulnerable people
+in disasters. This policy not only yields the effect of profits but also
+helps to establish the responsible social image of the insurance
+company, contributing to the sustainable development of the
+enterprise.</p>
+<h1 id="applications-to-building-sites-choices">Applications to Building
+Sites Choices</h1>
+<p>We aim to establish a multifactorial indicator called the Location
+Viability Index (LVI) to assess whether an area is suitable for
+developing real estate projects and for living. The three main
+influencing factors are as follows:</p>
+<ol type="1">
+<li><p>Weather Disaster Risk Index (WDRI) evaluated in the insurance
+model, which quantifies the disaster risk for each location;</p></li>
+<li><p>Recommended insurance premium plan for insurance companies
+according to the insurance model (IPP: No insurance / High Premium / Low
+Premium);</p></li>
+<li><p>Projected costs of repairs/rebuilds under potential climate event
+scenarios (RC).</p></li>
+</ol>
+<p>Recent studies show that the life satisfaction of local residents is
+mainly related to community density, population size, economic
+development level, age distribution of residents, and per capita
+income<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a>. These factors can be approximated
+as measures of the local viability index (LVI) and used as such after
+standardization<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a>. This is consistent with common
+sense, as there is a very high correlation between residents'
+satisfaction and the livability of an area. Therefore, a linear
+regression model for LVI can be established based on the above three
+influencing factors:</p>
+<p><span class="math display">\[LVI = b_0 + b_1 WDRI + b_2 IPP + b_3 RC
++ \varepsilon\]</span></p>
+<p>Where IPP is an integer variable as being <span class="math inline">\(0\)</span> for no insurance case, <span class="math inline">\(1\)</span> for high insurance and <span class="math inline">\(2\)</span> for low insurance according to the
+insurance model. <span class="math inline">\(b_0, b_1 ,b_2, b_3\)</span>
+are coefficients to be estimated according to the dataset.</p>
+<p>After obtaining a Location Viability Index that can fit the actual
+situation well, it can be used to estimate the livability of various
+areas, and they can be divided into livable and non-livable areas under
+meteorological disasters according to proportion.</p>
+<p>Livable areas need to be prioritized and appropriately developed to
+accommodate future population growth, with specific measures
+including:</p>
+<ol type="1">
+<li><p>Construct higher-density residential communities with supporting
+facilities;</p></li>
+<li><p>Negotiate with insurance companies and communities to reach
+cooperation agreements to reduce the residential insurance costs in the
+area, thereby lowering the living cost and attracting
+residents.</p></li>
+</ol>
+<p>In the ongoing urban development, the area will be transformed into a
+vibrant community, where abundant facilities can meet the resources
+needed for population growth.</p>
+<p>For regions that are not suitable enough for living, large-scale
+vacant land can be developed for tourism and open during disaster-free
+seasons. Local managers should ensure daily warning and management work,
+driving the economic development of the local area, and compensating for
+possible losses caused by weather disasters.</p>
+<p>The standards should be re-evaluated every 3-5 years as new risk
+assessments and climate impact projections are available. This allows
+development guidelines to adapt.</p>
+<h1 id="landmark-preservation-model">Landmark Preservation Model</h1>
+<h2 id="value-of-landmark">Value of Landmark</h2>
+<p>We construct a metric to quantify the value of each landmark first.
+According to existing study <a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a>, this mainly includes
+two aspects, heritage attributes and residential satisfaction (for the
+corresponding MAHT model, see Figure 11). Also, these two indicators are
+<strong>complementary</strong> as the Pincipal Component Analysis result
+shows that these two together can explain <span class="math inline">\(74.64 \%\)</span> of variance according to the
+study <a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a>.</p>
+<p><img src="https://s2.loli.net/2024/02/06/GLxCZUeQNMSqWOJ.png" alt="11.png"></p>
+<p>On the other hand, this approach is reasonable for our research.
+Firstly, we discuss landmark historical buildings, which often have
+important <strong>historical and cultural significance</strong>. For
+example, they may have an exquisite structure or a long history. In
+addition, they carry the memories of residents and have strong
+<strong>emotional values</strong> of residents. People are proud to have
+such a landmark building in their place of residence and love it
+wholeheartedly. This is also the important value and significance of
+protecting such community historical landmark buildings.</p>
+<p>Therefore, we need to consider this issue from these two aspects:
+heritage attributes and residential satisfaction. To facilitate the
+subsequent calculations, we introduce the following symbols to represent
+the main indicators:</p>
+<p><span class="math display">\[(LV, PC2, PC3, HA1, HA2, HA3, HA, RS1,
+RS2, RS3, RS)\]</span></p>
+<p>Where <span class="math inline">\(LV\)</span> represents the value of
+the landmark, and <span class="math inline">\(PC2, PC3\)</span>
+represent the 2nd and 3rd principal components. <span class="math inline">\(HA, HA1,HA2,HA3\)</span> are heritage attribute
+with its sub-level variables, and <span class="math inline">\(RS,
+RS1,RS2,RS3\)</span> are residential satisfaction with its sub-level
+variables. We approximately describe the result of <span class="math inline">\(PC2, PC3\)</span> as linear combinations of the
+main indicators in terms according to the results in the study <a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a>:</p>
+<p><span class="math display">\[\begin{gathered}
+      PC2 = 0.89 HA1 +0.939 HA2 + 0.887 HA3 + 0.971 HA \\
+      PC3 = 0.471 RS1 + 0.604 RS2 + 0.67 RS3 + 0.806 RS
+\end{gathered}\]</span></p>
+<p>The existing results <a href="#fn12" class="footnote-ref" id="fnref12" role="doc-noteref"><sup>12</sup></a> show that principal
+component 2 and principal component 3 can represent the two parts of
+heritage attributes and residential satisfaction indicators,
+respectively. Therefore, we can set the value of landmark architecture
+as the sum of the two principal components, which can explain <span class="math inline">\(37.45\%\)</span> of the variance and has a strong
+explanatory power. Thus the value of the landmark can be set as the sum
+of both principle components: <span class="math display">\[LV = PC2
++PC3\]</span> Note that according to existing research results <a href="#fn13" class="footnote-ref" id="fnref13" role="doc-noteref"><sup>13</sup></a>, the calculation of various
+indicators for <span class="math inline">\(HA\)</span> and <span class="math inline">\(RS\)</span> involves a weighted summation of 31
+sub-indicators, which is relatively complex and lengthy. The specific
+calculation method can be found in Appendix 1, which is not provided in
+detail here.</p>
+<h2 id="risks-of-landmark">Risks of Landmark</h2>
+<p>The risks that landmark buildings may face need to be considered in
+two parts. Firstly, there are inherent risks associated with the
+building itself, such as erosion of building materials or existing
+structural damage, which can lead to damage to the landmark under
+extreme weather conditions.</p>
+<p>In addition, the external risks of meteorological disasters that the
+building's location may face should also be taken into account. This is
+because the landmark buildings considered are located in regions where
+insurance companies perceive a higher risk of meteorological disasters,
+thus requiring the inclusion of meteorological disaster risks in the
+assessment. For the sake of consistency and generality, the Weather
+Disaster Risk Index established earlier can be directly used as an
+evaluation indicator.</p>
+<p>For the inherent risks of landmark buildings, existing research <a href="#fn14" class="footnote-ref" id="fnref14" role="doc-noteref"><sup>14</sup></a> indicates that the MAHT model can
+still be used, and the first principal component PC1 from the model can
+be used as a risk indicator. Therefore, we need to consider this issue
+from these two aspects: heritage attributes and residential
+satisfaction. To facilitate the subsequent calculations, we introduce
+the following symbols to represent the main indicators:</p>
+<p><span class="math display">\[(LIR, PC1, SC1, SC2, SC3, SC,
+OI)\]</span></p>
+<p>Where <span class="math inline">\(LIR\)</span> represents the
+inherent risk of the landmark, and <span class="math inline">\(PC1\)</span> represents the first principal
+component. <span class="math inline">\(SC, SC1, SC2, SC3\)</span> are
+safety conditions with sub-level variables. Moreover, <span class="math inline">\(OI\)</span> is the third layer variable of the
+MAHT model. We approximately describe the result of <span class="math inline">\(PC1\)</span> as linear combinations of the main
+indicators in terms according to the results in the study <a href="#fn15" class="footnote-ref" id="fnref15" role="doc-noteref"><sup>15</sup></a>:</p>
+<p><span class="math display">\[PC1 = 0.749 SC1 + 0.729 SC2 + 0.76 SC3 +
+0.874 SC + 0.908 OI\]</span></p>
+<p>The existing results <a href="#fn16" class="footnote-ref" id="fnref16" role="doc-noteref"><sup>16</sup></a> show that principal
+component 1 can represent the safety condition of the landmark.
+Therefore, we can set the inherent risk of the landmark as the first
+principal component, which can explain <span class="math inline">\(37.19\%\)</span> of the variance and has the
+strongest explanatory power.</p>
+<h2 id="landmark-weather-disaster-vulnerability-index">Landmark Weather
+Disaster Vulnerability Index</h2>
+<p>Note that regarding the indicators related to landmark risk and
+landmark value mentioned earlier, <span class="math inline">\(PC1\)</span>, <span class="math inline">\(PC2\)</span>, and <span class="math inline">\(PC3\)</span> come from the same evaluation system
+and therefore need to be standardized collectively before calculations,
+where the maximum value normalization method is adopted. The
+standardized results are respectively denoted as <span class="math inline">\(PC1^{&#39;}\)</span>, <span class="math inline">\(PC2^{&#39;}\)</span>, and <span class="math inline">\(PC3^{&#39;}\)</span>. The calculation method is as
+follows:</p>
+<p><span class="math display">\[\begin{gathered}
+    PC1^{&#39;} = \frac{PC1}{\max \{ PC1, PC2, PC3\}} \\
+    PC2^{&#39;} = \frac{PC2}{\max \{ PC1, PC2, PC3\}} \\
+    PC3^{&#39;} = \frac{PC3}{\max \{ PC1, PC2, PC3\}}.
+\end{gathered}\]</span></p>
+<p>Moreover, the Weather Disaster Risk Index (WDRI) is already
+standardized data and can be calculated directly. Therefore, the final
+calculation formula for the Landmark Weather Disaster Vulnerability
+Index (LWDVI) is:</p>
+<p><span class="math display">\[LWDVI = (PC2^{&#39;} +PC3^{&#39;})\times
+(WDRI +PC1^{&#39;}).\]</span></p>
+<p>Similarly, the standardized result of value of landmark (<span class="math inline">\(LV\)</span>) can be interpreted as:</p>
+<p><span class="math display">\[LV^{\prime} = PC2^{&#39;}
++PC3^{&#39;}.\]</span></p>
+<h2 id="construction-of-landmark-preservation-model">Construction of
+Landmark Preservation Model</h2>
+<p>Existing research <a href="#fn17" class="footnote-ref" id="fnref17" role="doc-noteref"><sup>17</sup></a> shows that after obtaining the
+above indicators, decisions can be made based on the satisficing model,
+making the decision results closest to reality and easiest for policy
+implementation. The following decision flowchart (see Figure 12) can
+well reflect our recommended decision-making approach.</p>
+<p><img src="https://s2.loli.net/2024/02/06/7TLGFwCJa2WkKyg.png" alt="12.png"></p>
+<p>This decision flowchart provides various protection schemes for
+landmarks with different values and varying internal and external risk
+levels. The decision-maker also needs to consider factors such as budget
+and available funds and use the landmark preservation model to determine
+the appropriate protection measures for the landmark.</p>
+<h2 id="application-to-vizcaya-museum-and-gardens">Application to
+Vizcaya Museum and Gardens</h2>
+<h3 id="background-2">Background</h3>
+<p>The Vizcaya Museum and Gardens, a historic landmark in Miami,
+Florida, faces significant threats from hurricanes and other natural
+disasters. The estate has faced numerous hurricanes over the years,
+including Hurricane Irma in 2017. While the property experienced huge
+damage, the potential impact of future storms remains a significant
+concern.</p>
+<p>To make matters worse, with a calculated WDRI of <span class="math inline">\(0.825\)</span> for Miami and the baseline WDRI as
+<span class="math inline">\(0.74\)</span>, it is advised that the
+insurance company does not underwrite in the Miami region. Therefore, we
+need to use the obtained Landmark Preservation Model to consider the
+most suitable preservation plan for this historic landmark building.</p>
+<h3 id="conclusions-obtained-by-the-landmark-preservation-model">Conclusions
+Obtained by the Landmark Preservation Model</h3>
+<p>By inputting the collected data into the MAHT model and the landmark
+preservation model, the corresponding indicators are obtained as shown
+in the following table.</p>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 13%">
+<col style="width: 17%">
+<col style="width: 13%">
+<col style="width: 16%">
+<col style="width: 23%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Indicator</th>
+<th>Value</th>
+<th>Indicator</th>
+<th>Value</th>
+<th>Indicator</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(HA1\)</span></td>
+<td><span class="math inline">\(0.961538\)</span></td>
+<td>$OI $</td>
+<td><span class="math inline">\(0.657534\)</span></td>
+<td><span class="math inline">\(PC1^{\prime}\)</span></td>
+<td>$0.53873 $</td>
+</tr>
+<tr class="even">
+<td>$HA2 $</td>
+<td><span class="math inline">\(0.789474\)</span></td>
+<td><span class="math inline">\(PC1\)</span></td>
+<td><span class="math inline">\(1.575885\)</span></td>
+<td><span class="math inline">\(PC2^{\prime}\)</span></td>
+<td>$ 1 $</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(HA3\)</span></td>
+<td><span class="math inline">\(0.611111\)</span></td>
+<td>$ PC2$</td>
+<td>$ 2.925188$</td>
+<td>$PC3^{} $</td>
+<td><span class="math inline">\(0.872081\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(HA\)</span></td>
+<td><span class="math inline">\(0.809524\)</span></td>
+<td>$PC3 $</td>
+<td>$2.551 $</td>
+<td>$ WDRI $</td>
+<td><span class="math inline">\(0.825347\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(SC1\)</span></td>
+<td><span class="math inline">\(0.347826\)</span></td>
+<td></td>
+<td></td>
+<td>$LV^{} $</td>
+<td>$1.872081 $</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(SC2\)</span></td>
+<td><span class="math inline">\(0\)</span></td>
+<td></td>
+<td></td>
+<td><span class="math inline">\(LWDVI\)</span></td>
+<td><span class="math inline">\(2.553661\)</span></td>
+</tr>
+<tr class="odd">
+<td>$SC3 $</td>
+<td>$0.5 $</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>$SC $</td>
+<td>$ 0.387097 $</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>$RS1 $</td>
+<td><span class="math inline">\(1\)</span></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(RS2\)</span></td>
+<td>$ 1 $</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(RS3\)</span></td>
+<td>$ 1 $</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(RS\)</span></td>
+<td><span class="math inline">\(1\)</span></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Based on the obtained results and the decision flowchart, the
+suitable preservation plan for Vizcaya Museum and Gardens includes the
+following:</p>
+<ul>
+<li><p>Structural strengthening measures are necessary to ensure the
+safety of the building. For instance, steel beams or reinforced concrete
+can be added to the building to reinforce its structural
+integrity.</p></li>
+<li><p>Specific weather hazard protection measures are required; for
+instance, hurricane-resistant windows and doors can be installed to
+protect the building from harsh weather conditions.</p></li>
+<li><p>Relocation should be considered when necessary; for example, if
+the building is located in a high-risk area for natural disasters, it
+may be safer to relocate it to a less risky location.</p></li>
+</ul>
+<p>However, according to NOAA's intermediate-high sea-level-rise
+predictions for the years 2060 and 2100<a href="#fn18" class="footnote-ref" id="fnref18" role="doc-noteref"><sup>18</sup></a>,
+the gardens will sink in 40 years. To make matters worse, typical
+engineered adaptive measures, such as levees, flood walls, and many
+flood-proofing techniques are not suitable for Vizcaya. There are no
+current municipal plans for hard infrastructure improvements to help
+protect Vizcaya Museum and Gardens from future storms or rising seas.<a href="#fn19" class="footnote-ref" id="fnref19" role="doc-noteref"><sup>19</sup></a></p>
+<p>Meanwhile, the insurance model for the Miami-Dade County area shows
+that Vizcaya Museum and Gardens is located in a high-risk area where
+insurance cannot be obtained. In such unfavorable conditions,
+<strong>the best solution to protect this landmark is to relocate it to
+a safer location</strong>. The one-page community letter is attached to
+the page before the Appendices.</p>
+<h1 id="sensitivity-analysis">Sensitivity Analysis</h1>
+<h2 id="sensitivity-analysis-for-insurance-model">Sensitivity Analysis
+for Insurance Model</h2>
+<p>To execute a sensitivity investigation of the flood disaster severity
+evaluation model, we held the other indices at their current values and
+progressively enhanced the principle components, subsequently
+calculating the alterations in the Weather Disaster Risk Index (WDRI)
+consequential from this adjustment. The resulting data is illustrated in
+Figure 13.</p>
+<p><img src="https://s2.loli.net/2024/02/06/oXbpzfj4Jgl8xuF.png" alt="13.png"></p>
+<p>The findings demonstrate that the WDRI is most notably affected when
+'Rainfall' (RR) increases, denoting it has the most significant impact.
+Conversely,less extreme impact of other variables suggest that these
+elements, though important, have a comparatively smaller effect. From
+these results, it's evident that flood disaster severity is most
+sensitive to rainfall levels. This is consistent with the concrete
+scenario, as rainfall is undeniably a central factor in determining the
+intensity and likelihood of floods. Consequently, in devising disaster
+mitigation strategies, the focus should primarily be on developing flood
+control measures that can effectively deal with high rainfall
+levels.</p>
+<p>Lastly, our findings also suggest that the model is robust and can
+reliably anticipate disaster severity, even in the face of minor data
+errors. This feature enhances the model's practical applicability and
+value in real-world disaster planning and management.</p>
+<h2 id="sensitivity-analysis-for-landmark-preservation-model">Sensitivity
+Analysis for Landmark Preservation Model</h2>
+<p>To conduct a sensitivity analysis of the landmark preservation model,
+we fixed the other indicators at their current values and incrementally
+increased the principle components and then calculated the change in the
+Landmark Weather Disaster Vulnerability Index (LWDVI) resulting from
+this adjustment. The results are shown below in Figure 14.</p>
+<p><img src="https://s2.loli.net/2024/02/06/DnZ9BcQ2RWMoYeU.png" alt="14.png"></p>
+<p>The results indicate that the Landmark Weather Disaster Vulnerability
+Index (LWDVI) is most significantly affected when the relevant
+indicators change by the same proportion and the 3rd principal component
+(PC3) increases when the index change ratio is less than 0.174. On the
+other hand, the LWDVI is most significantly influenced by the change in
+the 1st principal component (PC1) when the index change ratio is greater
+than 0.174. This suggests that the LWDVI is most sensitive to the
+inherent risk of the landmark building itself because both components
+are related with the strength of the landmark. Therefore, under the
+condition of limited funding and manpower, repairing and protecting the
+landmark itself should be given the highest priority.</p>
+<p>The result also shows the model is robust even if there're some
+errors in data.</p>
+<h1 id="model-evaluation-and-further-discussion">Model Evaluation and
+Further Discussion</h1>
+<h2 id="strengths">Strengths</h2>
+<p><strong>Close to reality</strong>: Our research is based on a large
+amount of real statistical data. For example, we obtained historical
+hurricane data through the National Oceanic and Atmospheric
+Administration (NOAA) and local property data through the University of
+Florida's research institute.</p>
+<p>The work references a large number of classic methods, as well as
+innovative methods that have been verified in specific research fields.
+For example, the MAHT model <a href="#fn20" class="footnote-ref" id="fnref20" role="doc-noteref"><sup>20</sup></a> referenced in Task 4
+was developed by experienced experts and has been convincingly
+validated. Therefore, our model is supported by sufficient data and
+reasonable methodologies and can be considered a reasonable simulation
+of the real world.</p>
+<p><strong>Reasonableness</strong>: The Insurance Model can predict the
+future trends of weather disasters based on historical data, providing
+reasonable insurance advice and arrangements. The resulting real estate
+location choices are reasonable and align well with our expectations and
+actual circumstances. The Landmark Preservation Model accurately
+captures the value and risks faced by historical buildings, guiding
+decision-makers to make reasonable judgments. The simulation results are
+all intuitive and consistent with reality, so the model is
+reasonable.</p>
+<p><strong>Humanistic Care &amp; Social Responsibility</strong>: When
+setting insurance prices, the Insurance Model takes into account the
+difficulties of local communities in the event of a disaster by
+achieving a minimum Insurance Protection Gap, which reflects the sense
+of social responsibility and care for people. The Landmark Preservation
+Model, when assessing historic buildings, considers the satisfaction of
+residents. It quantifies this as part of the model and makes it work,
+doing its best to protect people's precious memories. Therefore the
+model also takes into account humanistic care and social
+responsibility.</p>
+<p><strong>Objective</strong>: The entropy weighting method is used to
+determine the weights of indicators, avoiding the influence of personal
+subjective factors.</p>
+<p><strong>Robustness</strong>: The sensitivity analysis shows that our
+model can still output good results when faced with biased data. It has
+a strong resistance to data errors and demonstrates a certain robustness
+and stability.</p>
+<h2 id="weaknesses">Weaknesses</h2>
+<ol type="1">
+<li><p>The Landmark Preservation Model does not have a comprehensive
+consideration of economic effects, so it still has limitations in
+practical application.</p></li>
+<li><p>There is potential for enhancement in our selection of
+indicators, and certain indicators could be represented with more
+suitable and sufficient data.</p></li>
+</ol>
+<h1 id="conclusion">Conclusion</h1>
+<p>We propose a multi-factor model of insurance which takes into account
+three main aspects: weather disaster risks, section risk factors and
+style risk factors. This model has been used to solve problems from
+twodifferent continents, demonstrating its powerful generality and
+adaptability. It is also used to assist insurance companies in
+formulating insurance strategies and helping real estate companies adapt
+to future changes. It has strong versatility and can help people in
+various industries.</p>
+<p>We have also developed a Landmark Preservation Model based on the
+latest research results called MAHT. It considers four influencing
+factors: extreme weather risk exposure to the landmark, its
+vulnerability, people's satisfaction with it, and its historical and
+cultural significance. By categorizing these factors, we obtained
+numerical values to assess the necessity of protecting the landmark and
+created a decision flowchart to assist decision-makers in formulating
+different protection measures based on the circumstances. This model was
+used to analyze the preservation measures for the Vizcaya Museum and
+Gardens and, based on the results, a community letter was written to
+local residents. It can make significant contributions in the aspect of
+community heritage preservation.</p>
+<h1 id="community-letter">Community Letter</h1>
+<p>February 4th, 2024</p>
+<p>Dear residents of Miami-Dade County,</p>
+<p>We hope this letter finds you well and thriving in our vibrant
+community. Today, We write to you with a matter of great importance
+concerning one of our most cherished local landmarks, the Vizcaya Museum
+and Gardens.</p>
+<p>As many of you are aware, the Vizcaya Museum and Gardens suffered
+substantial damage during Hurricane Irma in 2017. The increasing threat
+of rising sea levels and frequent hurricanes, coupled with unsuitable
+repairment conditions, have put this iconic landmark at significant
+risk. After thorough consideration with calculations through our
+Landmark Preservation Model, the recommendation has been made for the
+relocation to ensure its preservation for future generations.</p>
+<p>The cost of relocating such a significant site is substantial, and
+preliminary calculations suggest that the entire project is about 80
+million dollars, considering the difficulties in relocating and
+preserving. The financial burden will be borne by government. Donations
+are welcome during the whole process, and every donation, no matter the
+size, will play a crucial role in safeguarding a piece of our shared
+heritage.</p>
+<p>The relocation and preservation project will be managed by
+professional companies, ensuring that every aspect of Vizcaya is handled
+with the utmost care and expertise. The project is planned to unfold in
+five phases over the next five years, outlined as follows:</p>
+<p>Phase 1: Planning and Fund Collecting - A detailed planning will be
+finalized and the initial funding will be secured. (6 months)</p>
+<p>Phase 2: Preparing - New foundations will be prepared well. At the
+same time, stabilization works to ensure minimal damage will be done to
+the building. (18 months)</p>
+<p>Phase 3: Initial Relocation Phase - Beginning the physical relocation
+of smaller structures and artifacts, including small collectibles,
+sculptures, plants, and so on. (12 months)</p>
+<p>Phase 4: Main Relocation Phase - Relocating the Main House and larger
+structures, alongside significant restoration works. (12 months)</p>
+<p>Phase 5: Finalization and Restoration - Completing the relocation,
+with a focus on restoration, landscaping, and public reopening. (12
+months)</p>
+<p>We extend our deepest gratitude for your love for Vizcaya and invite
+you to be a part of this monumental effort to preserve our history and
+culture. It is this collective passion that has kept Vizcaya's spirit
+alive through challenging times, and it is this same passion that we
+call upon now to ensure its future. It takes a village, but it's worth
+it.</p>
+<p>Thank you for your attention and support.</p>
+<p>Sincerely,</p>
+<p>COMAP's Insurance of Catastrophes Modelers (ICM)</p>
+<h1 id="appendices">Appendices</h1>
+<h2 id="calculation-details-of-the-maht-model">Calculation Details of
+the MAHT Model</h2>
+<p>According to the existing study <a href="#fn21" class="footnote-ref" id="fnref21" role="doc-noteref"><sup>21</sup></a>, we can obtain the
+design thinking and calculation methods behind the MAHT model. For the
+sake of simplicity, this part has been used multiple times in the main
+text's Landmark Preservation Model, but it has not given specific
+calculations for HA, SC, and RS, as well as the relevant evaluation
+criteria. Therefore, it is supplemented in the appendix for future
+reference.</p>
+<p>The MAHT's first dimension considers the Heritage Attributes (HA) of
+the urban landmark, which identifies the physical features and
+constructive characteristics of urban fabrics. Its second dimension
+evaluates Safety Conditions (SC), which identifies the presence of
+damage, malfunction, and fire dysfunctional conditions. Also, its third
+dimension considers Residential Satisfaction (RS),which is assessed
+through face-to-face interviews.</p>
+<p>The detailed sub-indicators with weights designed by experienced
+specialists are listed below.</p>
+<p><img src="https://s2.loli.net/2024/02/06/eIZXjlbWOBQrCa6.png" alt="HA.png"></p>
+<p><img src="https://s2.loli.net/2024/02/06/kQwBqUv8Rrb1Ajg.png" alt="SC.png"></p>
+<p><img src="https://s2.loli.net/2024/02/06/27N8rEgZvuF36VG.png" alt="RS.png"></p>
+<h1 id="references">References</h1>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>C. Ornelas, F. Sousa, J. M. Guedes, and I.
+Breda-Vázquez, “Monitoring and assessment heritage tool: Quantify and
+classify urban heritage buildings,” Cities, vol. 137, p. 104 274, 2023,
+issn: 0264-2751.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>L. Liu, Y. Wang, and H. Wang, “The performance of three
+exponential decay models in estimating tropical cyclone intensity change
+after landfall over china,” Frontiers in Earth Science, vol. 9, 2021,
+issn: 2296-6463. doi: 10 . 3389 / feart . 2021 . 792005.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>S. P. Cottrell, J. J. Vaske, and J. M. Roemer, “Resident
+satisfaction with sustainable tourism: The case of frankenwald nature
+park, germany,” Tourism Management Perspectives, vol. 8, pp. 42–48,
+2013, issn: 2211-9736.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>K. Irandoost, A. A. Isaloo, and B. Shahmoradi,
+“Viability index in urban environments (case study: The central part of
+holy city of qom),” Journal of Urban Economics and Management, vol. 4,
+no. 13, pp. 101–118, 2016.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>L. Liu, Y. Wang, and H. Wang, “The performance of three
+exponential decay models in estimating tropical cyclone intensity change
+after landfall over china,” Frontiers in Earth Science, vol. 9, 2021,
+issn: 2296-6463. doi: 10 . 3389 / feart . 2021 . 792005.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>Protecting the world from flood risk: Why we invested in
+cloud to street,
+https://www.preventionweb.net/news/protecting-world-flood-risk-why-we-invested-cloud-street,
+Accessed: 2024-02-05.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>S. P. Cottrell, J. J. Vaske, and J. M. Roemer, “Resident
+satisfaction with sustainable tourism: The case of frankenwald nature
+park, germany,” Tourism Management Perspectives, vol. 8, pp. 42–48,
+2013, issn: 2211-9736.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8"><p>K. Irandoost, A. A. Isaloo, and B. Shahmoradi,
+“Viability index in urban environments (case study: The central part of
+holy city of qom),” Journal of Urban Economics and Management, vol. 4,
+no. 13, pp. 101–118, 2016.<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn9"><p>C. Ornelas, F. Sousa, J. M. Guedes, and I.
+Breda-Vázquez, “Monitoring and assessment heritage tool: Quantify and
+classify urban heritage buildings,” Cities, vol. 137, p. 104 274, 2023,
+issn: 0264-2751.<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn10"><p>C. Ornelas, F. Sousa, J. M. Guedes, and I.
+Breda-Vázquez, “Monitoring and assessment heritage tool: Quantify and
+classify urban heritage buildings,” Cities, vol. 137, p. 104 274, 2023,
+issn: 0264-2751.<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn11"><p>C. Ornelas, F. Sousa, J. M. Guedes, and I.
+Breda-Vázquez, “Monitoring and assessment heritage tool: Quantify and
+classify urban heritage buildings,” Cities, vol. 137, p. 104 274, 2023,
+issn: 0264-2751.<a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn12"><p>C. Ornelas, F. Sousa, J. M. Guedes, and I.
+Breda-Vázquez, “Monitoring and assessment heritage tool: Quantify and
+classify urban heritage buildings,” Cities, vol. 137, p. 104 274, 2023,
+issn: 0264-2751.<a href="#fnref12" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn13"><p>C. Ornelas, F. Sousa, J. M. Guedes, and I.
+Breda-Vázquez, “Monitoring and assessment heritage tool: Quantify and
+classify urban heritage buildings,” Cities, vol. 137, p. 104 274, 2023,
+issn: 0264-2751.<a href="#fnref13" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn14"><p>C. Ornelas, F. Sousa, J. M. Guedes, and I.
+Breda-Vázquez, “Monitoring and assessment heritage tool: Quantify and
+classify urban heritage buildings,” Cities, vol. 137, p. 104 274, 2023,
+issn: 0264-2751.<a href="#fnref14" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn15"><p>C. Ornelas, F. Sousa, J. M. Guedes, and I.
+Breda-Vázquez, “Monitoring and assessment heritage tool: Quantify and
+classify urban heritage buildings,” Cities, vol. 137, p. 104 274, 2023,
+issn: 0264-2751.<a href="#fnref15" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn16"><p>C. Ornelas, F. Sousa, J. M. Guedes, and I.
+Breda-Vázquez, “Monitoring and assessment heritage tool: Quantify and
+classify urban heritage buildings,” Cities, vol. 137, p. 104 274, 2023,
+issn: 0264-2751.<a href="#fnref16" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn17"><p>H.-J. Wang and Z.-T. Zeng, “A multi-objective
+decision-making process for reuse selection of historic buildings,” vol.
+37, no. 2, pp. 1241–1249, Mar. 2010, issn: 0957-4174.<a href="#fnref17" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn18"><p>S. F. R. C. C. Compact, “Unified sea level rise
+projection southeast florida: 2019 update,” vol. 27, 2022.<a href="#fnref18" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn19"><p>L. R. Hall, “Preemptive strategies and collaboration
+for emergency planning: Lessons learned at vizcaya in miami,” APT
+Bulletin: The Journal of Preservation Technology, vol. 52, no. 2/3, pp.
+15–24, 2021, issn: 08488525. (visited on 02/03/2024).<a href="#fnref19" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn20"><p>C. Ornelas, F. Sousa, J. M. Guedes, and I.
+Breda-Vázquez, “Monitoring and assessment heritage tool: Quantify and
+classify urban heritage buildings,” Cities, vol. 137, p. 104 274, 2023,
+issn: 0264-2751.<a href="#fnref20" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn21"><p>C. Ornelas, F. Sousa, J. M. Guedes, and I.
+Breda-Vázquez, “Monitoring and assessment heritage tool: Quantify and
+classify urban heritage buildings,” Cities, vol. 137, p. 104 274, 2023,
+issn: 0264-2751.<a href="#fnref21" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>我很可爱 请给我钱（？）</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.jpg" alt="驰雨Chiyuru 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.jpg" alt="驰雨Chiyuru 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>驰雨Chiyuru
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://chiyuru.github.io/2024/04/30/2024-ICM-Problem-E/" title="2024 ICM Problem E Thesis">https://chiyuru.github.io/2024/04/30/2024-ICM-Problem-E/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E8%BF%99%E9%87%8C%E9%9D%A2%E7%9C%8B%E8%B5%B7%E6%9D%A5%E5%BE%88%E5%A5%BD%E7%8E%A9/" rel="tag"># 这里面看起来很好玩</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2024/04/01/Diary-2024-04/" rel="prev" title="日记·篇二十·24年4月">
+      <i class="fa fa-chevron-left"></i> 日记·篇二十·24年4月
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2024/05/05/Diary-2024-05/" rel="next" title="日记·篇二十·24年4月">
+      日记·篇二十·24年4月 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  
+  <div class="comments">
+  <script src="https://utteranc.es/client.js" repo="Chiyuru/chiyuru.github.io" issue-term="pathname" theme="github-light" crossorigin="anonymous" async></script>
+  </div>
+  
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#summary"><span class="nav-text">Summary</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#introduction"><span class="nav-text">Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#problem-background"><span class="nav-text">Problem Background</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#restatement-of-the-tasks"><span class="nav-text">Restatement of the Tasks</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#our-work"><span class="nav-text">Our Work</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#assumptions-and-justifications"><span class="nav-text">Assumptions and
+Justifications</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#notations"><span class="nav-text">Notations</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#insurance-model"><span class="nav-text">Insurance Model</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#application-of-the-insurance-model-in-two-areas"><span class="nav-text">Application of
+the Insurance Model in Two Areas</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#analysis-of-florida-state-usa"><span class="nav-text">Analysis of Florida State,
+USA</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#background"><span class="nav-text">Background</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#conclusions-obtained-by-insurance-model"><span class="nav-text">Conclusions Obtained by
+Insurance Model</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#analysis-of-indonesia"><span class="nav-text">Analysis of Indonesia</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#background-1"><span class="nav-text">Background</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#conclusions-obtained-by-insurance-model-1"><span class="nav-text">Conclusions Obtained
+by Insurance Model</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#applications-to-building-sites-choices"><span class="nav-text">Applications to Building
+Sites Choices</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#landmark-preservation-model"><span class="nav-text">Landmark Preservation Model</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#value-of-landmark"><span class="nav-text">Value of Landmark</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#risks-of-landmark"><span class="nav-text">Risks of Landmark</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#landmark-weather-disaster-vulnerability-index"><span class="nav-text">Landmark Weather
+Disaster Vulnerability Index</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#construction-of-landmark-preservation-model"><span class="nav-text">Construction of
+Landmark Preservation Model</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#application-to-vizcaya-museum-and-gardens"><span class="nav-text">Application to
+Vizcaya Museum and Gardens</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#background-2"><span class="nav-text">Background</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#conclusions-obtained-by-the-landmark-preservation-model"><span class="nav-text">Conclusions
+Obtained by the Landmark Preservation Model</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#sensitivity-analysis"><span class="nav-text">Sensitivity Analysis</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#sensitivity-analysis-for-insurance-model"><span class="nav-text">Sensitivity Analysis
+for Insurance Model</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sensitivity-analysis-for-landmark-preservation-model"><span class="nav-text">Sensitivity
+Analysis for Landmark Preservation Model</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#model-evaluation-and-further-discussion"><span class="nav-text">Model Evaluation and
+Further Discussion</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#strengths"><span class="nav-text">Strengths</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#weaknesses"><span class="nav-text">Weaknesses</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#conclusion"><span class="nav-text">Conclusion</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#community-letter"><span class="nav-text">Community Letter</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#appendices"><span class="nav-text">Appendices</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#calculation-details-of-the-maht-model"><span class="nav-text">Calculation Details of
+the MAHT Model</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#references"><span class="nav-text">References</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="驰雨Chiyuru"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">驰雨Chiyuru</p>
+  <div class="site-description" itemprop="description">おはよう、朝だよ</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">55</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Chiyuru" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Chiyuru" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:chiyuruu@gmail.com" title="E-Mail → mailto:chiyuruu@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/Chiyuru_0417" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;Chiyuru_0417" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/chiyuruu" title="知乎 → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;chiyuruu" rel="noopener" target="_blank"><i class="fab fa-zhihu fa-fw"></i>知乎</a>
+      </span>
+  </div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="copyright">
+  
+  &copy; 2022 – 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">驰雨Chiyuru</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv1">
+  本站总访客数：<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300,"hOffset":-15,"vOffset":-15},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
+</html>
