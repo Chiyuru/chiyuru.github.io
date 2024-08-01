@@ -6,7 +6,7 @@
   <link href="https://chiyuru.github.io/atom.xml" rel="self"/>
   
   <link href="https://chiyuru.github.io/"/>
-  <updated>2024-07-16T13:47:15.478Z</updated>
+  <updated>2024-08-01T14:53:34.608Z</updated>
   <id>https://chiyuru.github.io/</id>
   
   <author>
@@ -15,6 +15,41 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>日记·篇廿四·24年8月</title>
+    <link href="https://chiyuru.github.io/2024/08/01/Diary-2024-08/"/>
+    <id>https://chiyuru.github.io/2024/08/01/Diary-2024-08/</id>
+    <published>2024-08-01T05:41:52.000Z</published>
+    <updated>2024-08-01T14:53:34.608Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;怎么这么摸啊（&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="碎碎念" scheme="https://chiyuru.github.io/tags/%E7%A2%8E%E7%A2%8E%E5%BF%B5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>年度相册整理环节 2023.08 ~ 2024.07</title>
+    <link href="https://chiyuru.github.io/2024/07/31/2024-photos-and-fragments/"/>
+    <id>https://chiyuru.github.io/2024/07/31/2024-photos-and-fragments/</id>
+    <published>2024-07-31T12:12:02.000Z</published>
+    <updated>2024-08-01T15:14:04.271Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;今年倒是出去玩了好多次，除了日常的乐子还有点别的能发（&lt;/p&gt;
+&lt;p&gt;由于我对自己是本科第几年这件事现在实在是有一点恐惧，而且延毕也不能真的一直延，换个标题（（&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="碎碎念" scheme="https://chiyuru.github.io/tags/%E7%A2%8E%E7%A2%8E%E5%BF%B5/"/>
+    
+  </entry>
   
   <entry>
     <title>通衢漫记</title>
@@ -363,45 +398,6 @@ Mathematical Programming&lt;/a&gt;》Chapter 9,10 和一份相应的 &lt;a href=
     
     
     <category term="碎碎念" scheme="https://chiyuru.github.io/tags/%E7%A2%8E%E7%A2%8E%E5%BF%B5/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>三点几了，饮茶先啦</title>
-    <link href="https://chiyuru.github.io/2023/09/29/tea/"/>
-    <id>https://chiyuru.github.io/2023/09/29/tea/</id>
-    <published>2023-09-29T03:50:56.000Z</published>
-    <updated>2023-10-22T15:17:29.543Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;咖啡喝腻了，最近在尝试用茶饮料作为替代，猫超有两排货架卖的都是茶，闲的没事进行了一次超过一个月的测评。&lt;/p&gt;
-&lt;p&gt;&lt;del&gt;写着写着就变成说相声了&lt;/del&gt;&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="碎碎念" scheme="https://chiyuru.github.io/tags/%E7%A2%8E%E7%A2%8E%E5%BF%B5/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>年轻人的第一门 optimization 是茶园课</title>
-    <link href="https://chiyuru.github.io/2023/09/25/Introduction-to-Optimization-Theory/"/>
-    <id>https://chiyuru.github.io/2023/09/25/Introduction-to-Optimization-Theory/</id>
-    <published>2023-09-25T02:28:52.000Z</published>
-    <updated>2023-10-27T10:58:50.585Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;我自己一个人能完成一个学期的 scribing，&lt;del&gt;所以能不能多给点
-bonus&lt;/del&gt;（确信&lt;/p&gt;
-&lt;p&gt;茶园老师和教务手都太快了，俩小时速通特殊原因选课，下次还来。&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="数学" scheme="https://chiyuru.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
-    
-    <category term="统计" scheme="https://chiyuru.github.io/tags/%E7%BB%9F%E8%AE%A1/"/>
     
   </entry>
   
