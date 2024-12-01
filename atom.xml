@@ -6,7 +6,7 @@
   <link href="https://chiyuru.github.io/atom.xml" rel="self"/>
   
   <link href="https://chiyuru.github.io/"/>
-  <updated>2024-11-29T13:48:40.366Z</updated>
+  <updated>2024-12-01T15:59:15.178Z</updated>
   <id>https://chiyuru.github.io/</id>
   
   <author>
@@ -17,11 +17,28 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>日记·篇廿八·24年12月</title>
+    <link href="https://chiyuru.github.io/2024/12/01/Diary-2024-12/"/>
+    <id>https://chiyuru.github.io/2024/12/01/Diary-2024-12/</id>
+    <published>2024-12-01T15:50:12.000Z</published>
+    <updated>2024-12-01T15:59:15.178Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;年底了，颇有一种不太好的预感（&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="碎碎念" scheme="https://chiyuru.github.io/tags/%E7%A2%8E%E7%A2%8E%E5%BF%B5/"/>
+    
+  </entry>
+  
+  <entry>
     <title>日记·篇廿七·24年11月</title>
     <link href="https://chiyuru.github.io/2024/11/01/Diary-2024-11/"/>
     <id>https://chiyuru.github.io/2024/11/01/Diary-2024-11/</id>
     <published>2024-11-01T15:11:39.000Z</published>
-    <updated>2024-11-29T13:48:40.366Z</updated>
+    <updated>2024-12-01T15:49:57.247Z</updated>
     
     
     <summary type="html">&lt;p&gt;一想到后面几个学期的期中期末也并不会轻松到哪里去，至少也是现在这样，就很难不有点绝望（&lt;/p&gt;</summary>
@@ -373,28 +390,6 @@ Walk/Ride 记录，年后申请陆家嘴签证，方便开学前去滨江骑行�
     
     
     <category term="碎碎念" scheme="https://chiyuru.github.io/tags/%E7%A2%8E%E7%A2%8E%E5%BF%B5/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>请为 max cut problem 找一个 polynomial time solution</title>
-    <link href="https://chiyuru.github.io/2023/11/11/The-Max-Cut-Problem/"/>
-    <id>https://chiyuru.github.io/2023/11/11/The-Max-Cut-Problem/</id>
-    <published>2023-11-10T17:57:10.000Z</published>
-    <updated>2023-11-13T16:21:09.636Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;就是说我这学期为什么会学到这么个东西呢（挠头&lt;/p&gt;
-&lt;p&gt;这什么破标题（&lt;/p&gt;
-&lt;p&gt;包含一些当初做 Intro to Optimization Theory Lecture 5 的 scribing
-的时候想加又没加的私货，主要参考这份 &lt;a href=&quot;https://www.iitgoa.ac.in/~sreejithav/misc/maxcut.pdf&quot;&gt;note&lt;/a&gt;
-和另一份
-slide，但我好像找不到了。虽然也很粗浅但超出了课堂讲授的和期中涉及的范围，之前本来就有一份草稿，整理出来图一乐。&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="数学" scheme="https://chiyuru.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
     
   </entry>
   
