@@ -6,7 +6,7 @@
   <link href="https://chiyuru.github.io/atom.xml" rel="self"/>
   
   <link href="https://chiyuru.github.io/"/>
-  <updated>2024-12-31T15:17:30.997Z</updated>
+  <updated>2025-01-09T14:17:58.468Z</updated>
   <id>https://chiyuru.github.io/</id>
   
   <author>
@@ -15,6 +15,23 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>日记·篇廿九·25年1月</title>
+    <link href="https://chiyuru.github.io/2025/01/01/Diary-2025-01/"/>
+    <id>https://chiyuru.github.io/2025/01/01/Diary-2025-01/</id>
+    <published>2025-01-01T04:23:35.000Z</published>
+    <updated>2025-01-09T14:17:58.468Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;大过年的&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="碎碎念" scheme="https://chiyuru.github.io/tags/%E7%A2%8E%E7%A2%8E%E5%BF%B5/"/>
+    
+  </entry>
   
   <entry>
     <title>日记·篇廿八·24年12月</title>
@@ -367,28 +384,6 @@ Walk/Ride 记录，年后申请陆家嘴签证，方便开学前去滨江骑行�
     
     
     <category term="碎碎念" scheme="https://chiyuru.github.io/tags/%E7%A2%8E%E7%A2%8E%E5%BF%B5/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>别惦记你那 pivot statistic 了</title>
-    <link href="https://chiyuru.github.io/2023/12/06/Hypothesis_Testing_and_Statistical_Decision_Theory/"/>
-    <id>https://chiyuru.github.io/2023/12/06/Hypothesis_Testing_and_Statistical_Decision_Theory/</id>
-    <published>2023-12-06T00:16:45.000Z</published>
-    <updated>2023-12-07T16:14:04.664Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;去年秋季学期的最后四分之一学假设检验的时候我就很疑惑，人类要怎么才能记住这些规则，这有什么道理吗（&lt;/p&gt;
-&lt;p&gt;于是最后在作业期中期末占比约各三分之一、期中考了 94、wjd
-老师海底捞调分的情况下考了个 A-（，就挺耻辱的。&lt;/p&gt;
-&lt;p&gt;时隔一年学了 statistical decision theory 之后我逐渐理解一切（&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="数学" scheme="https://chiyuru.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
-    
-    <category term="统计" scheme="https://chiyuru.github.io/tags/%E7%BB%9F%E8%AE%A1/"/>
     
   </entry>
   
